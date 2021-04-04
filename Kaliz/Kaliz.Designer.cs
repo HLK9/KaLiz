@@ -47,32 +47,35 @@ namespace Kaliz
             this.ECut = new Telerik.WinControls.UI.RadMenuItem();
             this.EPaste = new Telerik.WinControls.UI.RadMenuItem();
             this.MTools = new Telerik.WinControls.UI.RadMenuItem();
+            this.TFind = new Telerik.WinControls.UI.RadMenuItem();
             this.MBuild = new Telerik.WinControls.UI.RadMenuItem();
+            this.BRun = new Telerik.WinControls.UI.RadMenuItem();
+            this.BBuild = new Telerik.WinControls.UI.RadMenuItem();
             this.MDebug = new Telerik.WinControls.UI.RadMenuItem();
+            this.DEnable = new Telerik.WinControls.UI.RadMenuItem();
+            this.DOpenGDB = new Telerik.WinControls.UI.RadMenuItem();
             this.MOptions = new Telerik.WinControls.UI.RadMenuItem();
             this.MHelp = new Telerik.WinControls.UI.RadMenuItem();
             this.DockPar = new Telerik.WinControls.UI.Docking.RadDock();
-            this.DcWelcome = new Telerik.WinControls.UI.Docking.DocumentWindow();
-            this.DContainer = new Telerik.WinControls.UI.Docking.DocumentContainer();
-            this.DcStrp = new Telerik.WinControls.UI.Docking.DocumentTabStrip();
-            this.toolTabStrip1 = new Telerik.WinControls.UI.Docking.ToolTabStrip();
             this.DTer = new Telerik.WinControls.UI.Docking.ToolWindow();
-            this.BRun = new Telerik.WinControls.UI.RadMenuItem();
-            this.BBuild = new Telerik.WinControls.UI.RadMenuItem();
-            this.DEnable = new Telerik.WinControls.UI.RadMenuItem();
-            this.DOpenGDB = new Telerik.WinControls.UI.RadMenuItem();
-            this.TFind = new Telerik.WinControls.UI.RadMenuItem();
+            this.DContainer = new Telerik.WinControls.UI.Docking.DocumentContainer();
+            this.documentTabStrip1 = new Telerik.WinControls.UI.Docking.DocumentTabStrip();
+            this.documentWindow1 = new Telerik.WinControls.UI.Docking.DocumentWindow();
+            this.toolTabStrip1 = new Telerik.WinControls.UI.Docking.ToolTabStrip();
             this.radMenu1 = new Telerik.WinControls.UI.RadMenu();
+            this.documentWindow2 = new Telerik.WinControls.UI.Docking.DocumentWindow();
+            this.documentWindow3 = new Telerik.WinControls.UI.Docking.DocumentWindow();
+            this.documentWindow4 = new Telerik.WinControls.UI.Docking.DocumentWindow();
             ((System.ComponentModel.ISupportInitialize)(this.DockPar)).BeginInit();
             this.DockPar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DContainer)).BeginInit();
             this.DContainer.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.DcStrp)).BeginInit();
-            this.DcStrp.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.documentTabStrip1)).BeginInit();
+            this.documentTabStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.toolTabStrip1)).BeginInit();
             this.toolTabStrip1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.radMenu1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this)).BeginInit();
             this.SuspendLayout();
             // 
             // MFile
@@ -95,7 +98,6 @@ namespace Kaliz
             // 
             this.FNew.Name = "FNew";
             this.FNew.Text = "New File";
-            this.FNew.Shortcuts.Add(new Telerik.WinControls.RadShortcut(System.Windows.Forms.Keys.Control, System.Windows.Forms.Keys.N));
             this.FNew.ToolTipText = "Tệp Mới";
             this.FNew.Click += new System.EventHandler(this.FNew_Click);
             // 
@@ -103,7 +105,6 @@ namespace Kaliz
             // 
             this.FOpen.Name = "FOpen";
             this.FOpen.Text = "Open File";
-            this.FOpen.Shortcuts.Add(new RadShortcut(Keys.Control, Keys.O));
             this.FOpen.Click += new System.EventHandler(this.FOpen_Click);
             // 
             // radMenuSeparatorItem1
@@ -122,7 +123,6 @@ namespace Kaliz
             // 
             this.FPrint.Name = "FPrint";
             this.FPrint.Text = "Print";
-            this.FPrint.Shortcuts.Add(new RadShortcut(Keys.Control, Keys.P));
             this.FPrint.Click += new System.EventHandler(this.FPrint_Click);
             // 
             // FSave
@@ -187,6 +187,11 @@ namespace Kaliz
             this.MTools.Name = "MTools";
             this.MTools.Text = "Tools";
             // 
+            // TFind
+            // 
+            this.TFind.Name = "TFind";
+            this.TFind.Text = "Find";
+            // 
             // MBuild
             // 
             this.MBuild.Items.AddRange(new Telerik.WinControls.RadItem[] {
@@ -195,6 +200,16 @@ namespace Kaliz
             this.MBuild.Name = "MBuild";
             this.MBuild.Text = "Buid";
             // 
+            // BRun
+            // 
+            this.BRun.Name = "BRun";
+            this.BRun.Text = "Run";
+            // 
+            // BBuild
+            // 
+            this.BBuild.Name = "BBuild";
+            this.BBuild.Text = "Build This File";
+            // 
             // MDebug
             // 
             this.MDebug.Items.AddRange(new Telerik.WinControls.RadItem[] {
@@ -202,6 +217,16 @@ namespace Kaliz
             this.DOpenGDB});
             this.MDebug.Name = "MDebug";
             this.MDebug.Text = "Debug";
+            // 
+            // DEnable
+            // 
+            this.DEnable.Name = "DEnable";
+            this.DEnable.Text = "Enable Debug";
+            // 
+            // DOpenGDB
+            // 
+            this.DOpenGDB.Name = "DOpenGDB";
+            this.DOpenGDB.Text = "Open GDB Debug";
             // 
             // MOptions
             // 
@@ -215,7 +240,7 @@ namespace Kaliz
             // 
             // DockPar
             // 
-            this.DockPar.ActiveWindow = this.DcWelcome;
+            this.DockPar.ActiveWindow = this.documentWindow1;
             this.DockPar.Controls.Add(this.DContainer);
             this.DockPar.Controls.Add(this.toolTabStrip1);
             this.DockPar.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -224,7 +249,6 @@ namespace Kaliz
             this.DockPar.MainDocumentContainer = this.DContainer;
             this.DockPar.Name = "DockPar";
             this.DockPar.Orientation = System.Windows.Forms.Orientation.Horizontal;
-            this.DockPar.Padding = new System.Windows.Forms.Padding(0);
             // 
             // 
             // 
@@ -235,18 +259,19 @@ namespace Kaliz
             this.DockPar.TabStop = false;
             this.DockPar.ThemeName = "MaterialTeal";
             // 
-            // DcWelcome
+            // DTer
             // 
-            this.DcWelcome.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.DcWelcome.Location = new System.Drawing.Point(4, 54);
-            this.DcWelcome.Name = "DcWelcome";
-            this.DcWelcome.PreviousDockState = Telerik.WinControls.UI.Docking.DockState.TabbedDocument;
-            this.DcWelcome.Size = new System.Drawing.Size(1087, 486);
-            this.DcWelcome.Text = "Welcome";
+            this.DTer.Caption = null;
+            this.DTer.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.DTer.Location = new System.Drawing.Point(4, 52);
+            this.DTer.Name = "DTer";
+            this.DTer.PreviousDockState = Telerik.WinControls.UI.Docking.DockState.Docked;
+            this.DTer.Size = new System.Drawing.Size(1077, 83);
+            this.DTer.Text = "DockTer";
             // 
             // DContainer
             // 
-            this.DContainer.Controls.Add(this.DcStrp);
+            this.DContainer.Controls.Add(this.documentTabStrip1);
             this.DContainer.Name = "DContainer";
             // 
             // 
@@ -258,80 +283,51 @@ namespace Kaliz
             this.DContainer.SplitterWidth = 8;
             this.DContainer.ThemeName = "MaterialTeal";
             // 
-            // DcStrp
+            // documentTabStrip1
             // 
-            this.DcStrp.CanUpdateChildIndex = true;
-            this.DcStrp.Controls.Add(this.DcWelcome);
-            this.DcStrp.Location = new System.Drawing.Point(0, 0);
-            this.DcStrp.Name = "DcStrp";
+            this.documentTabStrip1.CanUpdateChildIndex = true;
+            this.documentTabStrip1.Controls.Add(this.documentWindow4);
+            this.documentTabStrip1.Controls.Add(this.documentWindow3);
+            this.documentTabStrip1.Controls.Add(this.documentWindow2);
+            this.documentTabStrip1.Controls.Add(this.documentWindow1);
+            this.documentTabStrip1.Location = new System.Drawing.Point(0, 0);
+            this.documentTabStrip1.Name = "documentTabStrip1";
             // 
             // 
             // 
-            this.DcStrp.RootElement.MinSize = new System.Drawing.Size(25, 25);
-            this.DcStrp.SelectedIndex = 0;
-            this.DcStrp.Size = new System.Drawing.Size(1095, 544);
-            this.DcStrp.TabIndex = 0;
-            this.DcStrp.TabStop = false;
-            this.DcStrp.ThemeName = "MaterialTeal";
+            this.documentTabStrip1.RootElement.MinSize = new System.Drawing.Size(25, 25);
+            this.documentTabStrip1.SelectedIndex = 3;
+            this.documentTabStrip1.Size = new System.Drawing.Size(1085, 534);
+            this.documentTabStrip1.TabIndex = 0;
+            this.documentTabStrip1.TabStop = false;
+            this.documentTabStrip1.ThemeName = "MaterialTeal";
+            // 
+            // documentWindow1
+            // 
+            this.documentWindow1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.documentWindow1.Location = new System.Drawing.Point(4, 54);
+            this.documentWindow1.Name = "documentWindow1";
+            this.documentWindow1.PreviousDockState = Telerik.WinControls.UI.Docking.DockState.TabbedDocument;
+            this.documentWindow1.Size = new System.Drawing.Size(1077, 476);
+            this.documentWindow1.Text = "documentWindow1";
             // 
             // toolTabStrip1
             // 
             this.toolTabStrip1.CanUpdateChildIndex = true;
             this.toolTabStrip1.Controls.Add(this.DTer);
-            this.toolTabStrip1.Location = new System.Drawing.Point(0, 552);
+            this.toolTabStrip1.Location = new System.Drawing.Point(5, 547);
             this.toolTabStrip1.Name = "toolTabStrip1";
             // 
             // 
             // 
             this.toolTabStrip1.RootElement.MinSize = new System.Drawing.Size(25, 25);
             this.toolTabStrip1.SelectedIndex = 0;
-            this.toolTabStrip1.Size = new System.Drawing.Size(1095, 139);
+            this.toolTabStrip1.Size = new System.Drawing.Size(1085, 139);
             this.toolTabStrip1.SizeInfo.AbsoluteSize = new System.Drawing.Size(200, 139);
             this.toolTabStrip1.SizeInfo.SplitterCorrection = new System.Drawing.Size(0, -61);
             this.toolTabStrip1.TabIndex = 1;
             this.toolTabStrip1.TabStop = false;
             this.toolTabStrip1.ThemeName = "MaterialTeal";
-            // 
-            // DTer
-            // 
-            this.DTer.Caption = null;
-            this.DTer.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.DTer.Location = new System.Drawing.Point(4, 52);
-            this.DTer.Name = "DTer";
-            this.DTer.PreviousDockState = Telerik.WinControls.UI.Docking.DockState.Docked;
-            this.DTer.Size = new System.Drawing.Size(1087, 83);
-            this.DTer.Text = "DockTer";
-            // 
-            // BRun
-            // 
-            this.BRun.Name = "BRun";
-            this.BRun.Text = "Run";
-            // 
-            // BBuild
-            // 
-            this.BBuild.Name = "BBuild";
-            this.BBuild.Text = "Build This File";
-            // 
-            // DEnable
-            // 
-            this.DEnable.Name = "DEnable";
-            this.DEnable.Text = "Enable Debug";
-            // 
-            // DOpenGDB
-            // 
-            this.DOpenGDB.Name = "DOpenGDB";
-            this.DOpenGDB.Text = "Open GDB Debug";
-            // 
-            // TFind
-            // 
-            this.TFind.Name = "TFind";
-            this.TFind.Text = "Find";
-            // 
-            // Kaliz
-            // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1095, 728);
             // 
             // radMenu1
             // 
@@ -348,6 +344,39 @@ namespace Kaliz
             this.radMenu1.Size = new System.Drawing.Size(1095, 37);
             this.radMenu1.TabIndex = 1;
             this.radMenu1.ThemeName = "MaterialTeal";
+            // 
+            // documentWindow2
+            // 
+            this.documentWindow2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.documentWindow2.Location = new System.Drawing.Point(4, 54);
+            this.documentWindow2.Name = "documentWindow2";
+            this.documentWindow2.PreviousDockState = Telerik.WinControls.UI.Docking.DockState.TabbedDocument;
+            this.documentWindow2.Size = new System.Drawing.Size(1087, 486);
+            this.documentWindow2.Text = "documentWindow2";
+            // 
+            // documentWindow3
+            // 
+            this.documentWindow3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.documentWindow3.Location = new System.Drawing.Point(4, 54);
+            this.documentWindow3.Name = "documentWindow3";
+            this.documentWindow3.PreviousDockState = Telerik.WinControls.UI.Docking.DockState.TabbedDocument;
+            this.documentWindow3.Size = new System.Drawing.Size(1087, 486);
+            this.documentWindow3.Text = "documentWindow3";
+            // 
+            // documentWindow4
+            // 
+            this.documentWindow4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.documentWindow4.Location = new System.Drawing.Point(4, 54);
+            this.documentWindow4.Name = "documentWindow4";
+            this.documentWindow4.PreviousDockState = Telerik.WinControls.UI.Docking.DockState.TabbedDocument;
+            this.documentWindow4.Size = new System.Drawing.Size(1087, 486);
+            this.documentWindow4.Text = "documentWindow4";
+            // 
+            // Kaliz
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.ClientSize = new System.Drawing.Size(1095, 728);
             this.Controls.Add(this.DockPar);
             this.Controls.Add(this.radMenu1);
             this.Name = "Kaliz";
@@ -362,8 +391,8 @@ namespace Kaliz
             this.DockPar.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.DContainer)).EndInit();
             this.DContainer.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.DcStrp)).EndInit();
-            this.DcStrp.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.documentTabStrip1)).EndInit();
+            this.documentTabStrip1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.toolTabStrip1)).EndInit();
             this.toolTabStrip1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.radMenu1)).EndInit();
@@ -394,11 +423,8 @@ namespace Kaliz
         private Telerik.WinControls.UI.RadMenuSeparatorItem radMenuSeparatorItem2;
         private Telerik.WinControls.UI.RadMenuItem FExit;
         private Telerik.WinControls.UI.Docking.RadDock DockPar;
-        private Telerik.WinControls.UI.Docking.DocumentContainer DContainer;
         private Telerik.WinControls.UI.Docking.ToolTabStrip toolTabStrip1;
         private Telerik.WinControls.UI.Docking.ToolWindow DTer;
-        private Telerik.WinControls.UI.Docking.DocumentTabStrip DcStrp;
-        private Telerik.WinControls.UI.Docking.DocumentWindow DcWelcome;
         private Telerik.WinControls.UI.RadMenuItem ECopy;
         private Telerik.WinControls.UI.RadMenuItem ECut;
         private Telerik.WinControls.UI.RadMenuItem EPaste;
@@ -408,5 +434,11 @@ namespace Kaliz
         private Telerik.WinControls.UI.RadMenuItem DEnable;
         private Telerik.WinControls.UI.RadMenuItem DOpenGDB;
         private Telerik.WinControls.UI.RadMenu radMenu1;
+        private Telerik.WinControls.UI.Docking.DocumentContainer DContainer;
+        private Telerik.WinControls.UI.Docking.DocumentTabStrip documentTabStrip1;
+        private Telerik.WinControls.UI.Docking.DocumentWindow documentWindow1;
+        private Telerik.WinControls.UI.Docking.DocumentWindow documentWindow4;
+        private Telerik.WinControls.UI.Docking.DocumentWindow documentWindow3;
+        private Telerik.WinControls.UI.Docking.DocumentWindow documentWindow2;
     }
 }

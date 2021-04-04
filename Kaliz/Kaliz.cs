@@ -61,7 +61,8 @@ namespace Kaliz
 
         private void radMenuItem1_Click(object sender, EventArgs e)
         {
-            DcStrp.ActiveWindow.Close();
+            TabHienTai.Close();
+            DockPar.ActiveWindow.Close(); //chủ chốt
         }
 
         private void DcWelcome_Click(object sender, EventArgs e)
@@ -78,12 +79,13 @@ namespace Kaliz
         {
             get
             {
-                if (DcStrp.ActiveWindow == null) return null;
-                return (DcStrp.ActiveWindow.Controls[0] as EditControl);
+                if (DockPar.ActiveWindow == null) return null;
+                return (DockPar.ActiveWindow.ActiveControl as EditControl);
             }
             set
             {
-                DcStrp.ActiveWindow = (value.Parent as DocumentWindow);
+               DockPar.ActiveWindow.ActiveControl = (value.Parent as DocumentTabStrip);
+                value.Focus();
             }
         }
 
