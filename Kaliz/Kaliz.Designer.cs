@@ -41,31 +41,36 @@
             this.radMenuSeparatorItem2 = new Telerik.WinControls.UI.RadMenuSeparatorItem();
             this.FExit = new Telerik.WinControls.UI.RadMenuItem();
             this.MEdit = new Telerik.WinControls.UI.RadMenuItem();
+            this.ECopy = new Telerik.WinControls.UI.RadMenuItem();
+            this.ECut = new Telerik.WinControls.UI.RadMenuItem();
+            this.EPaste = new Telerik.WinControls.UI.RadMenuItem();
             this.MTools = new Telerik.WinControls.UI.RadMenuItem();
             this.MBuild = new Telerik.WinControls.UI.RadMenuItem();
             this.MDebug = new Telerik.WinControls.UI.RadMenuItem();
             this.MOptions = new Telerik.WinControls.UI.RadMenuItem();
             this.MHelp = new Telerik.WinControls.UI.RadMenuItem();
             this.DockPar = new Telerik.WinControls.UI.Docking.RadDock();
-            this.DTer = new Telerik.WinControls.UI.Docking.ToolWindow();
-            this.DContainer = new Telerik.WinControls.UI.Docking.DocumentContainer();
-            this.toolTabStrip1 = new Telerik.WinControls.UI.Docking.ToolTabStrip();
-            this.radMenu1 = new Telerik.WinControls.UI.RadMenu();
             this.DcWelcome = new Telerik.WinControls.UI.Docking.DocumentWindow();
+            this.DContainer = new Telerik.WinControls.UI.Docking.DocumentContainer();
             this.DcStrp = new Telerik.WinControls.UI.Docking.DocumentTabStrip();
-            this.ECopy = new Telerik.WinControls.UI.RadMenuItem();
-            this.ECut = new Telerik.WinControls.UI.RadMenuItem();
-            this.EPaste = new Telerik.WinControls.UI.RadMenuItem();
+            this.toolTabStrip1 = new Telerik.WinControls.UI.Docking.ToolTabStrip();
+            this.DTer = new Telerik.WinControls.UI.Docking.ToolWindow();
+            this.BRun = new Telerik.WinControls.UI.RadMenuItem();
+            this.BBuild = new Telerik.WinControls.UI.RadMenuItem();
+            this.DEnable = new Telerik.WinControls.UI.RadMenuItem();
+            this.DOpenGDB = new Telerik.WinControls.UI.RadMenuItem();
+            this.TFind = new Telerik.WinControls.UI.RadMenuItem();
+            this.radMenu1 = new Telerik.WinControls.UI.RadMenu();
             ((System.ComponentModel.ISupportInitialize)(this.DockPar)).BeginInit();
             this.DockPar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DContainer)).BeginInit();
             this.DContainer.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.toolTabStrip1)).BeginInit();
-            this.toolTabStrip1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.radMenu1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DcStrp)).BeginInit();
             this.DcStrp.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.toolTabStrip1)).BeginInit();
+            this.toolTabStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.radMenu1)).BeginInit();
             this.SuspendLayout();
             // 
             // MFile
@@ -152,18 +157,44 @@
             this.MEdit.Name = "MEdit";
             this.MEdit.Text = "Edit";
             // 
+            // ECopy
+            // 
+            this.ECopy.Name = "ECopy";
+            this.ECopy.Text = "Copy";
+            this.ECopy.Click += new System.EventHandler(this.ECopy_Click);
+            // 
+            // ECut
+            // 
+            this.ECut.Name = "ECut";
+            this.ECut.Text = "Cut";
+            this.ECut.Click += new System.EventHandler(this.ECut_Click);
+            // 
+            // EPaste
+            // 
+            this.EPaste.Name = "EPaste";
+            this.EPaste.Text = "Paste";
+            this.EPaste.Click += new System.EventHandler(this.EPaste_Click);
+            // 
             // MTools
             // 
+            this.MTools.Items.AddRange(new Telerik.WinControls.RadItem[] {
+            this.TFind});
             this.MTools.Name = "MTools";
             this.MTools.Text = "Tools";
             // 
             // MBuild
             // 
+            this.MBuild.Items.AddRange(new Telerik.WinControls.RadItem[] {
+            this.BRun,
+            this.BBuild});
             this.MBuild.Name = "MBuild";
             this.MBuild.Text = "Buid";
             // 
             // MDebug
             // 
+            this.MDebug.Items.AddRange(new Telerik.WinControls.RadItem[] {
+            this.DEnable,
+            this.DOpenGDB});
             this.MDebug.Name = "MDebug";
             this.MDebug.Text = "Debug";
             // 
@@ -199,15 +230,14 @@
             this.DockPar.TabStop = false;
             this.DockPar.ThemeName = "MaterialTeal";
             // 
-            // DTer
+            // DcWelcome
             // 
-            this.DTer.Caption = null;
-            this.DTer.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.DTer.Location = new System.Drawing.Point(4, 52);
-            this.DTer.Name = "DTer";
-            this.DTer.PreviousDockState = Telerik.WinControls.UI.Docking.DockState.Docked;
-            this.DTer.Size = new System.Drawing.Size(1087, 83);
-            this.DTer.Text = "DockTer";
+            this.DcWelcome.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.DcWelcome.Location = new System.Drawing.Point(4, 54);
+            this.DcWelcome.Name = "DcWelcome";
+            this.DcWelcome.PreviousDockState = Telerik.WinControls.UI.Docking.DockState.TabbedDocument;
+            this.DcWelcome.Size = new System.Drawing.Size(1087, 486);
+            this.DcWelcome.Text = "Welcome";
             // 
             // DContainer
             // 
@@ -222,6 +252,22 @@
             this.DContainer.SizeInfo.SplitterCorrection = new System.Drawing.Size(0, 61);
             this.DContainer.SplitterWidth = 8;
             this.DContainer.ThemeName = "MaterialTeal";
+            // 
+            // DcStrp
+            // 
+            this.DcStrp.CanUpdateChildIndex = true;
+            this.DcStrp.Controls.Add(this.DcWelcome);
+            this.DcStrp.Location = new System.Drawing.Point(0, 0);
+            this.DcStrp.Name = "DcStrp";
+            // 
+            // 
+            // 
+            this.DcStrp.RootElement.MinSize = new System.Drawing.Size(25, 25);
+            this.DcStrp.SelectedIndex = 0;
+            this.DcStrp.Size = new System.Drawing.Size(1095, 544);
+            this.DcStrp.TabIndex = 0;
+            this.DcStrp.TabStop = false;
+            this.DcStrp.ThemeName = "MaterialTeal";
             // 
             // toolTabStrip1
             // 
@@ -241,6 +287,47 @@
             this.toolTabStrip1.TabStop = false;
             this.toolTabStrip1.ThemeName = "MaterialTeal";
             // 
+            // DTer
+            // 
+            this.DTer.Caption = null;
+            this.DTer.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.DTer.Location = new System.Drawing.Point(4, 52);
+            this.DTer.Name = "DTer";
+            this.DTer.PreviousDockState = Telerik.WinControls.UI.Docking.DockState.Docked;
+            this.DTer.Size = new System.Drawing.Size(1087, 83);
+            this.DTer.Text = "DockTer";
+            // 
+            // BRun
+            // 
+            this.BRun.Name = "BRun";
+            this.BRun.Text = "Run";
+            // 
+            // BBuild
+            // 
+            this.BBuild.Name = "BBuild";
+            this.BBuild.Text = "Build This File";
+            // 
+            // DEnable
+            // 
+            this.DEnable.Name = "DEnable";
+            this.DEnable.Text = "Enable Debug";
+            // 
+            // DOpenGDB
+            // 
+            this.DOpenGDB.Name = "DOpenGDB";
+            this.DOpenGDB.Text = "Open GDB Debug";
+            // 
+            // TFind
+            // 
+            this.TFind.Name = "TFind";
+            this.TFind.Text = "Find";
+            // 
+            // Kaliz
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.ClientSize = new System.Drawing.Size(1095, 728);
+            // 
             // radMenu1
             // 
             this.radMenu1.Items.AddRange(new Telerik.WinControls.RadItem[] {
@@ -256,55 +343,6 @@
             this.radMenu1.Size = new System.Drawing.Size(1095, 37);
             this.radMenu1.TabIndex = 1;
             this.radMenu1.ThemeName = "MaterialTeal";
-            // 
-            // DcWelcome
-            // 
-            this.DcWelcome.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.DcWelcome.Location = new System.Drawing.Point(4, 54);
-            this.DcWelcome.Name = "DcWelcome";
-            this.DcWelcome.PreviousDockState = Telerik.WinControls.UI.Docking.DockState.TabbedDocument;
-            this.DcWelcome.Size = new System.Drawing.Size(1087, 486);
-            this.DcWelcome.Text = "Welcome";
-            // 
-            // DcStrp
-            // 
-            this.DcStrp.CanUpdateChildIndex = true;
-            this.DcStrp.Controls.Add(this.DcWelcome);
-            this.DcStrp.Location = new System.Drawing.Point(0, 0);
-            this.DcStrp.Name = "DcStrp";
-            // 
-            // 
-            // 
-            this.DcStrp.RootElement.MinSize = new System.Drawing.Size(25, 25);
-            this.DcStrp.SelectedIndex = 0;
-            this.DcStrp.Size = new System.Drawing.Size(1095, 544);
-            this.DcStrp.TabIndex = 0;
-            this.DcStrp.TabStop = false;
-            this.DcStrp.ThemeName = "MaterialTeal";
-            // 
-            // ECopy
-            // 
-            this.ECopy.Name = "ECopy";
-            this.ECopy.Text = "Copy";
-            this.ECopy.Click += new System.EventHandler(this.ECopy_Click);
-            // 
-            // ECut
-            // 
-            this.ECut.Name = "ECut";
-            this.ECut.Text = "Cut";
-            this.ECut.Click += new System.EventHandler(this.ECut_Click);
-            // 
-            // EPaste
-            // 
-            this.EPaste.Name = "EPaste";
-            this.EPaste.Text = "Paste";
-            this.EPaste.Click += new System.EventHandler(this.EPaste_Click);
-            // 
-            // Kaliz
-            // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1095, 728);
             this.Controls.Add(this.DockPar);
             this.Controls.Add(this.radMenu1);
             this.Name = "Kaliz";
@@ -319,11 +357,11 @@
             this.DockPar.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.DContainer)).EndInit();
             this.DContainer.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.DcStrp)).EndInit();
+            this.DcStrp.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.toolTabStrip1)).EndInit();
             this.toolTabStrip1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.radMenu1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.DcStrp)).EndInit();
-            this.DcStrp.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -341,7 +379,6 @@
         private Telerik.WinControls.UI.RadMenuItem MOptions;
         private Telerik.WinControls.UI.RadMenuItem MHelp;
         private Telerik.WinControls.UI.RadMenuItem FNew;
-        private Telerik.WinControls.UI.RadMenu radMenu1;
         private Telerik.WinControls.UI.RadMenuItem FOpen;
         private Telerik.WinControls.UI.RadMenuSeparatorItem radMenuSeparatorItem1;
         private Telerik.WinControls.UI.RadMenuItem FClose;
@@ -360,5 +397,11 @@
         private Telerik.WinControls.UI.RadMenuItem ECopy;
         private Telerik.WinControls.UI.RadMenuItem ECut;
         private Telerik.WinControls.UI.RadMenuItem EPaste;
+        private Telerik.WinControls.UI.RadMenuItem TFind;
+        private Telerik.WinControls.UI.RadMenuItem BRun;
+        private Telerik.WinControls.UI.RadMenuItem BBuild;
+        private Telerik.WinControls.UI.RadMenuItem DEnable;
+        private Telerik.WinControls.UI.RadMenuItem DOpenGDB;
+        private Telerik.WinControls.UI.RadMenu radMenu1;
     }
 }

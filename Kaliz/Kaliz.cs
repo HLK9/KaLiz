@@ -10,6 +10,7 @@ using Telerik.WinControls;
 using Telerik.WinControls.UI;
 using Syncfusion.Windows.Forms.Edit;
 using Telerik.WinControls.UI.Docking;
+using System.IO;
 
 
 namespace Kaliz
@@ -23,7 +24,25 @@ namespace Kaliz
             InitializeComponent();
             
         }
-
+      
+        /// <summary>
+        /// Tao mot tep moi
+        /// </summary>
+        /// <param name="ten"></param>
+        /// <param name="F"></param>
+        private void TaoMoi(string ten,string F)
+        {
+            DocumentWindow TaiLieu = new DocumentWindow(ten);
+            var DanhDau = new EditControl();
+            DanhDau.Dock = DockStyle.Fill;
+            DanhDau.ThemeName = "Office2016Colorful";
+            TaiLieu.Controls.Add(DanhDau);
+            DanhDau.AllowDrop = true;
+            if (F!=null)
+            DanhDau.LoadFile(F);
+            DockPar.AddDocument(TaiLieu);
+        }
+      
         private void commandBarDropDownList1_Click(object sender, EventArgs e)
         {
 
@@ -31,7 +50,12 @@ namespace Kaliz
 
         private void FOpen_Click(object sender, EventArgs e)
         {
-            
+            OpenFileDialog Mo = new OpenFileDialog();
+            if (Mo.ShowDialog() == DialogResult.OK)
+            {
+                TaoMoi(Path.GetFileName(Mo.FileName),Mo.FileName);
+            }
+
         }
 
         private void radMenuItem1_Click(object sender, EventArgs e)
@@ -46,15 +70,8 @@ namespace Kaliz
 
         private void FNew_Click(object sender, EventArgs e)
         {
-            
-            DocumentWindow TaiLieu = new DocumentWindow("Document "+chiso++);
-            var DanhDau = new EditControl();
-            DanhDau.Dock = DockStyle.Fill;
-            DanhDau.ThemeName = "Office2016Colorful";
-            TaiLieu.Controls.Add(DanhDau);
-            DanhDau.AllowDrop = true;
-            
-            DockPar.AddDocument(TaiLieu);
+
+            TaoMoi("Document " + chiso++,null);
         }
         EditControl TabHienTai
         {
