@@ -51,6 +51,7 @@ namespace Kaliz
         private void FOpen_Click(object sender, EventArgs e)
         {
             OpenFileDialog Mo = new OpenFileDialog();
+           
             if (Mo.ShowDialog() == DialogResult.OK)
             {
                 TaoMoi(Path.GetFileName(Mo.FileName),Mo.FileName);

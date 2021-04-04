@@ -1,4 +1,6 @@
-﻿namespace Kaliz
+﻿using System.Windows.Forms;
+using Telerik.WinControls;
+namespace Kaliz
 {
     partial class Kaliz
     {
@@ -93,6 +95,7 @@
             // 
             this.FNew.Name = "FNew";
             this.FNew.Text = "New File";
+            this.FNew.Shortcuts.Add(new Telerik.WinControls.RadShortcut(System.Windows.Forms.Keys.Control, System.Windows.Forms.Keys.N));
             this.FNew.ToolTipText = "Tệp Mới";
             this.FNew.Click += new System.EventHandler(this.FNew_Click);
             // 
@@ -100,6 +103,7 @@
             // 
             this.FOpen.Name = "FOpen";
             this.FOpen.Text = "Open File";
+            this.FOpen.Shortcuts.Add(new RadShortcut(Keys.Control, Keys.O));
             this.FOpen.Click += new System.EventHandler(this.FOpen_Click);
             // 
             // radMenuSeparatorItem1
@@ -118,6 +122,7 @@
             // 
             this.FPrint.Name = "FPrint";
             this.FPrint.Text = "Print";
+            this.FPrint.Shortcuts.Add(new RadShortcut(Keys.Control, Keys.P));
             this.FPrint.Click += new System.EventHandler(this.FPrint_Click);
             // 
             // FSave
