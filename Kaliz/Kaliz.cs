@@ -11,6 +11,7 @@ using Telerik.WinControls.UI;
 using Syncfusion.Windows.Forms.Edit;
 using Telerik.WinControls.UI.Docking;
 using System.IO;
+using System.Diagnostics;
 
 
 namespace Kaliz
@@ -22,6 +23,8 @@ namespace Kaliz
         public Kaliz()
         {
             InitializeComponent();
+            //Tạo sẵn để test
+            TaoMoi("hal.pas", "C:\\Users\\HoangLien\\Desktop\\TeeS\\hal.pas");
             
         }
       
@@ -124,6 +127,42 @@ namespace Kaliz
         private void FExport_Click(object sender, EventArgs e)
         {
             
+        }
+        //Build tep
+        private void Build(string ten)
+        {
+            if (Path.GetExtension(ten) == ".pas")
+            {
+                Process BienDich = new Process();
+                BienDich.StartInfo.FileName = "cmd";
+                BienDich.StartInfo.WorkingDirectory = @"FPC\\bin\\i386-win32\\";
+                BienDich.StartInfo.UseShellExecute = false;
+                BienDich.StartInfo.Arguments = "/c " + "ppc386 " + ten;
+
+                //BienDich.StartInfo.RedirectStandardInput = true;
+                BienDich.StartInfo.RedirectStandardOutput = true;
+                BienDich.StartInfo.StandardOutputEncoding = Encoding.UTF8;
+                BienDich.StartInfo.CreateNoWindow = true;
+                BienDich.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;
+                BienDich.Start();
+                //BienDich.WaitForExit();
+                
+           }
+        }
+        /// <summary>
+        /// Test các tính năng phụ lẻ
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void radMenuItem1_Click_1(object sender, EventArgs e)
+        {
+            
+            MessageBox.Show(Path.GetExtension(TabHienTai.FileName));
+        }
+       
+        private void BBuild_Click(object sender, EventArgs e)
+        {
+            Build(TabHienTai.FileName);
         }
     }
 }
