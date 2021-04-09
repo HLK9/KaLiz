@@ -15,6 +15,7 @@ using System.Diagnostics;
 using Syncfusion.Windows.Forms.Edit.Interfaces;
 using Syncfusion.Windows.Forms.Edit.Enums;
 using Syncfusion.Windows.Forms.Edit.Implementation.Config;
+using Syncfusion.Drawing;
 
 namespace Kaliz
 {
@@ -53,12 +54,20 @@ namespace Kaliz
             DanhDau.CurrentLineHighlightColor = Color.Teal;
             DanhDau.ShowIndicatorMargin = true;
             DanhDau.MarkerAreaWidth = 20;
+            DanhDau.ShowIndentationGuidelines = true;
+            DanhDau.UpdateBookmarkToolTip += DanhDau_UpdateBookmarkToolTip;
+           // DanhDau.OnlyHighlightMatchingBraces = true;
             //DanhDau.EnableSmartInBlockIndent = true;
             //DanhDau.AutoIndentMode = AutoIndentMode.Smart;
             
            
         }
-      
+
+        private void DanhDau_UpdateBookmarkToolTip(object sender, UpdateBookmarkTooltipEventArgs e)
+        {
+            e.Text = TabHienTai.SelectedText;
+        }
+
         private void commandBarDropDownList1_Click(object sender, EventArgs e)
         {
 
@@ -182,7 +191,34 @@ namespace Kaliz
 
         private void BBookmark_Click(object sender, EventArgs e)
         {
-            TabHienTai.BookmarkAdd(TabHienTai.CurrentLine);
+            BrushInfo brushInfo = new BrushInfo(Color.DarkViolet);
+            TabHienTai.BookmarkAdd(TabHienTai.CurrentLine,brushInfo);
+            
+        }
+
+        private void BRemoveBookmark_Click(object sender, EventArgs e)
+        {
+            TabHienTai.BookmarkRemove(TabHienTai.CurrentLine);
+        }
+
+        private void BRemoveAll_Click(object sender, EventArgs e)
+        {
+            TabHienTai.BookmarkClear();
+        }
+
+        private void TFind_Click(object sender, EventArgs e)
+        {
+            TabHienTai.FindDialog();
+        }
+
+        private void TReplace_Click(object sender, EventArgs e)
+        {
+            TabHienTai.ReplaceDialog();
+        }
+        
+        private void TGoToLine_Click(object sender, EventArgs e)
+        {
+            TabHienTai.GoToDialog();
         }
     }
 }

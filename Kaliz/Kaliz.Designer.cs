@@ -60,10 +60,15 @@ namespace Kaliz
             this.DTer = new Telerik.WinControls.UI.Docking.ToolWindow();
             this.DContainer = new Telerik.WinControls.UI.Docking.DocumentContainer();
             this.toolTabStrip1 = new Telerik.WinControls.UI.Docking.ToolTabStrip();
-            this.radMenu1 = new Telerik.WinControls.UI.RadMenu();
             this.radMenuItem1 = new Telerik.WinControls.UI.RadMenuItem();
-            this.MBookMark = new Telerik.WinControls.UI.RadMenuItem();
+            this.MBookmark = new Telerik.WinControls.UI.RadMenuItem();
             this.BBookmark = new Telerik.WinControls.UI.RadMenuItem();
+            this.radMenuItem2 = new Telerik.WinControls.UI.RadMenuItem();
+            this.BRemoveAll = new Telerik.WinControls.UI.RadMenuItem();
+            this.radMenuSeparatorItem3 = new Telerik.WinControls.UI.RadMenuSeparatorItem();
+            this.radMenu1 = new Telerik.WinControls.UI.RadMenu();
+            this.TReplace = new Telerik.WinControls.UI.RadMenuItem();
+            this.TGoToLine = new Telerik.WinControls.UI.RadMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.DockPar)).BeginInit();
             this.DockPar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DContainer)).BeginInit();
@@ -178,7 +183,9 @@ namespace Kaliz
             // MTools
             // 
             this.MTools.Items.AddRange(new Telerik.WinControls.RadItem[] {
-            this.TFind});
+            this.TFind,
+            this.TReplace,
+            this.TGoToLine});
             this.MTools.Name = "MTools";
             this.MTools.Text = "Tools";
             // 
@@ -186,6 +193,7 @@ namespace Kaliz
             // 
             this.TFind.Name = "TFind";
             this.TFind.Text = "Find";
+            this.TFind.Click += new System.EventHandler(this.TFind_Click);
             // 
             // MBuild
             // 
@@ -250,7 +258,7 @@ namespace Kaliz
             // 
             // 
             this.DockPar.RootElement.MinSize = new System.Drawing.Size(25, 25);
-            this.DockPar.Size = new System.Drawing.Size(1095, 691);
+            this.DockPar.Size = new System.Drawing.Size(1093, 689);
             this.DockPar.SplitterWidth = 8;
             this.DockPar.TabIndex = 2;
             this.DockPar.TabStop = false;
@@ -263,7 +271,7 @@ namespace Kaliz
             this.DTer.Location = new System.Drawing.Point(4, 52);
             this.DTer.Name = "DTer";
             this.DTer.PreviousDockState = Telerik.WinControls.UI.Docking.DockState.Docked;
-            this.DTer.Size = new System.Drawing.Size(1087, 83);
+            this.DTer.Size = new System.Drawing.Size(1085, 83);
             this.DTer.Text = "DockTer";
             // 
             // DContainer
@@ -283,19 +291,59 @@ namespace Kaliz
             // 
             this.toolTabStrip1.CanUpdateChildIndex = true;
             this.toolTabStrip1.Controls.Add(this.DTer);
-            this.toolTabStrip1.Location = new System.Drawing.Point(0, 552);
+            this.toolTabStrip1.Location = new System.Drawing.Point(0, 550);
             this.toolTabStrip1.Name = "toolTabStrip1";
             // 
             // 
             // 
             this.toolTabStrip1.RootElement.MinSize = new System.Drawing.Size(25, 25);
             this.toolTabStrip1.SelectedIndex = 0;
-            this.toolTabStrip1.Size = new System.Drawing.Size(1095, 139);
+            this.toolTabStrip1.Size = new System.Drawing.Size(1093, 139);
             this.toolTabStrip1.SizeInfo.AbsoluteSize = new System.Drawing.Size(200, 139);
             this.toolTabStrip1.SizeInfo.SplitterCorrection = new System.Drawing.Size(0, -61);
             this.toolTabStrip1.TabIndex = 1;
             this.toolTabStrip1.TabStop = false;
             this.toolTabStrip1.ThemeName = "MaterialTeal";
+            // 
+            // radMenuItem1
+            // 
+            this.radMenuItem1.Name = "radMenuItem1";
+            this.radMenuItem1.Text = "Test";
+            this.radMenuItem1.Click += new System.EventHandler(this.radMenuItem1_Click_1);
+            // 
+            // MBookmark
+            // 
+            this.MBookmark.Items.AddRange(new Telerik.WinControls.RadItem[] {
+            this.BBookmark,
+            this.radMenuItem2,
+            this.BRemoveAll,
+            this.radMenuSeparatorItem3});
+            this.MBookmark.Name = "MBookmark";
+            this.MBookmark.Text = "Bookmark";
+            // 
+            // BBookmark
+            // 
+            this.BBookmark.Name = "BBookmark";
+            this.BBookmark.Text = "Add to current line";
+            this.BBookmark.Click += new System.EventHandler(this.BBookmark_Click);
+            // 
+            // radMenuItem2
+            // 
+            this.radMenuItem2.Name = "radMenuItem2";
+            this.radMenuItem2.Text = "Remove in current line";
+            this.radMenuItem2.Click += new System.EventHandler(this.BRemoveBookmark_Click);
+            // 
+            // BRemoveAll
+            // 
+            this.BRemoveAll.Name = "BRemoveAll";
+            this.BRemoveAll.Text = "Remove All";
+            this.BRemoveAll.Click += new System.EventHandler(this.BRemoveAll_Click);
+            // 
+            // radMenuSeparatorItem3
+            // 
+            this.radMenuSeparatorItem3.Name = "radMenuSeparatorItem3";
+            this.radMenuSeparatorItem3.Text = "radMenuSeparatorItem3";
+            this.radMenuSeparatorItem3.TextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // radMenu1
             // 
@@ -307,38 +355,31 @@ namespace Kaliz
             this.MDebug,
             this.MOptions,
             this.MHelp,
-            this.radMenuItem1,
-            this.MBookMark});
+            this.MBookmark,
+            this.radMenuItem1});
             this.radMenu1.Location = new System.Drawing.Point(0, 0);
             this.radMenu1.Name = "radMenu1";
-            this.radMenu1.Size = new System.Drawing.Size(1095, 37);
+            this.radMenu1.Size = new System.Drawing.Size(1093, 37);
             this.radMenu1.TabIndex = 1;
             this.radMenu1.ThemeName = "MaterialTeal";
             // 
-            // radMenuItem1
+            // TReplace
             // 
-            this.radMenuItem1.Name = "radMenuItem1";
-            this.radMenuItem1.Text = "Test";
-            this.radMenuItem1.Click += new System.EventHandler(this.radMenuItem1_Click_1);
+            this.TReplace.Name = "TReplace";
+            this.TReplace.Text = "Replace";
+            this.TReplace.Click += new System.EventHandler(this.TReplace_Click);
             // 
-            // MBookMark
+            // TGoToLine
             // 
-            this.MBookMark.Items.AddRange(new Telerik.WinControls.RadItem[] {
-            this.BBookmark});
-            this.MBookMark.Name = "MBookMark";
-            this.MBookMark.Text = "BookMark";
-            // 
-            // BBookmark
-            // 
-            this.BBookmark.Name = "BBookmark";
-            this.BBookmark.Text = "Add Bookmark";
-            this.BBookmark.Click += new System.EventHandler(this.BBookmark_Click);
+            this.TGoToLine.Name = "TGoToLine";
+            this.TGoToLine.Text = "Go To Line";
+            this.TGoToLine.Click += new System.EventHandler(this.TGoToLine_Click);
             // 
             // Kaliz
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1095, 728);
+            this.ClientSize = new System.Drawing.Size(1093, 726);
             this.Controls.Add(this.DockPar);
             this.Controls.Add(this.radMenu1);
             this.Name = "Kaliz";
@@ -392,10 +433,15 @@ namespace Kaliz
         private Telerik.WinControls.UI.RadMenuItem BBuild;
         private Telerik.WinControls.UI.RadMenuItem DEnable;
         private Telerik.WinControls.UI.RadMenuItem DOpenGDB;
-        private Telerik.WinControls.UI.RadMenu radMenu1;
         private Telerik.WinControls.UI.Docking.DocumentContainer DContainer;
         private Telerik.WinControls.UI.RadMenuItem radMenuItem1;
-        private Telerik.WinControls.UI.RadMenuItem MBookMark;
+        private Telerik.WinControls.UI.RadMenuItem MBookmark;
         private Telerik.WinControls.UI.RadMenuItem BBookmark;
+        private Telerik.WinControls.UI.RadMenuItem radMenuItem2;
+        private Telerik.WinControls.UI.RadMenu radMenu1;
+        private Telerik.WinControls.UI.RadMenuItem BRemoveAll;
+        private Telerik.WinControls.UI.RadMenuSeparatorItem radMenuSeparatorItem3;
+        private Telerik.WinControls.UI.RadMenuItem TReplace;
+        private Telerik.WinControls.UI.RadMenuItem TGoToLine;
     }
 }
