@@ -12,12 +12,15 @@ using Syncfusion.Windows.Forms.Edit;
 using Telerik.WinControls.UI.Docking;
 using System.IO;
 using System.Diagnostics;
-
+using Syncfusion.Windows.Forms.Edit.Interfaces;
+using Syncfusion.Windows.Forms.Edit.Enums;
+using Syncfusion.Windows.Forms.Edit.Implementation.Config;
 
 namespace Kaliz
 {
     public partial class Kaliz : Telerik.WinControls.UI.RadForm
     {
+       
         private int chiso { get; set; }
 
         public Kaliz()
@@ -44,6 +47,16 @@ namespace Kaliz
             if (F!=null)
             DanhDau.LoadFile(F);
             DockPar.AddDocument(TaiLieu);
+            DanhDau.MarkChangedLines = true;
+            DanhDau.ShowSelectionMargin = true;
+            DanhDau.HighlightCurrentLine = true;
+            DanhDau.CurrentLineHighlightColor = Color.Teal;
+            DanhDau.ShowIndicatorMargin = true;
+            DanhDau.MarkerAreaWidth = 20;
+            //DanhDau.EnableSmartInBlockIndent = true;
+            //DanhDau.AutoIndentMode = AutoIndentMode.Smart;
+            
+           
         }
       
         private void commandBarDropDownList1_Click(object sender, EventArgs e)
@@ -91,6 +104,8 @@ namespace Kaliz
                 value.Focus();
             }
         }
+
+        public object DanhDau { get; private set; }
 
         private void ECopy_Click(object sender, EventArgs e)
         {
@@ -163,6 +178,11 @@ namespace Kaliz
         private void BBuild_Click(object sender, EventArgs e)
         {
             Build(TabHienTai.FileName);
+        }
+
+        private void BBookmark_Click(object sender, EventArgs e)
+        {
+            TabHienTai.BookmarkAdd(TabHienTai.CurrentLine);
         }
     }
 }

@@ -57,11 +57,13 @@ namespace Kaliz
             this.MOptions = new Telerik.WinControls.UI.RadMenuItem();
             this.MHelp = new Telerik.WinControls.UI.RadMenuItem();
             this.DockPar = new Telerik.WinControls.UI.Docking.RadDock();
+            this.DTer = new Telerik.WinControls.UI.Docking.ToolWindow();
             this.DContainer = new Telerik.WinControls.UI.Docking.DocumentContainer();
             this.toolTabStrip1 = new Telerik.WinControls.UI.Docking.ToolTabStrip();
-            this.DTer = new Telerik.WinControls.UI.Docking.ToolWindow();
             this.radMenu1 = new Telerik.WinControls.UI.RadMenu();
             this.radMenuItem1 = new Telerik.WinControls.UI.RadMenuItem();
+            this.MBookMark = new Telerik.WinControls.UI.RadMenuItem();
+            this.BBookmark = new Telerik.WinControls.UI.RadMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.DockPar)).BeginInit();
             this.DockPar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DContainer)).BeginInit();
@@ -254,6 +256,16 @@ namespace Kaliz
             this.DockPar.TabStop = false;
             this.DockPar.ThemeName = "MaterialTeal";
             // 
+            // DTer
+            // 
+            this.DTer.Caption = null;
+            this.DTer.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.DTer.Location = new System.Drawing.Point(4, 52);
+            this.DTer.Name = "DTer";
+            this.DTer.PreviousDockState = Telerik.WinControls.UI.Docking.DockState.Docked;
+            this.DTer.Size = new System.Drawing.Size(1087, 83);
+            this.DTer.Text = "DockTer";
+            // 
             // DContainer
             // 
             this.DContainer.Name = "DContainer";
@@ -285,16 +297,6 @@ namespace Kaliz
             this.toolTabStrip1.TabStop = false;
             this.toolTabStrip1.ThemeName = "MaterialTeal";
             // 
-            // DTer
-            // 
-            this.DTer.Caption = null;
-            this.DTer.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.DTer.Location = new System.Drawing.Point(4, 52);
-            this.DTer.Name = "DTer";
-            this.DTer.PreviousDockState = Telerik.WinControls.UI.Docking.DockState.Docked;
-            this.DTer.Size = new System.Drawing.Size(1087, 83);
-            this.DTer.Text = "DockTer";
-            // 
             // radMenu1
             // 
             this.radMenu1.Items.AddRange(new Telerik.WinControls.RadItem[] {
@@ -305,7 +307,8 @@ namespace Kaliz
             this.MDebug,
             this.MOptions,
             this.MHelp,
-            this.radMenuItem1});
+            this.radMenuItem1,
+            this.MBookMark});
             this.radMenu1.Location = new System.Drawing.Point(0, 0);
             this.radMenu1.Name = "radMenu1";
             this.radMenu1.Size = new System.Drawing.Size(1095, 37);
@@ -317,6 +320,19 @@ namespace Kaliz
             this.radMenuItem1.Name = "radMenuItem1";
             this.radMenuItem1.Text = "Test";
             this.radMenuItem1.Click += new System.EventHandler(this.radMenuItem1_Click_1);
+            // 
+            // MBookMark
+            // 
+            this.MBookMark.Items.AddRange(new Telerik.WinControls.RadItem[] {
+            this.BBookmark});
+            this.MBookMark.Name = "MBookMark";
+            this.MBookMark.Text = "BookMark";
+            // 
+            // BBookmark
+            // 
+            this.BBookmark.Name = "BBookmark";
+            this.BBookmark.Text = "Add Bookmark";
+            this.BBookmark.Click += new System.EventHandler(this.BBookmark_Click);
             // 
             // Kaliz
             // 
@@ -379,5 +395,7 @@ namespace Kaliz
         private Telerik.WinControls.UI.RadMenu radMenu1;
         private Telerik.WinControls.UI.Docking.DocumentContainer DContainer;
         private Telerik.WinControls.UI.RadMenuItem radMenuItem1;
+        private Telerik.WinControls.UI.RadMenuItem MBookMark;
+        private Telerik.WinControls.UI.RadMenuItem BBookmark;
     }
 }
