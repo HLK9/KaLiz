@@ -48,6 +48,8 @@ namespace Kaliz
             this.EPaste = new Telerik.WinControls.UI.RadMenuItem();
             this.MTools = new Telerik.WinControls.UI.RadMenuItem();
             this.TFind = new Telerik.WinControls.UI.RadMenuItem();
+            this.TReplace = new Telerik.WinControls.UI.RadMenuItem();
+            this.TGoToLine = new Telerik.WinControls.UI.RadMenuItem();
             this.MBuild = new Telerik.WinControls.UI.RadMenuItem();
             this.BRun = new Telerik.WinControls.UI.RadMenuItem();
             this.BBuild = new Telerik.WinControls.UI.RadMenuItem();
@@ -67,8 +69,10 @@ namespace Kaliz
             this.BRemoveAll = new Telerik.WinControls.UI.RadMenuItem();
             this.radMenuSeparatorItem3 = new Telerik.WinControls.UI.RadMenuSeparatorItem();
             this.radMenu1 = new Telerik.WinControls.UI.RadMenu();
-            this.TReplace = new Telerik.WinControls.UI.RadMenuItem();
-            this.TGoToLine = new Telerik.WinControls.UI.RadMenuItem();
+            this.ESave = new Telerik.WinControls.UI.RadMenuItem();
+            this.BBookmarkPre = new Telerik.WinControls.UI.RadMenuItem();
+            this.BBookmarkNext = new Telerik.WinControls.UI.RadMenuItem();
+            this.ESelect = new Telerik.WinControls.UI.RadMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.DockPar)).BeginInit();
             this.DockPar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DContainer)).BeginInit();
@@ -152,13 +156,16 @@ namespace Kaliz
             // 
             this.FExit.Name = "FExit";
             this.FExit.Text = "Exit";
+            this.FExit.Click += new System.EventHandler(this.FExit_Click);
             // 
             // MEdit
             // 
             this.MEdit.Items.AddRange(new Telerik.WinControls.RadItem[] {
             this.ECopy,
             this.ECut,
-            this.EPaste});
+            this.EPaste,
+            this.ESave,
+            this.ESelect});
             this.MEdit.Name = "MEdit";
             this.MEdit.Text = "Edit";
             // 
@@ -195,6 +202,18 @@ namespace Kaliz
             this.TFind.Text = "Find";
             this.TFind.Click += new System.EventHandler(this.TFind_Click);
             // 
+            // TReplace
+            // 
+            this.TReplace.Name = "TReplace";
+            this.TReplace.Text = "Replace";
+            this.TReplace.Click += new System.EventHandler(this.TReplace_Click);
+            // 
+            // TGoToLine
+            // 
+            this.TGoToLine.Name = "TGoToLine";
+            this.TGoToLine.Text = "Go To Line";
+            this.TGoToLine.Click += new System.EventHandler(this.TGoToLine_Click);
+            // 
             // MBuild
             // 
             this.MBuild.Items.AddRange(new Telerik.WinControls.RadItem[] {
@@ -207,6 +226,7 @@ namespace Kaliz
             // 
             this.BRun.Name = "BRun";
             this.BRun.Text = "Run";
+            this.BRun.Click += new System.EventHandler(this.BRun_Click);
             // 
             // BBuild
             // 
@@ -317,7 +337,9 @@ namespace Kaliz
             this.BBookmark,
             this.radMenuItem2,
             this.BRemoveAll,
-            this.radMenuSeparatorItem3});
+            this.radMenuSeparatorItem3,
+            this.BBookmarkPre,
+            this.BBookmarkNext});
             this.MBookmark.Name = "MBookmark";
             this.MBookmark.Text = "Bookmark";
             // 
@@ -363,17 +385,29 @@ namespace Kaliz
             this.radMenu1.TabIndex = 1;
             this.radMenu1.ThemeName = "MaterialTeal";
             // 
-            // TReplace
+            // ESave
             // 
-            this.TReplace.Name = "TReplace";
-            this.TReplace.Text = "Replace";
-            this.TReplace.Click += new System.EventHandler(this.TReplace_Click);
+            this.ESave.Name = "ESave";
+            this.ESave.Text = "Save";
+            this.ESave.Click += new System.EventHandler(this.ESave_Click);
             // 
-            // TGoToLine
+            // BBookmarkPre
             // 
-            this.TGoToLine.Name = "TGoToLine";
-            this.TGoToLine.Text = "Go To Line";
-            this.TGoToLine.Click += new System.EventHandler(this.TGoToLine_Click);
+            this.BBookmarkPre.Name = "BBookmarkPre";
+            this.BBookmarkPre.Text = "BookmarkPrevious";
+            this.BBookmarkPre.Click += new System.EventHandler(this.BBookmarkPre_Click);
+            // 
+            // BBookmarkNext
+            // 
+            this.BBookmarkNext.Name = "BBookmarkNext";
+            this.BBookmarkNext.Text = "BookmarkNext";
+            this.BBookmarkNext.Click += new System.EventHandler(this.BBookmarkNext_Click);
+            // 
+            // ESelect
+            // 
+            this.ESelect.Name = "ESelect";
+            this.ESelect.Text = "Select Mode: Block";
+            this.ESelect.Click += new System.EventHandler(this.ESelect_Click);
             // 
             // Kaliz
             // 
@@ -443,5 +477,9 @@ namespace Kaliz
         private Telerik.WinControls.UI.RadMenuSeparatorItem radMenuSeparatorItem3;
         private Telerik.WinControls.UI.RadMenuItem TReplace;
         private Telerik.WinControls.UI.RadMenuItem TGoToLine;
+        private Telerik.WinControls.UI.RadMenuItem ESave;
+        private Telerik.WinControls.UI.RadMenuItem BBookmarkPre;
+        private Telerik.WinControls.UI.RadMenuItem BBookmarkNext;
+        private Telerik.WinControls.UI.RadMenuItem ESelect;
     }
 }

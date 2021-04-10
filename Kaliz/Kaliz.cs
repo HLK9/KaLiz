@@ -57,8 +57,12 @@ namespace Kaliz
             DanhDau.ShowIndentationGuidelines = true;
             DanhDau.UpdateBookmarkToolTip += DanhDau_UpdateBookmarkToolTip;
            // DanhDau.OnlyHighlightMatchingBraces = true;
-            //DanhDau.EnableSmartInBlockIndent = true;
-            //DanhDau.AutoIndentMode = AutoIndentMode.Smart;
+            DanhDau.EnableSmartInBlockIndent = true;
+            DanhDau.AutoIndentMode = AutoIndentMode.Block;
+            //hien hoag trang DanhDau.ShowWhitespaces = true;
+            DanhDau.OnlyHighlightMatchingBraces = true;
+
+
             
            
         }
@@ -150,7 +154,7 @@ namespace Kaliz
 
         private void FExport_Click(object sender, EventArgs e)
         {
-            
+          
         }
         //Build tep
         private void Build(string ten)
@@ -172,6 +176,20 @@ namespace Kaliz
                 //BienDich.WaitForExit();
                 
            }
+            if(Path.GetExtension(ten)==".c"|| Path.GetExtension(ten)==".cpp")
+            {
+                Process BienDich =new Process();
+                BienDich.StartInfo.FileName = "cmd";
+                BienDich.StartInfo.UseShellExecute = false;
+                string Duong = Path.GetDirectoryName(ten);
+                BienDich.StartInfo.Arguments = "/c " + "g++ " + ten + " -o " + Duong+"\\"+Path.GetFileName(ten)+".exe";
+                BienDich.StartInfo.RedirectStandardOutput = true;
+                BienDich.StartInfo.StandardOutputEncoding = Encoding.UTF8;
+                BienDich.StartInfo.CreateNoWindow = true;
+                BienDich.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;
+                BienDich.Start();
+
+            }
         }
         /// <summary>
         /// Test các tính năng phụ lẻ
@@ -219,6 +237,46 @@ namespace Kaliz
         private void TGoToLine_Click(object sender, EventArgs e)
         {
             TabHienTai.GoToDialog();
+        }
+
+        private void ESave_Click(object sender, EventArgs e)
+        {
+            TabHienTai.Save();
+        }
+
+        private void BBookmarkPre_Click(object sender, EventArgs e)
+        {
+            TabHienTai.BookmarkPrevious();
+        }
+
+        private void BBookmarkNext_Click(object sender, EventArgs e)
+        {
+            TabHienTai.BookmarkNext();
+        }
+
+        private void ESelect_Click(object sender, EventArgs e)
+        {
+            if (TabHienTai.SelectionMode == SelectionModes.Default)
+            {
+                 TabHienTai.SelectionMode = SelectionModes.Block;
+                ESelect.Text = "Select Mode: Default";
+            }
+            else
+            {
+                TabHienTai.SelectionMode = SelectionModes.Default;
+                ESelect.Text = "Select Mode: Block";
+            }
+           
+        }
+
+        private void BRun_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void FExit_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
         }
     }
 }
