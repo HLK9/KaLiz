@@ -16,9 +16,14 @@ using Syncfusion.Windows.Forms.Edit.Interfaces;
 using Syncfusion.Windows.Forms.Edit.Enums;
 using Syncfusion.Windows.Forms.Edit.Implementation.Config;
 using Syncfusion.Drawing;
+//using Syncfusion.Windows.Forms.Localization.Localizer.EditResourceIdentifiers;
+//using Syncfusion.Windows.Forms.ResourceIdentifiers;
+using Syncfusion.Windows.Forms;
+using Syncfusion.Windows.Forms.Localization;
 
 namespace Kaliz
 {
+
     public partial class Kaliz : Telerik.WinControls.UI.RadForm
     {
        
@@ -26,10 +31,12 @@ namespace Kaliz
 
         public Kaliz()
         {
+            
             InitializeComponent();
             //Tạo sẵn để test
             TaoMoi("hal.pas", "C:\\Users\\HoangLien\\Desktop\\TeeS\\hal.pas");
-            
+           
+
         }
       
         /// <summary>
@@ -51,6 +58,7 @@ namespace Kaliz
             DanhDau.MarkChangedLines = true;
             DanhDau.ShowSelectionMargin = true;
             DanhDau.HighlightCurrentLine = true;
+            DanhDau.DropAllFiles = true;
             DanhDau.CurrentLineHighlightColor = Color.Teal;
             DanhDau.ShowIndicatorMargin = true;
             DanhDau.MarkerAreaWidth = 20;
@@ -154,10 +162,17 @@ namespace Kaliz
 
         private void FExport_Click(object sender, EventArgs e)
         {
-          
+            SaveFileDialog LuuVoiRTF = new SaveFileDialog();
+            LuuVoiRTF.FileName = Path.GetFileNameWithoutExtension(TabHienTai.FileName) + ".rtf";
+            LuuVoiRTF.Filter = "RitchTextDocuments (*.rtf)|*.rtf";
+            if (LuuVoiRTF.ShowDialog() == DialogResult.OK)
+            {
+                this.TabHienTai.SaveAsRTF(LuuVoiRTF.FileName);
+            }
+            //this.TabHienTai.SaveAsRTF("Document.rtf");
         }
         //Build tep
-        private void Build(string ten)
+        private void Build(string ten,string enabledebug)
         {
             if (Path.GetExtension(ten) == ".pas")
             {
@@ -165,7 +180,9 @@ namespace Kaliz
                 BienDich.StartInfo.FileName = "cmd";
                 BienDich.StartInfo.WorkingDirectory = @"FPC\\bin\\i386-win32\\";
                 BienDich.StartInfo.UseShellExecute = false;
-                BienDich.StartInfo.Arguments = "/c " + "ppc386 " + ten;
+                if (enabledebug ==null)
+                BienDich.StartInfo.Arguments = "/c " + "fpc " + ten;
+                else BienDich.StartInfo.Arguments = "/c " + "fpc " + ten+" -g";
 
                 //BienDich.StartInfo.RedirectStandardInput = true;
                 BienDich.StartInfo.RedirectStandardOutput = true;
@@ -204,7 +221,7 @@ namespace Kaliz
        
         private void BBuild_Click(object sender, EventArgs e)
         {
-            Build(TabHienTai.FileName);
+            Build(TabHienTai.FileName,null);
         }
 
         private void BBookmark_Click(object sender, EventArgs e)

@@ -46,6 +46,8 @@ namespace Kaliz
             this.ECopy = new Telerik.WinControls.UI.RadMenuItem();
             this.ECut = new Telerik.WinControls.UI.RadMenuItem();
             this.EPaste = new Telerik.WinControls.UI.RadMenuItem();
+            this.ESave = new Telerik.WinControls.UI.RadMenuItem();
+            this.ESelect = new Telerik.WinControls.UI.RadMenuItem();
             this.MTools = new Telerik.WinControls.UI.RadMenuItem();
             this.TFind = new Telerik.WinControls.UI.RadMenuItem();
             this.TReplace = new Telerik.WinControls.UI.RadMenuItem();
@@ -68,11 +70,9 @@ namespace Kaliz
             this.radMenuItem2 = new Telerik.WinControls.UI.RadMenuItem();
             this.BRemoveAll = new Telerik.WinControls.UI.RadMenuItem();
             this.radMenuSeparatorItem3 = new Telerik.WinControls.UI.RadMenuSeparatorItem();
-            this.radMenu1 = new Telerik.WinControls.UI.RadMenu();
-            this.ESave = new Telerik.WinControls.UI.RadMenuItem();
             this.BBookmarkPre = new Telerik.WinControls.UI.RadMenuItem();
             this.BBookmarkNext = new Telerik.WinControls.UI.RadMenuItem();
-            this.ESelect = new Telerik.WinControls.UI.RadMenuItem();
+            this.radMenu1 = new Telerik.WinControls.UI.RadMenu();
             ((System.ComponentModel.ISupportInitialize)(this.DockPar)).BeginInit();
             this.DockPar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DContainer)).BeginInit();
@@ -143,7 +143,7 @@ namespace Kaliz
             // FExport
             // 
             this.FExport.Name = "FExport";
-            this.FExport.Text = "Export to rtf";
+            this.FExport.Text = "Export to RTF";
             this.FExport.Click += new System.EventHandler(this.FExport_Click);
             // 
             // radMenuSeparatorItem2
@@ -186,6 +186,18 @@ namespace Kaliz
             this.EPaste.Name = "EPaste";
             this.EPaste.Text = "Paste";
             this.EPaste.Click += new System.EventHandler(this.EPaste_Click);
+            // 
+            // ESave
+            // 
+            this.ESave.Name = "ESave";
+            this.ESave.Text = "Save";
+            this.ESave.Click += new System.EventHandler(this.ESave_Click);
+            // 
+            // ESelect
+            // 
+            this.ESelect.Name = "ESelect";
+            this.ESelect.Text = "Select Mode: Block";
+            this.ESelect.Click += new System.EventHandler(this.ESelect_Click);
             // 
             // MTools
             // 
@@ -367,6 +379,18 @@ namespace Kaliz
             this.radMenuSeparatorItem3.Text = "radMenuSeparatorItem3";
             this.radMenuSeparatorItem3.TextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
             // 
+            // BBookmarkPre
+            // 
+            this.BBookmarkPre.Name = "BBookmarkPre";
+            this.BBookmarkPre.Text = "BookmarkPrevious";
+            this.BBookmarkPre.Click += new System.EventHandler(this.BBookmarkPre_Click);
+            // 
+            // BBookmarkNext
+            // 
+            this.BBookmarkNext.Name = "BBookmarkNext";
+            this.BBookmarkNext.Text = "BookmarkNext";
+            this.BBookmarkNext.Click += new System.EventHandler(this.BBookmarkNext_Click);
+            // 
             // radMenu1
             // 
             this.radMenu1.Items.AddRange(new Telerik.WinControls.RadItem[] {
@@ -384,30 +408,6 @@ namespace Kaliz
             this.radMenu1.Size = new System.Drawing.Size(1093, 37);
             this.radMenu1.TabIndex = 1;
             this.radMenu1.ThemeName = "MaterialTeal";
-            // 
-            // ESave
-            // 
-            this.ESave.Name = "ESave";
-            this.ESave.Text = "Save";
-            this.ESave.Click += new System.EventHandler(this.ESave_Click);
-            // 
-            // BBookmarkPre
-            // 
-            this.BBookmarkPre.Name = "BBookmarkPre";
-            this.BBookmarkPre.Text = "BookmarkPrevious";
-            this.BBookmarkPre.Click += new System.EventHandler(this.BBookmarkPre_Click);
-            // 
-            // BBookmarkNext
-            // 
-            this.BBookmarkNext.Name = "BBookmarkNext";
-            this.BBookmarkNext.Text = "BookmarkNext";
-            this.BBookmarkNext.Click += new System.EventHandler(this.BBookmarkNext_Click);
-            // 
-            // ESelect
-            // 
-            this.ESelect.Name = "ESelect";
-            this.ESelect.Text = "Select Mode: Block";
-            this.ESelect.Click += new System.EventHandler(this.ESelect_Click);
             // 
             // Kaliz
             // 
