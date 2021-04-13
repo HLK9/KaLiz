@@ -26,7 +26,7 @@ namespace Kaliz
 
     public partial class Kaliz : Telerik.WinControls.UI.RadForm
     {
-       
+      private  bool deBug = false;
         private int chiso { get; set; }
 
         public Kaliz()
@@ -69,10 +69,13 @@ namespace Kaliz
             DanhDau.AutoIndentMode = AutoIndentMode.Block;
             //hien hoag trang DanhDau.ShowWhitespaces = true;
             DanhDau.OnlyHighlightMatchingBraces = true;
+            DanhDau.StatusBarSettings.VisualStyle = Syncfusion.Windows.Forms.Tools.Controls.StatusBar.VisualStyle.Office2016Colorful;
+            DanhDau.StatusBarSettings.Visible = true;
+            DanhDau.StatusBarSettings.GripVisibility = Syncfusion.Windows.Forms.Edit.Enums.SizingGripVisibility.Hidden;
 
 
-            
-           
+
+
         }
 
         private void DanhDau_UpdateBookmarkToolTip(object sender, UpdateBookmarkTooltipEventArgs e)
@@ -172,7 +175,7 @@ namespace Kaliz
             //this.TabHienTai.SaveAsRTF("Document.rtf");
         }
         //Build tep
-        private void Build(string ten,string enabledebug)
+        private void Build(string ten,bool enabledebug)
         {
             if (Path.GetExtension(ten) == ".pas")
             {
@@ -180,7 +183,7 @@ namespace Kaliz
                 BienDich.StartInfo.FileName = "cmd";
                 BienDich.StartInfo.WorkingDirectory = @"FPC\\bin\\i386-win32\\";
                 BienDich.StartInfo.UseShellExecute = false;
-                if (enabledebug ==null)
+                if (enabledebug ==false)
                 BienDich.StartInfo.Arguments = "/c " + "fpc " + ten;
                 else BienDich.StartInfo.Arguments = "/c " + "fpc " + ten+" -g";
 
@@ -193,13 +196,15 @@ namespace Kaliz
                 //BienDich.WaitForExit();
                 
            }
+
             if(Path.GetExtension(ten)==".c"|| Path.GetExtension(ten)==".cpp")
             {
                 Process BienDich =new Process();
                 BienDich.StartInfo.FileName = "cmd";
                 BienDich.StartInfo.UseShellExecute = false;
                 string Duong = Path.GetDirectoryName(ten);
-                BienDich.StartInfo.Arguments = "/c " + "g++ " + ten + " -o " + Duong+"\\"+Path.GetFileName(ten)+".exe";
+                //BienDich.StartInfo.Arguments = "/c " + "g++ " + ten + " -o " + Duong+"\\"+Path.GetFileName(ten)+".exe";
+                BienDich.StartInfo.Arguments = "/c " + "g++ " + ten + " -o " + Path.GetFullPath(ten) + ".exe";
                 BienDich.StartInfo.RedirectStandardOutput = true;
                 BienDich.StartInfo.StandardOutputEncoding = Encoding.UTF8;
                 BienDich.StartInfo.CreateNoWindow = true;
@@ -207,6 +212,32 @@ namespace Kaliz
                 BienDich.Start();
 
             }
+        }
+        private void Run(string file)
+        {
+            if (Path.GetExtension(file)==".pas")
+            {
+                    Process Chay = new Process();
+                
+                Chay.StartInfo.WorkingDirectory = Path.GetDirectoryName(file);
+                Chay.StartInfo.FileName =Path.GetFileNameWithoutExtension(file) + ".exe";
+                Chay.StartInfo.UseShellExecute = true;
+                
+                //Chay.WaitForExit();
+                Chay.Start();
+            }
+            if(Path.GetExtension(file) == ".c"|| Path.GetExtension(file) == ".cpp")
+            {
+
+                Process Chay = new Process();
+
+                Chay.StartInfo.WorkingDirectory = Path.GetDirectoryName(file);
+                Chay.StartInfo.FileName = Path.GetFullPath(file) + ".exe";
+                Chay.StartInfo.UseShellExecute = true;
+                Chay.Start();
+            }
+           
+
         }
         /// <summary>
         /// Test các tính năng phụ lẻ
@@ -221,7 +252,7 @@ namespace Kaliz
        
         private void BBuild_Click(object sender, EventArgs e)
         {
-            Build(TabHienTai.FileName,null);
+            Build(TabHienTai.FileName,deBug);
         }
 
         private void BBookmark_Click(object sender, EventArgs e)
@@ -285,10 +316,11 @@ namespace Kaliz
             }
            
         }
+       
 
         private void BRun_Click(object sender, EventArgs e)
         {
-
+            Run(TabHienTai.FileName);
         }
 
         private void FExit_Click(object sender, EventArgs e)
