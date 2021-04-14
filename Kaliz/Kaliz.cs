@@ -93,6 +93,7 @@ namespace Kaliz
         private void DanhDau_UpdateBookmarkToolTip(object sender, UpdateBookmarkTooltipEventArgs e)
         {
             e.Text = TabHienTai.SelectedText;
+            
         }
 
         private void commandBarDropDownList1_Click(object sender, EventArgs e)
@@ -258,8 +259,11 @@ namespace Kaliz
         /// <param name="e"></param>
         private void radMenuItem1_Click_1(object sender, EventArgs e)
         {
+
+            //  MessageBox.Show(Path.GetExtension(TabHienTai.FileName));
+            //radListView1.Items.Add(new ListViewItem (new string[] { "hee","of"}));
+           
             
-            MessageBox.Show(Path.GetExtension(TabHienTai.FileName));
         }
        
         private void BBuild_Click(object sender, EventArgs e)
@@ -271,12 +275,16 @@ namespace Kaliz
         {
             BrushInfo brushInfo = new BrushInfo(Color.DarkViolet);
             TabHienTai.BookmarkAdd(TabHienTai.CurrentLine,brushInfo);
+            if (ListBm.Items.Contains(TabHienTai.CurrentLine)) return;
+                else
+            ListBm.Items.Add("Bookmark : " + TabHienTai.CurrentLine);
             
         }
 
         private void BRemoveBookmark_Click(object sender, EventArgs e)
         {
             TabHienTai.BookmarkRemove(TabHienTai.CurrentLine);
+           
         }
 
         private void BRemoveAll_Click(object sender, EventArgs e)
