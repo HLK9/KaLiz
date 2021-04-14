@@ -72,10 +72,22 @@ namespace Kaliz
             DanhDau.StatusBarSettings.VisualStyle = Syncfusion.Windows.Forms.Tools.Controls.StatusBar.VisualStyle.Office2016Colorful;
             DanhDau.StatusBarSettings.Visible = true;
             DanhDau.StatusBarSettings.GripVisibility = Syncfusion.Windows.Forms.Edit.Enums.SizingGripVisibility.Hidden;
+            DanhDau.StatusBarSettings.TextPanel.Panel.Text = F;
+            DanhDau.StatusBarSettings.StatusPanel.Panel.Text = "Saved";
+            DanhDau.StatusBarSettings.StatusPanel.Panel.BackColor = Color.DarkCyan;
+            DanhDau.StatusBarSettings.StatusPanel.Panel.ForeColor = Color.White;
+            DanhDau.TextChanged += DanhDau_TextChanged;
 
 
 
 
+        }
+
+        private void DanhDau_TextChanged(object sender, EventArgs e)
+        {
+            TabHienTai.StatusBarSettings.StatusPanel.Panel.Text = "Unsaved";
+            TabHienTai.StatusBarSettings.StatusPanel.Panel.BackColor = Color.DarkMagenta;
+            TabHienTai.StatusBarSettings.StatusPanel.Panel.ForeColor = Color.White;
         }
 
         private void DanhDau_UpdateBookmarkToolTip(object sender, UpdateBookmarkTooltipEventArgs e)
@@ -290,6 +302,11 @@ namespace Kaliz
         private void ESave_Click(object sender, EventArgs e)
         {
             TabHienTai.Save();
+            TabHienTai.StatusBarSettings.StatusPanel.Panel.Text = "Saved";
+            TabHienTai.StatusBarSettings.StatusPanel.Panel.BackColor = Color.DarkCyan;
+            TabHienTai.StatusBarSettings.StatusPanel.Panel.ForeColor = Color.White;
+
+
         }
 
         private void BBookmarkPre_Click(object sender, EventArgs e)
