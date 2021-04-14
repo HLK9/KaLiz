@@ -67,6 +67,7 @@ namespace Kaliz
            // DanhDau.OnlyHighlightMatchingBraces = true;
             DanhDau.EnableSmartInBlockIndent = true;
             DanhDau.AutoIndentMode = AutoIndentMode.Block;
+            if (Path.GetExtension(F) == ".cpp") DanhDau.ApplyConfiguration(KnownLanguages.C);
             //hien hoag trang DanhDau.ShowWhitespaces = true;
             DanhDau.OnlyHighlightMatchingBraces = true;
             DanhDau.StatusBarSettings.VisualStyle = Syncfusion.Windows.Forms.Tools.Controls.StatusBar.VisualStyle.Office2016Colorful;
@@ -80,11 +81,12 @@ namespace Kaliz
 
 
 
-
+            
         }
 
         private void DanhDau_TextChanged(object sender, EventArgs e)
         {
+            
             TabHienTai.StatusBarSettings.StatusPanel.Panel.Text = "Unsaved";
             TabHienTai.StatusBarSettings.StatusPanel.Panel.BackColor = Color.DarkMagenta;
             TabHienTai.StatusBarSettings.StatusPanel.Panel.ForeColor = Color.White;
@@ -92,7 +94,15 @@ namespace Kaliz
 
         private void DanhDau_UpdateBookmarkToolTip(object sender, UpdateBookmarkTooltipEventArgs e)
         {
-            e.Text = TabHienTai.SelectedText;
+            try
+            {
+                e.Text = TabHienTai.SelectedText;
+            }
+            catch
+            {
+
+            }
+           
             
         }
 
@@ -275,16 +285,31 @@ namespace Kaliz
         {
             BrushInfo brushInfo = new BrushInfo(Color.DarkViolet);
             TabHienTai.BookmarkAdd(TabHienTai.CurrentLine,brushInfo);
-            if (ListBm.Items.Contains(TabHienTai.CurrentLine)) return;
-                else
-            ListBm.Items.Add("Bookmark : " + TabHienTai.CurrentLine);
+            string sd = "Bookmark : " + TabHienTai.CurrentLine;
             
+            for (int i = ListBm.Items.Count - 1;i>= 0;i--)
+            {
+                if  (ListBm.Items[i].Text.Contains(sd)) return;
+               
+                   
+
+            }
+            ListBm.Items.Add(sd);
+
+
+
         }
 
         private void BRemoveBookmark_Click(object sender, EventArgs e)
         {
             TabHienTai.BookmarkRemove(TabHienTai.CurrentLine);
-           
+            string sd = TabHienTai.CurrentLine.ToString();
+           for  (int i=ListBm.Items.Count-1;i>=0;i--)
+            {
+                if (ListBm.Items[i].Text.Contains(sd))
+                { ListBm.Items.RemoveAt(i); }
+            }
+            
         }
 
         private void BRemoveAll_Click(object sender, EventArgs e)
@@ -352,5 +377,15 @@ namespace Kaliz
         {
             Application.Exit();
         }
+        /// <summary>
+        /// thử chuyển dòng
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        //private void ListBm_SelectedItemChanged(object sender, EventArgs e)
+        //{
+        //    TabHienTai.GoTo(int.Parse(ListBm.SelectedItem.Text.Remove(0, 12)));
+                
+        //}
     }
 }
