@@ -139,6 +139,7 @@ namespace Kaliz
             // 
             this.FSave.Name = "FSave";
             this.FSave.Text = "Save";
+            this.FSave.Click += new System.EventHandler(this.FSave_Click);
             // 
             // FSaveAs
             // 

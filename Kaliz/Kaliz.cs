@@ -52,9 +52,39 @@ namespace Kaliz
             DanhDau.ThemeName = "Office2016Colorful";
             TaiLieu.Controls.Add(DanhDau);
             DanhDau.AllowDrop = true;
-            if (F!=null)
-            DanhDau.LoadFile(F);
+           
+           
+            //
+           
+            //
             DockPar.AddDocument(TaiLieu);
+
+            if (F != null)
+            {
+                DanhDau.LoadFile(F);
+                if (Path.GetExtension(F) == ".c" || Path.GetExtension(F) == ".cpp")
+                {
+                    string ConfigF = @"Lex\CppF.xml";
+                    DanhDau.Configurator.Open(ConfigF);
+                    DanhDau.ApplyConfiguration("C++");
+                    //   // DanhDau.ApplyConfiguration(KnownLanguages.C);
+                }
+                if (Path.GetExtension(F) == ".pas")
+                {
+                    string ConfigF = @"Lex\Pascal.xml";
+                    DanhDau.Configurator.Open(ConfigF);
+                    DanhDau.ApplyConfiguration("Pascal");
+                }
+            }
+                
+                //if (Path.GetExtension(F) == ".cpp")
+                //{
+                //    string ConfigF = @"Lex\CppF.xml";
+                //    DanhDau.Configurator.Open(ConfigF);
+                //    DanhDau.ApplyConfiguration("C++");
+                //}
+              
+            
             DanhDau.MarkChangedLines = true;
             DanhDau.ShowSelectionMargin = true;
             DanhDau.HighlightCurrentLine = true;
@@ -64,10 +94,12 @@ namespace Kaliz
             DanhDau.MarkerAreaWidth = 20;
             DanhDau.ShowIndentationGuidelines = true;
             DanhDau.UpdateBookmarkToolTip += DanhDau_UpdateBookmarkToolTip;
-           // DanhDau.OnlyHighlightMatchingBraces = true;
+            //DanhDau.ShowIndentationGuidelines = true;
+           //DanhDau.OnlyHighlightMatchingBraces = true;
             DanhDau.EnableSmartInBlockIndent = true;
-            DanhDau.AutoIndentMode = AutoIndentMode.Block;
-            if (Path.GetExtension(F) == ".cpp") DanhDau.ApplyConfiguration(KnownLanguages.C);
+            DanhDau.IndentBlockHighlightingColor = Color.Orange;
+            DanhDau.AutoIndentMode = AutoIndentMode.Smart;
+           // if (Path.GetExtension(F) == ".cpp") DanhDau.ApplyConfiguration(KnownLanguages.C);
             //hien khoag trang DanhDau.ShowWhitespaces = true;
             DanhDau.OnlyHighlightMatchingBraces = true;
             DanhDau.StatusBarSettings.VisualStyle = Syncfusion.Windows.Forms.Tools.Controls.StatusBar.VisualStyle.Office2016White;
@@ -88,7 +120,6 @@ namespace Kaliz
             {
                 DanhDau.StatusBarSettings.FileNamePanel.Panel.Text = "C/C++";
             }
-
 
 
 
@@ -403,6 +434,11 @@ namespace Kaliz
                 TabHienTai.CurrentLineHighlightColor = Color.Teal;
             }
 
+
+        }
+
+        private void FSave_Click(object sender, EventArgs e)
+        {
 
         }
 
