@@ -9,6 +9,7 @@
 			<format name="Number" Font="Consolas, 10pt, style=Bold" FontColor="DarkMagenta" />
 			<format name="Operator" Font="Consolas, 10pt" FontColor="DarkCyan" />
 			<format name="Comment" Font="Consolas, 10pt, style=Bold" FontColor="Green" />
+			<format name="Error" Font="Courier New, 10pt" FontColor="Black" underline="Wave" LineColor="Red" />
 			<format name="PreprocessorKeyword" Font="Consolas, 10pt" FontColor="Gray" />
 			<format name="SelectedText" Font="Consolas, 10pt" BackColor="Highlight" FontColor="HighlightText" />
 			<format name="CommentXML" Font="Consolas, 10pt, style=Bold" FontColor="Gray" />
@@ -19,6 +20,9 @@
 			<extension>pas</extension>
 		</extensions>
 		<lexems>
+			<lexem BeginBlock="}" Type="Error" Priority="-10" />
+			<lexem BeginBlock="end" Type="Error" Priority="-10" />
+			<lexem BeginBlock=")" Type="Error" Priority="-10" />
 			<lexem BeginBlock="=" Type="Operator" />
 			<lexem BeginBlock="+" Type="Operator" />
 			<lexem BeginBlock="-" Type="Operator" />
