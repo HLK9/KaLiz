@@ -68,9 +68,9 @@ namespace Kaliz
             DanhDau.EnableSmartInBlockIndent = true;
             DanhDau.AutoIndentMode = AutoIndentMode.Block;
             if (Path.GetExtension(F) == ".cpp") DanhDau.ApplyConfiguration(KnownLanguages.C);
-            //hien hoag trang DanhDau.ShowWhitespaces = true;
+            //hien khoag trang DanhDau.ShowWhitespaces = true;
             DanhDau.OnlyHighlightMatchingBraces = true;
-            DanhDau.StatusBarSettings.VisualStyle = Syncfusion.Windows.Forms.Tools.Controls.StatusBar.VisualStyle.Office2016Colorful;
+            DanhDau.StatusBarSettings.VisualStyle = Syncfusion.Windows.Forms.Tools.Controls.StatusBar.VisualStyle.Office2016White;
             DanhDau.StatusBarSettings.Visible = true;
             DanhDau.StatusBarSettings.GripVisibility = Syncfusion.Windows.Forms.Edit.Enums.SizingGripVisibility.Hidden;
             DanhDau.StatusBarSettings.TextPanel.Panel.Text = F;
@@ -79,9 +79,19 @@ namespace Kaliz
             DanhDau.StatusBarSettings.StatusPanel.Panel.ForeColor = Color.White;
             DanhDau.TextChanged += DanhDau_TextChanged;
 
+            //Nhận dạng tệp
+            if (Path.GetExtension(F) == ".pas")
+            {
+                DanhDau.StatusBarSettings.FileNamePanel.Panel.Text = "Pascal";
+            }
+            if (Path.GetExtension(F) == ".c"|| Path.GetExtension(F) == ".cpp")
+            {
+                DanhDau.StatusBarSettings.FileNamePanel.Panel.Text = "C/C++";
+            }
 
 
-            
+
+
         }
 
         private void DanhDau_TextChanged(object sender, EventArgs e)
@@ -377,6 +387,25 @@ namespace Kaliz
         {
             Application.Exit();
         }
+
+        private void DEnable_Click(object sender, EventArgs e)
+        {
+            if (deBug == false)
+            {
+                deBug = true;
+                DEnable.Text = "Disable Debug";
+                TabHienTai.CurrentLineHighlightColor = Color.DarkMagenta;
+            }
+            else
+            {
+                deBug = false;
+                DEnable.Text = "Enable Debug";
+                TabHienTai.CurrentLineHighlightColor = Color.Teal;
+            }
+
+
+        }
+
         /// <summary>
         /// thử chuyển dòng
         /// </summary>
@@ -385,7 +414,7 @@ namespace Kaliz
         //private void ListBm_SelectedItemChanged(object sender, EventArgs e)
         //{
         //    TabHienTai.GoTo(int.Parse(ListBm.SelectedItem.Text.Remove(0, 12)));
-                
+
         //}
     }
 }

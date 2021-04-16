@@ -264,6 +264,7 @@ namespace Kaliz
             // 
             this.DEnable.Name = "DEnable";
             this.DEnable.Text = "Enable Debug";
+            this.DEnable.Click += new System.EventHandler(this.DEnable_Click);
             // 
             // DOpenGDB
             // 
