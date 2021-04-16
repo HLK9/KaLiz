@@ -5,19 +5,19 @@ xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/X
   xsi:noNamespaceSchemaLocation="file://d:\Projects\EditControl\Syncfusion.Windows.Forms.Edit\config.xsd" -->
   <ConfigLanguage name="C++">
     <formats>
-      <format name="Text" Font="Courier New, 10pt style=Bold"   FontColor="Black" />
-      <format name="Whitespace" Font="Courier New, 10pt" FontColor="Black" />
-      <format name="KeyWord" Font="Courier New, 10pt style=Bold" FontColor="Blue" />
-      <format name="ImageProcessor" Font="Courier New, 10pt" FontColor="Blue" UseCustomControl="true" />
-      <format name="String" Font="Courier New, 10pt, style=Bold" FontColor="Brown" BorderColor="#b00000" />
-      <format name="Number" Font="Courier New, 10pt, style=Bold" FontColor="#b4b3b4" />
-      <format name="Error" Font="Courier New, 10pt" FontColor="Black" underline="Wave" LineColor="Red" />
-      <format name="Operator" Font="Courier New, 10pt style=Bold" FontColor="DarkCyan" />
-      <format name="Comment" Font="Courier New, 10pt, style=Bold" FontColor="Green" />
-      <format name="PreprocessorKeyword" Font="Courier New, 10pt" FontColor="Gray" />
-      <format name="SelectedText" Font="Courier New, 10pt" BackColor="Highlight" FontColor="HighlightText" />
-      <format name="CommentXML" Font="Courier New, 10pt, style=Bold" FontColor="Gray" />
-      <format name="CollapsedText" Font="Courier New, 10pt" FontColor="Black" BorderColor="Gray"
+      <format name="Text" Font="Consolas, 10pt"   FontColor="Black" />
+      <format name="Whitespace" Font="Consolas, 10pt" FontColor="Black" />
+      <format name="KeyWord" Font="Consolas, 10pt style=Bold" FontColor="Blue" />
+      <format name="ImageProcessor" Font="Consolas, 10pt" FontColor="Blue" UseCustomControl="true" />
+      <format name="String" Font="Consolas, 10pt" FontColor="Brown" BorderColor="#b00000" />
+      <format name="Number" Font="Consolas, 10pt, style=Bold" FontColor="DarkMagenta" />
+      <format name="Error" Font="Consolas, 10pt" FontColor="Black" underline="Wave" LineColor="Red" />
+      <format name="Operator" Font="Consolas, 10pt" FontColor="DarkCyan" />
+      <format name="Comment" Font="Consolas, 10pt" FontColor="Green" />
+      <format name="PreprocessorKeyword" Font="Consolas, 10pt" FontColor="Gray" />
+      <format name="SelectedText" Font="Consolas, 10pt" BackColor="Highlight" FontColor="HighlightText" />
+      <format name="CommentXML" Font="Consolas, 10pt, style=Bold" FontColor="Gray" />
+      <format name="CollapsedText" Font="Consolas, 10pt" FontColor="Black" BorderColor="Gray"
 				BorderStyle="Solid" />
     </formats>
     <extensions>

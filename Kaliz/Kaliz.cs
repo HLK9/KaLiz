@@ -110,19 +110,148 @@ namespace Kaliz
             DanhDau.StatusBarSettings.StatusPanel.Panel.BackColor = Color.DarkCyan;
             DanhDau.StatusBarSettings.StatusPanel.Panel.ForeColor = Color.White;
             DanhDau.TextChanged += DanhDau_TextChanged;
+            DanhDau.FilterAutoCompleteItems = true;
 
             //Nhận dạng tệp
             if (Path.GetExtension(F) == ".pas")
             {
                 DanhDau.StatusBarSettings.FileNamePanel.Panel.Text = "Pascal";
+                DanhDau.ContextChoiceOpen += DanhDau_ContextChoiceOpen;
+                DanhDau.AutoCompleteSingleLexem = true;
             }
             if (Path.GetExtension(F) == ".c"|| Path.GetExtension(F) == ".cpp")
             {
                 DanhDau.StatusBarSettings.FileNamePanel.Panel.Text = "C/C++";
+                DanhDau.ContextChoiceOpen += DanhDau_ContextChoiceOpen_C;
+                DanhDau.AutoCompleteSingleLexem = true;
             }
 
+            //
+            
+           
 
+        }
 
+        private void DanhDau_ContextChoiceOpen_C(IContextChoiceController controller)
+        {
+
+            controller.Items.Add("Đây là C", "Activate the form and give it focus");
+            controller.Items.Add("Đầy là cộng", "Gets or sets the Active Control");
+            controller.Items.Add("chịu", "Activates the MDIChild of form");
+            controller.Items.Add(":v", "Gets or sets the value indicating Autoscroll");
+            ///////// thử
+            controller.Items.Add("and");
+            controller.Items.Add("array");
+            controller.Items.Add("asm");
+            controller.Items.Add("do");
+            controller.Items.Add("downto");
+            controller.Items.Add("else");
+            controller.Items.Add("end");
+            controller.Items.Add("constructor");
+            controller.Items.Add("continue");
+            controller.Items.Add("destructor");
+            controller.Items.Add("div");
+            controller.Items.Add("file");
+            controller.Items.Add("for");
+            controller.Items.Add("function");
+            controller.Items.Add("goto");
+            controller.Items.Add("if");
+            controller.Items.Add("implementation");
+            controller.Items.Add("in");
+            controller.Items.Add("inherited");
+            controller.Items.Add("inline");
+            controller.Items.Add("interface");
+            controller.Items.Add("label");
+            controller.Items.Add("mod");
+            controller.Items.Add("nil");
+            controller.Items.Add("not");
+            controller.Items.Add("object");
+            controller.Items.Add("of");
+            controller.Items.Add("on");
+            controller.Items.Add("packaed");
+            controller.Items.Add("operator");
+            controller.Items.Add("or");
+            controller.Items.Add("procedure");
+            controller.Items.Add("program");
+            controller.Items.Add("record");
+            controller.Items.Add("reintroduce");
+            controller.Items.Add("repeat");
+            controller.Items.Add("self");
+            controller.Items.Add("set");
+            controller.Items.Add("shl");
+            controller.Items.Add("shr");
+            controller.Items.Add("string");
+            controller.Items.Add("then");
+            controller.Items.Add("to");
+            controller.Items.Add("type");
+            controller.Items.Add("unit");
+            controller.Items.Add("until");
+            controller.Items.Add("uses");
+            controller.Items.Add("var");
+            controller.Items.Add("while");
+            controller.Items.Add("with");
+            controller.Items.Add("xor");
+        }
+
+        private void DanhDau_ContextChoiceOpen(IContextChoiceController controller)
+        {
+           
+                controller.Items.Add("begin", "Activate the form and give it focus");
+                controller.Items.Add("break", "Gets or sets the Active Control");
+                controller.Items.Add("case", "Activates the MDIChild of form");
+                controller.Items.Add("const", "Gets or sets the value indicating Autoscroll");
+                controller.Items.Add("absolute","");
+            controller.Items.Add("and");
+            controller.Items.Add("array");
+            controller.Items.Add("asm");
+            controller.Items.Add("do");
+            controller.Items.Add("downto");
+            controller.Items.Add("else");
+            controller.Items.Add("end");
+            controller.Items.Add("constructor");
+            controller.Items.Add("continue");
+            controller.Items.Add("destructor");
+            controller.Items.Add("div");
+            controller.Items.Add("file");
+            controller.Items.Add("for");
+            controller.Items.Add("function");
+            controller.Items.Add("goto");
+            controller.Items.Add("if");
+            controller.Items.Add("implementation");
+            controller.Items.Add("in");
+            controller.Items.Add("inherited");
+            controller.Items.Add("inline");
+            controller.Items.Add("interface");
+            controller.Items.Add("label");
+            controller.Items.Add("mod");
+            controller.Items.Add("nil");
+            controller.Items.Add("not");
+            controller.Items.Add("object");
+            controller.Items.Add("of");
+            controller.Items.Add("on");
+            controller.Items.Add("packaed");
+            controller.Items.Add("operator");
+            controller.Items.Add("or");
+            controller.Items.Add("procedure");
+            controller.Items.Add("program");
+            controller.Items.Add("record");
+            controller.Items.Add("reintroduce");
+            controller.Items.Add("repeat");
+            controller.Items.Add("self");
+            controller.Items.Add("set");
+            controller.Items.Add("shl");
+            controller.Items.Add("shr");
+            controller.Items.Add("string");
+            controller.Items.Add("then");
+            controller.Items.Add("to");
+            controller.Items.Add("type");
+            controller.Items.Add("unit");
+            controller.Items.Add("until");
+            controller.Items.Add("uses");
+            controller.Items.Add("var");
+            controller.Items.Add("while");
+            controller.Items.Add("with");
+            controller.Items.Add("xor");
         }
 
         private void DanhDau_TextChanged(object sender, EventArgs e)
@@ -131,6 +260,8 @@ namespace Kaliz
             TabHienTai.StatusBarSettings.StatusPanel.Panel.Text = "Unsaved";
             TabHienTai.StatusBarSettings.StatusPanel.Panel.BackColor = Color.DarkMagenta;
             TabHienTai.StatusBarSettings.StatusPanel.Panel.ForeColor = Color.White;
+            TabHienTai.ShowContextChoice();
+           // TabHienTai.FilterAutoCompleteItems = true;
         }
 
         private void DanhDau_UpdateBookmarkToolTip(object sender, UpdateBookmarkTooltipEventArgs e)
