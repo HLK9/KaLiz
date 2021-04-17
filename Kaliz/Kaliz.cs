@@ -51,14 +51,10 @@ namespace Kaliz
             DocumentWindow TaiLieu = new DocumentWindow(ten);
             var DanhDau = new EditControl();
             DanhDau.Dock = DockStyle.Fill;
-            DanhDau.ThemeName = "Office2016Colorful";
+            DanhDau.Style = EditControlStyle.Office2016Colorful;
             TaiLieu.Controls.Add(DanhDau);
             DanhDau.AllowDrop = true;
-           
-           
-            //
-           
-            //
+            DanhDau.FileExtensions = new string[] { ".pas", ".c", ".cpp", ".cs" };
             DockPar.AddDocument(TaiLieu);
 
             if (F != null)
@@ -71,8 +67,9 @@ namespace Kaliz
                     DanhDau.ApplyConfiguration("C++");
                     DanhDau.StatusBarSettings.FileNamePanel.Panel.Text = "C/C++";
                     DanhDau.ContextChoiceOpen += DanhDau_ContextChoiceOpen_C;
-                  
-                    
+                    DanhDau.ContextPromptOpen += DanhDau_ContextPromptOpen;
+
+
                 }
                 if (Path.GetExtension(F) == ".pas")
                 {
@@ -81,7 +78,8 @@ namespace Kaliz
 
                     DanhDau.ApplyConfiguration("Pascal");
                     DanhDau.StatusBarSettings.FileNamePanel.Panel.Text = "Pascal";
-                    DanhDau.ContextChoiceOpen += DanhDau_ContextChoiceOpen;
+                   DanhDau.ContextChoiceOpen += DanhDau_ContextChoiceOpen;
+                   DanhDau.ContextPromptOpen += DanhDau_ContextPromptOpen;
                    
                 }
              
@@ -92,14 +90,14 @@ namespace Kaliz
             DanhDau.MarkChangedLines = true;
             DanhDau.ShowSelectionMargin = true;
             DanhDau.HighlightCurrentLine = true;
-            DanhDau.DropAllFiles = true;
+            
             DanhDau.CurrentLineHighlightColor = Color.Teal;
             DanhDau.ShowIndicatorMargin = true;
             DanhDau.MarkerAreaWidth = 20;
             DanhDau.ShowIndentationGuidelines = true;
             DanhDau.UpdateBookmarkToolTip += DanhDau_UpdateBookmarkToolTip;
-            //DanhDau.ShowIndentationGuidelines = true;
-           //DanhDau.OnlyHighlightMatchingBraces = true;
+            DanhDau.AllowZoom = true;
+           DanhDau.OnlyHighlightMatchingBraces = true;
             DanhDau.EnableSmartInBlockIndent = true;
             DanhDau.IndentBlockHighlightingColor = Color.Orange;
             DanhDau.AutoIndentMode = AutoIndentMode.Smart;
@@ -111,84 +109,115 @@ namespace Kaliz
             DanhDau.StatusBarSettings.GripVisibility = Syncfusion.Windows.Forms.Edit.Enums.SizingGripVisibility.Hidden;
             DanhDau.StatusBarSettings.TextPanel.Panel.Text = F;
             DanhDau.StatusBarSettings.StatusPanel.Panel.Text = "Saved";
-            DanhDau.StatusBarSettings.StatusPanel.Panel.BackColor = Color.DarkCyan;
+            DanhDau.StatusBarSettings.StatusPanel.Panel.BackColor = Color.DarkMagenta;
             DanhDau.StatusBarSettings.StatusPanel.Panel.ForeColor = Color.White;
             DanhDau.TextChanged += DanhDau_TextChanged;
-           
-           // DanhDau.FilterAutoCompleteItems = true;
+            // DanhDau.BackgroundColor  = new Syncfusion.Drawing.BrushInfo(Syncfusion.Drawing.GradientStyle.ForwardDiagonal, new System.Drawing.Color[] { System.Drawing.Color.LavenderBlush, System.Drawing.Color.AliceBlue, System.Drawing.Color.BlanchedAlmond });
+            //DanhDau.TextChanging += DanhDau_TextChanging;
+            // DanhDau.FilterAutoCompleteItems = true;
 
-            //Nhận dạng tệp
-           
-          
+            //In
+            DanhDau.PrintHeader += DanhDau_PrintHeader;
+
             //
-            
-           
+
+
 
         }
 
-     
+        private void DanhDau_PrintHeader(object sender, PrintHeadlineEventArgs e)
+        {
+            e.Text = Path.GetFileName(TabHienTai.FileName);
+        }
+
+        private void DanhDau_ContextPromptOpen(object sender, ContextPromptUpdateEventArgs e)
+        {
+            e.AddPrompt("Control.Items.Add(string text, string tooltipText, int imageIndex, int selectedImageIndex)", "Specify the text of the item, its tooltip text, image index and selected image index");
+
+            e.AddPrompt("Control.Items.Add(string text, string tooltipText, int imageIndex)", "Specify the text of the item, its tooltip text, and image index");
+
+            e.AddPrompt("Control.Items.Add(string text, string tooltipText)", "Specify the text of the item, and its tooltip text");
+        }
 
        
 
         private void DanhDau_ContextChoiceOpen_C(IContextChoiceController controller)
         {
 
-            controller.Items.Add("Đây là C", "Activate the form and give it focus");
-            controller.Items.Add("Đầy là cộng", "Gets or sets the Active Control");
-            controller.Items.Add("chịu", "Activates the MDIChild of form");
-            controller.Items.Add(":v", "Gets or sets the value indicating Autoscroll");
-            ///////// thử
-            controller.Items.Add("and");
-            controller.Items.Add("array");
-            controller.Items.Add("asm");
-            controller.Items.Add("do");
-            controller.Items.Add("downto");
+            controller.Items.Add("auto");
+            controller.Items.Add("double");
+            controller.Items.Add("int");
+            controller.Items.Add("struct");
+            controller.Items.Add("break");
             controller.Items.Add("else");
-            controller.Items.Add("end");
-            controller.Items.Add("constructor");
+            controller.Items.Add("enum");
+            controller.Items.Add("register");
+            controller.Items.Add("typedef");
+            controller.Items.Add("char");
+            controller.Items.Add("extern");
+            controller.Items.Add("return");
+            controller.Items.Add("union");
+            controller.Items.Add("const");
+            controller.Items.Add("float");
+            controller.Items.Add("short");
+            controller.Items.Add("unsigned");
             controller.Items.Add("continue");
-            controller.Items.Add("destructor");
-            controller.Items.Add("div");
-            controller.Items.Add("file");
             controller.Items.Add("for");
-            controller.Items.Add("function");
+            controller.Items.Add("signed");
+            controller.Items.Add("void");
+            controller.Items.Add("default");
             controller.Items.Add("goto");
+            controller.Items.Add("sizeof");
+            controller.Items.Add("volatile");
+            controller.Items.Add("do");
             controller.Items.Add("if");
-            controller.Items.Add("implementation");
-            controller.Items.Add("in");
-            controller.Items.Add("inherited");
-            controller.Items.Add("inline");
-            controller.Items.Add("interface");
-            controller.Items.Add("label");
-            controller.Items.Add("mod");
-            controller.Items.Add("nil");
-            controller.Items.Add("not");
-            controller.Items.Add("object");
-            controller.Items.Add("of");
-            controller.Items.Add("on");
-            controller.Items.Add("packaed");
-            controller.Items.Add("operator");
-            controller.Items.Add("or");
-            controller.Items.Add("procedure");
-            controller.Items.Add("program");
-            controller.Items.Add("record");
-            controller.Items.Add("reintroduce");
-            controller.Items.Add("repeat");
-            controller.Items.Add("self");
-            controller.Items.Add("set");
-            controller.Items.Add("shl");
-            controller.Items.Add("shr");
-            controller.Items.Add("string");
-            controller.Items.Add("then");
-            controller.Items.Add("to");
-            controller.Items.Add("type");
-            controller.Items.Add("unit");
-            controller.Items.Add("until");
-            controller.Items.Add("uses");
-            controller.Items.Add("var");
+            controller.Items.Add("static");
             controller.Items.Add("while");
-            controller.Items.Add("with");
+            controller.Items.Add("true");
+            controller.Items.Add("false");
+            controller.Items.Add("private");
+            controller.Items.Add("protected");
+            controller.Items.Add("public");
+            controller.Items.Add("try");
+            controller.Items.Add("catch");
+            controller.Items.Add("dyamic_cash");
+            controller.Items.Add("reinterpret_cast");
+            controller.Items.Add("static_cast");
+            controller.Items.Add("const_cast");
+            controller.Items.Add("throw");
+            controller.Items.Add("explicit");
+            controller.Items.Add("new");
+            controller.Items.Add("this");
+            controller.Items.Add("asm");
+            controller.Items.Add("operator");
+            controller.Items.Add("namespace");
+            controller.Items.Add("typeid");
+            controller.Items.Add("typename");
+            controller.Items.Add("class");
+            controller.Items.Add("friend");
+            controller.Items.Add("template");
+            controller.Items.Add("using");
+            controller.Items.Add("virtual");
+            controller.Items.Add("delete");
+            controller.Items.Add("inline");
+            controller.Items.Add("mutable");
+            controller.Items.Add("wchar_t");
+            controller.Items.Add("bool");
+            controller.Items.Add("And");
+            controller.Items.Add("bitor");
+            controller.Items.Add("not_eq");
             controller.Items.Add("xor");
+            controller.Items.Add("and_eq");
+            controller.Items.Add("compl");
+            controller.Items.Add("or");
+            controller.Items.Add("not");
+            controller.Items.Add("xor_eq");
+            controller.Items.Add("bitand");
+            controller.Items.Add("or_eq");
+            controller.Items.Add("export");
+            controller.Items.Add("explicit");
+
+
         }
 
         private void DanhDau_ContextChoiceOpen(IContextChoiceController controller)
@@ -296,8 +325,12 @@ namespace Kaliz
 
         private void radMenuItem1_Click(object sender, EventArgs e)
         {
-            TabHienTai.Close();
-            DockPar.ActiveWindow.Close(); //chủ chốt
+            try { TabHienTai.Close();
+            DockPar.ActiveWindow.Close(); //chủ chốt 
+            } catch { }
+            
+           
+           
         }
 
         private void DcWelcome_Click(object sender, EventArgs e)
@@ -570,7 +603,9 @@ namespace Kaliz
 
         private void FSave_Click(object sender, EventArgs e)
         {
-
+            try
+            {TabHienTai.Save(); } catch { }
+            
         }
 
         /// <summary>

@@ -30,6 +30,7 @@
 			<lexem BeginBlock="*" Type="Operator" />
 			<lexem BeginBlock=";" Type="Operator" />
 			<lexem BeginBlock=":" Type="Operator" />
+			<lexem BeginBlock="(" Type="Operator" IsComplex="true" DropContextPrompt="true" />
 			<lexem BeginBlock="." Type="Operator" DropContextChoiceList="true" />
 			<lexem BeginBlock="," Type="Operator" />
 			<lexem BeginBlock="^" Type="Operator" />
@@ -76,7 +77,8 @@
 			<lexem BeginBlock="finally" Type="KeyWord" />
 			<lexem BeginBlock="float" Type="KeyWord" />
 			<lexem BeginBlock="true" Type="KeyWord" />
-			<lexem BeginBlock="for" Type="KeyWord" DropContextChoiceList="true"/>
+			<lexem BeginBlock="for" Type="KeyWord" DropContextPrompt="true"/>
+
 			<lexem BeginBlock="typeof" Type="KeyWord" />
 			<lexem BeginBlock="goto" Type="KeyWord" />
 			<lexem BeginBlock="if" Type="KeyWord" />
@@ -118,7 +120,7 @@
 				</SubLexems>
 			</lexem>
 			<lexem BeginBlock="(" EndBlock=")" Type="Operator" IsComplex="true" IsCollapsable="false"
-				CollapseName="(...)">
+				CollapseName="(...)" IndentationGuideline="true">
 				<SubLexems>
 					<lexem BeginBlock="\n" IsBeginRegex="true" />
 				</SubLexems>
@@ -129,13 +131,13 @@
 				</SubLexems>
 			</lexem>
 			<lexem BeginBlock="[" EndBlock="]" Type="Operator" IsComplex="true" IsCollapsable="false"
-				CollapseName="[...]" />
+				CollapseName="[...]" IndentationGuideline="true" />
 			<lexem BeginBlock="//" EndBlock="\n" IsEndRegex="true" Type="Comment" OnlyLocalSublexems="true"
 				IsComplex="true" />
 			<lexem BeginBlock="(\s(?&lt;!\n))+" IsBeginRegex="true" Type="Whitespace" />
 			<lexem BeginBlock="[0-9]+" IsBeginRegex="true" Type="Number" />
 			<lexem BeginBlock="$" EndBlock="^[0-9a-fA-F]+$" IsEndRegex="true" Type="Number" />
-			<lexem BeginBlock="{" EndBlock="}" Type="Comment" IsComplex="true" IsCollapsable="true"
+			<lexem BeginBlock="{" EndBlock="}" Type="Comment" IsComplex="true" IsCollapsable="true" IndentationGuideline="true"
 				OnlyLocalSublexems="true" CollapseName="{...}">
 				<SubLexems>
 					<lexem BeginBlock="\n" IsBeginRegex="true" />
