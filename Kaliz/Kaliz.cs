@@ -37,8 +37,10 @@ namespace Kaliz
             TaoMoi("hal.pas", "C:\\Users\\HoangLien\\Desktop\\TeeS\\hal.pas");
            
 
+
+
         }
-      
+
         /// <summary>
         /// Tao mot tep moi
         /// </summary>
@@ -67,23 +69,25 @@ namespace Kaliz
                     string ConfigF = @"Lex\CppF.xml";
                     DanhDau.Configurator.Open(ConfigF);
                     DanhDau.ApplyConfiguration("C++");
-                    //   // DanhDau.ApplyConfiguration(KnownLanguages.C);
+                    DanhDau.StatusBarSettings.FileNamePanel.Panel.Text = "C/C++";
+                    DanhDau.ContextChoiceOpen += DanhDau_ContextChoiceOpen_C;
+                  
+                    
                 }
                 if (Path.GetExtension(F) == ".pas")
                 {
                     string ConfigF = @"Lex\Pascal.xml";
                     DanhDau.Configurator.Open(ConfigF);
+
                     DanhDau.ApplyConfiguration("Pascal");
+                    DanhDau.StatusBarSettings.FileNamePanel.Panel.Text = "Pascal";
+                    DanhDau.ContextChoiceOpen += DanhDau_ContextChoiceOpen;
+                   
                 }
+             
             }
                 
-                //if (Path.GetExtension(F) == ".cpp")
-                //{
-                //    string ConfigF = @"Lex\CppF.xml";
-                //    DanhDau.Configurator.Open(ConfigF);
-                //    DanhDau.ApplyConfiguration("C++");
-                //}
-              
+          
             
             DanhDau.MarkChangedLines = true;
             DanhDau.ShowSelectionMargin = true;
@@ -110,27 +114,21 @@ namespace Kaliz
             DanhDau.StatusBarSettings.StatusPanel.Panel.BackColor = Color.DarkCyan;
             DanhDau.StatusBarSettings.StatusPanel.Panel.ForeColor = Color.White;
             DanhDau.TextChanged += DanhDau_TextChanged;
-            DanhDau.FilterAutoCompleteItems = true;
+           
+           // DanhDau.FilterAutoCompleteItems = true;
 
             //Nhận dạng tệp
-            if (Path.GetExtension(F) == ".pas")
-            {
-                DanhDau.StatusBarSettings.FileNamePanel.Panel.Text = "Pascal";
-                DanhDau.ContextChoiceOpen += DanhDau_ContextChoiceOpen;
-                DanhDau.AutoCompleteSingleLexem = true;
-            }
-            if (Path.GetExtension(F) == ".c"|| Path.GetExtension(F) == ".cpp")
-            {
-                DanhDau.StatusBarSettings.FileNamePanel.Panel.Text = "C/C++";
-                DanhDau.ContextChoiceOpen += DanhDau_ContextChoiceOpen_C;
-                DanhDau.AutoCompleteSingleLexem = true;
-            }
-
+           
+          
             //
             
            
 
         }
+
+     
+
+       
 
         private void DanhDau_ContextChoiceOpen_C(IContextChoiceController controller)
         {
@@ -256,12 +254,14 @@ namespace Kaliz
 
         private void DanhDau_TextChanged(object sender, EventArgs e)
         {
-            
+            TabHienTai.ShowContextChoice();
+
+            TabHienTai.FilterAutoCompleteItems = true;
+
             TabHienTai.StatusBarSettings.StatusPanel.Panel.Text = "Unsaved";
             TabHienTai.StatusBarSettings.StatusPanel.Panel.BackColor = Color.DarkMagenta;
             TabHienTai.StatusBarSettings.StatusPanel.Panel.ForeColor = Color.White;
-            TabHienTai.ShowContextChoice();
-           // TabHienTai.FilterAutoCompleteItems = true;
+           
         }
 
         private void DanhDau_UpdateBookmarkToolTip(object sender, UpdateBookmarkTooltipEventArgs e)
