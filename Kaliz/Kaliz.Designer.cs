@@ -260,6 +260,7 @@ namespace Kaliz
             this.DOpenGDB});
             this.MDebug.Name = "MDebug";
             this.MDebug.Text = "Debug";
+            this.MDebug.Click += new System.EventHandler(this.MDebug_Click);
             // 
             // DEnable
             // 

@@ -16,8 +16,7 @@ using Syncfusion.Windows.Forms.Edit.Interfaces;
 using Syncfusion.Windows.Forms.Edit.Enums;
 using Syncfusion.Windows.Forms.Edit.Implementation.Config;
 using Syncfusion.Drawing;
-//using Syncfusion.Windows.Forms.Localization.Localizer.EditResourceIdentifiers;
-//using Syncfusion.Windows.Forms.ResourceIdentifiers;
+
 using Syncfusion.Windows.Forms;
 using Syncfusion.Windows.Forms.Localization;
 
@@ -111,18 +110,58 @@ namespace Kaliz
             DanhDau.StatusBarSettings.StatusPanel.Panel.Text = "Saved";
             DanhDau.StatusBarSettings.StatusPanel.Panel.BackColor = Color.DarkMagenta;
             DanhDau.StatusBarSettings.StatusPanel.Panel.ForeColor = Color.White;
+            //Các sự kiện
             DanhDau.TextChanged += DanhDau_TextChanged;
+            DanhDau.UpdateContextToolTip += DanhDau_UpdateContextToolTip;
             // DanhDau.BackgroundColor  = new Syncfusion.Drawing.BrushInfo(Syncfusion.Drawing.GradientStyle.ForwardDiagonal, new System.Drawing.Color[] { System.Drawing.Color.LavenderBlush, System.Drawing.Color.AliceBlue, System.Drawing.Color.BlanchedAlmond });
             //DanhDau.TextChanging += DanhDau_TextChanging;
             // DanhDau.FilterAutoCompleteItems = true;
 
             //In
             DanhDau.PrintHeader += DanhDau_PrintHeader;
+            //DanhDau.ShowContextTooltip = true; 
 
             //
 
 
 
+        }
+
+        private void DanhDau_UpdateContextToolTip(object sender, UpdateTooltipEventArgs e)
+        {
+            if (e.Text == string.Empty)
+            {
+
+                Point pointVirtual = TabHienTai.PointToVirtualPosition(new Point(e.X, e.Y));
+
+                if (pointVirtual.Y > 0)
+                {
+                    // Get the current line
+                    ILexemLine line = TabHienTai.GetLine(pointVirtual.Y);
+
+                    if (line != null)
+                    {
+                        // Get tokens from the current line
+                        ILexem lexem = line.FindLexemByColumn(pointVirtual.X);
+                        
+                        if (lexem != null)
+                        {
+                            // Set the desired information tooltip
+                            if (lexem.Text == "program")
+                            e.Text = "Từ khóa :v:v :V " + lexem.Text;
+                            if (lexem.Text == "var")
+                                e.Text = "Từ khóaádasd :v:v :V " + lexem.Text;
+                            if (lexem.Text == "write")
+                                e.Text = "in" + lexem.Text;
+                            if (lexem.Text == "readln")
+                                e.Text = "dừng " + lexem.Text;
+                           
+
+                        }
+                    }
+                }
+
+            }
         }
 
         private void DanhDau_PrintHeader(object sender, PrintHeadlineEventArgs e)
@@ -457,6 +496,7 @@ namespace Kaliz
                 BienDich.StartInfo.WorkingDirectory = @"FPC\bin\i386-win32\";           
                 BienDich.StartInfo.Arguments = "/c " + "gdb " + TepExe(ten);
                 BienDich.Start();
+               
                 BienDich.WaitForExit();
 
             }
@@ -643,8 +683,29 @@ namespace Kaliz
         private void DOpenGDB_Click(object sender, EventArgs e)
         {
             if (deBug == true)
+            {
+               
+               
+                // al.AutoClose = true;
                 GDB(TabHienTai.FileName);
-            else MessageBox.Show("Error");
+
+            }
+            else
+            {
+                RadDesktopAlert al = new RadDesktopAlert();
+                al.ThemeName = "MaterialTeal";
+                al.CaptionText = "Bạn chưa bật GDB Debug";
+                
+                al.ContentText = "<html><i>Nếu chưa biết sử dụng, hay tham khảo ở<span><color=Teal> Mục</span></i>";
+                al.AutoCloseDelay = 5;
+                al.AutoSize = true;
+                al.Show();
+            }
+        }
+
+        private void MDebug_Click(object sender, EventArgs e)
+        {
+
         }
 
         /// <summary>
