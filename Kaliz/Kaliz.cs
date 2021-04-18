@@ -147,14 +147,27 @@ namespace Kaliz
                         if (lexem != null)
                         {
                             // Set the desired information tooltip
-                            if (lexem.Text == "program")
-                            e.Text = "Từ khóa :v:v :V " + lexem.Text;
-                            if (lexem.Text == "var")
-                                e.Text = "Từ khóaádasd :v:v :V " + lexem.Text;
-                            if (lexem.Text == "write")
-                                e.Text = "in" + lexem.Text;
-                            if (lexem.Text == "readln")
-                                e.Text = "dừng " + lexem.Text;
+                            switch (lexem.Text.ToLower())
+                            {
+                                case "program":
+                                    e.Text = lexem.Text+" |Từ khóa\n Xác định bắt đầu của một ứng dụng, thường là tùy chọn";
+                                    break;
+                                case "var":
+                                    e.Text = lexem.Text + " |Từ khóa\n Sử dụng để khai báo biến";
+                                    break;
+                                case "byte": e.Text=lexem.Text + " |Kiểu dữ liệu\n Kiểu nguyên, có phạm vi từ 0->255 ";
+                                    break;
+                                default: e.Text = "";
+                                    break;
+                            }
+                            //if (lexem.Text == "program")
+                            //e.Text = "Từ khóa :v:v :V " + lexem.Text;
+                            //if (lexem.Text == "var")
+                            //    e.Text = "Từ khóaádasd :v:v :V " + lexem.Text;
+                            //if (lexem.Text == "write")
+                            //    e.Text = "in" + lexem.Text;
+                            //if (lexem.Text == "readln")
+                            //    e.Text = "dừng " + lexem.Text;
                            
 
                         }
