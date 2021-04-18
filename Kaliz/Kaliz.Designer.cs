@@ -75,6 +75,8 @@ namespace Kaliz
             this.BBookmarkPre = new Telerik.WinControls.UI.RadMenuItem();
             this.BBookmarkNext = new Telerik.WinControls.UI.RadMenuItem();
             this.radMenu1 = new Telerik.WinControls.UI.RadMenu();
+            this.fluentDarkTheme1 = new Telerik.WinControls.Themes.FluentDarkTheme();
+            this.radListView1 = new Telerik.WinControls.UI.RadListView();
             ((System.ComponentModel.ISupportInitialize)(this.DockPar)).BeginInit();
             this.DockPar.SuspendLayout();
             this.BMList.SuspendLayout();
@@ -82,7 +84,9 @@ namespace Kaliz
             ((System.ComponentModel.ISupportInitialize)(this.DContainer)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.toolTabStrip1)).BeginInit();
             this.toolTabStrip1.SuspendLayout();
+            this.Doutput.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.radMenu1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.radListView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this)).BeginInit();
             this.SuspendLayout();
             // 
@@ -286,7 +290,7 @@ namespace Kaliz
             // 
             // DockPar
             // 
-            this.DockPar.ActiveWindow = this.BMList;
+            this.DockPar.ActiveWindow = this.Doutput;
             this.DockPar.CausesValidation = false;
             this.DockPar.Controls.Add(this.DContainer);
             this.DockPar.Controls.Add(this.toolTabStrip1);
@@ -358,7 +362,7 @@ namespace Kaliz
             // 
             // 
             this.toolTabStrip1.RootElement.MinSize = new System.Drawing.Size(25, 25);
-            this.toolTabStrip1.SelectedIndex = 1;
+            this.toolTabStrip1.SelectedIndex = 0;
             this.toolTabStrip1.Size = new System.Drawing.Size(1093, 181);
             this.toolTabStrip1.SizeInfo.AbsoluteSize = new System.Drawing.Size(200, 181);
             this.toolTabStrip1.SizeInfo.SplitterCorrection = new System.Drawing.Size(0, -19);
@@ -369,11 +373,12 @@ namespace Kaliz
             // Doutput
             // 
             this.Doutput.Caption = null;
+            this.Doutput.Controls.Add(this.radListView1);
             this.Doutput.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.Doutput.Location = new System.Drawing.Point(4, 52);
             this.Doutput.Name = "Doutput";
             this.Doutput.PreviousDockState = Telerik.WinControls.UI.Docking.DockState.Docked;
-            this.Doutput.Size = new System.Drawing.Size(1085, 146);
+            this.Doutput.Size = new System.Drawing.Size(1085, 99);
             this.Doutput.Text = "Output";
             this.Doutput.ToolCaptionButtons = Telerik.WinControls.UI.Docking.ToolStripCaptionButtons.AutoHide;
             // 
@@ -449,6 +454,17 @@ namespace Kaliz
             this.radMenu1.TabIndex = 1;
             this.radMenu1.ThemeName = "MaterialTeal";
             // 
+            // radListView1
+            // 
+            this.radListView1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.radListView1.GroupItemSize = new System.Drawing.Size(200, 36);
+            this.radListView1.ItemSize = new System.Drawing.Size(200, 36);
+            this.radListView1.Location = new System.Drawing.Point(0, 0);
+            this.radListView1.Name = "radListView1";
+            this.radListView1.Size = new System.Drawing.Size(1085, 99);
+            this.radListView1.TabIndex = 0;
+            this.radListView1.ThemeName = "MaterialTeal";
+            // 
             // Kaliz
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -471,7 +487,9 @@ namespace Kaliz
             ((System.ComponentModel.ISupportInitialize)(this.DContainer)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.toolTabStrip1)).EndInit();
             this.toolTabStrip1.ResumeLayout(false);
+            this.Doutput.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.radMenu1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.radListView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -525,5 +543,7 @@ namespace Kaliz
         private Telerik.WinControls.UI.RadMenuItem ESelect;
         private Telerik.WinControls.UI.Docking.ToolWindow BMList;
         private Telerik.WinControls.UI.RadListView ListBm;
+        private Telerik.WinControls.Themes.FluentDarkTheme fluentDarkTheme1;
+        private Telerik.WinControls.UI.RadListView radListView1;
     }
 }

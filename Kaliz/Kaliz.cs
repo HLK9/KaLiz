@@ -89,7 +89,7 @@ namespace Kaliz
             DanhDau.MarkChangedLines = true;
             DanhDau.ShowSelectionMargin = true;
             DanhDau.HighlightCurrentLine = true;
-            
+           
             DanhDau.CurrentLineHighlightColor = Color.Teal;
             DanhDau.ShowIndicatorMargin = true;
             DanhDau.MarkerAreaWidth = 20;
@@ -459,7 +459,7 @@ namespace Kaliz
             return Path.GetDirectoryName(ten) + "\\" + Path.GetFileNameWithoutExtension(ten) + ".exe";
         }
         //Build tep
-        private void Build(string ten,bool enabledebug)
+        private void Build(string ten,bool enabledebug,ref RadListView outp)
         {
             if (Path.GetExtension(ten) == ".pas")
             {
@@ -477,6 +477,18 @@ namespace Kaliz
                 BienDich.StartInfo.CreateNoWindow = true ;
                 BienDich.StartInfo.WindowStyle = ProcessWindowStyle.Normal;
                 BienDich.Start();
+
+                string ad;
+                    while ( (ad=BienDich.StandardOutput.ReadLine())!=null)
+                {
+ outp.Items.Add(ad);
+                    if (ad.Contains("lines compiled")) break;
+                }
+                   
+                   
+                
+               
+                
                 //BienDich.WaitForExit();
                 
            }
@@ -559,16 +571,26 @@ namespace Kaliz
         /// <param name="e"></param>
         private void radMenuItem1_Click_1(object sender, EventArgs e)
         {
-
+          //  Compile(ref radListView1);
             //  MessageBox.Show(Path.GetExtension(TabHienTai.FileName));
             //radListView1.Items.Add(new ListViewItem (new string[] { "hee","of"}));
            
             
         }
-       
+
+     
+
         private void BBuild_Click(object sender, EventArgs e)
         {
-            Build(TabHienTai.FileName,deBug);
+            Build(TabHienTai.FileName,deBug,ref radListView1);
+            RadDesktopAlert al = new RadDesktopAlert();
+            al.ThemeName = "MaterialTeal";
+            al.CaptionText = "<html><color=Teal><b>Build Completed</b>";
+            al.ScreenPosition = AlertScreenPosition.TopRight;
+            al.ContentText = "<html><i><span><color=Teal>Application already to run</span></i>";
+            al.AutoCloseDelay = 5;
+            al.AutoSize = true;
+            al.Show();
         }
 
         private void BBookmark_Click(object sender, EventArgs e)
@@ -672,15 +694,33 @@ namespace Kaliz
         {
             if (deBug == false)
             {
+                RadDesktopAlert al = new RadDesktopAlert();
+                al.ThemeName = "MaterialTeal";
+                al.CaptionText = "<html><color=Crimson><b>Bạn đã Bật GDB Debug</b>";
+                al.ScreenPosition = AlertScreenPosition.TopRight;
+                
+                al.ContentText = "<html><i><span><color=Teal>Để sử dụng GDB Debug, hãy biên dịch lại để trình biên dịch khởi tạo thông tin</span></i>";
+                al.AutoCloseDelay = 5;
+                al.AutoSize = true;
+                al.Show();
+                deBug = false;
                 deBug = true;
                 DEnable.Text = "Disable Debug";
-                TabHienTai.CurrentLineHighlightColor = Color.DarkMagenta;
+                
             }
             else
             {
+                RadDesktopAlert al = new RadDesktopAlert();
+                al.ThemeName = "MaterialTeal";
+                al.CaptionText = "<html><color=Crimson><b>Bạn đã Tắt GDB Debug</b>";
+                al.ScreenPosition = AlertScreenPosition.TopRight;
+                al.ContentText = "<html><i><span><color=Teal>Trình biên dịch sẽ không khởi tạo thông tin Debug</span></i>";
+                al.AutoCloseDelay = 5;
+                al.AutoSize = true;
+                al.Show();
                 deBug = false;
                 DEnable.Text = "Enable Debug";
-                TabHienTai.CurrentLineHighlightColor = Color.Teal;
+               
             }
 
 
@@ -731,5 +771,35 @@ namespace Kaliz
         //    TabHienTai.GoTo(int.Parse(ListBm.SelectedItem.Text.Remove(0, 12)));
 
         //}
+
+
+
+
+
+
+
+        public void Compile(ref RadListView list)
+        {
+            //ShowCompiling mess= new ShowCompiling();
+            Process compiler = new Process();
+            list.Items.Clear();
+           
+            list.Items.Add("Compiling");
+            compiler.StartInfo.FileName = "cmd";
+           compiler.StartInfo.Arguments = "/c "+" dir";
+            compiler.StartInfo.UseShellExecute = false;
+            compiler.StartInfo.RedirectStandardOutput = true;
+            compiler.Start();
+            compiler.WaitForExit();
+            string ass = compiler.StandardOutput.ReadToEnd();
+            list.Items.Add(ass);
+        }
+
+
+
+
+
+
+
     }
 }
