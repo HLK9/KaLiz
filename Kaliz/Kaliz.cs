@@ -402,6 +402,10 @@ namespace Kaliz
             }
             //this.TabHienTai.SaveAsRTF("Document.rtf");
         }
+        private string TepExe (string ten)
+        {
+            return Path.GetDirectoryName(ten) + "\\" + Path.GetFileNameWithoutExtension(ten) + ".exe";
+        }
         //Build tep
         private void Build(string ten,bool enabledebug)
         {
@@ -432,7 +436,9 @@ namespace Kaliz
                 BienDich.StartInfo.UseShellExecute = false;
                 string Duong = Path.GetDirectoryName(ten);
                 //BienDich.StartInfo.Arguments = "/c " + "g++ " + ten + " -o " + Duong+"\\"+Path.GetFileName(ten)+".exe";
-                BienDich.StartInfo.Arguments = "/c " + "g++ " + ten + " -o " + Path.GetFullPath(ten) + ".exe";
+                if (enabledebug == false)
+                    BienDich.StartInfo.Arguments = "/c " + "g++ " + ten + " -o " + Path.GetDirectoryName(ten) + "\\" + Path.GetFileNameWithoutExtension(ten) + ".exe";
+                else BienDich.StartInfo.Arguments = "/c " + "g++ " +" -g "+ ten + " -o " + Path.GetDirectoryName(ten) + "\\" + Path.GetFileNameWithoutExtension(ten) + ".exe";
                 BienDich.StartInfo.RedirectStandardOutput = true;
                 BienDich.StartInfo.StandardOutputEncoding = Encoding.UTF8;
                 BienDich.StartInfo.CreateNoWindow = true;
@@ -449,10 +455,19 @@ namespace Kaliz
                 Process BienDich = new Process();
                 BienDich.StartInfo.FileName = "cmd";
                 BienDich.StartInfo.WorkingDirectory = @"FPC\bin\i386-win32\";           
-                BienDich.StartInfo.Arguments = "/c " + "gdb " + Path.GetDirectoryName(ten)+"\\"+ Path.GetFileNameWithoutExtension(ten) + ".exe";
+                BienDich.StartInfo.Arguments = "/c " + "gdb " + TepExe(ten);
                 BienDich.Start();
                 BienDich.WaitForExit();
 
+            }
+            if (Path.GetExtension(ten)==".c"|| Path.GetExtension(ten) == ".cpp")
+            {
+                Process BienDich = new Process();
+                BienDich.StartInfo.FileName = "cmd";
+                BienDich.StartInfo.WorkingDirectory = @"FPC\bin\i386-win32\";
+                BienDich.StartInfo.Arguments = "/c " + "gdb " + TepExe(ten);
+                BienDich.Start();
+                BienDich.WaitForExit();
             }
 
 
@@ -477,7 +492,7 @@ namespace Kaliz
                 Process Chay = new Process();
 
                 Chay.StartInfo.WorkingDirectory = Path.GetDirectoryName(file);
-                Chay.StartInfo.FileName = Path.GetFullPath(file) + ".exe";
+                Chay.StartInfo.FileName = Path.GetFileNameWithoutExtension(file) + ".exe";
                 Chay.StartInfo.UseShellExecute = true;
                 Chay.Start();
             }
