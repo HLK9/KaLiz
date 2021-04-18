@@ -271,6 +271,7 @@ namespace Kaliz
             // 
             this.DOpenGDB.Name = "DOpenGDB";
             this.DOpenGDB.Text = "Open GDB Debug";
+            this.DOpenGDB.Click += new System.EventHandler(this.DOpenGDB_Click);
             // 
             // MOptions
             // 

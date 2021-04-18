@@ -418,8 +418,8 @@ namespace Kaliz
                 //BienDich.StartInfo.RedirectStandardInput = true;
                 BienDich.StartInfo.RedirectStandardOutput = true;
                 BienDich.StartInfo.StandardOutputEncoding = Encoding.UTF8;
-                BienDich.StartInfo.CreateNoWindow = true;
-                BienDich.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;
+                BienDich.StartInfo.CreateNoWindow = true ;
+                BienDich.StartInfo.WindowStyle = ProcessWindowStyle.Normal;
                 BienDich.Start();
                 //BienDich.WaitForExit();
                 
@@ -440,6 +440,23 @@ namespace Kaliz
                 BienDich.Start();
 
             }
+        }
+
+        private void GDB(string ten)
+        {
+            if (Path.GetExtension(ten) == ".pas")
+            {
+                Process BienDich = new Process();
+                BienDich.StartInfo.FileName = "cmd";
+                BienDich.StartInfo.WorkingDirectory = @"FPC\bin\i386-win32\";           
+                BienDich.StartInfo.Arguments = "/c " + "gdb " + Path.GetDirectoryName(ten)+"\\"+ Path.GetFileNameWithoutExtension(ten) + ".exe";
+                BienDich.Start();
+                BienDich.WaitForExit();
+
+            }
+
+
+
         }
         private void Run(string file)
         {
@@ -606,6 +623,13 @@ namespace Kaliz
             try
             {TabHienTai.Save(); } catch { }
             
+        }
+
+        private void DOpenGDB_Click(object sender, EventArgs e)
+        {
+            if (deBug == true)
+                GDB(TabHienTai.FileName);
+            else MessageBox.Show("Error");
         }
 
         /// <summary>
