@@ -463,6 +463,7 @@ namespace Kaliz
         {
             if (Path.GetExtension(ten) == ".pas")
             {
+                outp.Items.Clear();
                 Process BienDich = new Process();
                 BienDich.StartInfo.FileName = "cmd";
                 BienDich.StartInfo.WorkingDirectory = @"FPC\\bin\\i386-win32\\";
@@ -477,12 +478,20 @@ namespace Kaliz
                 BienDich.StartInfo.CreateNoWindow = true ;
                 BienDich.StartInfo.WindowStyle = ProcessWindowStyle.Normal;
                 BienDich.Start();
-
+                outp.AllowEdit = false;
+                outp.AllowRemove = false;
+                
                 string ad;
                     while ( (ad=BienDich.StandardOutput.ReadLine())!=null)
                 {
  outp.Items.Add(ad);
+                    
                     if (ad.Contains("lines compiled")) break;
+                }
+                    foreach (var item in outp.Items)
+                {
+                    if (item.Text.Contains("Fatal")) item.BackColor = Color.LightSalmon;
+                    if (item.Text.Contains("lines compiled")) item.BackColor = Color.LightGreen;
                 }
                    
                    
@@ -495,19 +504,37 @@ namespace Kaliz
 
             if(Path.GetExtension(ten)==".c"|| Path.GetExtension(ten)==".cpp")
             {
+                outp.Items.Clear();
                 Process BienDich =new Process();
                 BienDich.StartInfo.FileName = "cmd";
                 BienDich.StartInfo.UseShellExecute = false;
                 string Duong = Path.GetDirectoryName(ten);
                 //BienDich.StartInfo.Arguments = "/c " + "g++ " + ten + " -o " + Duong+"\\"+Path.GetFileName(ten)+".exe";
                 if (enabledebug == false)
-                    BienDich.StartInfo.Arguments = "/c " + "g++ " + ten + " -o " + Path.GetDirectoryName(ten) + "\\" + Path.GetFileNameWithoutExtension(ten) + ".exe";
+                    BienDich.StartInfo.Arguments = "/c " + "g++ " +" -v "+ ten + " -o " + Path.GetDirectoryName(ten) + "\\" + Path.GetFileNameWithoutExtension(ten) + ".exe";
                 else BienDich.StartInfo.Arguments = "/c " + "g++ " +" -g "+ ten + " -o " + Path.GetDirectoryName(ten) + "\\" + Path.GetFileNameWithoutExtension(ten) + ".exe";
                 BienDich.StartInfo.RedirectStandardOutput = true;
-                BienDich.StartInfo.StandardOutputEncoding = Encoding.UTF8;
+                //BienDich.StartInfo.StandardOutputEncoding = Encoding.UTF8;
                 BienDich.StartInfo.CreateNoWindow = true;
-                BienDich.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;
+                BienDich.StartInfo.WindowStyle = ProcessWindowStyle.Normal;
                 BienDich.Start();
+                outp.AllowEdit = false;
+                outp.AllowRemove = false;
+
+                string ad;
+                ad = BienDich.StandardOutput.ReadToEnd();
+                MessageBox.Show(ad);
+                //while ((ad = BienDich.StandardOutput.ReadLine()) != null)
+                //{
+                //    outp.Items.Add(ad);
+
+                //   // if (ad.Contains("lines compiled")) break;
+                //}
+                //foreach (var item in outp.Items)
+                //{
+                //    if (item.Text.Contains("Fatal")) item.BackColor = Color.LightSalmon;
+                //    if (item.Text.Contains("lines compiled")) item.BackColor = Color.LightGreen;
+                //}
 
             }
         }
