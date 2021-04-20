@@ -400,12 +400,14 @@ namespace Kaliz
             get
             {
                 if (DockPar.ActiveWindow == null) return null;
-                return (DockPar.ActiveWindow.ActiveControl as EditControl);
+                return (DockPar.DocumentManager.ActiveDocument.Controls[0] as EditControl);
+                //Fixed... :v
             }
             set
             {
-               DockPar.ActiveWindow.ActiveControl = (value.Parent as DocumentTabStrip);
+               DockPar.DocumentManager.ActiveDocument.ActiveControl = (value.Parent as DocumentTabStrip);
                 value.Focus();
+                
             }
         }
 
@@ -502,27 +504,30 @@ namespace Kaliz
                 
            }
 
-            if(Path.GetExtension(ten)==".c"|| Path.GetExtension(ten)==".cpp")
+           else if(Path.GetExtension(ten)==".c"|| Path.GetExtension(ten)==".cpp")
             {
                 outp.Items.Clear();
                 Process BienDich =new Process();
                 BienDich.StartInfo.FileName = "cmd";
                 BienDich.StartInfo.UseShellExecute = false;
-                string Duong = Path.GetDirectoryName(ten);
-                //BienDich.StartInfo.Arguments = "/c " + "g++ " + ten + " -o " + Duong+"\\"+Path.GetFileName(ten)+".exe";
-                if (enabledebug == false)
-                    BienDich.StartInfo.Arguments = "/c " + "g++ " +" -v "+ ten + " -o " + Path.GetDirectoryName(ten) + "\\" + Path.GetFileNameWithoutExtension(ten) + ".exe";
-                else BienDich.StartInfo.Arguments = "/c " + "g++ " +" -g "+ ten + " -o " + Path.GetDirectoryName(ten) + "\\" + Path.GetFileNameWithoutExtension(ten) + ".exe";
                 BienDich.StartInfo.RedirectStandardOutput = true;
+                BienDich.StartInfo.RedirectStandardInput = true;
+               
+                if (enabledebug == false)
+                    BienDich.StartInfo.Arguments = "/c " + "g++ "+ ten + " -o " + Path.GetDirectoryName(ten) + "\\" + Path.GetFileNameWithoutExtension(ten) + ".exe";
+                else BienDich.StartInfo.Arguments = "/c " + "g++ " +" -g "+ ten + " -o " + Path.GetDirectoryName(ten) + "\\" + Path.GetFileNameWithoutExtension(ten) + ".exe";
+             
                 //BienDich.StartInfo.StandardOutputEncoding = Encoding.UTF8;
                 BienDich.StartInfo.CreateNoWindow = true;
-                BienDich.StartInfo.WindowStyle = ProcessWindowStyle.Normal;
+                BienDich.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;
                 BienDich.Start();
+                string ad;
+                ad = BienDich.StandardOutput.ReadToEnd();
+                
                 outp.AllowEdit = false;
                 outp.AllowRemove = false;
 
-                string ad;
-                ad = BienDich.StandardOutput.ReadToEnd();
+               
                 MessageBox.Show(ad);
                 //while ((ad = BienDich.StandardOutput.ReadLine()) != null)
                 //{
@@ -537,6 +542,11 @@ namespace Kaliz
                 //}
 
             }
+        }
+
+        private void BienDich_OutputDataReceived(object sender, DataReceivedEventArgs e)
+        {
+            MessageBox.Show(e.ToString());
         }
 
         private void GDB(string ten)
