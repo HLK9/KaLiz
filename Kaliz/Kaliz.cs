@@ -465,7 +465,7 @@ namespace Kaliz
         {
             if (Path.GetExtension(ten) == ".pas")
             {
-                outp.Items.Clear();
+                ListOutput.Items.Clear();
                 Process BienDich = new Process();
                 BienDich.StartInfo.FileName = "cmd";
                 BienDich.StartInfo.WorkingDirectory = @"FPC\\bin\\i386-win32\\";
@@ -480,17 +480,17 @@ namespace Kaliz
                 BienDich.StartInfo.CreateNoWindow = true ;
                 BienDich.StartInfo.WindowStyle = ProcessWindowStyle.Normal;
                 BienDich.Start();
-                outp.AllowEdit = false;
-                outp.AllowRemove = false;
+                ListOutput.AllowEdit = false;
+                ListOutput.AllowRemove = false;
                 
                 string ad;
                     while ( (ad=BienDich.StandardOutput.ReadLine())!=null)
                 {
- outp.Items.Add(ad);
+                    ListOutput.Items.Add(ad);
                     
                     if (ad.Contains("lines compiled")) break;
                 }
-                    foreach (var item in outp.Items)
+                    foreach (var item in ListOutput.Items)
                 {
                     if (item.Text.Contains("Fatal")) item.BackColor = Color.LightSalmon;
                     if (item.Text.Contains("lines compiled")) item.BackColor = Color.LightGreen;
@@ -506,60 +506,76 @@ namespace Kaliz
 
            else if(Path.GetExtension(ten)==".c"|| Path.GetExtension(ten)==".cpp")
             {
-                outp.Items.Clear();
+                ListOutput.Items.Clear();
                 Process BienDich =new Process();
                 BienDich.StartInfo.FileName = "cmd";
                 BienDich.StartInfo.UseShellExecute = false;
                 BienDich.StartInfo.RedirectStandardOutput = true;
+                BienDich.StartInfo.RedirectStandardError = true;
                 BienDich.StartInfo.RedirectStandardInput = true;
                
                 if (enabledebug == false)
                     BienDich.StartInfo.Arguments = "/c " + "g++ "+ ten + " -o " + Path.GetDirectoryName(ten) + "\\" + Path.GetFileNameWithoutExtension(ten) + ".exe";
                 else BienDich.StartInfo.Arguments = "/c " + "g++ " +" -g "+ ten + " -o " + Path.GetDirectoryName(ten) + "\\" + Path.GetFileNameWithoutExtension(ten) + ".exe";
              
-                //BienDich.StartInfo.StandardOutputEncoding = Encoding.UTF8;
-                BienDich.StartInfo.CreateNoWindow = true;
+              
+               BienDich.StartInfo.CreateNoWindow = true;
                 BienDich.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;
                 BienDich.Start();
-                string ad;
-                ad = BienDich.StandardOutput.ReadToEnd();
-                
-                outp.AllowEdit = false;
-                outp.AllowRemove = false;
+              
+               string ad;
 
-               
-                MessageBox.Show(ad);
-                //while ((ad = BienDich.StandardOutput.ReadLine()) != null)
-                //{
-                //    outp.Items.Add(ad);
+                ListOutput.AllowEdit = false;
+                ListOutput.AllowRemove = false;
 
-                //   // if (ad.Contains("lines compiled")) break;
-                //}
-                //foreach (var item in outp.Items)
-                //{
-                //    if (item.Text.Contains("Fatal")) item.BackColor = Color.LightSalmon;
-                //    if (item.Text.Contains("lines compiled")) item.BackColor = Color.LightGreen;
-                //}
+
+               //Lấy thông tin Error chứ k phải Output :))
+                while ((ad = BienDich.StandardError.ReadLine()) != null)
+                {
+                    ListOutput.Items.Add(ad);
+
+                    // if (ad.Contains("lines compiled")) break;
+                }
+                if (ListOutput.Items.Count <2) ListOutput.Items.Add("Compile: " + Path.GetFileName(ten)+" - Completed, Ready to run");
+                else ListOutput.Items.Add("Build: " + Path.GetFileName(ten)+" - Fail");
+
+                foreach (var item in ListOutput.Items)
+                {
+                    if (item.Text.Contains("error")) item.BackColor = Color.LightSalmon;
+                    if (item.Text.Contains("Completed")) item.BackColor = Color.LightGreen;
+                    if (item.Text.Contains("- Fail")) item.BackColor = Color.LightSalmon;
+
+                }
 
             }
         }
 
-        private void BienDich_OutputDataReceived(object sender, DataReceivedEventArgs e)
-        {
-            MessageBox.Show(e.ToString());
-        }
+       
+
+     
 
         private void GDB(string ten)
         {
             if (Path.GetExtension(ten) == ".pas")
             {
                 Process BienDich = new Process();
+                //Cho ListGDB
+                BienDich.StartInfo.RedirectStandardOutput = true;
+                BienDich.StartInfo.RedirectStandardError = true;
+                BienDich.StartInfo.UseShellExecute = false;
+                
+                //
                 BienDich.StartInfo.FileName = "cmd";
                 BienDich.StartInfo.WorkingDirectory = @"FPC\bin\i386-win32\";           
                 BienDich.StartInfo.Arguments = "/c " + "gdb " + TepExe(ten);
                 BienDich.Start();
+                //BienDich.BeginOutputReadLine();
                
                 BienDich.WaitForExit();
+              //  string output;
+
+                //while ((output = BienDich.StandardOutput.ReadLine()) != null)
+                //    list.Items.Add(output);
 
             }
             if (Path.GetExtension(ten)==".c"|| Path.GetExtension(ten) == ".cpp")
@@ -575,6 +591,9 @@ namespace Kaliz
 
 
         }
+
+       
+
         private void Run(string file)
         {
             if (Path.GetExtension(file)==".pas")
@@ -582,7 +601,8 @@ namespace Kaliz
                     Process Chay = new Process();
                 
                 Chay.StartInfo.WorkingDirectory = Path.GetDirectoryName(file);
-                Chay.StartInfo.FileName =Path.GetFileNameWithoutExtension(file) + ".exe";
+                //Path.GetFileNameWithoutExtension(file) + ".exe"
+                Chay.StartInfo.FileName =TepExe(file);
                 Chay.StartInfo.UseShellExecute = true;
                 
                 //Chay.WaitForExit();
@@ -594,7 +614,8 @@ namespace Kaliz
                 Process Chay = new Process();
 
                 Chay.StartInfo.WorkingDirectory = Path.GetDirectoryName(file);
-                Chay.StartInfo.FileName = Path.GetFileNameWithoutExtension(file) + ".exe";
+                //Path.GetFileNameWithoutExtension(file) + ".exe"
+                Chay.StartInfo.FileName = TepExe(file);
                 Chay.StartInfo.UseShellExecute = true;
                 Chay.Start();
             }
@@ -619,7 +640,7 @@ namespace Kaliz
 
         private void BBuild_Click(object sender, EventArgs e)
         {
-            Build(TabHienTai.FileName,deBug,ref radListView1);
+            Build(TabHienTai.FileName,deBug,ref ListOutput);
             RadDesktopAlert al = new RadDesktopAlert();
             al.ThemeName = "MaterialTeal";
             al.CaptionText = "<html><color=Teal><b>Build Completed</b>";
@@ -829,7 +850,7 @@ namespace Kaliz
             compiler.Start();
             compiler.WaitForExit();
             string ass = compiler.StandardOutput.ReadToEnd();
-            list.Items.Add(ass);
+                                        list.Items.Add(ass);
         }
 
 

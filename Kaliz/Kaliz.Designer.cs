@@ -61,11 +61,12 @@ namespace Kaliz
             this.MOptions = new Telerik.WinControls.UI.RadMenuItem();
             this.MHelp = new Telerik.WinControls.UI.RadMenuItem();
             this.DockPar = new Telerik.WinControls.UI.Docking.RadDock();
-            this.BMList = new Telerik.WinControls.UI.Docking.ToolWindow();
-            this.ListBm = new Telerik.WinControls.UI.RadListView();
             this.DContainer = new Telerik.WinControls.UI.Docking.DocumentContainer();
             this.toolTabStrip1 = new Telerik.WinControls.UI.Docking.ToolTabStrip();
             this.Doutput = new Telerik.WinControls.UI.Docking.ToolWindow();
+            this.ListOutput = new Telerik.WinControls.UI.RadListView();
+            this.BMList = new Telerik.WinControls.UI.Docking.ToolWindow();
+            this.ListBm = new Telerik.WinControls.UI.RadListView();
             this.radMenuItem1 = new Telerik.WinControls.UI.RadMenuItem();
             this.MBookmark = new Telerik.WinControls.UI.RadMenuItem();
             this.BBookmark = new Telerik.WinControls.UI.RadMenuItem();
@@ -76,17 +77,16 @@ namespace Kaliz
             this.BBookmarkNext = new Telerik.WinControls.UI.RadMenuItem();
             this.radMenu1 = new Telerik.WinControls.UI.RadMenu();
             this.fluentDarkTheme1 = new Telerik.WinControls.Themes.FluentDarkTheme();
-            this.radListView1 = new Telerik.WinControls.UI.RadListView();
             ((System.ComponentModel.ISupportInitialize)(this.DockPar)).BeginInit();
             this.DockPar.SuspendLayout();
-            this.BMList.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.ListBm)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DContainer)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.toolTabStrip1)).BeginInit();
             this.toolTabStrip1.SuspendLayout();
             this.Doutput.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ListOutput)).BeginInit();
+            this.BMList.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ListBm)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.radMenu1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.radListView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this)).BeginInit();
             this.SuspendLayout();
             // 
@@ -290,7 +290,7 @@ namespace Kaliz
             // 
             // DockPar
             // 
-            this.DockPar.ActiveWindow = this.Doutput;
+            this.DockPar.ActiveWindow = this.BMList;
             this.DockPar.CausesValidation = false;
             this.DockPar.Controls.Add(this.DContainer);
             this.DockPar.Controls.Add(this.toolTabStrip1);
@@ -310,32 +310,6 @@ namespace Kaliz
             this.DockPar.TabIndex = 2;
             this.DockPar.TabStop = false;
             this.DockPar.ThemeName = "MaterialTeal";
-            // 
-            // BMList
-            // 
-            this.BMList.Caption = null;
-            this.BMList.Controls.Add(this.ListBm);
-            this.BMList.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.BMList.Location = new System.Drawing.Point(4, 52);
-            this.BMList.Name = "BMList";
-            this.BMList.PreviousDockState = Telerik.WinControls.UI.Docking.DockState.Docked;
-            this.BMList.Size = new System.Drawing.Size(1085, 99);
-            this.BMList.Text = "Bookmark List";
-            this.BMList.ToolCaptionButtons = Telerik.WinControls.UI.Docking.ToolStripCaptionButtons.AutoHide;
-            // 
-            // ListBm
-            // 
-            this.ListBm.AllowEdit = false;
-            this.ListBm.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ListBm.FullRowSelect = false;
-            this.ListBm.GroupItemSize = new System.Drawing.Size(200, 36);
-            this.ListBm.ItemSize = new System.Drawing.Size(144, 60);
-            this.ListBm.Location = new System.Drawing.Point(0, 0);
-            this.ListBm.Name = "ListBm";
-            this.ListBm.Size = new System.Drawing.Size(1085, 99);
-            this.ListBm.TabIndex = 0;
-            this.ListBm.ThemeName = "MaterialTeal";
-            this.ListBm.ViewType = Telerik.WinControls.UI.ListViewType.IconsView;
             // 
             // DContainer
             // 
@@ -362,7 +336,7 @@ namespace Kaliz
             // 
             // 
             this.toolTabStrip1.RootElement.MinSize = new System.Drawing.Size(25, 25);
-            this.toolTabStrip1.SelectedIndex = 0;
+            this.toolTabStrip1.SelectedIndex = 1;
             this.toolTabStrip1.Size = new System.Drawing.Size(1093, 181);
             this.toolTabStrip1.SizeInfo.AbsoluteSize = new System.Drawing.Size(200, 181);
             this.toolTabStrip1.SizeInfo.SplitterCorrection = new System.Drawing.Size(0, -19);
@@ -373,14 +347,51 @@ namespace Kaliz
             // Doutput
             // 
             this.Doutput.Caption = null;
-            this.Doutput.Controls.Add(this.radListView1);
+            this.Doutput.Controls.Add(this.ListOutput);
             this.Doutput.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.Doutput.Location = new System.Drawing.Point(4, 52);
             this.Doutput.Name = "Doutput";
             this.Doutput.PreviousDockState = Telerik.WinControls.UI.Docking.DockState.Docked;
-            this.Doutput.Size = new System.Drawing.Size(1085, 99);
+            this.Doutput.Size = new System.Drawing.Size(1077, 99);
             this.Doutput.Text = "Output";
             this.Doutput.ToolCaptionButtons = Telerik.WinControls.UI.Docking.ToolStripCaptionButtons.AutoHide;
+            // 
+            // ListOutput
+            // 
+            this.ListOutput.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ListOutput.GroupItemSize = new System.Drawing.Size(200, 36);
+            this.ListOutput.ItemSize = new System.Drawing.Size(200, 36);
+            this.ListOutput.Location = new System.Drawing.Point(0, 0);
+            this.ListOutput.Name = "ListOutput";
+            this.ListOutput.Size = new System.Drawing.Size(1077, 99);
+            this.ListOutput.TabIndex = 0;
+            this.ListOutput.ThemeName = "MaterialTeal";
+            // 
+            // BMList
+            // 
+            this.BMList.Caption = null;
+            this.BMList.Controls.Add(this.ListBm);
+            this.BMList.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            this.BMList.Location = new System.Drawing.Point(4, 52);
+            this.BMList.Name = "BMList";
+            this.BMList.PreviousDockState = Telerik.WinControls.UI.Docking.DockState.Docked;
+            this.BMList.Size = new System.Drawing.Size(1085, 99);
+            this.BMList.Text = "Bookmark List";
+            this.BMList.ToolCaptionButtons = Telerik.WinControls.UI.Docking.ToolStripCaptionButtons.AutoHide;
+            // 
+            // ListBm
+            // 
+            this.ListBm.AllowEdit = false;
+            this.ListBm.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ListBm.FullRowSelect = false;
+            this.ListBm.GroupItemSize = new System.Drawing.Size(200, 36);
+            this.ListBm.ItemSize = new System.Drawing.Size(144, 60);
+            this.ListBm.Location = new System.Drawing.Point(0, 0);
+            this.ListBm.Name = "ListBm";
+            this.ListBm.Size = new System.Drawing.Size(1085, 99);
+            this.ListBm.TabIndex = 0;
+            this.ListBm.ThemeName = "MaterialTeal";
+            this.ListBm.ViewType = Telerik.WinControls.UI.ListViewType.IconsView;
             // 
             // radMenuItem1
             // 
@@ -454,17 +465,6 @@ namespace Kaliz
             this.radMenu1.TabIndex = 1;
             this.radMenu1.ThemeName = "MaterialTeal";
             // 
-            // radListView1
-            // 
-            this.radListView1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.radListView1.GroupItemSize = new System.Drawing.Size(200, 36);
-            this.radListView1.ItemSize = new System.Drawing.Size(200, 36);
-            this.radListView1.Location = new System.Drawing.Point(0, 0);
-            this.radListView1.Name = "radListView1";
-            this.radListView1.Size = new System.Drawing.Size(1085, 99);
-            this.radListView1.TabIndex = 0;
-            this.radListView1.ThemeName = "MaterialTeal";
-            // 
             // Kaliz
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -482,14 +482,14 @@ namespace Kaliz
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             ((System.ComponentModel.ISupportInitialize)(this.DockPar)).EndInit();
             this.DockPar.ResumeLayout(false);
-            this.BMList.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.ListBm)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.DContainer)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.toolTabStrip1)).EndInit();
             this.toolTabStrip1.ResumeLayout(false);
             this.Doutput.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.ListOutput)).EndInit();
+            this.BMList.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.ListBm)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.radMenu1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.radListView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -544,6 +544,6 @@ namespace Kaliz
         private Telerik.WinControls.UI.Docking.ToolWindow BMList;
         private Telerik.WinControls.UI.RadListView ListBm;
         private Telerik.WinControls.Themes.FluentDarkTheme fluentDarkTheme1;
-        private Telerik.WinControls.UI.RadListView radListView1;
+        private Telerik.WinControls.UI.RadListView ListOutput;
     }
 }
