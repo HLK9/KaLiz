@@ -26,6 +26,9 @@ namespace Kaliz
     public partial class Kaliz : Telerik.WinControls.UI.RadForm
     {
       private  bool deBug = false;
+        private bool enableContext = false;
+        
+        
         private int chiso { get; set; }
 
         public Kaliz()
@@ -66,7 +69,7 @@ namespace Kaliz
                     DanhDau.ApplyConfiguration("C++");
                     DanhDau.StatusBarSettings.FileNamePanel.Panel.Text = "C/C++";
                     DanhDau.ContextChoiceOpen += DanhDau_ContextChoiceOpen_C;
-                    DanhDau.ContextPromptOpen += DanhDau_ContextPromptOpen;
+                   // DanhDau.ContextPromptOpen += DanhDau_ContextPromptOpen;
 
 
                 }
@@ -78,7 +81,7 @@ namespace Kaliz
                     DanhDau.ApplyConfiguration("Pascal");
                     DanhDau.StatusBarSettings.FileNamePanel.Panel.Text = "Pascal";
                    DanhDau.ContextChoiceOpen += DanhDau_ContextChoiceOpen;
-                   DanhDau.ContextPromptOpen += DanhDau_ContextPromptOpen;
+                  // DanhDau.ContextPromptOpen += DanhDau_ContextPromptOpen;
                    
                 }
              
@@ -108,7 +111,7 @@ namespace Kaliz
             DanhDau.StatusBarSettings.GripVisibility = Syncfusion.Windows.Forms.Edit.Enums.SizingGripVisibility.Hidden;
             DanhDau.StatusBarSettings.TextPanel.Panel.Text = F;
             DanhDau.StatusBarSettings.StatusPanel.Panel.Text = "Saved";
-            DanhDau.StatusBarSettings.StatusPanel.Panel.BackColor = Color.DarkMagenta;
+            DanhDau.StatusBarSettings.StatusPanel.Panel.BackColor = Color.Teal;
             DanhDau.StatusBarSettings.StatusPanel.Panel.ForeColor = Color.White;
             //Các sự kiện
             DanhDau.TextChanged += DanhDau_TextChanged;
@@ -182,15 +185,7 @@ namespace Kaliz
             e.Text = Path.GetFileName(TabHienTai.FileName);
         }
 
-        private void DanhDau_ContextPromptOpen(object sender, ContextPromptUpdateEventArgs e)
-        {
-            e.AddPrompt("Control.Items.Add(string text, string tooltipText, int imageIndex, int selectedImageIndex)", "Specify the text of the item, its tooltip text, image index and selected image index");
-
-            e.AddPrompt("Control.Items.Add(string text, string tooltipText, int imageIndex)", "Specify the text of the item, its tooltip text, and image index");
-
-            e.AddPrompt("Control.Items.Add(string text, string tooltipText)", "Specify the text of the item, and its tooltip text");
-        }
-
+       
        
 
         private void DanhDau_ContextChoiceOpen_C(IContextChoiceController controller)
@@ -207,7 +202,7 @@ namespace Kaliz
             controller.Items.Add("typedef");
             controller.Items.Add("char");
             controller.Items.Add("extern");
-            controller.Items.Add("return");
+            controller.Items.Add("return","cái ày là của C/C++");
             controller.Items.Add("union");
             controller.Items.Add("const");
             controller.Items.Add("float");
@@ -274,70 +269,75 @@ namespace Kaliz
 
         private void DanhDau_ContextChoiceOpen(IContextChoiceController controller)
         {
+            
+                controller.Items.Add("begin", "ở đây không có tiền");
+                controller.Items.Add("break", "con mèo đen");
+                controller.Items.Add("case", "bùm");
+                controller.Items.Add("const", "lờ mao");
+                controller.Items.Add("absolute", "");
+                controller.Items.Add("and");
+                controller.Items.Add("array");
+                controller.Items.Add("asm");
+                controller.Items.Add("do");
+                controller.Items.Add("downto");
+                controller.Items.Add("else");
+                controller.Items.Add("end");
+                controller.Items.Add("constructor");
+                controller.Items.Add("continue");
+                controller.Items.Add("destructor");
+                controller.Items.Add("div");
+                controller.Items.Add("file");
+                controller.Items.Add("for");
+                controller.Items.Add("function");
+                controller.Items.Add("goto");
+                controller.Items.Add("if");
+                controller.Items.Add("implementation");
+                controller.Items.Add("in");
+                controller.Items.Add("inherited");
+                controller.Items.Add("inline");
+                controller.Items.Add("interface");
+                controller.Items.Add("label");
+                controller.Items.Add("mod");
+                controller.Items.Add("nil");
+                controller.Items.Add("not");
+                controller.Items.Add("object");
+                controller.Items.Add("of");
+                controller.Items.Add("on");
+                controller.Items.Add("packaed");
+                controller.Items.Add("operator");
+                controller.Items.Add("or");
+                controller.Items.Add("procedure");
+                controller.Items.Add("program");
+                controller.Items.Add("record");
+                controller.Items.Add("reintroduce");
+                controller.Items.Add("repeat");
+                controller.Items.Add("self");
+                controller.Items.Add("set");
+                controller.Items.Add("shl");
+                controller.Items.Add("shr");
+                controller.Items.Add("string");
+                controller.Items.Add("then");
+                controller.Items.Add("to");
+                controller.Items.Add("type");
+                controller.Items.Add("unit");
+                controller.Items.Add("until");
+                controller.Items.Add("uses");
+                controller.Items.Add("var");
+                controller.Items.Add("while");
+                controller.Items.Add("with");
+                controller.Items.Add("xor");
+            
            
-                controller.Items.Add("begin", "Activate the form and give it focus");
-                controller.Items.Add("break", "Gets or sets the Active Control");
-                controller.Items.Add("case", "Activates the MDIChild of form");
-                controller.Items.Add("const", "Gets or sets the value indicating Autoscroll");
-                controller.Items.Add("absolute","");
-            controller.Items.Add("and");
-            controller.Items.Add("array");
-            controller.Items.Add("asm");
-            controller.Items.Add("do");
-            controller.Items.Add("downto");
-            controller.Items.Add("else");
-            controller.Items.Add("end");
-            controller.Items.Add("constructor");
-            controller.Items.Add("continue");
-            controller.Items.Add("destructor");
-            controller.Items.Add("div");
-            controller.Items.Add("file");
-            controller.Items.Add("for");
-            controller.Items.Add("function");
-            controller.Items.Add("goto");
-            controller.Items.Add("if");
-            controller.Items.Add("implementation");
-            controller.Items.Add("in");
-            controller.Items.Add("inherited");
-            controller.Items.Add("inline");
-            controller.Items.Add("interface");
-            controller.Items.Add("label");
-            controller.Items.Add("mod");
-            controller.Items.Add("nil");
-            controller.Items.Add("not");
-            controller.Items.Add("object");
-            controller.Items.Add("of");
-            controller.Items.Add("on");
-            controller.Items.Add("packaed");
-            controller.Items.Add("operator");
-            controller.Items.Add("or");
-            controller.Items.Add("procedure");
-            controller.Items.Add("program");
-            controller.Items.Add("record");
-            controller.Items.Add("reintroduce");
-            controller.Items.Add("repeat");
-            controller.Items.Add("self");
-            controller.Items.Add("set");
-            controller.Items.Add("shl");
-            controller.Items.Add("shr");
-            controller.Items.Add("string");
-            controller.Items.Add("then");
-            controller.Items.Add("to");
-            controller.Items.Add("type");
-            controller.Items.Add("unit");
-            controller.Items.Add("until");
-            controller.Items.Add("uses");
-            controller.Items.Add("var");
-            controller.Items.Add("while");
-            controller.Items.Add("with");
-            controller.Items.Add("xor");
         }
 
         private void DanhDau_TextChanged(object sender, EventArgs e)
         {
-            TabHienTai.ShowContextChoice();
+            if (enableContext == true)
+            {
+                TabHienTai.ShowContextChoice();
 
-            TabHienTai.FilterAutoCompleteItems = true;
+                TabHienTai.FilterAutoCompleteItems = true;
+            }
 
             TabHienTai.StatusBarSettings.StatusPanel.Panel.Text = "Unsaved";
             TabHienTai.StatusBarSettings.StatusPanel.Panel.BackColor = Color.DarkMagenta;
@@ -482,7 +482,7 @@ namespace Kaliz
                 BienDich.Start();
                 ListOutput.AllowEdit = false;
                 ListOutput.AllowRemove = false;
-                
+                bool issuccess = true;
                 string ad;
                     while ( (ad=BienDich.StandardOutput.ReadLine())!=null)
                 {
@@ -492,17 +492,26 @@ namespace Kaliz
                 }
                     foreach (var item in ListOutput.Items)
                 {
-                    if (item.Text.Contains("Fatal")) item.BackColor = Color.LightSalmon;
+                    if (item.Text.Contains("Fatal"))
+                    { item.BackColor = Color.LightSalmon;
+                        issuccess = false;
+                    }
+
                     if (item.Text.Contains("lines compiled")) item.BackColor = Color.LightGreen;
                 }
-                   
-                   
-                
-               
-                
+               if (issuccess == false)
+                    ShowAlert_Light("<html><color=LightSalmon>Build Failed", "Check output to view more");
+               else
+                    ShowAlert_Light("<html><color=Teal>Build Completed", "Ready to run");
+
+
+
+
+
+
                 //BienDich.WaitForExit();
-                
-           }
+
+            }
 
            else if(Path.GetExtension(ten)==".c"|| Path.GetExtension(ten)==".cpp")
             {
@@ -560,13 +569,11 @@ namespace Kaliz
             {
                 Process BienDich = new Process();
                 //Cho ListGDB
-                BienDich.StartInfo.RedirectStandardOutput = true;
-                BienDich.StartInfo.RedirectStandardError = true;
-                BienDich.StartInfo.UseShellExecute = false;
+                
                 
                 //
                 BienDich.StartInfo.FileName = "cmd";
-                BienDich.StartInfo.WorkingDirectory = @"FPC\bin\i386-win32\";           
+                BienDich.StartInfo.WorkingDirectory =@"FPC\bin\i386-win32\";           
                 BienDich.StartInfo.Arguments = "/c " + "gdb " + TepExe(ten);
                 BienDich.Start();
                 //BienDich.BeginOutputReadLine();
@@ -629,6 +636,7 @@ namespace Kaliz
         /// <param name="e"></param>
         private void radMenuItem1_Click_1(object sender, EventArgs e)
         {
+
           //  Compile(ref radListView1);
             //  MessageBox.Show(Path.GetExtension(TabHienTai.FileName));
             //radListView1.Items.Add(new ListViewItem (new string[] { "hee","of"}));
@@ -641,14 +649,7 @@ namespace Kaliz
         private void BBuild_Click(object sender, EventArgs e)
         {
             Build(TabHienTai.FileName,deBug,ref ListOutput);
-            RadDesktopAlert al = new RadDesktopAlert();
-            al.ThemeName = "MaterialTeal";
-            al.CaptionText = "<html><color=Teal><b>Build Completed</b>";
-            al.ScreenPosition = AlertScreenPosition.TopRight;
-            al.ContentText = "<html><i><span><color=Teal>Application already to run</span></i>";
-            al.AutoCloseDelay = 5;
-            al.AutoSize = true;
-            al.Show();
+            
         }
 
         private void BBookmark_Click(object sender, EventArgs e)
@@ -803,17 +804,22 @@ namespace Kaliz
             }
             else
             {
-                RadDesktopAlert al = new RadDesktopAlert();
-                al.ThemeName = "MaterialTeal";
-                al.CaptionText = "Bạn chưa bật GDB Debug";
-                
-                al.ContentText = "<html><i>Nếu chưa biết sử dụng, hay tham khảo ở<span><color=Teal> Mục</span></i>";
-                al.AutoCloseDelay = 5;
-                al.AutoSize = true;
-                al.Show();
+                ShowAlert_Light("<html><color=Blue>Bạn chưa bật GDB Debug", "<html><i>Nếu chưa biết sử dụng, hay tham khảo ở<span><color=Teal> Mục</span></i>");
             }
         }
-
+        private void ShowAlert_Light (string cap, string content)
+        {
+            RadDesktopAlert al = new RadDesktopAlert();
+            al.ThemeName = "Windows8";
+            al.CaptionText = cap;
+            al.Opacity = 0.8f;
+            al.PopupAnimationDirection = RadDirection.Up;
+            al.ScreenPosition = AlertScreenPosition.BottomRight;
+            al.ContentText = content;
+            al.AutoCloseDelay = 5;
+            al.AutoSize = true;
+            al.Show();
+        }
         private void MDebug_Click(object sender, EventArgs e)
         {
 
@@ -853,11 +859,39 @@ namespace Kaliz
                                         list.Items.Add(ass);
         }
 
+        private void OEnableContext_Click(object sender, EventArgs e)
+        {
+            if (enableContext== false)
+            {
+                enableContext = true;
+                OEnableContext.Text = "Disable Context Intellisense";
+                ShowAlert_Light("<html><color=Teal>Context Intellisense Enabled", null);
+            }
+            else
+            {
+                enableContext = false;
+                OEnableContext.Text = "Enable Context Intellisense";
+            }
+        }
 
+        private void PerReadonly_Click(object sender, EventArgs e)
+        {
+            TabHienTai.ReadOnly = true;
+            RadDesktopAlert Ds = new RadDesktopAlert();
+            Ds.AutoClose = false;
+            Ds.CaptionText = "<html><color=Red>Readonly";
+            Ds.ScreenPosition = AlertScreenPosition.TopCenter;
+            Ds.ThemeName = "Windows8";
+            Ds.Show();
+        }
 
+        private void PerDisable_Click(object sender, EventArgs e)
+        {
+            TabHienTai.ReadOnly = false;
+            TabHienTai.StatusBarSettings.StatusPanel.Panel.Text = "Unsaved";
+            TabHienTai.StatusBarSettings.StatusPanel.Panel.BackColor = Color.DarkMagenta;
+            TabHienTai.StatusBarSettings.StatusPanel.Panel.ForeColor = Color.White;
 
-
-
-
+        }
     }
 }
