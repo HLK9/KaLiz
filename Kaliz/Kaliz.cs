@@ -27,6 +27,7 @@ namespace Kaliz
     {
       private  bool deBug = false;
         private bool enableContext = false;
+        private bool enableTooltip = false;
         
         
         private int chiso { get; set; }
@@ -36,7 +37,7 @@ namespace Kaliz
             
             InitializeComponent();
             //Tạo sẵn để test
-            TaoMoi("hal.pas", "C:\\Users\\HoangLien\\Desktop\\TeeS\\hal.pas");
+            //TaoMoi("hal.pas", "C:\\Users\\HoangLien\\Desktop\\TeeS\\hal.pas");
            
 
 
@@ -146,21 +147,23 @@ namespace Kaliz
                     {
                         // Get tokens from the current line
                         ILexem lexem = line.FindLexemByColumn(pointVirtual.X);
-                        
-                        if (lexem != null)
+
+                        if (lexem != null && enableTooltip == true)
                         {
                             // Set the desired information tooltip
                             switch (lexem.Text.ToLower())
                             {
                                 case "program":
-                                    e.Text = lexem.Text+" |Từ khóa\n Xác định bắt đầu của một ứng dụng, thường là tùy chọn";
+                                    e.Text = lexem.Text + " |Từ khóa\n Xác định bắt đầu của một ứng dụng, thường là tùy chọn";
                                     break;
                                 case "var":
                                     e.Text = lexem.Text + " |Từ khóa\n Sử dụng để khai báo biến";
                                     break;
-                                case "byte": e.Text=lexem.Text + " |Kiểu dữ liệu\n Kiểu nguyên, có phạm vi từ 0->255 ";
+                                case "byte":
+                                    e.Text = lexem.Text + " |Kiểu dữ liệu\n Kiểu nguyên, có phạm vi từ 0->255 ";
                                     break;
-                                default: e.Text = "";
+                                default:
+                                    e.Text = "";
                                     break;
                             }
                             //if (lexem.Text == "program")
@@ -171,9 +174,10 @@ namespace Kaliz
                             //    e.Text = "in" + lexem.Text;
                             //if (lexem.Text == "readln")
                             //    e.Text = "dừng " + lexem.Text;
-                           
+
 
                         }
+                        else e.Text = "";
                     }
                 }
 
@@ -399,9 +403,12 @@ namespace Kaliz
         {
             get
             {
-                if (DockPar.ActiveWindow == null) return null;
-                return (DockPar.DocumentManager.ActiveDocument.Controls[0] as EditControl);
-                //Fixed... :v
+                
+                    if (DockPar.ActiveWindow == null) return null;
+                    return (DockPar.DocumentManager.ActiveDocument.Controls[0] as EditControl);
+                    //Fixed... :v
+                    
+               
             }
             set
             {
@@ -415,45 +422,75 @@ namespace Kaliz
 
         private void ECopy_Click(object sender, EventArgs e)
         {
-            if (TabHienTai.CanCopy == true)
+            try
+            {
+ if (TabHienTai.CanCopy == true)
             {
                 TabHienTai.Copy();
             }
-            else MessageBox.Show("Loi");
+            }
+            catch { }
+           
+           
           
 
         }
 
         private void ECut_Click(object sender, EventArgs e)
         {
-            TabHienTai.Cut();
+            try
+            {
+                    TabHienTai.Cut();
+            }
+            catch { }
+            
 
         }
 
         private void EPaste_Click(object sender, EventArgs e)
         {
-            TabHienTai.Paste();
+            try
+            {
+TabHienTai.Paste();
+            }
+            catch { }
+            
         }
 
         private void FPrint_Click(object sender, EventArgs e)
         {
-            if (TabHienTai.ActiveControl != null) TabHienTai.Print();
+            try
+            {
+                if (TabHienTai.ActiveControl != null) TabHienTai.Print();
+            }
+            catch { }
+            
         }
 
         private void FSaveAs_Click(object sender, EventArgs e)
         {
-            TabHienTai.SaveAs();
+            try
+            {
+                     TabHienTai.SaveAs();
+            }
+            catch { }
+           
         }
 
         private void FExport_Click(object sender, EventArgs e)
         {
-            SaveFileDialog LuuVoiRTF = new SaveFileDialog();
+            try
+            {
+                        SaveFileDialog LuuVoiRTF = new SaveFileDialog();
             LuuVoiRTF.FileName = Path.GetFileNameWithoutExtension(TabHienTai.FileName) + ".rtf";
             LuuVoiRTF.Filter = "RitchTextDocuments (*.rtf)|*.rtf";
             if (LuuVoiRTF.ShowDialog() == DialogResult.OK)
             {
                 this.TabHienTai.SaveAsRTF(LuuVoiRTF.FileName);
+            } 
             }
+            catch { }
+           
             //this.TabHienTai.SaveAsRTF("Document.rtf");
         }
         private string TepExe (string ten)
@@ -648,13 +685,20 @@ namespace Kaliz
 
         private void BBuild_Click(object sender, EventArgs e)
         {
-            Build(TabHienTai.FileName,deBug,ref ListOutput);
+            try
+            {
+ Build(TabHienTai.FileName,deBug,ref ListOutput);
+            }
+            catch { }
+           
             
         }
 
         private void BBookmark_Click(object sender, EventArgs e)
         {
-            BrushInfo brushInfo = new BrushInfo(Color.DarkViolet);
+            try
+            {
+                    BrushInfo brushInfo = new BrushInfo(Color.DarkViolet);
             TabHienTai.BookmarkAdd(TabHienTai.CurrentLine,brushInfo);
             string sd = "Bookmark : " + TabHienTai.CurrentLine;
             
@@ -665,7 +709,10 @@ namespace Kaliz
                    
 
             }
-            ListBm.Items.Add(sd);
+            ListBm.Items.Add(sd);        
+            }
+            catch { }
+            
 
 
 
@@ -673,75 +720,123 @@ namespace Kaliz
 
         private void BRemoveBookmark_Click(object sender, EventArgs e)
         {
-            TabHienTai.BookmarkRemove(TabHienTai.CurrentLine);
+            try
+            {
+                TabHienTai.BookmarkRemove(TabHienTai.CurrentLine);
             string sd = TabHienTai.CurrentLine.ToString();
            for  (int i=ListBm.Items.Count-1;i>=0;i--)
             {
                 if (ListBm.Items[i].Text.Contains(sd))
                 { ListBm.Items.RemoveAt(i); }
             }
+            }
+            catch { }
+            
             
         }
 
         private void BRemoveAll_Click(object sender, EventArgs e)
         {
-            TabHienTai.BookmarkClear();
+            try
+            {
+  TabHienTai.BookmarkClear();
+            }
+            catch { }
+          
         }
 
         private void TFind_Click(object sender, EventArgs e)
         {
-            TabHienTai.FindDialog();
+            try
+            { TabHienTai.FindDialog(); }
+            catch { };
         }
 
         private void TReplace_Click(object sender, EventArgs e)
         {
-            TabHienTai.ReplaceDialog();
+            try
+            {
+TabHienTai.ReplaceDialog();
+            }
+            catch { }
+            
         }
         
         private void TGoToLine_Click(object sender, EventArgs e)
         {
-            TabHienTai.GoToDialog();
+            try
+            {
+                TabHienTai.GoToDialog();
+            }
+            catch { }
+            
         }
 
         private void ESave_Click(object sender, EventArgs e)
         {
-            TabHienTai.Save();
+            try
+            {
+                TabHienTai.Save();
             TabHienTai.StatusBarSettings.StatusPanel.Panel.Text = "Saved";
             TabHienTai.StatusBarSettings.StatusPanel.Panel.BackColor = Color.DarkCyan;
             TabHienTai.StatusBarSettings.StatusPanel.Panel.ForeColor = Color.White;
+            }
+            catch { }
+           
 
 
         }
 
         private void BBookmarkPre_Click(object sender, EventArgs e)
         {
-            TabHienTai.BookmarkPrevious();
+
+            try
+            {
+                 TabHienTai.BookmarkPrevious();
+            }
+            catch { }
+           
         }
 
         private void BBookmarkNext_Click(object sender, EventArgs e)
         {
-            TabHienTai.BookmarkNext();
+            try
+            {
+                TabHienTai.BookmarkNext();
+            }
+            catch { }
         }
 
         private void ESelect_Click(object sender, EventArgs e)
         {
-            if (TabHienTai.SelectionMode == SelectionModes.Default)
+            try
+
             {
-                 TabHienTai.SelectionMode = SelectionModes.Block;
-                ESelect.Text = "Select Mode: Default";
+                if (TabHienTai.SelectionMode == SelectionModes.Default)
+                {
+                    TabHienTai.SelectionMode = SelectionModes.Block;
+                    ESelect.Text = "Select Mode: Default";
+                }
+                else
+                {
+                    TabHienTai.SelectionMode = SelectionModes.Default;
+                    ESelect.Text = "Select Mode: Block";
+                }
             }
-            else
-            {
-                TabHienTai.SelectionMode = SelectionModes.Default;
-                ESelect.Text = "Select Mode: Block";
-            }
+            catch { }
            
         }
        
 
         private void BRun_Click(object sender, EventArgs e)
         {
-            Run(TabHienTai.FileName);
+            try
+            {
+                Run(TabHienTai.FileName);
+
+            }
+            catch { }
+            
         }
 
         private void FExit_Click(object sender, EventArgs e)
@@ -751,32 +846,17 @@ namespace Kaliz
 
         private void DEnable_Click(object sender, EventArgs e)
         {
+
             if (deBug == false)
             {
-                RadDesktopAlert al = new RadDesktopAlert();
-                al.ThemeName = "MaterialTeal";
-                al.CaptionText = "<html><color=Crimson><b>Bạn đã Bật GDB Debug</b>";
-                al.ScreenPosition = AlertScreenPosition.TopRight;
-                
-                al.ContentText = "<html><i><span><color=Teal>Để sử dụng GDB Debug, hãy biên dịch lại để trình biên dịch khởi tạo thông tin</span></i>";
-                al.AutoCloseDelay = 5;
-                al.AutoSize = true;
-                al.Show();
-                deBug = false;
+                ShowAlert_Light("< html >< color = Teal >< b > Bạn đã Bật GDB Debug </ b > ", "<html><i><span><color=Teal>Hãy biên dịch lại để khởi tạo</span></i>");
                 deBug = true;
                 DEnable.Text = "Disable Debug";
                 
             }
             else
             {
-                RadDesktopAlert al = new RadDesktopAlert();
-                al.ThemeName = "MaterialTeal";
-                al.CaptionText = "<html><color=Crimson><b>Bạn đã Tắt GDB Debug</b>";
-                al.ScreenPosition = AlertScreenPosition.TopRight;
-                al.ContentText = "<html><i><span><color=Teal>Trình biên dịch sẽ không khởi tạo thông tin Debug</span></i>";
-                al.AutoCloseDelay = 5;
-                al.AutoSize = true;
-                al.Show();
+                ShowAlert_Light("< html >< color = Crimson >< b > Bạn đã Tắt GDB Debug </ b > ", "<html><i><span><color=Teal>Trình biên dịch sẽ không khởi tạo thông tin Debug</span></i>");
                 deBug = false;
                 DEnable.Text = "Enable Debug";
                
@@ -794,18 +874,19 @@ namespace Kaliz
 
         private void DOpenGDB_Click(object sender, EventArgs e)
         {
-            if (deBug == true)
+            try
             {
-               
-               
-                // al.AutoClose = true;
-                GDB(TabHienTai.FileName);
+                if (deBug == true)
+                {
+                    GDB(TabHienTai.FileName);
 
+                }
+                else
+                {
+                    ShowAlert_Light("<html><color=Blue>Bạn chưa bật GDB Debug", "<html><i>Nếu chưa biết sử dụng, hay tham khảo ở<span><color=Teal> Mục</span></i>");
+                }
             }
-            else
-            {
-                ShowAlert_Light("<html><color=Blue>Bạn chưa bật GDB Debug", "<html><i>Nếu chưa biết sử dụng, hay tham khảo ở<span><color=Teal> Mục</span></i>");
-            }
+            catch { }
         }
         private void ShowAlert_Light (string cap, string content)
         {
@@ -876,22 +957,42 @@ namespace Kaliz
 
         private void PerReadonly_Click(object sender, EventArgs e)
         {
+            try
+            {
             TabHienTai.ReadOnly = true;
-            RadDesktopAlert Ds = new RadDesktopAlert();
-            Ds.AutoClose = false;
-            Ds.CaptionText = "<html><color=Red>Readonly";
-            Ds.ScreenPosition = AlertScreenPosition.TopCenter;
-            Ds.ThemeName = "Windows8";
-            Ds.Show();
+            ShowAlert_Light("<html><color=Crimson>Readonly Enabled", null);
+            }
+            catch { };
+            
         }
 
         private void PerDisable_Click(object sender, EventArgs e)
         {
-            TabHienTai.ReadOnly = false;
-            TabHienTai.StatusBarSettings.StatusPanel.Panel.Text = "Unsaved";
-            TabHienTai.StatusBarSettings.StatusPanel.Panel.BackColor = Color.DarkMagenta;
-            TabHienTai.StatusBarSettings.StatusPanel.Panel.ForeColor = Color.White;
+            try
+            {
+                TabHienTai.ReadOnly = false;
+                ShowAlert_Light("<html><color=Teal>Readonly Disabled", null);
+                TabHienTai.StatusBarSettings.StatusPanel.Panel.Text = "Unsaved";
+                TabHienTai.StatusBarSettings.StatusPanel.Panel.BackColor = Color.DarkMagenta;
+                TabHienTai.StatusBarSettings.StatusPanel.Panel.ForeColor = Color.White;
+            }
+            catch { };
 
+        }
+
+        private void OCTooltip_Click(object sender, EventArgs e)
+        {
+            if (enableTooltip == false)
+            {
+                enableTooltip = true;
+                OCTooltip.Text = "Disable Context Tooltip";
+            }
+            else
+            {
+                enableTooltip = false;
+                OCTooltip.Text = "Enable Context Tooltip";
+
+            }
         }
     }
 }
