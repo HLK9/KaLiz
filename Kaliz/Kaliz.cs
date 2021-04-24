@@ -950,6 +950,7 @@ TabHienTai.ReplaceDialog();
             }
             else
             {
+                ShowAlert_Light("<html><color=Crimson>Context Intellisense Disabled", null);
                 enableContext = false;
                 OEnableContext.Text = "Enable Context Intellisense";
             }
@@ -984,12 +985,15 @@ TabHienTai.ReplaceDialog();
         {
             if (enableTooltip == false)
             {
+                
                 enableTooltip = true;
+                ShowAlert_Light("<html><color=Teal>Context Tooltip Enabled", null);
                 OCTooltip.Text = "Disable Context Tooltip";
             }
             else
             {
                 enableTooltip = false;
+                ShowAlert_Light("<html><color=Crimson>Context Tooltip Disabled", null);
                 OCTooltip.Text = "Enable Context Tooltip";
 
             }
