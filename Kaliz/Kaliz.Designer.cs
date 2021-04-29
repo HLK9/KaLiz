@@ -63,6 +63,7 @@ namespace Kaliz
             this.OLock = new Telerik.WinControls.UI.RadMenuItem();
             this.PerReadonly = new Telerik.WinControls.UI.RadMenuItem();
             this.PerDisable = new Telerik.WinControls.UI.RadMenuItem();
+            this.OCTooltip = new Telerik.WinControls.UI.RadMenuItem();
             this.MHelp = new Telerik.WinControls.UI.RadMenuItem();
             this.DockPar = new Telerik.WinControls.UI.Docking.RadDock();
             this.Doutput = new Telerik.WinControls.UI.Docking.ToolWindow();
@@ -82,7 +83,6 @@ namespace Kaliz
             this.radMenu1 = new Telerik.WinControls.UI.RadMenu();
             this.fluentDarkTheme1 = new Telerik.WinControls.Themes.FluentDarkTheme();
             this.windows8Theme1 = new Telerik.WinControls.Themes.Windows8Theme();
-            this.OCTooltip = new Telerik.WinControls.UI.RadMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.DockPar)).BeginInit();
             this.DockPar.SuspendLayout();
             this.Doutput.SuspendLayout();
@@ -319,6 +319,12 @@ namespace Kaliz
             this.PerDisable.Text = "Disable Read Only";
             this.PerDisable.Click += new System.EventHandler(this.PerDisable_Click);
             // 
+            // OCTooltip
+            // 
+            this.OCTooltip.Name = "OCTooltip";
+            this.OCTooltip.Text = "Enable Context Tooltip";
+            this.OCTooltip.Click += new System.EventHandler(this.OCTooltip_Click);
+            // 
             // MHelp
             // 
             this.MHelp.Name = "MHelp";
@@ -332,7 +338,7 @@ namespace Kaliz
             this.DockPar.Controls.Add(this.toolTabStrip1);
             this.DockPar.Dock = System.Windows.Forms.DockStyle.Fill;
             this.DockPar.IsCleanUpTarget = true;
-            this.DockPar.Location = new System.Drawing.Point(0, 37);
+            this.DockPar.Location = new System.Drawing.Point(0, 35);
             this.DockPar.MainDocumentContainer = this.DContainer;
             this.DockPar.Name = "DockPar";
             this.DockPar.Orientation = System.Windows.Forms.Orientation.Horizontal;
@@ -341,7 +347,7 @@ namespace Kaliz
             // 
             // 
             this.DockPar.RootElement.MinSize = new System.Drawing.Size(25, 25);
-            this.DockPar.Size = new System.Drawing.Size(1093, 689);
+            this.DockPar.Size = new System.Drawing.Size(1093, 691);
             this.DockPar.SplitterWidth = 8;
             this.DockPar.TabIndex = 2;
             this.DockPar.TabStop = false;
@@ -389,7 +395,7 @@ namespace Kaliz
             this.toolTabStrip1.CausesValidation = false;
             this.toolTabStrip1.Controls.Add(this.Doutput);
             this.toolTabStrip1.Controls.Add(this.BMList);
-            this.toolTabStrip1.Location = new System.Drawing.Point(0, 508);
+            this.toolTabStrip1.Location = new System.Drawing.Point(0, 510);
             this.toolTabStrip1.Name = "toolTabStrip1";
             // 
             // 
@@ -497,15 +503,9 @@ namespace Kaliz
             this.radMenuItem1});
             this.radMenu1.Location = new System.Drawing.Point(0, 0);
             this.radMenu1.Name = "radMenu1";
-            this.radMenu1.Size = new System.Drawing.Size(1093, 37);
+            this.radMenu1.Size = new System.Drawing.Size(1093, 35);
             this.radMenu1.TabIndex = 1;
             this.radMenu1.ThemeName = "MaterialTeal";
-            // 
-            // OCTooltip
-            // 
-            this.OCTooltip.Name = "OCTooltip";
-            this.OCTooltip.Text = "Enable Context Tooltip";
-            this.OCTooltip.Click += new System.EventHandler(this.OCTooltip_Click);
             // 
             // Kaliz
             // 

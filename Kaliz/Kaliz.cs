@@ -19,6 +19,7 @@ using Syncfusion.Drawing;
 
 using Syncfusion.Windows.Forms;
 using Syncfusion.Windows.Forms.Localization;
+using Syncfusion.Windows.Forms.Edit.Implementation;
 
 namespace Kaliz
 {
@@ -117,10 +118,12 @@ namespace Kaliz
             //Các sự kiện
             DanhDau.TextChanged += DanhDau_TextChanged;
             DanhDau.UpdateContextToolTip += DanhDau_UpdateContextToolTip;
+            DanhDau.MenuFill += DanhDau_MenuFill;
+       
             // DanhDau.BackgroundColor  = new Syncfusion.Drawing.BrushInfo(Syncfusion.Drawing.GradientStyle.ForwardDiagonal, new System.Drawing.Color[] { System.Drawing.Color.LavenderBlush, System.Drawing.Color.AliceBlue, System.Drawing.Color.BlanchedAlmond });
             //DanhDau.TextChanging += DanhDau_TextChanging;
             // DanhDau.FilterAutoCompleteItems = true;
-
+            
             //In
             DanhDau.PrintHeader += DanhDau_PrintHeader;
             //DanhDau.ShowContextTooltip = true; 
@@ -129,6 +132,35 @@ namespace Kaliz
 
 
 
+        }
+
+        private void DanhDau_MenuFill(object sender, EventArgs e)
+        {
+            ContextMenuManager Menu = (ContextMenuManager) sender;
+            Menu.ContextMenuProvider.SetVisualStyle(VisualStyle.Office2016Colorful);
+            Menu.ClearMenu();
+
+            Menu.AddMenuItem("&Copy", new EventHandler(MenuCopy));
+            Menu.AddMenuItem("&Cut", new EventHandler(MenuCut));
+            Menu.AddMenuItem("&Paste", new EventHandler(MenuPaste));
+            Menu.AddSeparator();
+
+           // Syncfusion.Windows.Forms.IContextMenuProvider contextMenuProvider = this.TabHienTai.ContextMenuManager.ContextMenuProvider;
+        }
+
+        private void MenuPaste(object sender, EventArgs e)
+        {
+            TabHienTai.Paste();
+        }
+
+        private void MenuCut(object sender, EventArgs e)
+        {
+            TabHienTai.Cut();
+        }
+
+        private void MenuCopy(object sender, EventArgs e)
+        {
+            TabHienTai.Copy();
         }
 
         private void DanhDau_UpdateContextToolTip(object sender, UpdateTooltipEventArgs e)
