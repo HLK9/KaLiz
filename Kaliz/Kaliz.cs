@@ -29,6 +29,7 @@ namespace Kaliz
       private  bool deBug = false;
         private bool enableContext = false;
         private bool enableTooltip = false;
+        private string Bookma = null;
         
         
         private int chiso { get; set; }
@@ -58,7 +59,7 @@ namespace Kaliz
             DanhDau.Style = EditControlStyle.Office2016Colorful;
             TaiLieu.Controls.Add(DanhDau);
             DanhDau.AllowDrop = true;
-            DanhDau.FileExtensions = new string[] { ".pas", ".c", ".cpp", ".cs" };
+            DanhDau.FileExtensions = new string[] { ".pas", ".c", ".cpp", ".cs",".py" };
             DockPar.AddDocument(TaiLieu);
 
             if (F != null)
@@ -144,12 +145,49 @@ namespace Kaliz
             Menu.AddMenuItem("&Cut", new EventHandler(MenuCut));
             Menu.AddMenuItem("&Paste", new EventHandler(MenuPaste));
             Menu.AddSeparator();
+            Menu.AddMenuItem("&Comment selection", new EventHandler(MenuComment));
+            Menu.AddMenuItem("&Uncomment selection", new EventHandler(MenuUncomment));
+            Menu.AddMenuItem("&Undo", new EventHandler(MenuUndo));
+            
+            Menu.AddMenuItem("&Redo", new EventHandler(MenuRedo));
+            Menu.AddMenuItem("&Save", new EventHandler(MenuSave));
 
-           // Syncfusion.Windows.Forms.IContextMenuProvider contextMenuProvider = this.TabHienTai.ContextMenuManager.ContextMenuProvider;
+
+
+
+
+
+            // Syncfusion.Windows.Forms.IContextMenuProvider contextMenuProvider = this.TabHienTai.ContextMenuManager.ContextMenuProvider;
+        }
+
+        private void MenuSave(object sender, EventArgs e)
+        {
+            TabHienTai.Save();
+        }
+
+        private void MenuRedo(object sender, EventArgs e)
+        {
+            TabHienTai.Redo();
+        }
+
+        private void MenuUndo(object sender, EventArgs e)
+        {
+            TabHienTai.Undo();
+        }
+
+        private void MenuUncomment(object sender, EventArgs e)
+        {
+            TabHienTai.UnCommentLine();
+        }
+
+        private void MenuComment(object sender, EventArgs e)
+        {
+            TabHienTai.CommentLine();
         }
 
         private void MenuPaste(object sender, EventArgs e)
         {
+            
             TabHienTai.Paste();
         }
 
@@ -385,7 +423,7 @@ namespace Kaliz
         {
             try
             {
-                e.Text = TabHienTai.SelectedText;
+                e.Text = "BookMark";
             }
             catch
             {
@@ -732,6 +770,7 @@ TabHienTai.Paste();
             {
                     BrushInfo brushInfo = new BrushInfo(Color.DarkViolet);
             TabHienTai.BookmarkAdd(TabHienTai.CurrentLine,brushInfo);
+                
             string sd = "Bookmark : " + TabHienTai.CurrentLine;
             
             for (int i = ListBm.Items.Count - 1;i>= 0;i--)
