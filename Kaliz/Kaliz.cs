@@ -24,7 +24,7 @@ using Syncfusion.Windows.Forms.Edit.Implementation;
 namespace Kaliz
 {
 
-    public partial class Kaliz : Telerik.WinControls.UI.RadForm
+    public partial class O : Telerik.WinControls.UI.RadForm
     {
       private  bool deBug = false;
         private bool enableContext = false;
@@ -34,7 +34,7 @@ namespace Kaliz
         
         private int chiso { get; set; }
 
-        public Kaliz()
+        public O()
         {
             
             InitializeComponent();
@@ -61,6 +61,7 @@ namespace Kaliz
             DanhDau.AllowDrop = true;
             DanhDau.FileExtensions = new string[] { ".pas", ".c", ".cpp", ".cs",".py" };
             DockPar.AddDocument(TaiLieu);
+          
 
             if (F != null)
             {
@@ -130,10 +131,11 @@ namespace Kaliz
             //DanhDau.ShowContextTooltip = true; 
 
             //
-
-
+           
 
         }
+
+      
 
         private void DanhDau_MenuFill(object sender, EventArgs e)
         {
@@ -488,7 +490,7 @@ namespace Kaliz
             }
         }
 
-        public object DanhDau { get; private set; }
+       
 
         private void ECopy_Click(object sender, EventArgs e)
         {
@@ -743,6 +745,11 @@ TabHienTai.Paste();
         /// <param name="e"></param>
         private void radMenuItem1_Click_1(object sender, EventArgs e)
         {
+            DataTable dt = new DataTable();
+            dt.Columns.Add("Id", typeof(int));
+            dt.Columns.Add("Name", typeof(string));
+            dt.Rows.Add(3, "ggg");
+            ListBm.DataSource = dt;
 
           //  Compile(ref radListView1);
             //  MessageBox.Show(Path.GetExtension(TabHienTai.FileName));
@@ -763,26 +770,63 @@ TabHienTai.Paste();
            
             
         }
-
+       // DataTable databm = new DataTable();
+        
         private void BBookmark_Click(object sender, EventArgs e)
         {
             try
             {
-                    BrushInfo brushInfo = new BrushInfo(Color.DarkViolet);
-            TabHienTai.BookmarkAdd(TabHienTai.CurrentLine,brushInfo);
+
+
+                //databm.Columns.Add("Line", typeof(int));
+                //databm.Columns.Add("File", typeof(string));
+                //databm.Rows.Add(TabHienTai.CurrentLine, TabHienTai.FileName);
+                //ListBm.DataSource = databm;
+
+                BrushInfo brushInfo = new BrushInfo(Color.DarkViolet);
+                TabHienTai.BookmarkAdd(TabHienTai.CurrentLine, brushInfo);
+
+                string sd = TabHienTai.CurrentLine.ToString();
+                string fd = Path.GetFileName(TabHienTai.FileName);
+
+
+                for (int i = ListBm.Items.Count - 1; i >= 0; i--)
+                {
+                    
+                    if ((ListBm.Items[i].Text.Contains(sd)) && (ListBm.Items[i].Text.Contains(fd)))
+                        return;
+                   
+                       
+                }
+                ListBm.Items.Add(TabHienTai.CurrentLine, Path.GetFileName(TabHienTai.FileName));
+                MessageBox.Show(ListBm.Items[0].Text);
+                // ListBm.Items.Add(sd);
+
+
+
+            }
+            catch
+            { }
+
+
+
+            //try
+            //{
+            //        BrushInfo brushInfo = new BrushInfo(Color.DarkViolet);
+            //TabHienTai.BookmarkAdd(TabHienTai.CurrentLine,brushInfo);
                 
-            string sd = "Bookmark : " + TabHienTai.CurrentLine;
+            //string sd = "Bookmark : " + TabHienTai.CurrentLine;
             
-            for (int i = ListBm.Items.Count - 1;i>= 0;i--)
-            {
-                if  (ListBm.Items[i].Text.Contains(sd)) return;
+            //for (int i = ListBm.Items.Count - 1;i>= 0;i--)
+            //{
+            //    if  (ListBm.Items[i].Text.Contains(sd)) return;
                
                    
 
-            }
-            ListBm.Items.Add(sd);        
-            }
-            catch { }
+            //}
+            //ListBm.Items.Add(sd);        
+            //}
+            //catch { }
             
 
 
@@ -794,16 +838,16 @@ TabHienTai.Paste();
             try
             {
                 TabHienTai.BookmarkRemove(TabHienTai.CurrentLine);
-            string sd = TabHienTai.CurrentLine.ToString();
-           for  (int i=ListBm.Items.Count-1;i>=0;i--)
-            {
-                if (ListBm.Items[i].Text.Contains(sd))
-                { ListBm.Items.RemoveAt(i); }
-            }
+                string sd = TabHienTai.CurrentLine.ToString();
+                for (int i = ListBm.Items.Count - 1; i >= 0; i--)
+                {
+                    if (ListBm.Items[i].Text.Contains(sd))
+                    { ListBm.Items.RemoveAt(i); }
+                }
             }
             catch { }
-            
-            
+
+
         }
 
         private void BRemoveAll_Click(object sender, EventArgs e)
