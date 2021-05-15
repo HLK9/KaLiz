@@ -121,7 +121,8 @@ namespace Kaliz
             DanhDau.TextChanged += DanhDau_TextChanged;
             DanhDau.UpdateContextToolTip += DanhDau_UpdateContextToolTip;
             DanhDau.MenuFill += DanhDau_MenuFill;
-       
+            DanhDau.ContextPromptOpen += DanhDau_ContextPromptOpen;
+            DanhDau.ContextPromptBorderColor = Color.Pink;
             // DanhDau.BackgroundColor  = new Syncfusion.Drawing.BrushInfo(Syncfusion.Drawing.GradientStyle.ForwardDiagonal, new System.Drawing.Color[] { System.Drawing.Color.LavenderBlush, System.Drawing.Color.AliceBlue, System.Drawing.Color.BlanchedAlmond });
             //DanhDau.TextChanging += DanhDau_TextChanging;
             // DanhDau.FilterAutoCompleteItems = true;
@@ -135,7 +136,12 @@ namespace Kaliz
 
         }
 
-      
+        private void DanhDau_ContextPromptOpen(object sender, ContextPromptUpdateEventArgs e)
+        {
+            if (TabHienTai.GetCurrentWord().ToLower() == "for")
+                e.AddPrompt("Vòng Lặp for", "\n<Biến đếm> := <Giá trị đầu> to <Giá trị cuối> do <Câu lệnh> \n Với dạng lùi| <Biến đếm> := <Giá trị cuối> downto <Giá trị đầu> do <Câu lệnh> ");
+           
+        }
 
         private void DanhDau_MenuFill(object sender, EventArgs e)
         {
@@ -745,11 +751,6 @@ TabHienTai.Paste();
         /// <param name="e"></param>
         private void radMenuItem1_Click_1(object sender, EventArgs e)
         {
-            DataTable dt = new DataTable();
-            dt.Columns.Add("Id", typeof(int));
-            dt.Columns.Add("Name", typeof(string));
-            dt.Rows.Add(3, "ggg");
-            ListBm.DataSource = dt;
 
           //  Compile(ref radListView1);
             //  MessageBox.Show(Path.GetExtension(TabHienTai.FileName));

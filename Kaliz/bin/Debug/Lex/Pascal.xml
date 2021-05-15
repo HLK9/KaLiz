@@ -77,7 +77,7 @@
 			<lexem BeginBlock="finally" Type="KeyWord" />
 			<lexem BeginBlock="float" Type="KeyWord" />
 			<lexem BeginBlock="true" Type="KeyWord" />
-			<lexem BeginBlock="for" Type="KeyWord" DropContextPrompt="true"/>
+			<lexem BeginBlock="for" Type="KeyWord" DropContextPrompt="true" IsComplex="true"/>
 
 			<lexem BeginBlock="typeof" Type="KeyWord" />
 			<lexem BeginBlock="goto" Type="KeyWord" />
