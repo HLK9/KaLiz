@@ -26,11 +26,12 @@ xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/X
     </extensions>
     <lexems>
       <lexem BeginBlock="." Type="Operator" DropContextChoiceList="true"/>
-      <lexem BeginBlock="," Type="Operator" DropContextChoiceList="true"/>
+      <lexem BeginBlock="," Type="Operator"/>
       <lexem BeginBlock="=" Type="Operator" />
-      <lexem BeginBlock="(" Type="Operator" IsComplex="true" DropContextPrompt="true" />
+     <!-- <lexem BeginBlock="(" Type="Operator" IsComplex="true" DropContextPrompt="true" /> -->
       <lexem BeginBlock="+" Type="Operator"  DropContextPrompt="true" />
       <lexem BeginBlock="-" Type="Operator" />
+
       <lexem BeginBlock="/" Type="Operator" />
       <lexem BeginBlock="*" Type="Operator" />
       <lexem BeginBlock="!=" Type="Operator" />
@@ -100,7 +101,7 @@ xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/X
       <lexem BeginBlock="finally" Type="KeyWord" />
       <lexem BeginBlock="friend" Type="KeyWord" />
       <lexem BeginBlock="true" Type="KeyWord" />
-      <lexem BeginBlock="for" Type="KeyWord" />
+      <lexem BeginBlock="for" Type="KeyWord" IsComplex="true" DropContextPrompt="true" />
       <lexem BeginBlock="try" Type="KeyWord" />
       <lexem BeginBlock="typedef" Type="KeyWord" />
       <lexem BeginBlock="typeid" Type="KeyWord" />
@@ -123,7 +124,7 @@ xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/X
       <lexem BeginBlock="inline" Type="KeyWord" />
       <lexem BeginBlock="void" Type="KeyWord" />
       <lexem BeginBlock="volatile" Type="KeyWord" />
-      <lexem BeginBlock="while" Type="KeyWord" />
+      <lexem BeginBlock="while" Type="KeyWord" IsComplex="true" DropContextPrompt="true"  />
       <lexem BeginBlock="wchar_t" Type="KeyWord" />
       <lexem BeginBlock="/*" EndBlock="*/" Type="Comment" OnlyLocalSublexems="true" IsComplex="true"
         IsCollapsable="true" CollapseName="/*...*/">

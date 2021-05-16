@@ -20,6 +20,7 @@ using Syncfusion.Drawing;
 using Syncfusion.Windows.Forms;
 using Syncfusion.Windows.Forms.Localization;
 using Syncfusion.Windows.Forms.Edit.Implementation;
+using System.Collections;
 
 namespace Kaliz
 {
@@ -73,7 +74,9 @@ namespace Kaliz
                     DanhDau.ApplyConfiguration("C++");
                     DanhDau.StatusBarSettings.FileNamePanel.Panel.Text = "C/C++";
                     DanhDau.ContextChoiceOpen += DanhDau_ContextChoiceOpen_C;
-                   // DanhDau.ContextPromptOpen += DanhDau_ContextPromptOpen;
+                    DanhDau.ContextPromptOpen += DanhDau_ContextPromptOpen_ForC;
+                    DanhDau.ContextPromptUpdate += DanhDau_ContextPromptUpdate_ForC;
+                    // DanhDau.ContextPromptOpen += DanhDau_ContextPromptOpen;
 
 
                 }
@@ -85,7 +88,8 @@ namespace Kaliz
                     DanhDau.ApplyConfiguration("Pascal");
                     DanhDau.StatusBarSettings.FileNamePanel.Panel.Text = "Pascal";
                    DanhDau.ContextChoiceOpen += DanhDau_ContextChoiceOpen;
-                  // DanhDau.ContextPromptOpen += DanhDau_ContextPromptOpen;
+                    DanhDau.ContextPromptOpen += DanhDau_ContextPromptOpen_ForPascal;
+                    DanhDau.ContextPromptUpdate += DanhDau_ContextPromptUpdate_ForPascal;
                    
                 }
              
@@ -121,9 +125,9 @@ namespace Kaliz
             DanhDau.TextChanged += DanhDau_TextChanged;
             DanhDau.UpdateContextToolTip += DanhDau_UpdateContextToolTip;
             DanhDau.MenuFill += DanhDau_MenuFill;
-            DanhDau.ContextPromptOpen += DanhDau_ContextPromptOpen;
+            
             DanhDau.ContextPromptBorderColor = Color.Pink;
-            // DanhDau.BackgroundColor  = new Syncfusion.Drawing.BrushInfo(Syncfusion.Drawing.GradientStyle.ForwardDiagonal, new System.Drawing.Color[] { System.Drawing.Color.LavenderBlush, System.Drawing.Color.AliceBlue, System.Drawing.Color.BlanchedAlmond });
+            DanhDau.BackgroundColor  = new Syncfusion.Drawing.BrushInfo(Syncfusion.Drawing.GradientStyle.ForwardDiagonal, new System.Drawing.Color[] { System.Drawing.Color.LavenderBlush, System.Drawing.Color.AliceBlue, System.Drawing.Color.BlanchedAlmond });
             //DanhDau.TextChanging += DanhDau_TextChanging;
             // DanhDau.FilterAutoCompleteItems = true;
             
@@ -136,11 +140,121 @@ namespace Kaliz
 
         }
 
-        private void DanhDau_ContextPromptOpen(object sender, ContextPromptUpdateEventArgs e)
+        private void DanhDau_ContextPromptUpdate_ForPascal(object sender, ContextPromptUpdateEventArgs e)
         {
+            if (e.List.SelectedItem != null)
+            {
+
+                // Get list of the lexems that are inside the current stack.
+
+                IList list = TabHienTai.GetLexemsInsideCurrentStack(false);
+
+                if (list == null) return;
+
+
+
+                int iBoldedIndex = 0;
+
+                foreach (ILexem lexem in list)
+
+                {
+
+                    if (lexem.Text == "to" || lexem.Text == "do")
+
+                        iBoldedIndex++;
+
+                }
+
+                if (iBoldedIndex >= e.List.SelectedItem.BoldedItems.Count)
+
+                    e.List.SelectedItem.BoldedItems.SelectedItem = null;
+
+                else
+
+                    // Gets or sets selected item.
+
+                    e.List.SelectedItem.BoldedItems.SelectedItem = e.List.SelectedItem.BoldedItems[iBoldedIndex];
+
+            }
+        }
+
+        private void DanhDau_ContextPromptOpen_ForPascal(object sender, ContextPromptUpdateEventArgs e)
+        {
+            ContextPromptItem item = null;
             if (TabHienTai.GetCurrentWord().ToLower() == "for")
-                e.AddPrompt("Vòng Lặp for", "\n<Biến đếm> := <Giá trị đầu> to <Giá trị cuối> do <Câu lệnh> \n Với dạng lùi| <Biến đếm> := <Giá trị cuối> downto <Giá trị đầu> do <Câu lệnh> ");
-           
+            {
+                item = e.AddPrompt("Vòng Lặp for", "<Giá trị đầu> to <Giá trị cuối> do <Câu lệnh>");
+                item.BoldedItems.Add(0, 12, "Giá trị đầu");
+                item.BoldedItems.Add(0, 12, "Giá trị cuối");
+                item.BoldedItems.Add(0, 12, "Câu lệnh");
+
+            }
+            if (TabHienTai.GetCurrentWord().ToLower() == "while")
+            {
+                item = e.AddPrompt("Vòng Lặp while", "<Điều kiện> do <Câu lệnh>");
+                item.BoldedItems.Add(0, 14, "Điều kiện");
+                item.BoldedItems.Add(0, 14, "Câu lệnh");
+
+            }
+        }
+
+        private void DanhDau_ContextPromptUpdate_ForC(object sender, ContextPromptUpdateEventArgs e)
+        {
+            if (e.List.SelectedItem != null)
+            {
+
+                // Get list of the lexems that are inside the current stack.
+
+                IList list = TabHienTai.GetLexemsInsideCurrentStack(false);
+
+                if (list == null) return;
+
+
+
+                int iBoldedIndex = 0;
+
+                foreach (ILexem lexem in list)
+
+                {
+
+                    if (lexem.Text == ","|| lexem.Text == ";")
+
+                        iBoldedIndex++;
+
+                }
+
+                if (iBoldedIndex >= e.List.SelectedItem.BoldedItems.Count)
+
+                    e.List.SelectedItem.BoldedItems.SelectedItem = null;
+
+                else
+
+                    // Gets or sets selected item.
+
+                    e.List.SelectedItem.BoldedItems.SelectedItem = e.List.SelectedItem.BoldedItems[iBoldedIndex];
+
+            }
+        }
+
+        private void DanhDau_ContextPromptOpen_ForC(object sender, ContextPromptUpdateEventArgs e)
+        {
+            ContextPromptItem item = null;
+            if (TabHienTai.GetCurrentWord().ToLower() == "for")
+            {
+              item = e.AddPrompt("Vòng Lặp for", "<Khởi tạo biến> , <Biểu thức điều kiện> , <Cập nhật biến lặp>");
+                item.BoldedItems.Add(0, 12, "Khởi tạo biến");
+                item.BoldedItems.Add(0, 12, "Biểu thức điều kiện");
+                item.BoldedItems.Add(0, 12, "Cập nhật biến lặp");
+
+            }
+            if (TabHienTai.GetCurrentWord().ToLower() == "while")
+            {
+                item = e.AddPrompt("Vòng Lặp while", "<Điều kiện>");
+                item.BoldedItems.Add(0, 14, "Điều kiện");             
+
+            }
+
+
         }
 
         private void DanhDau_MenuFill(object sender, EventArgs e)
@@ -170,6 +284,7 @@ namespace Kaliz
 
         private void MenuSave(object sender, EventArgs e)
         {
+            
             TabHienTai.Save();
         }
 
@@ -484,9 +599,10 @@ namespace Kaliz
                 
                     if (DockPar.ActiveWindow == null) return null;
                     return (DockPar.DocumentManager.ActiveDocument.Controls[0] as EditControl);
-                    //Fixed... :v
-                    
-               
+
+                //Fixed... :v            .Controls[0]
+
+
             }
             set
             {

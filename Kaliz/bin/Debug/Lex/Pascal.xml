@@ -62,7 +62,7 @@
 			<lexem BeginBlock="public" Type="KeyWord" />
 			<lexem BeginBlock="continue" Type="KeyWord" />
 			<lexem BeginBlock="default" Type="KeyWord" />
-			<lexem BeginBlock="do" Type="KeyWord" />
+			<lexem BeginBlock="do" Type="KeyWord" DropContextPrompt="true" IsComplex="true"/>
 			<lexem BeginBlock="double" Type="KeyWord" />
 			<lexem BeginBlock="short" Type="KeyWord" />
 			<lexem BeginBlock="else" Type="KeyWord" />
@@ -78,7 +78,7 @@
 			<lexem BeginBlock="float" Type="KeyWord" />
 			<lexem BeginBlock="true" Type="KeyWord" />
 			<lexem BeginBlock="for" Type="KeyWord" DropContextPrompt="true" IsComplex="true"/>
-
+			<lexem BeginBlock="to" Type="KeyWord" DropContextPrompt="true" IsComplex="true" />
 			<lexem BeginBlock="typeof" Type="KeyWord" />
 			<lexem BeginBlock="goto" Type="KeyWord" />
 			<lexem BeginBlock="if" Type="KeyWord" />
@@ -123,6 +123,7 @@
 				CollapseName="(...)" IndentationGuideline="true">
 				<SubLexems>
 					<lexem BeginBlock="\n" IsBeginRegex="true" />
+					
 				</SubLexems>
 			</lexem>
 			<lexem BeginBlock="'" EndBlock="'" Type="String" OnlyLocalSublexems="true" IsComplex="true">
