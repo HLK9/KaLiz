@@ -99,7 +99,7 @@
 			<lexem BeginBlock="unit" Type="KeyWord" />
 			<lexem BeginBlock="virtual" Type="KeyWord" />
 			<lexem BeginBlock="is" Type="KeyWord" />
-			<lexem BeginBlock="while" Type="KeyWord" />
+			<lexem BeginBlock="while" Type="KeyWord" IsComplex="true" DropContextPrompt="true" />
 			<lexem BeginBlock="read" Type="KeyWord" />
 			<lexem BeginBlock="write" Type="KeyWord" />
 			<lexem BeginBlock="type" Type="KeyWord" />
