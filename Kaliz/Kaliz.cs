@@ -30,6 +30,7 @@ namespace Kaliz
       private  bool deBug = false;
         private bool enableContext = false;
         private bool enableTooltip = false;
+        private bool enableContextPrompt = false;
         private string Bookma = null;
         
         
@@ -180,26 +181,30 @@ namespace Kaliz
 
         private void DanhDau_ContextPromptOpen_ForPascal(object sender, ContextPromptUpdateEventArgs e)
         {
-            //ContextPromptItem item = null;
-            if (TabHienTai.GetCurrentWord().ToLower() == "for")
+            if (enableContextPrompt == true)
             {
-                e.AddPrompt("Vòng Lặp for", " for <Giá trị đầu> to <Giá trị cuối> do <Câu lệnh>");
-                e.AddPrompt("Ví dụ về vòng lặp for", " for i:=1 to 10 do write('xin chao')");
-                e.AddPrompt("Ví dụ về vòng lặp for đảo ngược",null).BoldedItems.Add(0,31, " for i:=10 downto 1 do write('xin chao')");
-                //item = e.AddPrompt("Vòng Lặp for", "<Giá trị đầu> to <Giá trị cuối> do <Câu lệnh>");
-                //item.BoldedItems.Add(0, 12, "Giá trị đầu");
-                //item.BoldedItems.
-                //item.BoldedItems.Add(0, 12, "Giá trị cuối");
-                //item.BoldedItems.Add(0, 12, "Câu lệnh");
+                //ContextPromptItem item = null;
+                if (TabHienTai.GetCurrentWord().ToLower() == "for")
+                {
+                    e.AddPrompt("Vòng Lặp for", " for <Giá trị đầu> to <Giá trị cuối> do <Câu lệnh>");
+                    e.AddPrompt("Ví dụ về vòng lặp for", " for i:=1 to 10 do write('xin chao')");
+                    e.AddPrompt("Ví dụ về vòng lặp for đảo ngược", null).BoldedItems.Add(0, 31, " for i:=10 downto 1 do write('xin chao')");
+                    //item = e.AddPrompt("Vòng Lặp for", "<Giá trị đầu> to <Giá trị cuối> do <Câu lệnh>");
+                    //item.BoldedItems.Add(0, 12, "Giá trị đầu");
+                    //item.BoldedItems.
+                    //item.BoldedItems.Add(0, 12, "Giá trị cuối");
+                    //item.BoldedItems.Add(0, 12, "Câu lệnh");
 
-            } else
+                }
+                else
             if (TabHienTai.GetCurrentWord().ToLower() == "while")
-            {
-                e.AddPrompt("Vòng Lặp while",null).BoldedItems.Add(0,14, "while <Điều kiện> do <Câu lệnh>");
-                //item = e.AddPrompt("Vòng Lặp while", "<Điều kiện> do <Câu lệnh>");
-                //item.BoldedItems.Add(0, 14, "Điều kiện");
-                //item.BoldedItems.Add(0, 14, "Câu lệnh");
+                {
+                    e.AddPrompt("Vòng Lặp while", null).BoldedItems.Add(0, 14, "while <Điều kiện> do <Câu lệnh>");
+                    //item = e.AddPrompt("Vòng Lặp while", "<Điều kiện> do <Câu lệnh>");
+                    //item.BoldedItems.Add(0, 14, "Điều kiện");
+                    //item.BoldedItems.Add(0, 14, "Câu lệnh");
 
+                }
             }
         }
 
@@ -243,21 +248,25 @@ namespace Kaliz
 
         private void DanhDau_ContextPromptOpen_ForC(object sender, ContextPromptUpdateEventArgs e)
         {
-            ContextPromptItem item = null;
-            if (TabHienTai.GetCurrentWord().ToLower() == "for")
+            if (enableContextPrompt == true)
             {
-              item = e.AddPrompt("Vòng Lặp for", "<Khởi tạo biến> , <Biểu thức điều kiện> , <Cập nhật biến lặp>");
-                item.BoldedItems.Add(0, 12, "Khởi tạo biến");
-                item.BoldedItems.Add(0, 12, "Biểu thức điều kiện");
-                item.BoldedItems.Add(0, 12, "Cập nhật biến lặp");
+                ContextPromptItem item = null;
+                if (TabHienTai.GetCurrentWord().ToLower() == "for")
+                {
+                    item = e.AddPrompt("Vòng Lặp for", "<Khởi tạo biến> , <Biểu thức điều kiện> , <Cập nhật biến lặp>");
+                    item.BoldedItems.Add(0, 12, "Khởi tạo biến");
+                    item.BoldedItems.Add(0, 12, "Biểu thức điều kiện");
+                    item.BoldedItems.Add(0, 12, "Cập nhật biến lặp");
 
-            }
-            if (TabHienTai.GetCurrentWord().ToLower() == "while")
-            {
-                item = e.AddPrompt("Vòng Lặp while", "<Điều kiện>");
-                item.BoldedItems.Add(0, 14, "Điều kiện");             
+                }
+                if (TabHienTai.GetCurrentWord().ToLower() == "while")
+                {
+                    item = e.AddPrompt("Vòng Lặp while", "<Điều kiện>");
+                    item.BoldedItems.Add(0, 14, "Điều kiện");
 
+                }
             }
+            
 
 
         }
@@ -1233,6 +1242,23 @@ TabHienTai.ReplaceDialog();
                 ShowAlert_Light("<html><color=Crimson>Context Tooltip Disabled", null);
                 OCTooltip.Text = "Enable Context Tooltip";
 
+            }
+        }
+
+        private void OEnaPrompt_Click(object sender, EventArgs e)
+        {
+            if (enableContextPrompt == false)
+            {
+                enableContextPrompt = true;
+                ShowAlert_Light("<html><color=Teal>Context Prompt Enabled", null);
+                OEnaPrompt.Text = "Disable Context Prompt";
+
+            }
+            else
+            {
+                enableContextPrompt = false;
+                ShowAlert_Light("<html><color=Crimson>Context Prompt Disabled", null);
+                OEnaPrompt.Text = "Enable Context Prompt";
             }
         }
     }

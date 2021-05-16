@@ -66,6 +66,7 @@ namespace Kaliz
             this.PerReadonly = new Telerik.WinControls.UI.RadMenuItem();
             this.PerDisable = new Telerik.WinControls.UI.RadMenuItem();
             this.OCTooltip = new Telerik.WinControls.UI.RadMenuItem();
+            this.OHightlight = new Telerik.WinControls.UI.RadMenuItem();
             this.MHelp = new Telerik.WinControls.UI.RadMenuItem();
             this.DockPar = new Telerik.WinControls.UI.Docking.RadDock();
             this.BMList = new Telerik.WinControls.UI.Docking.ToolWindow();
@@ -84,8 +85,8 @@ namespace Kaliz
             this.BBookmarkNext = new Telerik.WinControls.UI.RadMenuItem();
             this.fluentDarkTheme1 = new Telerik.WinControls.Themes.FluentDarkTheme();
             this.windows8Theme1 = new Telerik.WinControls.Themes.Windows8Theme();
-            this.OHightlight = new Telerik.WinControls.UI.RadMenuItem();
             this.radMenu1 = new Telerik.WinControls.UI.RadMenu();
+            this.OEnaPrompt = new Telerik.WinControls.UI.RadMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.DockPar)).BeginInit();
             this.DockPar.SuspendLayout();
             this.BMList.SuspendLayout();
@@ -95,8 +96,8 @@ namespace Kaliz
             this.toolTabStrip1.SuspendLayout();
             this.Doutput.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ListOutput)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.radMenu1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this)).BeginInit();
             this.SuspendLayout();
             // 
             // MFile
@@ -293,7 +294,8 @@ namespace Kaliz
             this.OEnableContext,
             this.OLock,
             this.OCTooltip,
-            this.OHightlight});
+            this.OHightlight,
+            this.OEnaPrompt});
             this.MOptions.Name = "MOptions";
             this.MOptions.Text = "Options";
             // 
@@ -328,6 +330,11 @@ namespace Kaliz
             this.OCTooltip.Name = "OCTooltip";
             this.OCTooltip.Text = "Enable Context Tooltip";
             this.OCTooltip.Click += new System.EventHandler(this.OCTooltip_Click);
+            // 
+            // OHightlight
+            // 
+            this.OHightlight.Name = "OHightlight";
+            this.OHightlight.Text = "Hightlight Current line";
             // 
             // MHelp
             // 
@@ -499,17 +506,6 @@ namespace Kaliz
             this.BBookmarkNext.Text = "Bookmark Next";
             this.BBookmarkNext.Click += new System.EventHandler(this.BBookmarkNext_Click);
             // 
-            // OHightlight
-            // 
-            this.OHightlight.Name = "OHightlight";
-            this.OHightlight.Text = "Hightlight Current line";
-            // 
-            // O
-            // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1093, 726);
-            // 
             // radMenu1
             // 
             this.radMenu1.Items.AddRange(new Telerik.WinControls.RadItem[] {
@@ -527,6 +523,18 @@ namespace Kaliz
             this.radMenu1.Size = new System.Drawing.Size(1093, 37);
             this.radMenu1.TabIndex = 1;
             this.radMenu1.ThemeName = "MaterialTeal";
+            // 
+            // OEnaPrompt
+            // 
+            this.OEnaPrompt.Name = "OEnaPrompt";
+            this.OEnaPrompt.Text = "Enable Context Prompt";
+            this.OEnaPrompt.Click += new System.EventHandler(this.OEnaPrompt_Click);
+            // 
+            // O
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.ClientSize = new System.Drawing.Size(1093, 726);
             this.Controls.Add(this.DockPar);
             this.Controls.Add(this.radMenu1);
             this.Name = "O";
@@ -609,5 +617,6 @@ namespace Kaliz
         private Telerik.WinControls.UI.RadListView ListBm;
         private Telerik.WinControls.UI.RadMenuItem OHightlight;
         private Telerik.WinControls.UI.RadMenu radMenu1;
+        private Telerik.WinControls.UI.RadMenuItem OEnaPrompt;
     }
 }
