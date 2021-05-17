@@ -67,7 +67,7 @@ namespace Kaliz
 
             if (F != null)
             {
-                DanhDau.LoadFile(F);
+                DanhDau.LoadFile(F, Encoding.UTF8);
                 if (Path.GetExtension(F) == ".c" || Path.GetExtension(F) == ".cpp")
                 {
                     string ConfigF = @"Lex\CppF.xml";
@@ -95,12 +95,13 @@ namespace Kaliz
                 }
                 if (Path.GetExtension(F) == ".py")
                 {
+                    DanhDau.StatusBarSettings.FileNamePanel.Panel.Text = "Python 3";
                     string ConfigF = @"Lex\Python.xml";
                     DanhDau.Configurator.Open(ConfigF);
-
                     DanhDau.ApplyConfiguration("Python");
-                    DanhDau.StatusBarSettings.FileNamePanel.Panel.Text = "Python";
-                  
+                    DanhDau.StatusBarSettings.FileNamePanel.Panel.Text = "Python 3";
+
+
 
                 }
 
@@ -905,6 +906,36 @@ TabHienTai.Paste();
                 Chay.StartInfo.UseShellExecute = true;
                 Chay.Start();
             }
+            if(Path.GetExtension(file)==".py")
+            {
+                Process Chay = new Process();
+                Chay.StartInfo.FileName = "cmd";
+                Chay.StartInfo.Arguments = "/c python " + file;
+                Chay.StartInfo.RedirectStandardError = true;
+                Chay.StartInfo.RedirectStandardOutput = true;
+                Chay.Start();
+               
+                string ad;
+
+                ListOutput.AllowEdit = false;
+                ListOutput.AllowRemove = false;
+
+
+                //Lấy thông tin Error chứ k phải Output :))
+                while ((ad = Chay.StandardError.ReadLine()) != null)
+                {
+                    ListOutput.Items.Add(ad);
+
+                    // if (ad.Contains("lines compiled")) break;
+                }
+                while ((ad = Chay.StandardOutput.ReadLine()) != null)
+                {
+                    ListOutput.Items.Add(ad);
+
+                    // if (ad.Contains("lines compiled")) break;
+                }
+
+            }
            
 
         }
@@ -915,7 +946,7 @@ TabHienTai.Paste();
         /// <param name="e"></param>
         private void radMenuItem1_Click_1(object sender, EventArgs e)
         {
-
+            //TabHienTai.StatusBarSettings.FileNamePanel.Panel.Text = "Python đàng hoàng";
           //  Compile(ref radListView1);
             //  MessageBox.Show(Path.GetExtension(TabHienTai.FileName));
             //radListView1.Items.Add(new ListViewItem (new string[] { "hee","of"}));
@@ -929,7 +960,9 @@ TabHienTai.Paste();
         {
             try
             {
- Build(TabHienTai.FileName,deBug,ref ListOutput);
+                if(Path.GetExtension(TabHienTai.FileName)==".py")
+                    ShowAlert_Light("<html><color=LightSalmon>Build Failed", "<html><color=Teal>Python 3 can only be <b>RUN</b> directly");
+                Build(TabHienTai.FileName,deBug,ref ListOutput);
             }
             catch { }
            
