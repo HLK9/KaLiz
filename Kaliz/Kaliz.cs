@@ -93,7 +93,17 @@ namespace Kaliz
                     DanhDau.ContextPromptUpdate += DanhDau_ContextPromptUpdate_ForPascal;
                    
                 }
-             
+                if (Path.GetExtension(F) == ".py")
+                {
+                    string ConfigF = @"Lex\Python.xml";
+                    DanhDau.Configurator.Open(ConfigF);
+
+                    DanhDau.ApplyConfiguration("Python");
+                    DanhDau.StatusBarSettings.FileNamePanel.Panel.Text = "Python";
+                  
+
+                }
+
             }
                 
           
@@ -206,6 +216,20 @@ namespace Kaliz
 
                 }
             }
+            if (TabHienTai.GetCurrentWord().ToLower() == "if")
+            {
+                e.AddPrompt("Câu lệnh rẽ nhánh", "if <Các điều kiện > then <Các câu lệnh>");
+            }
+            if(TabHienTai.GetCurrentWord().ToLower()=="case")
+            {
+                e.AddPrompt("Lệnh Case-Of", "Case <Giá trị> Of"+ @"
+    <Trường hợp 1> : <Công việc 1>;
+    <Trường hợp 2> : <Công việc 2>;
+    ...
+    <Trường hợp n> : <Công việc n>;
+End;
+");
+            }
         }
 
         private void DanhDau_ContextPromptUpdate_ForC(object sender, ContextPromptUpdateEventArgs e)
@@ -253,7 +277,7 @@ namespace Kaliz
                 ContextPromptItem item = null;
                 if (TabHienTai.GetCurrentWord().ToLower() == "for")
                 {
-                    item = e.AddPrompt("Vòng Lặp for", "<Khởi tạo biến> , <Biểu thức điều kiện> , <Cập nhật biến lặp>");
+                    item = e.AddPrompt("Vòng Lặp for", "<Khởi tạo biến> ; <Biểu thức điều kiện> ; <Cập nhật biến lặp>");
                     item.BoldedItems.Add(0, 12, "Khởi tạo biến");
                     item.BoldedItems.Add(0, 12, "Biểu thức điều kiện");
                     item.BoldedItems.Add(0, 12, "Cập nhật biến lặp");
@@ -264,6 +288,16 @@ namespace Kaliz
                     item = e.AddPrompt("Vòng Lặp while", "<Điều kiện>");
                     item.BoldedItems.Add(0, 14, "Điều kiện");
 
+                }
+                if(TabHienTai.GetCurrentWord().ToLower()=="if")
+                {
+                    item = e.AddPrompt("Câu lệnh rẽ nhánh", "<Điều kiện>");
+                    item.BoldedItems.Add(0, 1, "Điều kiện");
+                }
+                if (TabHienTai.GetCurrentWord().ToLower() == "switch")
+                {
+                    item = e.AddPrompt("Switch-Case", "<Biểu thức điều kiện>");
+                    item.BoldedItems.Add(0, 11, "Điều kiện");
                 }
             }
             

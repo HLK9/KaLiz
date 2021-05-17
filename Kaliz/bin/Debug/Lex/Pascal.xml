@@ -30,7 +30,6 @@
 			<lexem BeginBlock="*" Type="Operator" />
 			<lexem BeginBlock=";" Type="Operator" />
 			<lexem BeginBlock=":" Type="Operator" />
-			<lexem BeginBlock="(" Type="Operator" IsComplex="true" DropContextPrompt="true" />
 			<lexem BeginBlock="." Type="Operator" DropContextChoiceList="true" />
 			<lexem BeginBlock="," Type="Operator" />
 			<lexem BeginBlock="^" Type="Operator" />
@@ -50,7 +49,7 @@
 			<lexem BeginBlock="break" Type="KeyWord" />
 			<lexem BeginBlock="object" Type="KeyWord" />
 			<lexem BeginBlock="byte" Type="KeyWord" />
-			<lexem BeginBlock="case" Type="KeyWord" />
+			<lexem BeginBlock="case" Type="KeyWord" DropContextPrompt="true" IsComplex="true"/>
 			<lexem BeginBlock="out" Type="KeyWord" />
 			<lexem BeginBlock="override" Type="KeyWord" />
 			<lexem BeginBlock="char" Type="KeyWord" />
@@ -81,7 +80,7 @@
 			<lexem BeginBlock="to" Type="KeyWord" DropContextPrompt="true" IsComplex="true" />
 			<lexem BeginBlock="typeof" Type="KeyWord" />
 			<lexem BeginBlock="goto" Type="KeyWord" />
-			<lexem BeginBlock="if" Type="KeyWord" />
+			<lexem BeginBlock="if" Type="KeyWord" IsComplex="true" DropContextPrompt="true"/>
 			<lexem BeginBlock="int" Type="KeyWord" />
 			<lexem BeginBlock="function" Type="KeyWord" />
 			<lexem BeginBlock="procedure" Type="KeyWord" />
