@@ -100,6 +100,7 @@ namespace Kaliz
                     DanhDau.Configurator.Open(ConfigF);
                     DanhDau.ApplyConfiguration("Python");
                     DanhDau.StatusBarSettings.FileNamePanel.Panel.Text = "Python 3";
+                    DanhDau.ContextChoiceOpen += DanhDau_ContextChoiceOpen_ForPython;
                     
 
 
@@ -150,6 +151,46 @@ namespace Kaliz
 
             //
            
+
+        }
+
+        private void DanhDau_ContextChoiceOpen_ForPython(IContextChoiceController controller)
+        {
+            controller.Items.Add("and");
+            controller.Items.Add("as");
+            controller.Items.Add("assert");
+            controller.Items.Add("break");
+            controller.Items.Add("class");
+            controller.Items.Add("continue");
+            controller.Items.Add("def");
+            controller.Items.Add("del");
+            controller.Items.Add("elif");
+            controller.Items.Add("else");
+            controller.Items.Add("except");
+            controller.Items.Add("False");
+            controller.Items.Add("finally");
+            controller.Items.Add("for");
+            controller.Items.Add("from");
+            controller.Items.Add("global");
+            controller.Items.Add("if");
+            controller.Items.Add("import");
+            controller.Items.Add("in");
+            controller.Items.Add("is");
+            controller.Items.Add("lambda");
+            controller.Items.Add("None");
+            controller.Items.Add("nonlocal");
+            controller.Items.Add("not");
+            controller.Items.Add("or");
+            controller.Items.Add("pass");
+            controller.Items.Add("raise");
+            controller.Items.Add("return");
+            controller.Items.Add("True");
+            controller.Items.Add("try");
+            controller.Items.Add("while");
+            controller.Items.Add("with");
+            controller.Items.Add("yield");
+            controller.Items.Add("input");
+
 
         }
 
@@ -516,8 +557,8 @@ End;
 
         private void DanhDau_ContextChoiceOpen(IContextChoiceController controller)
         {
-            
-                controller.Items.Add("begin", "ở đây không có tiền");
+
+            controller.Items.Add("begin", "Bắt đầu một chương trình hoặc khối mã");
                 controller.Items.Add("break", "con mèo đen");
                 controller.Items.Add("case", "bùm");
                 controller.Items.Add("const", "lờ mao");
@@ -573,8 +614,9 @@ End;
                 controller.Items.Add("while");
                 controller.Items.Add("with");
                 controller.Items.Add("xor");
-            
-           
+                controller.Items.Add("readln");
+                controller.Items.Add("write");
+                controller.Items.Add("readkey");
         }
 
         private void DanhDau_TextChanged(object sender, EventArgs e)
