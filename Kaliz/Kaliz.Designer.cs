@@ -67,6 +67,7 @@ namespace Kaliz
             this.PerDisable = new Telerik.WinControls.UI.RadMenuItem();
             this.OCTooltip = new Telerik.WinControls.UI.RadMenuItem();
             this.OHightlight = new Telerik.WinControls.UI.RadMenuItem();
+            this.OEnaPrompt = new Telerik.WinControls.UI.RadMenuItem();
             this.MHelp = new Telerik.WinControls.UI.RadMenuItem();
             this.DockPar = new Telerik.WinControls.UI.Docking.RadDock();
             this.BMList = new Telerik.WinControls.UI.Docking.ToolWindow();
@@ -86,7 +87,6 @@ namespace Kaliz
             this.fluentDarkTheme1 = new Telerik.WinControls.Themes.FluentDarkTheme();
             this.windows8Theme1 = new Telerik.WinControls.Themes.Windows8Theme();
             this.radMenu1 = new Telerik.WinControls.UI.RadMenu();
-            this.OEnaPrompt = new Telerik.WinControls.UI.RadMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.DockPar)).BeginInit();
             this.DockPar.SuspendLayout();
             this.BMList.SuspendLayout();
@@ -336,6 +336,12 @@ namespace Kaliz
             this.OHightlight.Name = "OHightlight";
             this.OHightlight.Text = "Hightlight Current line";
             // 
+            // OEnaPrompt
+            // 
+            this.OEnaPrompt.Name = "OEnaPrompt";
+            this.OEnaPrompt.Text = "Enable Context Prompt";
+            this.OEnaPrompt.Click += new System.EventHandler(this.OEnaPrompt_Click);
+            // 
             // MHelp
             // 
             this.MHelp.Name = "MHelp";
@@ -343,7 +349,7 @@ namespace Kaliz
             // 
             // DockPar
             // 
-            this.DockPar.ActiveWindow = this.BMList;
+            this.DockPar.ActiveWindow = this.Doutput;
             this.DockPar.CausesValidation = false;
             this.DockPar.Controls.Add(this.DContainer);
             this.DockPar.Controls.Add(this.toolTabStrip1);
@@ -421,7 +427,7 @@ namespace Kaliz
             // 
             // 
             this.toolTabStrip1.RootElement.MinSize = new System.Drawing.Size(25, 25);
-            this.toolTabStrip1.SelectedIndex = 1;
+            this.toolTabStrip1.SelectedIndex = 0;
             this.toolTabStrip1.Size = new System.Drawing.Size(1093, 181);
             this.toolTabStrip1.SizeInfo.AbsoluteSize = new System.Drawing.Size(200, 181);
             this.toolTabStrip1.SizeInfo.SplitterCorrection = new System.Drawing.Size(0, -19);
@@ -523,12 +529,6 @@ namespace Kaliz
             this.radMenu1.Size = new System.Drawing.Size(1093, 37);
             this.radMenu1.TabIndex = 1;
             this.radMenu1.ThemeName = "MaterialTeal";
-            // 
-            // OEnaPrompt
-            // 
-            this.OEnaPrompt.Name = "OEnaPrompt";
-            this.OEnaPrompt.Text = "Enable Context Prompt";
-            this.OEnaPrompt.Click += new System.EventHandler(this.OEnaPrompt_Click);
             // 
             // O
             // 

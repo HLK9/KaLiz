@@ -100,6 +100,7 @@ namespace Kaliz
                     DanhDau.Configurator.Open(ConfigF);
                     DanhDau.ApplyConfiguration("Python");
                     DanhDau.StatusBarSettings.FileNamePanel.Panel.Text = "Python 3";
+                    
 
 
 
@@ -910,12 +911,16 @@ TabHienTai.Paste();
             {
                 Process Chay = new Process();
                 Chay.StartInfo.FileName = "cmd";
-                Chay.StartInfo.Arguments = "/c python " + file;
-                Chay.StartInfo.RedirectStandardError = true;
-                Chay.StartInfo.RedirectStandardOutput = true;
+                //Chay.StartInfo.UseShellExecute = true;
+                Chay.StartInfo.Arguments = "/c"+ " python " + file;
+                //Lấy thông tin nhưng phải để UseExeCutale là false :))
+                //Chay.StartInfo.RedirectStandardError = true;
+                //Chay.StartInfo.RedirectStandardOutput = true;
+
                 Chay.Start();
-               
-                string ad;
+                Chay.WaitForExit();
+     /*       
+      *   Đoạn này đẩy thông tin vào trong Output        string ad;
 
                 ListOutput.AllowEdit = false;
                 ListOutput.AllowRemove = false;
@@ -934,7 +939,7 @@ TabHienTai.Paste();
 
                     // if (ad.Contains("lines compiled")) break;
                 }
-
+    */
             }
            
 
@@ -1162,14 +1167,14 @@ TabHienTai.ReplaceDialog();
 
             if (deBug == false)
             {
-                ShowAlert_Light("< html >< color = Teal >< b > Bạn đã Bật GDB Debug </ b > ", "<html><i><span><color=Teal>Hãy biên dịch lại để khởi tạo</span></i>");
+                ShowAlert_Light("<html><color=Teal><b>Bạn đã Bật GDB Debug </b> ", "<html><i><span><color=Teal>Hãy biên dịch lại để khởi tạo</span></i>");
                 deBug = true;
                 DEnable.Text = "Disable Debug";
                 
             }
             else
             {
-                ShowAlert_Light("< html >< color = Crimson >< b > Bạn đã Tắt GDB Debug </ b > ", "<html><i><span><color=Teal>Trình biên dịch sẽ không khởi tạo thông tin Debug</span></i>");
+                ShowAlert_Light("<html><color = Crimson><b> Bạn đã Tắt GDB Debug </b> ", "<html><i><span><color=Teal>Trình biên dịch sẽ không khởi tạo thông tin Debug</span></i>");
                 deBug = false;
                 DEnable.Text = "Enable Debug";
                
@@ -1181,7 +1186,14 @@ TabHienTai.ReplaceDialog();
         private void FSave_Click(object sender, EventArgs e)
         {
             try
-            {TabHienTai.Save(); } catch { }
+            {TabHienTai.Save();
+                if (Path.GetExtension(TabHienTai.FileName) == ".py")
+                    TabHienTai.StatusBarSettings.FileNamePanel.Panel.Text = "Python 3";
+                if (Path.GetExtension(TabHienTai.FileName) == ".pas")
+                    TabHienTai.StatusBarSettings.FileNamePanel.Panel.Text = "Pascal";
+                if (Path.GetExtension(TabHienTai.FileName) == ".c"|| Path.GetExtension(TabHienTai.FileName) == ".cpp")
+                    TabHienTai.StatusBarSettings.FileNamePanel.Panel.Text = "C/C++";
+            } catch { }
             
         }
 
