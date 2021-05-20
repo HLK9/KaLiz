@@ -63,7 +63,11 @@ namespace Kaliz
             DanhDau.AllowDrop = true;
             DanhDau.FileExtensions = new string[] { ".pas", ".c", ".cpp", ".cs",".py" };
             DockPar.AddDocument(TaiLieu);
-          
+            //Theme
+            DanhDau.ContextChoiceBorderColor = Color.FromArgb(64, 224, 208);
+            
+            //DanhDau.contextchoice
+           
 
             if (F != null)
             {
@@ -141,7 +145,7 @@ namespace Kaliz
             DanhDau.MenuFill += DanhDau_MenuFill;
             
             DanhDau.ContextPromptBorderColor = Color.Pink;
-            DanhDau.BackgroundColor  = new Syncfusion.Drawing.BrushInfo(Syncfusion.Drawing.GradientStyle.ForwardDiagonal, new System.Drawing.Color[] { System.Drawing.Color.LavenderBlush, System.Drawing.Color.AliceBlue, System.Drawing.Color.BlanchedAlmond });
+           // DanhDau.BackgroundColor  = new Syncfusion.Drawing.BrushInfo(Syncfusion.Drawing.GradientStyle.ForwardDiagonal, new System.Drawing.Color[] { System.Drawing.Color.LavenderBlush, System.Drawing.Color.AliceBlue, System.Drawing.Color.BlanchedAlmond });
             //DanhDau.TextChanging += DanhDau_TextChanging;
             // DanhDau.FilterAutoCompleteItems = true;
             
@@ -153,6 +157,8 @@ namespace Kaliz
            
 
         }
+
+        
 
         private void DanhDau_ContextChoiceOpen_ForPython(IContextChoiceController controller)
         {
