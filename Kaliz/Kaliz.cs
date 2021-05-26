@@ -1388,5 +1388,15 @@ TabHienTai.ReplaceDialog();
                 OEnaPrompt.Text = "Enable Context Prompt";
             }
         }
+
+        private void HLearn_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void radMenuItem3_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
