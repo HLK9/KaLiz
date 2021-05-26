@@ -30,8 +30,8 @@ namespace Kaliz
         /// </summary>
         private void InitializeComponent()
         {
-            Telerik.WinControls.UI.ListViewDetailColumn listViewDetailColumn1 = new Telerik.WinControls.UI.ListViewDetailColumn("Column 0", "Line");
-            Telerik.WinControls.UI.ListViewDetailColumn listViewDetailColumn2 = new Telerik.WinControls.UI.ListViewDetailColumn("Column 1", "File");
+            Telerik.WinControls.UI.ListViewDetailColumn listViewDetailColumn3 = new Telerik.WinControls.UI.ListViewDetailColumn("Column 0", "Line");
+            Telerik.WinControls.UI.ListViewDetailColumn listViewDetailColumn4 = new Telerik.WinControls.UI.ListViewDetailColumn("Column 1", "File");
             this.materialTealTheme1 = new Telerik.WinControls.Themes.MaterialTealTheme();
             this.MFile = new Telerik.WinControls.UI.RadMenuItem();
             this.FNew = new Telerik.WinControls.UI.RadMenuItem();
@@ -69,6 +69,12 @@ namespace Kaliz
             this.OHightlight = new Telerik.WinControls.UI.RadMenuItem();
             this.OEnaPrompt = new Telerik.WinControls.UI.RadMenuItem();
             this.MHelp = new Telerik.WinControls.UI.RadMenuItem();
+            this.HHowto = new Telerik.WinControls.UI.RadMenuItem();
+            this.HLearn = new Telerik.WinControls.UI.RadMenuItem();
+            this.LCpp = new Telerik.WinControls.UI.RadMenuItem();
+            this.LPascal = new Telerik.WinControls.UI.RadMenuItem();
+            this.LPython = new Telerik.WinControls.UI.RadMenuItem();
+            this.HAbout = new Telerik.WinControls.UI.RadMenuItem();
             this.DockPar = new Telerik.WinControls.UI.Docking.RadDock();
             this.Doutput = new Telerik.WinControls.UI.Docking.ToolWindow();
             this.ListOutput = new Telerik.WinControls.UI.RadListView();
@@ -87,12 +93,9 @@ namespace Kaliz
             this.fluentDarkTheme1 = new Telerik.WinControls.Themes.FluentDarkTheme();
             this.windows8Theme1 = new Telerik.WinControls.Themes.Windows8Theme();
             this.radMenu1 = new Telerik.WinControls.UI.RadMenu();
-            this.HHowto = new Telerik.WinControls.UI.RadMenuItem();
-            this.HLearn = new Telerik.WinControls.UI.RadMenuItem();
-            this.LCpp = new Telerik.WinControls.UI.RadMenuItem();
-            this.LPascal = new Telerik.WinControls.UI.RadMenuItem();
-            this.LPython = new Telerik.WinControls.UI.RadMenuItem();
-            this.HAbout = new Telerik.WinControls.UI.RadMenuItem();
+            this.TAscii = new Telerik.WinControls.UI.RadMenuItem();
+            this.ATable = new Telerik.WinControls.UI.RadMenuItem();
+            this.AConvert = new Telerik.WinControls.UI.RadMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.DockPar)).BeginInit();
             this.DockPar.SuspendLayout();
             this.Doutput.SuspendLayout();
@@ -231,7 +234,8 @@ namespace Kaliz
             this.MTools.Items.AddRange(new Telerik.WinControls.RadItem[] {
             this.TFind,
             this.TReplace,
-            this.TGoToLine});
+            this.TGoToLine,
+            this.TAscii});
             this.MTools.Name = "MTools";
             this.MTools.Text = "Tools";
             // 
@@ -357,6 +361,50 @@ namespace Kaliz
             this.MHelp.Name = "MHelp";
             this.MHelp.Text = "Help";
             // 
+            // HHowto
+            // 
+            this.HHowto.Name = "HHowto";
+            this.HHowto.Text = "How to use?";
+            this.HHowto.ToolTipText = "Hướng dẫn sử dụng các tính năng";
+            // 
+            // HLearn
+            // 
+            this.HLearn.Items.AddRange(new Telerik.WinControls.RadItem[] {
+            this.LCpp,
+            this.LPascal,
+            this.LPython});
+            this.HLearn.Name = "HLearn";
+            this.HLearn.Text = "Learn to programing";
+            this.HLearn.ToolTipText = "Tới các trang web dạy lập trình hay";
+            this.HLearn.Click += new System.EventHandler(this.HLearn_Click);
+            // 
+            // LCpp
+            // 
+            this.LCpp.Name = "LCpp";
+            this.LCpp.Text = "Learn C++ from W3 Schools";
+            this.LCpp.ToolTipText = "Học C++ từ W3 Schools";
+            this.LCpp.Click += new System.EventHandler(this.radMenuItem3_Click);
+            // 
+            // LPascal
+            // 
+            this.LPascal.Name = "LPascal";
+            this.LPascal.Text = "Learn Pascal from Tutorials Point";
+            this.LPascal.ToolTipText = "Học Pascal tại Tutorials Point";
+            this.LPascal.Click += new System.EventHandler(this.LPascal_Click);
+            // 
+            // LPython
+            // 
+            this.LPython.Name = "LPython";
+            this.LPython.Text = "Learn Python from W3 Schools";
+            this.LPython.ToolTipText = "Học Python tại W3 Schools";
+            this.LPython.Click += new System.EventHandler(this.LPython_Click);
+            // 
+            // HAbout
+            // 
+            this.HAbout.Name = "HAbout";
+            this.HAbout.Text = "About Kaliz";
+            this.HAbout.ToolTipText = "Về Kaliz...";
+            // 
             // DockPar
             // 
             this.DockPar.ActiveWindow = this.Doutput;
@@ -452,11 +500,11 @@ namespace Kaliz
             // 
             this.ListBm.AllowEdit = false;
             this.ListBm.AllowRemove = false;
-            listViewDetailColumn1.HeaderText = "Line";
-            listViewDetailColumn2.HeaderText = "File";
+            listViewDetailColumn3.HeaderText = "Line";
+            listViewDetailColumn4.HeaderText = "File";
             this.ListBm.Columns.AddRange(new Telerik.WinControls.UI.ListViewDetailColumn[] {
-            listViewDetailColumn1,
-            listViewDetailColumn2});
+            listViewDetailColumn3,
+            listViewDetailColumn4});
             this.ListBm.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ListBm.GroupItemSize = new System.Drawing.Size(200, 32);
             this.ListBm.ItemSize = new System.Drawing.Size(200, 32);
@@ -540,47 +588,25 @@ namespace Kaliz
             this.radMenu1.TabIndex = 1;
             this.radMenu1.ThemeName = "MaterialTeal";
             // 
-            // HHowto
+            // TAscii
             // 
-            this.HHowto.Name = "HHowto";
-            this.HHowto.Text = "How to use?";
-            this.HHowto.ToolTipText = "Hướng dẫn sử dụng các tính năng";
+            this.TAscii.Items.AddRange(new Telerik.WinControls.RadItem[] {
+            this.ATable,
+            this.AConvert});
+            this.TAscii.Name = "TAscii";
+            this.TAscii.Text = "ASCII";
             // 
-            // HLearn
+            // ATable
             // 
-            this.HLearn.Items.AddRange(new Telerik.WinControls.RadItem[] {
-            this.LCpp,
-            this.LPascal,
-            this.LPython});
-            this.HLearn.Name = "HLearn";
-            this.HLearn.Text = "Learn to programing";
-            this.HLearn.ToolTipText = "Tới các trang web dạy lập trình hay";
-            this.HLearn.Click += new System.EventHandler(this.HLearn_Click);
+            this.ATable.Name = "ATable";
+            this.ATable.Text = "ASCII Table";
+            this.ATable.ToolTipText = "Bảng mã ASCII";
             // 
-            // LCpp
+            // AConvert
             // 
-            this.LCpp.Name = "LCpp";
-            this.LCpp.Text = "Learn C++ from W3 Schools";
-            this.LCpp.ToolTipText = "Học C++ từ W3 Schools";
-            this.LCpp.Click += new System.EventHandler(this.radMenuItem3_Click);
-            // 
-            // LPascal
-            // 
-            this.LPascal.Name = "LPascal";
-            this.LPascal.Text = "Learn Pascal from Tutorials Point";
-            this.LPascal.ToolTipText = "Học Pascal tại Tutorials Point";
-            // 
-            // LPython
-            // 
-            this.LPython.Name = "LPython";
-            this.LPython.Text = "Learn Python from W3 Schools";
-            this.LPython.ToolTipText = "Học Python tại W3 Schools";
-            // 
-            // HAbout
-            // 
-            this.HAbout.Name = "HAbout";
-            this.HAbout.Text = "About Kaliz";
-            this.HAbout.ToolTipText = "Về Kaliz...";
+            this.AConvert.Name = "AConvert";
+            this.AConvert.Text = "Convert Symbols_String to ASCII";
+            this.AConvert.ToolTipText = "Chuyển đổi ký tự hoặc xâu sang ASCII";
             // 
             // O
             // 
@@ -676,5 +702,8 @@ namespace Kaliz
         private Telerik.WinControls.UI.RadMenuItem LPascal;
         private Telerik.WinControls.UI.RadMenuItem LPython;
         private Telerik.WinControls.UI.RadMenuItem HAbout;
+        private Telerik.WinControls.UI.RadMenuItem TAscii;
+        private Telerik.WinControls.UI.RadMenuItem ATable;
+        private Telerik.WinControls.UI.RadMenuItem AConvert;
     }
 }

@@ -1396,7 +1396,17 @@ TabHienTai.ReplaceDialog();
 
         private void radMenuItem3_Click(object sender, EventArgs e)
         {
+            Process.Start("https://www.w3schools.com/cpp/");
+        }
 
+        private void LPascal_Click(object sender, EventArgs e)
+        {
+            Process.Start("https://www.tutorialspoint.com/pascal/index.htm");
+        }
+
+        private void LPython_Click(object sender, EventArgs e)
+        {
+            Process.Start("https://www.w3schools.com/python/default.asp");
         }
     }
 }
