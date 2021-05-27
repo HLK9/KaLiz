@@ -30,8 +30,8 @@ namespace Kaliz
         /// </summary>
         private void InitializeComponent()
         {
-            Telerik.WinControls.UI.ListViewDetailColumn listViewDetailColumn3 = new Telerik.WinControls.UI.ListViewDetailColumn("Column 0", "Line");
-            Telerik.WinControls.UI.ListViewDetailColumn listViewDetailColumn4 = new Telerik.WinControls.UI.ListViewDetailColumn("Column 1", "File");
+            Telerik.WinControls.UI.ListViewDetailColumn listViewDetailColumn1 = new Telerik.WinControls.UI.ListViewDetailColumn("Column 0", "Line");
+            Telerik.WinControls.UI.ListViewDetailColumn listViewDetailColumn2 = new Telerik.WinControls.UI.ListViewDetailColumn("Column 1", "File");
             this.materialTealTheme1 = new Telerik.WinControls.Themes.MaterialTealTheme();
             this.MFile = new Telerik.WinControls.UI.RadMenuItem();
             this.FNew = new Telerik.WinControls.UI.RadMenuItem();
@@ -54,6 +54,10 @@ namespace Kaliz
             this.TFind = new Telerik.WinControls.UI.RadMenuItem();
             this.TReplace = new Telerik.WinControls.UI.RadMenuItem();
             this.TGoToLine = new Telerik.WinControls.UI.RadMenuItem();
+            this.TAscii = new Telerik.WinControls.UI.RadMenuItem();
+            this.ATable = new Telerik.WinControls.UI.RadMenuItem();
+            this.AConvert = new Telerik.WinControls.UI.RadMenuItem();
+            this.TCalc = new Telerik.WinControls.UI.RadMenuItem();
             this.MBuild = new Telerik.WinControls.UI.RadMenuItem();
             this.BRun = new Telerik.WinControls.UI.RadMenuItem();
             this.BBuild = new Telerik.WinControls.UI.RadMenuItem();
@@ -93,9 +97,7 @@ namespace Kaliz
             this.fluentDarkTheme1 = new Telerik.WinControls.Themes.FluentDarkTheme();
             this.windows8Theme1 = new Telerik.WinControls.Themes.Windows8Theme();
             this.radMenu1 = new Telerik.WinControls.UI.RadMenu();
-            this.TAscii = new Telerik.WinControls.UI.RadMenuItem();
-            this.ATable = new Telerik.WinControls.UI.RadMenuItem();
-            this.AConvert = new Telerik.WinControls.UI.RadMenuItem();
+            this.Tcmd = new Telerik.WinControls.UI.RadMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.DockPar)).BeginInit();
             this.DockPar.SuspendLayout();
             this.Doutput.SuspendLayout();
@@ -235,7 +237,9 @@ namespace Kaliz
             this.TFind,
             this.TReplace,
             this.TGoToLine,
-            this.TAscii});
+            this.TAscii,
+            this.TCalc,
+            this.Tcmd});
             this.MTools.Name = "MTools";
             this.MTools.Text = "Tools";
             // 
@@ -256,6 +260,33 @@ namespace Kaliz
             this.TGoToLine.Name = "TGoToLine";
             this.TGoToLine.Text = "Go To Line";
             this.TGoToLine.Click += new System.EventHandler(this.TGoToLine_Click);
+            // 
+            // TAscii
+            // 
+            this.TAscii.Items.AddRange(new Telerik.WinControls.RadItem[] {
+            this.ATable,
+            this.AConvert});
+            this.TAscii.Name = "TAscii";
+            this.TAscii.Text = "ASCII";
+            // 
+            // ATable
+            // 
+            this.ATable.Name = "ATable";
+            this.ATable.Text = "ASCII Table";
+            this.ATable.ToolTipText = "Bảng mã ASCII";
+            // 
+            // AConvert
+            // 
+            this.AConvert.Name = "AConvert";
+            this.AConvert.Text = "Convert Symbols_String to ASCII";
+            this.AConvert.ToolTipText = "Chuyển đổi ký tự hoặc xâu sang ASCII";
+            // 
+            // TCalc
+            // 
+            this.TCalc.Name = "TCalc";
+            this.TCalc.Text = "Calculator";
+            this.TCalc.ToolTipText = "Máy tính";
+            this.TCalc.Click += new System.EventHandler(this.TCalc_Click);
             // 
             // MBuild
             // 
@@ -500,11 +531,11 @@ namespace Kaliz
             // 
             this.ListBm.AllowEdit = false;
             this.ListBm.AllowRemove = false;
-            listViewDetailColumn3.HeaderText = "Line";
-            listViewDetailColumn4.HeaderText = "File";
+            listViewDetailColumn1.HeaderText = "Line";
+            listViewDetailColumn2.HeaderText = "File";
             this.ListBm.Columns.AddRange(new Telerik.WinControls.UI.ListViewDetailColumn[] {
-            listViewDetailColumn3,
-            listViewDetailColumn4});
+            listViewDetailColumn1,
+            listViewDetailColumn2});
             this.ListBm.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ListBm.GroupItemSize = new System.Drawing.Size(200, 32);
             this.ListBm.ItemSize = new System.Drawing.Size(200, 32);
@@ -588,25 +619,12 @@ namespace Kaliz
             this.radMenu1.TabIndex = 1;
             this.radMenu1.ThemeName = "MaterialTeal";
             // 
-            // TAscii
+            // Tcmd
             // 
-            this.TAscii.Items.AddRange(new Telerik.WinControls.RadItem[] {
-            this.ATable,
-            this.AConvert});
-            this.TAscii.Name = "TAscii";
-            this.TAscii.Text = "ASCII";
-            // 
-            // ATable
-            // 
-            this.ATable.Name = "ATable";
-            this.ATable.Text = "ASCII Table";
-            this.ATable.ToolTipText = "Bảng mã ASCII";
-            // 
-            // AConvert
-            // 
-            this.AConvert.Name = "AConvert";
-            this.AConvert.Text = "Convert Symbols_String to ASCII";
-            this.AConvert.ToolTipText = "Chuyển đổi ký tự hoặc xâu sang ASCII";
+            this.Tcmd.Name = "Tcmd";
+            this.Tcmd.Text = "Command Prompt";
+            this.Tcmd.ToolTipText = "Dấu nhắc lệnh Command Prompt";
+            this.Tcmd.Click += new System.EventHandler(this.Tcmd_Click);
             // 
             // O
             // 
@@ -705,5 +723,7 @@ namespace Kaliz
         private Telerik.WinControls.UI.RadMenuItem TAscii;
         private Telerik.WinControls.UI.RadMenuItem ATable;
         private Telerik.WinControls.UI.RadMenuItem AConvert;
+        private Telerik.WinControls.UI.RadMenuItem TCalc;
+        private Telerik.WinControls.UI.RadMenuItem Tcmd;
     }
 }

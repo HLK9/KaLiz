@@ -999,10 +999,8 @@ TabHienTai.Paste();
         /// <param name="e"></param>
         private void radMenuItem1_Click_1(object sender, EventArgs e)
         {
-            //TabHienTai.StatusBarSettings.FileNamePanel.Panel.Text = "Python đàng hoàng";
-          //  Compile(ref radListView1);
-            //  MessageBox.Show(Path.GetExtension(TabHienTai.FileName));
-            //radListView1.Items.Add(new ListViewItem (new string[] { "hee","of"}));
+            DialogASCII h = new DialogASCII();
+            h.ShowDialog();
            
             
         }
@@ -1407,6 +1405,21 @@ TabHienTai.ReplaceDialog();
         private void LPython_Click(object sender, EventArgs e)
         {
             Process.Start("https://www.w3schools.com/python/default.asp");
+        }
+
+        private void TCalc_Click(object sender, EventArgs e)
+        {
+            Process clc = new Process();
+            clc.StartInfo.FileName = "calc.exe";
+            clc.Start();
+        }
+
+        private void Tcmd_Click(object sender, EventArgs e)
+        {
+            Process cm = new Process();
+            cm.StartInfo.FileName = "cmd.exe";
+            cm.Start();
+
         }
     }
 }
