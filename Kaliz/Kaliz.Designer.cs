@@ -58,6 +58,7 @@ namespace Kaliz
             this.ATable = new Telerik.WinControls.UI.RadMenuItem();
             this.AConvert = new Telerik.WinControls.UI.RadMenuItem();
             this.TCalc = new Telerik.WinControls.UI.RadMenuItem();
+            this.Tcmd = new Telerik.WinControls.UI.RadMenuItem();
             this.MBuild = new Telerik.WinControls.UI.RadMenuItem();
             this.BRun = new Telerik.WinControls.UI.RadMenuItem();
             this.BBuild = new Telerik.WinControls.UI.RadMenuItem();
@@ -97,7 +98,6 @@ namespace Kaliz
             this.fluentDarkTheme1 = new Telerik.WinControls.Themes.FluentDarkTheme();
             this.windows8Theme1 = new Telerik.WinControls.Themes.Windows8Theme();
             this.radMenu1 = new Telerik.WinControls.UI.RadMenu();
-            this.Tcmd = new Telerik.WinControls.UI.RadMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.DockPar)).BeginInit();
             this.DockPar.SuspendLayout();
             this.Doutput.SuspendLayout();
@@ -280,6 +280,7 @@ namespace Kaliz
             this.AConvert.Name = "AConvert";
             this.AConvert.Text = "Convert Symbols_String to ASCII";
             this.AConvert.ToolTipText = "Chuyển đổi ký tự hoặc xâu sang ASCII";
+            this.AConvert.Click += new System.EventHandler(this.AConvert_Click);
             // 
             // TCalc
             // 
@@ -287,6 +288,13 @@ namespace Kaliz
             this.TCalc.Text = "Calculator";
             this.TCalc.ToolTipText = "Máy tính";
             this.TCalc.Click += new System.EventHandler(this.TCalc_Click);
+            // 
+            // Tcmd
+            // 
+            this.Tcmd.Name = "Tcmd";
+            this.Tcmd.Text = "Command Prompt";
+            this.Tcmd.ToolTipText = "Dấu nhắc lệnh Command Prompt";
+            this.Tcmd.Click += new System.EventHandler(this.Tcmd_Click);
             // 
             // MBuild
             // 
@@ -618,13 +626,6 @@ namespace Kaliz
             this.radMenu1.Size = new System.Drawing.Size(1093, 37);
             this.radMenu1.TabIndex = 1;
             this.radMenu1.ThemeName = "MaterialTeal";
-            // 
-            // Tcmd
-            // 
-            this.Tcmd.Name = "Tcmd";
-            this.Tcmd.Text = "Command Prompt";
-            this.Tcmd.ToolTipText = "Dấu nhắc lệnh Command Prompt";
-            this.Tcmd.Click += new System.EventHandler(this.Tcmd_Click);
             // 
             // O
             // 

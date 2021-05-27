@@ -1421,5 +1421,11 @@ TabHienTai.ReplaceDialog();
             cm.Start();
 
         }
+
+        private void AConvert_Click(object sender, EventArgs e)
+        {
+            DialogASCII dia = new DialogASCII();
+            dia.ShowDialog();
+        }
     }
 }

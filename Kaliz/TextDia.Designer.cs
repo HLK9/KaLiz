@@ -55,6 +55,7 @@
             // 
             // BtClose
             // 
+            this.BtClose.BackColor = System.Drawing.Color.Thistle;
             this.BtClose.Location = new System.Drawing.Point(12, 176);
             this.BtClose.Name = "BtClose";
             this.BtClose.Size = new System.Drawing.Size(110, 45);
@@ -65,6 +66,7 @@
             // 
             // BtOK
             // 
+            this.BtOK.BackColor = System.Drawing.Color.Thistle;
             this.BtOK.Location = new System.Drawing.Point(343, 176);
             this.BtOK.Name = "BtOK";
             this.BtOK.Size = new System.Drawing.Size(110, 45);
@@ -75,44 +77,51 @@
             // 
             // textInput
             // 
+            this.textInput.BackColor = System.Drawing.Color.MintCream;
             this.textInput.Location = new System.Drawing.Point(84, 23);
             this.textInput.Name = "textInput";
-            this.textInput.Size = new System.Drawing.Size(369, 20);
+            this.textInput.Size = new System.Drawing.Size(369, 36);
             this.textInput.TabIndex = 3;
+            this.textInput.ThemeName = "MaterialTeal";
             // 
             // radLabel1
             // 
-            this.radLabel1.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radLabel1.Location = new System.Drawing.Point(12, 13);
+            this.radLabel1.Font = new System.Drawing.Font("Roboto Mono", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radLabel1.Location = new System.Drawing.Point(15, 31);
             this.radLabel1.Name = "radLabel1";
-            this.radLabel1.Size = new System.Drawing.Size(59, 30);
+            this.radLabel1.Size = new System.Drawing.Size(63, 24);
             this.radLabel1.TabIndex = 4;
             this.radLabel1.Text = "Input:";
+            this.radLabel1.ThemeName = "MaterialTeal";
             // 
             // radLabel2
             // 
-            this.radLabel2.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radLabel2.Location = new System.Drawing.Point(12, 90);
+            this.radLabel2.Font = new System.Drawing.Font("Roboto Mono", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radLabel2.Location = new System.Drawing.Point(12, 125);
             this.radLabel2.Name = "radLabel2";
-            this.radLabel2.Size = new System.Drawing.Size(66, 30);
+            this.radLabel2.Size = new System.Drawing.Size(72, 24);
             this.radLabel2.TabIndex = 5;
             this.radLabel2.Text = "Result:";
+            this.radLabel2.ThemeName = "MaterialTeal";
             // 
             // textResult
             // 
-            this.textResult.Location = new System.Drawing.Point(84, 97);
+            this.textResult.BackColor = System.Drawing.Color.MintCream;
+            this.textResult.Location = new System.Drawing.Point(84, 116);
             this.textResult.Name = "textResult";
             this.textResult.ReadOnly = true;
-            this.textResult.Size = new System.Drawing.Size(369, 20);
+            this.textResult.Size = new System.Drawing.Size(369, 36);
             this.textResult.TabIndex = 6;
+            this.textResult.ThemeName = "MaterialTeal";
             // 
             // droptype
             // 
+            this.droptype.BackColor = System.Drawing.Color.MintCream;
             radListDataItem1.Text = "Binary";
             radListDataItem2.Text = "Decimal";
             this.droptype.Items.Add(radListDataItem1);
             this.droptype.Items.Add(radListDataItem2);
-            this.droptype.Location = new System.Drawing.Point(84, 53);
+            this.droptype.Location = new System.Drawing.Point(84, 69);
             this.droptype.Name = "droptype";
             this.droptype.Size = new System.Drawing.Size(143, 36);
             this.droptype.TabIndex = 7;
@@ -120,16 +129,17 @@
             // 
             // radLabel3
             // 
-            this.radLabel3.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radLabel3.Location = new System.Drawing.Point(12, 55);
+            this.radLabel3.Font = new System.Drawing.Font("Roboto Mono", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radLabel3.Location = new System.Drawing.Point(12, 72);
             this.radLabel3.Name = "radLabel3";
-            this.radLabel3.Size = new System.Drawing.Size(55, 30);
+            this.radLabel3.Size = new System.Drawing.Size(54, 24);
             this.radLabel3.TabIndex = 6;
             this.radLabel3.Text = "Type:";
+            this.radLabel3.ThemeName = "MaterialTeal";
             // 
             // radToggleSwitch1
             // 
-            this.radToggleSwitch1.Location = new System.Drawing.Point(373, 65);
+            this.radToggleSwitch1.Location = new System.Drawing.Point(373, 81);
             this.radToggleSwitch1.Name = "radToggleSwitch1";
             this.radToggleSwitch1.Size = new System.Drawing.Size(50, 20);
             this.radToggleSwitch1.TabIndex = 8;
@@ -138,17 +148,18 @@
             // radLabel4
             // 
             this.radLabel4.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radLabel4.Location = new System.Drawing.Point(246, 65);
+            this.radLabel4.Location = new System.Drawing.Point(246, 81);
             this.radLabel4.Name = "radLabel4";
-            this.radLabel4.Size = new System.Drawing.Size(122, 19);
+            this.radLabel4.Size = new System.Drawing.Size(118, 19);
             this.radLabel4.TabIndex = 7;
-            this.radLabel4.Text = "Separated by a space";
+            this.radLabel4.Text = "Separated by minus ";
+            this.radLabel4.ThemeName = "MaterialTeal";
             // 
             // DialogASCII
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(465, 245);
+            this.ClientSize = new System.Drawing.Size(469, 247);
             this.Controls.Add(this.radLabel4);
             this.Controls.Add(this.radToggleSwitch1);
             this.Controls.Add(this.radLabel3);
@@ -159,6 +170,7 @@
             this.Controls.Add(this.textInput);
             this.Controls.Add(this.BtOK);
             this.Controls.Add(this.BtClose);
+            this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "DialogASCII";
             // 
