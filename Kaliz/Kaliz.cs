@@ -1427,5 +1427,26 @@ TabHienTai.ReplaceDialog();
             DialogASCII dia = new DialogASCII();
             dia.ShowDialog();
         }
+
+        private void ATable_Click(object sender, EventArgs e)
+        {
+            DocumentWindow ascii_table = new DocumentWindow("ASCII-Table");
+            DockPar.AddDocument(ascii_table);
+           
+            RadPdfViewer pd = new RadPdfViewer();
+           
+            ascii_table.Controls.Add(pd);
+            pd.ViewerMode = FixedDocumentViewerMode.TextSelection;
+            pd.FitToWidth = true;
+            pd.ThemeName = "MaterialTeal";
+            pd.Dock = DockStyle.Fill;
+            pd.LoadDocument(@"C:\Users\HoangLien\Desktop\12\full_ASCII_table.pdf");
+        }
+
+        private void HAbout_Click(object sender, EventArgs e)
+        {
+            About_Z ab = new About_Z();
+            ab.ShowDialog();
+        }
     }
 }

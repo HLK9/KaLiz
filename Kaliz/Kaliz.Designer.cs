@@ -274,6 +274,7 @@ namespace Kaliz
             this.ATable.Name = "ATable";
             this.ATable.Text = "ASCII Table";
             this.ATable.ToolTipText = "Bảng mã ASCII";
+            this.ATable.Click += new System.EventHandler(this.ATable_Click);
             // 
             // AConvert
             // 
@@ -443,6 +444,7 @@ namespace Kaliz
             this.HAbout.Name = "HAbout";
             this.HAbout.Text = "About Kaliz";
             this.HAbout.ToolTipText = "Về Kaliz...";
+            this.HAbout.Click += new System.EventHandler(this.HAbout_Click);
             // 
             // DockPar
             // 
