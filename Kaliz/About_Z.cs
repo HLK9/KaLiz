@@ -20,5 +20,10 @@ namespace Kaliz
         {
             this.Close();
         }
+
+        private void radLabel7_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

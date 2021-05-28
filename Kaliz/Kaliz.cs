@@ -31,6 +31,7 @@ namespace Kaliz
         private bool enableContext = false;
         private bool enableTooltip = false;
         private bool enableContextPrompt = false;
+        private bool showlinenum = true;
         private string Bookma = null;
         
         
@@ -1447,6 +1448,59 @@ TabHienTai.ReplaceDialog();
         {
             About_Z ab = new About_Z();
             ab.ShowDialog();
+        }
+
+        private void MPcurrentline_Click(object sender, EventArgs e)
+        {
+            RadColorDialog Col = new RadColorDialog();
+            
+            try
+            {
+                if (Col.ShowDialog() == DialogResult.OK)
+                {
+                    TabHienTai.CurrentLineHighlightColor = Col.SelectedColor;
+                }
+            }
+            catch
+            { }
+        }
+
+        private void PSelection_Click(object sender, EventArgs e)
+        {
+           
+            RadColorDialog Col = new RadColorDialog();
+            
+            
+            try
+            {
+                if (Col.ShowDialog() == DialogResult.OK)
+                {
+                    TabHienTai.SelectionTextColor = Col.SelectedColor;
+                }
+            }
+            catch
+            { }
+        }
+
+        private void OLineNum_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (showlinenum == false)
+                {
+                    TabHienTai.ShowLineNumbers = true;
+                    showlinenum = true;
+                    ShowAlert_Light("<html>Show line number <color=Teal>ON", null);
+                }
+
+                else
+                {
+                    TabHienTai.ShowLineNumbers = false;
+                    showlinenum = false;
+                    ShowAlert_Light("<html>Show line number <color=Crimson>OFF", null);
+                }
+             }
+            catch { }
         }
     }
 }

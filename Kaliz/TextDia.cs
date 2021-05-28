@@ -48,10 +48,10 @@ namespace Kaliz
                     {
                         if (radToggleSwitch1.Value == true)
                         {
-                            textResult.Text += sb.Append(Convert.ToString(c, 2).PadLeft(8, '0')+"-");
+                            textResult.Text += Convert.ToString(c, 2).PadLeft(8, '0')+"-";
                         }
                         else
-                            textResult.Text += sb.Append(Convert.ToString(c, 2).PadLeft(8, '0'));
+                            textResult.Text += Convert.ToString(c, 2).PadLeft(8, '0');
 
                     }
                 }
