@@ -21,6 +21,7 @@ using Syncfusion.Windows.Forms;
 using Syncfusion.Windows.Forms.Localization;
 using Syncfusion.Windows.Forms.Edit.Implementation;
 using System.Collections;
+using Syncfusion.Windows.Forms.Edit.Implementation.Formatting;
 
 namespace Kaliz
 {
@@ -60,6 +61,7 @@ namespace Kaliz
             var DanhDau = new EditControl();
             DanhDau.Dock = DockStyle.Fill;
             DanhDau.Style = EditControlStyle.Office2016Colorful;
+            
             TaiLieu.Controls.Add(DanhDau);
             DanhDau.AllowDrop = true;
             DanhDau.FileExtensions = new string[] { ".pas", ".c", ".cpp", ".cs",".py" };
@@ -133,7 +135,7 @@ namespace Kaliz
            // if (Path.GetExtension(F) == ".cpp") DanhDau.ApplyConfiguration(KnownLanguages.C);
             //hien khoag trang DanhDau.ShowWhitespaces = true;
             DanhDau.OnlyHighlightMatchingBraces = true;
-            DanhDau.StatusBarSettings.VisualStyle = Syncfusion.Windows.Forms.Tools.Controls.StatusBar.VisualStyle.Office2016White;
+            DanhDau.StatusBarSettings.VisualStyle = Syncfusion.Windows.Forms.Tools.Controls.StatusBar.VisualStyle.Office2016Colorful;
             DanhDau.StatusBarSettings.Visible = true;
             DanhDau.StatusBarSettings.GripVisibility = Syncfusion.Windows.Forms.Edit.Enums.SizingGripVisibility.Hidden;
             DanhDau.StatusBarSettings.TextPanel.Panel.Text = F;
@@ -1000,10 +1002,18 @@ TabHienTai.Paste();
         /// <param name="e"></param>
         private void radMenuItem1_Click_1(object sender, EventArgs e)
         {
-            DialogASCII h = new DialogASCII();
-            h.ShowDialog();
-           
-            
+            TabHienTai.ThemeName = "FluentDark";
+            radMenu1.ThemeName = "FluentDark";
+            DockPar.ThemeName = "FluentDark";
+            //TabHienTai.StatusBarSettings.VisualStyle = Syncfusion.Windows.Forms.Tools.Controls.StatusBar.VisualStyle.Office2016DarkGray;
+            TabHienTai.Style = EditControlStyle.Office2016DarkGray;
+            string ConfigF = @"Lex\Pascal_D.xml";
+            TabHienTai.Configurator.Open(ConfigF);
+            TabHienTai.BackgroundColor = new BrushInfo(GradientStyle.None, new Color[] { Color.FromArgb(40, 42, 54) });
+// DanhDau.BackgroundColor  = new Syncfusion.Drawing.BrushInfo(Syncfusion.Drawing.GradientStyle.ForwardDiagonal, new System.Drawing.Color[] { System.Drawing.Color.LavenderBlush, System.Drawing.Color.AliceBlue, System.Drawing.Color.BlanchedAlmond });
+
+
+            TabHienTai.ApplyConfiguration("Pascal");
         }
 
      
@@ -1441,7 +1451,7 @@ TabHienTai.ReplaceDialog();
             pd.FitToWidth = true;
             pd.ThemeName = "MaterialTeal";
             pd.Dock = DockStyle.Fill;
-            pd.LoadDocument(@"C:\Users\HoangLien\Desktop\12\full_ASCII_table.pdf");
+            pd.LoadDocument(@"Lex\ASCII_Table.pdf");
         }
 
         private void HAbout_Click(object sender, EventArgs e)
@@ -1464,10 +1474,13 @@ TabHienTai.ReplaceDialog();
             catch
             { }
         }
+        
+       
 
         private void PSelection_Click(object sender, EventArgs e)
         {
            
+            
             RadColorDialog Col = new RadColorDialog();
             
             

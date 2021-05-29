@@ -134,7 +134,7 @@
             // 
             this.radLabel8.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.radLabel8.ForeColor = System.Drawing.Color.IndianRed;
-            this.radLabel8.Location = new System.Drawing.Point(310, -5);
+            this.radLabel8.Location = new System.Drawing.Point(310, 3);
             this.radLabel8.Name = "radLabel8";
             this.radLabel8.Size = new System.Drawing.Size(17, 30);
             this.radLabel8.TabIndex = 3;
