@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             this.materialTealTheme1 = new Telerik.WinControls.Themes.MaterialTealTheme();
             this.radLabel1 = new Telerik.WinControls.UI.RadLabel();
             this.radLabel2 = new Telerik.WinControls.UI.RadLabel();
@@ -36,7 +35,6 @@
             this.radLabel4 = new Telerik.WinControls.UI.RadLabel();
             this.radWaitingBar1 = new Telerik.WinControls.UI.RadWaitingBar();
             this.dotsLineWaitingBarIndicatorElement1 = new Telerik.WinControls.UI.DotsLineWaitingBarIndicatorElement();
-            this.timer1 = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.radLabel1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.radLabel2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.radLabel3)).BeginInit();
@@ -60,67 +58,63 @@
             // 
             this.radLabel2.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.radLabel2.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.radLabel2.Location = new System.Drawing.Point(80, 125);
+            this.radLabel2.Location = new System.Drawing.Point(65, 119);
             this.radLabel2.Name = "radLabel2";
-            this.radLabel2.Size = new System.Drawing.Size(233, 27);
+            this.radLabel2.Size = new System.Drawing.Size(217, 24);
             this.radLabel2.TabIndex = 1;
-            this.radLabel2.Text = "<html><span style=\"font-size: 14pt\"><em>With Python, Pascal, C/C++</em></span></h" +
-    "tml>";
+            this.radLabel2.Text = "<html><span style=\"font-size: 12pt\">➤With Python, Pascal, C/C++</span></html>";
             this.radLabel2.ThemeName = "MaterialTeal";
             // 
             // radLabel3
             // 
-            this.radLabel3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.radLabel3.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.radLabel3.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.radLabel3.Location = new System.Drawing.Point(12, 255);
+            this.radLabel3.Location = new System.Drawing.Point(6, 220);
             this.radLabel3.Name = "radLabel3";
-            this.radLabel3.Size = new System.Drawing.Size(163, 21);
+            this.radLabel3.Size = new System.Drawing.Size(237, 38);
             this.radLabel3.TabIndex = 2;
-            this.radLabel3.Text = "© 2020-2021  CMB Studio";
+            this.radLabel3.Text = "Application created with Visual Studio\r\n© 2021 CMB Studio";
             this.radLabel3.ThemeName = "MaterialTeal";
             // 
             // radLabel4
             // 
-            this.radLabel4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.radLabel4.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.radLabel4.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.radLabel4.Location = new System.Drawing.Point(357, 255);
+            this.radLabel4.Location = new System.Drawing.Point(351, 221);
             this.radLabel4.Name = "radLabel4";
-            this.radLabel4.Size = new System.Drawing.Size(200, 21);
+            this.radLabel4.Size = new System.Drawing.Size(206, 37);
             this.radLabel4.TabIndex = 3;
-            this.radLabel4.Text = "Powered by Telerik && Syncfusion";
+            this.radLabel4.Text = "<html>Powered by Telerik && Syncfusion \r\n<em>Permission has been obtained</em></h" +
+    "tml>";
             this.radLabel4.ThemeName = "MaterialTeal";
             // 
             // radWaitingBar1
             // 
-            this.radWaitingBar1.Location = new System.Drawing.Point(186, 185);
+            this.radWaitingBar1.Location = new System.Drawing.Point(178, 164);
             this.radWaitingBar1.Name = "radWaitingBar1";
-            this.radWaitingBar1.Size = new System.Drawing.Size(194, 24);
+            this.radWaitingBar1.Size = new System.Drawing.Size(242, 24);
             this.radWaitingBar1.TabIndex = 4;
             this.radWaitingBar1.Text = "radWaitingBar1";
+            this.radWaitingBar1.ThemeName = "MaterialTeal";
             this.radWaitingBar1.WaitingIndicators.Add(this.dotsLineWaitingBarIndicatorElement1);
-            this.radWaitingBar1.WaitingSpeed = 80;
+            this.radWaitingBar1.WaitingIndicatorSize = new System.Drawing.Size(100, 14);
+            this.radWaitingBar1.WaitingSpeed = 100;
             this.radWaitingBar1.WaitingStyle = Telerik.WinControls.Enumerations.WaitingBarStyles.DotsLine;
             // 
             // dotsLineWaitingBarIndicatorElement1
             // 
-            this.dotsLineWaitingBarIndicatorElement1.ElementColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(224)))), ((int)(((byte)(244)))));
+            this.dotsLineWaitingBarIndicatorElement1.ElementColor = System.Drawing.Color.WhiteSmoke;
             this.dotsLineWaitingBarIndicatorElement1.Name = "dotsLineWaitingBarIndicatorElement1";
-            // 
-            // timer1
-            // 
-            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
             // Splash
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.Salmon;
-            this.ClientSize = new System.Drawing.Size(569, 297);
+            this.BackColor = System.Drawing.Color.LightCoral;
+            this.ClientSize = new System.Drawing.Size(569, 261);
+            this.Controls.Add(this.radLabel2);
             this.Controls.Add(this.radWaitingBar1);
             this.Controls.Add(this.radLabel4);
-            this.Controls.Add(this.radLabel2);
             this.Controls.Add(this.radLabel3);
             this.Controls.Add(this.radLabel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -129,6 +123,7 @@
             // 
             // 
             this.RootElement.ApplyShapeToControl = true;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Splash";
             this.ThemeName = "MaterialTeal";
             ((System.ComponentModel.ISupportInitialize)(this.radLabel1)).EndInit();
@@ -151,6 +146,5 @@
         private Telerik.WinControls.UI.RadLabel radLabel4;
         private Telerik.WinControls.UI.RadWaitingBar radWaitingBar1;
         private Telerik.WinControls.UI.DotsLineWaitingBarIndicatorElement dotsLineWaitingBarIndicatorElement1;
-        private System.Windows.Forms.Timer timer1;
     }
 }
