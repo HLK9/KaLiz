@@ -30,8 +30,8 @@ namespace Kaliz
         /// </summary>
         private void InitializeComponent()
         {
-            Telerik.WinControls.UI.ListViewDetailColumn listViewDetailColumn1 = new Telerik.WinControls.UI.ListViewDetailColumn("Column 0", "Line");
-            Telerik.WinControls.UI.ListViewDetailColumn listViewDetailColumn2 = new Telerik.WinControls.UI.ListViewDetailColumn("Column 1", "File");
+            Telerik.WinControls.UI.ListViewDetailColumn listViewDetailColumn3 = new Telerik.WinControls.UI.ListViewDetailColumn("Column 0", "Line");
+            Telerik.WinControls.UI.ListViewDetailColumn listViewDetailColumn4 = new Telerik.WinControls.UI.ListViewDetailColumn("Column 1", "File");
             this.materialTealTheme1 = new Telerik.WinControls.Themes.MaterialTealTheme();
             this.MFile = new Telerik.WinControls.UI.RadMenuItem();
             this.FNew = new Telerik.WinControls.UI.RadMenuItem();
@@ -73,6 +73,7 @@ namespace Kaliz
             this.OCTooltip = new Telerik.WinControls.UI.RadMenuItem();
             this.OHightlight = new Telerik.WinControls.UI.RadMenuItem();
             this.OEnaPrompt = new Telerik.WinControls.UI.RadMenuItem();
+            this.OLineNum = new Telerik.WinControls.UI.RadMenuItem();
             this.MHelp = new Telerik.WinControls.UI.RadMenuItem();
             this.HHowto = new Telerik.WinControls.UI.RadMenuItem();
             this.HLearn = new Telerik.WinControls.UI.RadMenuItem();
@@ -101,7 +102,9 @@ namespace Kaliz
             this.MPersonal = new Telerik.WinControls.UI.RadMenuItem();
             this.MPcurrentline = new Telerik.WinControls.UI.RadMenuItem();
             this.PSelection = new Telerik.WinControls.UI.RadMenuItem();
-            this.OLineNum = new Telerik.WinControls.UI.RadMenuItem();
+            this.PEditor = new Telerik.WinControls.UI.RadMenuItem();
+            this.ELight = new Telerik.WinControls.UI.RadMenuItem();
+            this.EDark = new Telerik.WinControls.UI.RadMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.DockPar)).BeginInit();
             this.DockPar.SuspendLayout();
             this.Doutput.SuspendLayout();
@@ -397,6 +400,12 @@ namespace Kaliz
             this.OEnaPrompt.Text = "Enable Context Prompt";
             this.OEnaPrompt.Click += new System.EventHandler(this.OEnaPrompt_Click);
             // 
+            // OLineNum
+            // 
+            this.OLineNum.Name = "OLineNum";
+            this.OLineNum.Text = "Line Number";
+            this.OLineNum.Click += new System.EventHandler(this.OLineNum_Click);
+            // 
             // MHelp
             // 
             this.MHelp.Items.AddRange(new Telerik.WinControls.RadItem[] {
@@ -547,11 +556,11 @@ namespace Kaliz
             // 
             this.ListBm.AllowEdit = false;
             this.ListBm.AllowRemove = false;
-            listViewDetailColumn1.HeaderText = "Line";
-            listViewDetailColumn2.HeaderText = "File";
+            listViewDetailColumn3.HeaderText = "Line";
+            listViewDetailColumn4.HeaderText = "File";
             this.ListBm.Columns.AddRange(new Telerik.WinControls.UI.ListViewDetailColumn[] {
-            listViewDetailColumn1,
-            listViewDetailColumn2});
+            listViewDetailColumn3,
+            listViewDetailColumn4});
             this.ListBm.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ListBm.GroupItemSize = new System.Drawing.Size(200, 32);
             this.ListBm.ItemSize = new System.Drawing.Size(200, 32);
@@ -567,7 +576,7 @@ namespace Kaliz
             // 
             this.radMenuItem1.Name = "radMenuItem1";
             this.radMenuItem1.Text = "Test";
-            this.radMenuItem1.Click += new System.EventHandler(this.radMenuItem1_Click_1);
+            this.radMenuItem1.Click += new System.EventHandler(this.Dark_Click);
             // 
             // MBookmark
             // 
@@ -640,7 +649,8 @@ namespace Kaliz
             // 
             this.MPersonal.Items.AddRange(new Telerik.WinControls.RadItem[] {
             this.MPcurrentline,
-            this.PSelection});
+            this.PSelection,
+            this.PEditor});
             this.MPersonal.Name = "MPersonal";
             this.MPersonal.Text = "Personalized";
             // 
@@ -656,11 +666,26 @@ namespace Kaliz
             this.PSelection.Text = "Selection Color";
             this.PSelection.Click += new System.EventHandler(this.PSelection_Click);
             // 
-            // OLineNum
+            // PEditor
             // 
-            this.OLineNum.Name = "OLineNum";
-            this.OLineNum.Text = "Line Number";
-            this.OLineNum.Click += new System.EventHandler(this.OLineNum_Click);
+            this.PEditor.Items.AddRange(new Telerik.WinControls.RadItem[] {
+            this.ELight,
+            this.EDark});
+            this.PEditor.Name = "PEditor";
+            this.PEditor.Text = "Editor Appearance";
+            // 
+            // ELight
+            // 
+            this.ELight.BackColor = System.Drawing.Color.Teal;
+            this.ELight.FocusBorderColor = System.Drawing.Color.Teal;
+            this.ELight.Name = "ELight";
+            this.ELight.Text = "Light";
+            // 
+            // EDark
+            // 
+            this.EDark.Name = "EDark";
+            this.EDark.Text = "Dark";
+            this.EDark.Click += new System.EventHandler(this.Dark_Click);
             // 
             // O
             // 
@@ -765,5 +790,8 @@ namespace Kaliz
         private Telerik.WinControls.UI.RadMenuItem MPcurrentline;
         private Telerik.WinControls.UI.RadMenuItem PSelection;
         private Telerik.WinControls.UI.RadMenuItem OLineNum;
+        private Telerik.WinControls.UI.RadMenuItem PEditor;
+        private Telerik.WinControls.UI.RadMenuItem ELight;
+        private Telerik.WinControls.UI.RadMenuItem EDark;
     }
 }

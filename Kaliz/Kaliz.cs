@@ -1000,20 +1000,36 @@ TabHienTai.Paste();
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void radMenuItem1_Click_1(object sender, EventArgs e)
+        private void Dark_Click(object sender, EventArgs e)
         {
-            TabHienTai.ThemeName = "FluentDark";
-            radMenu1.ThemeName = "FluentDark";
-            DockPar.ThemeName = "FluentDark";
-            //TabHienTai.StatusBarSettings.VisualStyle = Syncfusion.Windows.Forms.Tools.Controls.StatusBar.VisualStyle.Office2016DarkGray;
+            //TabHienTai.ThemeName = "FluentDark";
+            //radMenu1.ThemeName = "FluentDark";
+            //DockPar.ThemeName = "FluentDark";      
+               
             TabHienTai.Style = EditControlStyle.Office2016DarkGray;
-            string ConfigF = @"Lex\Pascal_D.xml";
-            TabHienTai.Configurator.Open(ConfigF);
+            TabHienTai.ContextPromptBackgroundBrush = new BrushInfo(GradientStyle.None, new Color[] { Color.FromArgb(40, 42, 54) });
             TabHienTai.BackgroundColor = new BrushInfo(GradientStyle.None, new Color[] { Color.FromArgb(40, 42, 54) });
-// DanhDau.BackgroundColor  = new Syncfusion.Drawing.BrushInfo(Syncfusion.Drawing.GradientStyle.ForwardDiagonal, new System.Drawing.Color[] { System.Drawing.Color.LavenderBlush, System.Drawing.Color.AliceBlue, System.Drawing.Color.BlanchedAlmond });
+            ThemeResolutionService.ApplicationThemeName = "FluentDark";
+            if (Path.GetExtension(TabHienTai.FileName) == ".pas")
+            {
+                string ConfigF = @"Lex\Pascal_D.xml";
+                TabHienTai.Configurator.Open(ConfigF);
+                TabHienTai.ApplyConfiguration("Pascal");
+            } else
+                if(Path.GetExtension(TabHienTai.FileName)==".c"|| Path.GetExtension(TabHienTai.FileName) == ".cpp")
+            {
+                string ConfigF = @"Lex\CppF_D.xml";
+                TabHienTai.Configurator.Open(ConfigF);
+                TabHienTai.ApplyConfiguration("C++");
+            }
+            else if (Path.GetExtension(TabHienTai.FileName) == ".py")
+            {
+                string ConfigF = @"Lex\Python_D.xml";
+                TabHienTai.Configurator.Open(ConfigF);
+                TabHienTai.ApplyConfiguration("Python");
+            }
 
-
-            TabHienTai.ApplyConfiguration("Pascal");
+           
         }
 
      
