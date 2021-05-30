@@ -2,13 +2,13 @@
 <ArrayOfConfigLanguage>
 <ConfigLanguage name="Pascal" CaseInsensitive="true" Known="Delphi" StartComment="{" EndComment="}">
 		<formats>
-			<format name="Text" Font="Consolas, 10pt" FontColor="Black" />
+			<format name="Text" Font="Consolas, 10pt" FontColor="#383a42" />
 			<format name="Whitespace" Font="Consolas, 10pt" FontColor="Black" />
 			<format name="KeyWord" Font="Consolas, 10pt, style=Bold" FontColor="Salmon" />
-			<format name="String" Font="Consolas, 10pt" FontColor="MediumSlateBlue" />
-			<format name="Number" Font="Consolas, 10pt, style=Bold" FontColor="DarkMagenta" />
-			<format name="Operator" Font="Consolas, 10pt" FontColor="DarkCyan" />
-			<format name="Comment" Font="Consolas, 10pt, style=Bold" FontColor="DarkGray" underline="DashDot" />
+			<format name="String" Font="Consolas, 10pt" FontColor="#823ff1" />
+			<format name="Number" Font="Consolas, 10pt, style=Bold" FontColor="#ce33c0" />
+			<format name="Operator" Font="Consolas, 10pt" FontColor="#23974a" />
+			<format name="Comment" Font="Consolas, 10pt, style=Bold" FontColor="#a0a1a7"/>
 			<format name="Error" Font="Courier New, 10pt" FontColor="Black" underline="Wave" LineColor="Red" />
 			<format name="PreprocessorKeyword" Font="Consolas, 10pt" FontColor="Gray" />
 			<format name="SelectedText" Font="Consolas, 10pt" BackColor="Highlight" FontColor="HighlightText" />
