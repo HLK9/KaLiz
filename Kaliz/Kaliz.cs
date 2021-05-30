@@ -148,10 +148,12 @@ namespace Kaliz
             DanhDau.MenuFill += DanhDau_MenuFill;
             
             DanhDau.ContextPromptBorderColor = Color.Pink;
-           // DanhDau.BackgroundColor  = new Syncfusion.Drawing.BrushInfo(Syncfusion.Drawing.GradientStyle.ForwardDiagonal, new System.Drawing.Color[] { System.Drawing.Color.LavenderBlush, System.Drawing.Color.AliceBlue, System.Drawing.Color.BlanchedAlmond });
+            DanhDau.ContextPromptBackgroundBrush = new BrushInfo(GradientStyle.None, new Color[] { Color.FromArgb(249, 249, 249) });
+            DanhDau.BackgroundColor = new BrushInfo(GradientStyle.None, new Color[] { Color.FromArgb(249, 249, 249) });
+            // DanhDau.BackgroundColor  = new Syncfusion.Drawing.BrushInfo(Syncfusion.Drawing.GradientStyle.ForwardDiagonal, new System.Drawing.Color[] { System.Drawing.Color.LavenderBlush, System.Drawing.Color.AliceBlue, System.Drawing.Color.BlanchedAlmond });
             //DanhDau.TextChanging += DanhDau_TextChanging;
             // DanhDau.FilterAutoCompleteItems = true;
-            
+
             //In
             DanhDau.PrintHeader += DanhDau_PrintHeader;
             //DanhDau.ShowContextTooltip = true; 
@@ -1005,7 +1007,8 @@ TabHienTai.Paste();
             //TabHienTai.ThemeName = "FluentDark";
             //radMenu1.ThemeName = "FluentDark";
             //DockPar.ThemeName = "FluentDark";      
-               
+            TabHienTai.IndicatorMarginBackColor = Color.FromArgb(40, 42, 54);
+            TabHienTai.LineNumbersColor = Color.FromArgb(98, 114, 164);
             TabHienTai.Style = EditControlStyle.Office2016DarkGray;
             TabHienTai.ContextPromptBackgroundBrush = new BrushInfo(GradientStyle.None, new Color[] { Color.FromArgb(40, 42, 54) });
             TabHienTai.BackgroundColor = new BrushInfo(GradientStyle.None, new Color[] { Color.FromArgb(40, 42, 54) });
@@ -1530,6 +1533,36 @@ TabHienTai.ReplaceDialog();
                 }
              }
             catch { }
+        }
+
+        private void ELight_Click(object sender, EventArgs e)
+        {
+            ThemeResolutionService.ApplicationThemeName = "MaterialTeal";
+            TabHienTai.Style = EditControlStyle.Office2016Colorful;
+            //TabHienTai.IndicatorMarginBackColor = Color.FromArgb();
+            TabHienTai.LineNumbersColor = Color.Teal;
+            TabHienTai.ContextPromptBackgroundBrush = new BrushInfo(GradientStyle.None, new Color[] { Color.FromArgb(249, 249, 249) });
+            TabHienTai.BackgroundColor = new BrushInfo(GradientStyle.None, new Color[] { Color.FromArgb(249, 249, 249) });
+            
+            if (Path.GetExtension(TabHienTai.FileName) == ".pas")
+            {
+                string ConfigF = @"Lex\Pascal.xml";
+                TabHienTai.Configurator.Open(ConfigF);
+                TabHienTai.ApplyConfiguration("Pascal");
+            }
+            else
+                if (Path.GetExtension(TabHienTai.FileName) == ".c" || Path.GetExtension(TabHienTai.FileName) == ".cpp")
+            {
+                string ConfigF = @"Lex\CppF.xml";
+                TabHienTai.Configurator.Open(ConfigF);
+                TabHienTai.ApplyConfiguration("C++");
+            }
+            else if (Path.GetExtension(TabHienTai.FileName) == ".py")
+            {
+                string ConfigF = @"Lex\Python.xml";
+                TabHienTai.Configurator.Open(ConfigF);
+                TabHienTai.ApplyConfiguration("Python");
+            }
         }
     }
 }
