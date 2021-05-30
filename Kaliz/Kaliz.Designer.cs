@@ -2,7 +2,7 @@
 using Telerik.WinControls;
 namespace Kaliz
 {
-    partial class O
+    partial class Kaliz
     {
         /// <summary>
         /// Required designer variable.
@@ -576,7 +576,7 @@ namespace Kaliz
             // 
             this.radMenuItem1.Name = "radMenuItem1";
             this.radMenuItem1.Text = "Test";
-            this.radMenuItem1.Click += new System.EventHandler(this.Dark_Click);
+            this.radMenuItem1.Click += new System.EventHandler(this.radMenuItem1_Click_1);
             // 
             // MBookmark
             // 

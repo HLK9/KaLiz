@@ -22,11 +22,12 @@ using Syncfusion.Windows.Forms.Localization;
 using Syncfusion.Windows.Forms.Edit.Implementation;
 using System.Collections;
 using Syncfusion.Windows.Forms.Edit.Implementation.Formatting;
+using System.Threading;
 
 namespace Kaliz
 {
 
-    public partial class O : Telerik.WinControls.UI.RadForm
+    public partial class Kaliz : Telerik.WinControls.UI.RadForm
     {
       private  bool deBug = false;
         private bool enableContext = false;
@@ -38,9 +39,9 @@ namespace Kaliz
         
         private int chiso { get; set; }
 
-        public O()
+        public Kaliz()
         {
-            
+           // this.Load += O_Load;
             InitializeComponent();
             //Tạo sẵn để test
             //TaoMoi("hal.pas", "C:\\Users\\HoangLien\\Desktop\\TeeS\\hal.pas");
@@ -48,6 +49,16 @@ namespace Kaliz
 
 
 
+        }
+
+        private void O_Load(object sender, EventArgs e)
+        {
+
+            Splash ht = new Splash();
+            Thread thr = new Thread(new ThreadStart(SplashScreen));
+            thr.Start();
+            Thread.Sleep(5000);
+            thr.Abort();
         }
 
         /// <summary>
@@ -1004,9 +1015,7 @@ TabHienTai.Paste();
         /// <param name="e"></param>
         private void Dark_Click(object sender, EventArgs e)
         {
-            //TabHienTai.ThemeName = "FluentDark";
-            //radMenu1.ThemeName = "FluentDark";
-            //DockPar.ThemeName = "FluentDark";      
+
             TabHienTai.IndicatorMarginBackColor = Color.FromArgb(40, 42, 54);
             TabHienTai.LineNumbersColor = Color.FromArgb(98, 114, 164);
             TabHienTai.Style = EditControlStyle.Office2016DarkGray;
@@ -1018,8 +1027,9 @@ TabHienTai.Paste();
                 string ConfigF = @"Lex\Pascal_D.xml";
                 TabHienTai.Configurator.Open(ConfigF);
                 TabHienTai.ApplyConfiguration("Pascal");
-            } else
-                if(Path.GetExtension(TabHienTai.FileName)==".c"|| Path.GetExtension(TabHienTai.FileName) == ".cpp")
+            }
+            else
+                if (Path.GetExtension(TabHienTai.FileName) == ".c" || Path.GetExtension(TabHienTai.FileName) == ".cpp")
             {
                 string ConfigF = @"Lex\CppF_D.xml";
                 TabHienTai.Configurator.Open(ConfigF);
@@ -1032,7 +1042,7 @@ TabHienTai.Paste();
                 TabHienTai.ApplyConfiguration("Python");
             }
 
-           
+
         }
 
      
@@ -1563,6 +1573,19 @@ TabHienTai.ReplaceDialog();
                 TabHienTai.Configurator.Open(ConfigF);
                 TabHienTai.ApplyConfiguration("Python");
             }
+        }
+
+        private void radMenuItem1_Click_1(object sender, EventArgs e)
+        {
+            Splash ht = new Splash();
+            Thread thr = new Thread(new ThreadStart(SplashScreen));
+            thr.Start();
+            Thread.Sleep(5000);
+            thr.Abort();
+        }
+        public void SplashScreen()
+        {
+            Application.Run(new Splash());
         }
     }
 }
