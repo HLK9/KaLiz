@@ -5,15 +5,15 @@ xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/X
   xsi:noNamespaceSchemaLocation="file://d:\Projects\EditControl\Syncfusion.Windows.Forms.Edit\config.xsd" -->
   <ConfigLanguage name="C++">
     <formats>
-      <format name="Text" Font="Consolas, 10pt"   FontColor="Black" />
+      <format name="Text" Font="Consolas, 10pt"   FontColor="#383a42" />
       <format name="Whitespace" Font="Consolas, 10pt" FontColor="Black" />
-      <format name="KeyWord" Font="Consolas, 10pt style=Bold" FontColor="Blue" />
+      <format name="KeyWord" Font="Consolas, 10pt style=Bold" FontColor="#0098dd" />
       <format name="ImageProcessor" Font="Consolas, 10pt" FontColor="Blue" UseCustomControl="true" />
-      <format name="String" Font="Consolas, 10pt" FontColor="Brown" BorderColor="#b00000" />
-      <format name="Number" Font="Consolas, 10pt, style=Bold" FontColor="DarkMagenta" />
+      <format name="String" Font="Consolas, 10pt" FontColor="#c5a332" BorderColor="#b00000" />
+      <format name="Number" Font="Consolas, 10pt, style=Bold" FontColor="#ce33c0" />
       <format name="Error" Font="Consolas, 10pt" FontColor="Black" underline="Wave" LineColor="Red" />
-      <format name="Operator" Font="Consolas, 10pt" FontColor="DarkCyan" />
-      <format name="Comment" Font="Consolas, 10pt" FontColor="Green" />
+      <format name="Operator" Font="Consolas, 10pt" FontColor="#7a82da" />
+      <format name="Comment" Font="Consolas, 10pt" FontColor="#a0a1a7" />
       <format name="PreprocessorKeyword" Font="Consolas, 10pt" FontColor="Gray" />
       <format name="SelectedText" Font="Consolas, 10pt" BackColor="Highlight" FontColor="HighlightText" />
       <format name="CommentXML" Font="Consolas, 10pt, style=Bold" FontColor="Gray" />
