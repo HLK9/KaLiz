@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using System.Threading;
 using System.Windows.Forms;
 
 namespace Kaliz
@@ -14,7 +15,17 @@ namespace Kaliz
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new O());
+            Splash ht = new Splash();
+            Thread thr = new Thread(new ThreadStart(SplashScreen));
+            thr.Start();
+            Thread.Sleep(5000);
+            thr.Abort();
+            
+            Application.Run(new Kaliz());
+        }
+        static void SplashScreen()
+        {
+            Application.Run(new Splash());
         }
     }
 }
