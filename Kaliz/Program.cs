@@ -13,14 +13,10 @@ namespace Kaliz
         [STAThread]
         static void Main()
         {
+            
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Splash ht = new Splash();
-            Thread thr = new Thread(new ThreadStart(SplashScreen));
-            thr.Start();
-            Thread.Sleep(5000);
-            thr.Abort();
-            
+                      
             Application.Run(new Kaliz());
         }
         static void SplashScreen()
