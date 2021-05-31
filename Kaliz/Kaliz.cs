@@ -41,26 +41,13 @@ namespace Kaliz
 
         public Kaliz()
         {
-           // this.Load += O_Load;
-            InitializeComponent();
-            //Tạo sẵn để test
-            //TaoMoi("hal.pas", "C:\\Users\\HoangLien\\Desktop\\TeeS\\hal.pas");
-           
-
-
-
-        }
-
-        private void O_Load(object sender, EventArgs e)
-        {
-
             Splash ht = new Splash();
             Thread thr = new Thread(new ThreadStart(SplashScreen));
             thr.Start();
             Thread.Sleep(5000);
             thr.Abort();
+            InitializeComponent();
         }
-
         /// <summary>
         /// Tao mot tep moi
         /// </summary>
