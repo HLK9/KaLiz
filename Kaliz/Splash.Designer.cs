@@ -34,7 +34,7 @@
             this.radLabel3 = new Telerik.WinControls.UI.RadLabel();
             this.radLabel4 = new Telerik.WinControls.UI.RadLabel();
             this.radWaitingBar1 = new Telerik.WinControls.UI.RadWaitingBar();
-            this.dotsLineWaitingBarIndicatorElement1 = new Telerik.WinControls.UI.DotsLineWaitingBarIndicatorElement();
+            this.dotsRingWaitingBarIndicatorElement1 = new Telerik.WinControls.UI.DotsRingWaitingBarIndicatorElement();
             ((System.ComponentModel.ISupportInitialize)(this.radLabel1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.radLabel2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.radLabel3)).BeginInit();
@@ -90,21 +90,21 @@
             // 
             // radWaitingBar1
             // 
-            this.radWaitingBar1.Location = new System.Drawing.Point(178, 164);
+            this.radWaitingBar1.Location = new System.Drawing.Point(249, 149);
             this.radWaitingBar1.Name = "radWaitingBar1";
-            this.radWaitingBar1.Size = new System.Drawing.Size(242, 24);
+            this.radWaitingBar1.Size = new System.Drawing.Size(70, 70);
             this.radWaitingBar1.TabIndex = 4;
             this.radWaitingBar1.Text = "radWaitingBar1";
             this.radWaitingBar1.ThemeName = "MaterialTeal";
-            this.radWaitingBar1.WaitingIndicators.Add(this.dotsLineWaitingBarIndicatorElement1);
+            this.radWaitingBar1.WaitingIndicators.Add(this.dotsRingWaitingBarIndicatorElement1);
             this.radWaitingBar1.WaitingIndicatorSize = new System.Drawing.Size(100, 14);
-            this.radWaitingBar1.WaitingSpeed = 100;
-            this.radWaitingBar1.WaitingStyle = Telerik.WinControls.Enumerations.WaitingBarStyles.DotsLine;
+            this.radWaitingBar1.WaitingSpeed = 50;
+            this.radWaitingBar1.WaitingStyle = Telerik.WinControls.Enumerations.WaitingBarStyles.DotsRing;
             // 
-            // dotsLineWaitingBarIndicatorElement1
+            // dotsRingWaitingBarIndicatorElement1
             // 
-            this.dotsLineWaitingBarIndicatorElement1.ElementColor = System.Drawing.Color.WhiteSmoke;
-            this.dotsLineWaitingBarIndicatorElement1.Name = "dotsLineWaitingBarIndicatorElement1";
+            this.dotsRingWaitingBarIndicatorElement1.ElementColor = System.Drawing.Color.WhiteSmoke;
+            this.dotsRingWaitingBarIndicatorElement1.Name = "dotsRingWaitingBarIndicatorElement1";
             // 
             // Splash
             // 
@@ -145,6 +145,6 @@
         private Telerik.WinControls.UI.RadLabel radLabel3;
         private Telerik.WinControls.UI.RadLabel radLabel4;
         private Telerik.WinControls.UI.RadWaitingBar radWaitingBar1;
-        private Telerik.WinControls.UI.DotsLineWaitingBarIndicatorElement dotsLineWaitingBarIndicatorElement1;
+        private Telerik.WinControls.UI.DotsRingWaitingBarIndicatorElement dotsRingWaitingBarIndicatorElement1;
     }
 }
