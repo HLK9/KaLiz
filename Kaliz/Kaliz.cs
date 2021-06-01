@@ -29,14 +29,14 @@ namespace Kaliz
 
     public partial class Kaliz : Telerik.WinControls.UI.RadForm
     {
-      private  bool deBug = false;
+        private bool deBug = false;
         private bool enableContext = false;
         private bool enableTooltip = false;
         private bool enableContextPrompt = false;
         private bool showlinenum = true;
         private string Bookma = null;
-        
-        
+
+
         private int chiso { get; set; }
 
         public Kaliz()
@@ -53,22 +53,22 @@ namespace Kaliz
         /// </summary>
         /// <param name="ten"></param>
         /// <param name="F"></param>
-        private void TaoMoi(string ten,string F)
+        private void TaoMoi(string ten, string F)
         {
             DocumentWindow TaiLieu = new DocumentWindow(ten);
             var DanhDau = new EditControl();
             DanhDau.Dock = DockStyle.Fill;
             DanhDau.Style = EditControlStyle.Office2016Colorful;
-            
+
             TaiLieu.Controls.Add(DanhDau);
             DanhDau.AllowDrop = true;
-            DanhDau.FileExtensions = new string[] { ".pas", ".c", ".cpp", ".cs",".py" };
+            DanhDau.FileExtensions = new string[] { ".pas", ".c", ".cpp", ".cs", ".py" };
             DockPar.AddDocument(TaiLieu);
             //Theme
             DanhDau.ContextChoiceBorderColor = Color.FromArgb(64, 224, 208);
-            
+
             //DanhDau.contextchoice
-           
+
 
             if (F != null)
             {
@@ -93,10 +93,10 @@ namespace Kaliz
 
                     DanhDau.ApplyConfiguration("Pascal");
                     DanhDau.StatusBarSettings.FileNamePanel.Panel.Text = "Pascal";
-                   DanhDau.ContextChoiceOpen += DanhDau_ContextChoiceOpen;
+                    DanhDau.ContextChoiceOpen += DanhDau_ContextChoiceOpen;
                     DanhDau.ContextPromptOpen += DanhDau_ContextPromptOpen_ForPascal;
                     DanhDau.ContextPromptUpdate += DanhDau_ContextPromptUpdate_ForPascal;
-                   
+
                 }
                 if (Path.GetExtension(F) == ".py")
                 {
@@ -106,31 +106,31 @@ namespace Kaliz
                     DanhDau.ApplyConfiguration("Python");
                     DanhDau.StatusBarSettings.FileNamePanel.Panel.Text = "Python 3";
                     DanhDau.ContextChoiceOpen += DanhDau_ContextChoiceOpen_ForPython;
-                    
+
 
 
 
                 }
 
             }
-                
-          
-            
+
+
+
             DanhDau.MarkChangedLines = true;
             DanhDau.ShowSelectionMargin = true;
             DanhDau.HighlightCurrentLine = true;
-           
+
             DanhDau.CurrentLineHighlightColor = Color.Teal;
             DanhDau.ShowIndicatorMargin = true;
             DanhDau.MarkerAreaWidth = 20;
             DanhDau.ShowIndentationGuidelines = true;
             DanhDau.UpdateBookmarkToolTip += DanhDau_UpdateBookmarkToolTip;
             DanhDau.AllowZoom = true;
-           DanhDau.OnlyHighlightMatchingBraces = true;
+            DanhDau.OnlyHighlightMatchingBraces = true;
             DanhDau.EnableSmartInBlockIndent = true;
             DanhDau.IndentBlockHighlightingColor = Color.Orange;
             DanhDau.AutoIndentMode = AutoIndentMode.Smart;
-           // if (Path.GetExtension(F) == ".cpp") DanhDau.ApplyConfiguration(KnownLanguages.C);
+            // if (Path.GetExtension(F) == ".cpp") DanhDau.ApplyConfiguration(KnownLanguages.C);
             //hien khoag trang DanhDau.ShowWhitespaces = true;
             DanhDau.OnlyHighlightMatchingBraces = true;
             DanhDau.StatusBarSettings.VisualStyle = Syncfusion.Windows.Forms.Tools.Controls.StatusBar.VisualStyle.Office2016Colorful;
@@ -144,7 +144,7 @@ namespace Kaliz
             DanhDau.TextChanged += DanhDau_TextChanged;
             DanhDau.UpdateContextToolTip += DanhDau_UpdateContextToolTip;
             DanhDau.MenuFill += DanhDau_MenuFill;
-            
+
             DanhDau.ContextPromptBorderColor = Color.Pink;
             DanhDau.ContextPromptBackgroundBrush = new BrushInfo(GradientStyle.None, new Color[] { Color.FromArgb(249, 249, 249) });
             DanhDau.BackgroundColor = new BrushInfo(GradientStyle.None, new Color[] { Color.FromArgb(249, 249, 249) });
@@ -157,11 +157,11 @@ namespace Kaliz
             //DanhDau.ShowContextTooltip = true; 
 
             //
-           
+
 
         }
 
-        
+
 
         private void DanhDau_ContextChoiceOpen_ForPython(IContextChoiceController controller)
         {
@@ -235,7 +235,7 @@ namespace Kaliz
                 else
 
                     // Gets or sets selected item.
-                   
+
                     e.List.SelectedItem.BoldedItems.SelectedItem = e.List.SelectedItem.BoldedItems[iBoldedIndex];
 
             }
@@ -272,9 +272,9 @@ namespace Kaliz
             {
                 e.AddPrompt("Câu lệnh rẽ nhánh", "if <Các điều kiện > then <Các câu lệnh>");
             }
-            if(TabHienTai.GetCurrentWord().ToLower()=="case")
+            if (TabHienTai.GetCurrentWord().ToLower() == "case")
             {
-                e.AddPrompt("Lệnh Case-Of", "Case <Giá trị> Of"+ @"
+                e.AddPrompt("Lệnh Case-Of", "Case <Giá trị> Of" + @"
     <Trường hợp 1> : <Công việc 1>;
     <Trường hợp 2> : <Công việc 2>;
     ...
@@ -303,7 +303,7 @@ End;
 
                 {
 
-                    if (lexem.Text == ","|| lexem.Text == ";")
+                    if (lexem.Text == "," || lexem.Text == ";")
 
                         iBoldedIndex++;
 
@@ -341,7 +341,7 @@ End;
                     item.BoldedItems.Add(0, 14, "Điều kiện");
 
                 }
-                if(TabHienTai.GetCurrentWord().ToLower()=="if")
+                if (TabHienTai.GetCurrentWord().ToLower() == "if")
                 {
                     item = e.AddPrompt("Câu lệnh rẽ nhánh", "<Điều kiện>");
                     item.BoldedItems.Add(0, 1, "Điều kiện");
@@ -352,14 +352,14 @@ End;
                     item.BoldedItems.Add(0, 11, "Điều kiện");
                 }
             }
-            
+
 
 
         }
 
         private void DanhDau_MenuFill(object sender, EventArgs e)
         {
-            ContextMenuManager Menu = (ContextMenuManager) sender;
+            ContextMenuManager Menu = (ContextMenuManager)sender;
             Menu.ContextMenuProvider.SetVisualStyle(VisualStyle.Office2016Colorful);
             Menu.ClearMenu();
 
@@ -370,7 +370,7 @@ End;
             Menu.AddMenuItem("&Comment selection", new EventHandler(MenuComment));
             Menu.AddMenuItem("&Uncomment selection", new EventHandler(MenuUncomment));
             Menu.AddMenuItem("&Undo", new EventHandler(MenuUndo));
-            
+
             Menu.AddMenuItem("&Redo", new EventHandler(MenuRedo));
             Menu.AddMenuItem("&Save", new EventHandler(MenuSave));
 
@@ -384,7 +384,7 @@ End;
 
         private void MenuSave(object sender, EventArgs e)
         {
-            
+
             TabHienTai.Save();
         }
 
@@ -410,7 +410,7 @@ End;
 
         private void MenuPaste(object sender, EventArgs e)
         {
-            
+
             TabHienTai.Paste();
         }
 
@@ -482,8 +482,8 @@ End;
             e.Text = Path.GetFileName(TabHienTai.FileName);
         }
 
-       
-       
+
+
 
         private void DanhDau_ContextChoiceOpen_C(IContextChoiceController controller)
         {
@@ -499,7 +499,7 @@ End;
             controller.Items.Add("typedef");
             controller.Items.Add("char");
             controller.Items.Add("extern");
-            controller.Items.Add("return","cái ày là của C/C++");
+            controller.Items.Add("return", "cái ày là của C/C++");
             controller.Items.Add("union");
             controller.Items.Add("const");
             controller.Items.Add("float");
@@ -568,64 +568,64 @@ End;
         {
 
             controller.Items.Add("begin", "Bắt đầu một chương trình hoặc khối mã");
-                controller.Items.Add("break", "con mèo đen");
-                controller.Items.Add("case", "bùm");
-                controller.Items.Add("const", "lờ mao");
-                controller.Items.Add("absolute", "");
-                controller.Items.Add("and");
-                controller.Items.Add("array");
-                controller.Items.Add("asm");
-                controller.Items.Add("do");
-                controller.Items.Add("downto");
-                controller.Items.Add("else");
-                controller.Items.Add("end");
-                controller.Items.Add("constructor");
-                controller.Items.Add("continue");
-                controller.Items.Add("destructor");
-                controller.Items.Add("div");
-                controller.Items.Add("file");
-                controller.Items.Add("for");
-                controller.Items.Add("function");
-                controller.Items.Add("goto");
-                controller.Items.Add("if");
-                controller.Items.Add("implementation");
-                controller.Items.Add("in");
-                controller.Items.Add("inherited");
-                controller.Items.Add("inline");
-                controller.Items.Add("interface");
-                controller.Items.Add("label");
-                controller.Items.Add("mod");
-                controller.Items.Add("nil");
-                controller.Items.Add("not");
-                controller.Items.Add("object");
-                controller.Items.Add("of");
-                controller.Items.Add("on");
-                controller.Items.Add("packaed");
-                controller.Items.Add("operator");
-                controller.Items.Add("or");
-                controller.Items.Add("procedure");
-                controller.Items.Add("program");
-                controller.Items.Add("record");
-                controller.Items.Add("reintroduce");
-                controller.Items.Add("repeat");
-                controller.Items.Add("self");
-                controller.Items.Add("set");
-                controller.Items.Add("shl");
-                controller.Items.Add("shr");
-                controller.Items.Add("string");
-                controller.Items.Add("then");
-                controller.Items.Add("to");
-                controller.Items.Add("type");
-                controller.Items.Add("unit");
-                controller.Items.Add("until");
-                controller.Items.Add("uses");
-                controller.Items.Add("var");
-                controller.Items.Add("while");
-                controller.Items.Add("with");
-                controller.Items.Add("xor");
-                controller.Items.Add("readln");
-                controller.Items.Add("write");
-                controller.Items.Add("readkey");
+            controller.Items.Add("break", "con mèo đen");
+            controller.Items.Add("case", "bùm");
+            controller.Items.Add("const", "lờ mao");
+            controller.Items.Add("absolute", "");
+            controller.Items.Add("and");
+            controller.Items.Add("array");
+            controller.Items.Add("asm");
+            controller.Items.Add("do");
+            controller.Items.Add("downto");
+            controller.Items.Add("else");
+            controller.Items.Add("end");
+            controller.Items.Add("constructor");
+            controller.Items.Add("continue");
+            controller.Items.Add("destructor");
+            controller.Items.Add("div");
+            controller.Items.Add("file");
+            controller.Items.Add("for");
+            controller.Items.Add("function");
+            controller.Items.Add("goto");
+            controller.Items.Add("if");
+            controller.Items.Add("implementation");
+            controller.Items.Add("in");
+            controller.Items.Add("inherited");
+            controller.Items.Add("inline");
+            controller.Items.Add("interface");
+            controller.Items.Add("label");
+            controller.Items.Add("mod");
+            controller.Items.Add("nil");
+            controller.Items.Add("not");
+            controller.Items.Add("object");
+            controller.Items.Add("of");
+            controller.Items.Add("on");
+            controller.Items.Add("packaed");
+            controller.Items.Add("operator");
+            controller.Items.Add("or");
+            controller.Items.Add("procedure");
+            controller.Items.Add("program");
+            controller.Items.Add("record");
+            controller.Items.Add("reintroduce");
+            controller.Items.Add("repeat");
+            controller.Items.Add("self");
+            controller.Items.Add("set");
+            controller.Items.Add("shl");
+            controller.Items.Add("shr");
+            controller.Items.Add("string");
+            controller.Items.Add("then");
+            controller.Items.Add("to");
+            controller.Items.Add("type");
+            controller.Items.Add("unit");
+            controller.Items.Add("until");
+            controller.Items.Add("uses");
+            controller.Items.Add("var");
+            controller.Items.Add("while");
+            controller.Items.Add("with");
+            controller.Items.Add("xor");
+            controller.Items.Add("readln");
+            controller.Items.Add("write");
+            controller.Items.Add("readkey");
         }
 
         private void DanhDau_TextChanged(object sender, EventArgs e)
@@ -640,7 +640,7 @@ End;
             TabHienTai.StatusBarSettings.StatusPanel.Panel.Text = "Unsaved";
             TabHienTai.StatusBarSettings.StatusPanel.Panel.BackColor = Color.DarkMagenta;
             TabHienTai.StatusBarSettings.StatusPanel.Panel.ForeColor = Color.White;
-           
+
         }
 
         private void DanhDau_UpdateBookmarkToolTip(object sender, UpdateBookmarkTooltipEventArgs e)
@@ -653,8 +653,8 @@ End;
             {
 
             }
-           
-            
+
+
         }
 
         private void commandBarDropDownList1_Click(object sender, EventArgs e)
@@ -665,22 +665,25 @@ End;
         private void FOpen_Click(object sender, EventArgs e)
         {
             OpenFileDialog Mo = new OpenFileDialog();
-           
+
             if (Mo.ShowDialog() == DialogResult.OK)
             {
-                TaoMoi(Path.GetFileName(Mo.FileName),Mo.FileName);
+                TaoMoi(Path.GetFileName(Mo.FileName), Mo.FileName);
             }
 
         }
 
         private void radMenuItem1_Click(object sender, EventArgs e)
         {
-            try { TabHienTai.Close();
-            DockPar.ActiveWindow.Close(); //chủ chốt 
-            } catch { }
-            
-           
-           
+            try
+            {
+                TabHienTai.Close();
+                DockPar.ActiveWindow.Close(); //chủ chốt 
+            }
+            catch { }
+
+
+
         }
 
         private void DcWelcome_Click(object sender, EventArgs e)
@@ -691,15 +694,15 @@ End;
         private void FNew_Click(object sender, EventArgs e)
         {
 
-            TaoMoi("Document " + chiso++,null);
+            TaoMoi("Document " + chiso++, null);
         }
         EditControl TabHienTai
         {
             get
             {
-                
-                    if (DockPar.ActiveWindow == null) return null;
-                    return (DockPar.DocumentManager.ActiveDocument.Controls[0] as EditControl);
+
+                if (DockPar.ActiveWindow == null) return null;
+                return (DockPar.DocumentManager.ActiveDocument.Controls[0] as EditControl);
 
                 //Fixed... :v            .Controls[0]
 
@@ -707,27 +710,27 @@ End;
             }
             set
             {
-               DockPar.DocumentManager.ActiveDocument.ActiveControl = (value.Parent as DocumentTabStrip);
+                DockPar.DocumentManager.ActiveDocument.ActiveControl = (value.Parent as DocumentTabStrip);
                 value.Focus();
-                
+
             }
         }
 
-       
+
 
         private void ECopy_Click(object sender, EventArgs e)
         {
             try
             {
- if (TabHienTai.CanCopy == true)
-            {
-                TabHienTai.Copy();
-            }
+                if (TabHienTai.CanCopy == true)
+                {
+                    TabHienTai.Copy();
+                }
             }
             catch { }
-           
-           
-          
+
+
+
 
         }
 
@@ -735,10 +738,10 @@ End;
         {
             try
             {
-                    TabHienTai.Cut();
+                TabHienTai.Cut();
             }
             catch { }
-            
+
 
         }
 
@@ -746,10 +749,10 @@ End;
         {
             try
             {
-TabHienTai.Paste();
+                TabHienTai.Paste();
             }
             catch { }
-            
+
         }
 
         private void FPrint_Click(object sender, EventArgs e)
@@ -759,41 +762,41 @@ TabHienTai.Paste();
                 if (TabHienTai.ActiveControl != null) TabHienTai.Print();
             }
             catch { }
-            
+
         }
 
         private void FSaveAs_Click(object sender, EventArgs e)
         {
             try
             {
-                     TabHienTai.SaveAs();
+                TabHienTai.SaveAs();
             }
             catch { }
-           
+
         }
 
         private void FExport_Click(object sender, EventArgs e)
         {
             try
             {
-                        SaveFileDialog LuuVoiRTF = new SaveFileDialog();
-            LuuVoiRTF.FileName = Path.GetFileNameWithoutExtension(TabHienTai.FileName) + ".rtf";
-            LuuVoiRTF.Filter = "RitchTextDocuments (*.rtf)|*.rtf";
-            if (LuuVoiRTF.ShowDialog() == DialogResult.OK)
-            {
-                this.TabHienTai.SaveAsRTF(LuuVoiRTF.FileName);
-            } 
+                SaveFileDialog LuuVoiRTF = new SaveFileDialog();
+                LuuVoiRTF.FileName = Path.GetFileNameWithoutExtension(TabHienTai.FileName) + ".rtf";
+                LuuVoiRTF.Filter = "RitchTextDocuments (*.rtf)|*.rtf";
+                if (LuuVoiRTF.ShowDialog() == DialogResult.OK)
+                {
+                    this.TabHienTai.SaveAsRTF(LuuVoiRTF.FileName);
+                }
             }
             catch { }
-           
+
             //this.TabHienTai.SaveAsRTF("Document.rtf");
         }
-        private string TepExe (string ten)
+        private string TepExe(string ten)
         {
             return Path.GetDirectoryName(ten) + "\\" + Path.GetFileNameWithoutExtension(ten) + ".exe";
         }
         //Build tep
-        private void Build(string ten,bool enabledebug,ref RadListView outp)
+        private void Build(string ten, bool enabledebug, ref RadListView outp)
         {
             if (Path.GetExtension(ten) == ".pas")
             {
@@ -802,38 +805,39 @@ TabHienTai.Paste();
                 BienDich.StartInfo.FileName = "cmd";
                 BienDich.StartInfo.WorkingDirectory = @"FPC\\bin\\i386-win32\\";
                 BienDich.StartInfo.UseShellExecute = false;
-                if (enabledebug ==false)
-                BienDich.StartInfo.Arguments = "/c " + "fpc " + ten;
-                else BienDich.StartInfo.Arguments = "/c " + "fpc " + ten+" -g";
+                if (enabledebug == false)
+                    BienDich.StartInfo.Arguments = "/c " + "fpc " + ten;
+                else BienDich.StartInfo.Arguments = "/c " + "fpc " + ten + " -g";
 
                 //BienDich.StartInfo.RedirectStandardInput = true;
                 BienDich.StartInfo.RedirectStandardOutput = true;
                 BienDich.StartInfo.StandardOutputEncoding = Encoding.UTF8;
-                BienDich.StartInfo.CreateNoWindow = true ;
+                BienDich.StartInfo.CreateNoWindow = true;
                 BienDich.StartInfo.WindowStyle = ProcessWindowStyle.Normal;
                 BienDich.Start();
                 ListOutput.AllowEdit = false;
                 ListOutput.AllowRemove = false;
                 bool issuccess = true;
                 string ad;
-                    while ( (ad=BienDich.StandardOutput.ReadLine())!=null)
+                while ((ad = BienDich.StandardOutput.ReadLine()) != null)
                 {
                     ListOutput.Items.Add(ad);
-                    
+
                     if (ad.Contains("lines compiled")) break;
                 }
-                    foreach (var item in ListOutput.Items)
+                foreach (var item in ListOutput.Items)
                 {
                     if (item.Text.Contains("Fatal"))
-                    { item.BackColor = Color.LightSalmon;
+                    {
+                        item.BackColor = Color.LightSalmon;
                         issuccess = false;
                     }
 
                     if (item.Text.Contains("lines compiled")) item.BackColor = Color.LightGreen;
                 }
-               if (issuccess == false)
+                if (issuccess == false)
                     ShowAlert_Light("<html><color=LightSalmon>Build Failed", "Check output to view more");
-               else
+                else
                     ShowAlert_Light("<html><color=Teal>Build Completed", "Ready to run");
 
 
@@ -845,40 +849,40 @@ TabHienTai.Paste();
 
             }
 
-           else if(Path.GetExtension(ten)==".c"|| Path.GetExtension(ten)==".cpp")
+            else if (Path.GetExtension(ten) == ".c" || Path.GetExtension(ten) == ".cpp")
             {
                 ListOutput.Items.Clear();
-                Process BienDich =new Process();
+                Process BienDich = new Process();
                 BienDich.StartInfo.FileName = "cmd";
                 BienDich.StartInfo.UseShellExecute = false;
                 BienDich.StartInfo.RedirectStandardOutput = true;
                 BienDich.StartInfo.RedirectStandardError = true;
                 BienDich.StartInfo.RedirectStandardInput = true;
-               
+
                 if (enabledebug == false)
-                    BienDich.StartInfo.Arguments = "/c " + "g++ "+ ten + " -o " + Path.GetDirectoryName(ten) + "\\" + Path.GetFileNameWithoutExtension(ten) + ".exe";
-                else BienDich.StartInfo.Arguments = "/c " + "g++ " +" -g "+ ten + " -o " + Path.GetDirectoryName(ten) + "\\" + Path.GetFileNameWithoutExtension(ten) + ".exe";
-             
-              
-               BienDich.StartInfo.CreateNoWindow = true;
+                    BienDich.StartInfo.Arguments = "/c " + "g++ " + ten + " -o " + Path.GetDirectoryName(ten) + "\\" + Path.GetFileNameWithoutExtension(ten) + ".exe";
+                else BienDich.StartInfo.Arguments = "/c " + "g++ " + " -g " + ten + " -o " + Path.GetDirectoryName(ten) + "\\" + Path.GetFileNameWithoutExtension(ten) + ".exe";
+
+
+                BienDich.StartInfo.CreateNoWindow = true;
                 BienDich.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;
                 BienDich.Start();
-              
-               string ad;
+
+                string ad;
 
                 ListOutput.AllowEdit = false;
                 ListOutput.AllowRemove = false;
 
 
-               //Lấy thông tin Error chứ k phải Output :))
+                //Lấy thông tin Error chứ k phải Output :))
                 while ((ad = BienDich.StandardError.ReadLine()) != null)
                 {
                     ListOutput.Items.Add(ad);
 
                     // if (ad.Contains("lines compiled")) break;
                 }
-                if (ListOutput.Items.Count <2) ListOutput.Items.Add("Compile: " + Path.GetFileName(ten)+" - Completed, Ready to run");
-                else ListOutput.Items.Add("Build: " + Path.GetFileName(ten)+" - Fail");
+                if (ListOutput.Items.Count < 2) ListOutput.Items.Add("Compile: " + Path.GetFileName(ten) + " - Completed, Ready to run");
+                else ListOutput.Items.Add("Build: " + Path.GetFileName(ten) + " - Fail");
 
                 foreach (var item in ListOutput.Items)
                 {
@@ -891,9 +895,9 @@ TabHienTai.Paste();
             }
         }
 
-       
 
-     
+
+
 
         private void GDB(string ten)
         {
@@ -901,23 +905,23 @@ TabHienTai.Paste();
             {
                 Process BienDich = new Process();
                 //Cho ListGDB
-                
-                
+
+
                 //
                 BienDich.StartInfo.FileName = "cmd";
-                BienDich.StartInfo.WorkingDirectory =@"FPC\bin\i386-win32\";           
+                BienDich.StartInfo.WorkingDirectory = @"FPC\bin\i386-win32\";
                 BienDich.StartInfo.Arguments = "/c " + "gdb " + TepExe(ten);
                 BienDich.Start();
                 //BienDich.BeginOutputReadLine();
-               
+
                 BienDich.WaitForExit();
-              //  string output;
+                //  string output;
 
                 //while ((output = BienDich.StandardOutput.ReadLine()) != null)
                 //    list.Items.Add(output);
 
             }
-            if (Path.GetExtension(ten)==".c"|| Path.GetExtension(ten) == ".cpp")
+            if (Path.GetExtension(ten) == ".c" || Path.GetExtension(ten) == ".cpp")
             {
                 Process BienDich = new Process();
                 BienDich.StartInfo.FileName = "cmd";
@@ -931,23 +935,23 @@ TabHienTai.Paste();
 
         }
 
-       
+
 
         private void Run(string file)
         {
-            if (Path.GetExtension(file)==".pas")
+            if (Path.GetExtension(file) == ".pas")
             {
-                    Process Chay = new Process();
-                
+                Process Chay = new Process();
+
                 Chay.StartInfo.WorkingDirectory = Path.GetDirectoryName(file);
                 //Path.GetFileNameWithoutExtension(file) + ".exe"
-                Chay.StartInfo.FileName =TepExe(file);
+                Chay.StartInfo.FileName = TepExe(file);
                 Chay.StartInfo.UseShellExecute = true;
-                
+
                 //Chay.WaitForExit();
                 Chay.Start();
             }
-            if(Path.GetExtension(file) == ".c"|| Path.GetExtension(file) == ".cpp")
+            if (Path.GetExtension(file) == ".c" || Path.GetExtension(file) == ".cpp")
             {
 
                 Process Chay = new Process();
@@ -958,41 +962,41 @@ TabHienTai.Paste();
                 Chay.StartInfo.UseShellExecute = true;
                 Chay.Start();
             }
-            if(Path.GetExtension(file)==".py")
+            if (Path.GetExtension(file) == ".py")
             {
                 Process Chay = new Process();
                 Chay.StartInfo.FileName = "cmd";
                 //Chay.StartInfo.UseShellExecute = true;
-                Chay.StartInfo.Arguments = "/c"+ " python " + file;
+                Chay.StartInfo.Arguments = "/c" + " python " + file;
                 //Lấy thông tin nhưng phải để UseExeCutale là false :))
                 //Chay.StartInfo.RedirectStandardError = true;
                 //Chay.StartInfo.RedirectStandardOutput = true;
 
                 Chay.Start();
                 Chay.WaitForExit();
-     /*       
-      *   Đoạn này đẩy thông tin vào trong Output        string ad;
+                /*       
+                 *   Đoạn này đẩy thông tin vào trong Output        string ad;
 
-                ListOutput.AllowEdit = false;
-                ListOutput.AllowRemove = false;
+                           ListOutput.AllowEdit = false;
+                           ListOutput.AllowRemove = false;
 
 
-                //Lấy thông tin Error chứ k phải Output :))
-                while ((ad = Chay.StandardError.ReadLine()) != null)
-                {
-                    ListOutput.Items.Add(ad);
+                           //Lấy thông tin Error chứ k phải Output :))
+                           while ((ad = Chay.StandardError.ReadLine()) != null)
+                           {
+                               ListOutput.Items.Add(ad);
 
-                    // if (ad.Contains("lines compiled")) break;
-                }
-                while ((ad = Chay.StandardOutput.ReadLine()) != null)
-                {
-                    ListOutput.Items.Add(ad);
+                               // if (ad.Contains("lines compiled")) break;
+                           }
+                           while ((ad = Chay.StandardOutput.ReadLine()) != null)
+                           {
+                               ListOutput.Items.Add(ad);
 
-                    // if (ad.Contains("lines compiled")) break;
-                }
-    */
+                               // if (ad.Contains("lines compiled")) break;
+                           }
+               */
             }
-           
+
 
         }
         /// <summary>
@@ -1032,22 +1036,22 @@ TabHienTai.Paste();
 
         }
 
-     
+
 
         private void BBuild_Click(object sender, EventArgs e)
         {
             try
             {
-                if(Path.GetExtension(TabHienTai.FileName)==".py")
+                if (Path.GetExtension(TabHienTai.FileName) == ".py")
                     ShowAlert_Light("<html><color=LightSalmon>Build Failed", "<html><color=Teal>Python 3 can only be <b>RUN</b> directly");
-                Build(TabHienTai.FileName,deBug,ref ListOutput);
+                Build(TabHienTai.FileName, deBug, ref ListOutput);
             }
             catch { }
-           
-            
+
+
         }
-       // DataTable databm = new DataTable();
-        
+        // DataTable databm = new DataTable();
+
         private void BBookmark_Click(object sender, EventArgs e)
         {
             try
@@ -1068,11 +1072,11 @@ TabHienTai.Paste();
 
                 for (int i = ListBm.Items.Count - 1; i >= 0; i--)
                 {
-                    
+
                     if ((ListBm.Items[i].Text.Contains(sd)) && (ListBm.Items[i].Text.Contains(fd)))
                         return;
-                   
-                       
+
+
                 }
                 ListBm.Items.Add(TabHienTai.CurrentLine, Path.GetFileName(TabHienTai.FileName));
                 MessageBox.Show(ListBm.Items[0].Text);
@@ -1090,20 +1094,20 @@ TabHienTai.Paste();
             //{
             //        BrushInfo brushInfo = new BrushInfo(Color.DarkViolet);
             //TabHienTai.BookmarkAdd(TabHienTai.CurrentLine,brushInfo);
-                
+
             //string sd = "Bookmark : " + TabHienTai.CurrentLine;
-            
+
             //for (int i = ListBm.Items.Count - 1;i>= 0;i--)
             //{
             //    if  (ListBm.Items[i].Text.Contains(sd)) return;
-               
-                   
+
+
 
             //}
             //ListBm.Items.Add(sd);        
             //}
             //catch { }
-            
+
 
 
 
@@ -1130,10 +1134,10 @@ TabHienTai.Paste();
         {
             try
             {
-  TabHienTai.BookmarkClear();
+                TabHienTai.BookmarkClear();
             }
             catch { }
-          
+
         }
 
         private void TFind_Click(object sender, EventArgs e)
@@ -1147,12 +1151,12 @@ TabHienTai.Paste();
         {
             try
             {
-TabHienTai.ReplaceDialog();
+                TabHienTai.ReplaceDialog();
             }
             catch { }
-            
+
         }
-        
+
         private void TGoToLine_Click(object sender, EventArgs e)
         {
             try
@@ -1160,7 +1164,7 @@ TabHienTai.ReplaceDialog();
                 TabHienTai.GoToDialog();
             }
             catch { }
-            
+
         }
 
         private void ESave_Click(object sender, EventArgs e)
@@ -1168,12 +1172,12 @@ TabHienTai.ReplaceDialog();
             try
             {
                 TabHienTai.Save();
-            TabHienTai.StatusBarSettings.StatusPanel.Panel.Text = "Saved";
-            TabHienTai.StatusBarSettings.StatusPanel.Panel.BackColor = Color.DarkCyan;
-            TabHienTai.StatusBarSettings.StatusPanel.Panel.ForeColor = Color.White;
+                TabHienTai.StatusBarSettings.StatusPanel.Panel.Text = "Saved";
+                TabHienTai.StatusBarSettings.StatusPanel.Panel.BackColor = Color.DarkCyan;
+                TabHienTai.StatusBarSettings.StatusPanel.Panel.ForeColor = Color.White;
             }
             catch { }
-           
+
 
 
         }
@@ -1183,10 +1187,10 @@ TabHienTai.ReplaceDialog();
 
             try
             {
-                 TabHienTai.BookmarkPrevious();
+                TabHienTai.BookmarkPrevious();
             }
             catch { }
-           
+
         }
 
         private void BBookmarkNext_Click(object sender, EventArgs e)
@@ -1215,9 +1219,9 @@ TabHienTai.ReplaceDialog();
                 }
             }
             catch { }
-           
+
         }
-       
+
 
         private void BRun_Click(object sender, EventArgs e)
         {
@@ -1227,7 +1231,7 @@ TabHienTai.ReplaceDialog();
 
             }
             catch { }
-            
+
         }
 
         private void FExit_Click(object sender, EventArgs e)
@@ -1243,14 +1247,14 @@ TabHienTai.ReplaceDialog();
                 ShowAlert_Light("<html><color=Teal><b>Bạn đã Bật GDB Debug </b> ", "<html><i><span><color=Teal>Hãy biên dịch lại để khởi tạo</span></i>");
                 deBug = true;
                 DEnable.Text = "Disable Debug";
-                
+
             }
             else
             {
                 ShowAlert_Light("<html><color = Crimson><b> Bạn đã Tắt GDB Debug </b> ", "<html><i><span><color=Teal>Trình biên dịch sẽ không khởi tạo thông tin Debug</span></i>");
                 deBug = false;
                 DEnable.Text = "Enable Debug";
-               
+
             }
 
 
@@ -1259,15 +1263,17 @@ TabHienTai.ReplaceDialog();
         private void FSave_Click(object sender, EventArgs e)
         {
             try
-            {TabHienTai.Save();
+            {
+                TabHienTai.Save();
                 if (Path.GetExtension(TabHienTai.FileName) == ".py")
                     TabHienTai.StatusBarSettings.FileNamePanel.Panel.Text = "Python 3";
                 if (Path.GetExtension(TabHienTai.FileName) == ".pas")
                     TabHienTai.StatusBarSettings.FileNamePanel.Panel.Text = "Pascal";
-                if (Path.GetExtension(TabHienTai.FileName) == ".c"|| Path.GetExtension(TabHienTai.FileName) == ".cpp")
+                if (Path.GetExtension(TabHienTai.FileName) == ".c" || Path.GetExtension(TabHienTai.FileName) == ".cpp")
                     TabHienTai.StatusBarSettings.FileNamePanel.Panel.Text = "C/C++";
-            } catch { }
-            
+            }
+            catch { }
+
         }
 
         private void DOpenGDB_Click(object sender, EventArgs e)
@@ -1286,7 +1292,7 @@ TabHienTai.ReplaceDialog();
             }
             catch { }
         }
-        private void ShowAlert_Light (string cap, string content)
+        private void ShowAlert_Light(string cap, string content)
         {
             RadDesktopAlert al = new RadDesktopAlert();
             al.ThemeName = "Windows8";
@@ -1326,21 +1332,21 @@ TabHienTai.ReplaceDialog();
             //ShowCompiling mess= new ShowCompiling();
             Process compiler = new Process();
             list.Items.Clear();
-           
+
             list.Items.Add("Compiling");
             compiler.StartInfo.FileName = "cmd";
-           compiler.StartInfo.Arguments = "/c "+" dir";
+            compiler.StartInfo.Arguments = "/c " + " dir";
             compiler.StartInfo.UseShellExecute = false;
             compiler.StartInfo.RedirectStandardOutput = true;
             compiler.Start();
             compiler.WaitForExit();
             string ass = compiler.StandardOutput.ReadToEnd();
-                                        list.Items.Add(ass);
+            list.Items.Add(ass);
         }
 
         private void OEnableContext_Click(object sender, EventArgs e)
         {
-            if (enableContext== false)
+            if (enableContext == false)
             {
                 enableContext = true;
                 OEnableContext.Text = "Disable Context Intellisense";
@@ -1358,11 +1364,11 @@ TabHienTai.ReplaceDialog();
         {
             try
             {
-            TabHienTai.ReadOnly = true;
-            ShowAlert_Light("<html><color=Crimson>Readonly Enabled", null);
+                TabHienTai.ReadOnly = true;
+                ShowAlert_Light("<html><color=Crimson>Readonly Enabled", null);
             }
             catch { };
-            
+
         }
 
         private void PerDisable_Click(object sender, EventArgs e)
@@ -1383,7 +1389,7 @@ TabHienTai.ReplaceDialog();
         {
             if (enableTooltip == false)
             {
-                
+
                 enableTooltip = true;
                 ShowAlert_Light("<html><color=Teal>Context Tooltip Enabled", null);
                 OCTooltip.Text = "Disable Context Tooltip";
@@ -1459,9 +1465,9 @@ TabHienTai.ReplaceDialog();
         {
             DocumentWindow ascii_table = new DocumentWindow("ASCII-Table");
             DockPar.AddDocument(ascii_table);
-           
+
             RadPdfViewer pd = new RadPdfViewer();
-           
+
             ascii_table.Controls.Add(pd);
             pd.ViewerMode = FixedDocumentViewerMode.TextSelection;
             pd.FitToWidth = true;
@@ -1479,7 +1485,7 @@ TabHienTai.ReplaceDialog();
         private void MPcurrentline_Click(object sender, EventArgs e)
         {
             RadColorDialog Col = new RadColorDialog();
-            
+
             try
             {
                 if (Col.ShowDialog() == DialogResult.OK)
@@ -1490,16 +1496,16 @@ TabHienTai.ReplaceDialog();
             catch
             { }
         }
-        
-       
+
+
 
         private void PSelection_Click(object sender, EventArgs e)
         {
-           
-            
+
+
             RadColorDialog Col = new RadColorDialog();
-            
-            
+
+
             try
             {
                 if (Col.ShowDialog() == DialogResult.OK)
@@ -1528,7 +1534,7 @@ TabHienTai.ReplaceDialog();
                     showlinenum = false;
                     ShowAlert_Light("<html>Show line number <color=Crimson>OFF", null);
                 }
-             }
+            }
             catch { }
         }
 
@@ -1540,7 +1546,7 @@ TabHienTai.ReplaceDialog();
             TabHienTai.LineNumbersColor = Color.Teal;
             TabHienTai.ContextPromptBackgroundBrush = new BrushInfo(GradientStyle.None, new Color[] { Color.FromArgb(249, 249, 249) });
             TabHienTai.BackgroundColor = new BrushInfo(GradientStyle.None, new Color[] { Color.FromArgb(249, 249, 249) });
-            
+
             if (Path.GetExtension(TabHienTai.FileName) == ".pas")
             {
                 string ConfigF = @"Lex\Pascal.xml";
@@ -1573,6 +1579,41 @@ TabHienTai.ReplaceDialog();
         public void SplashScreen()
         {
             Application.Run(new Splash());
+        }
+
+        private void SynC_Click(object sender, EventArgs e)
+        {
+            string ConfigF = @"Lex\CppF.xml";
+            TabHienTai.Configurator.Open(ConfigF);
+            TabHienTai.ApplyConfiguration("C++");
+            TabHienTai.StatusBarSettings.FileNamePanel.Panel.Text = "C/C++";
+            TabHienTai.ContextChoiceOpen += DanhDau_ContextChoiceOpen_C;
+            TabHienTai.ContextPromptOpen += DanhDau_ContextPromptOpen_ForC;
+            TabHienTai.ContextPromptUpdate += DanhDau_ContextPromptUpdate_ForC;
+        }
+
+        private void SPascal_Click(object sender, EventArgs e)
+        {
+
+            string ConfigF = @"Lex\Pascal.xml";
+            TabHienTai.Configurator.Open(ConfigF);
+
+            TabHienTai.ApplyConfiguration("Pascal");
+            TabHienTai.StatusBarSettings.FileNamePanel.Panel.Text = "Pascal";
+            TabHienTai.ContextChoiceOpen += DanhDau_ContextChoiceOpen;
+            TabHienTai.ContextPromptOpen += DanhDau_ContextPromptOpen_ForPascal;
+            TabHienTai.ContextPromptUpdate += DanhDau_ContextPromptUpdate_ForPascal;
+
+        }
+
+        private void SynPython_Click(object sender, EventArgs e)
+        {
+            TabHienTai.StatusBarSettings.FileNamePanel.Panel.Text = "Python 3";
+            string ConfigF = @"Lex\Python.xml";
+            TabHienTai.Configurator.Open(ConfigF);
+            TabHienTai.ApplyConfiguration("Python");
+            TabHienTai.StatusBarSettings.FileNamePanel.Panel.Text = "Python 3";
+            TabHienTai.ContextChoiceOpen += DanhDau_ContextChoiceOpen_ForPython;
         }
     }
 }

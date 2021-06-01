@@ -30,8 +30,8 @@ namespace Kaliz
         /// </summary>
         private void InitializeComponent()
         {
-            Telerik.WinControls.UI.ListViewDetailColumn listViewDetailColumn1 = new Telerik.WinControls.UI.ListViewDetailColumn("Column 0", "Line");
-            Telerik.WinControls.UI.ListViewDetailColumn listViewDetailColumn2 = new Telerik.WinControls.UI.ListViewDetailColumn("Column 1", "File");
+            Telerik.WinControls.UI.ListViewDetailColumn listViewDetailColumn3 = new Telerik.WinControls.UI.ListViewDetailColumn("Column 0", "Line");
+            Telerik.WinControls.UI.ListViewDetailColumn listViewDetailColumn4 = new Telerik.WinControls.UI.ListViewDetailColumn("Column 1", "File");
             this.materialTealTheme1 = new Telerik.WinControls.Themes.MaterialTealTheme();
             this.MFile = new Telerik.WinControls.UI.RadMenuItem();
             this.FNew = new Telerik.WinControls.UI.RadMenuItem();
@@ -105,6 +105,10 @@ namespace Kaliz
             this.PEditor = new Telerik.WinControls.UI.RadMenuItem();
             this.ELight = new Telerik.WinControls.UI.RadMenuItem();
             this.EDark = new Telerik.WinControls.UI.RadMenuItem();
+            this.ESyntax = new Telerik.WinControls.UI.RadMenuItem();
+            this.SPascal = new Telerik.WinControls.UI.RadMenuItem();
+            this.SynC = new Telerik.WinControls.UI.RadMenuItem();
+            this.SynPython = new Telerik.WinControls.UI.RadMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.DockPar)).BeginInit();
             this.DockPar.SuspendLayout();
             this.Doutput.SuspendLayout();
@@ -204,7 +208,8 @@ namespace Kaliz
             this.ECut,
             this.EPaste,
             this.ESave,
-            this.ESelect});
+            this.ESelect,
+            this.ESyntax});
             this.MEdit.Name = "MEdit";
             this.MEdit.Text = "Edit";
             // 
@@ -556,11 +561,11 @@ namespace Kaliz
             // 
             this.ListBm.AllowEdit = false;
             this.ListBm.AllowRemove = false;
-            listViewDetailColumn1.HeaderText = "Line";
-            listViewDetailColumn2.HeaderText = "File";
+            listViewDetailColumn3.HeaderText = "Line";
+            listViewDetailColumn4.HeaderText = "File";
             this.ListBm.Columns.AddRange(new Telerik.WinControls.UI.ListViewDetailColumn[] {
-            listViewDetailColumn1,
-            listViewDetailColumn2});
+            listViewDetailColumn3,
+            listViewDetailColumn4});
             this.ListBm.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ListBm.GroupItemSize = new System.Drawing.Size(200, 32);
             this.ListBm.ItemSize = new System.Drawing.Size(200, 32);
@@ -688,14 +693,41 @@ namespace Kaliz
             this.EDark.Text = "Dark";
             this.EDark.Click += new System.EventHandler(this.Dark_Click);
             // 
-            // O
+            // ESyntax
+            // 
+            this.ESyntax.Items.AddRange(new Telerik.WinControls.RadItem[] {
+            this.SPascal,
+            this.SynC,
+            this.SynPython});
+            this.ESyntax.Name = "ESyntax";
+            this.ESyntax.Text = "Syntax";
+            // 
+            // SPascal
+            // 
+            this.SPascal.Name = "SPascal";
+            this.SPascal.Text = "Pascal";
+            this.SPascal.Click += new System.EventHandler(this.SPascal_Click);
+            // 
+            // SynC
+            // 
+            this.SynC.Name = "SynC";
+            this.SynC.Text = "C/C++";
+            this.SynC.Click += new System.EventHandler(this.SynC_Click);
+            // 
+            // SynPython
+            // 
+            this.SynPython.Name = "SynPython";
+            this.SynPython.Text = "Python";
+            this.SynPython.Click += new System.EventHandler(this.SynPython_Click);
+            // 
+            // Kaliz
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1093, 726);
             this.Controls.Add(this.DockPar);
             this.Controls.Add(this.radMenu1);
-            this.Name = "O";
+            this.Name = "Kaliz";
             // 
             // 
             // 
@@ -794,5 +826,9 @@ namespace Kaliz
         private Telerik.WinControls.UI.RadMenuItem PEditor;
         private Telerik.WinControls.UI.RadMenuItem ELight;
         private Telerik.WinControls.UI.RadMenuItem EDark;
+        private Telerik.WinControls.UI.RadMenuItem ESyntax;
+        private Telerik.WinControls.UI.RadMenuItem SPascal;
+        private Telerik.WinControls.UI.RadMenuItem SynC;
+        private Telerik.WinControls.UI.RadMenuItem SynPython;
     }
 }
