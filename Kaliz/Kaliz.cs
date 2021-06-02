@@ -1642,5 +1642,12 @@ End;
         {
             TabHienTai.OutdentSelection();
         }
+
+        private void TPowerShell_Click(object sender, EventArgs e)
+        {
+            Process pw = new Process();
+            pw.StartInfo.FileName = "powershell.exe";
+            pw.Start();
+        }
     }
 }
