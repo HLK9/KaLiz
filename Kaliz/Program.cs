@@ -19,9 +19,6 @@ namespace Kaliz
                       
             Application.Run(new Kaliz());
         }
-        static void SplashScreen()
-        {
-            Application.Run(new Splash());
-        }
+       
     }
 }
