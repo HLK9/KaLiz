@@ -30,6 +30,7 @@
         {
             Telerik.WinControls.UI.RadListDataItem radListDataItem1 = new Telerik.WinControls.UI.RadListDataItem();
             Telerik.WinControls.UI.RadListDataItem radListDataItem2 = new Telerik.WinControls.UI.RadListDataItem();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DialogASCII));
             this.BtClose = new Telerik.WinControls.UI.RadButton();
             this.BtOK = new Telerik.WinControls.UI.RadButton();
             this.textInput = new Telerik.WinControls.UI.RadTextBox();
@@ -170,6 +171,7 @@
             this.Controls.Add(this.textInput);
             this.Controls.Add(this.BtOK);
             this.Controls.Add(this.BtClose);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "DialogASCII";
