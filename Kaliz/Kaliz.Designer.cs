@@ -30,8 +30,8 @@ namespace Kaliz
         /// </summary>
         private void InitializeComponent()
         {
-            Telerik.WinControls.UI.ListViewDetailColumn listViewDetailColumn3 = new Telerik.WinControls.UI.ListViewDetailColumn("Column 0", "Line");
-            Telerik.WinControls.UI.ListViewDetailColumn listViewDetailColumn4 = new Telerik.WinControls.UI.ListViewDetailColumn("Column 1", "File");
+            Telerik.WinControls.UI.ListViewDetailColumn listViewDetailColumn1 = new Telerik.WinControls.UI.ListViewDetailColumn("Column 0", "Line");
+            Telerik.WinControls.UI.ListViewDetailColumn listViewDetailColumn2 = new Telerik.WinControls.UI.ListViewDetailColumn("Column 1", "File");
             this.materialTealTheme1 = new Telerik.WinControls.Themes.MaterialTealTheme();
             this.MFile = new Telerik.WinControls.UI.RadMenuItem();
             this.FNew = new Telerik.WinControls.UI.RadMenuItem();
@@ -50,6 +50,12 @@ namespace Kaliz
             this.EPaste = new Telerik.WinControls.UI.RadMenuItem();
             this.ESave = new Telerik.WinControls.UI.RadMenuItem();
             this.ESelect = new Telerik.WinControls.UI.RadMenuItem();
+            this.ESyntax = new Telerik.WinControls.UI.RadMenuItem();
+            this.SPascal = new Telerik.WinControls.UI.RadMenuItem();
+            this.SynC = new Telerik.WinControls.UI.RadMenuItem();
+            this.SynPython = new Telerik.WinControls.UI.RadMenuItem();
+            this.EStart = new Telerik.WinControls.UI.RadMenuItem();
+            this.EEnd = new Telerik.WinControls.UI.RadMenuItem();
             this.MTools = new Telerik.WinControls.UI.RadMenuItem();
             this.TFind = new Telerik.WinControls.UI.RadMenuItem();
             this.TReplace = new Telerik.WinControls.UI.RadMenuItem();
@@ -105,10 +111,10 @@ namespace Kaliz
             this.PEditor = new Telerik.WinControls.UI.RadMenuItem();
             this.ELight = new Telerik.WinControls.UI.RadMenuItem();
             this.EDark = new Telerik.WinControls.UI.RadMenuItem();
-            this.ESyntax = new Telerik.WinControls.UI.RadMenuItem();
-            this.SPascal = new Telerik.WinControls.UI.RadMenuItem();
-            this.SynC = new Telerik.WinControls.UI.RadMenuItem();
-            this.SynPython = new Telerik.WinControls.UI.RadMenuItem();
+            this.EIndent = new Telerik.WinControls.UI.RadMenuItem();
+            this.FindDia = new Telerik.WinControls.UI.RadMenuItem();
+            this.FFindSelected = new Telerik.WinControls.UI.RadMenuItem();
+            this.EOutdent = new Telerik.WinControls.UI.RadMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.DockPar)).BeginInit();
             this.DockPar.SuspendLayout();
             this.Doutput.SuspendLayout();
@@ -209,7 +215,11 @@ namespace Kaliz
             this.EPaste,
             this.ESave,
             this.ESelect,
-            this.ESyntax});
+            this.ESyntax,
+            this.EStart,
+            this.EEnd,
+            this.EIndent,
+            this.EOutdent});
             this.MEdit.Name = "MEdit";
             this.MEdit.Text = "Edit";
             // 
@@ -243,6 +253,45 @@ namespace Kaliz
             this.ESelect.Text = "Select Mode: Block";
             this.ESelect.Click += new System.EventHandler(this.ESelect_Click);
             // 
+            // ESyntax
+            // 
+            this.ESyntax.Items.AddRange(new Telerik.WinControls.RadItem[] {
+            this.SPascal,
+            this.SynC,
+            this.SynPython});
+            this.ESyntax.Name = "ESyntax";
+            this.ESyntax.Text = "Syntax";
+            // 
+            // SPascal
+            // 
+            this.SPascal.Name = "SPascal";
+            this.SPascal.Text = "Pascal";
+            this.SPascal.Click += new System.EventHandler(this.SPascal_Click);
+            // 
+            // SynC
+            // 
+            this.SynC.Name = "SynC";
+            this.SynC.Text = "C/C++";
+            this.SynC.Click += new System.EventHandler(this.SynC_Click);
+            // 
+            // SynPython
+            // 
+            this.SynPython.Name = "SynPython";
+            this.SynPython.Text = "Python";
+            this.SynPython.Click += new System.EventHandler(this.SynPython_Click);
+            // 
+            // EStart
+            // 
+            this.EStart.Name = "EStart";
+            this.EStart.Text = "Jump to Block Start";
+            this.EStart.Click += new System.EventHandler(this.EStart_Click);
+            // 
+            // EEnd
+            // 
+            this.EEnd.Name = "EEnd";
+            this.EEnd.Text = "Jump to Block End";
+            this.EEnd.Click += new System.EventHandler(this.EEnd_Click);
+            // 
             // MTools
             // 
             this.MTools.Items.AddRange(new Telerik.WinControls.RadItem[] {
@@ -257,9 +306,11 @@ namespace Kaliz
             // 
             // TFind
             // 
+            this.TFind.Items.AddRange(new Telerik.WinControls.RadItem[] {
+            this.FindDia,
+            this.FFindSelected});
             this.TFind.Name = "TFind";
             this.TFind.Text = "Find";
-            this.TFind.Click += new System.EventHandler(this.TFind_Click);
             // 
             // TReplace
             // 
@@ -561,11 +612,11 @@ namespace Kaliz
             // 
             this.ListBm.AllowEdit = false;
             this.ListBm.AllowRemove = false;
-            listViewDetailColumn3.HeaderText = "Line";
-            listViewDetailColumn4.HeaderText = "File";
+            listViewDetailColumn1.HeaderText = "Line";
+            listViewDetailColumn2.HeaderText = "File";
             this.ListBm.Columns.AddRange(new Telerik.WinControls.UI.ListViewDetailColumn[] {
-            listViewDetailColumn3,
-            listViewDetailColumn4});
+            listViewDetailColumn1,
+            listViewDetailColumn2});
             this.ListBm.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ListBm.GroupItemSize = new System.Drawing.Size(200, 32);
             this.ListBm.ItemSize = new System.Drawing.Size(200, 32);
@@ -693,32 +744,29 @@ namespace Kaliz
             this.EDark.Text = "Dark";
             this.EDark.Click += new System.EventHandler(this.Dark_Click);
             // 
-            // ESyntax
+            // EIndent
             // 
-            this.ESyntax.Items.AddRange(new Telerik.WinControls.RadItem[] {
-            this.SPascal,
-            this.SynC,
-            this.SynPython});
-            this.ESyntax.Name = "ESyntax";
-            this.ESyntax.Text = "Syntax";
+            this.EIndent.Name = "EIndent";
+            this.EIndent.Text = "Indent Selection";
+            this.EIndent.Click += new System.EventHandler(this.EIndent_Click);
             // 
-            // SPascal
+            // FindDia
             // 
-            this.SPascal.Name = "SPascal";
-            this.SPascal.Text = "Pascal";
-            this.SPascal.Click += new System.EventHandler(this.SPascal_Click);
+            this.FindDia.Name = "FindDia";
+            this.FindDia.Text = "Open Find Dialog";
+            this.FindDia.Click += new System.EventHandler(this.TFind_Click);
             // 
-            // SynC
+            // FFindSelected
             // 
-            this.SynC.Name = "SynC";
-            this.SynC.Text = "C/C++";
-            this.SynC.Click += new System.EventHandler(this.SynC_Click);
+            this.FFindSelected.Name = "FFindSelected";
+            this.FFindSelected.Text = "Find Selected Text";
+            this.FFindSelected.Click += new System.EventHandler(this.FFindSelected_Click);
             // 
-            // SynPython
+            // EOutdent
             // 
-            this.SynPython.Name = "SynPython";
-            this.SynPython.Text = "Python";
-            this.SynPython.Click += new System.EventHandler(this.SynPython_Click);
+            this.EOutdent.Name = "EOutdent";
+            this.EOutdent.Text = "Outdent Selection";
+            this.EOutdent.Click += new System.EventHandler(this.EOutdent_Click);
             // 
             // Kaliz
             // 
@@ -830,5 +878,11 @@ namespace Kaliz
         private Telerik.WinControls.UI.RadMenuItem SPascal;
         private Telerik.WinControls.UI.RadMenuItem SynC;
         private Telerik.WinControls.UI.RadMenuItem SynPython;
+        private Telerik.WinControls.UI.RadMenuItem EStart;
+        private Telerik.WinControls.UI.RadMenuItem EEnd;
+        private Telerik.WinControls.UI.RadMenuItem EIndent;
+        private Telerik.WinControls.UI.RadMenuItem FindDia;
+        private Telerik.WinControls.UI.RadMenuItem FFindSelected;
+        private Telerik.WinControls.UI.RadMenuItem EOutdent;
     }
 }

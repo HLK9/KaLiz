@@ -1142,9 +1142,7 @@ End;
 
         private void TFind_Click(object sender, EventArgs e)
         {
-            try
-            { TabHienTai.FindDialog(); }
-            catch { };
+
         }
 
         private void TReplace_Click(object sender, EventArgs e)
@@ -1570,11 +1568,7 @@ End;
 
         private void radMenuItem1_Click_1(object sender, EventArgs e)
         {
-            Splash ht = new Splash();
-            Thread thr = new Thread(new ThreadStart(SplashScreen));
-            thr.Start();
-            Thread.Sleep(5000);
-            thr.Abort();
+            
         }
         public void SplashScreen()
         {
@@ -1614,6 +1608,39 @@ End;
             TabHienTai.ApplyConfiguration("Python");
             TabHienTai.StatusBarSettings.FileNamePanel.Panel.Text = "Python 3";
             TabHienTai.ContextChoiceOpen += DanhDau_ContextChoiceOpen_ForPython;
+            
+        }
+
+        private void EStart_Click(object sender, EventArgs e)
+        {
+            TabHienTai.JumpToIndentBlockStart();
+        }
+
+        private void EEnd_Click(object sender, EventArgs e)
+        {
+            TabHienTai.JumpToIndentBlockEnd();
+            
+        }
+
+        private void EIndent_Click(object sender, EventArgs e)
+        {
+            TabHienTai.IndentSelection();
+            
+        }
+
+        private void FFindSelected_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                TabHienTai.FindText(TabHienTai.SelectedText);
+                
+            }
+            catch { }
+        }
+
+        private void EOutdent_Click(object sender, EventArgs e)
+        {
+            TabHienTai.OutdentSelection();
         }
     }
 }
