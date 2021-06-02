@@ -144,7 +144,7 @@ namespace Kaliz
             DanhDau.TextChanged += DanhDau_TextChanged;
             DanhDau.UpdateContextToolTip += DanhDau_UpdateContextToolTip;
             DanhDau.MenuFill += DanhDau_MenuFill;
-
+            
             DanhDau.ContextPromptBorderColor = Color.Pink;
             DanhDau.ContextPromptBackgroundBrush = new BrushInfo(GradientStyle.None, new Color[] { Color.FromArgb(249, 249, 249) });
             DanhDau.BackgroundColor = new BrushInfo(GradientStyle.None, new Color[] { Color.FromArgb(249, 249, 249) });
@@ -161,7 +161,7 @@ namespace Kaliz
 
         }
 
-
+       
 
         private void DanhDau_ContextChoiceOpen_ForPython(IContextChoiceController controller)
         {
@@ -360,26 +360,50 @@ End;
         private void DanhDau_MenuFill(object sender, EventArgs e)
         {
             ContextMenuManager Menu = (ContextMenuManager)sender;
-            Menu.ContextMenuProvider.SetVisualStyle(VisualStyle.Office2016Colorful);
+           
+            
             Menu.ClearMenu();
-
-            Menu.AddMenuItem("&Copy", new EventHandler(MenuCopy));
-            Menu.AddMenuItem("&Cut", new EventHandler(MenuCut));
-            Menu.AddMenuItem("&Paste", new EventHandler(MenuPaste));
+            
+            Menu.AddMenuItem("&Copy                   Ctrl+C", new EventHandler(MenuCopy));
+            Menu.AddMenuItem("&Cut                      Ctrl+X", new EventHandler(MenuCut));
+            Menu.AddMenuItem("&Paste                   Ctrl+V", new EventHandler(MenuPaste));
             Menu.AddSeparator();
+            Menu.AddMenuItem("&Select All", new EventHandler(MenuSelectAll));
             Menu.AddMenuItem("&Comment selection", new EventHandler(MenuComment));
             Menu.AddMenuItem("&Uncomment selection", new EventHandler(MenuUncomment));
-            Menu.AddMenuItem("&Undo", new EventHandler(MenuUndo));
+            Menu.AddMenuItem("&Undo                   Ctrl+Z", new EventHandler(MenuUndo));
 
-            Menu.AddMenuItem("&Redo", new EventHandler(MenuRedo));
-            Menu.AddMenuItem("&Save", new EventHandler(MenuSave));
+            Menu.AddMenuItem("&Redo                    Ctrl+Shift+Z", new EventHandler(MenuRedo));
+            Menu.AddMenuItem("&Save                     Ctrl+S", new EventHandler(MenuSave));
+            Menu.AddSeparator();
+            Menu.AddMenuItem("&Open Containing Folder", new EventHandler(MenuOpenContaining));
+            Menu.AddMenuItem("&Open Terminal Here", new EventHandler(MenuOpenTerHere));
 
-
+            Menu.ContextMenuProvider.SetVisualStyle(VisualStyle.Office2016Colorful);
 
 
 
 
             // Syncfusion.Windows.Forms.IContextMenuProvider contextMenuProvider = this.TabHienTai.ContextMenuManager.ContextMenuProvider;
+        }
+
+        private void MenuSelectAll(object sender, EventArgs e)
+        {
+            TabHienTai.SelectAll();
+        }
+
+        private void MenuOpenContaining(object sender, EventArgs e)
+        {
+            Process.Start(Path.GetDirectoryName(TabHienTai.FileName));
+        }
+
+        private void MenuOpenTerHere(object sender, EventArgs e)
+        {
+            string dan = Path.GetDirectoryName(TabHienTai.FileName);
+            Process pw = new Process();
+            pw.StartInfo.FileName = "powershell.exe";
+            pw.StartInfo.WorkingDirectory = dan;
+            pw.Start();
         }
 
         private void MenuSave(object sender, EventArgs e)
@@ -1647,6 +1671,7 @@ End;
         {
             Process pw = new Process();
             pw.StartInfo.FileName = "powershell.exe";
+            
             pw.Start();
         }
     }
