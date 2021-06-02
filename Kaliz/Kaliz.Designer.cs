@@ -32,6 +32,7 @@ namespace Kaliz
         {
             Telerik.WinControls.UI.ListViewDetailColumn listViewDetailColumn1 = new Telerik.WinControls.UI.ListViewDetailColumn("Column 0", "Line");
             Telerik.WinControls.UI.ListViewDetailColumn listViewDetailColumn2 = new Telerik.WinControls.UI.ListViewDetailColumn("Column 1", "File");
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Kaliz));
             this.materialTealTheme1 = new Telerik.WinControls.Themes.MaterialTealTheme();
             this.MFile = new Telerik.WinControls.UI.RadMenuItem();
             this.FNew = new Telerik.WinControls.UI.RadMenuItem();
@@ -56,8 +57,12 @@ namespace Kaliz
             this.SynPython = new Telerik.WinControls.UI.RadMenuItem();
             this.EStart = new Telerik.WinControls.UI.RadMenuItem();
             this.EEnd = new Telerik.WinControls.UI.RadMenuItem();
+            this.EIndent = new Telerik.WinControls.UI.RadMenuItem();
+            this.EOutdent = new Telerik.WinControls.UI.RadMenuItem();
             this.MTools = new Telerik.WinControls.UI.RadMenuItem();
             this.TFind = new Telerik.WinControls.UI.RadMenuItem();
+            this.FindDia = new Telerik.WinControls.UI.RadMenuItem();
+            this.FFindSelected = new Telerik.WinControls.UI.RadMenuItem();
             this.TReplace = new Telerik.WinControls.UI.RadMenuItem();
             this.TGoToLine = new Telerik.WinControls.UI.RadMenuItem();
             this.TAscii = new Telerik.WinControls.UI.RadMenuItem();
@@ -65,6 +70,7 @@ namespace Kaliz
             this.AConvert = new Telerik.WinControls.UI.RadMenuItem();
             this.TCalc = new Telerik.WinControls.UI.RadMenuItem();
             this.Tcmd = new Telerik.WinControls.UI.RadMenuItem();
+            this.TPowerShell = new Telerik.WinControls.UI.RadMenuItem();
             this.MBuild = new Telerik.WinControls.UI.RadMenuItem();
             this.BRun = new Telerik.WinControls.UI.RadMenuItem();
             this.BBuild = new Telerik.WinControls.UI.RadMenuItem();
@@ -111,10 +117,6 @@ namespace Kaliz
             this.PEditor = new Telerik.WinControls.UI.RadMenuItem();
             this.ELight = new Telerik.WinControls.UI.RadMenuItem();
             this.EDark = new Telerik.WinControls.UI.RadMenuItem();
-            this.EIndent = new Telerik.WinControls.UI.RadMenuItem();
-            this.FindDia = new Telerik.WinControls.UI.RadMenuItem();
-            this.FFindSelected = new Telerik.WinControls.UI.RadMenuItem();
-            this.EOutdent = new Telerik.WinControls.UI.RadMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.DockPar)).BeginInit();
             this.DockPar.SuspendLayout();
             this.Doutput.SuspendLayout();
@@ -144,7 +146,7 @@ namespace Kaliz
             this.radMenuSeparatorItem2,
             this.FExit});
             this.MFile.Name = "MFile";
-            this.MFile.Text = "File";
+            this.MFile.Text = "&File";
             // 
             // FNew
             // 
@@ -168,7 +170,7 @@ namespace Kaliz
             // FClose
             // 
             this.FClose.Name = "FClose";
-            this.FClose.Text = "Close";
+            this.FClose.Text = "&Close";
             this.FClose.Click += new System.EventHandler(this.radMenuItem1_Click);
             // 
             // FPrint
@@ -292,6 +294,18 @@ namespace Kaliz
             this.EEnd.Text = "Jump to Block End";
             this.EEnd.Click += new System.EventHandler(this.EEnd_Click);
             // 
+            // EIndent
+            // 
+            this.EIndent.Name = "EIndent";
+            this.EIndent.Text = "Indent Selection";
+            this.EIndent.Click += new System.EventHandler(this.EIndent_Click);
+            // 
+            // EOutdent
+            // 
+            this.EOutdent.Name = "EOutdent";
+            this.EOutdent.Text = "Outdent Selection";
+            this.EOutdent.Click += new System.EventHandler(this.EOutdent_Click);
+            // 
             // MTools
             // 
             this.MTools.Items.AddRange(new Telerik.WinControls.RadItem[] {
@@ -300,7 +314,8 @@ namespace Kaliz
             this.TGoToLine,
             this.TAscii,
             this.TCalc,
-            this.Tcmd});
+            this.Tcmd,
+            this.TPowerShell});
             this.MTools.Name = "MTools";
             this.MTools.Text = "Tools";
             // 
@@ -311,6 +326,18 @@ namespace Kaliz
             this.FFindSelected});
             this.TFind.Name = "TFind";
             this.TFind.Text = "Find";
+            // 
+            // FindDia
+            // 
+            this.FindDia.Name = "FindDia";
+            this.FindDia.Text = "Open Find Dialog";
+            this.FindDia.Click += new System.EventHandler(this.TFind_Click);
+            // 
+            // FFindSelected
+            // 
+            this.FFindSelected.Name = "FFindSelected";
+            this.FFindSelected.Text = "Find Selected Text";
+            this.FFindSelected.Click += new System.EventHandler(this.FFindSelected_Click);
             // 
             // TReplace
             // 
@@ -359,6 +386,12 @@ namespace Kaliz
             this.Tcmd.Text = "Command Prompt";
             this.Tcmd.ToolTipText = "Dấu nhắc lệnh Command Prompt";
             this.Tcmd.Click += new System.EventHandler(this.Tcmd_Click);
+            // 
+            // TPowerShell
+            // 
+            this.TPowerShell.Name = "TPowerShell";
+            this.TPowerShell.Text = "Windows PowerShell";
+            this.TPowerShell.Click += new System.EventHandler(this.TPowerShell_Click);
             // 
             // MBuild
             // 
@@ -534,7 +567,7 @@ namespace Kaliz
             // 
             // 
             this.DockPar.RootElement.MinSize = new System.Drawing.Size(25, 25);
-            this.DockPar.Size = new System.Drawing.Size(1093, 689);
+            this.DockPar.Size = new System.Drawing.Size(1093, 466);
             this.DockPar.SplitterWidth = 8;
             this.DockPar.TabIndex = 2;
             this.DockPar.TabStop = false;
@@ -582,7 +615,7 @@ namespace Kaliz
             this.toolTabStrip1.CausesValidation = false;
             this.toolTabStrip1.Controls.Add(this.Doutput);
             this.toolTabStrip1.Controls.Add(this.BMList);
-            this.toolTabStrip1.Location = new System.Drawing.Point(0, 508);
+            this.toolTabStrip1.Location = new System.Drawing.Point(0, 285);
             this.toolTabStrip1.Name = "toolTabStrip1";
             // 
             // 
@@ -744,43 +777,21 @@ namespace Kaliz
             this.EDark.Text = "Dark";
             this.EDark.Click += new System.EventHandler(this.Dark_Click);
             // 
-            // EIndent
-            // 
-            this.EIndent.Name = "EIndent";
-            this.EIndent.Text = "Indent Selection";
-            this.EIndent.Click += new System.EventHandler(this.EIndent_Click);
-            // 
-            // FindDia
-            // 
-            this.FindDia.Name = "FindDia";
-            this.FindDia.Text = "Open Find Dialog";
-            this.FindDia.Click += new System.EventHandler(this.TFind_Click);
-            // 
-            // FFindSelected
-            // 
-            this.FFindSelected.Name = "FFindSelected";
-            this.FFindSelected.Text = "Find Selected Text";
-            this.FFindSelected.Click += new System.EventHandler(this.FFindSelected_Click);
-            // 
-            // EOutdent
-            // 
-            this.EOutdent.Name = "EOutdent";
-            this.EOutdent.Text = "Outdent Selection";
-            this.EOutdent.Click += new System.EventHandler(this.EOutdent_Click);
-            // 
             // Kaliz
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1093, 726);
+            this.ClientSize = new System.Drawing.Size(1093, 503);
             this.Controls.Add(this.DockPar);
             this.Controls.Add(this.radMenu1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.ImeMode = System.Windows.Forms.ImeMode.Disable;
             this.Name = "Kaliz";
             // 
             // 
             // 
             this.RootElement.ApplyShapeToControl = true;
-            this.Text = "Kaliz-CMB";
+            this.Text = "Kaliz - CMB Studio";
             this.ThemeName = "MaterialTeal";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             ((System.ComponentModel.ISupportInitialize)(this.DockPar)).EndInit();
@@ -812,7 +823,6 @@ namespace Kaliz
         private Telerik.WinControls.UI.RadMenuItem FNew;
         private Telerik.WinControls.UI.RadMenuItem FOpen;
         private Telerik.WinControls.UI.RadMenuSeparatorItem radMenuSeparatorItem1;
-        private Telerik.WinControls.UI.RadMenuItem FClose;
         private Telerik.WinControls.UI.RadMenuItem FPrint;
         private Telerik.WinControls.UI.RadMenuItem FSave;
         private Telerik.WinControls.UI.RadMenuItem FSaveAs;
@@ -884,5 +894,7 @@ namespace Kaliz
         private Telerik.WinControls.UI.RadMenuItem FindDia;
         private Telerik.WinControls.UI.RadMenuItem FFindSelected;
         private Telerik.WinControls.UI.RadMenuItem EOutdent;
+        private Telerik.WinControls.UI.RadMenuItem TPowerShell;
+        public Telerik.WinControls.UI.RadMenuItem FClose;
     }
 }
