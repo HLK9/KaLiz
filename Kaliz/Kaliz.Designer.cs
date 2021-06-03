@@ -150,7 +150,7 @@ namespace Kaliz
             this.radMenuSeparatorItem2,
             this.FExit});
             this.MFile.Name = "MFile";
-            this.MFile.Text = "&File";
+            this.MFile.Text = "File";
             // 
             // FNew
             // 
@@ -311,16 +311,16 @@ namespace Kaliz
             this.EStart.Name = "EStart";
             this.EStart.Text = "Jump to Block Start";
             this.EStart.Click += new System.EventHandler(this.EStart_Click);
-            this.EStart.Shortcuts.Add(new RadShortcut(Keys.Control | Keys.Alt, Keys.Up));
-            this.EStart.HintText = "Ctrl + Alt + Up";
+            this.EStart.Shortcuts.Add(new RadShortcut(Keys.Control, Keys.Up));
+            this.EStart.HintText = "Ctrl + Up";
             // 
             // EEnd
             // 
             this.EEnd.Name = "EEnd";
             this.EEnd.Text = "Jump to Block End";
             this.EEnd.Click += new System.EventHandler(this.EEnd_Click);
-            this.EEnd.Shortcuts.Add(new RadShortcut(Keys.Control | Keys.Alt, Keys.Down));
-            this.EEnd.HintText = "Ctrl + Alt + Down";
+            this.EEnd.Shortcuts.Add(new RadShortcut(Keys.Control, Keys.Down));
+            this.EEnd.HintText = "Ctrl + Down";
             // 
             // EIndent
             // 
@@ -361,19 +361,22 @@ namespace Kaliz
             this.FFindSelected});
             this.TFind.Name = "TFind";
             this.TFind.Text = "Find";
-            this.TFind.HintText = "Ctrl + F";
+            
             // 
             // FindDia
             // 
             this.FindDia.Name = "FindDia";
             this.FindDia.Text = "Open Find Dialog";
             this.FindDia.Click += new System.EventHandler(this.TFind_Click);
+            this.FindDia.HintText = "Ctrl + F";
             // 
             // FFindSelected
             // 
             this.FFindSelected.Name = "FFindSelected";
             this.FFindSelected.Text = "Find Selected Text";
             this.FFindSelected.Click += new System.EventHandler(this.FFindSelected_Click);
+            this.FFindSelected.Shortcuts.Add(new RadShortcut(Keys.Control, Keys.Enter));
+            this.FFindSelected.HintText = "Ctrl + Enter";
             // 
             // TReplace
             // 
@@ -447,8 +450,8 @@ namespace Kaliz
             this.BRun.Name = "BRun";
             this.BRun.Text = "Run";
             this.BRun.Click += new System.EventHandler(this.BRun_Click);
-            this.BRun.Shortcuts.Add(new RadShortcut(Keys.F5));
-            this.BRun.HintText = "F5"
+            this.BRun.Shortcuts.Add(new RadShortcut(Keys.Control,Keys.B));
+            this.BRun.HintText = "Ctrl + B";
             // 
             // BBuild
             // 
