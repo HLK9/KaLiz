@@ -712,7 +712,7 @@ End;
 
         private void DcWelcome_Click(object sender, EventArgs e)
         {
-
+            
         }
 
         private void FNew_Click(object sender, EventArgs e)
@@ -1189,14 +1189,11 @@ End;
 
         }
 
-        private void ESave_Click(object sender, EventArgs e)
+        private void EUndo_Click(object sender, EventArgs e)
         {
             try
             {
-                TabHienTai.Save();
-                TabHienTai.StatusBarSettings.StatusPanel.Panel.Text = "Saved";
-                TabHienTai.StatusBarSettings.StatusPanel.Panel.BackColor = Color.DarkCyan;
-                TabHienTai.StatusBarSettings.StatusPanel.Panel.ForeColor = Color.White;
+                TabHienTai.Undo();
             }
             catch { }
 
@@ -1293,6 +1290,10 @@ End;
                     TabHienTai.StatusBarSettings.FileNamePanel.Panel.Text = "Pascal";
                 if (Path.GetExtension(TabHienTai.FileName) == ".c" || Path.GetExtension(TabHienTai.FileName) == ".cpp")
                     TabHienTai.StatusBarSettings.FileNamePanel.Panel.Text = "C/C++";
+                
+                TabHienTai.StatusBarSettings.StatusPanel.Panel.Text = "Saved";
+                TabHienTai.StatusBarSettings.StatusPanel.Panel.BackColor = Color.DarkCyan;
+                TabHienTai.StatusBarSettings.StatusPanel.Panel.ForeColor = Color.White;
             }
             catch { }
 
@@ -1674,6 +1675,15 @@ End;
             pw.StartInfo.FileName = "powershell.exe";
             
             pw.Start();
+        }
+
+        private void ERedo_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                TabHienTai.Redo();
+            }
+            catch { }
         }
     }
 }

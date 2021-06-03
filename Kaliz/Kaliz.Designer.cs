@@ -1,5 +1,8 @@
-﻿using System.Windows.Forms;
+﻿using Syncfusion.Windows.Forms.Tools;
+using System.Windows.Forms;
 using Telerik.WinControls;
+using Telerik.WinControls.UI;
+
 namespace Kaliz
 {
     partial class Kaliz
@@ -49,7 +52,7 @@ namespace Kaliz
             this.ECopy = new Telerik.WinControls.UI.RadMenuItem();
             this.ECut = new Telerik.WinControls.UI.RadMenuItem();
             this.EPaste = new Telerik.WinControls.UI.RadMenuItem();
-            this.ESave = new Telerik.WinControls.UI.RadMenuItem();
+            this.EUndo = new Telerik.WinControls.UI.RadMenuItem();
             this.ESelect = new Telerik.WinControls.UI.RadMenuItem();
             this.ESyntax = new Telerik.WinControls.UI.RadMenuItem();
             this.SPascal = new Telerik.WinControls.UI.RadMenuItem();
@@ -59,6 +62,7 @@ namespace Kaliz
             this.EEnd = new Telerik.WinControls.UI.RadMenuItem();
             this.EIndent = new Telerik.WinControls.UI.RadMenuItem();
             this.EOutdent = new Telerik.WinControls.UI.RadMenuItem();
+            this.ERedo = new Telerik.WinControls.UI.RadMenuItem();
             this.MTools = new Telerik.WinControls.UI.RadMenuItem();
             this.TFind = new Telerik.WinControls.UI.RadMenuItem();
             this.FindDia = new Telerik.WinControls.UI.RadMenuItem();
@@ -154,14 +158,12 @@ namespace Kaliz
             this.FNew.Text = "New File";
             this.FNew.ToolTipText = "Tệp Mới";
             this.FNew.Click += new System.EventHandler(this.FNew_Click);
-            this.FNew.Shortcuts.Add(new RadShortcut(Keys.Control, Keys.N));
             // 
             // FOpen
             // 
             this.FOpen.Name = "FOpen";
             this.FOpen.Text = "Open File";
             this.FOpen.Click += new System.EventHandler(this.FOpen_Click);
-            this.FOpen.Shortcuts.Add(new RadShortcut(Keys.Control, Keys.O));
             // 
             // radMenuSeparatorItem1
             // 
@@ -172,31 +174,27 @@ namespace Kaliz
             // FClose
             // 
             this.FClose.Name = "FClose";
-            this.FClose.Text = "&Close";
+            this.FClose.Text = "Close";
             this.FClose.Click += new System.EventHandler(this.radMenuItem1_Click);
-            this.FClose.Shortcuts.Add(new RadShortcut(Keys.Alt,Keys.X));
             // 
             // FPrint
             // 
+            this.FPrint.HintText = "Ctrl + P";
             this.FPrint.Name = "FPrint";
             this.FPrint.Text = "Print";
             this.FPrint.Click += new System.EventHandler(this.FPrint_Click);
-            this.FPrint.Shortcuts.Add(new RadShortcut(Keys.Control, Keys.P));
             // 
             // FSave
             // 
             this.FSave.Name = "FSave";
             this.FSave.Text = "Save";
             this.FSave.Click += new System.EventHandler(this.FSave_Click);
-            this.FSave.Shortcuts.Add(new RadShortcut(Keys.Control, Keys.S));
             // 
             // FSaveAs
             // 
             this.FSaveAs.Name = "FSaveAs";
             this.FSaveAs.Text = "Save As";
             this.FSaveAs.Click += new System.EventHandler(this.FSaveAs_Click);
-
-            this.FSaveAs.Shortcuts.Add(new RadShortcut(Keys.Control, Keys.Shift, Keys.S));
             // 
             // FExport
             // 
@@ -222,7 +220,8 @@ namespace Kaliz
             this.ECopy,
             this.ECut,
             this.EPaste,
-            this.ESave,
+            this.EUndo,
+            this.ERedo,
             this.ESelect,
             this.ESyntax,
             this.EStart,
@@ -234,27 +233,31 @@ namespace Kaliz
             // 
             // ECopy
             // 
+            this.ECopy.HintText = "Ctrl + C";
             this.ECopy.Name = "ECopy";
             this.ECopy.Text = "Copy";
             this.ECopy.Click += new System.EventHandler(this.ECopy_Click);
             // 
             // ECut
             // 
+            this.ECut.HintText = "Ctrl + X";
             this.ECut.Name = "ECut";
             this.ECut.Text = "Cut";
             this.ECut.Click += new System.EventHandler(this.ECut_Click);
             // 
             // EPaste
             // 
+            this.EPaste.HintText = "Ctrl + V";
             this.EPaste.Name = "EPaste";
             this.EPaste.Text = "Paste";
             this.EPaste.Click += new System.EventHandler(this.EPaste_Click);
             // 
-            // ESave
+            // EUndo
             // 
-            this.ESave.Name = "ESave";
-            this.ESave.Text = "Save";
-            this.ESave.Click += new System.EventHandler(this.ESave_Click);
+            this.EUndo.HintText = "Ctrl + Z";
+            this.EUndo.Name = "EUndo";
+            this.EUndo.Text = "Undo";
+            this.EUndo.Click += new System.EventHandler(this.EUndo_Click);
             // 
             // ESelect
             // 
@@ -312,6 +315,12 @@ namespace Kaliz
             this.EOutdent.Name = "EOutdent";
             this.EOutdent.Text = "Outdent Selection";
             this.EOutdent.Click += new System.EventHandler(this.EOutdent_Click);
+            // 
+            // ERedo
+            // 
+            this.ERedo.Name = "ERedo";
+            this.ERedo.Text = "Redo";
+            this.ERedo.Click += new System.EventHandler(this.ERedo_Click);
             // 
             // MTools
             // 
@@ -856,7 +865,7 @@ namespace Kaliz
         private Telerik.WinControls.UI.RadMenuSeparatorItem radMenuSeparatorItem3;
         private Telerik.WinControls.UI.RadMenuItem TReplace;
         private Telerik.WinControls.UI.RadMenuItem TGoToLine;
-        private Telerik.WinControls.UI.RadMenuItem ESave;
+        private Telerik.WinControls.UI.RadMenuItem EUndo;
         private Telerik.WinControls.UI.RadMenuItem BBookmarkPre;
         private Telerik.WinControls.UI.RadMenuItem BBookmarkNext;
         private Telerik.WinControls.UI.RadMenuItem ESelect;
@@ -903,5 +912,6 @@ namespace Kaliz
         private Telerik.WinControls.UI.RadMenuItem EOutdent;
         private Telerik.WinControls.UI.RadMenuItem TPowerShell;
         public Telerik.WinControls.UI.RadMenuItem FClose;
+        private RadMenuItem ERedo;
     }
 }
