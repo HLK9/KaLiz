@@ -100,11 +100,11 @@ namespace Kaliz
                 }
                 if (Path.GetExtension(F) == ".py")
                 {
-                    DanhDau.StatusBarSettings.FileNamePanel.Panel.Text = "Python 3";
+                    DanhDau.StatusBarSettings.FileNamePanel.Panel.Text = "Python";
                     string ConfigF = @"Lex\Python.xml";
                     DanhDau.Configurator.Open(ConfigF);
                     DanhDau.ApplyConfiguration("Python");
-                    DanhDau.StatusBarSettings.FileNamePanel.Panel.Text = "Python 3";
+                    DanhDau.StatusBarSettings.FileNamePanel.Panel.Text = "Python";
                     DanhDau.ContextChoiceOpen += DanhDau_ContextChoiceOpen_ForPython;
 
 
@@ -1067,7 +1067,7 @@ End;
             try
             {
                 if (Path.GetExtension(TabHienTai.FileName) == ".py")
-                    ShowAlert_Light("<html><color=LightSalmon>Build Failed", "<html><color=Teal>Python 3 can only be <b>RUN</b> directly");
+                    ShowAlert_Light("<html><color=LightSalmon>Build Failed", "<html><color=Teal>Python can only be <b>RUN</b> directly");
                 Build(TabHienTai.FileName, deBug, ref ListOutput);
             }
             catch { }
@@ -1285,7 +1285,7 @@ End;
             {
                 TabHienTai.Save();
                 if (Path.GetExtension(TabHienTai.FileName) == ".py")
-                    TabHienTai.StatusBarSettings.FileNamePanel.Panel.Text = "Python 3";
+                    TabHienTai.StatusBarSettings.FileNamePanel.Panel.Text = "Python";
                 if (Path.GetExtension(TabHienTai.FileName) == ".pas")
                     TabHienTai.StatusBarSettings.FileNamePanel.Panel.Text = "Pascal";
                 if (Path.GetExtension(TabHienTai.FileName) == ".c" || Path.GetExtension(TabHienTai.FileName) == ".cpp")
@@ -1628,11 +1628,11 @@ End;
 
         private void SynPython_Click(object sender, EventArgs e)
         {
-            TabHienTai.StatusBarSettings.FileNamePanel.Panel.Text = "Python 3";
+            TabHienTai.StatusBarSettings.FileNamePanel.Panel.Text = "Python";
             string ConfigF = @"Lex\Python.xml";
             TabHienTai.Configurator.Open(ConfigF);
             TabHienTai.ApplyConfiguration("Python");
-            TabHienTai.StatusBarSettings.FileNamePanel.Panel.Text = "Python 3";
+            TabHienTai.StatusBarSettings.FileNamePanel.Panel.Text = "Python";
             TabHienTai.ContextChoiceOpen += DanhDau_ContextChoiceOpen_ForPython;
             
         }
