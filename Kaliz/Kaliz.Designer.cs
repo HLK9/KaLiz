@@ -158,12 +158,18 @@ namespace Kaliz
             this.FNew.Text = "New File";
             this.FNew.ToolTipText = "Tệp Mới";
             this.FNew.Click += new System.EventHandler(this.FNew_Click);
+            this.FNew.Shortcuts.Add(new RadShortcut(Keys.Control, Keys.N));
+            //this.FNew.Shortcuts.Add(new RadShortcut(Keys.Control, Keys.N));
+            this.FNew.HintText = "Ctrl + N";
             // 
             // FOpen
             // 
             this.FOpen.Name = "FOpen";
             this.FOpen.Text = "Open File";
             this.FOpen.Click += new System.EventHandler(this.FOpen_Click);
+            this.FOpen.Shortcuts.Add(new RadShortcut(Keys.Control, Keys.O));
+            //this.FOpen.Shortcuts.Add(new RadShortcut(Keys.Control, Keys.O));
+            this.FOpen.HintText = "Ctrl + O";
             // 
             // radMenuSeparatorItem1
             // 
@@ -176,6 +182,9 @@ namespace Kaliz
             this.FClose.Name = "FClose";
             this.FClose.Text = "Close";
             this.FClose.Click += new System.EventHandler(this.radMenuItem1_Click);
+            this.FClose.Shortcuts.Add(new RadShortcut(Keys.Control | Keys.Shift, Keys.X));
+            //this.FClose.Shortcuts.Add(new RadShortcut(Keys.Control | Keys.Shift, Keys.X));
+            this.FClose.HintText = "Ctrl + Shift + X";
             // 
             // FPrint
             // 
@@ -189,6 +198,9 @@ namespace Kaliz
             this.FSave.Name = "FSave";
             this.FSave.Text = "Save";
             this.FSave.Click += new System.EventHandler(this.FSave_Click);
+            this.FSave.Shortcuts.Add(new RadShortcut(Keys.Control, Keys.S));
+            //this.FSave.Shortcuts.Add(new RadShortcut(Keys.Control, Keys.S));
+            this.FSave.HintText = "Ctrl + S";
             // 
             // FSaveAs
             // 
@@ -342,6 +354,7 @@ namespace Kaliz
             this.FFindSelected});
             this.TFind.Name = "TFind";
             this.TFind.Text = "Find";
+            this.TFind.HintText = "Ctrl + F";
             // 
             // FindDia
             // 
@@ -360,12 +373,14 @@ namespace Kaliz
             this.TReplace.Name = "TReplace";
             this.TReplace.Text = "Replace";
             this.TReplace.Click += new System.EventHandler(this.TReplace_Click);
+            this.TReplace.HintText = "Ctrl + H";
             // 
             // TGoToLine
             // 
             this.TGoToLine.Name = "TGoToLine";
             this.TGoToLine.Text = "Go To Line";
             this.TGoToLine.Click += new System.EventHandler(this.TGoToLine_Click);
+            this.TGoToLine.HintText = "Ctrl + G";
             // 
             // TAscii
             // 
@@ -408,6 +423,7 @@ namespace Kaliz
             this.TPowerShell.Name = "TPowerShell";
             this.TPowerShell.Text = "Windows PowerShell";
             this.TPowerShell.Click += new System.EventHandler(this.TPowerShell_Click);
+            this.TPowerShell.Shortcuts.Add(new RadShortcut(Keys.Control | Keys.Alt, Keys.T));
             // 
             // MBuild
             // 
@@ -416,18 +432,21 @@ namespace Kaliz
             this.BBuild});
             this.MBuild.Name = "MBuild";
             this.MBuild.Text = "Buid";
+           
             // 
             // BRun
             // 
             this.BRun.Name = "BRun";
             this.BRun.Text = "Run";
             this.BRun.Click += new System.EventHandler(this.BRun_Click);
+            this.BRun.Shortcuts.Add(new RadShortcut(Keys.F5));
             // 
             // BBuild
             // 
             this.BBuild.Name = "BBuild";
             this.BBuild.Text = "Build This File";
             this.BBuild.Click += new System.EventHandler(this.BBuild_Click);
+            this.BBuild.Shortcuts.Add(new RadShortcut(Keys.Control | Keys.Shift, Keys.B));
             // 
             // MDebug
             // 
