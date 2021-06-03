@@ -207,6 +207,8 @@ namespace Kaliz
             this.FSaveAs.Name = "FSaveAs";
             this.FSaveAs.Text = "Save As";
             this.FSaveAs.Click += new System.EventHandler(this.FSaveAs_Click);
+            this.FSaveAs.Shortcuts.Add(new RadShortcut(Keys.Control | Keys.Shift, Keys.S));
+            this.FSaveAs.HintText = "Ctrl + Shift + S";
             // 
             // FExport
             // 
@@ -309,12 +311,16 @@ namespace Kaliz
             this.EStart.Name = "EStart";
             this.EStart.Text = "Jump to Block Start";
             this.EStart.Click += new System.EventHandler(this.EStart_Click);
+            this.EStart.Shortcuts.Add(new RadShortcut(Keys.Control | Keys.Alt, Keys.Up));
+            this.EStart.HintText = "Ctrl + Alt + Up";
             // 
             // EEnd
             // 
             this.EEnd.Name = "EEnd";
             this.EEnd.Text = "Jump to Block End";
             this.EEnd.Click += new System.EventHandler(this.EEnd_Click);
+            this.EEnd.Shortcuts.Add(new RadShortcut(Keys.Control | Keys.Alt, Keys.Down));
+            this.EEnd.HintText = "Ctrl + Alt + Down";
             // 
             // EIndent
             // 
@@ -333,6 +339,7 @@ namespace Kaliz
             this.ERedo.Name = "ERedo";
             this.ERedo.Text = "Redo";
             this.ERedo.Click += new System.EventHandler(this.ERedo_Click);
+            this.ERedo.Shortcuts.Add(new RadShortcut(Keys.Control | Keys.Shift, Keys.Z));
             // 
             // MTools
             // 
@@ -424,6 +431,7 @@ namespace Kaliz
             this.TPowerShell.Text = "Windows PowerShell";
             this.TPowerShell.Click += new System.EventHandler(this.TPowerShell_Click);
             this.TPowerShell.Shortcuts.Add(new RadShortcut(Keys.Control | Keys.Alt, Keys.T));
+            this.TPowerShell.HintText = "Ctrl + Alt + T";
             // 
             // MBuild
             // 
@@ -440,6 +448,7 @@ namespace Kaliz
             this.BRun.Text = "Run";
             this.BRun.Click += new System.EventHandler(this.BRun_Click);
             this.BRun.Shortcuts.Add(new RadShortcut(Keys.F5));
+            this.BRun.HintText = "F5"
             // 
             // BBuild
             // 
@@ -447,6 +456,7 @@ namespace Kaliz
             this.BBuild.Text = "Build This File";
             this.BBuild.Click += new System.EventHandler(this.BBuild_Click);
             this.BBuild.Shortcuts.Add(new RadShortcut(Keys.Control | Keys.Shift, Keys.B));
+            this.BBuild.HintText = "Ctrl + Shift + B";
             // 
             // MDebug
             // 
