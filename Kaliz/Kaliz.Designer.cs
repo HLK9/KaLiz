@@ -154,12 +154,14 @@ namespace Kaliz
             this.FNew.Text = "New File";
             this.FNew.ToolTipText = "Tệp Mới";
             this.FNew.Click += new System.EventHandler(this.FNew_Click);
+            this.FNew.Shortcuts.Add(new RadShortcut(Keys.Control, Keys.N));
             // 
             // FOpen
             // 
             this.FOpen.Name = "FOpen";
             this.FOpen.Text = "Open File";
             this.FOpen.Click += new System.EventHandler(this.FOpen_Click);
+            this.FOpen.Shortcuts.Add(new RadShortcut(Keys.Control, Keys.O));
             // 
             // radMenuSeparatorItem1
             // 
@@ -172,24 +174,29 @@ namespace Kaliz
             this.FClose.Name = "FClose";
             this.FClose.Text = "&Close";
             this.FClose.Click += new System.EventHandler(this.radMenuItem1_Click);
+            this.FClose.Shortcuts.Add(new RadShortcut(Keys.Alt,Keys.X));
             // 
             // FPrint
             // 
             this.FPrint.Name = "FPrint";
             this.FPrint.Text = "Print";
             this.FPrint.Click += new System.EventHandler(this.FPrint_Click);
+            this.FPrint.Shortcuts.Add(new RadShortcut(Keys.Control, Keys.P));
             // 
             // FSave
             // 
             this.FSave.Name = "FSave";
             this.FSave.Text = "Save";
             this.FSave.Click += new System.EventHandler(this.FSave_Click);
+            this.FSave.Shortcuts.Add(new RadShortcut(Keys.Control, Keys.S));
             // 
             // FSaveAs
             // 
             this.FSaveAs.Name = "FSaveAs";
             this.FSaveAs.Text = "Save As";
             this.FSaveAs.Click += new System.EventHandler(this.FSaveAs_Click);
+
+            this.FSaveAs.Shortcuts.Add(new RadShortcut(Keys.Control, Keys.Shift, Keys.S));
             // 
             // FExport
             // 
