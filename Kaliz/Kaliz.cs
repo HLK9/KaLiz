@@ -41,11 +41,11 @@ namespace Kaliz
 
         public Kaliz()
         {
-            Splash ht = new Splash();
-            Thread thr = new Thread(new ThreadStart(SplashScreen));
-            thr.Start();
-            Thread.Sleep(5000);
-            thr.Abort();
+            //Splash ht = new Splash();
+            //Thread thr = new Thread(new ThreadStart(SplashScreen));
+            //thr.Start();
+            //Thread.Sleep(5000);
+            //thr.Abort();
             InitializeComponent();
         }
         /// <summary>
@@ -702,7 +702,7 @@ End;
             try
             {
                 TabHienTai.Close();
-                DockPar.ActiveWindow.Close(); //chủ chốt 
+                DockPar.DocumentManager.ActiveDocument.Close(); //chủ chốt 
             }
             catch { }
 
@@ -1512,6 +1512,7 @@ End;
             {
                 if (Col.ShowDialog() == DialogResult.OK)
                 {
+                    
                     TabHienTai.CurrentLineHighlightColor = Col.SelectedColor;
                 }
             }
