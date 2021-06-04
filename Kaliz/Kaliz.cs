@@ -38,7 +38,7 @@ namespace Kaliz
 
 
         private int chiso { get; set; }
-
+       
         public Kaliz()
         {
             //Splash ht = new Splash();
@@ -47,6 +47,16 @@ namespace Kaliz
             //Thread.Sleep(5000);
             //thr.Abort();
             InitializeComponent();
+            TaoPhimTat();
+            
+        }
+        private void TaoPhimTat()
+        {
+            FNew.Shortcuts.Add(new RadShortcut(Keys.Control, Keys.N));
+            FOpen.Shortcuts.Add(new RadShortcut(Keys.Control, Keys.O));
+            FSave.Shortcuts.Add(new RadShortcut(Keys.Control, Keys.S));
+            FSaveAs.Shortcuts.Add(new RadShortcut(Keys.Control | Keys.Shift, Keys.S));
+            
         }
         /// <summary>
         /// Tao mot tep moi
@@ -704,18 +714,6 @@ End;
 
         }
 
-        private void radMenuItem1_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                TabHienTai.Close();
-                DockPar.DocumentManager.ActiveDocument.Close(); //chủ chốt 
-            }
-            catch { }
-
-
-
-        }
 
         private void DcWelcome_Click(object sender, EventArgs e)
         {
@@ -1689,7 +1687,39 @@ End;
             try
             {
                 TabHienTai.Redo();
+                
             }
+            catch { }
+        }
+
+        private void FFold_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                TabHienTai.Collapse();
+            }
+            catch { }
+        }
+
+        private void FUnfold_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                TabHienTai.Expand();
+            }
+            catch { }
+           
+        }
+
+        private void FFoldAll_Click(object sender, EventArgs e)
+        {
+            try { TabHienTai.CollapseAll(); }
+            catch { }
+        }
+
+        private void FFUnfoldAll_Click(object sender, EventArgs e)
+        {
+            try { TabHienTai.ExpandAll(); }
             catch { }
         }
     }
