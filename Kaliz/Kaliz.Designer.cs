@@ -41,7 +41,6 @@ namespace Kaliz
             this.FNew = new Telerik.WinControls.UI.RadMenuItem();
             this.FOpen = new Telerik.WinControls.UI.RadMenuItem();
             this.radMenuSeparatorItem1 = new Telerik.WinControls.UI.RadMenuSeparatorItem();
-            this.FClose = new Telerik.WinControls.UI.RadMenuItem();
             this.FPrint = new Telerik.WinControls.UI.RadMenuItem();
             this.FSave = new Telerik.WinControls.UI.RadMenuItem();
             this.FSaveAs = new Telerik.WinControls.UI.RadMenuItem();
@@ -63,6 +62,11 @@ namespace Kaliz
             this.EEnd = new Telerik.WinControls.UI.RadMenuItem();
             this.EIndent = new Telerik.WinControls.UI.RadMenuItem();
             this.EOutdent = new Telerik.WinControls.UI.RadMenuItem();
+            this.EFold = new Telerik.WinControls.UI.RadMenuItem();
+            this.FFold = new Telerik.WinControls.UI.RadMenuItem();
+            this.FUnfold = new Telerik.WinControls.UI.RadMenuItem();
+            this.FFoldAll = new Telerik.WinControls.UI.RadMenuItem();
+            this.FFUnfoldAll = new Telerik.WinControls.UI.RadMenuItem();
             this.MTools = new Telerik.WinControls.UI.RadMenuItem();
             this.TFind = new Telerik.WinControls.UI.RadMenuItem();
             this.FindDia = new Telerik.WinControls.UI.RadMenuItem();
@@ -114,13 +118,13 @@ namespace Kaliz
             this.BBookmarkNext = new Telerik.WinControls.UI.RadMenuItem();
             this.fluentDarkTheme1 = new Telerik.WinControls.Themes.FluentDarkTheme();
             this.windows8Theme1 = new Telerik.WinControls.Themes.Windows8Theme();
-            this.radMenu1 = new Telerik.WinControls.UI.RadMenu();
             this.MPersonal = new Telerik.WinControls.UI.RadMenuItem();
             this.MPcurrentline = new Telerik.WinControls.UI.RadMenuItem();
             this.PSelection = new Telerik.WinControls.UI.RadMenuItem();
             this.PEditor = new Telerik.WinControls.UI.RadMenuItem();
             this.ELight = new Telerik.WinControls.UI.RadMenuItem();
             this.EDark = new Telerik.WinControls.UI.RadMenuItem();
+            this.radMenu1 = new Telerik.WinControls.UI.RadMenu();
             ((System.ComponentModel.ISupportInitialize)(this.DockPar)).BeginInit();
             this.DockPar.SuspendLayout();
             this.Doutput.SuspendLayout();
@@ -130,8 +134,8 @@ namespace Kaliz
             this.toolTabStrip1.SuspendLayout();
             this.BMList.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ListBm)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.radMenu1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.radMenu1)).BeginInit();
             this.SuspendLayout();
             // 
             // MFile
@@ -142,7 +146,6 @@ namespace Kaliz
             this.FNew,
             this.FOpen,
             this.radMenuSeparatorItem1,
-            this.FClose,
             this.FPrint,
             this.FSave,
             this.FSaveAs,
@@ -155,7 +158,6 @@ namespace Kaliz
             // FNew
             // 
             this.FNew.HintText = "Ctrl + N";
-            FNew.Shortcuts.Add(new RadShortcut(Keys.Control, Keys.N));
             this.FNew.Name = "FNew";
             this.FNew.Text = "New File";
             this.FNew.ToolTipText = "Tệp Mới";
@@ -164,7 +166,6 @@ namespace Kaliz
             // FOpen
             // 
             this.FOpen.HintText = "Ctrl + O";
-            FOpen.Shortcuts.Add(new RadShortcut(Keys.Control, Keys.O));
             this.FOpen.Name = "FOpen";
             this.FOpen.Text = "Open File";
             this.FOpen.Click += new System.EventHandler(this.FOpen_Click);
@@ -174,14 +175,6 @@ namespace Kaliz
             this.radMenuSeparatorItem1.Name = "radMenuSeparatorItem1";
             this.radMenuSeparatorItem1.Text = "radMenuSeparatorItem1";
             this.radMenuSeparatorItem1.TextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // FClose
-            // 
-            this.FClose.HintText = "Ctrl + Shift + X";
-            FClose.Shortcuts.Add(new RadShortcut(Keys.Control | Keys.Shift, Keys.X));
-            this.FClose.Name = "FClose";
-            this.FClose.Text = "Close";
-            this.FClose.Click += new System.EventHandler(this.radMenuItem1_Click);
             // 
             // FPrint
             // 
@@ -193,7 +186,6 @@ namespace Kaliz
             // FSave
             // 
             this.FSave.HintText = "Ctrl + S";
-            FSave.Shortcuts.Add(new RadShortcut(Keys.Control, Keys.S));
             this.FSave.Name = "FSave";
             this.FSave.Text = "Save";
             this.FSave.Click += new System.EventHandler(this.FSave_Click);
@@ -201,7 +193,6 @@ namespace Kaliz
             // FSaveAs
             // 
             this.FSaveAs.HintText = "Ctrl + Shift + S";
-            FSaveAs.Shortcuts.Add(new RadShortcut(Keys.Control | Keys.Shift, Keys.S));
             this.FSaveAs.Name = "FSaveAs";
             this.FSaveAs.Text = "Save As";
             this.FSaveAs.Click += new System.EventHandler(this.FSaveAs_Click);
@@ -237,7 +228,8 @@ namespace Kaliz
             this.EStart,
             this.EEnd,
             this.EIndent,
-            this.EOutdent});
+            this.EOutdent,
+            this.EFold});
             this.MEdit.Name = "MEdit";
             this.MEdit.Text = "Edit";
             // 
@@ -271,10 +263,9 @@ namespace Kaliz
             // 
             // ERedo
             // 
+            this.ERedo.HintText = "Ctrl + Shift + Z";
             this.ERedo.Name = "ERedo";
             this.ERedo.Text = "Redo";
-            ERedo.Shortcuts.Add(new RadShortcut(Keys.Control | Keys.Shift, Keys.Z));
-            ERedo.HintText = "Ctrl + Shift + Z";
             this.ERedo.Click += new System.EventHandler(this.ERedo_Click);
             // 
             // ESelect
@@ -313,7 +304,6 @@ namespace Kaliz
             // EStart
             // 
             this.EStart.HintText = "Ctrl + Up";
-            EStart.Shortcuts.Add(new RadShortcut(Keys.Control, Keys.Up));
             this.EStart.Name = "EStart";
             this.EStart.Text = "Jump to Block Start";
             this.EStart.Click += new System.EventHandler(this.EStart_Click);
@@ -321,26 +311,57 @@ namespace Kaliz
             // EEnd
             // 
             this.EEnd.HintText = "Ctrl + Down";
-            EEnd.Shortcuts.Add(new RadShortcut(Keys.Control, Keys.Down));
             this.EEnd.Name = "EEnd";
             this.EEnd.Text = "Jump to Block End";
             this.EEnd.Click += new System.EventHandler(this.EEnd_Click);
             // 
             // EIndent
             // 
+            this.EIndent.HintText = "Ctrl + ]";
             this.EIndent.Name = "EIndent";
-            EIndent.Shortcuts.Add(new RadShortcut(Keys.Control, Keys.OemOpenBrackets));
             this.EIndent.Text = "Indent Selection";
-            EIndent.HintText = "Ctrl + ]";
             this.EIndent.Click += new System.EventHandler(this.EIndent_Click);
             // 
             // EOutdent
             // 
+            this.EOutdent.HintText = "Ctrl + [";
             this.EOutdent.Name = "EOutdent";
             this.EOutdent.Text = "Outdent Selection";
-            EOutdent.Shortcuts.Add(new RadShortcut(Keys.Control, Keys.OemCloseBrackets));
-            EOutdent.HintText = "Ctrl + [";
             this.EOutdent.Click += new System.EventHandler(this.EOutdent_Click);
+            // 
+            // EFold
+            // 
+            this.EFold.Items.AddRange(new Telerik.WinControls.RadItem[] {
+            this.FFold,
+            this.FUnfold,
+            this.FFoldAll,
+            this.FFUnfoldAll});
+            this.EFold.Name = "EFold";
+            this.EFold.Text = "Code Folding";
+            // 
+            // FFold
+            // 
+            this.FFold.Name = "FFold";
+            this.FFold.Text = "Fold";
+            this.FFold.Click += new System.EventHandler(this.FFold_Click);
+            // 
+            // FUnfold
+            // 
+            this.FUnfold.Name = "FUnfold";
+            this.FUnfold.Text = "Unfold";
+            this.FUnfold.Click += new System.EventHandler(this.FUnfold_Click);
+            // 
+            // FFoldAll
+            // 
+            this.FFoldAll.Name = "FFoldAll";
+            this.FFoldAll.Text = "Fold All";
+            this.FFoldAll.Click += new System.EventHandler(this.FFoldAll_Click);
+            // 
+            // FFUnfoldAll
+            // 
+            this.FFUnfoldAll.Name = "FFUnfoldAll";
+            this.FFUnfoldAll.Text = "Unfold All";
+            this.FFUnfoldAll.Click += new System.EventHandler(this.FFUnfoldAll_Click);
             // 
             // MTools
             // 
@@ -373,7 +394,6 @@ namespace Kaliz
             // FFindSelected
             // 
             this.FFindSelected.HintText = "Ctrl + Enter";
-            FFindSelected.Shortcuts.Add(new RadShortcut(Keys.Control, Keys.Enter));
             this.FFindSelected.Name = "FFindSelected";
             this.FFindSelected.Text = "Find Selected Text";
             this.FFindSelected.Click += new System.EventHandler(this.FFindSelected_Click);
@@ -431,7 +451,6 @@ namespace Kaliz
             // TPowerShell
             // 
             this.TPowerShell.HintText = "Ctrl + Alt + T";
-            TPowerShell.Shortcuts.Add(new RadShortcut(Keys.Control | Keys.Alt, Keys.T));
             this.TPowerShell.Name = "TPowerShell";
             this.TPowerShell.Text = "Windows PowerShell";
             this.TPowerShell.Click += new System.EventHandler(this.TPowerShell_Click);
@@ -447,7 +466,6 @@ namespace Kaliz
             // BRun
             // 
             this.BRun.HintText = "Ctrl + B";
-            BRun.Shortcuts.Add(new RadShortcut(Keys.Control, Keys.B));
             this.BRun.Name = "BRun";
             this.BRun.Text = "Run";
             this.BRun.Click += new System.EventHandler(this.BRun_Click);
@@ -455,7 +473,6 @@ namespace Kaliz
             // BBuild
             // 
             this.BBuild.HintText = "Ctrl + Shift + B";
-            BBuild.Shortcuts.Add(new RadShortcut(Keys.Control | Keys.Shift, Keys.B));
             this.BBuild.Name = "BBuild";
             this.BBuild.Text = "Build This File";
             this.BBuild.Click += new System.EventHandler(this.BBuild_Click);
@@ -729,7 +746,6 @@ namespace Kaliz
             // BBookmark
             // 
             this.BBookmark.HintText = "Ctrl + M";
-            BBookmark.Shortcuts.Add(new RadShortcut(Keys.Control, Keys.M));
             this.BBookmark.Name = "BBookmark";
             this.BBookmark.Text = "Add to current line";
             this.BBookmark.Click += new System.EventHandler(this.BBookmark_Click);
@@ -737,7 +753,6 @@ namespace Kaliz
             // radMenuItem2
             // 
             this.radMenuItem2.HintText = "Ctrl + Shift + M";
-            radMenuItem2.Shortcuts.Add(new RadShortcut(Keys.Control | Keys.Shift, Keys.M));
             this.radMenuItem2.Name = "radMenuItem2";
             this.radMenuItem2.Text = "Remove in current line";
             this.radMenuItem2.Click += new System.EventHandler(this.BRemoveBookmark_Click);
@@ -757,7 +772,6 @@ namespace Kaliz
             // BBookmarkPre
             // 
             this.BBookmarkPre.HintText = "Ctrl + ,";
-            BBookmarkPre.Shortcuts.Add(new RadShortcut(Keys.Control, Keys.Oemcomma));
             this.BBookmarkPre.Name = "BBookmarkPre";
             this.BBookmarkPre.Text = "Bookmark Previous";
             this.BBookmarkPre.Click += new System.EventHandler(this.BBookmarkPre_Click);
@@ -765,29 +779,9 @@ namespace Kaliz
             // BBookmarkNext
             // 
             this.BBookmarkNext.HintText = "Ctrl + .";
-            BBookmarkNext.Shortcuts.Add(new RadShortcut(Keys.Control, Keys.OemPeriod));
             this.BBookmarkNext.Name = "BBookmarkNext";
             this.BBookmarkNext.Text = "Bookmark Next";
             this.BBookmarkNext.Click += new System.EventHandler(this.BBookmarkNext_Click);
-            // 
-            // radMenu1
-            // 
-            this.radMenu1.Items.AddRange(new Telerik.WinControls.RadItem[] {
-            this.MFile,
-            this.MEdit,
-            this.MTools,
-            this.MBuild,
-            this.MDebug,
-            this.MOptions,
-            this.MBookmark,
-            this.MHelp,
-            this.radMenuItem1,
-            this.MPersonal});
-            this.radMenu1.Location = new System.Drawing.Point(0, 0);
-            this.radMenu1.Name = "radMenu1";
-            this.radMenu1.Size = new System.Drawing.Size(1093, 37);
-            this.radMenu1.TabIndex = 1;
-            this.radMenu1.ThemeName = "MaterialTeal";
             // 
             // MPersonal
             // 
@@ -837,6 +831,25 @@ namespace Kaliz
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1093, 503);
+            // 
+            // radMenu1
+            // 
+            this.radMenu1.Items.AddRange(new Telerik.WinControls.RadItem[] {
+            this.MFile,
+            this.MEdit,
+            this.MTools,
+            this.MBuild,
+            this.MDebug,
+            this.MOptions,
+            this.MBookmark,
+            this.MHelp,
+            this.radMenuItem1,
+            this.MPersonal});
+            this.radMenu1.Location = new System.Drawing.Point(0, 0);
+            this.radMenu1.Name = "radMenu1";
+            this.radMenu1.Size = new System.Drawing.Size(1093, 37);
+            this.radMenu1.TabIndex = 1;
+            this.radMenu1.ThemeName = "MaterialTeal";
             this.Controls.Add(this.DockPar);
             this.Controls.Add(this.radMenu1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -919,7 +932,6 @@ namespace Kaliz
         private Telerik.WinControls.UI.RadMenuItem OCTooltip;
         private Telerik.WinControls.UI.RadListView ListBm;
         private Telerik.WinControls.UI.RadMenuItem OHightlight;
-        private Telerik.WinControls.UI.RadMenu radMenu1;
         private Telerik.WinControls.UI.RadMenuItem OEnaPrompt;
         private Telerik.WinControls.UI.RadMenuItem HHowto;
         private Telerik.WinControls.UI.RadMenuItem HLearn;
@@ -950,7 +962,12 @@ namespace Kaliz
         private Telerik.WinControls.UI.RadMenuItem FFindSelected;
         private Telerik.WinControls.UI.RadMenuItem EOutdent;
         private Telerik.WinControls.UI.RadMenuItem TPowerShell;
-        public Telerik.WinControls.UI.RadMenuItem FClose;
         private RadMenuItem ERedo;
+        private RadMenuItem EFold;
+        private RadMenuItem FFold;
+        private RadMenuItem FUnfold;
+        private RadMenuItem FFoldAll;
+        private RadMenuItem FFUnfoldAll;
+        private RadMenu radMenu1;
     }
 }
