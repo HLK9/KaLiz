@@ -53,6 +53,7 @@ namespace Kaliz
             this.ECut = new Telerik.WinControls.UI.RadMenuItem();
             this.EPaste = new Telerik.WinControls.UI.RadMenuItem();
             this.EUndo = new Telerik.WinControls.UI.RadMenuItem();
+            this.ERedo = new Telerik.WinControls.UI.RadMenuItem();
             this.ESelect = new Telerik.WinControls.UI.RadMenuItem();
             this.ESyntax = new Telerik.WinControls.UI.RadMenuItem();
             this.SPascal = new Telerik.WinControls.UI.RadMenuItem();
@@ -62,7 +63,6 @@ namespace Kaliz
             this.EEnd = new Telerik.WinControls.UI.RadMenuItem();
             this.EIndent = new Telerik.WinControls.UI.RadMenuItem();
             this.EOutdent = new Telerik.WinControls.UI.RadMenuItem();
-            this.ERedo = new Telerik.WinControls.UI.RadMenuItem();
             this.MTools = new Telerik.WinControls.UI.RadMenuItem();
             this.TFind = new Telerik.WinControls.UI.RadMenuItem();
             this.FindDia = new Telerik.WinControls.UI.RadMenuItem();
@@ -154,22 +154,20 @@ namespace Kaliz
             // 
             // FNew
             // 
+            this.FNew.HintText = "Ctrl + N";
+            FNew.Shortcuts.Add(new RadShortcut(Keys.Control, Keys.N));
             this.FNew.Name = "FNew";
             this.FNew.Text = "New File";
             this.FNew.ToolTipText = "Tệp Mới";
             this.FNew.Click += new System.EventHandler(this.FNew_Click);
-            this.FNew.Shortcuts.Add(new RadShortcut(Keys.Control, Keys.N));
-            //this.FNew.Shortcuts.Add(new RadShortcut(Keys.Control, Keys.N));
-            this.FNew.HintText = "Ctrl + N";
             // 
             // FOpen
             // 
+            this.FOpen.HintText = "Ctrl + O";
+            FOpen.Shortcuts.Add(new RadShortcut(Keys.Control, Keys.O));
             this.FOpen.Name = "FOpen";
             this.FOpen.Text = "Open File";
             this.FOpen.Click += new System.EventHandler(this.FOpen_Click);
-            this.FOpen.Shortcuts.Add(new RadShortcut(Keys.Control, Keys.O));
-            //this.FOpen.Shortcuts.Add(new RadShortcut(Keys.Control, Keys.O));
-            this.FOpen.HintText = "Ctrl + O";
             // 
             // radMenuSeparatorItem1
             // 
@@ -179,12 +177,11 @@ namespace Kaliz
             // 
             // FClose
             // 
+            this.FClose.HintText = "Ctrl + Shift + X";
+            FClose.Shortcuts.Add(new RadShortcut(Keys.Control | Keys.Shift, Keys.X));
             this.FClose.Name = "FClose";
             this.FClose.Text = "Close";
             this.FClose.Click += new System.EventHandler(this.radMenuItem1_Click);
-            this.FClose.Shortcuts.Add(new RadShortcut(Keys.Control | Keys.Shift, Keys.X));
-            //this.FClose.Shortcuts.Add(new RadShortcut(Keys.Control | Keys.Shift, Keys.X));
-            this.FClose.HintText = "Ctrl + Shift + X";
             // 
             // FPrint
             // 
@@ -195,20 +192,19 @@ namespace Kaliz
             // 
             // FSave
             // 
+            this.FSave.HintText = "Ctrl + S";
+            FSave.Shortcuts.Add(new RadShortcut(Keys.Control, Keys.S));
             this.FSave.Name = "FSave";
             this.FSave.Text = "Save";
             this.FSave.Click += new System.EventHandler(this.FSave_Click);
-            this.FSave.Shortcuts.Add(new RadShortcut(Keys.Control, Keys.S));
-            //this.FSave.Shortcuts.Add(new RadShortcut(Keys.Control, Keys.S));
-            this.FSave.HintText = "Ctrl + S";
             // 
             // FSaveAs
             // 
+            this.FSaveAs.HintText = "Ctrl + Shift + S";
+            FSaveAs.Shortcuts.Add(new RadShortcut(Keys.Control | Keys.Shift, Keys.S));
             this.FSaveAs.Name = "FSaveAs";
             this.FSaveAs.Text = "Save As";
             this.FSaveAs.Click += new System.EventHandler(this.FSaveAs_Click);
-            this.FSaveAs.Shortcuts.Add(new RadShortcut(Keys.Control | Keys.Shift, Keys.S));
-            this.FSaveAs.HintText = "Ctrl + Shift + S";
             // 
             // FExport
             // 
@@ -273,6 +269,14 @@ namespace Kaliz
             this.EUndo.Text = "Undo";
             this.EUndo.Click += new System.EventHandler(this.EUndo_Click);
             // 
+            // ERedo
+            // 
+            this.ERedo.Name = "ERedo";
+            this.ERedo.Text = "Redo";
+            ERedo.Shortcuts.Add(new RadShortcut(Keys.Control | Keys.Shift, Keys.Z));
+            ERedo.HintText = "Ctrl + Shift + Z";
+            this.ERedo.Click += new System.EventHandler(this.ERedo_Click);
+            // 
             // ESelect
             // 
             this.ESelect.Name = "ESelect";
@@ -308,38 +312,35 @@ namespace Kaliz
             // 
             // EStart
             // 
+            this.EStart.HintText = "Ctrl + Up";
+            EStart.Shortcuts.Add(new RadShortcut(Keys.Control, Keys.Up));
             this.EStart.Name = "EStart";
             this.EStart.Text = "Jump to Block Start";
             this.EStart.Click += new System.EventHandler(this.EStart_Click);
-            this.EStart.Shortcuts.Add(new RadShortcut(Keys.Control, Keys.Up));
-            this.EStart.HintText = "Ctrl + Up";
             // 
             // EEnd
             // 
+            this.EEnd.HintText = "Ctrl + Down";
+            EEnd.Shortcuts.Add(new RadShortcut(Keys.Control, Keys.Down));
             this.EEnd.Name = "EEnd";
             this.EEnd.Text = "Jump to Block End";
             this.EEnd.Click += new System.EventHandler(this.EEnd_Click);
-            this.EEnd.Shortcuts.Add(new RadShortcut(Keys.Control, Keys.Down));
-            this.EEnd.HintText = "Ctrl + Down";
             // 
             // EIndent
             // 
             this.EIndent.Name = "EIndent";
+            EIndent.Shortcuts.Add(new RadShortcut(Keys.Control, Keys.OemOpenBrackets));
             this.EIndent.Text = "Indent Selection";
+            EIndent.HintText = "Ctrl + ]";
             this.EIndent.Click += new System.EventHandler(this.EIndent_Click);
             // 
             // EOutdent
             // 
             this.EOutdent.Name = "EOutdent";
             this.EOutdent.Text = "Outdent Selection";
+            EOutdent.Shortcuts.Add(new RadShortcut(Keys.Control, Keys.OemCloseBrackets));
+            EOutdent.HintText = "Ctrl + [";
             this.EOutdent.Click += new System.EventHandler(this.EOutdent_Click);
-            // 
-            // ERedo
-            // 
-            this.ERedo.Name = "ERedo";
-            this.ERedo.Text = "Redo";
-            this.ERedo.Click += new System.EventHandler(this.ERedo_Click);
-            this.ERedo.Shortcuts.Add(new RadShortcut(Keys.Control | Keys.Shift, Keys.Z));
             // 
             // MTools
             // 
@@ -361,36 +362,35 @@ namespace Kaliz
             this.FFindSelected});
             this.TFind.Name = "TFind";
             this.TFind.Text = "Find";
-            
             // 
             // FindDia
             // 
+            this.FindDia.HintText = "Ctrl + F";
             this.FindDia.Name = "FindDia";
             this.FindDia.Text = "Open Find Dialog";
             this.FindDia.Click += new System.EventHandler(this.TFind_Click);
-            this.FindDia.HintText = "Ctrl + F";
             // 
             // FFindSelected
             // 
+            this.FFindSelected.HintText = "Ctrl + Enter";
+            FFindSelected.Shortcuts.Add(new RadShortcut(Keys.Control, Keys.Enter));
             this.FFindSelected.Name = "FFindSelected";
             this.FFindSelected.Text = "Find Selected Text";
             this.FFindSelected.Click += new System.EventHandler(this.FFindSelected_Click);
-            this.FFindSelected.Shortcuts.Add(new RadShortcut(Keys.Control, Keys.Enter));
-            this.FFindSelected.HintText = "Ctrl + Enter";
             // 
             // TReplace
             // 
+            this.TReplace.HintText = "Ctrl + H";
             this.TReplace.Name = "TReplace";
             this.TReplace.Text = "Replace";
             this.TReplace.Click += new System.EventHandler(this.TReplace_Click);
-            this.TReplace.HintText = "Ctrl + H";
             // 
             // TGoToLine
             // 
+            this.TGoToLine.HintText = "Ctrl + G";
             this.TGoToLine.Name = "TGoToLine";
             this.TGoToLine.Text = "Go To Line";
             this.TGoToLine.Click += new System.EventHandler(this.TGoToLine_Click);
-            this.TGoToLine.HintText = "Ctrl + G";
             // 
             // TAscii
             // 
@@ -410,7 +410,7 @@ namespace Kaliz
             // AConvert
             // 
             this.AConvert.Name = "AConvert";
-            this.AConvert.Text = "Convert Symbols_String to ASCII";
+            this.AConvert.Text = "Convert string to ASCII";
             this.AConvert.ToolTipText = "Chuyển đổi ký tự hoặc xâu sang ASCII";
             this.AConvert.Click += new System.EventHandler(this.AConvert_Click);
             // 
@@ -430,11 +430,11 @@ namespace Kaliz
             // 
             // TPowerShell
             // 
+            this.TPowerShell.HintText = "Ctrl + Alt + T";
+            TPowerShell.Shortcuts.Add(new RadShortcut(Keys.Control | Keys.Alt, Keys.T));
             this.TPowerShell.Name = "TPowerShell";
             this.TPowerShell.Text = "Windows PowerShell";
             this.TPowerShell.Click += new System.EventHandler(this.TPowerShell_Click);
-            this.TPowerShell.Shortcuts.Add(new RadShortcut(Keys.Control | Keys.Alt, Keys.T));
-            this.TPowerShell.HintText = "Ctrl + Alt + T";
             // 
             // MBuild
             // 
@@ -443,23 +443,22 @@ namespace Kaliz
             this.BBuild});
             this.MBuild.Name = "MBuild";
             this.MBuild.Text = "Buid";
-           
             // 
             // BRun
             // 
+            this.BRun.HintText = "Ctrl + B";
+            BRun.Shortcuts.Add(new RadShortcut(Keys.Control, Keys.B));
             this.BRun.Name = "BRun";
             this.BRun.Text = "Run";
             this.BRun.Click += new System.EventHandler(this.BRun_Click);
-            this.BRun.Shortcuts.Add(new RadShortcut(Keys.Control,Keys.B));
-            this.BRun.HintText = "Ctrl + B";
             // 
             // BBuild
             // 
+            this.BBuild.HintText = "Ctrl + Shift + B";
+            BBuild.Shortcuts.Add(new RadShortcut(Keys.Control | Keys.Shift, Keys.B));
             this.BBuild.Name = "BBuild";
             this.BBuild.Text = "Build This File";
             this.BBuild.Click += new System.EventHandler(this.BBuild_Click);
-            this.BBuild.Shortcuts.Add(new RadShortcut(Keys.Control | Keys.Shift, Keys.B));
-            this.BBuild.HintText = "Ctrl + Shift + B";
             // 
             // MDebug
             // 
@@ -729,12 +728,16 @@ namespace Kaliz
             // 
             // BBookmark
             // 
+            this.BBookmark.HintText = "Ctrl + M";
+            BBookmark.Shortcuts.Add(new RadShortcut(Keys.Control, Keys.M));
             this.BBookmark.Name = "BBookmark";
             this.BBookmark.Text = "Add to current line";
             this.BBookmark.Click += new System.EventHandler(this.BBookmark_Click);
             // 
             // radMenuItem2
             // 
+            this.radMenuItem2.HintText = "Ctrl + Shift + M";
+            radMenuItem2.Shortcuts.Add(new RadShortcut(Keys.Control | Keys.Shift, Keys.M));
             this.radMenuItem2.Name = "radMenuItem2";
             this.radMenuItem2.Text = "Remove in current line";
             this.radMenuItem2.Click += new System.EventHandler(this.BRemoveBookmark_Click);
@@ -753,12 +756,16 @@ namespace Kaliz
             // 
             // BBookmarkPre
             // 
+            this.BBookmarkPre.HintText = "Ctrl + ,";
+            BBookmarkPre.Shortcuts.Add(new RadShortcut(Keys.Control, Keys.Oemcomma));
             this.BBookmarkPre.Name = "BBookmarkPre";
             this.BBookmarkPre.Text = "Bookmark Previous";
             this.BBookmarkPre.Click += new System.EventHandler(this.BBookmarkPre_Click);
             // 
             // BBookmarkNext
             // 
+            this.BBookmarkNext.HintText = "Ctrl + .";
+            BBookmarkNext.Shortcuts.Add(new RadShortcut(Keys.Control, Keys.OemPeriod));
             this.BBookmarkNext.Name = "BBookmarkNext";
             this.BBookmarkNext.Text = "Bookmark Next";
             this.BBookmarkNext.Click += new System.EventHandler(this.BBookmarkNext_Click);
