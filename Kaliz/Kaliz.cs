@@ -78,6 +78,7 @@ namespace Kaliz
                     string ConfigF = @"Lex\CppF.xml";
                     DanhDau.Configurator.Open(ConfigF);
                     DanhDau.ApplyConfiguration("C++");
+                    // DanhDau.ApplyConfiguration(KnownLanguages.C);
                     DanhDau.StatusBarSettings.FileNamePanel.Panel.Text = "C/C++";
                     DanhDau.ContextChoiceOpen += DanhDau_ContextChoiceOpen_C;
                     DanhDau.ContextPromptOpen += DanhDau_ContextPromptOpen_ForC;
@@ -376,6 +377,7 @@ End;
             Menu.AddMenuItem("&Redo                    Ctrl+Shift+Z", new EventHandler(MenuRedo));
             Menu.AddMenuItem("&Save                     Ctrl+S", new EventHandler(MenuSave));
             Menu.AddSeparator();
+            Menu.AddMenuItem("&Copy File Path", new EventHandler(MenuCopyPath));
             Menu.AddMenuItem("&Open Containing Folder", new EventHandler(MenuOpenContaining));
             Menu.AddMenuItem("&Open Terminal Here", new EventHandler(MenuOpenTerHere));
 
@@ -385,6 +387,11 @@ End;
 
 
             // Syncfusion.Windows.Forms.IContextMenuProvider contextMenuProvider = this.TabHienTai.ContextMenuManager.ContextMenuProvider;
+        }
+
+        private void MenuCopyPath(object sender, EventArgs e)
+        {
+            Clipboard.SetText(TabHienTai.FileName);
         }
 
         private void MenuSelectAll(object sender, EventArgs e)
@@ -424,12 +431,12 @@ End;
 
         private void MenuUncomment(object sender, EventArgs e)
         {
-            TabHienTai.UnCommentLine();
+            TabHienTai.UncommentSelection();
         }
 
         private void MenuComment(object sender, EventArgs e)
         {
-            TabHienTai.CommentLine();
+            TabHienTai.CommentSelection();
         }
 
         private void MenuPaste(object sender, EventArgs e)
@@ -1103,7 +1110,7 @@ End;
 
                 }
                 ListBm.Items.Add(TabHienTai.CurrentLine, Path.GetFileName(TabHienTai.FileName));
-                MessageBox.Show(ListBm.Items[0].Text);
+                
                 // ListBm.Items.Add(sd);
 
 
@@ -1594,7 +1601,7 @@ End;
 
         private void radMenuItem1_Click_1(object sender, EventArgs e)
         {
-            
+            TabHienTai.IndentSelection();
         }
         public void SplashScreen()
         {
