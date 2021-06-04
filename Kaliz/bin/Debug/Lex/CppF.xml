@@ -3,7 +3,7 @@
 <!--
 xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:noNamespaceSchemaLocation="file://d:\Projects\EditControl\Syncfusion.Windows.Forms.Edit\config.xsd" -->
-  <ConfigLanguage name="C++">
+  <ConfigLanguage name="C++" StartComment="/*" EndComment="*/" CaseInsensitive="true">
     <formats>
       <format name="Text" Font="Consolas, 10pt"   FontColor="#383a42" />
       <format name="Whitespace" Font="Consolas, 10pt" FontColor="Black" />
@@ -126,7 +126,7 @@ xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/X
       <lexem BeginBlock="volatile" Type="KeyWord" />
       <lexem BeginBlock="while" Type="KeyWord" IsComplex="true" DropContextPrompt="true"  />
       <lexem BeginBlock="wchar_t" Type="KeyWord" />
-      <lexem BeginBlock="/*" EndBlock="*/" Type="Comment" OnlyLocalSublexems="true" IsComplex="true"
+     <lexem BeginBlock="/*" EndBlock="*/" Type="Comment" OnlyLocalSublexems="true" IsComplex="true"
         IsCollapsable="true" CollapseName="/*...*/">
         <SubLexems>
           <lexem BeginBlock="\n" IsBeginRegex="true" />
@@ -184,8 +184,7 @@ xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/X
       </lexem>
       <lexem BeginBlock="[0-9]+" IsBeginRegex="true" Type="Number" />
       <lexem BeginBlock="[0-9]+" ContinueBlock="." EndBlock="[0-9]+" IsBeginRegex="true" IsEndRegex="true" Type="Number" />
-      <lexem BeginBlock="{" EndBlock="}" Type="KeyWord" IsComplex="true" IsCollapsable="true" Indent="true" DropContextPrompt="true" 
-        CollapseName="{...}">
+      <lexem BeginBlock="{" EndBlock="}" Type="KeyWord" IsComplex="true" IsCollapsable="true" Indent="true" DropContextPrompt="true" CollapseName="{...}" IndentationGuideline="true">
         <SubLexems>
           <lexem BeginBlock="\n" IsBeginRegex="true" />
         </SubLexems>
