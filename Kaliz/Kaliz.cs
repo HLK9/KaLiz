@@ -56,7 +56,23 @@ namespace Kaliz
             FOpen.Shortcuts.Add(new RadShortcut(Keys.Control, Keys.O));
             FSave.Shortcuts.Add(new RadShortcut(Keys.Control, Keys.S));
             FSaveAs.Shortcuts.Add(new RadShortcut(Keys.Control | Keys.Shift, Keys.S));
-            
+            //Edit
+            ERedo.Shortcuts.Add(new RadShortcut(Keys.Control | Keys.Shift, Keys.Z));
+            EStart.Shortcuts.Add(new RadShortcut(Keys.Control, Keys.Up));
+            EEnd.Shortcuts.Add(new RadShortcut(Keys.Control, Keys.Down));
+            EIndent.Shortcuts.Add(new RadShortcut(Keys.Control,Keys.OemCloseBrackets));
+            EOutdent.Shortcuts.Add(new RadShortcut(Keys.Control, Keys.OemCloseBrackets));
+            //Tools
+            FFindSelected.Shortcuts.Add(new RadShortcut(Keys.Control, Keys.Enter));
+            TPowerShell.Shortcuts.Add(new RadShortcut(Keys.Control | Keys.Shift, Keys.T));
+            //Build
+            BBuild.Shortcuts.Add(new RadShortcut(Keys.Control | Keys.Shift, Keys.B));
+            BRun.Shortcuts.Add(new RadShortcut(Keys.Control, Keys.B));
+            //Bookmark
+            BBookmark.Shortcuts.Add(new RadShortcut(Keys.Control, Keys.M));
+            radMenuItem2.Shortcuts.Add(new RadShortcut(Keys.Control | Keys.Shift, Keys.M));
+            BBookmarkPre.Shortcuts.Add(new RadShortcut(Keys.Control, Keys.Oemcomma));
+            BBookmarkNext.Shortcuts.Add(new RadShortcut(Keys.Control, Keys.OemPeriod));
         }
         /// <summary>
         /// Tao mot tep moi
@@ -1289,13 +1305,14 @@ End;
             try
             {
                 TabHienTai.Save();
+                
                 if (Path.GetExtension(TabHienTai.FileName) == ".py")
                     TabHienTai.StatusBarSettings.FileNamePanel.Panel.Text = "Python";
                 if (Path.GetExtension(TabHienTai.FileName) == ".pas")
                     TabHienTai.StatusBarSettings.FileNamePanel.Panel.Text = "Pascal";
                 if (Path.GetExtension(TabHienTai.FileName) == ".c" || Path.GetExtension(TabHienTai.FileName) == ".cpp")
                     TabHienTai.StatusBarSettings.FileNamePanel.Panel.Text = "C/C++";
-                
+
                 TabHienTai.StatusBarSettings.StatusPanel.Panel.Text = "Saved";
                 TabHienTai.StatusBarSettings.StatusPanel.Panel.BackColor = Color.DarkCyan;
                 TabHienTai.StatusBarSettings.StatusPanel.Panel.ForeColor = Color.White;
