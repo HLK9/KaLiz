@@ -147,6 +147,7 @@ namespace Kaliz
             DanhDau.ShowSelectionMargin = true;
             DanhDau.HighlightCurrentLine = true;
             //DanhDau.AutoSave = true;
+            DanhDau.Closing += DanhDau_Closing;
             DanhDau.CurrentLineHighlightColor = Color.Teal;
             DanhDau.ShowIndicatorMargin = true;
             DanhDau.MarkerAreaWidth = 20;
@@ -188,7 +189,10 @@ namespace Kaliz
 
         }
 
-       
+        private void DanhDau_Closing(object sender, StreamCloseEventArgs e)
+        {
+            e.Action = SaveChangesAction.ShowDialog;
+        }
 
         private void DanhDau_ContextChoiceOpen_ForPython(IContextChoiceController controller)
         {
@@ -1085,6 +1089,11 @@ End;
 
         private void BBuild_Click(object sender, EventArgs e)
         {
+            var thread = new Thread(ThreadStart);
+            
+            thread.TrySetApartmentState(ApartmentState.STA);
+            thread.Start();
+
             try
             {
                 if (Path.GetExtension(TabHienTai.FileName) == ".py")
@@ -1092,8 +1101,13 @@ End;
                 Build(TabHienTai.FileName, deBug, ref ListOutput);
             }
             catch { }
+            thread.Abort();
 
-
+        }
+        private static void ThreadStart()
+        {
+            BWai f = new BWai();
+            Application.Run(f); // <-- other form started on its own UI thread
         }
         // DataTable databm = new DataTable();
 
