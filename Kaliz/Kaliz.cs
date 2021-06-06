@@ -41,15 +41,23 @@ namespace Kaliz
        
         public Kaliz()
         {
-            //Splash ht = new Splash();
-            //Thread thr = new Thread(new ThreadStart(SplashScreen));
-            //thr.Start();
-            //Thread.Sleep(5000);
-            //thr.Abort();
+            //this.Load += Kaliz_Load;
             InitializeComponent();
             TaoPhimTat();
             
         }
+        /// <summary>
+        /// Gọi Load
+        /// </summary>
+        //private void Kaliz_Load(object sender, EventArgs e)
+        //{
+        //    Splash ht = new Splash();
+        //    Thread thr = new Thread(new ThreadStart(SplashScreen));
+        //    thr.Start();
+        //    Thread.Sleep(5000);
+        //    thr.Abort();
+        //}
+
         private void TaoPhimTat()
         {
             FNew.Shortcuts.Add(new RadShortcut(Keys.Control, Keys.N));
@@ -1089,19 +1097,26 @@ End;
 
         private void BBuild_Click(object sender, EventArgs e)
         {
-            var thread = new Thread(ThreadStart);
-            
-            thread.TrySetApartmentState(ApartmentState.STA);
-            thread.Start();
+           
 
             try
             {
+               
                 if (Path.GetExtension(TabHienTai.FileName) == ".py")
                     ShowAlert_Light("<html><color=LightSalmon>Build Failed", "<html><color=Teal>Python can only be <b>RUN</b> directly");
-                Build(TabHienTai.FileName, deBug, ref ListOutput);
+                else
+                {
+                    var thread = new Thread(ThreadStart);
+
+                    thread.TrySetApartmentState(ApartmentState.STA);
+                    thread.Start();
+                    Build(TabHienTai.FileName, deBug, ref ListOutput);
+                    thread.Abort();
+                }
+                
             }
             catch { }
-            thread.Abort();
+           
 
         }
         private static void ThreadStart()
@@ -1634,7 +1649,8 @@ End;
         }
         public void SplashScreen()
         {
-            Application.Run(new Splash());
+            Splash sd = new Splash();
+            Application.Run(sd);
         }
 
         private void SynC_Click(object sender, EventArgs e)
