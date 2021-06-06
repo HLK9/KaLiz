@@ -16,9 +16,20 @@ namespace Kaliz
             
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-                      
+            //
+            Splash ht = new Splash();
+            Thread thr = new Thread(new ThreadStart(SplashScreen));
+            thr.Start();
+            Thread.Sleep(5000);
+            thr.Abort();
+            //        
             Application.Run(new Kaliz());
         }
-       
+
+        private static void SplashScreen()
+        {
+            Splash sd = new Splash();
+            Application.Run(sd);
+        }
     }
 }
