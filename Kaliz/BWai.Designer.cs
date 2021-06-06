@@ -30,8 +30,8 @@
         {
             this.materialTealTheme1 = new Telerik.WinControls.Themes.MaterialTealTheme();
             this.radWaitingBar1 = new Telerik.WinControls.UI.RadWaitingBar();
-            this.radLabel1 = new Telerik.WinControls.UI.RadLabel();
             this.dotsLineWaitingBarIndicatorElement1 = new Telerik.WinControls.UI.DotsLineWaitingBarIndicatorElement();
+            this.radLabel1 = new Telerik.WinControls.UI.RadLabel();
             ((System.ComponentModel.ISupportInitialize)(this.radWaitingBar1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.radLabel1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this)).BeginInit();
@@ -47,6 +47,11 @@
             this.radWaitingBar1.WaitingIndicators.Add(this.dotsLineWaitingBarIndicatorElement1);
             this.radWaitingBar1.WaitingStyle = Telerik.WinControls.Enumerations.WaitingBarStyles.DotsLine;
             // 
+            // dotsLineWaitingBarIndicatorElement1
+            // 
+            this.dotsLineWaitingBarIndicatorElement1.ElementColor = System.Drawing.Color.White;
+            this.dotsLineWaitingBarIndicatorElement1.Name = "dotsLineWaitingBarIndicatorElement1";
+            // 
             // radLabel1
             // 
             this.radLabel1.ForeColor = System.Drawing.Color.White;
@@ -58,16 +63,11 @@
     "></span></span><span style=\"font-size: 14pt; color: #ffffff\">Processing</span></" +
     "html>";
             // 
-            // dotsLineWaitingBarIndicatorElement1
-            // 
-            this.dotsLineWaitingBarIndicatorElement1.ElementColor = System.Drawing.Color.White;
-            this.dotsLineWaitingBarIndicatorElement1.Name = "dotsLineWaitingBarIndicatorElement1";
-            // 
             // BWai
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.MediumSlateBlue;
+            this.BackColor = System.Drawing.Color.LightSeaGreen;
             this.ClientSize = new System.Drawing.Size(322, 82);
             this.Controls.Add(this.radLabel1);
             this.Controls.Add(this.radWaitingBar1);
