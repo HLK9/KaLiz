@@ -1804,5 +1804,11 @@ End;
                
             
         }
+
+        private void TEmail_Click(object sender, EventArgs e)
+        {
+            SendEmail Sa = new SendEmail();
+            Sa.ShowDialog();
+        }
     }
 }

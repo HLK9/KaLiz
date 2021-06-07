@@ -125,6 +125,7 @@ namespace Kaliz
             this.ELight = new Telerik.WinControls.UI.RadMenuItem();
             this.EDark = new Telerik.WinControls.UI.RadMenuItem();
             this.radMenu1 = new Telerik.WinControls.UI.RadMenu();
+            this.TEmail = new Telerik.WinControls.UI.RadMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.DockPar)).BeginInit();
             this.DockPar.SuspendLayout();
             this.Doutput.SuspendLayout();
@@ -372,7 +373,8 @@ namespace Kaliz
             this.TAscii,
             this.TCalc,
             this.Tcmd,
-            this.TPowerShell});
+            this.TPowerShell,
+            this.TEmail});
             this.MTools.Name = "MTools";
             this.MTools.Text = "Tools";
             // 
@@ -847,6 +849,12 @@ namespace Kaliz
             this.radMenu1.TabIndex = 1;
             this.radMenu1.ThemeName = "MaterialTeal";
             // 
+            // TEmail
+            // 
+            this.TEmail.Name = "TEmail";
+            this.TEmail.Text = "Send Email with this file";
+            this.TEmail.Click += new System.EventHandler(this.TEmail_Click);
+            // 
             // Kaliz
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -972,5 +980,6 @@ namespace Kaliz
         private RadMenuItem FFoldAll;
         private RadMenuItem FFUnfoldAll;
         private RadMenu radMenu1;
+        private RadMenuItem TEmail;
     }
 }
