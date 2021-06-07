@@ -659,6 +659,8 @@ namespace Kaliz
             this.ListOutput.Size = new System.Drawing.Size(1251, 99);
             this.ListOutput.TabIndex = 0;
             this.ListOutput.ThemeName = "MaterialTeal";
+            this.ListOutput.SelectedItemChanged += new System.EventHandler(this.ListOutput_SelectedItemChanged);
+            this.ListOutput.ItemMouseClick += new Telerik.WinControls.UI.ListViewItemEventHandler(this.ListOutput_ItemMouseClick);
             // 
             // DContainer
             // 

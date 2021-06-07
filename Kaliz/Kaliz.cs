@@ -23,6 +23,7 @@ using Syncfusion.Windows.Forms.Edit.Implementation;
 using System.Collections;
 using Syncfusion.Windows.Forms.Edit.Implementation.Formatting;
 using System.Threading;
+using System.Text.RegularExpressions;
 
 namespace Kaliz
 {
@@ -42,21 +43,22 @@ namespace Kaliz
         public Kaliz()
         {
             //this.Load += Kaliz_Load;
+            Thread thr = new Thread(new ThreadStart(SplashScreen));
+            thr.Start();
+            Thread.Sleep(5000);
+            thr.Abort();
             InitializeComponent();
             TaoPhimTat();
             
+
         }
-        /// <summary>
-        /// Gọi Load
-        /// </summary>
-        //private void Kaliz_Load(object sender, EventArgs e)
-        //{
-        //    Splash ht = new Splash();
-        //    Thread thr = new Thread(new ThreadStart(SplashScreen));
-        //    thr.Start();
-        //    Thread.Sleep(5000);
-        //    thr.Abort();
-        //}
+       
+        private void Kaliz_Load(object sender, EventArgs e)
+        {
+            Splash ht = new Splash();
+            Application.Run(ht);
+           
+        }
 
         private void TaoPhimTat()
         {
@@ -72,7 +74,7 @@ namespace Kaliz
             EOutdent.Shortcuts.Add(new RadShortcut(Keys.Control, Keys.OemCloseBrackets));
             //Tools
             FFindSelected.Shortcuts.Add(new RadShortcut(Keys.Control, Keys.Enter));
-            TPowerShell.Shortcuts.Add(new RadShortcut(Keys.Control | Keys.Shift, Keys.T));
+            TPowerShell.Shortcuts.Add(new RadShortcut(Keys.Control | Keys.Alt, Keys.T));
             //Build
             BBuild.Shortcuts.Add(new RadShortcut(Keys.Control | Keys.Shift, Keys.B));
             BRun.Shortcuts.Add(new RadShortcut(Keys.Control, Keys.B));
@@ -1121,8 +1123,13 @@ End;
         }
         private static void ThreadStart()
         {
-            BWai f = new BWai();
-            Application.Run(f); // <-- other form started on its own UI thread
+            try
+            {
+                BWai f = new BWai();
+                Application.Run(f); // <-- other form started on its own UI thread
+            }
+            catch { }
+           
         }
         // DataTable databm = new DataTable();
 
@@ -1768,6 +1775,34 @@ End;
         {
             try { TabHienTai.ExpandAll(); }
             catch { }
+        }
+
+        private void ListOutput_SelectedItemChanged(object sender, EventArgs e)
+        {
+           
+
+
+        }
+
+        private void ListOutput_ItemMouseClick(object sender, ListViewItemEventArgs e)
+        {
+            string Phantich = @"\(\d+\,\d+\)|\:\d+\:\d+\:";
+            
+            string chuoi = ListOutput.SelectedItem.Text;
+            string ret;
+
+            MatchCollection df = Regex.Matches(chuoi, Phantich);
+            
+                foreach (Match sd in df)
+            {
+                string phan2 = @"\d+";
+                MatchCollection df2 = Regex.Matches(sd.ToString(), phan2);
+             
+               TabHienTai.GoTo(int.Parse(df2[0].ToString()));
+               
+            }
+               
+            
         }
     }
 }
