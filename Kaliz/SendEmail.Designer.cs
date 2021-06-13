@@ -305,7 +305,6 @@
         private Telerik.WinControls.UI.RadLabel radLabel6;
         private Telerik.WinControls.UI.RadTextBox EmailTo;
         private Telerik.WinControls.UI.RadTextBox EmailSub;
-        private Telerik.WinControls.UI.RadTextBox EmailAttach;
         private Telerik.WinControls.UI.RadTextBox EmailFrom;
         private Telerik.WinControls.UI.RadTextBox EmailPass;
         private Telerik.WinControls.UI.RadButton EmailSend;
@@ -314,5 +313,6 @@
         private Telerik.WinControls.UI.RadTextBoxControl EmailBody;
         private Telerik.WinControls.UI.RadButton radButton1;
         private Telerik.WinControls.UI.RadButton radButton2;
+        internal Telerik.WinControls.UI.RadTextBox EmailAttach;
     }
 }

@@ -18,6 +18,7 @@ namespace Kaliz
         {
             InitializeComponent();
             
+            
         }
         string hashs = "WelcomeToK@liz";
         private string EncryptString(string inp)
@@ -79,7 +80,7 @@ namespace Kaliz
                 sm.EnableSsl = true;
                 sm.Port = 587;
                 sm.Send(Ma);
-                MessageBox.Show("Completed!");
+                MessageBox.Show("This mail has been sent", "Kaliz", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             catch(Exception ex)
             {
