@@ -16,6 +16,7 @@ using Syncfusion.Windows.Forms.Edit.Interfaces;
 using Syncfusion.Windows.Forms.Edit.Enums;
 using Syncfusion.Windows.Forms.Edit.Implementation.Config;
 using Syncfusion.Drawing;
+using WK.Libraries.SharpClipboardNS;
 
 using Syncfusion.Windows.Forms;
 using Syncfusion.Windows.Forms.Localization;
@@ -24,6 +25,7 @@ using System.Collections;
 using Syncfusion.Windows.Forms.Edit.Implementation.Formatting;
 using System.Threading;
 using System.Text.RegularExpressions;
+using System.Runtime.InteropServices;
 
 namespace Kaliz
 {
@@ -36,13 +38,14 @@ namespace Kaliz
         private bool enableContextPrompt = false;
         private bool showlinenum = true;
         private string Bookma = null;
-
+        public string Pathtosendemail;
+       
 
         private int chiso { get; set; }
        
         public Kaliz()
         {
-            //this.Load += Kaliz_Load;
+            this.Load += Kaliz_Load;
             Thread thr = new Thread(new ThreadStart(SplashScreen));
             thr.Start();
             Thread.Sleep(5000);
@@ -55,9 +58,17 @@ namespace Kaliz
        
         private void Kaliz_Load(object sender, EventArgs e)
         {
-            Splash ht = new Splash();
-            Application.Run(ht);
+            var clipBoard = new SharpClipboard();
+            clipBoard.MonitorClipboard = true;
+            clipBoard.ClipboardChanged += ClipBoard_ClipboardChanged; 
            
+
+
+        }
+
+        private void ClipBoard_ClipboardChanged(object sender, SharpClipboard.ClipboardChangedEventArgs e)
+        {
+            radlistclip.Items.Add(Clipboard.GetText());
         }
 
         private void TaoPhimTat()
@@ -775,7 +786,7 @@ End;
             }
         }
 
-
+        
 
         private void ECopy_Click(object sender, EventArgs e)
         {
@@ -1649,11 +1660,18 @@ End;
                 TabHienTai.ApplyConfiguration("Python");
             }
         }
-
+       
         private void radMenuItem1_Click_1(object sender, EventArgs e)
         {
-            TabHienTai.IndentSelection();
+           
+            
+
+
+            //TabHienTai.IndentSelection();
         }
+
+       
+
         public void SplashScreen()
         {
             Splash sd = new Splash();
@@ -1807,8 +1825,26 @@ End;
 
         private void TEmail_Click(object sender, EventArgs e)
         {
+            Pathtosendemail = TabHienTai.FileName;
             SendEmail Sa = new SendEmail();
             Sa.ShowDialog();
+            
+        }
+       
+        private void ListBm_SelectedItemChanged(object sender, EventArgs e)
+        {
+            MessageBox.Show(ListBm.SelectedItem.Selected.ToString());
+        }
+
+        private void radlistclip_ItemMouseDoubleClick(object sender, ListViewItemEventArgs e)
+        {
+            try
+            {
+TabHienTai.InsertText(TabHienTai.CurrentLine, TabHienTai.CurrentColumn, radlistclip.SelectedItem.Text);
+            }
+            catch {  }
+            
         }
     }
 }
+

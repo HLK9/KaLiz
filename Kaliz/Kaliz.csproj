@@ -49,6 +49,10 @@
     <Reference Include="ReaLTaiizor">
       <HintPath>..\..\TheKaliz\KalizE\packages\ReaLTaiizor.3.7.8.3\lib\net46\ReaLTaiizor.dll</HintPath>
     </Reference>
+    <Reference Include="SharpClipboard, Version=3.5.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\SharpClipboard.3.5.2\lib\net20\SharpClipboard.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Syncfusion.Core.WinForms, Version=19.1450.0.54, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL" />
     <Reference Include="Syncfusion.Data.WinForms, Version=19.1460.0.54, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89" />
     <Reference Include="Syncfusion.Edit.Windows, Version=19.1450.0.54, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL" />
@@ -70,6 +74,7 @@
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Design" />
+    <Reference Include="System.Drawing.Design" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Runtime.Serialization.Formatters.Soap" />
     <Reference Include="System.Web.Extensions" />
@@ -173,6 +178,7 @@
       <DependentUpon>TextDia.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="app.manifest" />
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
