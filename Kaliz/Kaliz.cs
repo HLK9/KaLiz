@@ -68,7 +68,16 @@ namespace Kaliz
 
         private void ClipBoard_ClipboardChanged(object sender, SharpClipboard.ClipboardChangedEventArgs e)
         {
-            radlistclip.Items.Add(Clipboard.GetText());
+            bool containd = false;
+            foreach(var item in radlistclip.Items)
+            {
+                if (item.Text == Clipboard.GetText())
+                    containd = true;
+            } 
+
+           if(containd!= true)
+                    radlistclip.Items.Add(Clipboard.GetText());
+             
         }
 
         private void TaoPhimTat()
@@ -1157,25 +1166,6 @@ End;
 
                 BrushInfo brushInfo = new BrushInfo(Color.DarkViolet);
                 TabHienTai.BookmarkAdd(TabHienTai.CurrentLine, brushInfo);
-
-                string sd = TabHienTai.CurrentLine.ToString();
-                string fd = Path.GetFileName(TabHienTai.FileName);
-
-
-                for (int i = ListBm.Items.Count - 1; i >= 0; i--)
-                {
-
-                    if ((ListBm.Items[i].Text.Contains(sd)) && (ListBm.Items[i].Text.Contains(fd)))
-                        return;
-
-
-                }
-                ListBm.Items.Add(TabHienTai.CurrentLine, Path.GetFileName(TabHienTai.FileName));
-                
-                // ListBm.Items.Add(sd);
-
-
-
             }
             catch
             { }
@@ -1210,12 +1200,7 @@ End;
             try
             {
                 TabHienTai.BookmarkRemove(TabHienTai.CurrentLine);
-                string sd = TabHienTai.CurrentLine.ToString();
-                for (int i = ListBm.Items.Count - 1; i >= 0; i--)
-                {
-                    if (ListBm.Items[i].Text.Contains(sd))
-                    { ListBm.Items.RemoveAt(i); }
-                }
+              
             }
             catch { }
 
@@ -1663,7 +1648,7 @@ End;
        
         private void radMenuItem1_Click_1(object sender, EventArgs e)
         {
-           
+            Dclipboard.Hide();
             
 
 
@@ -1831,11 +1816,7 @@ End;
             
         }
        
-        private void ListBm_SelectedItemChanged(object sender, EventArgs e)
-        {
-            MessageBox.Show(ListBm.SelectedItem.Selected.ToString());
-        }
-
+       
         private void radlistclip_ItemMouseDoubleClick(object sender, ListViewItemEventArgs e)
         {
             try
@@ -1844,6 +1825,18 @@ TabHienTai.InsertText(TabHienTai.CurrentLine, TabHienTai.CurrentColumn, radlistc
             }
             catch {  }
             
+        }
+
+        private void OClearClip_Click(object sender, EventArgs e)
+        {
+            radlistclip.Items.Clear();
+           
+        }
+
+        private void radMenuItem3_Click_1(object sender, EventArgs e)
+        {
+            Dclipboard.Show();
+           
         }
     }
 }
