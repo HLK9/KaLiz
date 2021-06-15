@@ -82,6 +82,7 @@ namespace Kaliz
 
         private void TaoPhimTat()
         {
+           
             FNew.Shortcuts.Add(new RadShortcut(Keys.Control, Keys.N));
             FOpen.Shortcuts.Add(new RadShortcut(Keys.Control, Keys.O));
             FSave.Shortcuts.Add(new RadShortcut(Keys.Control, Keys.S));
