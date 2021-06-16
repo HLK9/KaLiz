@@ -16,7 +16,7 @@ using Syncfusion.Windows.Forms.Edit.Interfaces;
 using Syncfusion.Windows.Forms.Edit.Enums;
 using Syncfusion.Windows.Forms.Edit.Implementation.Config;
 using Syncfusion.Drawing;
-using WK.Libraries.SharpClipboardNS;
+
 
 using Syncfusion.Windows.Forms;
 using Syncfusion.Windows.Forms.Localization;
@@ -26,6 +26,7 @@ using Syncfusion.Windows.Forms.Edit.Implementation.Formatting;
 using System.Threading;
 using System.Text.RegularExpressions;
 using System.Runtime.InteropServices;
+using WK.Libraries.SharpClipboardNS;
 
 namespace Kaliz
 {
@@ -37,7 +38,7 @@ namespace Kaliz
         private bool enableTooltip = false;
         private bool enableContextPrompt = false;
         private bool showlinenum = true;
-        private string Bookma = null;
+        private string TenTheme = "MaterialTeal";
         public string Pathtosendemail;
        
 
@@ -92,7 +93,7 @@ namespace Kaliz
             EStart.Shortcuts.Add(new RadShortcut(Keys.Control, Keys.Up));
             EEnd.Shortcuts.Add(new RadShortcut(Keys.Control, Keys.Down));
             EIndent.Shortcuts.Add(new RadShortcut(Keys.Control,Keys.OemCloseBrackets));
-            EOutdent.Shortcuts.Add(new RadShortcut(Keys.Control, Keys.OemCloseBrackets));
+            EOutdent.Shortcuts.Add(new RadShortcut(Keys.Control, Keys.OemOpenBrackets));
             //Tools
             FFindSelected.Shortcuts.Add(new RadShortcut(Keys.Control, Keys.Enter));
             TPowerShell.Shortcuts.Add(new RadShortcut(Keys.Control | Keys.Alt, Keys.T));
@@ -116,12 +117,14 @@ namespace Kaliz
             var DanhDau = new EditControl();
             DanhDau.Dock = DockStyle.Fill;
             DanhDau.Style = EditControlStyle.Office2016Colorful;
-
+           
             TaiLieu.Controls.Add(DanhDau);
             DanhDau.AllowDrop = true;
             DanhDau.FileExtensions = new string[] { ".pas", ".c", ".cpp", ".cs", ".py" };
             DockPar.AddDocument(TaiLieu);
             //Theme
+            TaiLieu.TabStrip.SelectedIndexChanged += TabStrip_SelectedIndexChanged;
+            
             DanhDau.ContextChoiceBorderColor = Color.FromArgb(64, 224, 208);
 
             //DanhDau.contextchoice
@@ -218,6 +221,119 @@ namespace Kaliz
             //
 
 
+        }
+
+        private void TabStrip_SelectedIndexChanged(object sender, EventArgs e)
+        {
+           UpdateTheme();
+           
+        }
+        private void UpdateTheme()
+        {
+            if (TenTheme != radMenu.ThemeName)
+            {
+                if (TenTheme == "Fluent")
+                {
+                    try
+                    {
+                        ThemeResolutionService.ApplicationThemeName = "Fluent";
+                        TabHienTai.Style = EditControlStyle.Office2016Colorful;
+                        TabHienTai.IndicatorMarginBackColor = Color.FromArgb(249, 249, 249);
+                        TabHienTai.LineNumbersColor = Color.Teal;
+                        TabHienTai.ContextPromptBackgroundBrush = new BrushInfo(GradientStyle.None, new Color[] { Color.FromArgb(249, 249, 249) });
+                        TabHienTai.BackgroundColor = new BrushInfo(GradientStyle.None, new Color[] { Color.FromArgb(249, 249, 249) });
+
+                        if (Path.GetExtension(TabHienTai.FileName) == ".pas")
+                        {
+                            string ConfigF = @"Lex\Pascal.xml";
+                            TabHienTai.Configurator.Open(ConfigF);
+                            TabHienTai.ApplyConfiguration("Pascal");
+                        }
+                        else
+                            if (Path.GetExtension(TabHienTai.FileName) == ".c" || Path.GetExtension(TabHienTai.FileName) == ".cpp")
+                        {
+                            string ConfigF = @"Lex\CppF.xml";
+                            TabHienTai.Configurator.Open(ConfigF);
+                            TabHienTai.ApplyConfiguration("C++");
+                        }
+                        else if (Path.GetExtension(TabHienTai.FileName) == ".py")
+                        {
+                            string ConfigF = @"Lex\Python.xml";
+                            TabHienTai.Configurator.Open(ConfigF);
+                            TabHienTai.ApplyConfiguration("Python");
+                        }
+                    }
+                    catch { }
+                }
+                else if (TenTheme == "MaterialTeal")
+                {
+                    try
+                    {
+                        ThemeResolutionService.ApplicationThemeName = "MaterialTeal";
+                        TabHienTai.Style = EditControlStyle.Office2016Colorful;
+                        TabHienTai.IndicatorMarginBackColor = Color.FromArgb(249, 249, 249);
+                        TabHienTai.LineNumbersColor = Color.Teal;
+                        TabHienTai.ContextPromptBackgroundBrush = new BrushInfo(GradientStyle.None, new Color[] { Color.FromArgb(249, 249, 249) });
+                        TabHienTai.BackgroundColor = new BrushInfo(GradientStyle.None, new Color[] { Color.FromArgb(249, 249, 249) });
+
+                        if (Path.GetExtension(TabHienTai.FileName) == ".pas")
+                        {
+                            string ConfigF = @"Lex\Pascal.xml";
+                            TabHienTai.Configurator.Open(ConfigF);
+                            TabHienTai.ApplyConfiguration("Pascal");
+                        }
+                        else
+                            if (Path.GetExtension(TabHienTai.FileName) == ".c" || Path.GetExtension(TabHienTai.FileName) == ".cpp")
+                        {
+                            string ConfigF = @"Lex\CppF.xml";
+                            TabHienTai.Configurator.Open(ConfigF);
+                            TabHienTai.ApplyConfiguration("C++");
+                        }
+                        else if (Path.GetExtension(TabHienTai.FileName) == ".py")
+                        {
+                            string ConfigF = @"Lex\Python.xml";
+                            TabHienTai.Configurator.Open(ConfigF);
+                            TabHienTai.ApplyConfiguration("Python");
+                        }
+                    }
+                    catch { }
+
+                }
+                else
+                {
+                    try
+                    {
+
+                        TabHienTai.IndicatorMarginBackColor = Color.FromArgb(40, 42, 54);
+                        TabHienTai.LineNumbersColor = Color.FromArgb(98, 114, 164);
+                        TabHienTai.Style = EditControlStyle.Office2016DarkGray;
+                        TabHienTai.ContextPromptBackgroundBrush = new BrushInfo(GradientStyle.None, new Color[] { Color.FromArgb(40, 42, 54) });
+                        TabHienTai.BackgroundColor = new BrushInfo(GradientStyle.None, new Color[] { Color.FromArgb(40, 42, 54) });
+                        ThemeResolutionService.ApplicationThemeName = "FluentDark";
+                        if (Path.GetExtension(TabHienTai.FileName) == ".pas")
+                        {
+                            string ConfigF = @"Lex\Pascal_D.xml";
+                            TabHienTai.Configurator.Open(ConfigF);
+                            TabHienTai.ApplyConfiguration("Pascal");
+                        }
+                        else
+                            if (Path.GetExtension(TabHienTai.FileName) == ".c" || Path.GetExtension(TabHienTai.FileName) == ".cpp")
+                        {
+                            string ConfigF = @"Lex\CppF_D.xml";
+                            TabHienTai.Configurator.Open(ConfigF);
+                            TabHienTai.ApplyConfiguration("C++");
+                        }
+                        else if (Path.GetExtension(TabHienTai.FileName) == ".py")
+                        {
+                            string ConfigF = @"Lex\Python_D.xml";
+                            TabHienTai.Configurator.Open(ConfigF);
+                            TabHienTai.ApplyConfiguration("Python");
+                        }
+                    }
+                    catch { }
+                }
+            }
+                
         }
 
         private void DanhDau_Closing(object sender, StreamCloseEventArgs e)
@@ -883,7 +999,7 @@ End;
                 ListOutput.Items.Clear();
                 Process BienDich = new Process();
                 BienDich.StartInfo.FileName = "cmd";
-                BienDich.StartInfo.WorkingDirectory = @"FPC\\bin\\i386-win32\\";
+                BienDich.StartInfo.WorkingDirectory = @"FPC\bin\i386-win32";
                 BienDich.StartInfo.UseShellExecute = false;
                 if (enabledebug == false)
                     BienDich.StartInfo.Arguments = "/c " + "fpc " + ten;
@@ -1086,32 +1202,33 @@ End;
         /// <param name="e"></param>
         private void Dark_Click(object sender, EventArgs e)
         {
-
-            TabHienTai.IndicatorMarginBackColor = Color.FromArgb(40, 42, 54);
-            TabHienTai.LineNumbersColor = Color.FromArgb(98, 114, 164);
-            TabHienTai.Style = EditControlStyle.Office2016DarkGray;
-            TabHienTai.ContextPromptBackgroundBrush = new BrushInfo(GradientStyle.None, new Color[] { Color.FromArgb(40, 42, 54) });
-            TabHienTai.BackgroundColor = new BrushInfo(GradientStyle.None, new Color[] { Color.FromArgb(40, 42, 54) });
-            ThemeResolutionService.ApplicationThemeName = "FluentDark";
-            if (Path.GetExtension(TabHienTai.FileName) == ".pas")
-            {
-                string ConfigF = @"Lex\Pascal_D.xml";
-                TabHienTai.Configurator.Open(ConfigF);
-                TabHienTai.ApplyConfiguration("Pascal");
-            }
-            else
-                if (Path.GetExtension(TabHienTai.FileName) == ".c" || Path.GetExtension(TabHienTai.FileName) == ".cpp")
-            {
-                string ConfigF = @"Lex\CppF_D.xml";
-                TabHienTai.Configurator.Open(ConfigF);
-                TabHienTai.ApplyConfiguration("C++");
-            }
-            else if (Path.GetExtension(TabHienTai.FileName) == ".py")
-            {
-                string ConfigF = @"Lex\Python_D.xml";
-                TabHienTai.Configurator.Open(ConfigF);
-                TabHienTai.ApplyConfiguration("Python");
-            }
+            TenTheme = "FluentDark";
+            UpdateTheme();
+            //TabHienTai.IndicatorMarginBackColor = Color.FromArgb(40, 42, 54);
+            //TabHienTai.LineNumbersColor = Color.FromArgb(98, 114, 164);
+            //TabHienTai.Style = EditControlStyle.Office2016DarkGray;
+            //TabHienTai.ContextPromptBackgroundBrush = new BrushInfo(GradientStyle.None, new Color[] { Color.FromArgb(40, 42, 54) });
+            //TabHienTai.BackgroundColor = new BrushInfo(GradientStyle.None, new Color[] { Color.FromArgb(40, 42, 54) });
+            //ThemeResolutionService.ApplicationThemeName = "FluentDark";
+            //if (Path.GetExtension(TabHienTai.FileName) == ".pas")
+            //{
+            //    string ConfigF = @"Lex\Pascal_D.xml";
+            //    TabHienTai.Configurator.Open(ConfigF);
+            //    TabHienTai.ApplyConfiguration("Pascal");
+            //}
+            //else
+            //    if (Path.GetExtension(TabHienTai.FileName) == ".c" || Path.GetExtension(TabHienTai.FileName) == ".cpp")
+            //{
+            //    string ConfigF = @"Lex\CppF_D.xml";
+            //    TabHienTai.Configurator.Open(ConfigF);
+            //    TabHienTai.ApplyConfiguration("C++");
+            //}
+            //else if (Path.GetExtension(TabHienTai.FileName) == ".py")
+            //{
+            //    string ConfigF = @"Lex\Python_D.xml";
+            //    TabHienTai.Configurator.Open(ConfigF);
+            //    TabHienTai.ApplyConfiguration("Python");
+            //}
 
 
         }
@@ -1619,41 +1736,39 @@ End;
 
         private void ELight_Click(object sender, EventArgs e)
         {
-            ThemeResolutionService.ApplicationThemeName = "MaterialTeal";
-            TabHienTai.Style = EditControlStyle.Office2016Colorful;
-            //TabHienTai.IndicatorMarginBackColor = Color.FromArgb();
-            TabHienTai.LineNumbersColor = Color.Teal;
-            TabHienTai.ContextPromptBackgroundBrush = new BrushInfo(GradientStyle.None, new Color[] { Color.FromArgb(249, 249, 249) });
-            TabHienTai.BackgroundColor = new BrushInfo(GradientStyle.None, new Color[] { Color.FromArgb(249, 249, 249) });
+            TenTheme = "Fluent";
+            UpdateTheme();
+            //ThemeResolutionService.ApplicationThemeName = "Fluent";
+            //TabHienTai.Style = EditControlStyle.Office2016Colorful;
+            //TabHienTai.IndicatorMarginBackColor = Color.FromArgb(249, 249, 249);
+            //TabHienTai.LineNumbersColor = Color.Teal;
+            //TabHienTai.ContextPromptBackgroundBrush = new BrushInfo(GradientStyle.None, new Color[] { Color.FromArgb(249, 249, 249) });
+            //TabHienTai.BackgroundColor = new BrushInfo(GradientStyle.None, new Color[] { Color.FromArgb(249, 249, 249) });
 
-            if (Path.GetExtension(TabHienTai.FileName) == ".pas")
-            {
-                string ConfigF = @"Lex\Pascal.xml";
-                TabHienTai.Configurator.Open(ConfigF);
-                TabHienTai.ApplyConfiguration("Pascal");
-            }
-            else
-                if (Path.GetExtension(TabHienTai.FileName) == ".c" || Path.GetExtension(TabHienTai.FileName) == ".cpp")
-            {
-                string ConfigF = @"Lex\CppF.xml";
-                TabHienTai.Configurator.Open(ConfigF);
-                TabHienTai.ApplyConfiguration("C++");
-            }
-            else if (Path.GetExtension(TabHienTai.FileName) == ".py")
-            {
-                string ConfigF = @"Lex\Python.xml";
-                TabHienTai.Configurator.Open(ConfigF);
-                TabHienTai.ApplyConfiguration("Python");
-            }
+            //if (Path.GetExtension(TabHienTai.FileName) == ".pas")
+            //{
+            //    string ConfigF = @"Lex\Pascal.xml";
+            //    TabHienTai.Configurator.Open(ConfigF);
+            //    TabHienTai.ApplyConfiguration("Pascal");
+            //}
+            //else
+            //    if (Path.GetExtension(TabHienTai.FileName) == ".c" || Path.GetExtension(TabHienTai.FileName) == ".cpp")
+            //{
+            //    string ConfigF = @"Lex\CppF.xml";
+            //    TabHienTai.Configurator.Open(ConfigF);
+            //    TabHienTai.ApplyConfiguration("C++");
+            //}
+            //else if (Path.GetExtension(TabHienTai.FileName) == ".py")
+            //{
+            //    string ConfigF = @"Lex\Python.xml";
+            //    TabHienTai.Configurator.Open(ConfigF);
+            //    TabHienTai.ApplyConfiguration("Python");
+            //}
         }
        
         private void radMenuItem1_Click_1(object sender, EventArgs e)
         {
-            Dclipboard.Hide();
-            
-
-
-            //TabHienTai.IndentSelection();
+          
         }
 
        
@@ -1838,6 +1953,39 @@ TabHienTai.InsertText(TabHienTai.CurrentLine, TabHienTai.CurrentColumn, radlistc
         {
             Dclipboard.Show();
            
+        }
+
+        private void EMatiral_Click(object sender, EventArgs e)
+        {
+            TenTheme = "MaterialTeal";
+            UpdateTheme();
+
+            //ThemeResolutionService.ApplicationThemeName = "MaterialTeal";
+            //TabHienTai.Style = EditControlStyle.Office2016Colorful;
+            //TabHienTai.IndicatorMarginBackColor = Color.FromArgb(249, 249, 249);
+            //TabHienTai.LineNumbersColor = Color.Teal;
+            //TabHienTai.ContextPromptBackgroundBrush = new BrushInfo(GradientStyle.None, new Color[] { Color.FromArgb(249, 249, 249) });
+            //TabHienTai.BackgroundColor = new BrushInfo(GradientStyle.None, new Color[] { Color.FromArgb(249, 249, 249) });
+
+            //if (Path.GetExtension(TabHienTai.FileName) == ".pas")
+            //{
+            //    string ConfigF = @"Lex\Pascal.xml";
+            //    TabHienTai.Configurator.Open(ConfigF);
+            //    TabHienTai.ApplyConfiguration("Pascal");
+            //}
+            //else
+            //    if (Path.GetExtension(TabHienTai.FileName) == ".c" || Path.GetExtension(TabHienTai.FileName) == ".cpp")
+            //{
+            //    string ConfigF = @"Lex\CppF.xml";
+            //    TabHienTai.Configurator.Open(ConfigF);
+            //    TabHienTai.ApplyConfiguration("C++");
+            //}
+            //else if (Path.GetExtension(TabHienTai.FileName) == ".py")
+            //{
+            //    string ConfigF = @"Lex\Python.xml";
+            //    TabHienTai.Configurator.Open(ConfigF);
+            //    TabHienTai.ApplyConfiguration("Python");
+            //}
         }
     }
 }
