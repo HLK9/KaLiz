@@ -40,6 +40,7 @@ namespace Kaliz
         private bool showlinenum = true;
         private string TenTheme = "MaterialTeal";
         public string Pathtosendemail;
+        private string ConsoleUse = "PowerShell";
        
 
         private int chiso { get; set; }
@@ -62,6 +63,7 @@ namespace Kaliz
             var clipBoard = new SharpClipboard();
             clipBoard.MonitorClipboard = true;
             clipBoard.ClipboardChanged += ClipBoard_ClipboardChanged; 
+            
            
 
 
@@ -96,7 +98,7 @@ namespace Kaliz
             EOutdent.Shortcuts.Add(new RadShortcut(Keys.Control, Keys.OemOpenBrackets));
             //Tools
             FFindSelected.Shortcuts.Add(new RadShortcut(Keys.Control, Keys.Enter));
-            TPowerShell.Shortcuts.Add(new RadShortcut(Keys.Control | Keys.Alt, Keys.T));
+            TTermi.Shortcuts.Add(new RadShortcut(Keys.Control | Keys.Alt, Keys.T));
             //Build
             BBuild.Shortcuts.Add(new RadShortcut(Keys.Control | Keys.Shift, Keys.B));
             BRun.Shortcuts.Add(new RadShortcut(Keys.Control, Keys.B));
@@ -118,13 +120,15 @@ namespace Kaliz
             DanhDau.Dock = DockStyle.Fill;
             DanhDau.Style = EditControlStyle.Office2016Colorful;
            
+           
             TaiLieu.Controls.Add(DanhDau);
             DanhDau.AllowDrop = true;
             DanhDau.FileExtensions = new string[] { ".pas", ".c", ".cpp", ".cs", ".py" };
             DockPar.AddDocument(TaiLieu);
             //Theme
             TaiLieu.TabStrip.SelectedIndexChanged += TabStrip_SelectedIndexChanged;
-            
+
+            DockPar.DockWindowClosing += DockPar_DockWindowClosing;
             DanhDau.ContextChoiceBorderColor = Color.FromArgb(64, 224, 208);
 
             //DanhDau.contextchoice
@@ -223,9 +227,19 @@ namespace Kaliz
 
         }
 
+        private void DockPar_DockWindowClosing(object sender, DockWindowCancelEventArgs e)
+        {
+           
+                TabHienTai.Close();
+           
+            
+            
+        }
+
         private void TabStrip_SelectedIndexChanged(object sender, EventArgs e)
         {
            UpdateTheme();
+           
            
         }
         private void UpdateTheme()
@@ -338,7 +352,12 @@ namespace Kaliz
 
         private void DanhDau_Closing(object sender, StreamCloseEventArgs e)
         {
+           
+             
+           
+           
             e.Action = SaveChangesAction.ShowDialog;
+            
         }
 
         private void DanhDau_ContextChoiceOpen_ForPython(IContextChoiceController controller)
@@ -583,11 +602,23 @@ End;
 
         private void MenuOpenTerHere(object sender, EventArgs e)
         {
-            string dan = Path.GetDirectoryName(TabHienTai.FileName);
-            Process pw = new Process();
-            pw.StartInfo.FileName = "powershell.exe";
-            pw.StartInfo.WorkingDirectory = dan;
-            pw.Start();
+            if (ConsoleUse=="PowerShell")
+            {
+                string dan = Path.GetDirectoryName(TabHienTai.FileName);
+                Process pw = new Process();
+                pw.StartInfo.FileName = "powershell.exe";
+                pw.StartInfo.WorkingDirectory = dan;
+                pw.Start();
+            }
+            else
+            {
+                string dan = Path.GetDirectoryName(TabHienTai.FileName);
+                Process pw = new Process();
+                pw.StartInfo.FileName = @"Cmder\Cmder.exe";
+                pw.StartInfo.Arguments ="/start "+ dan;
+                pw.Start();
+            }
+          
         }
 
         private void MenuSave(object sender, EventArgs e)
@@ -987,9 +1018,13 @@ End;
 
             //this.TabHienTai.SaveAsRTF("Document.rtf");
         }
-        private string TepExe(string ten)
+        private string DuongDanTepExe(string ten)
         {
             return Path.GetDirectoryName(ten) + "\\" + Path.GetFileNameWithoutExtension(ten) + ".exe";
+        }
+        private string TepEXE(string ten)
+        {
+            return Path.GetFileNameWithoutExtension(ten) + ".exe";
         }
         //Build tep
         private void Build(string ten, bool enabledebug, ref RadListView outp)
@@ -1106,7 +1141,7 @@ End;
                 //
                 BienDich.StartInfo.FileName = "cmd";
                 BienDich.StartInfo.WorkingDirectory = @"FPC\bin\i386-win32\";
-                BienDich.StartInfo.Arguments = "/c " + "gdb " + TepExe(ten);
+                BienDich.StartInfo.Arguments = "/c " + "gdb " + DuongDanTepExe(ten);
                 BienDich.Start();
                 //BienDich.BeginOutputReadLine();
 
@@ -1122,7 +1157,7 @@ End;
                 Process BienDich = new Process();
                 BienDich.StartInfo.FileName = "cmd";
                 BienDich.StartInfo.WorkingDirectory = @"FPC\bin\i386-win32\";
-                BienDich.StartInfo.Arguments = "/c " + "gdb " + TepExe(ten);
+                BienDich.StartInfo.Arguments = "/c " + "gdb " + DuongDanTepExe(ten);
                 BienDich.Start();
                 BienDich.WaitForExit();
             }
@@ -1135,63 +1170,66 @@ End;
 
         private void Run(string file)
         {
-            if (Path.GetExtension(file) == ".pas")
-            {
-                Process Chay = new Process();
+          
+                if (Path.GetExtension(file) == ".pas")
+                {
+                    Process Chay = new Process();
 
-                Chay.StartInfo.WorkingDirectory = Path.GetDirectoryName(file);
-                //Path.GetFileNameWithoutExtension(file) + ".exe"
-                Chay.StartInfo.FileName = TepExe(file);
-                Chay.StartInfo.UseShellExecute = true;
+                    Chay.StartInfo.WorkingDirectory = Path.GetDirectoryName(file);
+                    //Path.GetFileNameWithoutExtension(file) + ".exe"
+                    Chay.StartInfo.FileName = DuongDanTepExe(file);
+                    Chay.StartInfo.UseShellExecute = true;
 
-                //Chay.WaitForExit();
-                Chay.Start();
-            }
-            if (Path.GetExtension(file) == ".c" || Path.GetExtension(file) == ".cpp")
-            {
+                    //Chay.WaitForExit();
+                    Chay.Start();
+                }
+                if (Path.GetExtension(file) == ".c" || Path.GetExtension(file) == ".cpp")
+                {
 
-                Process Chay = new Process();
+                    Process Chay = new Process();
 
-                Chay.StartInfo.WorkingDirectory = Path.GetDirectoryName(file);
-                //Path.GetFileNameWithoutExtension(file) + ".exe"
-                Chay.StartInfo.FileName = TepExe(file);
-                Chay.StartInfo.UseShellExecute = true;
-                Chay.Start();
-            }
-            if (Path.GetExtension(file) == ".py")
-            {
-                Process Chay = new Process();
-                Chay.StartInfo.FileName = "cmd";
-                //Chay.StartInfo.UseShellExecute = true;
-                Chay.StartInfo.Arguments = "/c" + " python " + file;
-                //Lấy thông tin nhưng phải để UseExeCutale là false :))
-                //Chay.StartInfo.RedirectStandardError = true;
-                //Chay.StartInfo.RedirectStandardOutput = true;
+                    Chay.StartInfo.WorkingDirectory = Path.GetDirectoryName(file);
+                    //Path.GetFileNameWithoutExtension(file) + ".exe"
+                    Chay.StartInfo.FileName = DuongDanTepExe(file);
+                    Chay.StartInfo.UseShellExecute = true;
+                    Chay.Start();
+                }
+                if (Path.GetExtension(file) == ".py")
+                {
+                    Process Chay = new Process();
+                    Chay.StartInfo.FileName = "cmd";
+                    //Chay.StartInfo.UseShellExecute = true;
+                    Chay.StartInfo.Arguments = "/c" + " python " + file;
+                    //Lấy thông tin nhưng phải để UseExeCutale là false :))
+                    //Chay.StartInfo.RedirectStandardError = true;
+                    //Chay.StartInfo.RedirectStandardOutput = true;
 
-                Chay.Start();
-                Chay.WaitForExit();
-                /*       
-                 *   Đoạn này đẩy thông tin vào trong Output        string ad;
+                    Chay.Start();
+                    Chay.WaitForExit();
+                    /*       
+                     *   Đoạn này đẩy thông tin vào trong Output        string ad;
 
-                           ListOutput.AllowEdit = false;
-                           ListOutput.AllowRemove = false;
+                               ListOutput.AllowEdit = false;
+                               ListOutput.AllowRemove = false;
 
 
-                           //Lấy thông tin Error chứ k phải Output :))
-                           while ((ad = Chay.StandardError.ReadLine()) != null)
-                           {
-                               ListOutput.Items.Add(ad);
+                               //Lấy thông tin Error chứ k phải Output :))
+                               while ((ad = Chay.StandardError.ReadLine()) != null)
+                               {
+                                   ListOutput.Items.Add(ad);
 
-                               // if (ad.Contains("lines compiled")) break;
-                           }
-                           while ((ad = Chay.StandardOutput.ReadLine()) != null)
-                           {
-                               ListOutput.Items.Add(ad);
+                                   // if (ad.Contains("lines compiled")) break;
+                               }
+                               while ((ad = Chay.StandardOutput.ReadLine()) != null)
+                               {
+                                   ListOutput.Items.Add(ad);
 
-                               // if (ad.Contains("lines compiled")) break;
-                           }
-               */
-            }
+                                   // if (ad.Contains("lines compiled")) break;
+                               }
+                   */
+                }
+
+           
 
 
         }
@@ -1738,6 +1776,7 @@ End;
         {
             TenTheme = "Fluent";
             UpdateTheme();
+            
             //ThemeResolutionService.ApplicationThemeName = "Fluent";
             //TabHienTai.Style = EditControlStyle.Office2016Colorful;
             //TabHienTai.IndicatorMarginBackColor = Color.FromArgb(249, 249, 249);
@@ -1768,7 +1807,13 @@ End;
        
         private void radMenuItem1_Click_1(object sender, EventArgs e)
         {
-          
+            Process DS = new Process();
+           
+            DS.StartInfo.FileName = @"Cmder\Cmder.exe";
+            DS.StartInfo.Arguments = "cmd /c python ";
+            
+            
+            DS.Start();
         }
 
        
@@ -1849,10 +1894,23 @@ End;
 
         private void TPowerShell_Click(object sender, EventArgs e)
         {
-            Process pw = new Process();
-            pw.StartInfo.FileName = "powershell.exe";
-            
-            pw.Start();
+
+            if(ConsoleUse =="PowerShell")
+            {
+                Process pw = new Process();
+                pw.StartInfo.FileName = "powershell.exe";
+
+                pw.Start();
+            }
+            else
+            {
+                Process pw = new Process();
+
+                pw.StartInfo.FileName = @"Cmder\Cmder.exe";
+                pw.StartInfo.Arguments = "/start " + Application.StartupPath;
+                pw.Start();
+            }
+           
         }
 
         private void ERedo_Click(object sender, EventArgs e)
@@ -1986,6 +2044,23 @@ TabHienTai.InsertText(TabHienTai.CurrentLine, TabHienTai.CurrentColumn, radlistc
             //    TabHienTai.Configurator.Open(ConfigF);
             //    TabHienTai.ApplyConfiguration("Python");
             //}
+        }
+
+        private void TCmder_Click(object sender, EventArgs e)
+        {
+            Process.Start(@"Cmder\Cmder.exe");
+        }
+
+        private void ConC_Click(object sender, EventArgs e)
+        {
+            ConsoleUse = "PowerShell";
+            ShowAlert_Light("<html><color=Teal>Terminal Has Been Changed", "<html>Current: <span><color=Crimson>PowerShell</span>");
+        }
+
+        private void ConCmder_Click(object sender, EventArgs e)
+        {
+            ConsoleUse = "Cmder";
+            ShowAlert_Light("<html><color=Teal>Terminal Has Been Changed", "<html>Current: <span><color=Crimson>Cmder</span>");
         }
     }
 }
