@@ -132,6 +132,7 @@ namespace Kaliz
             this.toolTabStrip3 = new Telerik.WinControls.UI.Docking.ToolTabStrip();
             this.fluentTheme1 = new Telerik.WinControls.Themes.FluentTheme();
             this.radMenu = new Telerik.WinControls.UI.RadMenu();
+            this.DGui = new Telerik.WinControls.UI.RadMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.DockPar)).BeginInit();
             this.DockPar.SuspendLayout();
             this.Doutput.SuspendLayout();
@@ -142,8 +143,8 @@ namespace Kaliz
             this.Dclipboard.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.radlistclip)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.toolTabStrip3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.radMenu)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this)).BeginInit();
             this.SuspendLayout();
             // 
             // MFile
@@ -496,7 +497,8 @@ namespace Kaliz
             // 
             this.MDebug.Items.AddRange(new Telerik.WinControls.RadItem[] {
             this.DEnable,
-            this.DOpenGDB});
+            this.DOpenGDB,
+            this.DGui});
             this.MDebug.Name = "MDebug";
             this.MDebug.Text = "Debug";
             this.MDebug.Click += new System.EventHandler(this.MDebug_Click);
@@ -897,12 +899,6 @@ namespace Kaliz
             this.toolTabStrip3.TabStop = false;
             this.toolTabStrip3.ThemeName = "MaterialTeal";
             // 
-            // Kaliz
-            // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1259, 743);
-            // 
             // radMenu
             // 
             this.radMenu.Items.AddRange(new Telerik.WinControls.RadItem[] {
@@ -921,6 +917,18 @@ namespace Kaliz
             this.radMenu.Size = new System.Drawing.Size(1259, 37);
             this.radMenu.TabIndex = 1;
             this.radMenu.ThemeName = "MaterialTeal";
+            // 
+            // DGui
+            // 
+            this.DGui.Name = "DGui";
+            this.DGui.Text = "Enable Debug GUI";
+            this.DGui.Click += new System.EventHandler(this.DGui_Click);
+            // 
+            // Kaliz
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.ClientSize = new System.Drawing.Size(1259, 743);
             this.Controls.Add(this.DockPar);
             this.Controls.Add(this.radMenu);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -1051,5 +1059,6 @@ namespace Kaliz
         private RadMenuItem ConPow;
         private RadMenuItem ConCmder;
         private RadMenu radMenu;
+        private RadMenuItem DGui;
     }
 }

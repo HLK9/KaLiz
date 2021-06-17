@@ -1132,34 +1132,70 @@ End;
 
         private void GDB(string ten)
         {
-            if (Path.GetExtension(ten) == ".pas")
+            if(ConsoleUse == "PowerShell")
             {
-                Process BienDich = new Process();
-                //Cho ListGDB
+                if (Path.GetExtension(ten) == ".pas")
+                {
+                    Process BienDich = new Process();
+                    //Cho ListGDB
 
 
-                //
-                BienDich.StartInfo.FileName = "cmd";
-                BienDich.StartInfo.WorkingDirectory = @"FPC\bin\i386-win32\";
-                BienDich.StartInfo.Arguments = "/c " + "gdb " + DuongDanTepExe(ten);
-                BienDich.Start();
-                //BienDich.BeginOutputReadLine();
+                    //
+                    BienDich.StartInfo.FileName = "cmd";
+                    BienDich.StartInfo.WorkingDirectory = @"FPC\bin\i386-win32\";
+                    BienDich.StartInfo.Arguments = "/c " + "gdb " + DuongDanTepExe(ten);
+                    BienDich.Start();
+                    //BienDich.BeginOutputReadLine();
 
-                BienDich.WaitForExit();
-                //  string output;
+                    BienDich.WaitForExit();
+                    //  string output;
 
-                //while ((output = BienDich.StandardOutput.ReadLine()) != null)
-                //    list.Items.Add(output);
+                    //while ((output = BienDich.StandardOutput.ReadLine()) != null)
+                    //    list.Items.Add(output);
+
+                }
+                if (Path.GetExtension(ten) == ".c" || Path.GetExtension(ten) == ".cpp")
+                {
+                    Process BienDich = new Process();
+                    BienDich.StartInfo.FileName = "cmd";
+                    BienDich.StartInfo.WorkingDirectory = @"FPC\bin\i386-win32\";
+                    BienDich.StartInfo.Arguments = "/c " + "gdb " + DuongDanTepExe(ten);
+                    BienDich.Start();
+                    BienDich.WaitForExit();
+                }
 
             }
-            if (Path.GetExtension(ten) == ".c" || Path.GetExtension(ten) == ".cpp")
+            else
             {
-                Process BienDich = new Process();
-                BienDich.StartInfo.FileName = "cmd";
-                BienDich.StartInfo.WorkingDirectory = @"FPC\bin\i386-win32\";
-                BienDich.StartInfo.Arguments = "/c " + "gdb " + DuongDanTepExe(ten);
-                BienDich.Start();
-                BienDich.WaitForExit();
+                if (Path.GetExtension(ten) == ".pas")
+                {
+                    Process BienDich = new Process();
+                    //Cho ListGDB
+
+
+                    //
+                    BienDich.StartInfo.FileName = @"Cmder\vendor\conemu-maximus5\ConEmu.exe";
+                  
+                    BienDich.StartInfo.Arguments = "-run " + "gdb " + DuongDanTepExe(ten);
+                    BienDich.Start();
+                    //BienDich.BeginOutputReadLine();
+
+                    BienDich.WaitForExit();
+                    //  string output;
+
+                    //while ((output = BienDich.StandardOutput.ReadLine()) != null)
+                    //    list.Items.Add(output);
+
+                }
+                if (Path.GetExtension(ten) == ".c" || Path.GetExtension(ten) == ".cpp")
+                {
+                    Process BienDich = new Process();
+                    BienDich.StartInfo.FileName = @"Cmder\vendor\conemu-maximus5\ConEmu.exe";
+                    BienDich.StartInfo.Arguments = "-run " + "gdb " + DuongDanTepExe(ten);
+                    BienDich.Start();                   
+                    BienDich.WaitForExit();
+                }
+
             }
 
 
@@ -1170,7 +1206,11 @@ End;
 
         private void Run(string file)
         {
-          
+            if (ConsoleUse == "PowerShell")
+            {
+                //
+
+
                 if (Path.GetExtension(file) == ".pas")
                 {
                     Process Chay = new Process();
@@ -1228,6 +1268,49 @@ End;
                                }
                    */
                 }
+
+                //
+            }
+            else
+            {
+
+                if (Path.GetExtension(file) == ".pas")
+                {
+                    Process Chay = new Process();
+                    Chay.StartInfo.FileName = @"Cmder\vendor\conemu-maximus5\ConEmu.exe";
+                    // Cmder\vendor\conemu - maximus5\ConEmu.exe
+                    Chay.StartInfo.Arguments =DuongDanTepExe(file);
+                    Chay.Start();
+                    Chay.WaitForExit();
+                }
+                if (Path.GetExtension(file) == ".c" || Path.GetExtension(file) == ".cpp")
+                {
+
+                    Process Chay = new Process();
+
+                   // Chay.StartInfo.WorkingDirectory = Path.GetDirectoryName(file);
+                    //Path.GetFileNameWithoutExtension(file) + ".exe"
+                    Chay.StartInfo.FileName = @"Cmder\vendor\conemu-maximus5\ConEmu.exe";
+                    Chay.StartInfo.Arguments =DuongDanTepExe(file);                   
+                    Chay.Start();
+                    Chay.WaitForExit();
+                }
+                if (Path.GetExtension(file) == ".py")
+                {
+                    Process Chay = new Process();
+                    Chay.StartInfo.FileName = @"Cmder\vendor\conemu-maximus5\ConEmu.exe";
+                    
+                    Chay.StartInfo.Arguments = "-run python " + file;
+                    //Lấy thông tin nhưng phải để UseExeCutale là false :))
+                    //Chay.StartInfo.RedirectStandardError = true;
+                    //Chay.StartInfo.RedirectStandardOutput = true;
+
+                    Chay.Start();
+                    Chay.WaitForExit();
+                  
+                }
+            }
+          
 
            
 
@@ -2061,6 +2144,11 @@ TabHienTai.InsertText(TabHienTai.CurrentLine, TabHienTai.CurrentColumn, radlistc
         {
             ConsoleUse = "Cmder";
             ShowAlert_Light("<html><color=Teal>Terminal Has Been Changed", "<html>Current: <span><color=Crimson>Cmder</span>");
+        }
+
+        private void DGui_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
