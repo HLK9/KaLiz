@@ -21,7 +21,7 @@
 		</extensions>
 		<lexems>
 			<lexem BeginBlock="}" Type="Error" Priority="-10" />
-			<lexem BeginBlock="end" Type="Error" Priority="-10" />
+			
 			<lexem BeginBlock=")" Type="Error" Priority="-10" />
 			<lexem BeginBlock="=" Type="Operator" />
 			<lexem BeginBlock="+" Type="Operator" />
