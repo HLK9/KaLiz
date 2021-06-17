@@ -84,6 +84,7 @@ namespace Kaliz
             this.MDebug = new Telerik.WinControls.UI.RadMenuItem();
             this.DEnable = new Telerik.WinControls.UI.RadMenuItem();
             this.DOpenGDB = new Telerik.WinControls.UI.RadMenuItem();
+            this.DGui = new Telerik.WinControls.UI.RadMenuItem();
             this.MOptions = new Telerik.WinControls.UI.RadMenuItem();
             this.OEnableContext = new Telerik.WinControls.UI.RadMenuItem();
             this.OLock = new Telerik.WinControls.UI.RadMenuItem();
@@ -131,8 +132,18 @@ namespace Kaliz
             this.EMaterialTeal = new Telerik.WinControls.UI.RadMenuItem();
             this.toolTabStrip3 = new Telerik.WinControls.UI.Docking.ToolTabStrip();
             this.fluentTheme1 = new Telerik.WinControls.Themes.FluentTheme();
+            this.OZoom = new Telerik.WinControls.UI.RadMenuItem();
+            this.radMenuItem4 = new Telerik.WinControls.UI.RadMenuItem();
+            this.radMenuItem5 = new Telerik.WinControls.UI.RadMenuItem();
+            this.radMenuItem6 = new Telerik.WinControls.UI.RadMenuItem();
+            this.radMenuItem7 = new Telerik.WinControls.UI.RadMenuItem();
+            this.radMenuItem8 = new Telerik.WinControls.UI.RadMenuItem();
+            this.radMenuItem9 = new Telerik.WinControls.UI.RadMenuItem();
+            this.radMenuItem10 = new Telerik.WinControls.UI.RadMenuItem();
+            this.radMenuItem11 = new Telerik.WinControls.UI.RadMenuItem();
+            this.radMenuItem12 = new Telerik.WinControls.UI.RadMenuItem();
+            this.radMenuHeaderItem1 = new Telerik.WinControls.UI.RadMenuHeaderItem();
             this.radMenu = new Telerik.WinControls.UI.RadMenu();
-            this.DGui = new Telerik.WinControls.UI.RadMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.DockPar)).BeginInit();
             this.DockPar.SuspendLayout();
             this.Doutput.SuspendLayout();
@@ -143,8 +154,8 @@ namespace Kaliz
             this.Dclipboard.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.radlistclip)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.toolTabStrip3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.radMenu)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.radMenu)).BeginInit();
             this.SuspendLayout();
             // 
             // MFile
@@ -515,6 +526,12 @@ namespace Kaliz
             this.DOpenGDB.Text = "Open GDB Debug";
             this.DOpenGDB.Click += new System.EventHandler(this.DOpenGDB_Click);
             // 
+            // DGui
+            // 
+            this.DGui.Name = "DGui";
+            this.DGui.Text = "Enable Debug GUI";
+            this.DGui.Click += new System.EventHandler(this.DGui_Click);
+            // 
             // MOptions
             // 
             this.MOptions.Items.AddRange(new Telerik.WinControls.RadItem[] {
@@ -525,7 +542,8 @@ namespace Kaliz
             this.OEnaPrompt,
             this.OLineNum,
             this.OClearClip,
-            this.OTer});
+            this.OTer,
+            this.OZoom});
             this.MOptions.Name = "MOptions";
             this.MOptions.Text = "Options";
             // 
@@ -899,6 +917,85 @@ namespace Kaliz
             this.toolTabStrip3.TabStop = false;
             this.toolTabStrip3.ThemeName = "MaterialTeal";
             // 
+            // OZoom
+            // 
+            this.OZoom.Items.AddRange(new Telerik.WinControls.RadItem[] {
+            this.radMenuItem4,
+            this.radMenuItem5,
+            this.radMenuItem6,
+            this.radMenuItem7,
+            this.radMenuItem8,
+            this.radMenuItem9,
+            this.radMenuItem10,
+            this.radMenuItem11,
+            this.radMenuItem12});
+            this.OZoom.Name = "OZoom";
+            this.OZoom.Text = "Zoom";
+            // 
+            // radMenuItem4
+            // 
+            this.radMenuItem4.Name = "radMenuItem4";
+            this.radMenuItem4.Text = "50%";
+            this.radMenuItem4.Click += new System.EventHandler(this.radMenuItem4_Click);
+            // 
+            // radMenuItem5
+            // 
+            this.radMenuItem5.Name = "radMenuItem5";
+            this.radMenuItem5.Text = "75%";
+            this.radMenuItem5.Click += new System.EventHandler(this.radMenuItem5_Click);
+            // 
+            // radMenuItem6
+            // 
+            this.radMenuItem6.Name = "radMenuItem6";
+            this.radMenuItem6.Text = "100%";
+            this.radMenuItem6.Click += new System.EventHandler(this.radMenuItem6_Click);
+            // 
+            // radMenuItem7
+            // 
+            this.radMenuItem7.Name = "radMenuItem7";
+            this.radMenuItem7.Text = "125%";
+            this.radMenuItem7.Click += new System.EventHandler(this.radMenuItem7_Click);
+            // 
+            // radMenuItem8
+            // 
+            this.radMenuItem8.Name = "radMenuItem8";
+            this.radMenuItem8.Text = "150%";
+            this.radMenuItem8.Click += new System.EventHandler(this.radMenuItem8_Click);
+            // 
+            // radMenuItem9
+            // 
+            this.radMenuItem9.Name = "radMenuItem9";
+            this.radMenuItem9.Text = "200%";
+            this.radMenuItem9.Click += new System.EventHandler(this.radMenuItem9_Click);
+            // 
+            // radMenuItem10
+            // 
+            this.radMenuItem10.Name = "radMenuItem10";
+            this.radMenuItem10.Text = "250%";
+            this.radMenuItem10.Click += new System.EventHandler(this.radMenuItem10_Click);
+            // 
+            // radMenuItem11
+            // 
+            this.radMenuItem11.Name = "radMenuItem11";
+            this.radMenuItem11.Text = "350%";
+            this.radMenuItem11.Click += new System.EventHandler(this.radMenuItem11_Click);
+            // 
+            // radMenuItem12
+            // 
+            this.radMenuItem12.Name = "radMenuItem12";
+            this.radMenuItem12.Text = "";
+            // 
+            // radMenuHeaderItem1
+            // 
+            this.radMenuHeaderItem1.Name = "radMenuHeaderItem1";
+            this.radMenuHeaderItem1.Text = "radMenuHeaderItem1";
+            // 
+            // Kaliz
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.ClientSize = new System.Drawing.Size(1259, 743);
+            // 
             // radMenu
             // 
             this.radMenu.Items.AddRange(new Telerik.WinControls.RadItem[] {
@@ -917,18 +1014,6 @@ namespace Kaliz
             this.radMenu.Size = new System.Drawing.Size(1259, 37);
             this.radMenu.TabIndex = 1;
             this.radMenu.ThemeName = "MaterialTeal";
-            // 
-            // DGui
-            // 
-            this.DGui.Name = "DGui";
-            this.DGui.Text = "Enable Debug GUI";
-            this.DGui.Click += new System.EventHandler(this.DGui_Click);
-            // 
-            // Kaliz
-            // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1259, 743);
             this.Controls.Add(this.DockPar);
             this.Controls.Add(this.radMenu);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -1058,7 +1143,18 @@ namespace Kaliz
         private RadMenuItem OTer;
         private RadMenuItem ConPow;
         private RadMenuItem ConCmder;
-        private RadMenu radMenu;
         private RadMenuItem DGui;
+        private RadMenuItem OZoom;
+        private RadMenuItem radMenuItem4;
+        private RadMenuItem radMenuItem5;
+        private RadMenuItem radMenuItem6;
+        private RadMenuItem radMenuItem7;
+        private RadMenuItem radMenuItem8;
+        private RadMenuItem radMenuItem9;
+        private RadMenuItem radMenuItem10;
+        private RadMenuItem radMenuItem11;
+        private RadMenuItem radMenuItem12;
+        private RadMenu radMenu;
+        private RadMenuHeaderItem radMenuHeaderItem1;
     }
 }

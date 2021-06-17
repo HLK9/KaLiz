@@ -60,6 +60,7 @@ namespace Kaliz
        
         private void Kaliz_Load(object sender, EventArgs e)
         {
+           
             var clipBoard = new SharpClipboard();
             clipBoard.MonitorClipboard = true;
             clipBoard.ClipboardChanged += ClipBoard_ClipboardChanged; 
@@ -67,6 +68,11 @@ namespace Kaliz
            
 
 
+        }
+
+        private void MenuZoom_TextChanged(object sender, EventArgs e)
+        {
+           
         }
 
         private void ClipBoard_ClipboardChanged(object sender, SharpClipboard.ClipboardChangedEventArgs e)
@@ -119,15 +125,16 @@ namespace Kaliz
             var DanhDau = new EditControl();
             DanhDau.Dock = DockStyle.Fill;
             DanhDau.Style = EditControlStyle.Office2016Colorful;
-           
-           
+
+            
             TaiLieu.Controls.Add(DanhDau);
             DanhDau.AllowDrop = true;
             DanhDau.FileExtensions = new string[] { ".pas", ".c", ".cpp", ".cs", ".py" };
             DockPar.AddDocument(TaiLieu);
             //Theme
             TaiLieu.TabStrip.SelectedIndexChanged += TabStrip_SelectedIndexChanged;
-
+            DanhDau.DragDrop += DanhDau_DragDrop;
+            
             DockPar.DockWindowClosing += DockPar_DockWindowClosing;
             DanhDau.ContextChoiceBorderColor = Color.FromArgb(64, 224, 208);
 
@@ -172,10 +179,8 @@ namespace Kaliz
                     DanhDau.StatusBarSettings.FileNamePanel.Panel.Text = "Python";
                     DanhDau.ContextChoiceOpen += DanhDau_ContextChoiceOpen_ForPython;
 
-
-
-
                 }
+              
 
             }
 
@@ -225,6 +230,20 @@ namespace Kaliz
             //
 
 
+        }
+
+      
+
+        private void DanhDau_DragDrop(object sender, DragEventArgs e)
+
+        {
+            string dropfile = TabHienTai.FileName;
+            TabHienTai.Close();
+            DockPar.ActiveWindow.Close();
+            TaoMoi(Path.GetFileName(dropfile), dropfile);
+        
+           
+                   
         }
 
         private void DockPar_DockWindowClosing(object sender, DockWindowCancelEventArgs e)
@@ -343,6 +362,7 @@ namespace Kaliz
                             TabHienTai.Configurator.Open(ConfigF);
                             TabHienTai.ApplyConfiguration("Python");
                         }
+                        
                     }
                     catch { }
                 }
@@ -904,10 +924,15 @@ End;
         private void FOpen_Click(object sender, EventArgs e)
         {
             OpenFileDialog Mo = new OpenFileDialog();
+            Mo.Multiselect = true;
 
             if (Mo.ShowDialog() == DialogResult.OK)
             {
-                TaoMoi(Path.GetFileName(Mo.FileName), Mo.FileName);
+                foreach(var item in Mo.FileNames)
+                {
+                    TaoMoi(Path.GetFileName(item), item);
+                }
+               
             }
 
         }
@@ -1890,13 +1915,7 @@ End;
        
         private void radMenuItem1_Click_1(object sender, EventArgs e)
         {
-            Process DS = new Process();
-           
-            DS.StartInfo.FileName = @"Cmder\Cmder.exe";
-            DS.StartInfo.Arguments = "cmd /c python ";
-            
-            
-            DS.Start();
+            TabHienTai.ZoomFactor = 0.5F;
         }
 
        
@@ -1990,7 +2009,7 @@ End;
                 Process pw = new Process();
 
                 pw.StartInfo.FileName = @"Cmder\Cmder.exe";
-                pw.StartInfo.Arguments = "/start " + Application.StartupPath;
+               // pw.StartInfo.Arguments = "/start " + Application.StartupPath;
                 pw.Start();
             }
            
@@ -2149,6 +2168,102 @@ TabHienTai.InsertText(TabHienTai.CurrentLine, TabHienTai.CurrentColumn, radlistc
         private void DGui_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void radMenuItem4_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                TabHienTai.ZoomFactor = 0.5F;
+            }
+            catch
+            {
+
+            }
+        }
+
+        private void radMenuItem5_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                TabHienTai.ZoomFactor = 0.75F;
+            }
+            catch
+            {
+
+            }
+        }
+
+        private void radMenuItem6_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                TabHienTai.ZoomFactor = 1F;
+            }
+            catch
+            {
+
+            }
+        }
+
+        private void radMenuItem7_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                TabHienTai.ZoomFactor = 1.25F;
+            }
+            catch
+            {
+
+            }
+        }
+
+        private void radMenuItem8_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                TabHienTai.ZoomFactor = 1.5F;
+            }
+            catch
+            {
+
+            }
+        }
+
+        private void radMenuItem9_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                TabHienTai.ZoomFactor = 2F;
+            }
+            catch
+            {
+
+            }
+        }
+
+        private void radMenuItem10_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                TabHienTai.ZoomFactor = 2.5F;
+            }
+            catch
+            {
+
+            }
+        }
+
+        private void radMenuItem11_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                TabHienTai.ZoomFactor = 3.5F;
+            }
+            catch
+            {
+
+            }
         }
     }
 }
