@@ -34,7 +34,6 @@ namespace Kaliz
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Kaliz));
-            this.materialTealTheme1 = new Telerik.WinControls.Themes.MaterialTealTheme();
             this.MFile = new Telerik.WinControls.UI.RadMenuItem();
             this.FNew = new Telerik.WinControls.UI.RadMenuItem();
             this.FOpen = new Telerik.WinControls.UI.RadMenuItem();
@@ -98,6 +97,16 @@ namespace Kaliz
             this.OTer = new Telerik.WinControls.UI.RadMenuItem();
             this.ConPow = new Telerik.WinControls.UI.RadMenuItem();
             this.ConCmder = new Telerik.WinControls.UI.RadMenuItem();
+            this.OZoom = new Telerik.WinControls.UI.RadMenuItem();
+            this.radMenuItem4 = new Telerik.WinControls.UI.RadMenuItem();
+            this.radMenuItem5 = new Telerik.WinControls.UI.RadMenuItem();
+            this.radMenuItem6 = new Telerik.WinControls.UI.RadMenuItem();
+            this.radMenuItem7 = new Telerik.WinControls.UI.RadMenuItem();
+            this.radMenuItem8 = new Telerik.WinControls.UI.RadMenuItem();
+            this.radMenuItem9 = new Telerik.WinControls.UI.RadMenuItem();
+            this.radMenuItem10 = new Telerik.WinControls.UI.RadMenuItem();
+            this.radMenuItem11 = new Telerik.WinControls.UI.RadMenuItem();
+            this.radMenuItem12 = new Telerik.WinControls.UI.RadMenuItem();
             this.MHelp = new Telerik.WinControls.UI.RadMenuItem();
             this.HHowto = new Telerik.WinControls.UI.RadMenuItem();
             this.HLearn = new Telerik.WinControls.UI.RadMenuItem();
@@ -132,18 +141,9 @@ namespace Kaliz
             this.EMaterialTeal = new Telerik.WinControls.UI.RadMenuItem();
             this.toolTabStrip3 = new Telerik.WinControls.UI.Docking.ToolTabStrip();
             this.fluentTheme1 = new Telerik.WinControls.Themes.FluentTheme();
-            this.OZoom = new Telerik.WinControls.UI.RadMenuItem();
-            this.radMenuItem4 = new Telerik.WinControls.UI.RadMenuItem();
-            this.radMenuItem5 = new Telerik.WinControls.UI.RadMenuItem();
-            this.radMenuItem6 = new Telerik.WinControls.UI.RadMenuItem();
-            this.radMenuItem7 = new Telerik.WinControls.UI.RadMenuItem();
-            this.radMenuItem8 = new Telerik.WinControls.UI.RadMenuItem();
-            this.radMenuItem9 = new Telerik.WinControls.UI.RadMenuItem();
-            this.radMenuItem10 = new Telerik.WinControls.UI.RadMenuItem();
-            this.radMenuItem11 = new Telerik.WinControls.UI.RadMenuItem();
-            this.radMenuItem12 = new Telerik.WinControls.UI.RadMenuItem();
             this.radMenuHeaderItem1 = new Telerik.WinControls.UI.RadMenuHeaderItem();
             this.radMenu = new Telerik.WinControls.UI.RadMenu();
+            this.materialTealTheme1 = new Telerik.WinControls.Themes.MaterialTealTheme();
             ((System.ComponentModel.ISupportInitialize)(this.DockPar)).BeginInit();
             this.DockPar.SuspendLayout();
             this.Doutput.SuspendLayout();
@@ -154,8 +154,8 @@ namespace Kaliz
             this.Dclipboard.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.radlistclip)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.toolTabStrip3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.radMenu)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this)).BeginInit();
             this.SuspendLayout();
             // 
             // MFile
@@ -623,6 +623,74 @@ namespace Kaliz
             this.ConCmder.Text = "Cmder";
             this.ConCmder.Click += new System.EventHandler(this.ConCmder_Click);
             // 
+            // OZoom
+            // 
+            this.OZoom.Items.AddRange(new Telerik.WinControls.RadItem[] {
+            this.radMenuItem4,
+            this.radMenuItem5,
+            this.radMenuItem6,
+            this.radMenuItem7,
+            this.radMenuItem8,
+            this.radMenuItem9,
+            this.radMenuItem10,
+            this.radMenuItem11,
+            this.radMenuItem12});
+            this.OZoom.Name = "OZoom";
+            this.OZoom.Text = "Zoom";
+            // 
+            // radMenuItem4
+            // 
+            this.radMenuItem4.Name = "radMenuItem4";
+            this.radMenuItem4.Text = "50%";
+            this.radMenuItem4.Click += new System.EventHandler(this.radMenuItem4_Click);
+            // 
+            // radMenuItem5
+            // 
+            this.radMenuItem5.Name = "radMenuItem5";
+            this.radMenuItem5.Text = "75%";
+            this.radMenuItem5.Click += new System.EventHandler(this.radMenuItem5_Click);
+            // 
+            // radMenuItem6
+            // 
+            this.radMenuItem6.Name = "radMenuItem6";
+            this.radMenuItem6.Text = "100%";
+            this.radMenuItem6.Click += new System.EventHandler(this.radMenuItem6_Click);
+            // 
+            // radMenuItem7
+            // 
+            this.radMenuItem7.Name = "radMenuItem7";
+            this.radMenuItem7.Text = "125%";
+            this.radMenuItem7.Click += new System.EventHandler(this.radMenuItem7_Click);
+            // 
+            // radMenuItem8
+            // 
+            this.radMenuItem8.Name = "radMenuItem8";
+            this.radMenuItem8.Text = "150%";
+            this.radMenuItem8.Click += new System.EventHandler(this.radMenuItem8_Click);
+            // 
+            // radMenuItem9
+            // 
+            this.radMenuItem9.Name = "radMenuItem9";
+            this.radMenuItem9.Text = "200%";
+            this.radMenuItem9.Click += new System.EventHandler(this.radMenuItem9_Click);
+            // 
+            // radMenuItem10
+            // 
+            this.radMenuItem10.Name = "radMenuItem10";
+            this.radMenuItem10.Text = "250%";
+            this.radMenuItem10.Click += new System.EventHandler(this.radMenuItem10_Click);
+            // 
+            // radMenuItem11
+            // 
+            this.radMenuItem11.Name = "radMenuItem11";
+            this.radMenuItem11.Text = "350%";
+            this.radMenuItem11.Click += new System.EventHandler(this.radMenuItem11_Click);
+            // 
+            // radMenuItem12
+            // 
+            this.radMenuItem12.Name = "radMenuItem12";
+            this.radMenuItem12.Text = "";
+            // 
             // MHelp
             // 
             this.MHelp.Items.AddRange(new Telerik.WinControls.RadItem[] {
@@ -686,16 +754,15 @@ namespace Kaliz
             this.DockPar.Controls.Add(this.toolTabStrip1);
             this.DockPar.Dock = System.Windows.Forms.DockStyle.Fill;
             this.DockPar.IsCleanUpTarget = true;
-            this.DockPar.Location = new System.Drawing.Point(0, 37);
+            this.DockPar.Location = new System.Drawing.Point(0, 35);
             this.DockPar.MainDocumentContainer = this.DContainer;
             this.DockPar.Name = "DockPar";
             this.DockPar.Orientation = System.Windows.Forms.Orientation.Horizontal;
-            this.DockPar.Padding = new System.Windows.Forms.Padding(0);
             // 
             // 
             // 
             this.DockPar.RootElement.MinSize = new System.Drawing.Size(25, 25);
-            this.DockPar.Size = new System.Drawing.Size(1259, 706);
+            this.DockPar.Size = new System.Drawing.Size(1257, 706);
             this.DockPar.SplitterWidth = 8;
             this.DockPar.TabIndex = 2;
             this.DockPar.TabStop = false;
@@ -709,7 +776,7 @@ namespace Kaliz
             this.Doutput.Location = new System.Drawing.Point(4, 52);
             this.Doutput.Name = "Doutput";
             this.Doutput.PreviousDockState = Telerik.WinControls.UI.Docking.DockState.Docked;
-            this.Doutput.Size = new System.Drawing.Size(1251, 99);
+            this.Doutput.Size = new System.Drawing.Size(1239, 99);
             this.Doutput.Text = "Output";
             this.Doutput.ToolCaptionButtons = Telerik.WinControls.UI.Docking.ToolStripCaptionButtons.AutoHide;
             // 
@@ -720,7 +787,7 @@ namespace Kaliz
             this.ListOutput.ItemSize = new System.Drawing.Size(200, 36);
             this.ListOutput.Location = new System.Drawing.Point(0, 0);
             this.ListOutput.Name = "ListOutput";
-            this.ListOutput.Size = new System.Drawing.Size(1251, 99);
+            this.ListOutput.Size = new System.Drawing.Size(1239, 99);
             this.ListOutput.TabIndex = 0;
             this.ListOutput.ThemeName = "MaterialTeal";
             this.ListOutput.SelectedItemChanged += new System.EventHandler(this.ListOutput_SelectedItemChanged);
@@ -745,7 +812,7 @@ namespace Kaliz
             this.toolTabStrip1.CausesValidation = false;
             this.toolTabStrip1.Controls.Add(this.Doutput);
             this.toolTabStrip1.Controls.Add(this.Dclipboard);
-            this.toolTabStrip1.Location = new System.Drawing.Point(0, 525);
+            this.toolTabStrip1.Location = new System.Drawing.Point(5, 520);
             this.toolTabStrip1.Name = "toolTabStrip1";
             // 
             // 
@@ -753,7 +820,7 @@ namespace Kaliz
             this.toolTabStrip1.RootElement.MinSize = new System.Drawing.Size(25, 25);
             this.toolTabStrip1.SelectedIndex = 0;
             this.toolTabStrip1.ShowItemPinButton = true;
-            this.toolTabStrip1.Size = new System.Drawing.Size(1259, 181);
+            this.toolTabStrip1.Size = new System.Drawing.Size(1247, 181);
             this.toolTabStrip1.SizeInfo.AbsoluteSize = new System.Drawing.Size(200, 181);
             this.toolTabStrip1.SizeInfo.SplitterCorrection = new System.Drawing.Size(0, -19);
             this.toolTabStrip1.TabIndex = 1;
@@ -917,84 +984,10 @@ namespace Kaliz
             this.toolTabStrip3.TabStop = false;
             this.toolTabStrip3.ThemeName = "MaterialTeal";
             // 
-            // OZoom
-            // 
-            this.OZoom.Items.AddRange(new Telerik.WinControls.RadItem[] {
-            this.radMenuItem4,
-            this.radMenuItem5,
-            this.radMenuItem6,
-            this.radMenuItem7,
-            this.radMenuItem8,
-            this.radMenuItem9,
-            this.radMenuItem10,
-            this.radMenuItem11,
-            this.radMenuItem12});
-            this.OZoom.Name = "OZoom";
-            this.OZoom.Text = "Zoom";
-            // 
-            // radMenuItem4
-            // 
-            this.radMenuItem4.Name = "radMenuItem4";
-            this.radMenuItem4.Text = "50%";
-            this.radMenuItem4.Click += new System.EventHandler(this.radMenuItem4_Click);
-            // 
-            // radMenuItem5
-            // 
-            this.radMenuItem5.Name = "radMenuItem5";
-            this.radMenuItem5.Text = "75%";
-            this.radMenuItem5.Click += new System.EventHandler(this.radMenuItem5_Click);
-            // 
-            // radMenuItem6
-            // 
-            this.radMenuItem6.Name = "radMenuItem6";
-            this.radMenuItem6.Text = "100%";
-            this.radMenuItem6.Click += new System.EventHandler(this.radMenuItem6_Click);
-            // 
-            // radMenuItem7
-            // 
-            this.radMenuItem7.Name = "radMenuItem7";
-            this.radMenuItem7.Text = "125%";
-            this.radMenuItem7.Click += new System.EventHandler(this.radMenuItem7_Click);
-            // 
-            // radMenuItem8
-            // 
-            this.radMenuItem8.Name = "radMenuItem8";
-            this.radMenuItem8.Text = "150%";
-            this.radMenuItem8.Click += new System.EventHandler(this.radMenuItem8_Click);
-            // 
-            // radMenuItem9
-            // 
-            this.radMenuItem9.Name = "radMenuItem9";
-            this.radMenuItem9.Text = "200%";
-            this.radMenuItem9.Click += new System.EventHandler(this.radMenuItem9_Click);
-            // 
-            // radMenuItem10
-            // 
-            this.radMenuItem10.Name = "radMenuItem10";
-            this.radMenuItem10.Text = "250%";
-            this.radMenuItem10.Click += new System.EventHandler(this.radMenuItem10_Click);
-            // 
-            // radMenuItem11
-            // 
-            this.radMenuItem11.Name = "radMenuItem11";
-            this.radMenuItem11.Text = "350%";
-            this.radMenuItem11.Click += new System.EventHandler(this.radMenuItem11_Click);
-            // 
-            // radMenuItem12
-            // 
-            this.radMenuItem12.Name = "radMenuItem12";
-            this.radMenuItem12.Text = "";
-            // 
             // radMenuHeaderItem1
             // 
             this.radMenuHeaderItem1.Name = "radMenuHeaderItem1";
             this.radMenuHeaderItem1.Text = "radMenuHeaderItem1";
-            // 
-            // Kaliz
-            // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1259, 743);
             // 
             // radMenu
             // 
@@ -1011,9 +1004,15 @@ namespace Kaliz
             this.MPersonal});
             this.radMenu.Location = new System.Drawing.Point(0, 0);
             this.radMenu.Name = "radMenu";
-            this.radMenu.Size = new System.Drawing.Size(1259, 37);
+            this.radMenu.Size = new System.Drawing.Size(1257, 35);
             this.radMenu.TabIndex = 1;
             this.radMenu.ThemeName = "MaterialTeal";
+            // 
+            // Kaliz
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.ClientSize = new System.Drawing.Size(1257, 741);
             this.Controls.Add(this.DockPar);
             this.Controls.Add(this.radMenu);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -1045,8 +1044,6 @@ namespace Kaliz
         }
 
         #endregion
-
-        private Telerik.WinControls.Themes.MaterialTealTheme materialTealTheme1;
         private Telerik.WinControls.UI.RadMenuItem MFile;
         private Telerik.WinControls.UI.RadMenuItem MEdit;
         private Telerik.WinControls.UI.RadMenuItem MTools;
@@ -1156,5 +1153,6 @@ namespace Kaliz
         private RadMenuItem radMenuItem12;
         private RadMenu radMenu;
         private RadMenuHeaderItem radMenuHeaderItem1;
+        private Telerik.WinControls.Themes.MaterialTealTheme materialTealTheme1;
     }
 }
