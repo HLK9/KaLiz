@@ -49,10 +49,10 @@ namespace Kaliz
         public Kaliz()
         {
             this.Load += Kaliz_Load;
-            Thread thr = new Thread(new ThreadStart(SplashScreen));
-            thr.Start();
-            Thread.Sleep(5000);
-            thr.Abort();
+            //Thread thr = new Thread(new ThreadStart(SplashScreen));
+            //thr.Start();
+            //Thread.Sleep(5000);
+            //thr.Abort();
            
             InitializeComponent();
             DockPar.SelectedTabChanged += DockPar_SelectedTabChanged;
@@ -202,7 +202,7 @@ namespace Kaliz
             DanhDau.Closing += DanhDau_Closing;
             DanhDau.CurrentLineHighlightColor = Color.Teal;
             DanhDau.ShowIndicatorMargin = true;
-            DanhDau.MarkerAreaWidth = 20;
+            //DanhDau.MarkerAreaWidth = 20;
             DanhDau.ShowIndentationGuidelines = true;
             DanhDau.UpdateBookmarkToolTip += DanhDau_UpdateBookmarkToolTip;
             DanhDau.AllowZoom = true;
@@ -1272,11 +1272,12 @@ End;
                 {
 
                     Process Chay = new Process();
-
-                    Chay.StartInfo.WorkingDirectory = Path.GetDirectoryName(file);
-                    //Path.GetFileNameWithoutExtension(file) + ".exe"
-                    Chay.StartInfo.FileName = DuongDanTepExe(file);
-                    Chay.StartInfo.UseShellExecute = true;
+                    Chay.StartInfo.UseShellExecute = false;
+                    Chay.StartInfo.FileName = "cmd.exe";
+                    Chay.StartInfo.WorkingDirectory = Path.GetDirectoryName(Application.ExecutablePath) + @"\Cmder\vendor\TDM-GCC-32\bin";
+                    Chay.StartInfo.Arguments = "/c "+DuongDanTepExe(file) + "  -static-libgcc -static-libstdc++";
+                    MessageBox.Show(DuongDanTepExe(file) + " -static-libgcc -static-libstdc++");
+                    
                     Chay.Start();
                 }
                 if (Path.GetExtension(file) == ".py")
@@ -1417,12 +1418,12 @@ End;
                     ShowAlert_Light("<html><color=LightSalmon>Build Failed", "<html><color=Teal>Python can only be <b>RUN</b> directly");
                 else
                 {
-                    var thread = new Thread(ThreadStart);
+                   // var thread = new Thread(ThreadStart);
 
-                    thread.TrySetApartmentState(ApartmentState.STA);
-                    thread.Start();
+                    //thread.TrySetApartmentState(ApartmentState.STA);
+                    //thread.Start();
                     Build(TabHienTai.FileName, deBug, ref ListOutput);
-                    thread.Abort();
+                    //thread.Abort();
                 }
                 
             }
@@ -1453,8 +1454,8 @@ End;
                 //databm.Rows.Add(TabHienTai.CurrentLine, TabHienTai.FileName);
                 //ListBm.DataSource = databm;
 
-                BrushInfo brushInfo = new BrushInfo(Color.DarkViolet);
-                TabHienTai.BookmarkAdd(TabHienTai.CurrentLine, brushInfo);
+                BrushInfo brushInfo = new BrushInfo(Color.Turquoise);
+                TabHienTai.BookmarkAdd(TabHienTai.CurrentLine, brushInfo,Color.Transparent);
             }
             catch
             { }
