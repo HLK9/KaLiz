@@ -41,7 +41,7 @@ namespace Kaliz
         private string TenTheme;
         private bool themechanged;
         public string Pathtosendemail;
-        private string ConsoleUse = "PowerShell";
+        private string ConsoleUse = "Cmder";
        
 
         private int chiso { get; set; }
@@ -1134,7 +1134,7 @@ End;
                 BienDich.StartInfo.RedirectStandardOutput = true;
                 BienDich.StartInfo.RedirectStandardError = true;
                 BienDich.StartInfo.RedirectStandardInput = true;
-
+                BienDich.StartInfo.WorkingDirectory = @"Cmder\vendor\TDM-GCC-32\bin";
                 if (enabledebug == false)
                     BienDich.StartInfo.Arguments = "/c " + "g++ " + ten + " -o " + Path.GetDirectoryName(ten) + "\\" + Path.GetFileNameWithoutExtension(ten) + ".exe";
                 else BienDich.StartInfo.Arguments = "/c " + "g++ " + " -g " + ten + " -o " + Path.GetDirectoryName(ten) + "\\" + Path.GetFileNameWithoutExtension(ten) + ".exe";
@@ -1187,8 +1187,8 @@ End;
 
                     //
                     BienDich.StartInfo.FileName = "cmd";
-                    //BienDich.StartInfo.WorkingDirectory = @"FPC\bin\i386-win32\";
-                    BienDich.StartInfo.Arguments = "/c " + "gdb " + DuongDanTepExe(ten);
+                    BienDich.StartInfo.WorkingDirectory = @"Cmder\vendor\TDM-GCC-32\bin";
+                    BienDich.StartInfo.Arguments = "/c " + "gdb32 " + DuongDanTepExe(ten);
                     BienDich.Start();
                     //BienDich.BeginOutputReadLine();
 
@@ -1203,8 +1203,8 @@ End;
                 {
                     Process BienDich = new Process();
                     BienDich.StartInfo.FileName = "cmd";
-                    //BienDich.StartInfo.WorkingDirectory = @"FPC\bin\i386-win32\";
-                    BienDich.StartInfo.Arguments = "/c " + "gdb " + DuongDanTepExe(ten);
+                    BienDich.StartInfo.WorkingDirectory = @"Cmder\vendor\TDM-GCC-32\bin";
+                    BienDich.StartInfo.Arguments = "/c " + "gdb32 " + DuongDanTepExe(ten);
                     BienDich.Start();
                     BienDich.WaitForExit();
                 }
@@ -1221,7 +1221,7 @@ End;
                     //
                     BienDich.StartInfo.FileName = @"Cmder\vendor\conemu-maximus5\ConEmu.exe";
                   
-                    BienDich.StartInfo.Arguments = "-run " + "gdb " + DuongDanTepExe(ten);
+                    BienDich.StartInfo.Arguments = "-run " + "gdb32 " + DuongDanTepExe(ten);
                     BienDich.Start();
                     //BienDich.BeginOutputReadLine();
 
@@ -1236,7 +1236,7 @@ End;
                 {
                     Process BienDich = new Process();
                     BienDich.StartInfo.FileName = @"Cmder\vendor\conemu-maximus5\ConEmu.exe";
-                    BienDich.StartInfo.Arguments = "-run " + "gdb " + DuongDanTepExe(ten);
+                    BienDich.StartInfo.Arguments = "-run " + "gdb32 " + DuongDanTepExe(ten);
                     BienDich.Start();                   
                     BienDich.WaitForExit();
                 }
@@ -1283,7 +1283,7 @@ End;
                 {
                     Process Chay = new Process();
                     Chay.StartInfo.FileName = "cmd";
-                    //Chay.StartInfo.UseShellExecute = true;
+                    Chay.StartInfo.WorkingDirectory = @"Cmder\vendor\Python\Python38-32";
                     Chay.StartInfo.Arguments = "/c" + " python " + file;
                     //Lấy thông tin nhưng phải để UseExeCutale là false :))
                     //Chay.StartInfo.RedirectStandardError = true;
@@ -1323,36 +1323,36 @@ End;
                 {
                     Process Chay = new Process();
                     Chay.StartInfo.FileName = @"Cmder\vendor\conemu-maximus5\ConEmu.exe";
-                    // Cmder\vendor\conemu - maximus5\ConEmu.exe
+                   
                     Chay.StartInfo.Arguments =DuongDanTepExe(file);
                     Chay.Start();
                     Chay.WaitForExit();
                 }
                 if (Path.GetExtension(file) == ".c" || Path.GetExtension(file) == ".cpp")
                 {
-
+                   // MessageBox.Show(DuongDanTepExe(file) + "  -static-libgcc -static-libstdc++");
                     Process Chay = new Process();
 
-                   // Chay.StartInfo.WorkingDirectory = Path.GetDirectoryName(file);
-                    //Path.GetFileNameWithoutExtension(file) + ".exe"
+                  
+                   // Chay.StartInfo.FileName = @"Cmder\Cmder.exe";
                     Chay.StartInfo.FileName = @"Cmder\vendor\conemu-maximus5\ConEmu.exe";
-                    Chay.StartInfo.Arguments =DuongDanTepExe(file);                   
+                    //Chay.StartInfo.WorkingDirectory = @"Cmder\vendor\TDM-GCC-32\bin";
+                    Chay.StartInfo.Arguments = " -dir  " + Path.GetDirectoryName(Application.ExecutablePath) + @"\Cmder\vendor\TDM-GCC-32\bin " + "  -run "+ DuongDanTepExe(file) + "  -static-libgcc -static-libstdc++";    
+                    //Fixed, Khi chạy từ process mới thì path không được set, phải sẽ manual :b               
                     Chay.Start();
+                    
                     Chay.WaitForExit();
+                  
                 }
                 if (Path.GetExtension(file) == ".py")
                 {
                     Process Chay = new Process();
-                    Chay.StartInfo.FileName = @"Cmder\vendor\conemu-maximus5\ConEmu.exe";
-                    
-                    Chay.StartInfo.Arguments = "-run python " + file;
-                    //Lấy thông tin nhưng phải để UseExeCutale là false :))
-                    //Chay.StartInfo.RedirectStandardError = true;
-                    //Chay.StartInfo.RedirectStandardOutput = true;
-
+                    Chay.StartInfo.FileName = @"Cmder\vendor\conemu-maximus5\ConEmu.exe";                    
+                    Chay.StartInfo.Arguments = "-dir  " + Path.GetDirectoryName(Application.ExecutablePath) + @"\Cmder\vendor\Python\Python38-32 " + " -run python " + file;
                     Chay.Start();
                     Chay.WaitForExit();
-                  
+                   //Fixed!
+
                 }
             }
           
