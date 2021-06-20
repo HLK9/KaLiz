@@ -58,6 +58,8 @@ namespace Kaliz
             DockPar.SelectedTabChanged += DockPar_SelectedTabChanged;
            // DockPar.SelectedTabChanging += DockPar_SelectedTabChanging;
             TaoPhimTat();
+            Doutput.AutoHide();
+            Dclipboard.AutoHide();
             
 
         }
@@ -257,8 +259,12 @@ namespace Kaliz
 
         private void DockPar_DockWindowClosing(object sender, DockWindowCancelEventArgs e)
         {
-           
-                TabHienTai.Close();
+            try
+            {
+  TabHienTai.Close();
+            }
+            catch { DockPar.DocumentManager.ActiveDocument.Close(); }
+              
            
             
             
@@ -968,6 +974,10 @@ End;
                
             }
         }
+        //TabStripItem StripHienTai
+        //{
+        //    get { return DockPar.DocumentManager.ActiveDocument.TabStripItem.n}
+        //}
         EditControl TabHienTai
         {
             get
@@ -1074,101 +1084,108 @@ End;
         //Build tep
         private void Build(string ten, bool enabledebug, ref RadListView outp)
         {
-            if (Path.GetExtension(ten) == ".pas")
-            {
+            
+
+                TabHienTai.Save();
                 ListOutput.Items.Clear();
-                Process BienDich = new Process();
-                BienDich.StartInfo.FileName = "cmd";
-                BienDich.StartInfo.WorkingDirectory = @"Cmder\vendor\FPC\bin\i386-win32";
-                BienDich.StartInfo.UseShellExecute = false;
-                if (enabledebug == false)
-                    BienDich.StartInfo.Arguments = "/c " + "fpc " + ten;
-                else BienDich.StartInfo.Arguments = "/c " + "fpc " + ten + " -g";
-
-                //BienDich.StartInfo.RedirectStandardInput = true;
-                BienDich.StartInfo.RedirectStandardOutput = true;
-                BienDich.StartInfo.StandardOutputEncoding = Encoding.UTF8;
-                BienDich.StartInfo.CreateNoWindow = true;
-                BienDich.StartInfo.WindowStyle = ProcessWindowStyle.Normal;
-                BienDich.Start();
-                ListOutput.AllowEdit = false;
-                ListOutput.AllowRemove = false;
-                bool issuccess = true;
-                string ad;
-                while ((ad = BienDich.StandardOutput.ReadLine()) != null)
+                ListOutput.Items.Add("Processing");
+                if (Path.GetExtension(ten) == ".pas")
                 {
-                    ListOutput.Items.Add(ad);
 
-                    if (ad.Contains("lines compiled")) break;
-                }
-                foreach (var item in ListOutput.Items)
-                {
-                    if (item.Text.Contains("Fatal"))
+                    Process BienDich = new Process();
+                    BienDich.StartInfo.FileName = "cmd";
+                    BienDich.StartInfo.WorkingDirectory = @"Cmder\vendor\FPC\bin\i386-win32";
+                    BienDich.StartInfo.UseShellExecute = false;
+                    if (enabledebug == false)
+                        BienDich.StartInfo.Arguments = "/c " + "fpc " + ten;
+                    else BienDich.StartInfo.Arguments = "/c " + "fpc " + ten + " -g";
+
+                    //BienDich.StartInfo.RedirectStandardInput = true;
+                    BienDich.StartInfo.RedirectStandardOutput = true;
+                    BienDich.StartInfo.StandardOutputEncoding = Encoding.UTF8;
+                    BienDich.StartInfo.CreateNoWindow = true;
+                    BienDich.StartInfo.WindowStyle = ProcessWindowStyle.Normal;
+                    BienDich.Start();
+                    ListOutput.AllowEdit = false;
+                    ListOutput.AllowRemove = false;
+                    bool issuccess = true;
+                    string ad;
+                    while ((ad = BienDich.StandardOutput.ReadLine()) != null)
                     {
-                        item.BackColor = Color.LightSalmon;
-                        issuccess = false;
+                        ListOutput.Items.Add(ad);
+
+                        if (ad.Contains("lines compiled")) break;
+                    }
+                    foreach (var item in ListOutput.Items)
+                    {
+                        if (item.Text.Contains("Fatal"))
+                        {
+                            item.BackColor = Color.LightSalmon;
+                            issuccess = false;
+                        }
+
+                        if (item.Text.Contains("lines compiled")) item.BackColor = Color.LightGreen;
+                    }
+                    if (issuccess == false)
+                        ShowAlert_Light("<html><color=LightSalmon>Build Failed", "Check output to view more");
+                    else
+                        ShowAlert_Light("<html><color=Teal>Build Completed", "Ready to run");
+
+
+
+
+
+
+                    //BienDich.WaitForExit();
+
+                }
+
+                else if (Path.GetExtension(ten) == ".c" || Path.GetExtension(ten) == ".cpp")
+                {
+
+                    Process BienDich = new Process();
+                    BienDich.StartInfo.FileName = "cmd";
+                    BienDich.StartInfo.UseShellExecute = false;
+                    BienDich.StartInfo.RedirectStandardOutput = true;
+                    BienDich.StartInfo.RedirectStandardError = true;
+                    BienDich.StartInfo.RedirectStandardInput = true;
+                    BienDich.StartInfo.WorkingDirectory = @"Cmder\vendor\TDM-GCC-32\bin";
+                    if (enabledebug == false)
+                        BienDich.StartInfo.Arguments = "/c " + "g++ " + ten + " -o " + Path.GetDirectoryName(ten) + "\\" + Path.GetFileNameWithoutExtension(ten) + ".exe";
+                    else BienDich.StartInfo.Arguments = "/c " + "g++ " + " -g " + ten + " -o " + Path.GetDirectoryName(ten) + "\\" + Path.GetFileNameWithoutExtension(ten) + ".exe";
+
+
+                    BienDich.StartInfo.CreateNoWindow = true;
+                    BienDich.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;
+                    BienDich.Start();
+
+                    string ad;
+
+                    ListOutput.AllowEdit = false;
+                    ListOutput.AllowRemove = false;
+
+
+                    //Lấy thông tin Error chứ k phải Output :))
+                    while ((ad = BienDich.StandardError.ReadLine()) != null)
+                    {
+                        ListOutput.Items.Add(ad);
+
+                        // if (ad.Contains("lines compiled")) break;
+                    }
+                    if (ListOutput.Items.Count < 2) ListOutput.Items.Add("Compile: " + Path.GetFileName(ten) + " - Completed, Ready to run");
+                    else ListOutput.Items.Add("Build: " + Path.GetFileName(ten) + " - Fail");
+
+                    foreach (var item in ListOutput.Items)
+                    {
+                        if (item.Text.Contains("error")) item.BackColor = Color.LightSalmon;
+                        if (item.Text.Contains("Completed")) item.BackColor = Color.LightGreen;
+                        if (item.Text.Contains("- Fail")) item.BackColor = Color.LightSalmon;
+
                     }
 
-                    if (item.Text.Contains("lines compiled")) item.BackColor = Color.LightGreen;
                 }
-                if (issuccess == false)
-                    ShowAlert_Light("<html><color=LightSalmon>Build Failed", "Check output to view more");
-                else
-                    ShowAlert_Light("<html><color=Teal>Build Completed", "Ready to run");
-
-
-
-
-
-
-                //BienDich.WaitForExit();
-
-            }
-
-            else if (Path.GetExtension(ten) == ".c" || Path.GetExtension(ten) == ".cpp")
-            {
-                ListOutput.Items.Clear();
-                Process BienDich = new Process();
-                BienDich.StartInfo.FileName = "cmd";
-                BienDich.StartInfo.UseShellExecute = false;
-                BienDich.StartInfo.RedirectStandardOutput = true;
-                BienDich.StartInfo.RedirectStandardError = true;
-                BienDich.StartInfo.RedirectStandardInput = true;
-                BienDich.StartInfo.WorkingDirectory = @"Cmder\vendor\TDM-GCC-32\bin";
-                if (enabledebug == false)
-                    BienDich.StartInfo.Arguments = "/c " + "g++ " + ten + " -o " + Path.GetDirectoryName(ten) + "\\" + Path.GetFileNameWithoutExtension(ten) + ".exe";
-                else BienDich.StartInfo.Arguments = "/c " + "g++ " + " -g " + ten + " -o " + Path.GetDirectoryName(ten) + "\\" + Path.GetFileNameWithoutExtension(ten) + ".exe";
-
-
-                BienDich.StartInfo.CreateNoWindow = true;
-                BienDich.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;
-                BienDich.Start();
-
-                string ad;
-
-                ListOutput.AllowEdit = false;
-                ListOutput.AllowRemove = false;
-
-
-                //Lấy thông tin Error chứ k phải Output :))
-                while ((ad = BienDich.StandardError.ReadLine()) != null)
-                {
-                    ListOutput.Items.Add(ad);
-
-                    // if (ad.Contains("lines compiled")) break;
-                }
-                if (ListOutput.Items.Count < 2) ListOutput.Items.Add("Compile: " + Path.GetFileName(ten) + " - Completed, Ready to run");
-                else ListOutput.Items.Add("Build: " + Path.GetFileName(ten) + " - Fail");
-
-                foreach (var item in ListOutput.Items)
-                {
-                    if (item.Text.Contains("error")) item.BackColor = Color.LightSalmon;
-                    if (item.Text.Contains("Completed")) item.BackColor = Color.LightGreen;
-                    if (item.Text.Contains("- Fail")) item.BackColor = Color.LightSalmon;
-
-                }
-
-            }
+            
+          
         }
 
 
@@ -1192,7 +1209,7 @@ End;
                     BienDich.Start();
                     //BienDich.BeginOutputReadLine();
 
-                    BienDich.WaitForExit();
+                   
                     //  string output;
 
                     //while ((output = BienDich.StandardOutput.ReadLine()) != null)
@@ -1206,7 +1223,7 @@ End;
                     BienDich.StartInfo.WorkingDirectory = @"Cmder\vendor\TDM-GCC-32\bin";
                     BienDich.StartInfo.Arguments = "/c " + "gdb32 " + DuongDanTepExe(ten);
                     BienDich.Start();
-                    BienDich.WaitForExit();
+                   
                 }
 
             }
@@ -1221,11 +1238,11 @@ End;
                     //
                     BienDich.StartInfo.FileName = @"Cmder\vendor\conemu-maximus5\ConEmu.exe";
                   
-                    BienDich.StartInfo.Arguments = "-run " + "gdb32 " + DuongDanTepExe(ten);
+                    BienDich.StartInfo.Arguments = " -dir  " + Path.GetDirectoryName(Application.ExecutablePath) + @"\Cmder\vendor\TDM-GCC-32\bin " + "  -run gdb32 " + DuongDanTepExe(ten);
                     BienDich.Start();
                     //BienDich.BeginOutputReadLine();
 
-                    BienDich.WaitForExit();
+                   
                     //  string output;
 
                     //while ((output = BienDich.StandardOutput.ReadLine()) != null)
@@ -1236,9 +1253,9 @@ End;
                 {
                     Process BienDich = new Process();
                     BienDich.StartInfo.FileName = @"Cmder\vendor\conemu-maximus5\ConEmu.exe";
-                    BienDich.StartInfo.Arguments = "-run " + "gdb32 " + DuongDanTepExe(ten);
+                    BienDich.StartInfo.Arguments = " -dir  " + Path.GetDirectoryName(Application.ExecutablePath) + @"\Cmder\vendor\TDM-GCC-32\bin " + "  -run gdb32 " + DuongDanTepExe(ten);
                     BienDich.Start();                   
-                    BienDich.WaitForExit();
+                    
                 }
 
             }
@@ -1409,7 +1426,11 @@ End;
 
         private void BBuild_Click(object sender, EventArgs e)
         {
-           
+            TabHienTai.Save();
+            if (File.Exists(TabHienTai.FileName))
+              DockPar.DocumentManager.ActiveDocument.Text = Path.GetFileName(TabHienTai.FileName);
+           //fixed 20/6
+            
 
             try
             {
@@ -2310,6 +2331,99 @@ TabHienTai.InsertText(TabHienTai.CurrentLine, TabHienTai.CurrentColumn, radlistc
             {
 
             }
+        }
+
+        private void BBuildaRun_Click(object sender, EventArgs e)
+        {
+            TabHienTai.Save();
+            try
+            {
+                Build(TabHienTai.FileName, deBug, ref ListOutput);
+                Run(TabHienTai.FileName);
+            }
+            catch { }
+           
+        }
+
+        private void documentWindow1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void ScreatPas_MouseHover(object sender, EventArgs e)
+        {
+            ScreatPas.ForeColor = Color.Teal;
+        }
+
+        private void ScreatPas_MouseLeave(object sender, EventArgs e)
+        {
+            ScreatPas.ForeColor = Color.Crimson;
+        }
+
+        private void ScreatePython_MouseHover(object sender, EventArgs e)
+        {
+            ScreatePython.ForeColor = Color.Teal;
+         
+        }
+
+        private void ScreatePython_MouseLeave(object sender, EventArgs e)
+        {
+            ScreatePython.ForeColor = Color.Crimson;
+        }
+
+        private void radLabel5_MouseHover(object sender, EventArgs e)
+        {
+            radLabel5.ForeColor = Color.Teal;
+
+        }
+
+        private void radLabel5_MouseLeave(object sender, EventArgs e)
+        {
+            radLabel5.ForeColor = Color.Crimson;
+        }
+
+        private void ScreatPas_Click(object sender, EventArgs e)
+        {
+            TaoMoi("Document " + chiso++, null);
+
+            string ConfigF = @"Lex\Pascal.xml";
+            TabHienTai.Configurator.Open(ConfigF);
+            TabHienTai.ApplyConfiguration("Pascal");
+            TabHienTai.StatusBarSettings.FileNamePanel.Panel.Text = "Pascal";
+            TabHienTai.ContextChoiceOpen += DanhDau_ContextChoiceOpen;
+            TabHienTai.ContextPromptOpen += DanhDau_ContextPromptOpen_ForPascal;
+            TabHienTai.ContextPromptUpdate += DanhDau_ContextPromptUpdate_ForPascal;
+
+            UpdateTheme();
+        }
+
+        private void ScreatePython_Click(object sender, EventArgs e)
+        {
+            TaoMoi("Document " + chiso++, null);
+
+            TabHienTai.StatusBarSettings.FileNamePanel.Panel.Text = "Python";
+            string ConfigF = @"Lex\Python.xml";
+            TabHienTai.Configurator.Open(ConfigF);
+            TabHienTai.ApplyConfiguration("Python");
+            TabHienTai.StatusBarSettings.FileNamePanel.Panel.Text = "Python";
+            TabHienTai.ContextChoiceOpen += DanhDau_ContextChoiceOpen_ForPython;
+
+            UpdateTheme();
+        }
+
+        private void radLabel5_Click(object sender, EventArgs e)
+        {
+            TaoMoi("Document " + chiso++, null);
+
+            string ConfigF = @"Lex\CppF.xml";
+            TabHienTai.Configurator.Open(ConfigF);
+            TabHienTai.ApplyConfiguration("C++");
+            TabHienTai.StatusBarSettings.FileNamePanel.Panel.Text = "C/C++";
+            TabHienTai.ContextChoiceOpen += DanhDau_ContextChoiceOpen_C;
+            TabHienTai.ContextPromptOpen += DanhDau_ContextPromptOpen_ForC;
+            TabHienTai.ContextPromptUpdate += DanhDau_ContextPromptUpdate_ForC;
+
+            UpdateTheme();
         }
     }
 }

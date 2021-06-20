@@ -75,6 +75,7 @@
             this.radLabel1.Size = new System.Drawing.Size(41, 21);
             this.radLabel1.TabIndex = 0;
             this.radLabel1.Text = "Email:";
+            this.radLabel1.ThemeName = "MaterialTeal";
             // 
             // radLabel2
             // 
@@ -84,6 +85,7 @@
             this.radLabel2.Size = new System.Drawing.Size(25, 21);
             this.radLabel2.TabIndex = 1;
             this.radLabel2.Text = "To:";
+            this.radLabel2.ThemeName = "MaterialTeal";
             // 
             // radLabel3
             // 
@@ -93,6 +95,7 @@
             this.radLabel3.Size = new System.Drawing.Size(53, 21);
             this.radLabel3.TabIndex = 2;
             this.radLabel3.Text = "Subject:";
+            this.radLabel3.ThemeName = "MaterialTeal";
             // 
             // radLabel4
             // 
@@ -102,6 +105,7 @@
             this.radLabel4.Size = new System.Drawing.Size(37, 21);
             this.radLabel4.TabIndex = 3;
             this.radLabel4.Text = "Body";
+            this.radLabel4.ThemeName = "MaterialTeal";
             // 
             // radLabel5
             // 
@@ -111,6 +115,7 @@
             this.radLabel5.Size = new System.Drawing.Size(65, 21);
             this.radLabel5.TabIndex = 2;
             this.radLabel5.Text = "Password:";
+            this.radLabel5.ThemeName = "MaterialTeal";
             // 
             // radLabel6
             // 
@@ -120,10 +125,12 @@
             this.radLabel6.Size = new System.Drawing.Size(47, 21);
             this.radLabel6.TabIndex = 3;
             this.radLabel6.Text = "Server:";
+            this.radLabel6.ThemeName = "MaterialTeal";
             // 
             // EmailTo
             // 
             this.EmailTo.BackColor = System.Drawing.Color.Honeydew;
+            this.EmailTo.EnableTheming = false;
             this.EmailTo.Location = new System.Drawing.Point(71, 24);
             this.EmailTo.Name = "EmailTo";
             this.EmailTo.Size = new System.Drawing.Size(295, 36);
@@ -133,6 +140,7 @@
             // EmailSub
             // 
             this.EmailSub.BackColor = System.Drawing.Color.Honeydew;
+            this.EmailSub.EnableTheming = false;
             this.EmailSub.Location = new System.Drawing.Point(71, 76);
             this.EmailSub.Name = "EmailSub";
             this.EmailSub.Size = new System.Drawing.Size(295, 36);
@@ -142,6 +150,7 @@
             // EmailAttach
             // 
             this.EmailAttach.BackColor = System.Drawing.Color.Honeydew;
+            this.EmailAttach.EnableTheming = false;
             this.EmailAttach.Location = new System.Drawing.Point(482, 193);
             this.EmailAttach.Name = "EmailAttach";
             this.EmailAttach.Size = new System.Drawing.Size(295, 36);
@@ -152,6 +161,7 @@
             // EmailFrom
             // 
             this.EmailFrom.BackColor = System.Drawing.Color.Honeydew;
+            this.EmailFrom.EnableTheming = false;
             this.EmailFrom.Location = new System.Drawing.Point(482, 24);
             this.EmailFrom.Name = "EmailFrom";
             this.EmailFrom.ReadOnly = true;
@@ -163,6 +173,7 @@
             // EmailPass
             // 
             this.EmailPass.BackColor = System.Drawing.Color.Honeydew;
+            this.EmailPass.EnableTheming = false;
             this.EmailPass.Location = new System.Drawing.Point(482, 76);
             this.EmailPass.Name = "EmailPass";
             this.EmailPass.PasswordChar = '●';
@@ -175,6 +186,7 @@
             // EmailSeever
             // 
             this.EmailSeever.BackColor = System.Drawing.Color.Honeydew;
+            this.EmailSeever.EnableTheming = false;
             radListDataItem1.Text = "smtp.gmail.com";
             this.EmailSeever.Items.Add(radListDataItem1);
             this.EmailSeever.Location = new System.Drawing.Point(482, 129);
@@ -187,6 +199,7 @@
             // EmailSend
             // 
             this.EmailSend.BackColor = System.Drawing.Color.Honeydew;
+            this.EmailSend.EnableTheming = false;
             this.EmailSend.Location = new System.Drawing.Point(657, 274);
             this.EmailSend.Name = "EmailSend";
             this.EmailSend.Size = new System.Drawing.Size(120, 36);
@@ -198,6 +211,7 @@
             // EmailClose
             // 
             this.EmailClose.BackColor = System.Drawing.Color.Honeydew;
+            this.EmailClose.EnableTheming = false;
             this.EmailClose.Location = new System.Drawing.Point(12, 274);
             this.EmailClose.Name = "EmailClose";
             this.EmailClose.Size = new System.Drawing.Size(120, 36);
@@ -209,6 +223,7 @@
             // EmailBody
             // 
             this.EmailBody.BackColor = System.Drawing.Color.Honeydew;
+            this.EmailBody.EnableTheming = false;
             this.EmailBody.Location = new System.Drawing.Point(71, 129);
             this.EmailBody.Name = "EmailBody";
             this.EmailBody.Size = new System.Drawing.Size(295, 110);
@@ -220,6 +235,7 @@
             // radButton1
             // 
             this.radButton1.BackColor = System.Drawing.Color.Honeydew;
+            this.radButton1.EnableTheming = false;
             this.radButton1.Location = new System.Drawing.Point(390, 193);
             this.radButton1.Name = "radButton1";
             this.radButton1.Size = new System.Drawing.Size(81, 36);
@@ -231,6 +247,7 @@
             // radButton2
             // 
             this.radButton2.BackColor = System.Drawing.Color.Honeydew;
+            this.radButton2.EnableTheming = false;
             this.radButton2.Location = new System.Drawing.Point(291, 274);
             this.radButton2.Name = "radButton2";
             this.radButton2.Size = new System.Drawing.Size(205, 36);
