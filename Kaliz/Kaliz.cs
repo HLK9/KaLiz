@@ -71,7 +71,10 @@ namespace Kaliz
 
         private void Kaliz_Load(object sender, EventArgs e)
         {
-           
+            var appDataPath = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
+            var path = Path.Combine(appDataPath, @"Kaliz\");
+            if (!Directory.Exists(path))
+                Directory.CreateDirectory(path);
             var clipBoard = new SharpClipboard();
             clipBoard.MonitorClipboard = true;
             clipBoard.ClipboardChanged += ClipBoard_ClipboardChanged; 
@@ -270,12 +273,6 @@ namespace Kaliz
             
         }
 
-        //private void TabStrip_SelectedIndexChanged(object sender, EventArgs e)
-        //{
-        //   UpdateTheme();
-           
-           
-        //}
         private void UpdateTheme()
         {
            if (themechanged == true)
@@ -1204,8 +1201,8 @@ End;
 
                     //
                     BienDich.StartInfo.FileName = "cmd";
-                    BienDich.StartInfo.WorkingDirectory = @"Cmder\vendor\TDM-GCC-32\bin";
-                    BienDich.StartInfo.Arguments = "/c " + "gdb32 " + DuongDanTepExe(ten);
+                   // BienDich.StartInfo.WorkingDirectory = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\Kaliz" + @"Cmder\vendor\conemu-maximus5\ConEmu.exe";
+                    BienDich.StartInfo.Arguments = " / c " + "gdb32 " + DuongDanTepExe(ten);
                     BienDich.Start();
                     //BienDich.BeginOutputReadLine();
 
@@ -1220,7 +1217,7 @@ End;
                 {
                     Process BienDich = new Process();
                     BienDich.StartInfo.FileName = "cmd";
-                    BienDich.StartInfo.WorkingDirectory = @"Cmder\vendor\TDM-GCC-32\bin";
+                    //BienDich.StartInfo.WorkingDirectory = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\Kaliz" + @"Cmder\vendor\conemu-maximus5\ConEmu.exe";
                     BienDich.StartInfo.Arguments = "/c " + "gdb32 " + DuongDanTepExe(ten);
                     BienDich.Start();
                    
@@ -1234,11 +1231,11 @@ End;
                     Process BienDich = new Process();
                     //Cho ListGDB
 
-
+                  //  BienDich.StartInfo.Verb = "runas";
                     //
-                    BienDich.StartInfo.FileName = @"Cmder\vendor\conemu-maximus5\ConEmu.exe";
+                    BienDich.StartInfo.FileName = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\Kaliz" + @"\Cmder\vendor\conemu-maximus5\ConEmu.exe";
                   
-                    BienDich.StartInfo.Arguments = " -dir  " + Path.GetDirectoryName(Application.ExecutablePath) + @"\Cmder\vendor\TDM-GCC-32\bin " + "  -run gdb32 " + DuongDanTepExe(ten);
+                    BienDich.StartInfo.Arguments = "  -run gdb32 " + DuongDanTepExe(ten);
                     BienDich.Start();
                     //BienDich.BeginOutputReadLine();
 
@@ -1251,10 +1248,13 @@ End;
                 }
                 if (Path.GetExtension(ten) == ".c" || Path.GetExtension(ten) == ".cpp")
                 {
+                    
                     Process BienDich = new Process();
-                    BienDich.StartInfo.FileName = @"Cmder\vendor\conemu-maximus5\ConEmu.exe";
-                    BienDich.StartInfo.Arguments = " -dir  " + Path.GetDirectoryName(Application.ExecutablePath) + @"\Cmder\vendor\TDM-GCC-32\bin " + "  -run gdb32 " + DuongDanTepExe(ten);
-                    BienDich.Start();                   
+                   // BienDich.StartInfo.Verb = "runas";
+                    BienDich.StartInfo.FileName = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\Kaliz" + @"\Cmder\vendor\conemu-maximus5\ConEmu.exe";
+                    BienDich.StartInfo.Arguments = "  -run gdb32 " + DuongDanTepExe(ten);
+                    BienDich.Start();
+                              
                     
                 }
 
@@ -1291,9 +1291,9 @@ End;
                     Process Chay = new Process();
                     Chay.StartInfo.UseShellExecute = false;
                     Chay.StartInfo.FileName = "cmd.exe";
-                    Chay.StartInfo.WorkingDirectory = Path.GetDirectoryName(Application.ExecutablePath) + @"\Cmder\vendor\TDM-GCC-32\bin";
+                    //Chay.StartInfo.WorkingDirectory = Application.ExecutablePath + @"\Cmder\vendor\TDM-GCC-32\bin";
                     Chay.StartInfo.Arguments = "/c "+DuongDanTepExe(file) + "  -static-libgcc -static-libstdc++";
-                    MessageBox.Show(DuongDanTepExe(file) + " -static-libgcc -static-libstdc++");
+                    //MessageBox.Show(DuongDanTepExe(file) + " -static-libgcc -static-libstdc++");
                     
                     Chay.Start();
                 }
@@ -1301,7 +1301,7 @@ End;
                 {
                     Process Chay = new Process();
                     Chay.StartInfo.FileName = "cmd";
-                    Chay.StartInfo.WorkingDirectory = @"Cmder\vendor\Python\Python38-32";
+                    //Chay.StartInfo.WorkingDirectory = @"Cmder\vendor\Python\Python38-32";
                     Chay.StartInfo.Arguments = "/c" + " python " + file;
                     //Lấy thông tin nhưng phải để UseExeCutale là false :))
                     //Chay.StartInfo.RedirectStandardError = true;
@@ -1340,22 +1340,23 @@ End;
                 if (Path.GetExtension(file) == ".pas")
                 {
                     Process Chay = new Process();
-                    Chay.StartInfo.FileName = @"Cmder\vendor\conemu-maximus5\ConEmu.exe";
-                   
-                    Chay.StartInfo.Arguments =DuongDanTepExe(file);
+                    Chay.StartInfo.FileName = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\Kaliz" + @"\Cmder\vendor\conemu-maximus5\ConEmu.exe";
+                    //Lấy path ở Roaming
+                    //Chay.StartInfo.Verb = "runas";
+                    Chay.StartInfo.Arguments ="-run  "+DuongDanTepExe(file);
                     Chay.Start();
-                    Chay.WaitForExit();
+                    
                 }
                 if (Path.GetExtension(file) == ".c" || Path.GetExtension(file) == ".cpp")
                 {
-                   // MessageBox.Show(DuongDanTepExe(file) + "  -static-libgcc -static-libstdc++");
+                   
                     Process Chay = new Process();
 
-                  
+                    //Chay.StartInfo.Verb = "runas";
                    // Chay.StartInfo.FileName = @"Cmder\Cmder.exe";
-                    Chay.StartInfo.FileName = @"Cmder\vendor\conemu-maximus5\ConEmu.exe";
+                    Chay.StartInfo.FileName = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\Kaliz" + @"\Cmder\vendor\conemu-maximus5\ConEmu.exe";
                     //Chay.StartInfo.WorkingDirectory = @"Cmder\vendor\TDM-GCC-32\bin";
-                    Chay.StartInfo.Arguments = " -dir  " + Path.GetDirectoryName(Application.ExecutablePath) + @"\Cmder\vendor\TDM-GCC-32\bin " + "  -run "+ DuongDanTepExe(file) + "  -static-libgcc -static-libstdc++";    
+                    Chay.StartInfo.Arguments = "  -run "+ DuongDanTepExe(file) + "  -static-libgcc -static-libstdc++";    
                     //Fixed, Khi chạy từ process mới thì path không được set, phải sẽ manual :b               
                     Chay.Start();
                     
@@ -1364,9 +1365,12 @@ End;
                 }
                 if (Path.GetExtension(file) == ".py")
                 {
+
                     Process Chay = new Process();
-                    Chay.StartInfo.FileName = @"Cmder\vendor\conemu-maximus5\ConEmu.exe";                    
-                    Chay.StartInfo.Arguments = "-dir  " + Path.GetDirectoryName(Application.ExecutablePath) + @"\Cmder\vendor\Python\Python38-32 " + " -run python " + file;
+                    //Chay.StartInfo.Verb = "runas";
+                    Chay.StartInfo.FileName = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\Kaliz" + @"\Cmder\vendor\conemu-maximus5\ConEmu.exe";                    
+                    Chay.StartInfo.Arguments =" -run python " + file;
+                    //Để ý dấu - phải sát với lệnh
                     Chay.Start();
                     Chay.WaitForExit();
                    //Fixed!
@@ -1967,7 +1971,8 @@ End;
        
         private void radMenuItem1_Click_1(object sender, EventArgs e)
         {
-            asd();
+            
+            MessageBox.Show(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData)+"\\Kaliz");
         }
 
         private void DockPar_SelectedTabChanged(object sender, SelectedTabChangedEventArgs e)
@@ -2063,7 +2068,7 @@ End;
             {
                 Process pw = new Process();
 
-                pw.StartInfo.FileName = @"Cmder\Cmder.exe";
+                pw.StartInfo.FileName = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\Kaliz"+@"\Cmder\Cmder.exe";
                // pw.StartInfo.Arguments = "/start " + Application.StartupPath;
                 pw.Start();
             }
