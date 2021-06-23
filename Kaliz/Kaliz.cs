@@ -1142,7 +1142,7 @@ End;
 
                     Process BienDich = new Process();
                     BienDich.StartInfo.FileName = "cmd";
-                    BienDich.StartInfo.WorkingDirectory = @"Cmder\vendor\FPC\bin\i386-win32";
+                    //BienDich.StartInfo.WorkingDirectory = @"Cmder\vendor\FPC\bin\i386-win32";
                     BienDich.StartInfo.UseShellExecute = false;
                     if (enabledebug == false)
                         BienDich.StartInfo.Arguments = "/c " + "fpc " + ten;
@@ -1197,7 +1197,7 @@ End;
                     BienDich.StartInfo.RedirectStandardOutput = true;
                     BienDich.StartInfo.RedirectStandardError = true;
                     BienDich.StartInfo.RedirectStandardInput = true;
-                    BienDich.StartInfo.WorkingDirectory = @"Cmder\vendor\TDM-GCC-32\bin";
+                    //BienDich.StartInfo.WorkingDirectory = @"Cmder\vendor\TDM-GCC-32\bin";
                     if (enabledebug == false)
                         BienDich.StartInfo.Arguments = "/c " + "g++ " + ten + " -o " + Path.GetDirectoryName(ten) + "\\" + Path.GetFileNameWithoutExtension(ten) + ".exe";
                     else BienDich.StartInfo.Arguments = "/c " + "g++ " + " -g " + ten + " -o " + Path.GetDirectoryName(ten) + "\\" + Path.GetFileNameWithoutExtension(ten) + ".exe";
@@ -1481,15 +1481,16 @@ End;
 
         private void BBuild_Click(object sender, EventArgs e)
         {
-            TabHienTai.Save();
-            if (File.Exists(TabHienTai.FileName))
-              DockPar.DocumentManager.ActiveDocument.Text = Path.GetFileName(TabHienTai.FileName);
+           
            //fixed 20/6
             
 
             try
             {
-               
+                TabHienTai.Save();
+                if (File.Exists(TabHienTai.FileName))
+                    DockPar.DocumentManager.ActiveDocument.Text = Path.GetFileName(TabHienTai.FileName);
+
                 if (Path.GetExtension(TabHienTai.FileName) == ".py")
                     ShowAlert_Light("<html><color=LightSalmon>Build Failed", "<html><color=Teal>Python can only be <b>RUN</b> directly");
                 else
