@@ -77,7 +77,33 @@ namespace Kaliz
                 Directory.CreateDirectory(path);
             var clipBoard = new SharpClipboard();
             clipBoard.MonitorClipboard = true;
-            clipBoard.ClipboardChanged += ClipBoard_ClipboardChanged; 
+            clipBoard.ClipboardChanged += ClipBoard_ClipboardChanged;
+
+
+            //
+            try
+            {
+
+                using (StreamReader Doc = new StreamReader(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\Kaliz\\Histo.txt"))
+                {
+                    string dong;
+                    while ((dong = Doc.ReadLine()) != null)
+                    {                      
+                     
+                       
+                                recentList.Items.Add(dong);
+
+                    
+
+                    }
+                }
+               if(recentList.Items.Count>=10)
+                    File.WriteAllText(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\Kaliz\\Histo.txt", string.Empty);
+
+            }
+            catch { }
+           
+            //
             
            
 
@@ -132,8 +158,8 @@ namespace Kaliz
         /// Tao mot tep moi
         /// </summary>
         /// <param name="ten"></param>
-        /// <param name="F"></param>
-        private void TaoMoi(string ten, string F)
+        /// <param name="DuongDanTep"></param>
+        private void TaoMoi(string ten, string DuongDanTep)
         {
             DocumentWindow TaiLieu = new DocumentWindow(ten);
             var DanhDau = new EditControl();
@@ -155,10 +181,12 @@ namespace Kaliz
             //DanhDau.contextchoice
 
 
-            if (F != null)
+            if (DuongDanTep != null)
             {
-                DanhDau.LoadFile(F, Encoding.UTF8);
-                if (Path.GetExtension(F) == ".c" || Path.GetExtension(F) == ".cpp")
+                LuuHisto(DuongDanTep);
+
+                DanhDau.LoadFile(DuongDanTep, Encoding.UTF8);
+                if (Path.GetExtension(DuongDanTep) == ".c" || Path.GetExtension(DuongDanTep) == ".cpp")
                 {
                     string ConfigF = @"Lex\CppF.xml";
                     DanhDau.Configurator.Open(ConfigF);
@@ -172,7 +200,7 @@ namespace Kaliz
 
 
                 }
-                if (Path.GetExtension(F) == ".pas")
+                if (Path.GetExtension(DuongDanTep) == ".pas")
                 {
                     string ConfigF = @"Lex\Pascal.xml";
                     DanhDau.Configurator.Open(ConfigF);
@@ -184,7 +212,7 @@ namespace Kaliz
                     DanhDau.ContextPromptUpdate += DanhDau_ContextPromptUpdate_ForPascal;
 
                 }
-                if (Path.GetExtension(F) == ".py")
+                if (Path.GetExtension(DuongDanTep) == ".py")
                 {
                     DanhDau.StatusBarSettings.FileNamePanel.Panel.Text = "Python";
                     string ConfigF = @"Lex\Python.xml";
@@ -221,7 +249,7 @@ namespace Kaliz
             DanhDau.StatusBarSettings.VisualStyle = Syncfusion.Windows.Forms.Tools.Controls.StatusBar.VisualStyle.Office2016Colorful;
             DanhDau.StatusBarSettings.Visible = true;
             DanhDau.StatusBarSettings.GripVisibility = Syncfusion.Windows.Forms.Edit.Enums.SizingGripVisibility.Hidden;
-            DanhDau.StatusBarSettings.TextPanel.Panel.Text = F;
+            DanhDau.StatusBarSettings.TextPanel.Panel.Text = DuongDanTep;
             DanhDau.StatusBarSettings.StatusPanel.Panel.Text = "Saved";
             DanhDau.StatusBarSettings.StatusPanel.Panel.BackColor = Color.Teal;
             DanhDau.StatusBarSettings.StatusPanel.Panel.ForeColor = Color.White;
@@ -944,12 +972,35 @@ End;
             {
                 foreach(var item in Mo.FileNames)
                 {
-                    TaoMoi(Path.GetFileName(item), item);
-                    UpdateTheme();
+                    try
+                    {
+ TaoMoi(Path.GetFileName(item), item);
+                        UpdateTheme();
+                       
+                    }
+
+                   catch
+                    { }
                 }
                
             }
 
+        }
+        private void LuuHisto(string duongdantep )
+        {
+            try
+            {
+                //using (StreamWriter Viet = new StreamWriter(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\Kaliz\\Histo.txt"))
+                //{
+                //    Viet.WriteLine(duongdantep);
+                //}
+                File.AppendAllText(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\Kaliz\\Histo.txt", duongdantep + Environment.NewLine);
+
+
+
+            }
+            catch { }
+           
         }
 
 
@@ -2429,6 +2480,24 @@ TabHienTai.InsertText(TabHienTai.CurrentLine, TabHienTai.CurrentColumn, radlistc
             TabHienTai.ContextPromptUpdate += DanhDau_ContextPromptUpdate_ForC;
 
             UpdateTheme();
+        }
+
+        private void recentList_ItemMouseDoubleClick(object sender, ListViewItemEventArgs e)
+        {
+            try
+            {
+                TaoMoi(Path.GetFileName(recentList.SelectedItem.Text), recentList.SelectedItem.Text);
+            }
+            catch
+            {
+                MessageBox.Show("Error", "This file not exist", MessageBoxButtons.OK,MessageBoxIcon.Error);
+            }
+            
+        }
+
+        private void radRichTextEditor1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
