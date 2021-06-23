@@ -1927,7 +1927,9 @@ End;
 
         private void MPcurrentline_Click(object sender, EventArgs e)
         {
-            RadColorDialog Col = new RadColorDialog();
+            RadColorDialog Col = new RadColorDialog( );
+            Col.Icon = null;
+            
 
             try
             {
