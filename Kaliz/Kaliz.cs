@@ -2025,8 +2025,9 @@ End;
        
         private void radMenuItem1_Click_1(object sender, EventArgs e)
         {
+
+          //  radPdfViewer1.LoadDocument(@"C:\Users\HLK9\Desktop\TraCuu.pdf");
             
-            MessageBox.Show(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData)+"\\Kaliz");
         }
 
         private void DockPar_SelectedTabChanged(object sender, SelectedTabChangedEventArgs e)
@@ -2501,6 +2502,21 @@ TabHienTai.InsertText(TabHienTai.CurrentLine, TabHienTai.CurrentColumn, radlistc
         private void radRichTextEditor1_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void HLookUp_Click(object sender, EventArgs e)
+        {
+            DocumentWindow Las = new DocumentWindow("Look Up");
+            DockPar.AddDocument(Las);
+            RadPdfViewer Lok = new RadPdfViewer();
+            Las.Controls.Add(Lok);
+            Lok.Dock = DockStyle.Fill;
+            Lok.ThemeName = "MaterialTeal";
+            Lok.ThumbnailListWidth = 0;
+            Lok.ThumbnailsScaleFactor = 0;
+            Lok.EnableThumbnails = false;
+            
+            
         }
     }
 }
