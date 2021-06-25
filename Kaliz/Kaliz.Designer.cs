@@ -166,6 +166,8 @@ namespace Kaliz
             this.radMenuHeaderItem1 = new Telerik.WinControls.UI.RadMenuHeaderItem();
             this.radMenu = new Telerik.WinControls.UI.RadMenu();
             this.materialTealTheme1 = new Telerik.WinControls.Themes.MaterialTealTheme();
+            this.object_d76c15f1_b4da_4f3f_b911_a99b364b78fa = new Telerik.WinControls.RootRadElement();
+            this.HLookUp = new Telerik.WinControls.UI.RadMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.DockPar)).BeginInit();
             this.DockPar.SuspendLayout();
             this.documentWindow1.SuspendLayout();
@@ -749,7 +751,8 @@ namespace Kaliz
             this.MHelp.Items.AddRange(new Telerik.WinControls.RadItem[] {
             this.HHowto,
             this.HLearn,
-            this.HAbout});
+            this.HAbout,
+            this.HLookUp});
             this.MHelp.Name = "MHelp";
             this.MHelp.Text = "Help";
             // 
@@ -848,7 +851,7 @@ namespace Kaliz
             // 
             this.radButton2.Location = new System.Drawing.Point(966, 404);
             this.radButton2.Name = "radButton2";
-            this.radButton2.Size = new System.Drawing.Size(189, 30);
+            this.radButton2.Size = new System.Drawing.Size(189, 36);
             this.radButton2.TabIndex = 3;
             this.radButton2.Text = "Explore GoPas Editor";
             this.radButton2.ThemeName = "MaterialTeal";
@@ -982,7 +985,7 @@ namespace Kaliz
             // 
             this.radButton1.Location = new System.Drawing.Point(586, 404);
             this.radButton1.Name = "radButton1";
-            this.radButton1.Size = new System.Drawing.Size(189, 30);
+            this.radButton1.Size = new System.Drawing.Size(189, 36);
             this.radButton1.TabIndex = 2;
             this.radButton1.Text = "See Document";
             this.radButton1.ThemeName = "MaterialTeal";
@@ -1358,6 +1361,18 @@ namespace Kaliz
             this.radMenu.TabIndex = 1;
             this.radMenu.ThemeName = "MaterialTeal";
             // 
+            // object_d76c15f1_b4da_4f3f_b911_a99b364b78fa
+            // 
+            this.object_d76c15f1_b4da_4f3f_b911_a99b364b78fa.Name = "object_d76c15f1_b4da_4f3f_b911_a99b364b78fa";
+            this.object_d76c15f1_b4da_4f3f_b911_a99b364b78fa.StretchHorizontally = true;
+            this.object_d76c15f1_b4da_4f3f_b911_a99b364b78fa.StretchVertically = true;
+            // 
+            // HLookUp
+            // 
+            this.HLookUp.Name = "HLookUp";
+            this.HLookUp.Text = "Look Up";
+            this.HLookUp.Click += new System.EventHandler(this.HLookUp_Click);
+            // 
             // Kaliz
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1552,5 +1567,7 @@ namespace Kaliz
         private RadLabel radLabel4;
         private RadButton radButton2;
         private RadLabel radLabel10;
+        private RootRadElement object_d76c15f1_b4da_4f3f_b911_a99b364b78fa;
+        private RadMenuItem HLookUp;
     }
 }
