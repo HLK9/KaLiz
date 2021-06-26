@@ -1087,11 +1087,7 @@ End;
 
         private void FPrint_Click(object sender, EventArgs e)
         {
-            try
-            {
-                if (TabHienTai.ActiveControl != null) TabHienTai.Print();
-            }
-            catch { }
+          
 
         }
 
@@ -2517,6 +2513,45 @@ TabHienTai.InsertText(TabHienTai.CurrentLine, TabHienTai.CurrentColumn, radlistc
             Lok.EnableThumbnails = false;
             
             
+        }
+
+        private void radLabel11_MouseHover(object sender, EventArgs e)
+        {
+            radLabel11.ForeColor = Color.Teal;
+
+        }
+
+        private void radLabel11_MouseLeave(object sender, EventArgs e)
+        {
+            radLabel11.ForeColor = Color.Crimson;
+        }
+
+        private void radMenuItem13_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                TabHienTai.PrintPreview();
+
+            }
+            catch { }
+        }
+
+        private void radMenuItem14_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                TabHienTai.PrintSelection();
+            }
+            catch { }
+        }
+
+        private void radMenuItem15_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (TabHienTai.ActiveControl != null) TabHienTai.Print();
+            }
+            catch { }
         }
     }
 }
