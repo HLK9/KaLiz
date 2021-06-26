@@ -149,6 +149,7 @@ namespace Kaliz
             this.radlistclip = new Telerik.WinControls.UI.RadListView();
             this.radMenuItem1 = new Telerik.WinControls.UI.RadMenuItem();
             this.radMenuItem3 = new Telerik.WinControls.UI.RadMenuItem();
+            this.radMenuItem16 = new Telerik.WinControls.UI.RadMenuItem();
             this.MBookmark = new Telerik.WinControls.UI.RadMenuItem();
             this.BBookmark = new Telerik.WinControls.UI.RadMenuItem();
             this.radMenuItem2 = new Telerik.WinControls.UI.RadMenuItem();
@@ -171,6 +172,10 @@ namespace Kaliz
             this.materialTealTheme1 = new Telerik.WinControls.Themes.MaterialTealTheme();
             this.object_d76c15f1_b4da_4f3f_b911_a99b364b78fa = new Telerik.WinControls.RootRadElement();
             this.radMenu = new Telerik.WinControls.UI.RadMenu();
+            this.TDiff = new Telerik.WinControls.UI.RadMenuItem();
+            this.DSetDiff = new Telerik.WinControls.UI.RadMenuItem();
+            this.DOpenDiff = new Telerik.WinControls.UI.RadMenuItem();
+            this.DDiffDialog = new Telerik.WinControls.UI.RadMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.DockPar)).BeginInit();
             this.DockPar.SuspendLayout();
             this.documentWindow1.SuspendLayout();
@@ -206,8 +211,8 @@ namespace Kaliz
             this.Dclipboard.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.radlistclip)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.toolTabStrip3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.radMenu)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this)).BeginInit();
             this.SuspendLayout();
             // 
             // MFile
@@ -467,7 +472,8 @@ namespace Kaliz
             this.TCalc,
             this.Tcmd,
             this.TTermi,
-            this.TEmail});
+            this.TEmail,
+            this.TDiff});
             this.MTools.Name = "MTools";
             this.MTools.Text = "Tools";
             // 
@@ -874,6 +880,7 @@ namespace Kaliz
             // 
             // radButton2
             // 
+            this.radButton2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.radButton2.Location = new System.Drawing.Point(1007, 404);
             this.radButton2.Name = "radButton2";
             this.radButton2.Size = new System.Drawing.Size(189, 36);
@@ -883,6 +890,7 @@ namespace Kaliz
             // 
             // radLabel10
             // 
+            this.radLabel10.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.radLabel10.ImageAlignment = System.Drawing.ContentAlignment.MiddleCenter;
             this.radLabel10.Location = new System.Drawing.Point(883, 409);
             this.radLabel10.Name = "radLabel10";
@@ -897,7 +905,7 @@ namespace Kaliz
             // 
             this.radRichTextEditor3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.radRichTextEditor3.BorderColor = System.Drawing.Color.White;
-            this.radRichTextEditor3.Location = new System.Drawing.Point(883, 285);
+            this.radRichTextEditor3.Location = new System.Drawing.Point(883, 289);
             this.radRichTextEditor3.Name = "radRichTextEditor3";
             this.radRichTextEditor3.SelectionFill = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(203)))), ((int)(((byte)(196)))));
             this.radRichTextEditor3.SelectionStroke = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(203)))), ((int)(((byte)(196)))));
@@ -917,7 +925,7 @@ namespace Kaliz
             this.radLabel9.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.radLabel9.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.radLabel9.ForeColor = System.Drawing.Color.DarkSlateBlue;
-            this.radLabel9.Location = new System.Drawing.Point(883, 254);
+            this.radLabel9.Location = new System.Drawing.Point(883, 258);
             this.radLabel9.Name = "radLabel9";
             this.radLabel9.Size = new System.Drawing.Size(43, 31);
             this.radLabel9.TabIndex = 4;
@@ -927,7 +935,7 @@ namespace Kaliz
             // 
             this.radRichTextEditor2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.radRichTextEditor2.BorderColor = System.Drawing.Color.White;
-            this.radRichTextEditor2.Location = new System.Drawing.Point(883, 100);
+            this.radRichTextEditor2.Location = new System.Drawing.Point(883, 104);
             this.radRichTextEditor2.Name = "radRichTextEditor2";
             this.radRichTextEditor2.SelectionFill = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(203)))), ((int)(((byte)(196)))));
             this.radRichTextEditor2.SelectionStroke = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(203)))), ((int)(((byte)(196)))));
@@ -947,7 +955,7 @@ namespace Kaliz
             this.radLabel4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.radLabel4.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.radLabel4.ForeColor = System.Drawing.Color.DarkSlateBlue;
-            this.radLabel4.Location = new System.Drawing.Point(883, 70);
+            this.radLabel4.Location = new System.Drawing.Point(883, 74);
             this.radLabel4.Name = "radLabel4";
             this.radLabel4.Size = new System.Drawing.Size(70, 31);
             this.radLabel4.TabIndex = 3;
@@ -961,8 +969,13 @@ namespace Kaliz
             this.radRichTextEditor1.IsReadOnly = true;
             this.radRichTextEditor1.IsSelectionEnabled = false;
             this.radRichTextEditor1.IsSelectionMiniToolBarEnabled = false;
-            this.radRichTextEditor1.Location = new System.Drawing.Point(471, 102);
+            this.radRichTextEditor1.Location = new System.Drawing.Point(471, 106);
             this.radRichTextEditor1.Name = "radRichTextEditor1";
+            // 
+            // 
+            // 
+            this.radRichTextEditor1.RootElement.ApplyShapeToControl = false;
+            this.radRichTextEditor1.RootElement.AutoSize = true;
             this.radRichTextEditor1.SelectionFill = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(203)))), ((int)(((byte)(196)))));
             this.radRichTextEditor1.SelectionStroke = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(203)))), ((int)(((byte)(196)))));
             this.radRichTextEditor1.Size = new System.Drawing.Size(312, 261);
@@ -987,7 +1000,7 @@ namespace Kaliz
             // 
             this.radLabel3.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.radLabel3.ForeColor = System.Drawing.Color.DarkSlateBlue;
-            this.radLabel3.Location = new System.Drawing.Point(471, 70);
+            this.radLabel3.Location = new System.Drawing.Point(471, 74);
             this.radLabel3.Name = "radLabel3";
             this.radLabel3.Size = new System.Drawing.Size(335, 31);
             this.radLabel3.TabIndex = 2;
@@ -996,6 +1009,7 @@ namespace Kaliz
             // 
             // radLabel8
             // 
+            this.radLabel8.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.radLabel8.ImageAlignment = System.Drawing.ContentAlignment.MiddleCenter;
             this.radLabel8.Location = new System.Drawing.Point(471, 408);
             this.radLabel8.Name = "radLabel8";
@@ -1008,6 +1022,7 @@ namespace Kaliz
             // 
             // radButton1
             // 
+            this.radButton1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.radButton1.Location = new System.Drawing.Point(586, 404);
             this.radButton1.Name = "radButton1";
             this.radButton1.Size = new System.Drawing.Size(189, 36);
@@ -1054,6 +1069,7 @@ namespace Kaliz
             this.radLabel11.Size = new System.Drawing.Size(77, 25);
             this.radLabel11.TabIndex = 4;
             this.radLabel11.Text = "Open File";
+            this.radLabel11.Click += new System.EventHandler(this.radLabel11_Click);
             this.radLabel11.MouseLeave += new System.EventHandler(this.radLabel11_MouseLeave);
             this.radLabel11.MouseHover += new System.EventHandler(this.radLabel11_MouseHover);
             // 
@@ -1247,7 +1263,8 @@ namespace Kaliz
             // radMenuItem1
             // 
             this.radMenuItem1.Items.AddRange(new Telerik.WinControls.RadItem[] {
-            this.radMenuItem3});
+            this.radMenuItem3,
+            this.radMenuItem16});
             this.radMenuItem1.Name = "radMenuItem1";
             this.radMenuItem1.Text = "Test";
             this.radMenuItem1.Click += new System.EventHandler(this.radMenuItem1_Click_1);
@@ -1257,6 +1274,11 @@ namespace Kaliz
             this.radMenuItem3.Name = "radMenuItem3";
             this.radMenuItem3.Text = "radMenuItem3";
             this.radMenuItem3.Click += new System.EventHandler(this.radMenuItem3_Click_1);
+            // 
+            // radMenuItem16
+            // 
+            this.radMenuItem16.Name = "radMenuItem16";
+            this.radMenuItem16.Text = "radMenuItem16";
             // 
             // MBookmark
             // 
@@ -1386,12 +1408,6 @@ namespace Kaliz
             this.object_d76c15f1_b4da_4f3f_b911_a99b364b78fa.StretchHorizontally = true;
             this.object_d76c15f1_b4da_4f3f_b911_a99b364b78fa.StretchVertically = true;
             // 
-            // Kaliz
-            // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1257, 735);
-            // 
             // radMenu
             // 
             this.radMenu.Items.AddRange(new Telerik.WinControls.RadItem[] {
@@ -1410,6 +1426,39 @@ namespace Kaliz
             this.radMenu.Size = new System.Drawing.Size(1257, 37);
             this.radMenu.TabIndex = 1;
             this.radMenu.ThemeName = "MaterialTeal";
+            // 
+            // TDiff
+            // 
+            this.TDiff.Items.AddRange(new Telerik.WinControls.RadItem[] {
+            this.DSetDiff,
+            this.DOpenDiff,
+            this.DDiffDialog});
+            this.TDiff.Name = "TDiff";
+            this.TDiff.Text = "Different Merge";
+            // 
+            // DSetDiff
+            // 
+            this.DSetDiff.Name = "DSetDiff";
+            this.DSetDiff.Text = "Set Different in this file";
+            this.DSetDiff.Click += new System.EventHandler(this.DSetDiff_Click);
+            // 
+            // DOpenDiff
+            // 
+            this.DOpenDiff.Name = "DOpenDiff";
+            this.DOpenDiff.Text = "Open Different Merge";
+            this.DOpenDiff.Click += new System.EventHandler(this.DOpenDiff_Click);
+            // 
+            // DDiffDialog
+            // 
+            this.DDiffDialog.Name = "DDiffDialog";
+            this.DDiffDialog.Text = "Open Different Merge Dialog";
+            this.DDiffDialog.Click += new System.EventHandler(this.DDiffDialog_Click);
+            // 
+            // Kaliz
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.ClientSize = new System.Drawing.Size(1257, 735);
             this.Controls.Add(this.DockPar);
             this.Controls.Add(this.radMenu);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -1605,5 +1654,10 @@ namespace Kaliz
         private RadMenuItem radMenuItem14;
         private RadMenuItem radMenuItem15;
         private RadMenu radMenu;
+        private RadMenuItem radMenuItem16;
+        private RadMenuItem TDiff;
+        private RadMenuItem DSetDiff;
+        private RadMenuItem DOpenDiff;
+        private RadMenuItem DDiffDialog;
     }
 }

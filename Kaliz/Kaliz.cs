@@ -16,6 +16,8 @@ using Syncfusion.Windows.Forms.Edit.Interfaces;
 using Syncfusion.Windows.Forms.Edit.Enums;
 using Syncfusion.Windows.Forms.Edit.Implementation.Config;
 using Syncfusion.Drawing;
+using DiffPlex.WindowsForms.Controls;
+
 
 
 using Syncfusion.Windows.Forms;
@@ -42,7 +44,9 @@ namespace Kaliz
         private bool themechanged;
         public string Pathtosendemail;
         private string ConsoleUse = "Cmder";
-       
+        private string DiffOldText;
+        private string DiffNewText; 
+
 
         private int chiso { get; set; }
        
@@ -67,6 +71,7 @@ namespace Kaliz
         private void DockPar_SelectedTabChanging(object sender, SelectedTabChangingEventArgs e)
         {
             UpdateTheme();
+          
         }
 
         private void Kaliz_Load(object sender, EventArgs e)
@@ -2222,7 +2227,9 @@ TabHienTai.InsertText(TabHienTai.CurrentLine, TabHienTai.CurrentColumn, radlistc
 
         private void radMenuItem3_Click_1(object sender, EventArgs e)
         {
-            
+          
+                   
+                
         }
         private void Uo()
         {
@@ -2552,6 +2559,87 @@ TabHienTai.InsertText(TabHienTai.CurrentLine, TabHienTai.CurrentColumn, radlistc
                 if (TabHienTai.ActiveControl != null) TabHienTai.Print();
             }
             catch { }
+        }
+
+        private void DSetDiff_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                DiffOldText = TabHienTai.Text;
+                ShowAlert_Light("<html><Color=Teal><b>Different has been set!</b>", "<html><Color=Crimson>You can Compare code after changes");
+            }
+            catch {
+                ShowAlert_Light("<html><Color=Teal><b>Couldn't set Different</b>", "<html><Color=Crimson>Code not Found!");
+            }
+           
+            //try
+            //{
+               
+            //    if (!File.Exists(TabHienTai.FileName))
+            //    {
+            //        DiffOldText = TabHienTai.Text;
+            //    }
+            //    else
+            //        DiffOldText = File.ReadAllText(TabHienTai.FileName);
+
+            //}
+            //catch { }
+            
+        }
+
+        private void DOpenDiff_Click(object sender, EventArgs e)
+        {
+            if (DiffOldText != null)
+            {
+                DiffNewText = TabHienTai.Text;
+                DiffViewer Diff = new DiffViewer();
+                Diff.OldText = DiffOldText;
+                Diff.NewText = DiffNewText;
+                Diff.FontFamilyNames = "Cascadia Code";
+                Diff.FontSize = 16;
+                Diff.ShowSideBySide();
+                Diff.NewTextHeader = "New";
+                Diff.OldTextHeader = "Old";
+                Diff.IgnoreWhiteSpace = true;
+
+                Diff.Dock = DockStyle.Fill;
+                DocumentWindow Do = new DocumentWindow("Different Merge");
+                Do.Controls.Add(Diff);
+                DockPar.AddDocument(Do);
+                
+            }
+            else
+                ShowAlert_Light("<html><Color=Teal><b>Couldn't find code to compare</b>", "<html><Color=Crimson>You need set Different to Compare");
+
+         
+        }
+
+        private void DDiffDialog_Click(object sender, EventArgs e)
+        {
+            DifferentMer df = new DifferentMer();
+            df.ShowDialog();
+        }
+
+        private void radLabel11_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog Mo = new OpenFileDialog();
+            Mo.Multiselect = true;
+
+            if (Mo.ShowDialog() == DialogResult.OK)
+            {
+                foreach (var item in Mo.FileNames)
+                {
+                    try
+                    {
+                        TaoMoi(Path.GetFileName(item), item);
+                        UpdateTheme();
+
+                    }
+
+                    catch
+                    { }
+                }
+            }
         }
     }
 }
