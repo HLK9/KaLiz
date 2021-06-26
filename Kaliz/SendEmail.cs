@@ -98,15 +98,14 @@ namespace Kaliz
         {
 
         }
-
+        string[] att;
         private void radButton1_Click(object sender, EventArgs e)
         {
             OpenFileDialog Mo = new OpenFileDialog();
-
-            if (Mo.ShowDialog() == DialogResult.OK)
-            {
+           
                 EmailAttach.Text = Mo.FileName;
-            }
+               
+           
         }
 
         private void EmailClose_Click(object sender, EventArgs e)
