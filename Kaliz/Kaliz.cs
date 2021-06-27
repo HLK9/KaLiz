@@ -170,8 +170,7 @@ namespace Kaliz
             var DanhDau = new EditControl();
             DanhDau.Dock = DockStyle.Fill;
             DanhDau.Style = EditControlStyle.Office2016Colorful;
-
-            
+            DanhDau.LineNumbersFont = new Font("Cascadia Code", 13);
             TaiLieu.Controls.Add(DanhDau);
             DanhDau.AllowDrop = true;
             DanhDau.FileExtensions = new string[] { ".pas", ".c", ".cpp", ".cs", ".py" };
