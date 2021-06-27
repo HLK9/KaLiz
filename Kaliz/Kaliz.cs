@@ -170,7 +170,7 @@ namespace Kaliz
             var DanhDau = new EditControl();
             DanhDau.Dock = DockStyle.Fill;
             DanhDau.Style = EditControlStyle.Office2016Colorful;
-            DanhDau.LineNumbersFont = new Font("Cascadia Code", 13);
+            DanhDau.LineNumbersFont = new Font("Consolas", 13);
             TaiLieu.Controls.Add(DanhDau);
             DanhDau.AllowDrop = true;
             DanhDau.FileExtensions = new string[] { ".pas", ".c", ".cpp", ".cs", ".py" };
@@ -241,9 +241,14 @@ namespace Kaliz
             DanhDau.ShowIndicatorMargin = true;
             //DanhDau.MarkerAreaWidth = 20;
             DanhDau.ShowIndentationGuidelines = true;
+            DanhDau.ShowOutliningCollapsers = true;
+            DanhDau.ShowColumnGuides = true;
+           
+        
+            
             DanhDau.UpdateBookmarkToolTip += DanhDau_UpdateBookmarkToolTip;
             DanhDau.AllowZoom = true;
-            DanhDau.OnlyHighlightMatchingBraces = true;
+           // DanhDau.OnlyHighlightMatchingBraces = true;
             DanhDau.EnableSmartInBlockIndent = true;
             DanhDau.IndentBlockHighlightingColor = Color.Orange;
             DanhDau.AutoIndentMode = AutoIndentMode.Smart;
