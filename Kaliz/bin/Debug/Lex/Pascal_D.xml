@@ -43,7 +43,7 @@
 				</SubLexems>
 			</lexem>
 			<!--lexem BeginBlock="end" Type="KeyWord" Priority="-1"/-->
-			<lexem BeginBlock="program" Type="KeyWord" DropContextChoiceList="true" />
+			<lexem BeginBlock="program" Type="KeyWord"/>
 			<lexem BeginBlock="boolean" Type="KeyWord" />
 			<lexem BeginBlock="nil" Type="KeyWord" />
 			<lexem BeginBlock="break" Type="KeyWord" />
