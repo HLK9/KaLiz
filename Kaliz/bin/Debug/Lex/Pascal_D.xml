@@ -2,18 +2,18 @@
 <ArrayOfConfigLanguage>
 <ConfigLanguage name="Pascal" CaseInsensitive="true" Known="Delphi" StartComment="{" EndComment="}">
 		<formats>
-			<format name="Text" Font="Cascadia Code SemiLight, 12pt" FontColor="#f8f8f2" />
-			<format name="Whitespace" Font="Cascadia Code, 12pt" FontColor="Black" />
-			<format name="KeyWord" Font="Cascadia Code, 12pt" FontColor="#ff5555" />
-			<format name="String" Font="Cascadia Code Italic SemiLight, 12pt" FontColor="#f1fa8c" />
-			<format name="Number" Font="Cascadia Code, 12pt" FontColor="#bd93f9" />
-			<format name="Operator" Font="Cascadia Code, 12pt" FontColor="#8be9fd" />
-			<format name="Comment" Font="Cascadia Code Italic SemiLight, 12pt" FontColor="#6272a4"/>
-			<format name="Error" Font="Courier New, 12pt" FontColor="#f8f8f2" underline="Wave" LineColor="Red" />
-			<format name="PreprocessorKeyword" Font="Cascadia Code, 12pt" FontColor="Gray" />
-			<format name="SelectedText" Font="Cascadia Code, 12pt" BackColor="Highlight" FontColor="HighlightText" />
-			<format name="CommentXML" Font="Cascadia Code, 12pt" FontColor="Gray" />
-			<format name="CollapsedText" Font="Cascadia Code, 12pt" FontColor="Black" BackColor="White"
+			<format name="Text" Font="Cascadia Code SemiLight, 13pt" FontColor="#f8f8f2" />
+			<format name="Whitespace" Font="Cascadia Code, 13pt" FontColor="Black" />
+			<format name="KeyWord" Font="Cascadia Code, 13pt" FontColor="#ff5555" />
+			<format name="String" Font="Cascadia Code SemiLight, 13pt" FontColor="#f1fa8c" />
+			<format name="Number" Font="Cascadia Code, 13pt" FontColor="#bd93f9" />
+			<format name="Operator" Font="Cascadia Code, 13pt" FontColor="#8be9fd" />
+			<format name="Comment" Font="Cascadia Code SemiLight, 13pt" FontColor="#6272a4"/>
+			<format name="Error" Font="Courier New, 13pt" FontColor="#f8f8f2" underline="Wave" LineColor="Red" />
+			<format name="PreprocessorKeyword" Font="Cascadia Code, 13pt" FontColor="Gray" />
+			<format name="SelectedText" Font="Cascadia Code, 13pt" BackColor="Highlight" FontColor="HighlightText" />
+			<format name="CommentXML" Font="Cascadia Code, 13pt" FontColor="Gray" />
+			<format name="CollapsedText" Font="Cascadia Code, 13pt" FontColor="Black" BackColor="White"
 				BorderColor="Gray" BorderStyle="Solid" />
 		</formats>
 		<extensions>
