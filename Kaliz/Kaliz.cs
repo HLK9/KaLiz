@@ -2231,7 +2231,8 @@ TabHienTai.InsertText(TabHienTai.CurrentLine, TabHienTai.CurrentColumn, radlistc
 
         private void radMenuItem3_Click_1(object sender, EventArgs e)
         {
-          
+            DockPar.DocumentManager.ActivateNextDocument();
+            DockPar.ShowDocumentCloseButton = true;
                    
                 
         }
@@ -2644,6 +2645,32 @@ TabHienTai.InsertText(TabHienTai.CurrentLine, TabHienTai.CurrentColumn, radlistc
                     { }
                 }
             }
+        }
+
+        private void radMenuItem16_Click(object sender, EventArgs e)
+        {
+            DockPar.DocumentManager.ActivatePreviousDocument();
+        }
+
+        private void SwitchNext_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                DockPar.DocumentManager.ActivateNextDocument();
+            }
+            catch
+            {
+                
+            }
+        }
+
+        private void SwitchPrevious_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                DockPar.DocumentManager.ActivatePreviousDocument();
+            }
+            catch { }
         }
     }
 }

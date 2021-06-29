@@ -80,6 +80,10 @@ namespace Kaliz
             this.Tcmd = new Telerik.WinControls.UI.RadMenuItem();
             this.TTermi = new Telerik.WinControls.UI.RadMenuItem();
             this.TEmail = new Telerik.WinControls.UI.RadMenuItem();
+            this.TDiff = new Telerik.WinControls.UI.RadMenuItem();
+            this.DSetDiff = new Telerik.WinControls.UI.RadMenuItem();
+            this.DOpenDiff = new Telerik.WinControls.UI.RadMenuItem();
+            this.DDiffDialog = new Telerik.WinControls.UI.RadMenuItem();
             this.MBuild = new Telerik.WinControls.UI.RadMenuItem();
             this.BRun = new Telerik.WinControls.UI.RadMenuItem();
             this.BBuild = new Telerik.WinControls.UI.RadMenuItem();
@@ -150,6 +154,7 @@ namespace Kaliz
             this.radMenuItem1 = new Telerik.WinControls.UI.RadMenuItem();
             this.radMenuItem3 = new Telerik.WinControls.UI.RadMenuItem();
             this.radMenuItem16 = new Telerik.WinControls.UI.RadMenuItem();
+            this.radMenuItem17 = new Telerik.WinControls.UI.RadMenuItem();
             this.MBookmark = new Telerik.WinControls.UI.RadMenuItem();
             this.BBookmark = new Telerik.WinControls.UI.RadMenuItem();
             this.radMenuItem2 = new Telerik.WinControls.UI.RadMenuItem();
@@ -171,11 +176,10 @@ namespace Kaliz
             this.radMenuHeaderItem1 = new Telerik.WinControls.UI.RadMenuHeaderItem();
             this.materialTealTheme1 = new Telerik.WinControls.Themes.MaterialTealTheme();
             this.object_d76c15f1_b4da_4f3f_b911_a99b364b78fa = new Telerik.WinControls.RootRadElement();
+            this.ESwitch = new Telerik.WinControls.UI.RadMenuItem();
+            this.SwitchNext = new Telerik.WinControls.UI.RadMenuItem();
+            this.SwitchPrevious = new Telerik.WinControls.UI.RadMenuItem();
             this.radMenu = new Telerik.WinControls.UI.RadMenu();
-            this.TDiff = new Telerik.WinControls.UI.RadMenuItem();
-            this.DSetDiff = new Telerik.WinControls.UI.RadMenuItem();
-            this.DOpenDiff = new Telerik.WinControls.UI.RadMenuItem();
-            this.DDiffDialog = new Telerik.WinControls.UI.RadMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.DockPar)).BeginInit();
             this.DockPar.SuspendLayout();
             this.documentWindow1.SuspendLayout();
@@ -211,8 +215,8 @@ namespace Kaliz
             this.Dclipboard.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.radlistclip)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.toolTabStrip3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.radMenu)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.radMenu)).BeginInit();
             this.SuspendLayout();
             // 
             // MFile
@@ -328,7 +332,8 @@ namespace Kaliz
             this.EEnd,
             this.EIndent,
             this.EOutdent,
-            this.EFold});
+            this.EFold,
+            this.ESwitch});
             this.MEdit.Name = "MEdit";
             this.MEdit.Text = "Edit";
             // 
@@ -561,6 +566,33 @@ namespace Kaliz
             this.TEmail.Name = "TEmail";
             this.TEmail.Text = "Send Email with this file";
             this.TEmail.Click += new System.EventHandler(this.TEmail_Click);
+            // 
+            // TDiff
+            // 
+            this.TDiff.Items.AddRange(new Telerik.WinControls.RadItem[] {
+            this.DSetDiff,
+            this.DOpenDiff,
+            this.DDiffDialog});
+            this.TDiff.Name = "TDiff";
+            this.TDiff.Text = "Different Merge";
+            // 
+            // DSetDiff
+            // 
+            this.DSetDiff.Name = "DSetDiff";
+            this.DSetDiff.Text = "Set Different in this file";
+            this.DSetDiff.Click += new System.EventHandler(this.DSetDiff_Click);
+            // 
+            // DOpenDiff
+            // 
+            this.DOpenDiff.Name = "DOpenDiff";
+            this.DOpenDiff.Text = "Open Different Merge";
+            this.DOpenDiff.Click += new System.EventHandler(this.DOpenDiff_Click);
+            // 
+            // DDiffDialog
+            // 
+            this.DDiffDialog.Name = "DDiffDialog";
+            this.DDiffDialog.Text = "Open Different Merge Dialog";
+            this.DDiffDialog.Click += new System.EventHandler(this.DDiffDialog_Click);
             // 
             // MBuild
             // 
@@ -1277,8 +1309,16 @@ namespace Kaliz
             // 
             // radMenuItem16
             // 
+            this.radMenuItem16.Items.AddRange(new Telerik.WinControls.RadItem[] {
+            this.radMenuItem17});
             this.radMenuItem16.Name = "radMenuItem16";
             this.radMenuItem16.Text = "radMenuItem16";
+            this.radMenuItem16.Click += new System.EventHandler(this.radMenuItem16_Click);
+            // 
+            // radMenuItem17
+            // 
+            this.radMenuItem17.Name = "radMenuItem17";
+            this.radMenuItem17.Text = "radMenuItem17";
             // 
             // MBookmark
             // 
@@ -1408,6 +1448,32 @@ namespace Kaliz
             this.object_d76c15f1_b4da_4f3f_b911_a99b364b78fa.StretchHorizontally = true;
             this.object_d76c15f1_b4da_4f3f_b911_a99b364b78fa.StretchVertically = true;
             // 
+            // ESwitch
+            // 
+            this.ESwitch.Items.AddRange(new Telerik.WinControls.RadItem[] {
+            this.SwitchNext,
+            this.SwitchPrevious});
+            this.ESwitch.Name = "ESwitch";
+            this.ESwitch.Text = "Switch File";
+            // 
+            // SwitchNext
+            // 
+            this.SwitchNext.Name = "SwitchNext";
+            this.SwitchNext.Text = "Next File";
+            this.SwitchNext.Click += new System.EventHandler(this.SwitchNext_Click);
+            // 
+            // SwitchPrevious
+            // 
+            this.SwitchPrevious.Name = "SwitchPrevious";
+            this.SwitchPrevious.Text = "Previous File";
+            this.SwitchPrevious.Click += new System.EventHandler(this.SwitchPrevious_Click);
+            // 
+            // Kaliz
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.ClientSize = new System.Drawing.Size(1257, 735);
+            // 
             // radMenu
             // 
             this.radMenu.Items.AddRange(new Telerik.WinControls.RadItem[] {
@@ -1426,39 +1492,6 @@ namespace Kaliz
             this.radMenu.Size = new System.Drawing.Size(1257, 37);
             this.radMenu.TabIndex = 1;
             this.radMenu.ThemeName = "MaterialTeal";
-            // 
-            // TDiff
-            // 
-            this.TDiff.Items.AddRange(new Telerik.WinControls.RadItem[] {
-            this.DSetDiff,
-            this.DOpenDiff,
-            this.DDiffDialog});
-            this.TDiff.Name = "TDiff";
-            this.TDiff.Text = "Different Merge";
-            // 
-            // DSetDiff
-            // 
-            this.DSetDiff.Name = "DSetDiff";
-            this.DSetDiff.Text = "Set Different in this file";
-            this.DSetDiff.Click += new System.EventHandler(this.DSetDiff_Click);
-            // 
-            // DOpenDiff
-            // 
-            this.DOpenDiff.Name = "DOpenDiff";
-            this.DOpenDiff.Text = "Open Different Merge";
-            this.DOpenDiff.Click += new System.EventHandler(this.DOpenDiff_Click);
-            // 
-            // DDiffDialog
-            // 
-            this.DDiffDialog.Name = "DDiffDialog";
-            this.DDiffDialog.Text = "Open Different Merge Dialog";
-            this.DDiffDialog.Click += new System.EventHandler(this.DDiffDialog_Click);
-            // 
-            // Kaliz
-            // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1257, 735);
             this.Controls.Add(this.DockPar);
             this.Controls.Add(this.radMenu);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -1653,11 +1686,15 @@ namespace Kaliz
         private RadMenuItem radMenuItem13;
         private RadMenuItem radMenuItem14;
         private RadMenuItem radMenuItem15;
-        private RadMenu radMenu;
         private RadMenuItem radMenuItem16;
         private RadMenuItem TDiff;
         private RadMenuItem DSetDiff;
         private RadMenuItem DOpenDiff;
         private RadMenuItem DDiffDialog;
+        private RadMenuItem radMenuItem17;
+        private RadMenuItem ESwitch;
+        private RadMenuItem SwitchNext;
+        private RadMenuItem SwitchPrevious;
+        private RadMenu radMenu;
     }
 }
