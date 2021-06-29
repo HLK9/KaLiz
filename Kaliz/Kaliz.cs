@@ -14,20 +14,19 @@ using System.IO;
 using System.Diagnostics;
 using Syncfusion.Windows.Forms.Edit.Interfaces;
 using Syncfusion.Windows.Forms.Edit.Enums;
-using Syncfusion.Windows.Forms.Edit.Implementation.Config;
+
 using Syncfusion.Drawing;
 using DiffPlex.WindowsForms.Controls;
 
 
 
 using Syncfusion.Windows.Forms;
-using Syncfusion.Windows.Forms.Localization;
+
 using Syncfusion.Windows.Forms.Edit.Implementation;
 using System.Collections;
-using Syncfusion.Windows.Forms.Edit.Implementation.Formatting;
-using System.Threading;
+
 using System.Text.RegularExpressions;
-using System.Runtime.InteropServices;
+
 using WK.Libraries.SharpClipboardNS;
 
 namespace Kaliz
@@ -45,7 +44,8 @@ namespace Kaliz
         public string Pathtosendemail;
         private string ConsoleUse = "Cmder";
         private string DiffOldText;
-        private string DiffNewText; 
+        private string DiffNewText;
+        private bool highlight = true;
 
 
         private int chiso { get; set; }
@@ -147,6 +147,8 @@ namespace Kaliz
             EEnd.Shortcuts.Add(new RadShortcut(Keys.Control, Keys.Down));
             EIndent.Shortcuts.Add(new RadShortcut(Keys.Control,Keys.OemCloseBrackets));
             EOutdent.Shortcuts.Add(new RadShortcut(Keys.Control, Keys.OemOpenBrackets));
+            SwitchNext.Shortcuts.Add(new RadShortcut(Keys.Control, Keys.PageUp));
+            SwitchPrevious.Shortcuts.Add(new RadShortcut(Keys.Control, Keys.PageDown));
             //Tools
             FFindSelected.Shortcuts.Add(new RadShortcut(Keys.Control, Keys.Enter));
             TTermi.Shortcuts.Add(new RadShortcut(Keys.Control | Keys.Alt, Keys.T));
@@ -416,6 +418,7 @@ namespace Kaliz
                         catch { }
                         break;
                }
+                this.WindowState = FormWindowState.Normal;
             }
               
                 
@@ -2030,7 +2033,7 @@ End;
        
         private void radMenuItem1_Click_1(object sender, EventArgs e)
         {
-
+           
           //  radPdfViewer1.LoadDocument(@"C:\Users\HLK9\Desktop\TraCuu.pdf");
             
         }
@@ -2671,6 +2674,23 @@ TabHienTai.InsertText(TabHienTai.CurrentLine, TabHienTai.CurrentColumn, radlistc
                 DockPar.DocumentManager.ActivatePreviousDocument();
             }
             catch { }
+        }
+
+        private void OHightlight_Click(object sender, EventArgs e)
+        {
+            if (highlight == true)
+            {
+                TabHienTai.HighlightCurrentLine = false;
+                OHightlight.Text = "Show Hightlight Current Line";
+                highlight = false;
+            }
+            else
+            {
+                TabHienTai.HighlightCurrentLine = true;
+                OHightlight.Text = "Hide Hightlight Current Line";
+                highlight = true;
+
+            }
         }
     }
 }
