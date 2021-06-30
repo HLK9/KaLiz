@@ -33,6 +33,7 @@ namespace Kaliz
         /// </summary>
         private void InitializeComponent()
         {
+            Telerik.WinControls.UI.Docking.AutoHideGroup autoHideGroup1 = new Telerik.WinControls.UI.Docking.AutoHideGroup();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Kaliz));
             this.MFile = new Telerik.WinControls.UI.RadMenuItem();
             this.FNew = new Telerik.WinControls.UI.RadMenuItem();
@@ -129,16 +130,8 @@ namespace Kaliz
             this.documentWindow1 = new Telerik.WinControls.UI.Docking.DocumentWindow();
             this.radButton2 = new Telerik.WinControls.UI.RadButton();
             this.radLabel10 = new Telerik.WinControls.UI.RadLabel();
-            this.radRichTextEditor3 = new Telerik.WinControls.UI.RadRichTextEditor();
-            this.radLabel9 = new Telerik.WinControls.UI.RadLabel();
-            this.radRichTextEditor2 = new Telerik.WinControls.UI.RadRichTextEditor();
-            this.radLabel4 = new Telerik.WinControls.UI.RadLabel();
-            this.radRichTextEditor1 = new Telerik.WinControls.UI.RadRichTextEditor();
-            this.radLabel3 = new Telerik.WinControls.UI.RadLabel();
             this.radLabel8 = new Telerik.WinControls.UI.RadLabel();
             this.radButton1 = new Telerik.WinControls.UI.RadButton();
-            this.radLabel7 = new Telerik.WinControls.UI.RadLabel();
-            this.panelWelcome = new Telerik.WinControls.UI.RadPanel();
             this.radLabel11 = new Telerik.WinControls.UI.RadLabel();
             this.recentList = new Telerik.WinControls.UI.RadListView();
             this.radLabel6 = new Telerik.WinControls.UI.RadLabel();
@@ -154,6 +147,7 @@ namespace Kaliz
             this.ListOutput = new Telerik.WinControls.UI.RadListView();
             this.Dclipboard = new Telerik.WinControls.UI.Docking.ToolWindow();
             this.radlistclip = new Telerik.WinControls.UI.RadListView();
+            this.DClosedFiles = new Telerik.WinControls.UI.Docking.ToolWindow();
             this.radMenuItem1 = new Telerik.WinControls.UI.RadMenuItem();
             this.radMenuItem3 = new Telerik.WinControls.UI.RadMenuItem();
             this.radMenuItem16 = new Telerik.WinControls.UI.RadMenuItem();
@@ -180,22 +174,17 @@ namespace Kaliz
             this.materialTealTheme1 = new Telerik.WinControls.Themes.MaterialTealTheme();
             this.object_d76c15f1_b4da_4f3f_b911_a99b364b78fa = new Telerik.WinControls.RootRadElement();
             this.radMenu = new Telerik.WinControls.UI.RadMenu();
+            this.listClosedFiles = new Telerik.WinControls.UI.RadListView();
+            this.dockWindowPlaceholder1 = new Telerik.WinControls.UI.Docking.DockWindowPlaceholder();
+            this.dockWindowPlaceholder2 = new Telerik.WinControls.UI.Docking.DockWindowPlaceholder();
+            this.dockWindowPlaceholder3 = new Telerik.WinControls.UI.Docking.DockWindowPlaceholder();
             ((System.ComponentModel.ISupportInitialize)(this.DockPar)).BeginInit();
             this.DockPar.SuspendLayout();
             this.documentWindow1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.radButton2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.radLabel10)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.radRichTextEditor3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.radLabel9)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.radRichTextEditor2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.radLabel4)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.radRichTextEditor1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.radLabel3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.radLabel8)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.radButton1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.radLabel7)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.panelWelcome)).BeginInit();
-            this.panelWelcome.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.radLabel11)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.recentList)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.radLabel6)).BeginInit();
@@ -214,8 +203,10 @@ namespace Kaliz
             ((System.ComponentModel.ISupportInitialize)(this.ListOutput)).BeginInit();
             this.Dclipboard.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.radlistclip)).BeginInit();
+            this.DClosedFiles.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.toolTabStrip3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.radMenu)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.listClosedFiles)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this)).BeginInit();
             this.SuspendLayout();
             // 
@@ -888,7 +879,7 @@ namespace Kaliz
             // 
             // DockPar
             // 
-            this.DockPar.ActiveWindow = this.Doutput;
+            this.DockPar.ActiveWindow = this.DClosedFiles;
             this.DockPar.CausesValidation = false;
             this.DockPar.Controls.Add(this.DContainer);
             this.DockPar.Controls.Add(this.toolTabStrip1);
@@ -903,6 +894,10 @@ namespace Kaliz
             // 
             // 
             this.DockPar.RootElement.MinSize = new System.Drawing.Size(25, 25);
+            autoHideGroup1.Windows.Add(this.dockWindowPlaceholder1);
+            autoHideGroup1.Windows.Add(this.dockWindowPlaceholder2);
+            autoHideGroup1.Windows.Add(this.dockWindowPlaceholder3);
+            this.DockPar.SerializableAutoHideContainer.BottomAutoHideGroups.Add(autoHideGroup1);
             this.DockPar.Size = new System.Drawing.Size(1257, 698);
             this.DockPar.SplitterWidth = 8;
             this.DockPar.TabIndex = 2;
@@ -911,19 +906,19 @@ namespace Kaliz
             // 
             // documentWindow1
             // 
+            this.documentWindow1.Controls.Add(this.radLabel11);
             this.documentWindow1.Controls.Add(this.radButton2);
+            this.documentWindow1.Controls.Add(this.radLabel5);
+            this.documentWindow1.Controls.Add(this.recentList);
+            this.documentWindow1.Controls.Add(this.ScreatePython);
             this.documentWindow1.Controls.Add(this.radLabel10);
-            this.documentWindow1.Controls.Add(this.radRichTextEditor3);
-            this.documentWindow1.Controls.Add(this.radLabel9);
-            this.documentWindow1.Controls.Add(this.radRichTextEditor2);
-            this.documentWindow1.Controls.Add(this.radLabel4);
-            this.documentWindow1.Controls.Add(this.radRichTextEditor1);
-            this.documentWindow1.Controls.Add(this.radLabel3);
+            this.documentWindow1.Controls.Add(this.ScreatPas);
+            this.documentWindow1.Controls.Add(this.radLabel6);
+            this.documentWindow1.Controls.Add(this.radLabel2);
             this.documentWindow1.Controls.Add(this.radLabel8);
+            this.documentWindow1.Controls.Add(this.radLabel1);
             this.documentWindow1.Controls.Add(this.radButton1);
-            this.documentWindow1.Controls.Add(this.radLabel7);
-            this.documentWindow1.Controls.Add(this.panelWelcome);
-            this.documentWindow1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.documentWindow1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.documentWindow1.Location = new System.Drawing.Point(4, 54);
             this.documentWindow1.Name = "documentWindow1";
             this.documentWindow1.PreviousDockState = Telerik.WinControls.UI.Docking.DockState.TabbedDocument;
@@ -934,7 +929,7 @@ namespace Kaliz
             // radButton2
             // 
             this.radButton2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.radButton2.Location = new System.Drawing.Point(1007, 404);
+            this.radButton2.Location = new System.Drawing.Point(1052, 408);
             this.radButton2.Name = "radButton2";
             this.radButton2.Size = new System.Drawing.Size(189, 36);
             this.radButton2.TabIndex = 3;
@@ -945,7 +940,7 @@ namespace Kaliz
             // 
             this.radLabel10.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.radLabel10.ImageAlignment = System.Drawing.ContentAlignment.MiddleCenter;
-            this.radLabel10.Location = new System.Drawing.Point(883, 409);
+            this.radLabel10.Location = new System.Drawing.Point(928, 413);
             this.radLabel10.Name = "radLabel10";
             this.radLabel10.Size = new System.Drawing.Size(118, 38);
             this.radLabel10.TabIndex = 3;
@@ -954,117 +949,11 @@ namespace Kaliz
     "tml>";
             this.radLabel10.TextAlignment = System.Drawing.ContentAlignment.TopLeft;
             // 
-            // radRichTextEditor3
-            // 
-            this.radRichTextEditor3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.radRichTextEditor3.BorderColor = System.Drawing.Color.White;
-            this.radRichTextEditor3.Location = new System.Drawing.Point(883, 289);
-            this.radRichTextEditor3.Name = "radRichTextEditor3";
-            this.radRichTextEditor3.SelectionFill = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(203)))), ((int)(((byte)(196)))));
-            this.radRichTextEditor3.SelectionStroke = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(203)))), ((int)(((byte)(196)))));
-            this.radRichTextEditor3.Size = new System.Drawing.Size(312, 110);
-            this.radRichTextEditor3.TabIndex = 5;
-            this.radRichTextEditor3.Text = resources.GetString("radRichTextEditor3.Text");
-            this.radRichTextEditor3.ThemeName = "MaterialTeal";
-            this.radRichTextEditor3.VerticalScrollBarVisibility = Telerik.WinControls.RichTextEditor.UI.ScrollBarVisibility.Hidden;
-            ((Telerik.WinForms.RichTextEditor.RadRichTextBox)(this.radRichTextEditor3.GetChildAt(0))).BorderColor = System.Drawing.Color.White;
-            ((Telerik.WinForms.RichTextEditor.RadRichTextBox)(this.radRichTextEditor3.GetChildAt(0))).SelectionFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(203)))), ((int)(((byte)(196)))));
-            ((Telerik.WinForms.RichTextEditor.RadRichTextBox)(this.radRichTextEditor3.GetChildAt(0))).SelectionStrokeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(203)))), ((int)(((byte)(196)))));
-            ((Telerik.WinForms.RichTextEditor.RadRichTextBox)(this.radRichTextEditor3.GetChildAt(0))).VerticalScrollBarVisibility = Telerik.WinControls.RichTextEditor.UI.ScrollBarVisibility.Hidden;
-            ((Telerik.WinForms.RichTextEditor.RadRichTextBox)(this.radRichTextEditor3.GetChildAt(0))).BackColor = System.Drawing.Color.White;
-            // 
-            // radLabel9
-            // 
-            this.radLabel9.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.radLabel9.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radLabel9.ForeColor = System.Drawing.Color.DarkSlateBlue;
-            this.radLabel9.Location = new System.Drawing.Point(883, 258);
-            this.radLabel9.Name = "radLabel9";
-            this.radLabel9.Size = new System.Drawing.Size(43, 31);
-            this.radLabel9.TabIndex = 4;
-            this.radLabel9.Text = "<html><span style=\"font-size: 16pt\"><strong>Vim</strong></span></html>";
-            // 
-            // radRichTextEditor2
-            // 
-            this.radRichTextEditor2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.radRichTextEditor2.BorderColor = System.Drawing.Color.White;
-            this.radRichTextEditor2.Location = new System.Drawing.Point(883, 104);
-            this.radRichTextEditor2.Name = "radRichTextEditor2";
-            this.radRichTextEditor2.SelectionFill = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(203)))), ((int)(((byte)(196)))));
-            this.radRichTextEditor2.SelectionStroke = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(203)))), ((int)(((byte)(196)))));
-            this.radRichTextEditor2.Size = new System.Drawing.Size(312, 158);
-            this.radRichTextEditor2.TabIndex = 4;
-            this.radRichTextEditor2.Text = resources.GetString("radRichTextEditor2.Text");
-            this.radRichTextEditor2.ThemeName = "MaterialTeal";
-            this.radRichTextEditor2.VerticalScrollBarVisibility = Telerik.WinControls.RichTextEditor.UI.ScrollBarVisibility.Hidden;
-            ((Telerik.WinForms.RichTextEditor.RadRichTextBox)(this.radRichTextEditor2.GetChildAt(0))).BorderColor = System.Drawing.Color.White;
-            ((Telerik.WinForms.RichTextEditor.RadRichTextBox)(this.radRichTextEditor2.GetChildAt(0))).SelectionFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(203)))), ((int)(((byte)(196)))));
-            ((Telerik.WinForms.RichTextEditor.RadRichTextBox)(this.radRichTextEditor2.GetChildAt(0))).SelectionStrokeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(203)))), ((int)(((byte)(196)))));
-            ((Telerik.WinForms.RichTextEditor.RadRichTextBox)(this.radRichTextEditor2.GetChildAt(0))).VerticalScrollBarVisibility = Telerik.WinControls.RichTextEditor.UI.ScrollBarVisibility.Hidden;
-            ((Telerik.WinForms.RichTextEditor.RadRichTextBox)(this.radRichTextEditor2.GetChildAt(0))).BackColor = System.Drawing.Color.White;
-            // 
-            // radLabel4
-            // 
-            this.radLabel4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.radLabel4.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radLabel4.ForeColor = System.Drawing.Color.DarkSlateBlue;
-            this.radLabel4.Location = new System.Drawing.Point(883, 74);
-            this.radLabel4.Name = "radLabel4";
-            this.radLabel4.Size = new System.Drawing.Size(70, 31);
-            this.radLabel4.TabIndex = 3;
-            this.radLabel4.Text = "<html><span style=\"font-size: 16pt\"><strong>Cmder</strong></span></html>";
-            // 
-            // radRichTextEditor1
-            // 
-            this.radRichTextEditor1.BorderColor = System.Drawing.Color.White;
-            this.radRichTextEditor1.IsContextMenuEnabled = false;
-            this.radRichTextEditor1.IsPasteOptionsPopupEnabled = false;
-            this.radRichTextEditor1.IsReadOnly = true;
-            this.radRichTextEditor1.IsSelectionEnabled = false;
-            this.radRichTextEditor1.IsSelectionMiniToolBarEnabled = false;
-            this.radRichTextEditor1.Location = new System.Drawing.Point(471, 106);
-            this.radRichTextEditor1.Name = "radRichTextEditor1";
-            // 
-            // 
-            // 
-            this.radRichTextEditor1.RootElement.ApplyShapeToControl = false;
-            this.radRichTextEditor1.RootElement.AutoSize = true;
-            this.radRichTextEditor1.SelectionFill = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(203)))), ((int)(((byte)(196)))));
-            this.radRichTextEditor1.SelectionStroke = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(203)))), ((int)(((byte)(196)))));
-            this.radRichTextEditor1.Size = new System.Drawing.Size(312, 261);
-            this.radRichTextEditor1.TabIndex = 3;
-            this.radRichTextEditor1.Text = resources.GetString("radRichTextEditor1.Text");
-            this.radRichTextEditor1.ThemeName = "MaterialTeal";
-            this.radRichTextEditor1.VerticalScrollBarVisibility = Telerik.WinControls.RichTextEditor.UI.ScrollBarVisibility.Hidden;
-            this.radRichTextEditor1.Click += new System.EventHandler(this.radRichTextEditor1_Click);
-            ((Telerik.WinForms.RichTextEditor.RadRichTextBox)(this.radRichTextEditor1.GetChildAt(0))).BorderColor = System.Drawing.Color.White;
-            ((Telerik.WinForms.RichTextEditor.RadRichTextBox)(this.radRichTextEditor1.GetChildAt(0))).SelectionFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(203)))), ((int)(((byte)(196)))));
-            ((Telerik.WinForms.RichTextEditor.RadRichTextBox)(this.radRichTextEditor1.GetChildAt(0))).SelectionStrokeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(203)))), ((int)(((byte)(196)))));
-            ((Telerik.WinForms.RichTextEditor.RadRichTextBox)(this.radRichTextEditor1.GetChildAt(0))).IsReadOnly = true;
-            ((Telerik.WinForms.RichTextEditor.RadRichTextBox)(this.radRichTextEditor1.GetChildAt(0))).IsContextMenuEnabled = false;
-            ((Telerik.WinForms.RichTextEditor.RadRichTextBox)(this.radRichTextEditor1.GetChildAt(0))).IsPasteOptionsPopupEnabled = false;
-            ((Telerik.WinForms.RichTextEditor.RadRichTextBox)(this.radRichTextEditor1.GetChildAt(0))).IsSelectionMiniToolBarEnabled = false;
-            ((Telerik.WinForms.RichTextEditor.RadRichTextBox)(this.radRichTextEditor1.GetChildAt(0))).IsImageMiniToolBarEnabled = false;
-            ((Telerik.WinForms.RichTextEditor.RadRichTextBox)(this.radRichTextEditor1.GetChildAt(0))).VerticalScrollBarVisibility = Telerik.WinControls.RichTextEditor.UI.ScrollBarVisibility.Hidden;
-            ((Telerik.WinForms.RichTextEditor.RadRichTextBox)(this.radRichTextEditor1.GetChildAt(0))).IsSelectionEnabled = false;
-            ((Telerik.WinForms.RichTextEditor.RadRichTextBox)(this.radRichTextEditor1.GetChildAt(0))).BackColor = System.Drawing.Color.White;
-            // 
-            // radLabel3
-            // 
-            this.radLabel3.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radLabel3.ForeColor = System.Drawing.Color.DarkSlateBlue;
-            this.radLabel3.Location = new System.Drawing.Point(471, 74);
-            this.radLabel3.Name = "radLabel3";
-            this.radLabel3.Size = new System.Drawing.Size(335, 31);
-            this.radLabel3.TabIndex = 2;
-            this.radLabel3.Text = "<html><span style=\"font-size: 16pt\"><strong>Nhưng... tại sao lại là tiếng Anh?</s" +
-    "trong></span></html>";
-            // 
             // radLabel8
             // 
             this.radLabel8.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.radLabel8.ImageAlignment = System.Drawing.ContentAlignment.MiddleCenter;
-            this.radLabel8.Location = new System.Drawing.Point(471, 408);
+            this.radLabel8.Location = new System.Drawing.Point(14, 408);
             this.radLabel8.Name = "radLabel8";
             this.radLabel8.Size = new System.Drawing.Size(107, 38);
             this.radLabel8.TabIndex = 2;
@@ -1076,48 +965,18 @@ namespace Kaliz
             // radButton1
             // 
             this.radButton1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.radButton1.Location = new System.Drawing.Point(586, 404);
+            this.radButton1.Location = new System.Drawing.Point(129, 404);
             this.radButton1.Name = "radButton1";
             this.radButton1.Size = new System.Drawing.Size(189, 36);
             this.radButton1.TabIndex = 2;
             this.radButton1.Text = "See Document";
             this.radButton1.ThemeName = "MaterialTeal";
             // 
-            // radLabel7
-            // 
-            this.radLabel7.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.radLabel7.ImageAlignment = System.Drawing.ContentAlignment.MiddleCenter;
-            this.radLabel7.Location = new System.Drawing.Point(806, 3);
-            this.radLabel7.Name = "radLabel7";
-            this.radLabel7.Size = new System.Drawing.Size(435, 66);
-            this.radLabel7.TabIndex = 1;
-            this.radLabel7.Text = "<html><span style=\"font-size: 36pt; color: #008080\">What\'s new in Kaliz?</span></" +
-    "html>";
-            this.radLabel7.TextAlignment = System.Drawing.ContentAlignment.TopLeft;
-            // 
-            // panelWelcome
-            // 
-            this.panelWelcome.BackColor = System.Drawing.Color.MintCream;
-            this.panelWelcome.Controls.Add(this.radLabel11);
-            this.panelWelcome.Controls.Add(this.recentList);
-            this.panelWelcome.Controls.Add(this.radLabel6);
-            this.panelWelcome.Controls.Add(this.radLabel5);
-            this.panelWelcome.Controls.Add(this.ScreatePython);
-            this.panelWelcome.Controls.Add(this.ScreatPas);
-            this.panelWelcome.Controls.Add(this.radLabel2);
-            this.panelWelcome.Controls.Add(this.radLabel1);
-            this.panelWelcome.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panelWelcome.Location = new System.Drawing.Point(0, 0);
-            this.panelWelcome.Name = "panelWelcome";
-            this.panelWelcome.Size = new System.Drawing.Size(449, 447);
-            this.panelWelcome.TabIndex = 0;
-            this.panelWelcome.ThemeName = "MaterialTeal";
-            // 
             // radLabel11
             // 
             this.radLabel11.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.radLabel11.ForeColor = System.Drawing.Color.Crimson;
-            this.radLabel11.Location = new System.Drawing.Point(31, 232);
+            this.radLabel11.Location = new System.Drawing.Point(8, 248);
             this.radLabel11.Name = "radLabel11";
             this.radLabel11.Size = new System.Drawing.Size(77, 25);
             this.radLabel11.TabIndex = 4;
@@ -1134,9 +993,9 @@ namespace Kaliz
             | System.Windows.Forms.AnchorStyles.Right)));
             this.recentList.GroupItemSize = new System.Drawing.Size(200, 36);
             this.recentList.ItemSize = new System.Drawing.Size(200, 36);
-            this.recentList.Location = new System.Drawing.Point(31, 316);
+            this.recentList.Location = new System.Drawing.Point(384, 131);
             this.recentList.Name = "recentList";
-            this.recentList.Size = new System.Drawing.Size(372, 178);
+            this.recentList.Size = new System.Drawing.Size(391, 178);
             this.recentList.TabIndex = 4;
             this.recentList.ThemeName = "MaterialTeal";
             this.recentList.ItemMouseDoubleClick += new Telerik.WinControls.UI.ListViewItemEventHandler(this.recentList_ItemMouseDoubleClick);
@@ -1145,7 +1004,7 @@ namespace Kaliz
             // 
             this.radLabel6.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.radLabel6.ForeColor = System.Drawing.Color.Gray;
-            this.radLabel6.Location = new System.Drawing.Point(31, 271);
+            this.radLabel6.Location = new System.Drawing.Point(384, 86);
             this.radLabel6.Name = "radLabel6";
             this.radLabel6.Size = new System.Drawing.Size(95, 41);
             this.radLabel6.TabIndex = 2;
@@ -1155,7 +1014,7 @@ namespace Kaliz
             // 
             this.radLabel5.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.radLabel5.ForeColor = System.Drawing.Color.Crimson;
-            this.radLabel5.Location = new System.Drawing.Point(31, 195);
+            this.radLabel5.Location = new System.Drawing.Point(8, 211);
             this.radLabel5.Name = "radLabel5";
             this.radLabel5.Size = new System.Drawing.Size(270, 25);
             this.radLabel5.TabIndex = 3;
@@ -1168,7 +1027,7 @@ namespace Kaliz
             // 
             this.ScreatePython.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ScreatePython.ForeColor = System.Drawing.Color.Crimson;
-            this.ScreatePython.Location = new System.Drawing.Point(31, 155);
+            this.ScreatePython.Location = new System.Drawing.Point(8, 171);
             this.ScreatePython.Name = "ScreatePython";
             this.ScreatePython.Size = new System.Drawing.Size(272, 25);
             this.ScreatePython.TabIndex = 3;
@@ -1181,7 +1040,7 @@ namespace Kaliz
             // 
             this.ScreatPas.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ScreatPas.ForeColor = System.Drawing.Color.Crimson;
-            this.ScreatPas.Location = new System.Drawing.Point(31, 116);
+            this.ScreatPas.Location = new System.Drawing.Point(8, 132);
             this.ScreatPas.Name = "ScreatPas";
             this.ScreatPas.Size = new System.Drawing.Size(265, 25);
             this.ScreatPas.TabIndex = 2;
@@ -1194,7 +1053,7 @@ namespace Kaliz
             // 
             this.radLabel2.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.radLabel2.ForeColor = System.Drawing.Color.Gray;
-            this.radLabel2.Location = new System.Drawing.Point(31, 70);
+            this.radLabel2.Location = new System.Drawing.Point(8, 86);
             this.radLabel2.Name = "radLabel2";
             this.radLabel2.Size = new System.Drawing.Size(69, 41);
             this.radLabel2.TabIndex = 1;
@@ -1203,7 +1062,7 @@ namespace Kaliz
             // radLabel1
             // 
             this.radLabel1.ImageAlignment = System.Drawing.ContentAlignment.MiddleCenter;
-            this.radLabel1.Location = new System.Drawing.Point(31, 3);
+            this.radLabel1.Location = new System.Drawing.Point(403, 3);
             this.radLabel1.Name = "radLabel1";
             this.radLabel1.Size = new System.Drawing.Size(372, 81);
             this.radLabel1.TabIndex = 0;
@@ -1213,6 +1072,7 @@ namespace Kaliz
             // 
             // DContainer
             // 
+            this.DContainer.CausesValidation = false;
             this.DContainer.Controls.Add(this.documentTabStrip1);
             this.DContainer.Name = "DContainer";
             // 
@@ -1228,6 +1088,7 @@ namespace Kaliz
             // documentTabStrip1
             // 
             this.documentTabStrip1.CanUpdateChildIndex = true;
+            this.documentTabStrip1.CausesValidation = false;
             this.documentTabStrip1.Controls.Add(this.documentWindow1);
             this.documentTabStrip1.Location = new System.Drawing.Point(0, 0);
             this.documentTabStrip1.Name = "documentTabStrip1";
@@ -1247,13 +1108,14 @@ namespace Kaliz
             this.toolTabStrip1.CausesValidation = false;
             this.toolTabStrip1.Controls.Add(this.Doutput);
             this.toolTabStrip1.Controls.Add(this.Dclipboard);
+            this.toolTabStrip1.Controls.Add(this.DClosedFiles);
             this.toolTabStrip1.Location = new System.Drawing.Point(0, 513);
             this.toolTabStrip1.Name = "toolTabStrip1";
             // 
             // 
             // 
             this.toolTabStrip1.RootElement.MinSize = new System.Drawing.Size(25, 25);
-            this.toolTabStrip1.SelectedIndex = 0;
+            this.toolTabStrip1.SelectedIndex = 2;
             this.toolTabStrip1.ShowItemPinButton = true;
             this.toolTabStrip1.Size = new System.Drawing.Size(1257, 185);
             this.toolTabStrip1.SizeInfo.AbsoluteSize = new System.Drawing.Size(200, 185);
@@ -1295,7 +1157,7 @@ namespace Kaliz
             this.Dclipboard.Location = new System.Drawing.Point(4, 52);
             this.Dclipboard.Name = "Dclipboard";
             this.Dclipboard.PreviousDockState = Telerik.WinControls.UI.Docking.DockState.Docked;
-            this.Dclipboard.Size = new System.Drawing.Size(1249, 103);
+            this.Dclipboard.Size = new System.Drawing.Size(1083, 103);
             this.Dclipboard.Text = "ClipBoard";
             this.Dclipboard.ToolCaptionButtons = Telerik.WinControls.UI.Docking.ToolStripCaptionButtons.AutoHide;
             // 
@@ -1308,10 +1170,22 @@ namespace Kaliz
             this.radlistclip.ItemSize = new System.Drawing.Size(200, 36);
             this.radlistclip.Location = new System.Drawing.Point(0, 0);
             this.radlistclip.Name = "radlistclip";
-            this.radlistclip.Size = new System.Drawing.Size(1249, 103);
+            this.radlistclip.Size = new System.Drawing.Size(1083, 103);
             this.radlistclip.TabIndex = 0;
             this.radlistclip.ThemeName = "MaterialTeal";
             this.radlistclip.ItemMouseDoubleClick += new Telerik.WinControls.UI.ListViewItemEventHandler(this.radlistclip_ItemMouseDoubleClick);
+            // 
+            // DClosedFiles
+            // 
+            this.DClosedFiles.Caption = null;
+            this.DClosedFiles.Controls.Add(this.listClosedFiles);
+            this.DClosedFiles.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            this.DClosedFiles.Location = new System.Drawing.Point(4, 52);
+            this.DClosedFiles.Name = "DClosedFiles";
+            this.DClosedFiles.PreviousDockState = Telerik.WinControls.UI.Docking.DockState.Docked;
+            this.DClosedFiles.Size = new System.Drawing.Size(1249, 103);
+            this.DClosedFiles.Text = "Closed Files";
+            this.DClosedFiles.ToolCaptionButtons = Telerik.WinControls.UI.Docking.ToolStripCaptionButtons.AutoHide;
             // 
             // radMenuItem1
             // 
@@ -1488,6 +1362,54 @@ namespace Kaliz
             this.radMenu.TabIndex = 1;
             this.radMenu.ThemeName = "MaterialTeal";
             // 
+            // listClosedFiles
+            // 
+            this.listClosedFiles.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.listClosedFiles.GroupItemSize = new System.Drawing.Size(200, 36);
+            this.listClosedFiles.ItemSize = new System.Drawing.Size(200, 36);
+            this.listClosedFiles.Location = new System.Drawing.Point(0, 0);
+            this.listClosedFiles.Name = "listClosedFiles";
+            this.listClosedFiles.Size = new System.Drawing.Size(1249, 103);
+            this.listClosedFiles.TabIndex = 0;
+            this.listClosedFiles.ThemeName = "MaterialTeal";
+            this.listClosedFiles.ItemMouseDoubleClick += new Telerik.WinControls.UI.ListViewItemEventHandler(this.listClosedFiles_ItemMouseDoubleClick);
+            // 
+            // dockWindowPlaceholder1
+            // 
+            this.dockWindowPlaceholder1.AutoHideSize = new System.Drawing.Size(200, 185);
+            this.dockWindowPlaceholder1.DockWindowName = "Doutput";
+            this.dockWindowPlaceholder1.DockWindowText = "Output";
+            this.dockWindowPlaceholder1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            this.dockWindowPlaceholder1.Location = new System.Drawing.Point(0, 0);
+            this.dockWindowPlaceholder1.Name = "dockWindowPlaceholder1";
+            this.dockWindowPlaceholder1.PreviousDockState = Telerik.WinControls.UI.Docking.DockState.Docked;
+            this.dockWindowPlaceholder1.Size = new System.Drawing.Size(200, 200);
+            this.dockWindowPlaceholder1.Text = "dockWindowPlaceholder1";
+            // 
+            // dockWindowPlaceholder2
+            // 
+            this.dockWindowPlaceholder2.AutoHideSize = new System.Drawing.Size(200, 185);
+            this.dockWindowPlaceholder2.DockWindowName = "Dclipboard";
+            this.dockWindowPlaceholder2.DockWindowText = "ClipBoard";
+            this.dockWindowPlaceholder2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            this.dockWindowPlaceholder2.Location = new System.Drawing.Point(0, 0);
+            this.dockWindowPlaceholder2.Name = "dockWindowPlaceholder2";
+            this.dockWindowPlaceholder2.PreviousDockState = Telerik.WinControls.UI.Docking.DockState.Docked;
+            this.dockWindowPlaceholder2.Size = new System.Drawing.Size(200, 200);
+            this.dockWindowPlaceholder2.Text = "dockWindowPlaceholder2";
+            // 
+            // dockWindowPlaceholder3
+            // 
+            this.dockWindowPlaceholder3.AutoHideSize = new System.Drawing.Size(200, 185);
+            this.dockWindowPlaceholder3.DockWindowName = "DClosedFiles";
+            this.dockWindowPlaceholder3.DockWindowText = "Closed Files";
+            this.dockWindowPlaceholder3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            this.dockWindowPlaceholder3.Location = new System.Drawing.Point(0, 0);
+            this.dockWindowPlaceholder3.Name = "dockWindowPlaceholder3";
+            this.dockWindowPlaceholder3.PreviousDockState = Telerik.WinControls.UI.Docking.DockState.Docked;
+            this.dockWindowPlaceholder3.Size = new System.Drawing.Size(200, 200);
+            this.dockWindowPlaceholder3.Text = "dockWindowPlaceholder3";
+            // 
             // Kaliz
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1513,18 +1435,8 @@ namespace Kaliz
             this.documentWindow1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.radButton2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.radLabel10)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.radRichTextEditor3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.radLabel9)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.radRichTextEditor2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.radLabel4)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.radRichTextEditor1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.radLabel3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.radLabel8)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.radButton1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.radLabel7)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.panelWelcome)).EndInit();
-            this.panelWelcome.ResumeLayout(false);
-            this.panelWelcome.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.radLabel11)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.recentList)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.radLabel6)).EndInit();
@@ -1543,8 +1455,10 @@ namespace Kaliz
             ((System.ComponentModel.ISupportInitialize)(this.ListOutput)).EndInit();
             this.Dclipboard.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.radlistclip)).EndInit();
+            this.DClosedFiles.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.toolTabStrip3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.radMenu)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.listClosedFiles)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -1663,23 +1577,15 @@ namespace Kaliz
         private RadMenuItem BBuildaRun;
         private Telerik.WinControls.UI.Docking.DocumentWindow documentWindow1;
         private Telerik.WinControls.UI.Docking.DocumentTabStrip documentTabStrip1;
-        private RadPanel panelWelcome;
         private RadLabel radLabel5;
         private RadLabel ScreatePython;
         private RadLabel ScreatPas;
         private RadLabel radLabel2;
         private RadLabel radLabel1;
         private RadLabel radLabel6;
-        private RadLabel radLabel7;
         private RadLabel radLabel8;
         private RadButton radButton1;
         private RadListView recentList;
-        private RadRichTextEditor radRichTextEditor1;
-        private RadLabel radLabel3;
-        private RadRichTextEditor radRichTextEditor3;
-        private RadLabel radLabel9;
-        private RadRichTextEditor radRichTextEditor2;
-        private RadLabel radLabel4;
         private RadButton radButton2;
         private RadLabel radLabel10;
         private RootRadElement object_d76c15f1_b4da_4f3f_b911_a99b364b78fa;
@@ -1698,5 +1604,10 @@ namespace Kaliz
         private RadMenuItem SwitchNext;
         private RadMenuItem SwitchPrevious;
         private RadMenu radMenu;
+        private Telerik.WinControls.UI.Docking.ToolWindow DClosedFiles;
+        private RadListView listClosedFiles;
+        private Telerik.WinControls.UI.Docking.DockWindowPlaceholder dockWindowPlaceholder1;
+        private Telerik.WinControls.UI.Docking.DockWindowPlaceholder dockWindowPlaceholder2;
+        private Telerik.WinControls.UI.Docking.DockWindowPlaceholder dockWindowPlaceholder3;
     }
 }
