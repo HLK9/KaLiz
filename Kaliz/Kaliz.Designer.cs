@@ -35,6 +35,9 @@ namespace Kaliz
         {
             Telerik.WinControls.UI.Docking.AutoHideGroup autoHideGroup1 = new Telerik.WinControls.UI.Docking.AutoHideGroup();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Kaliz));
+            this.dockWindowPlaceholder1 = new Telerik.WinControls.UI.Docking.DockWindowPlaceholder();
+            this.dockWindowPlaceholder2 = new Telerik.WinControls.UI.Docking.DockWindowPlaceholder();
+            this.dockWindowPlaceholder3 = new Telerik.WinControls.UI.Docking.DockWindowPlaceholder();
             this.MFile = new Telerik.WinControls.UI.RadMenuItem();
             this.FNew = new Telerik.WinControls.UI.RadMenuItem();
             this.FOpen = new Telerik.WinControls.UI.RadMenuItem();
@@ -127,27 +130,24 @@ namespace Kaliz
             this.HAbout = new Telerik.WinControls.UI.RadMenuItem();
             this.HLookUp = new Telerik.WinControls.UI.RadMenuItem();
             this.DockPar = new Telerik.WinControls.UI.Docking.RadDock();
-            this.documentWindow1 = new Telerik.WinControls.UI.Docking.DocumentWindow();
-            this.radButton2 = new Telerik.WinControls.UI.RadButton();
-            this.radLabel10 = new Telerik.WinControls.UI.RadLabel();
-            this.radLabel8 = new Telerik.WinControls.UI.RadLabel();
-            this.radButton1 = new Telerik.WinControls.UI.RadButton();
-            this.radLabel11 = new Telerik.WinControls.UI.RadLabel();
-            this.recentList = new Telerik.WinControls.UI.RadListView();
-            this.radLabel6 = new Telerik.WinControls.UI.RadLabel();
-            this.radLabel5 = new Telerik.WinControls.UI.RadLabel();
-            this.ScreatePython = new Telerik.WinControls.UI.RadLabel();
-            this.ScreatPas = new Telerik.WinControls.UI.RadLabel();
-            this.radLabel2 = new Telerik.WinControls.UI.RadLabel();
-            this.radLabel1 = new Telerik.WinControls.UI.RadLabel();
+            this.DClosedFiles = new Telerik.WinControls.UI.Docking.ToolWindow();
+            this.listClosedFiles = new Telerik.WinControls.UI.RadListView();
             this.DContainer = new Telerik.WinControls.UI.Docking.DocumentContainer();
             this.documentTabStrip1 = new Telerik.WinControls.UI.Docking.DocumentTabStrip();
+            this.documentWindow1 = new Telerik.WinControls.UI.Docking.DocumentWindow();
+            this.radButton2 = new Telerik.WinControls.UI.RadButton();
+            //this.recentList = new Telerik.WinControls.UI.RadListView();
+            this.radLabel10 = new Telerik.WinControls.UI.RadLabel();
+            this.radLabel6 = new Telerik.WinControls.UI.RadLabel();
+            this.radLabel2 = new Telerik.WinControls.UI.RadLabel();
+            this.radLabel8 = new Telerik.WinControls.UI.RadLabel();
+            this.radLabel1 = new Telerik.WinControls.UI.RadLabel();
+            this.radButton1 = new Telerik.WinControls.UI.RadButton();
             this.toolTabStrip1 = new Telerik.WinControls.UI.Docking.ToolTabStrip();
             this.Doutput = new Telerik.WinControls.UI.Docking.ToolWindow();
             this.ListOutput = new Telerik.WinControls.UI.RadListView();
             this.Dclipboard = new Telerik.WinControls.UI.Docking.ToolWindow();
             this.radlistclip = new Telerik.WinControls.UI.RadListView();
-            this.DClosedFiles = new Telerik.WinControls.UI.Docking.ToolWindow();
             this.radMenuItem1 = new Telerik.WinControls.UI.RadMenuItem();
             this.radMenuItem3 = new Telerik.WinControls.UI.RadMenuItem();
             this.radMenuItem16 = new Telerik.WinControls.UI.RadMenuItem();
@@ -174,41 +174,78 @@ namespace Kaliz
             this.materialTealTheme1 = new Telerik.WinControls.Themes.MaterialTealTheme();
             this.object_d76c15f1_b4da_4f3f_b911_a99b364b78fa = new Telerik.WinControls.RootRadElement();
             this.radMenu = new Telerik.WinControls.UI.RadMenu();
-            this.listClosedFiles = new Telerik.WinControls.UI.RadListView();
-            this.dockWindowPlaceholder1 = new Telerik.WinControls.UI.Docking.DockWindowPlaceholder();
-            this.dockWindowPlaceholder2 = new Telerik.WinControls.UI.Docking.DockWindowPlaceholder();
-            this.dockWindowPlaceholder3 = new Telerik.WinControls.UI.Docking.DockWindowPlaceholder();
+            this.wclPascal = new Telerik.WinControls.UI.RadButton();
+            this.wclPython = new Telerik.WinControls.UI.RadButton();
+            this.wclCc = new Telerik.WinControls.UI.RadButton();
+            this.wclOpen = new Telerik.WinControls.UI.RadButton();
             ((System.ComponentModel.ISupportInitialize)(this.DockPar)).BeginInit();
             this.DockPar.SuspendLayout();
-            this.documentWindow1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.radButton2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.radLabel10)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.radLabel8)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.radButton1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.radLabel11)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.recentList)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.radLabel6)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.radLabel5)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ScreatePython)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ScreatPas)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.radLabel2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.radLabel1)).BeginInit();
+            this.DClosedFiles.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.listClosedFiles)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DContainer)).BeginInit();
             this.DContainer.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.documentTabStrip1)).BeginInit();
             this.documentTabStrip1.SuspendLayout();
+            this.documentWindow1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.radButton2)).BeginInit();
+           // ((System.ComponentModel.ISupportInitialize)(this.recentList)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.radLabel10)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.radLabel6)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.radLabel2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.radLabel8)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.radLabel1)).BeginInit();
+            this.radLabel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.radButton1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.toolTabStrip1)).BeginInit();
             this.toolTabStrip1.SuspendLayout();
             this.Doutput.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ListOutput)).BeginInit();
             this.Dclipboard.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.radlistclip)).BeginInit();
-            this.DClosedFiles.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.toolTabStrip3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.radMenu)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.listClosedFiles)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.wclPascal)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.wclPython)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.wclCc)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.wclOpen)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this)).BeginInit();
             this.SuspendLayout();
+            // 
+            // dockWindowPlaceholder1
+            // 
+            this.dockWindowPlaceholder1.AutoHideSize = new System.Drawing.Size(200, 185);
+            this.dockWindowPlaceholder1.DockWindowName = "Doutput";
+            this.dockWindowPlaceholder1.DockWindowText = "Output";
+            this.dockWindowPlaceholder1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            this.dockWindowPlaceholder1.Location = new System.Drawing.Point(0, 0);
+            this.dockWindowPlaceholder1.Name = "dockWindowPlaceholder1";
+            this.dockWindowPlaceholder1.PreviousDockState = Telerik.WinControls.UI.Docking.DockState.Docked;
+            this.dockWindowPlaceholder1.Size = new System.Drawing.Size(200, 200);
+            this.dockWindowPlaceholder1.Text = "dockWindowPlaceholder1";
+            // 
+            // dockWindowPlaceholder2
+            // 
+            this.dockWindowPlaceholder2.AutoHideSize = new System.Drawing.Size(200, 185);
+            this.dockWindowPlaceholder2.DockWindowName = "Dclipboard";
+            this.dockWindowPlaceholder2.DockWindowText = "ClipBoard";
+            this.dockWindowPlaceholder2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            this.dockWindowPlaceholder2.Location = new System.Drawing.Point(0, 0);
+            this.dockWindowPlaceholder2.Name = "dockWindowPlaceholder2";
+            this.dockWindowPlaceholder2.PreviousDockState = Telerik.WinControls.UI.Docking.DockState.Docked;
+            this.dockWindowPlaceholder2.Size = new System.Drawing.Size(200, 200);
+            this.dockWindowPlaceholder2.Text = "dockWindowPlaceholder2";
+            // 
+            // dockWindowPlaceholder3
+            // 
+            this.dockWindowPlaceholder3.AutoHideSize = new System.Drawing.Size(200, 185);
+            this.dockWindowPlaceholder3.DockWindowName = "DClosedFiles";
+            this.dockWindowPlaceholder3.DockWindowText = "Closed Files";
+            this.dockWindowPlaceholder3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            this.dockWindowPlaceholder3.Location = new System.Drawing.Point(0, 0);
+            this.dockWindowPlaceholder3.Name = "dockWindowPlaceholder3";
+            this.dockWindowPlaceholder3.PreviousDockState = Telerik.WinControls.UI.Docking.DockState.Docked;
+            this.dockWindowPlaceholder3.Size = new System.Drawing.Size(200, 200);
+            this.dockWindowPlaceholder3.Text = "dockWindowPlaceholder3";
             // 
             // MFile
             // 
@@ -904,171 +941,29 @@ namespace Kaliz
             this.DockPar.TabStop = false;
             this.DockPar.ThemeName = "MaterialTeal";
             // 
-            // documentWindow1
+            // DClosedFiles
             // 
-            this.documentWindow1.Controls.Add(this.radLabel11);
-            this.documentWindow1.Controls.Add(this.radButton2);
-            this.documentWindow1.Controls.Add(this.radLabel5);
-            this.documentWindow1.Controls.Add(this.recentList);
-            this.documentWindow1.Controls.Add(this.ScreatePython);
-            this.documentWindow1.Controls.Add(this.radLabel10);
-            this.documentWindow1.Controls.Add(this.ScreatPas);
-            this.documentWindow1.Controls.Add(this.radLabel6);
-            this.documentWindow1.Controls.Add(this.radLabel2);
-            this.documentWindow1.Controls.Add(this.radLabel8);
-            this.documentWindow1.Controls.Add(this.radLabel1);
-            this.documentWindow1.Controls.Add(this.radButton1);
-            this.documentWindow1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.documentWindow1.Location = new System.Drawing.Point(4, 54);
-            this.documentWindow1.Name = "documentWindow1";
-            this.documentWindow1.PreviousDockState = Telerik.WinControls.UI.Docking.DockState.TabbedDocument;
-            this.documentWindow1.Size = new System.Drawing.Size(1249, 447);
-            this.documentWindow1.Text = "Welcome";
-            this.documentWindow1.Click += new System.EventHandler(this.documentWindow1_Click);
+            this.DClosedFiles.Caption = null;
+            this.DClosedFiles.Controls.Add(this.listClosedFiles);
+            this.DClosedFiles.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            this.DClosedFiles.Location = new System.Drawing.Point(4, 52);
+            this.DClosedFiles.Name = "DClosedFiles";
+            this.DClosedFiles.PreviousDockState = Telerik.WinControls.UI.Docking.DockState.Docked;
+            this.DClosedFiles.Size = new System.Drawing.Size(1249, 103);
+            this.DClosedFiles.Text = "Closed Files";
+            this.DClosedFiles.ToolCaptionButtons = Telerik.WinControls.UI.Docking.ToolStripCaptionButtons.AutoHide;
             // 
-            // radButton2
+            // listClosedFiles
             // 
-            this.radButton2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.radButton2.Location = new System.Drawing.Point(1052, 408);
-            this.radButton2.Name = "radButton2";
-            this.radButton2.Size = new System.Drawing.Size(189, 36);
-            this.radButton2.TabIndex = 3;
-            this.radButton2.Text = "Explore GoPas Editor";
-            this.radButton2.ThemeName = "MaterialTeal";
-            // 
-            // radLabel10
-            // 
-            this.radLabel10.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.radLabel10.ImageAlignment = System.Drawing.ContentAlignment.MiddleCenter;
-            this.radLabel10.Location = new System.Drawing.Point(928, 413);
-            this.radLabel10.Name = "radLabel10";
-            this.radLabel10.Size = new System.Drawing.Size(118, 38);
-            this.radLabel10.TabIndex = 3;
-            this.radLabel10.Text = "<html><p><span style=\"font-size: 36pt; color: #008080\"><span style=\"font-size: 12" +
-    "pt\"><strong>Other Product?</strong></span></span></p><p><strong></strong></p></h" +
-    "tml>";
-            this.radLabel10.TextAlignment = System.Drawing.ContentAlignment.TopLeft;
-            // 
-            // radLabel8
-            // 
-            this.radLabel8.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.radLabel8.ImageAlignment = System.Drawing.ContentAlignment.MiddleCenter;
-            this.radLabel8.Location = new System.Drawing.Point(14, 408);
-            this.radLabel8.Name = "radLabel8";
-            this.radLabel8.Size = new System.Drawing.Size(107, 38);
-            this.radLabel8.TabIndex = 2;
-            this.radLabel8.Text = "<html><p><span style=\"font-size: 36pt; color: #008080\"><span style=\"font-size: 12" +
-    "pt\"><strong>New to Kaliz?</strong></span></span></p><p><strong></strong></p></ht" +
-    "ml>";
-            this.radLabel8.TextAlignment = System.Drawing.ContentAlignment.TopLeft;
-            // 
-            // radButton1
-            // 
-            this.radButton1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.radButton1.Location = new System.Drawing.Point(129, 404);
-            this.radButton1.Name = "radButton1";
-            this.radButton1.Size = new System.Drawing.Size(189, 36);
-            this.radButton1.TabIndex = 2;
-            this.radButton1.Text = "See Document";
-            this.radButton1.ThemeName = "MaterialTeal";
-            // 
-            // radLabel11
-            // 
-            this.radLabel11.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radLabel11.ForeColor = System.Drawing.Color.Crimson;
-            this.radLabel11.Location = new System.Drawing.Point(8, 248);
-            this.radLabel11.Name = "radLabel11";
-            this.radLabel11.Size = new System.Drawing.Size(77, 25);
-            this.radLabel11.TabIndex = 4;
-            this.radLabel11.Text = "Open File";
-            this.radLabel11.Click += new System.EventHandler(this.radLabel11_Click);
-            this.radLabel11.MouseLeave += new System.EventHandler(this.radLabel11_MouseLeave);
-            this.radLabel11.MouseHover += new System.EventHandler(this.radLabel11_MouseHover);
-            // 
-            // recentList
-            // 
-            this.recentList.AllowEdit = false;
-            this.recentList.AllowRemove = false;
-            this.recentList.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.recentList.GroupItemSize = new System.Drawing.Size(200, 36);
-            this.recentList.ItemSize = new System.Drawing.Size(200, 36);
-            this.recentList.Location = new System.Drawing.Point(384, 131);
-            this.recentList.Name = "recentList";
-            this.recentList.Size = new System.Drawing.Size(391, 178);
-            this.recentList.TabIndex = 4;
-            this.recentList.ThemeName = "MaterialTeal";
-            this.recentList.ItemMouseDoubleClick += new Telerik.WinControls.UI.ListViewItemEventHandler(this.recentList_ItemMouseDoubleClick);
-            // 
-            // radLabel6
-            // 
-            this.radLabel6.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radLabel6.ForeColor = System.Drawing.Color.Gray;
-            this.radLabel6.Location = new System.Drawing.Point(384, 86);
-            this.radLabel6.Name = "radLabel6";
-            this.radLabel6.Size = new System.Drawing.Size(95, 41);
-            this.radLabel6.TabIndex = 2;
-            this.radLabel6.Text = "Recent";
-            // 
-            // radLabel5
-            // 
-            this.radLabel5.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radLabel5.ForeColor = System.Drawing.Color.Crimson;
-            this.radLabel5.Location = new System.Drawing.Point(8, 211);
-            this.radLabel5.Name = "radLabel5";
-            this.radLabel5.Size = new System.Drawing.Size(270, 25);
-            this.radLabel5.TabIndex = 3;
-            this.radLabel5.Text = "Create a new file with C/C++ Syntax";
-            this.radLabel5.Click += new System.EventHandler(this.radLabel5_Click);
-            this.radLabel5.MouseLeave += new System.EventHandler(this.radLabel5_MouseLeave);
-            this.radLabel5.MouseHover += new System.EventHandler(this.radLabel5_MouseHover);
-            // 
-            // ScreatePython
-            // 
-            this.ScreatePython.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ScreatePython.ForeColor = System.Drawing.Color.Crimson;
-            this.ScreatePython.Location = new System.Drawing.Point(8, 171);
-            this.ScreatePython.Name = "ScreatePython";
-            this.ScreatePython.Size = new System.Drawing.Size(272, 25);
-            this.ScreatePython.TabIndex = 3;
-            this.ScreatePython.Text = "Create a new file with Python Syntax";
-            this.ScreatePython.Click += new System.EventHandler(this.ScreatePython_Click);
-            this.ScreatePython.MouseLeave += new System.EventHandler(this.ScreatePython_MouseLeave);
-            this.ScreatePython.MouseHover += new System.EventHandler(this.ScreatePython_MouseHover);
-            // 
-            // ScreatPas
-            // 
-            this.ScreatPas.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ScreatPas.ForeColor = System.Drawing.Color.Crimson;
-            this.ScreatPas.Location = new System.Drawing.Point(8, 132);
-            this.ScreatPas.Name = "ScreatPas";
-            this.ScreatPas.Size = new System.Drawing.Size(265, 25);
-            this.ScreatPas.TabIndex = 2;
-            this.ScreatPas.Text = "Create a new file with Pascal Syntax";
-            this.ScreatPas.Click += new System.EventHandler(this.ScreatPas_Click);
-            this.ScreatPas.MouseLeave += new System.EventHandler(this.ScreatPas_MouseLeave);
-            this.ScreatPas.MouseHover += new System.EventHandler(this.ScreatPas_MouseHover);
-            // 
-            // radLabel2
-            // 
-            this.radLabel2.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radLabel2.ForeColor = System.Drawing.Color.Gray;
-            this.radLabel2.Location = new System.Drawing.Point(8, 86);
-            this.radLabel2.Name = "radLabel2";
-            this.radLabel2.Size = new System.Drawing.Size(69, 41);
-            this.radLabel2.TabIndex = 1;
-            this.radLabel2.Text = "Start";
-            // 
-            // radLabel1
-            // 
-            this.radLabel1.ImageAlignment = System.Drawing.ContentAlignment.MiddleCenter;
-            this.radLabel1.Location = new System.Drawing.Point(403, 3);
-            this.radLabel1.Name = "radLabel1";
-            this.radLabel1.Size = new System.Drawing.Size(372, 81);
-            this.radLabel1.TabIndex = 0;
-            this.radLabel1.Text = "<html><p><span style=\"font-size: 36pt; color: #008080\">Welcome to Kaliz</span></p" +
-    "><p><span style=\"font-size: 36pt\"></span></p></html>";
-            this.radLabel1.TextAlignment = System.Drawing.ContentAlignment.TopLeft;
+            this.listClosedFiles.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.listClosedFiles.GroupItemSize = new System.Drawing.Size(200, 36);
+            this.listClosedFiles.ItemSize = new System.Drawing.Size(200, 36);
+            this.listClosedFiles.Location = new System.Drawing.Point(0, 0);
+            this.listClosedFiles.Name = "listClosedFiles";
+            this.listClosedFiles.Size = new System.Drawing.Size(1249, 103);
+            this.listClosedFiles.TabIndex = 0;
+            this.listClosedFiles.ThemeName = "MaterialTeal";
+            this.listClosedFiles.ItemMouseDoubleClick += new Telerik.WinControls.UI.ListViewItemEventHandler(this.listClosedFiles_ItemMouseDoubleClick);
             // 
             // DContainer
             // 
@@ -1101,6 +996,121 @@ namespace Kaliz
             this.documentTabStrip1.TabIndex = 0;
             this.documentTabStrip1.TabStop = false;
             this.documentTabStrip1.ThemeName = "MaterialTeal";
+            // 
+            // documentWindow1
+            // 
+            this.documentWindow1.Controls.Add(this.wclOpen);
+            this.documentWindow1.Controls.Add(this.wclCc);
+            this.documentWindow1.Controls.Add(this.wclPython);
+            this.documentWindow1.Controls.Add(this.wclPascal);
+            this.documentWindow1.Controls.Add(this.radButton2);
+            this.documentWindow1.Controls.Add(this.radLabel10);
+            this.documentWindow1.Controls.Add(this.radLabel2);
+            this.documentWindow1.Controls.Add(this.radLabel8);
+            this.documentWindow1.Controls.Add(this.radLabel1);
+            this.documentWindow1.Controls.Add(this.radButton1);
+            this.documentWindow1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            this.documentWindow1.Location = new System.Drawing.Point(4, 54);
+            this.documentWindow1.Name = "documentWindow1";
+            this.documentWindow1.PreviousDockState = Telerik.WinControls.UI.Docking.DockState.TabbedDocument;
+            this.documentWindow1.Size = new System.Drawing.Size(1249, 447);
+            this.documentWindow1.Text = "Welcome";
+            this.documentWindow1.Click += new System.EventHandler(this.documentWindow1_Click);
+            // 
+            // radButton2
+            // 
+            this.radButton2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.radButton2.Location = new System.Drawing.Point(1052, 408);
+            this.radButton2.Name = "radButton2";
+            this.radButton2.Size = new System.Drawing.Size(189, 36);
+            this.radButton2.TabIndex = 3;
+            this.radButton2.Text = "Explore GoPas Editor";
+            this.radButton2.ThemeName = "MaterialTeal";
+            // 
+            // recentList
+            // 
+            //this.recentList.AllowEdit = false;
+            //this.recentList.AllowRemove = false;
+            //this.recentList.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            //| System.Windows.Forms.AnchorStyles.Right)));
+            //this.recentList.GroupItemSize = new System.Drawing.Size(200, 36);
+            //this.recentList.ItemSize = new System.Drawing.Size(200, 36);
+            //this.recentList.Location = new System.Drawing.Point(332, 128);
+            //this.recentList.Name = "recentList";
+            //this.recentList.Size = new System.Drawing.Size(391, 178);
+            //this.recentList.TabIndex = 4;
+            //this.recentList.ThemeName = "MaterialTeal";
+            //this.recentList.ItemMouseDoubleClick += new Telerik.WinControls.UI.ListViewItemEventHandler(this.recentList_ItemMouseDoubleClick);
+            // 
+            // radLabel10
+            // 
+            this.radLabel10.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.radLabel10.ImageAlignment = System.Drawing.ContentAlignment.MiddleCenter;
+            this.radLabel10.Location = new System.Drawing.Point(928, 413);
+            this.radLabel10.Name = "radLabel10";
+            this.radLabel10.Size = new System.Drawing.Size(118, 38);
+            this.radLabel10.TabIndex = 3;
+            this.radLabel10.Text = "<html><p><span style=\"font-size: 36pt; color: #008080\"><span style=\"font-size: 12" +
+    "pt\"><strong>Other Product?</strong></span></span></p><p><strong></strong></p></h" +
+    "tml>";
+            this.radLabel10.TextAlignment = System.Drawing.ContentAlignment.TopLeft;
+            // 
+            // radLabel6
+            // 
+            this.radLabel6.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radLabel6.ForeColor = System.Drawing.Color.Gray;
+            this.radLabel6.Location = new System.Drawing.Point(332, 83);
+            this.radLabel6.Name = "radLabel6";
+            this.radLabel6.Size = new System.Drawing.Size(95, 41);
+            this.radLabel6.TabIndex = 2;
+            this.radLabel6.Text = "Recent";
+            // 
+            // radLabel2
+            // 
+            this.radLabel2.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radLabel2.ForeColor = System.Drawing.Color.Gray;
+            this.radLabel2.Location = new System.Drawing.Point(14, 86);
+            this.radLabel2.Name = "radLabel2";
+            this.radLabel2.Size = new System.Drawing.Size(69, 41);
+            this.radLabel2.TabIndex = 1;
+            this.radLabel2.Text = "Start";
+            this.radLabel2.ThemeName = "MaterialTeal";
+            // 
+            // radLabel8
+            // 
+            this.radLabel8.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.radLabel8.ImageAlignment = System.Drawing.ContentAlignment.MiddleCenter;
+            this.radLabel8.Location = new System.Drawing.Point(14, 408);
+            this.radLabel8.Name = "radLabel8";
+            this.radLabel8.Size = new System.Drawing.Size(107, 38);
+            this.radLabel8.TabIndex = 2;
+            this.radLabel8.Text = "<html><p><span style=\"font-size: 36pt; color: #008080\"><span style=\"font-size: 12" +
+    "pt\"><strong>New to Kaliz?</strong></span></span></p><p><strong></strong></p></ht" +
+    "ml>";
+            this.radLabel8.TextAlignment = System.Drawing.ContentAlignment.TopLeft;
+            // 
+            // radLabel1
+            // 
+            this.radLabel1.Controls.Add(this.radLabel6);
+           // this.radLabel1.Controls.Add(this.recentList);
+            this.radLabel1.ImageAlignment = System.Drawing.ContentAlignment.MiddleCenter;
+            this.radLabel1.Location = new System.Drawing.Point(403, 3);
+            this.radLabel1.Name = "radLabel1";
+            this.radLabel1.Size = new System.Drawing.Size(372, 81);
+            this.radLabel1.TabIndex = 0;
+            this.radLabel1.Text = "<html><p><span style=\"font-size: 36pt; color: #008080\">Welcome to Kaliz</span></p" +
+    "><p><span style=\"font-size: 36pt\"></span></p></html>";
+            this.radLabel1.TextAlignment = System.Drawing.ContentAlignment.TopLeft;
+            // 
+            // radButton1
+            // 
+            this.radButton1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.radButton1.Location = new System.Drawing.Point(129, 404);
+            this.radButton1.Name = "radButton1";
+            this.radButton1.Size = new System.Drawing.Size(189, 36);
+            this.radButton1.TabIndex = 2;
+            this.radButton1.Text = "See Document";
+            this.radButton1.ThemeName = "MaterialTeal";
             // 
             // toolTabStrip1
             // 
@@ -1174,18 +1184,6 @@ namespace Kaliz
             this.radlistclip.TabIndex = 0;
             this.radlistclip.ThemeName = "MaterialTeal";
             this.radlistclip.ItemMouseDoubleClick += new Telerik.WinControls.UI.ListViewItemEventHandler(this.radlistclip_ItemMouseDoubleClick);
-            // 
-            // DClosedFiles
-            // 
-            this.DClosedFiles.Caption = null;
-            this.DClosedFiles.Controls.Add(this.listClosedFiles);
-            this.DClosedFiles.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.DClosedFiles.Location = new System.Drawing.Point(4, 52);
-            this.DClosedFiles.Name = "DClosedFiles";
-            this.DClosedFiles.PreviousDockState = Telerik.WinControls.UI.Docking.DockState.Docked;
-            this.DClosedFiles.Size = new System.Drawing.Size(1249, 103);
-            this.DClosedFiles.Text = "Closed Files";
-            this.DClosedFiles.ToolCaptionButtons = Telerik.WinControls.UI.Docking.ToolStripCaptionButtons.AutoHide;
             // 
             // radMenuItem1
             // 
@@ -1362,53 +1360,45 @@ namespace Kaliz
             this.radMenu.TabIndex = 1;
             this.radMenu.ThemeName = "MaterialTeal";
             // 
-            // listClosedFiles
+            // wclPascal
             // 
-            this.listClosedFiles.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.listClosedFiles.GroupItemSize = new System.Drawing.Size(200, 36);
-            this.listClosedFiles.ItemSize = new System.Drawing.Size(200, 36);
-            this.listClosedFiles.Location = new System.Drawing.Point(0, 0);
-            this.listClosedFiles.Name = "listClosedFiles";
-            this.listClosedFiles.Size = new System.Drawing.Size(1249, 103);
-            this.listClosedFiles.TabIndex = 0;
-            this.listClosedFiles.ThemeName = "MaterialTeal";
-            this.listClosedFiles.ItemMouseDoubleClick += new Telerik.WinControls.UI.ListViewItemEventHandler(this.listClosedFiles_ItemMouseDoubleClick);
+            this.wclPascal.Location = new System.Drawing.Point(14, 175);
+            this.wclPascal.Name = "wclPascal";
+            this.wclPascal.Size = new System.Drawing.Size(294, 36);
+            this.wclPascal.TabIndex = 5;
+            this.wclPascal.Text = "Create new file with Pascal syntax";
+            this.wclPascal.ThemeName = "MaterialTeal";
+            this.wclPascal.Click += new System.EventHandler(this.wclPascal_Click);
             // 
-            // dockWindowPlaceholder1
+            // wclPython
             // 
-            this.dockWindowPlaceholder1.AutoHideSize = new System.Drawing.Size(200, 185);
-            this.dockWindowPlaceholder1.DockWindowName = "Doutput";
-            this.dockWindowPlaceholder1.DockWindowText = "Output";
-            this.dockWindowPlaceholder1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.dockWindowPlaceholder1.Location = new System.Drawing.Point(0, 0);
-            this.dockWindowPlaceholder1.Name = "dockWindowPlaceholder1";
-            this.dockWindowPlaceholder1.PreviousDockState = Telerik.WinControls.UI.Docking.DockState.Docked;
-            this.dockWindowPlaceholder1.Size = new System.Drawing.Size(200, 200);
-            this.dockWindowPlaceholder1.Text = "dockWindowPlaceholder1";
+            this.wclPython.Location = new System.Drawing.Point(14, 217);
+            this.wclPython.Name = "wclPython";
+            this.wclPython.Size = new System.Drawing.Size(294, 36);
+            this.wclPython.TabIndex = 6;
+            this.wclPython.Text = "Create new file with Python syntax";
+            this.wclPython.ThemeName = "MaterialTeal";
+            this.wclPython.Click += new System.EventHandler(this.wclPython_Click);
             // 
-            // dockWindowPlaceholder2
+            // wclCc
             // 
-            this.dockWindowPlaceholder2.AutoHideSize = new System.Drawing.Size(200, 185);
-            this.dockWindowPlaceholder2.DockWindowName = "Dclipboard";
-            this.dockWindowPlaceholder2.DockWindowText = "ClipBoard";
-            this.dockWindowPlaceholder2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.dockWindowPlaceholder2.Location = new System.Drawing.Point(0, 0);
-            this.dockWindowPlaceholder2.Name = "dockWindowPlaceholder2";
-            this.dockWindowPlaceholder2.PreviousDockState = Telerik.WinControls.UI.Docking.DockState.Docked;
-            this.dockWindowPlaceholder2.Size = new System.Drawing.Size(200, 200);
-            this.dockWindowPlaceholder2.Text = "dockWindowPlaceholder2";
+            this.wclCc.Location = new System.Drawing.Point(14, 259);
+            this.wclCc.Name = "wclCc";
+            this.wclCc.Size = new System.Drawing.Size(294, 36);
+            this.wclCc.TabIndex = 6;
+            this.wclCc.Text = "Create new file with C/C++ syntax";
+            this.wclCc.ThemeName = "MaterialTeal";
+            this.wclCc.Click += new System.EventHandler(this.wclCc_Click);
             // 
-            // dockWindowPlaceholder3
+            // wclOpen
             // 
-            this.dockWindowPlaceholder3.AutoHideSize = new System.Drawing.Size(200, 185);
-            this.dockWindowPlaceholder3.DockWindowName = "DClosedFiles";
-            this.dockWindowPlaceholder3.DockWindowText = "Closed Files";
-            this.dockWindowPlaceholder3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.dockWindowPlaceholder3.Location = new System.Drawing.Point(0, 0);
-            this.dockWindowPlaceholder3.Name = "dockWindowPlaceholder3";
-            this.dockWindowPlaceholder3.PreviousDockState = Telerik.WinControls.UI.Docking.DockState.Docked;
-            this.dockWindowPlaceholder3.Size = new System.Drawing.Size(200, 200);
-            this.dockWindowPlaceholder3.Text = "dockWindowPlaceholder3";
+            this.wclOpen.Location = new System.Drawing.Point(14, 133);
+            this.wclOpen.Name = "wclOpen";
+            this.wclOpen.Size = new System.Drawing.Size(294, 36);
+            this.wclOpen.TabIndex = 7;
+            this.wclOpen.Text = "Open File";
+            this.wclOpen.ThemeName = "MaterialTeal";
+            this.wclOpen.Click += new System.EventHandler(this.wclOpen_Click);
             // 
             // Kaliz
             // 
@@ -1431,34 +1421,36 @@ namespace Kaliz
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             ((System.ComponentModel.ISupportInitialize)(this.DockPar)).EndInit();
             this.DockPar.ResumeLayout(false);
-            this.documentWindow1.ResumeLayout(false);
-            this.documentWindow1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.radButton2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.radLabel10)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.radLabel8)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.radButton1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.radLabel11)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.recentList)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.radLabel6)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.radLabel5)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ScreatePython)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ScreatPas)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.radLabel2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.radLabel1)).EndInit();
+            this.DClosedFiles.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.listClosedFiles)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.DContainer)).EndInit();
             this.DContainer.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.documentTabStrip1)).EndInit();
             this.documentTabStrip1.ResumeLayout(false);
+            this.documentWindow1.ResumeLayout(false);
+            this.documentWindow1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.radButton2)).EndInit();
+           // ((System.ComponentModel.ISupportInitialize)(this.recentList)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.radLabel10)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.radLabel6)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.radLabel2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.radLabel8)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.radLabel1)).EndInit();
+            this.radLabel1.ResumeLayout(false);
+            this.radLabel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.radButton1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.toolTabStrip1)).EndInit();
             this.toolTabStrip1.ResumeLayout(false);
             this.Doutput.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.ListOutput)).EndInit();
             this.Dclipboard.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.radlistclip)).EndInit();
-            this.DClosedFiles.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.toolTabStrip3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.radMenu)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.listClosedFiles)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.wclPascal)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.wclPython)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.wclCc)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.wclOpen)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -1577,20 +1569,16 @@ namespace Kaliz
         private RadMenuItem BBuildaRun;
         private Telerik.WinControls.UI.Docking.DocumentWindow documentWindow1;
         private Telerik.WinControls.UI.Docking.DocumentTabStrip documentTabStrip1;
-        private RadLabel radLabel5;
-        private RadLabel ScreatePython;
-        private RadLabel ScreatPas;
         private RadLabel radLabel2;
         private RadLabel radLabel1;
         private RadLabel radLabel6;
         private RadLabel radLabel8;
         private RadButton radButton1;
-        private RadListView recentList;
+        //private RadListView recentList;
         private RadButton radButton2;
         private RadLabel radLabel10;
         private RootRadElement object_d76c15f1_b4da_4f3f_b911_a99b364b78fa;
         private RadMenuItem HLookUp;
-        private RadLabel radLabel11;
         private RadMenuItem radMenuItem13;
         private RadMenuItem radMenuItem14;
         private RadMenuItem radMenuItem15;
@@ -1609,5 +1597,9 @@ namespace Kaliz
         private Telerik.WinControls.UI.Docking.DockWindowPlaceholder dockWindowPlaceholder1;
         private Telerik.WinControls.UI.Docking.DockWindowPlaceholder dockWindowPlaceholder2;
         private Telerik.WinControls.UI.Docking.DockWindowPlaceholder dockWindowPlaceholder3;
+        private RadButton wclCc;
+        private RadButton wclPython;
+        private RadButton wclPascal;
+        private RadButton wclOpen;
     }
 }

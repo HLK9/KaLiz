@@ -87,26 +87,26 @@ namespace Kaliz
 
 
             //
-            try
-            {
+            //try
+            //{
 
-                using (StreamReader Doc = new StreamReader(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\Kaliz\\Histo.txt"))
-                {
-                    string dong;
-                    while ((dong = Doc.ReadLine()) != null)
-                    {                      
+            //    using (StreamReader Doc = new StreamReader(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\Kaliz\\Histo.txt"))
+            //    {
+            //        string dong;
+            //        while ((dong = Doc.ReadLine()) != null)
+            //        {                      
                     
-                                recentList.Items.Add(dong);
+            //                    recentList.Items.Add(dong);
 
                     
 
-                    }
-                }
-               if(recentList.Items.Count>=10)
-                    File.WriteAllText(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\Kaliz\\Histo.txt", string.Empty);
+            //        }
+            //    }
+            //   if(recentList.Items.Count>=10)
+            //        File.WriteAllText(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\Kaliz\\Histo.txt", string.Empty);
 
-            }
-            catch { }
+            //}
+            //catch { }
            
             //
             
@@ -191,7 +191,7 @@ namespace Kaliz
             {
                 LuuHisto(DuongDanTep);
 
-                DanhDau.LoadFile(DuongDanTep, Encoding.UTF8);
+                DanhDau.LoadFile(DuongDanTep,Encoding.UTF8);
                 if (Path.GetExtension(DuongDanTep) == ".c" || Path.GetExtension(DuongDanTep) == ".cpp")
                 {
                     string ConfigF = @"Lex\CppF.xml";
@@ -2431,37 +2431,7 @@ TabHienTai.InsertText(TabHienTai.CurrentLine, TabHienTai.CurrentColumn, radlistc
 
         }
 
-        private void ScreatPas_MouseHover(object sender, EventArgs e)
-        {
-            ScreatPas.ForeColor = Color.Teal;
-        }
-
-        private void ScreatPas_MouseLeave(object sender, EventArgs e)
-        {
-            ScreatPas.ForeColor = Color.Crimson;
-        }
-
-        private void ScreatePython_MouseHover(object sender, EventArgs e)
-        {
-            ScreatePython.ForeColor = Color.Teal;
-         
-        }
-
-        private void ScreatePython_MouseLeave(object sender, EventArgs e)
-        {
-            ScreatePython.ForeColor = Color.Crimson;
-        }
-
-        private void radLabel5_MouseHover(object sender, EventArgs e)
-        {
-            radLabel5.ForeColor = Color.Teal;
-
-        }
-
-        private void radLabel5_MouseLeave(object sender, EventArgs e)
-        {
-            radLabel5.ForeColor = Color.Crimson;
-        }
+        
 
         private void ScreatPas_Click(object sender, EventArgs e)
         {
@@ -2507,18 +2477,18 @@ TabHienTai.InsertText(TabHienTai.CurrentLine, TabHienTai.CurrentColumn, radlistc
             UpdateTheme();
         }
 
-        private void recentList_ItemMouseDoubleClick(object sender, ListViewItemEventArgs e)
-        {
-            try
-            {
-                TaoMoi(Path.GetFileName(recentList.SelectedItem.Text), recentList.SelectedItem.Text);
-            }
-            catch
-            {
-                MessageBox.Show("Error", "This file not exist", MessageBoxButtons.OK,MessageBoxIcon.Error);
-            }
+        //private void recentList_ItemMouseDoubleClick(object sender, ListViewItemEventArgs e)
+        //{
+        //    try
+        //    {
+        //        TaoMoi(Path.GetFileName(recentList.SelectedItem.Text), recentList.SelectedItem.Text);
+        //    }
+        //    catch
+        //    {
+        //        MessageBox.Show("Error", "This file not exist", MessageBoxButtons.OK,MessageBoxIcon.Error);
+        //    }
             
-        }
+        //}
 
         private void radRichTextEditor1_Click(object sender, EventArgs e)
         {
@@ -2540,16 +2510,7 @@ TabHienTai.InsertText(TabHienTai.CurrentLine, TabHienTai.CurrentColumn, radlistc
             
         }
 
-        private void radLabel11_MouseHover(object sender, EventArgs e)
-        {
-            radLabel11.ForeColor = Color.Teal;
-
-        }
-
-        private void radLabel11_MouseLeave(object sender, EventArgs e)
-        {
-            radLabel11.ForeColor = Color.Crimson;
-        }
+      
 
         private void radMenuItem13_Click(object sender, EventArgs e)
         {
@@ -2640,24 +2601,7 @@ TabHienTai.InsertText(TabHienTai.CurrentLine, TabHienTai.CurrentColumn, radlistc
 
         private void radLabel11_Click(object sender, EventArgs e)
         {
-            OpenFileDialog Mo = new OpenFileDialog();
-            Mo.Multiselect = true;
-
-            if (Mo.ShowDialog() == DialogResult.OK)
-            {
-                foreach (var item in Mo.FileNames)
-                {
-                    try
-                    {
-                        TaoMoi(Path.GetFileName(item), item);
-                        UpdateTheme();
-
-                    }
-
-                    catch
-                    { }
-                }
-            }
+           
         }
 
         private void radMenuItem16_Click(object sender, EventArgs e)
@@ -2713,6 +2657,81 @@ TabHienTai.InsertText(TabHienTai.CurrentLine, TabHienTai.CurrentColumn, radlistc
             catch
             {
                 MessageBox.Show("Error", "This file not exist", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void wclPascal_Click(object sender, EventArgs e)
+        {
+            TaoMoi("Document " + chiso++, null);
+
+            string ConfigF = @"Lex\Pascal.xml";
+            TabHienTai.Configurator.Open(ConfigF);
+            TabHienTai.ApplyConfiguration("Pascal");
+            TabHienTai.StatusBarSettings.FileNamePanel.Panel.Text = "Pascal";
+            TabHienTai.ContextChoiceOpen += DanhDau_ContextChoiceOpen;
+            TabHienTai.ContextPromptOpen += DanhDau_ContextPromptOpen_ForPascal;
+            TabHienTai.ContextPromptUpdate += DanhDau_ContextPromptUpdate_ForPascal;
+
+            UpdateTheme();
+        
+
+      
+    }
+
+        private void wclPython_Click(object sender, EventArgs e)
+        {
+            
+            TaoMoi("Document " + chiso++, null);
+
+            TabHienTai.StatusBarSettings.FileNamePanel.Panel.Text = "Python";
+            string ConfigF = @"Lex\Python.xml";
+            TabHienTai.Configurator.Open(ConfigF);
+            TabHienTai.ApplyConfiguration("Python");
+            TabHienTai.StatusBarSettings.FileNamePanel.Panel.Text = "Python";
+            TabHienTai.ContextChoiceOpen += DanhDau_ContextChoiceOpen_ForPython;
+
+            UpdateTheme();
+        
+
+     
+    }
+
+        private void wclCc_Click(object sender, EventArgs e)
+        {
+             
+            TaoMoi("Document " + chiso++, null);
+
+            string ConfigF = @"Lex\CppF.xml";
+            TabHienTai.Configurator.Open(ConfigF);
+            TabHienTai.ApplyConfiguration("C++");
+            TabHienTai.StatusBarSettings.FileNamePanel.Panel.Text = "C/C++";
+            TabHienTai.ContextChoiceOpen += DanhDau_ContextChoiceOpen_C;
+            TabHienTai.ContextPromptOpen += DanhDau_ContextPromptOpen_ForC;
+            TabHienTai.ContextPromptUpdate += DanhDau_ContextPromptUpdate_ForC;
+
+            UpdateTheme();
+        
+    }
+
+        private void wclOpen_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog Mo = new OpenFileDialog();
+            Mo.Multiselect = true;
+
+            if (Mo.ShowDialog() == DialogResult.OK)
+            {
+                foreach (var item in Mo.FileNames)
+                {
+                    try
+                    {
+                        TaoMoi(Path.GetFileName(item), item);
+                        UpdateTheme();
+
+                    }
+
+                    catch
+                    { }
+                }
             }
         }
     }
