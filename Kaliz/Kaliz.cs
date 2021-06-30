@@ -64,6 +64,7 @@ namespace Kaliz
             TaoPhimTat();
             Doutput.AutoHide();
             Dclipboard.AutoHide();
+            DockPar.ShowDocumentCloseButton = true;
             
 
         }
@@ -94,8 +95,7 @@ namespace Kaliz
                     string dong;
                     while ((dong = Doc.ReadLine()) != null)
                     {                      
-                     
-                       
+                    
                                 recentList.Items.Add(dong);
 
                     
@@ -303,7 +303,15 @@ namespace Kaliz
         {
             try
             {
-  TabHienTai.Close();
+                foreach (var item in listClosedFiles.Items)
+                {
+                    if (item.Text == TabHienTai.FileName) listClosedFiles.Items.Remove(item);
+                }
+                listClosedFiles.Items.Add(TabHienTai.FileName);
+              
+                TabHienTai.Close();
+
+                
             }
             catch { DockPar.DocumentManager.ActiveDocument.Close(); }
               
@@ -328,7 +336,7 @@ namespace Kaliz
                             TabHienTai.LineNumbersColor = Color.Teal;
                             TabHienTai.ContextPromptBackgroundBrush = new BrushInfo(GradientStyle.None, new Color[] { Color.FromArgb(249, 249, 249) });
                             TabHienTai.BackgroundColor = new BrushInfo(GradientStyle.None, new Color[] { Color.FromArgb(249, 249, 249) });
-
+                            this.WindowState = FormWindowState.Normal;
                             if (Path.GetExtension(TabHienTai.FileName) == ".pas")
                             {
                                 string ConfigF = @"Lex\Pascal.xml";
@@ -361,6 +369,7 @@ namespace Kaliz
                             TabHienTai.ContextPromptBackgroundBrush = new BrushInfo(GradientStyle.None, new Color[] { Color.FromArgb(40, 42, 54) });
                             TabHienTai.BackgroundColor = new BrushInfo(GradientStyle.None, new Color[] { Color.FromArgb(40, 42, 54) });
                             ThemeResolutionService.ApplicationThemeName = "FluentDark";
+                            this.WindowState = FormWindowState.Normal;
                             if (Path.GetExtension(TabHienTai.FileName) == ".pas")
                             {
                                 string ConfigF = @"Lex\Pascal_D.xml";
@@ -394,7 +403,7 @@ namespace Kaliz
                             TabHienTai.LineNumbersColor = Color.Teal;
                             TabHienTai.ContextPromptBackgroundBrush = new BrushInfo(GradientStyle.None, new Color[] { Color.FromArgb(249, 249, 249) });
                             TabHienTai.BackgroundColor = new BrushInfo(GradientStyle.None, new Color[] { Color.FromArgb(249, 249, 249) });
-
+                            this.WindowState = FormWindowState.Normal;
                             if (Path.GetExtension(TabHienTai.FileName) == ".pas")
                             {
                                 string ConfigF = @"Lex\Pascal.xml";
@@ -418,7 +427,7 @@ namespace Kaliz
                         catch { }
                         break;
                }
-                this.WindowState = FormWindowState.Normal;
+               
             }
               
                 
@@ -2001,6 +2010,7 @@ End;
                 themechanged = true;
                 UpdateTheme();
             }
+            
             else themechanged = false;
 
             //ThemeResolutionService.ApplicationThemeName = "Fluent";
@@ -2690,6 +2700,19 @@ TabHienTai.InsertText(TabHienTai.CurrentLine, TabHienTai.CurrentColumn, radlistc
                 OHightlight.Text = "Hide Hightlight Current Line";
                 highlight = true;
 
+            }
+        }
+
+        private void listClosedFiles_ItemMouseDoubleClick(object sender, ListViewItemEventArgs e)
+        {
+
+            try
+            {
+                TaoMoi(Path.GetFileName(listClosedFiles.SelectedItem.Text), listClosedFiles.SelectedItem.Text);
+            }
+            catch
+            {
+                MessageBox.Show("Error", "This file not exist", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }
