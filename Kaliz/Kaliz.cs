@@ -86,31 +86,31 @@ namespace Kaliz
             clipBoard.ClipboardChanged += ClipBoard_ClipboardChanged;
 
 
-            //
-            //try
-            //{
 
-            //    using (StreamReader Doc = new StreamReader(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\Kaliz\\Histo.txt"))
-            //    {
-            //        string dong;
-            //        while ((dong = Doc.ReadLine()) != null)
-            //        {                      
-                    
-            //                    recentList.Items.Add(dong);
+            try
+            {
 
-                    
+                using (StreamReader Doc = new StreamReader(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\Kaliz\\Histo.txt"))
+                {
+                    string dong;
+                    while ((dong = Doc.ReadLine()) != null)
+                    {
 
-            //        }
-            //    }
-            //   if(recentList.Items.Count>=10)
-            //        File.WriteAllText(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\Kaliz\\Histo.txt", string.Empty);
+                        recentList.Items.Add(dong);
 
-            //}
-            //catch { }
-           
-            //
-            
-           
+
+
+                    }
+                }
+                if (recentList.Items.Count >= 10)
+                    File.WriteAllText(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\Kaliz\\Histo.txt", string.Empty);
+
+            }
+            catch { }
+
+
+
+
 
 
         }
@@ -1015,6 +1015,11 @@ End;
                 //{
                 //    Viet.WriteLine(duongdantep);
                 //}
+                //foreach (var item in File.ReadAllLines(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\Kaliz\\Histo.txt"))
+                //{
+                //    if (item.ToString() != duongdantep||item==null)
+                //        File.AppendAllText(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\Kaliz\\Histo.txt", duongdantep + Environment.NewLine);
+                //}
                 File.AppendAllText(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\Kaliz\\Histo.txt", duongdantep + Environment.NewLine);
 
 
@@ -1598,12 +1603,20 @@ End;
                 TabHienTai.BookmarkClear();
             }
             catch { }
-
+            
         }
 
         private void TFind_Click(object sender, EventArgs e)
         {
+            try
+            {
+                TabHienTai.ShowFindDialog();
+                
+            }
+            catch
+            {
 
+            }
         }
 
         private void TReplace_Click(object sender, EventArgs e)
@@ -2733,6 +2746,28 @@ TabHienTai.InsertText(TabHienTai.CurrentLine, TabHienTai.CurrentColumn, radlistc
                     { }
                 }
             }
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void recentList_ItemMouseDoubleClick(object sender, ListViewItemEventArgs e)
+        {
+            try
+            {
+                TaoMoi(Path.GetFileName(recentList.SelectedItem.Text), recentList.SelectedItem.Text);
+            }
+            catch
+            {
+                MessageBox.Show("Can't load this file", "Error!",MessageBoxButtons.OK,MessageBoxIcon.Error);
+            }
+        }
+
+        private void PCustom_Click(object sender, EventArgs e)
+        {
+            TabHienTai.ShowFormatsCustomizationDialog();
         }
     }
 }
