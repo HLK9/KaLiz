@@ -46,6 +46,9 @@ namespace Kaliz
         private string DiffOldText;
         private string DiffNewText;
         private bool highlight = true;
+        private bool showClipboard = true;
+        private bool showClosed = true;
+        private bool showOutput = true;
 
 
         private int chiso { get; set; }
@@ -2799,6 +2802,75 @@ TabHienTai.InsertText(TabHienTai.CurrentLine, TabHienTai.CurrentColumn, radlistc
 
         private void PCustom_Click(object sender, EventArgs e)
         {
+            
+        }
+
+        private void MOptions_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void OutputShow_Click(object sender, EventArgs e)
+        {
+            Doutput.Show();
+        }
+
+        private void OutputHide_Click(object sender, EventArgs e)
+        {
+            Doutput.Hide();
+        }
+
+        private void VOutput_Click(object sender, EventArgs e)
+        {
+            if (showOutput==true)
+            {
+                showOutput = false;
+                Doutput.Hide();
+                VOutput.Text = "Show Output";
+            }
+            else
+            {
+                showOutput = true;
+                Doutput.Show();
+                VOutput.Text = "Hide Output";
+            }
+        }
+
+        private void VClosedList_Click(object sender, EventArgs e)
+        {
+            if(showClosed == true)
+            {
+                DClosedFiles.Hide();
+                showClosed = false;
+                VClosedList.Text = "Show Closed List";
+            }
+            else
+            {
+                DClosedFiles.Show();
+                showClosed = true;
+                VClosedList.Text = "Hide Closed List";
+            }
+        }
+
+        private void VClipboardList_Click(object sender, EventArgs e)
+        {
+            if(showClipboard == true)
+            {
+                Dclipboard.Hide();
+                showClipboard = false;
+                VClipboardList.Text = "Show Clipboard List";
+            }
+            else
+            {
+                Dclipboard.Show();
+                showClipboard = true;
+                VClipboardList.Text = "Hide Clipboard";
+            }
+        }
+
+        private void radMenuItem1_Click(object sender, EventArgs e)
+        {
+            MenuTop.Hide();
             
         }
     }
