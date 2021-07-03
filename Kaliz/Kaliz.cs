@@ -65,7 +65,8 @@ namespace Kaliz
             Doutput.AutoHide();
             Dclipboard.AutoHide();
             DockPar.ShowDocumentCloseButton = true;
-            
+            ThemeResolutionService.ApplicationThemeName = "MaterialTeal";
+
 
         }
 
@@ -1341,113 +1342,142 @@ End;
 
         private void Run(string file)
         {
-            if (ConsoleUse == "PowerShell")
+            if (!File.Exists(DuongDanTepExe(TabHienTai.FileName)))
             {
-                //
-
-
-                if (Path.GetExtension(file) == ".pas")
+                RadTaskDialogPage Tas = new RadTaskDialogPage();
+                Tas.ShouldApplyTheme = true;
+               
+                Tas.Caption = "Warning!";
+                Tas.Heading = "File not Found!";
+                Tas.Text = "This file has not been compiled. Do you want to compile it?";
+                Tas.Icon = RadTaskDialogIcon.Error;
+                RadTaskDialogButton BuBuild = new RadTaskDialogButton();
+                BuBuild.Text = "Build this file";
+                BuBuild.Click += new EventHandler(delegate (object sender, EventArgs e)
+                 {
+                     Build(TabHienTai.FileName, deBug, ref ListOutput);
+                 });
+                Tas.CommandAreaButtons.Add(BuBuild);
+                RadTaskDialogButton BuCant = new RadTaskDialogButton();
+                BuCant.Text = "Cancel";
+                BuCant.Click += new EventHandler(delegate (object sender, EventArgs e)
                 {
-                    Process Chay = new Process();
-
-                    Chay.StartInfo.WorkingDirectory = Path.GetDirectoryName(file);
-                    //Path.GetFileNameWithoutExtension(file) + ".exe"
-                    Chay.StartInfo.FileName = DuongDanTepExe(file);
-                    Chay.StartInfo.UseShellExecute = true;
-
-                    //Chay.WaitForExit();
-                    Chay.Start();
-                }
-                if (Path.GetExtension(file) == ".c" || Path.GetExtension(file) == ".cpp")
-                {
-
-                    Process Chay = new Process();
-                    Chay.StartInfo.UseShellExecute = false;
-                    Chay.StartInfo.FileName = "cmd.exe";
-                    //Chay.StartInfo.WorkingDirectory = Application.ExecutablePath + @"\Cmder\vendor\TDM-GCC-32\bin";
-                    Chay.StartInfo.Arguments = "/c "+DuongDanTepExe(file) + "  -static-libgcc -static-libstdc++";
-                    //MessageBox.Show(DuongDanTepExe(file) + " -static-libgcc -static-libstdc++");
-                    
-                    Chay.Start();
-                }
-                if (Path.GetExtension(file) == ".py")
-                {
-                    Process Chay = new Process();
-                    Chay.StartInfo.FileName = "cmd";
-                    //Chay.StartInfo.WorkingDirectory = @"Cmder\vendor\Python\Python38-32";
-                    Chay.StartInfo.Arguments = "/c" + " python " + file;
-                    //Lấy thông tin nhưng phải để UseExeCutale là false :))
-                    //Chay.StartInfo.RedirectStandardError = true;
-                    //Chay.StartInfo.RedirectStandardOutput = true;
-
-                    Chay.Start();
-                    Chay.WaitForExit();
-                    /*       
-                     *   Đoạn này đẩy thông tin vào trong Output        string ad;
-
-                               ListOutput.AllowEdit = false;
-                               ListOutput.AllowRemove = false;
-
-
-                               //Lấy thông tin Error chứ k phải Output :))
-                               while ((ad = Chay.StandardError.ReadLine()) != null)
-                               {
-                                   ListOutput.Items.Add(ad);
-
-                                   // if (ad.Contains("lines compiled")) break;
-                               }
-                               while ((ad = Chay.StandardOutput.ReadLine()) != null)
-                               {
-                                   ListOutput.Items.Add(ad);
-
-                                   // if (ad.Contains("lines compiled")) break;
-                               }
-                   */
-                }
-
-                //
+                    this.Close();
+                });
+                Tas.CommandAreaButtons.Add(BuCant);
+                RadTaskDialog.ShowDialog(Tas);
             }
             else
             {
 
-                if (Path.GetExtension(file) == ".pas")
+                if (ConsoleUse == "PowerShell")
                 {
-                    Process Chay = new Process();
-                    Chay.StartInfo.FileName = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\Kaliz" + @"\Cmder\vendor\conemu-maximus5\ConEmu.exe";
-                    //Lấy path ở Roaming
-                    //Chay.StartInfo.Verb = "runas";
-                    Chay.StartInfo.Arguments ="-run  "+DuongDanTepExe(file);
-                    Chay.Start();
-                    
+                    //
+
+
+                    if (Path.GetExtension(file) == ".pas")
+                    {
+                        Process Chay = new Process();
+
+                        Chay.StartInfo.WorkingDirectory = Path.GetDirectoryName(file);
+                        //Path.GetFileNameWithoutExtension(file) + ".exe"
+                        Chay.StartInfo.FileName = DuongDanTepExe(file);
+                        Chay.StartInfo.UseShellExecute = true;
+
+                        //Chay.WaitForExit();
+                        Chay.Start();
+                    }
+                    if (Path.GetExtension(file) == ".c" || Path.GetExtension(file) == ".cpp")
+                    {
+
+                        Process Chay = new Process();
+                        Chay.StartInfo.UseShellExecute = false;
+                        Chay.StartInfo.FileName = "cmd.exe";
+                        //Chay.StartInfo.WorkingDirectory = Application.ExecutablePath + @"\Cmder\vendor\TDM-GCC-32\bin";
+                        Chay.StartInfo.Arguments = "/c " + DuongDanTepExe(file) + "  -static-libgcc -static-libstdc++";
+                        //MessageBox.Show(DuongDanTepExe(file) + " -static-libgcc -static-libstdc++");
+
+                        Chay.Start();
+                    }
+                    if (Path.GetExtension(file) == ".py")
+                    {
+                        Process Chay = new Process();
+                        Chay.StartInfo.FileName = "cmd";
+                        //Chay.StartInfo.WorkingDirectory = @"Cmder\vendor\Python\Python38-32";
+                        Chay.StartInfo.Arguments = "/c" + " python " + file;
+                        //Lấy thông tin nhưng phải để UseExeCutale là false :))
+                        //Chay.StartInfo.RedirectStandardError = true;
+                        //Chay.StartInfo.RedirectStandardOutput = true;
+
+                        Chay.Start();
+                        Chay.WaitForExit();
+                        /*       
+                         *   Đoạn này đẩy thông tin vào trong Output        string ad;
+
+                                   ListOutput.AllowEdit = false;
+                                   ListOutput.AllowRemove = false;
+
+
+                                   //Lấy thông tin Error chứ k phải Output :))
+                                   while ((ad = Chay.StandardError.ReadLine()) != null)
+                                   {
+                                       ListOutput.Items.Add(ad);
+
+                                       // if (ad.Contains("lines compiled")) break;
+                                   }
+                                   while ((ad = Chay.StandardOutput.ReadLine()) != null)
+                                   {
+                                       ListOutput.Items.Add(ad);
+
+                                       // if (ad.Contains("lines compiled")) break;
+                                   }
+                       */
+                    }
+
+                    //
                 }
-                if (Path.GetExtension(file) == ".c" || Path.GetExtension(file) == ".cpp")
-                {
-                   
-                    Process Chay = new Process();
-
-                    //Chay.StartInfo.Verb = "runas";
-                   // Chay.StartInfo.FileName = @"Cmder\Cmder.exe";
-                    Chay.StartInfo.FileName = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\Kaliz" + @"\Cmder\vendor\conemu-maximus5\ConEmu.exe";
-                    //Chay.StartInfo.WorkingDirectory = @"Cmder\vendor\TDM-GCC-32\bin";
-                    Chay.StartInfo.Arguments = "  -run "+ DuongDanTepExe(file) + "  -static-libgcc -static-libstdc++";    
-                    //Fixed, Khi chạy từ process mới thì path không được set, phải sẽ manual :b               
-                    Chay.Start();
-                    
-                    Chay.WaitForExit();
-                  
-                }
-                if (Path.GetExtension(file) == ".py")
+                else
                 {
 
-                    Process Chay = new Process();
-                    //Chay.StartInfo.Verb = "runas";
-                    Chay.StartInfo.FileName = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\Kaliz" + @"\Cmder\vendor\conemu-maximus5\ConEmu.exe";                    
-                    Chay.StartInfo.Arguments =" -run python " + file;
-                    //Để ý dấu - phải sát với lệnh
-                    Chay.Start();
-                    Chay.WaitForExit();
-                   //Fixed!
+                    if (Path.GetExtension(file) == ".pas")
+                    {
+                        Process Chay = new Process();
+                        Chay.StartInfo.FileName = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\Kaliz" + @"\Cmder\vendor\conemu-maximus5\ConEmu.exe";
+                        //Lấy path ở Roaming
+                        //Chay.StartInfo.Verb = "runas";
+                        Chay.StartInfo.Arguments = "-run  " + DuongDanTepExe(file);
+                        Chay.Start();
 
+                    }
+                    if (Path.GetExtension(file) == ".c" || Path.GetExtension(file) == ".cpp")
+                    {
+
+                        Process Chay = new Process();
+
+                        //Chay.StartInfo.Verb = "runas";
+                        // Chay.StartInfo.FileName = @"Cmder\Cmder.exe";
+                        Chay.StartInfo.FileName = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\Kaliz" + @"\Cmder\vendor\conemu-maximus5\ConEmu.exe";
+                        //Chay.StartInfo.WorkingDirectory = @"Cmder\vendor\TDM-GCC-32\bin";
+                        Chay.StartInfo.Arguments = "  -run " + DuongDanTepExe(file) + "  -static-libgcc -static-libstdc++";
+                        //Fixed, Khi chạy từ process mới thì path không được set, phải sẽ manual :b               
+                        Chay.Start();
+
+                        Chay.WaitForExit();
+
+                    }
+                    if (Path.GetExtension(file) == ".py")
+                    {
+
+                        Process Chay = new Process();
+                        //Chay.StartInfo.Verb = "runas";
+                        Chay.StartInfo.FileName = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\Kaliz" + @"\Cmder\vendor\conemu-maximus5\ConEmu.exe";
+                        Chay.StartInfo.Arguments = " -run python " + file;
+                        //Để ý dấu - phải sát với lệnh
+                        Chay.Start();
+                        Chay.WaitForExit();
+                        //Fixed!
+
+                    }
                 }
             }
           
@@ -1696,6 +1726,7 @@ End;
         {
             try
             {
+               
                 Run(TabHienTai.FileName);
 
             }
@@ -1769,7 +1800,7 @@ End;
         private void ShowAlert_Light(string cap, string content)
         {
             RadDesktopAlert al = new RadDesktopAlert();
-            al.ThemeName = "Windows8";
+            
             al.CaptionText = cap;
             al.Opacity = 0.8f;
             al.PopupAnimationDirection = RadDirection.Up;
@@ -1777,6 +1808,7 @@ End;
             al.ContentText = content;
             al.AutoCloseDelay = 5;
             al.AutoSize = true;
+            al.ThemeName = "Windows8";
             al.Show();
         }
         private void MDebug_Click(object sender, EventArgs e)
@@ -2767,7 +2799,7 @@ TabHienTai.InsertText(TabHienTai.CurrentLine, TabHienTai.CurrentColumn, radlistc
 
         private void PCustom_Click(object sender, EventArgs e)
         {
-            TabHienTai.ShowFormatsCustomizationDialog();
+            
         }
     }
 }
