@@ -280,12 +280,14 @@
             this.Controls.Add(this.radLabel2);
             this.Controls.Add(this.radLabel1);
             this.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.MaximizeBox = false;
             this.Name = "SendEmail";
             // 
             // 
             // 
             this.RootElement.ApplyShapeToControl = true;
-            this.Text = "SendEmail";
+            this.ShowIcon = false;
+            this.Text = "Send Email";
             this.ThemeName = "MaterialTeal";
             this.Load += new System.EventHandler(this.SendEmail_Load);
             ((System.ComponentModel.ISupportInitialize)(this.radLabel1)).EndInit();
