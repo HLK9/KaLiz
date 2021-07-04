@@ -16,9 +16,7 @@ namespace Kaliz
             
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            //
-            
-            //        
+                  
             Application.Run(new Kaliz());
         }
 
