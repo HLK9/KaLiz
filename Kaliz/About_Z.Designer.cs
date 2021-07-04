@@ -121,11 +121,11 @@
             // 
             // radLabel4
             // 
-            this.radLabel4.Font = new System.Drawing.Font("Roboto Mono", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radLabel4.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.radLabel4.ForeColor = System.Drawing.Color.Teal;
-            this.radLabel4.Location = new System.Drawing.Point(16, 109);
+            this.radLabel4.Location = new System.Drawing.Point(16, 102);
             this.radLabel4.Name = "radLabel4";
-            this.radLabel4.Size = new System.Drawing.Size(232, 29);
+            this.radLabel4.Size = new System.Drawing.Size(208, 26);
             this.radLabel4.TabIndex = 3;
             this.radLabel4.Text = "Trường THPT Hòa Phú";
             this.radLabel4.ThemeName = "MaterialTeal";
@@ -134,7 +134,7 @@
             // 
             this.radLabel8.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.radLabel8.ForeColor = System.Drawing.Color.IndianRed;
-            this.radLabel8.Location = new System.Drawing.Point(310, 3);
+            this.radLabel8.Location = new System.Drawing.Point(309, -5);
             this.radLabel8.Name = "radLabel8";
             this.radLabel8.Size = new System.Drawing.Size(17, 30);
             this.radLabel8.TabIndex = 3;
@@ -155,11 +155,11 @@
             // 
             // radLabel7
             // 
-            this.radLabel7.Font = new System.Drawing.Font("Roboto Mono", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radLabel7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.radLabel7.ForeColor = System.Drawing.Color.Teal;
             this.radLabel7.Location = new System.Drawing.Point(16, 153);
             this.radLabel7.Name = "radLabel7";
-            this.radLabel7.Size = new System.Drawing.Size(278, 171);
+            this.radLabel7.Size = new System.Drawing.Size(217, 147);
             this.radLabel7.TabIndex = 3;
             this.radLabel7.Text = resources.GetString("radLabel7.Text");
             this.radLabel7.ThemeName = "MaterialTeal";
@@ -167,11 +167,11 @@
             // 
             // radLabel5
             // 
-            this.radLabel5.Font = new System.Drawing.Font("Roboto Mono", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radLabel5.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.radLabel5.ForeColor = System.Drawing.Color.Teal;
-            this.radLabel5.Location = new System.Drawing.Point(13, 74);
+            this.radLabel5.Location = new System.Drawing.Point(16, 70);
             this.radLabel5.Name = "radLabel5";
-            this.radLabel5.Size = new System.Drawing.Size(232, 29);
+            this.radLabel5.Size = new System.Drawing.Size(190, 26);
             this.radLabel5.TabIndex = 2;
             this.radLabel5.Text = "Tác giả: Hoàng Long";
             this.radLabel5.ThemeName = "MaterialTeal";
