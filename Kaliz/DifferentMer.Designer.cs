@@ -49,9 +49,9 @@
             this.Miad.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.Miad.Location = new System.Drawing.Point(0, 81);
+            this.Miad.Location = new System.Drawing.Point(0, 72);
             this.Miad.Name = "Miad";
-            this.Miad.Size = new System.Drawing.Size(1092, 330);
+            this.Miad.Size = new System.Drawing.Size(1092, 339);
             this.Miad.TabIndex = 0;
             this.Miad.Paint += new System.Windows.Forms.PaintEventHandler(this.Miad_Paint);
             // 
