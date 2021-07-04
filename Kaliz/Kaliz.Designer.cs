@@ -179,8 +179,14 @@ namespace Kaliz
             this.VOutput = new Telerik.WinControls.UI.RadMenuItem();
             this.VClosedList = new Telerik.WinControls.UI.RadMenuItem();
             this.VClipboardList = new Telerik.WinControls.UI.RadMenuItem();
-            this.radMenuItem1 = new Telerik.WinControls.UI.RadMenuItem();
+            this.VSplitHorizon = new Telerik.WinControls.UI.RadMenuItem();
+            this.VSplitVertical = new Telerik.WinControls.UI.RadMenuItem();
             this.MenuTop = new Telerik.WinControls.UI.RadMenu();
+            this.radMenuItem1 = new Telerik.WinControls.UI.RadMenuItem();
+            this.radMenuItem3 = new Telerik.WinControls.UI.RadMenuItem();
+            this.radMenuItem16 = new Telerik.WinControls.UI.RadMenuItem();
+            this.radMenuItem17 = new Telerik.WinControls.UI.RadMenuItem();
+            this.radMenuItem18 = new Telerik.WinControls.UI.RadMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.DockPar)).BeginInit();
             this.DockPar.SuspendLayout();
             this.documentWindow1.SuspendLayout();
@@ -212,8 +218,8 @@ namespace Kaliz
             this.DClosedFiles.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.listClosedFiles)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.toolTabStrip3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.MenuTop)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this)).BeginInit();
             this.SuspendLayout();
             // 
             // dockWindowPlaceholder1
@@ -1397,7 +1403,8 @@ namespace Kaliz
             this.VOutput,
             this.VClosedList,
             this.VClipboardList,
-            this.radMenuItem1});
+            this.VSplitHorizon,
+            this.VSplitVertical});
             this.MView.Name = "MView";
             this.MView.Text = "View";
             // 
@@ -1419,23 +1426,24 @@ namespace Kaliz
             this.VClipboardList.Text = "Hide Clipboard List";
             this.VClipboardList.Click += new System.EventHandler(this.VClipboardList_Click);
             // 
-            // radMenuItem1
+            // VSplitHorizon
             // 
-            this.radMenuItem1.Name = "radMenuItem1";
-            this.radMenuItem1.Text = "radMenuItem1";
-            this.radMenuItem1.Click += new System.EventHandler(this.radMenuItem1_Click);
+            this.VSplitHorizon.Name = "VSplitHorizon";
+            this.VSplitHorizon.Text = "Split Horizontally";
+            this.VSplitHorizon.Click += new System.EventHandler(this.radMenuItem1_Click);
             // 
-            // Kaliz
+            // VSplitVertical
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1257, 735);
+            this.VSplitVertical.Name = "VSplitVertical";
+            this.VSplitVertical.Text = "Split Vertically";
+            this.VSplitVertical.Click += new System.EventHandler(this.VSplitVertical_Click);
             // 
             // MenuTop
             // 
             this.MenuTop.Items.AddRange(new Telerik.WinControls.RadItem[] {
             this.MFile,
             this.MEdit,
+            this.MView,
             this.MTools,
             this.MBuild,
             this.MDebug,
@@ -1443,12 +1451,52 @@ namespace Kaliz
             this.MBookmark,
             this.MPersonal,
             this.MHelp,
-            this.MView});
+            this.radMenuItem1});
             this.MenuTop.Location = new System.Drawing.Point(0, 0);
             this.MenuTop.Name = "MenuTop";
             this.MenuTop.Size = new System.Drawing.Size(1257, 37);
             this.MenuTop.TabIndex = 1;
             this.MenuTop.ThemeName = "MaterialTeal";
+            // 
+            // radMenuItem1
+            // 
+            this.radMenuItem1.Items.AddRange(new Telerik.WinControls.RadItem[] {
+            this.radMenuItem3,
+            this.radMenuItem16,
+            this.radMenuItem17,
+            this.radMenuItem18});
+            this.radMenuItem1.Name = "radMenuItem1";
+            this.radMenuItem1.Text = "Test";
+            // 
+            // radMenuItem3
+            // 
+            this.radMenuItem3.Name = "radMenuItem3";
+            this.radMenuItem3.Text = "radMenuItem3";
+            this.radMenuItem3.Click += new System.EventHandler(this.radMenuItem3_Click_2);
+            // 
+            // radMenuItem16
+            // 
+            this.radMenuItem16.Name = "radMenuItem16";
+            this.radMenuItem16.Text = "radMenuItem16";
+            this.radMenuItem16.Click += new System.EventHandler(this.radMenuItem16_Click_1);
+            // 
+            // radMenuItem17
+            // 
+            this.radMenuItem17.Name = "radMenuItem17";
+            this.radMenuItem17.Text = "radMenuItem17";
+            this.radMenuItem17.Click += new System.EventHandler(this.radMenuItem17_Click);
+            // 
+            // radMenuItem18
+            // 
+            this.radMenuItem18.Name = "radMenuItem18";
+            this.radMenuItem18.Text = "Test";
+            this.radMenuItem18.Click += new System.EventHandler(this.radMenuItem18_Click);
+            // 
+            // Kaliz
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.ClientSize = new System.Drawing.Size(1257, 735);
             this.Controls.Add(this.DockPar);
             this.Controls.Add(this.MenuTop);
             this.HelpButton = true;
@@ -1650,6 +1698,12 @@ namespace Kaliz
         private RadMenuItem VClosedList;
         private RadMenuItem VClipboardList;
         private RadMenu MenuTop;
+        private RadMenuItem VSplitHorizon;
+        private RadMenuItem VSplitVertical;
         private RadMenuItem radMenuItem1;
+        private RadMenuItem radMenuItem3;
+        private RadMenuItem radMenuItem16;
+        private RadMenuItem radMenuItem17;
+        private RadMenuItem radMenuItem18;
     }
 }
