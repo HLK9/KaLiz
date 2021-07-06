@@ -9,7 +9,7 @@ xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/X
       <format name="Whitespace" Font="Cascadia Code, 13pt" FontColor="Black" />
       <format name="KeyWord" Font="Cascadia Code, 13pt" FontColor="#ffb86c" />
       <format name="ImageProcessor" Font="Cascadia Code, 13pt" FontColor="Blue" UseCustomControl="true" />
-      <format name="String" Font="Cascadia Code SemiLight, 13pt" FontColor="#c5a332" BorderColor="#50fa7b" />
+      <format name="String" Font="Cascadia Code SemiLight, 13pt" FontColor="#bd93f9" BorderColor="#50fa7b" />
       <format name="Number" Font="Cascadia Code, 13pt" FontColor="#ff79c6" />
       <format name="Error" Font="Cascadia Code, 13pt" FontColor="#f8f8f2" underline="Wave" LineColor="Red" />
       <format name="Operator" Font="Cascadia Code, 13pt" FontColor="#ffb86c" />
