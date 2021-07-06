@@ -181,7 +181,7 @@ namespace Kaliz
             DanhDau.LineNumbersFont = new Font("Consolas", 13);
             TaiLieu.Controls.Add(DanhDau);
             DanhDau.AllowDrop = true;
-            DanhDau.FileExtensions = new string[] { ".pas", ".c", ".cpp", ".cs", ".py" };
+            DanhDau.FileExtensions = new string[] { ".pas", ".c", ".cpp", ".cs", ".py",".java" };
             DockPar.AddDocument(TaiLieu);
             //Theme
             //TaiLieu.TabStrip.SelectedIndexChanged += TabStrip_SelectedIndexChanged;
@@ -196,10 +196,13 @@ namespace Kaliz
             if (DuongDanTep != null)
             {
                 LuuHisto(DuongDanTep);
-
-                DanhDau.LoadFile(DuongDanTep,Encoding.UTF8);
+                //if (Path.GetExtension(DuongDanTep) == ".java")
+                //    DanhDau.LoadFile(DuongDanTep, Encoding.ASCII);
+                //else if(Path.GetExtension(DuongDanTep) == ".py")
+                //    DanhDau.LoadFile(DuongDanTep, Encoding.UTF8);
                 if (Path.GetExtension(DuongDanTep) == ".c" || Path.GetExtension(DuongDanTep) == ".cpp")
                 {
+                    DanhDau.LoadFile(DuongDanTep, Encoding.Default);
                     string ConfigF = @"Lex\CppF.xml";
                     DanhDau.Configurator.Open(ConfigF);
                     DanhDau.ApplyConfiguration("C++");
@@ -214,6 +217,7 @@ namespace Kaliz
                 }
                 if (Path.GetExtension(DuongDanTep) == ".pas")
                 {
+                    DanhDau.LoadFile(DuongDanTep, Encoding.ASCII);
                     string ConfigF = @"Lex\Pascal.xml";
                     DanhDau.Configurator.Open(ConfigF);
 
@@ -226,6 +230,7 @@ namespace Kaliz
                 }
                 if (Path.GetExtension(DuongDanTep) == ".py")
                 {
+                    DanhDau.LoadFile(DuongDanTep, Encoding.UTF8);
                     DanhDau.StatusBarSettings.FileNamePanel.Panel.Text = "Python";
                     string ConfigF = @"Lex\Python.xml";
                     DanhDau.Configurator.Open(ConfigF);
@@ -233,6 +238,15 @@ namespace Kaliz
                     DanhDau.StatusBarSettings.FileNamePanel.Panel.Text = "Python";
                     DanhDau.ContextChoiceOpen += DanhDau_ContextChoiceOpen_ForPython;
 
+                }
+                if(Path.GetExtension(DuongDanTep)==".java")
+                {
+                    DanhDau.LoadFile(DuongDanTep, Encoding.Default);
+                    DanhDau.StatusBarSettings.FileNamePanel.Panel.Text = "Java";
+                    string ConfigF = @"Lex\Java.xml";
+                    DanhDau.Configurator.Open(ConfigF);
+                    DanhDau.ApplyConfiguration("Java");
+                    DanhDau.StatusBarSettings.FileNamePanel.Panel.Text = "Java";
                 }
               
 
@@ -309,17 +323,24 @@ namespace Kaliz
         {
             try
             {
-                foreach (var item in listClosedFiles.Items)
+                if(Path.GetFileName(TabHienTai.FileName)==DockPar.DocumentManager.ActiveDocument.Text)
                 {
-                    if (item.Text == TabHienTai.FileName) listClosedFiles.Items.Remove(item);
+                    foreach (var item in listClosedFiles.Items)
+                    {
+                        if (item.Text == TabHienTai.FileName) listClosedFiles.Items.Remove(item);
+                    }
+                    listClosedFiles.Items.Add(TabHienTai.FileName);
+
+                    TabHienTai.Close();
+                }else
+                {
+                    DockPar.DocumentManager.ActiveDocument.Close();
                 }
-                listClosedFiles.Items.Add(TabHienTai.FileName);
               
-                TabHienTai.Close();
 
                 
             }
-            catch { DockPar.DocumentManager.ActiveDocument.Close(); }
+            catch { }
               
            
             
@@ -334,6 +355,7 @@ namespace Kaliz
                 switch (TenTheme)
                 {
                     case "Fluent":
+                        ThemeResolutionService.ApplicationThemeName = "Fluent";
                         try
                         {
                             //ThemeResolutionService.ApplicationThemeName = "Fluent";
@@ -366,33 +388,47 @@ namespace Kaliz
                             //thử cách 2  áp dùng hàng loạt các tab
                             foreach (var item in DockPar.DocumentManager.DocumentArray)
                             {
-                                ThemeResolutionService.ApplicationThemeName = "Fluent";
-                                (item.Controls[0] as EditControl).Style = EditControlStyle.Office2016DarkGray;
-                                (item.Controls[0] as EditControl).Style = EditControlStyle.Office2016Colorful;
-                                (item.Controls[0] as EditControl).IndicatorMarginBackColor = Color.FromArgb(249, 249, 249);
-                                (item.Controls[0] as EditControl).LineNumbersColor = Color.Teal;
-                                (item.Controls[0] as EditControl).ContextPromptBackgroundBrush = new BrushInfo(GradientStyle.None, new Color[] { Color.FromArgb(249, 249, 249) });
-                                (item.Controls[0] as EditControl).BackgroundColor = new BrushInfo(GradientStyle.None, new Color[] { Color.FromArgb(249, 249, 249) });
-                                this.WindowState = FormWindowState.Normal;
-                                if (Path.GetExtension((item.Controls[0] as EditControl).FileName) == ".pas")
+                                try
                                 {
-                                    string ConfigF = @"Lex\Pascal.xml";
-                                    (item.Controls[0] as EditControl).Configurator.Open(ConfigF);
-                                    (item.Controls[0] as EditControl).ApplyConfiguration("Pascal");
+                                   
+                                    (item.Controls[0] as EditControl).Style = EditControlStyle.Office2016DarkGray;
+                                    (item.Controls[0] as EditControl).Style = EditControlStyle.Office2016Colorful;
+                                    (item.Controls[0] as EditControl).IndicatorMarginBackColor = Color.FromArgb(249, 249, 249);
+                                    (item.Controls[0] as EditControl).LineNumbersColor = Color.Teal;
+                                    (item.Controls[0] as EditControl).ContextPromptBackgroundBrush = new BrushInfo(GradientStyle.None, new Color[] { Color.FromArgb(249, 249, 249) });
+                                    (item.Controls[0] as EditControl).BackgroundColor = new BrushInfo(GradientStyle.None, new Color[] { Color.FromArgb(249, 249, 249) });
+                                    this.WindowState = FormWindowState.Normal;
+                                    if (Path.GetExtension((item.Controls[0] as EditControl).FileName) == ".pas")
+                                    {
+                                        string ConfigF = @"Lex\Pascal.xml";
+                                        (item.Controls[0] as EditControl).Configurator.Open(ConfigF);
+                                        (item.Controls[0] as EditControl).ApplyConfiguration("Pascal");
+                                    }
+                                    else
+                                        if (Path.GetExtension((item.Controls[0] as EditControl).FileName) == ".c" || Path.GetExtension((item.Controls[0] as EditControl).FileName) == ".cpp")
+                                    {
+                                        string ConfigF = @"Lex\CppF.xml";
+                                        (item.Controls[0] as EditControl).Configurator.Open(ConfigF);
+                                        (item.Controls[0] as EditControl).ApplyConfiguration("C++");
+                                    }
+                                    else if (Path.GetExtension((item.Controls[0] as EditControl).FileName) == ".py")
+                                    {
+                                        string ConfigF = @"Lex\Python.xml";
+                                        (item.Controls[0] as EditControl).Configurator.Open(ConfigF);
+                                        (item.Controls[0] as EditControl).ApplyConfiguration("Python");
+                                    }
+                                    else if (Path.GetExtension((item.Controls[0] as EditControl).FileName) == ".java")
+                                    {
+                                        string ConfigF = @"Lex\Java.xml";
+                                        (item.Controls[0] as EditControl).Configurator.Open(ConfigF);
+                                        (item.Controls[0] as EditControl).ApplyConfiguration("Java");
+                                    }
                                 }
-                                else
-                                    if (Path.GetExtension((item.Controls[0] as EditControl).FileName) == ".c" || Path.GetExtension((item.Controls[0] as EditControl).FileName) == ".cpp")
+                                catch
                                 {
-                                    string ConfigF = @"Lex\CppF.xml";
-                                    (item.Controls[0] as EditControl).Configurator.Open(ConfigF);
-                                    (item.Controls[0] as EditControl).ApplyConfiguration("C++");
+
                                 }
-                                else if (Path.GetExtension((item.Controls[0] as EditControl).FileName) == ".py")
-                                {
-                                    string ConfigF = @"Lex\Python.xml";
-                                    (item.Controls[0] as EditControl).Configurator.Open(ConfigF);
-                                    (item.Controls[0] as EditControl).ApplyConfiguration("Python");
-                                }
+                                
 
                             }
 
@@ -401,6 +437,7 @@ namespace Kaliz
                         catch { }
                         break;
                     case "FluentDark":
+                        ThemeResolutionService.ApplicationThemeName = "FluentDark";
                         try
                         {
 
@@ -433,38 +470,53 @@ namespace Kaliz
                             //thử cách 2 áp dùng hàng loạt các tab
                             foreach (var item in DockPar.DocumentManager.DocumentArray)
                             {
-                                (item.Controls[0] as EditControl).IndicatorMarginBackColor = Color.FromArgb(40, 42, 54);
-                                (item.Controls[0] as EditControl).LineNumbersColor = Color.FromArgb(98, 114, 164);
-                                (item.Controls[0] as EditControl).Style = EditControlStyle.Office2016DarkGray;
-                                (item.Controls[0] as EditControl).ContextPromptBackgroundBrush = new BrushInfo(GradientStyle.None, new Color[] { Color.FromArgb(40, 42, 54) });
-                                (item.Controls[0] as EditControl).BackgroundColor = new BrushInfo(GradientStyle.None, new Color[] { Color.FromArgb(40, 42, 54) });
-                                ThemeResolutionService.ApplicationThemeName = "FluentDark";
-                                this.WindowState = FormWindowState.Normal;
-                                if (Path.GetExtension((item.Controls[0] as EditControl).FileName) == ".pas")
+                                try
                                 {
-                                    string ConfigF = @"Lex\Pascal_D.xml";
-                                    (item.Controls[0] as EditControl).Configurator.Open(ConfigF);
-                                    (item.Controls[0] as EditControl).ApplyConfiguration("Pascal");
+                                    (item.Controls[0] as EditControl).IndicatorMarginBackColor = Color.FromArgb(40, 42, 54);
+                                    (item.Controls[0] as EditControl).LineNumbersColor = Color.FromArgb(98, 114, 164);
+                                    (item.Controls[0] as EditControl).Style = EditControlStyle.Office2016DarkGray;
+                                    (item.Controls[0] as EditControl).ContextPromptBackgroundBrush = new BrushInfo(GradientStyle.None, new Color[] { Color.FromArgb(40, 42, 54) });
+                                    (item.Controls[0] as EditControl).BackgroundColor = new BrushInfo(GradientStyle.None, new Color[] { Color.FromArgb(40, 42, 54) });
+                                    
+                                    this.WindowState = FormWindowState.Normal;
+                                    if (Path.GetExtension((item.Controls[0] as EditControl).FileName) == ".pas")
+                                    {
+                                        string ConfigF = @"Lex\Pascal_D.xml";
+                                        (item.Controls[0] as EditControl).Configurator.Open(ConfigF);
+                                        (item.Controls[0] as EditControl).ApplyConfiguration("Pascal");
+                                    }
+                                    else
+                                        if (Path.GetExtension((item.Controls[0] as EditControl).FileName) == ".c" || Path.GetExtension((item.Controls[0] as EditControl).FileName) == ".cpp")
+                                    {
+                                        string ConfigF = @"Lex\CppF_D.xml";
+                                        (item.Controls[0] as EditControl).Configurator.Open(ConfigF);
+                                        (item.Controls[0] as EditControl).ApplyConfiguration("C++");
+                                    }
+                                    else if (Path.GetExtension((item.Controls[0] as EditControl).FileName) == ".py")
+                                    {
+                                        string ConfigF = @"Lex\Python_D.xml";
+                                        (item.Controls[0] as EditControl).Configurator.Open(ConfigF);
+                                        (item.Controls[0] as EditControl).ApplyConfiguration("Python");
+                                    }
+                                    else if (Path.GetExtension((item.Controls[0] as EditControl).FileName) == ".java")
+                                    {
+                                        string ConfigF = @"Lex\Java_D.xml";
+                                        (item.Controls[0] as EditControl).Configurator.Open(ConfigF);
+                                        (item.Controls[0] as EditControl).ApplyConfiguration("Java");
+                                    }
+                                    
                                 }
-                                else
-                                    if (Path.GetExtension((item.Controls[0] as EditControl).FileName) == ".c" || Path.GetExtension((item.Controls[0] as EditControl).FileName) == ".cpp")
+                                catch
                                 {
-                                    string ConfigF = @"Lex\CppF_D.xml";
-                                    (item.Controls[0] as EditControl).Configurator.Open(ConfigF);
-                                    (item.Controls[0] as EditControl).ApplyConfiguration("C++");
+
                                 }
-                                else if (Path.GetExtension((item.Controls[0] as EditControl).FileName) == ".py")
-                                {
-                                    string ConfigF = @"Lex\Python_D.xml";
-                                    (item.Controls[0] as EditControl).Configurator.Open(ConfigF);
-                                    (item.Controls[0] as EditControl).ApplyConfiguration("Python");
-                                }
+                               
                             }
                         }
                         catch { }
                         break;
                     default:
-                        
+                        ThemeResolutionService.ApplicationThemeName = "MaterialTeal";
                         try
                         {
                             /////Cách này chỉ hiệu quả cho từng tab
@@ -498,32 +550,47 @@ namespace Kaliz
                             //thử cách 2. áp dùng hàng loạt các tab
                             foreach (var item in DockPar.DocumentManager.DocumentArray)
                             {
-                                ThemeResolutionService.ApplicationThemeName = "MaterialTeal";
-                                (item.Controls[0] as EditControl).Style = EditControlStyle.Office2016Colorful;
-                                (item.Controls[0] as EditControl).IndicatorMarginBackColor = Color.FromArgb(249, 249, 249);
-                                (item.Controls[0] as EditControl).LineNumbersColor = Color.Teal;
-                                (item.Controls[0] as EditControl).ContextPromptBackgroundBrush = new BrushInfo(GradientStyle.None, new Color[] { Color.FromArgb(249, 249, 249) });
-                                (item.Controls[0] as EditControl).BackgroundColor = new BrushInfo(GradientStyle.None, new Color[] { Color.FromArgb(249, 249, 249) });
-                                this.WindowState = FormWindowState.Normal;
-                                if (Path.GetExtension((item.Controls[0] as EditControl).FileName) == ".pas")
+                                try
                                 {
-                                    string ConfigF = @"Lex\Pascal.xml";
-                                    (item.Controls[0] as EditControl).Configurator.Open(ConfigF);
-                                    (item.Controls[0] as EditControl).ApplyConfiguration("Pascal");
+                                   
+                                    (item.Controls[0] as EditControl).Style = EditControlStyle.Office2016Colorful;
+                                    (item.Controls[0] as EditControl).IndicatorMarginBackColor = Color.FromArgb(249, 249, 249);
+                                    (item.Controls[0] as EditControl).LineNumbersColor = Color.Teal;
+                                    (item.Controls[0] as EditControl).ContextPromptBackgroundBrush = new BrushInfo(GradientStyle.None, new Color[] { Color.FromArgb(249, 249, 249) });
+                                    (item.Controls[0] as EditControl).BackgroundColor = new BrushInfo(GradientStyle.None, new Color[] { Color.FromArgb(249, 249, 249) });
+                                    this.WindowState = FormWindowState.Normal;
+                                    if (Path.GetExtension((item.Controls[0] as EditControl).FileName) == ".pas")
+                                    {
+                                        string ConfigF = @"Lex\Pascal.xml";
+                                        (item.Controls[0] as EditControl).Configurator.Open(ConfigF);
+                                        (item.Controls[0] as EditControl).ApplyConfiguration("Pascal");
+                                    }
+                                    else
+                                        if (Path.GetExtension((item.Controls[0] as EditControl).FileName) == ".c" || Path.GetExtension((item.Controls[0] as EditControl).FileName) == ".cpp")
+                                    {
+                                        string ConfigF = @"Lex\CppF.xml";
+                                        (item.Controls[0] as EditControl).Configurator.Open(ConfigF);
+                                        (item.Controls[0] as EditControl).ApplyConfiguration("C++");
+                                    }
+                                    else if (Path.GetExtension((item.Controls[0] as EditControl).FileName) == ".py")
+                                    {
+                                        string ConfigF = @"Lex\Python.xml";
+                                        (item.Controls[0] as EditControl).Configurator.Open(ConfigF);
+                                        (item.Controls[0] as EditControl).ApplyConfiguration("Python");
+                                    }
+                                    else if (Path.GetExtension((item.Controls[0] as EditControl).FileName) == ".java")
+                                    {
+                                        string ConfigF = @"Lex\Java.xml";
+                                        (item.Controls[0] as EditControl).Configurator.Open(ConfigF);
+                                        (item.Controls[0] as EditControl).ApplyConfiguration("Java");
+                                    }
+
                                 }
-                                else
-                                    if (Path.GetExtension((item.Controls[0] as EditControl).FileName) == ".c" || Path.GetExtension((item.Controls[0] as EditControl).FileName) == ".cpp")
+                                catch
                                 {
-                                    string ConfigF = @"Lex\CppF.xml";
-                                    (item.Controls[0] as EditControl).Configurator.Open(ConfigF);
-                                    (item.Controls[0] as EditControl).ApplyConfiguration("C++");
+
                                 }
-                                else if (Path.GetExtension((item.Controls[0] as EditControl).FileName) == ".py")
-                                {
-                                    string ConfigF = @"Lex\Python.xml";
-                                    (item.Controls[0] as EditControl).Configurator.Open(ConfigF);
-                                    (item.Controls[0] as EditControl).ApplyConfiguration("Python");
-                                }
+                               
                             }
                         }
                         catch { }
@@ -1383,6 +1450,47 @@ End;
                     }
 
                 }
+                else if(Path.GetExtension(ten)==".java")
+            {
+                Process BienDich = new Process();
+                BienDich.StartInfo.FileName = "cmd";
+                BienDich.StartInfo.UseShellExecute = false;
+                BienDich.StartInfo.RedirectStandardOutput = true;
+                BienDich.StartInfo.RedirectStandardError = true;
+                BienDich.StartInfo.RedirectStandardInput = true;
+               // BienDich.StartInfo.WorkingDirectory = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\Kaliz" + @"\Cmder\vendor\jdk\bin";
+                if (enabledebug == false)
+                    BienDich.StartInfo.Arguments = " /c " + "javac " + ten;
+               else BienDich.StartInfo.Arguments = "/c " + "javac " + " -g " + ten;
+
+
+                BienDich.StartInfo.CreateNoWindow = true;
+                BienDich.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;
+                BienDich.Start();
+
+                string ad;
+
+                ListOutput.AllowEdit = false;
+                ListOutput.AllowRemove = false;
+                while ((ad = BienDich.StandardError.ReadLine()) != null)
+                {
+                    ListOutput.Items.Add(ad);
+
+                    // if (ad.Contains("lines compiled")) break;
+                }
+                if (ad==null)
+                {
+                    ListOutput.Items.Add("Completed");
+                }
+                foreach (var item in ListOutput.Items)
+                {
+                    if (item.Text.Contains("error")) item.BackColor = Color.LightSalmon;
+                    if (item.Text.Contains("Completed")) item.BackColor = Color.LightGreen;
+                    if (item.Text.Contains("- Fail")) item.BackColor = Color.LightSalmon;
+
+                }
+            }
+            
             
           
         }
@@ -1404,7 +1512,7 @@ End;
                     //
                     BienDich.StartInfo.FileName = "cmd";
                    // BienDich.StartInfo.WorkingDirectory = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\Kaliz" + @"Cmder\vendor\conemu-maximus5\ConEmu.exe";
-                    BienDich.StartInfo.Arguments = " / c " + "gdb32 " + DuongDanTepExe(ten);
+                    BienDich.StartInfo.Arguments = " /c " + "gdb32 " + DuongDanTepExe(ten);
                     BienDich.Start();
                     //BienDich.BeginOutputReadLine();
 
@@ -1470,7 +1578,7 @@ End;
 
         private void Run(string file)
         {
-            if (!File.Exists(DuongDanTepExe(TabHienTai.FileName))|| BuildComplete == false)
+            if (!File.Exists(DuongDanTepExe(TabHienTai.FileName)) && Path.GetExtension(file) != ".py" && Path.GetExtension(file) != ".java")
             {
                 RadTaskDialogPage Tas = new RadTaskDialogPage();
                 Tas.ShouldApplyTheme = true;
@@ -1495,7 +1603,7 @@ End;
                 Tas.CommandAreaButtons.Add(BuCant);
                 RadTaskDialog.ShowDialog(Tas);
             }
-            else
+            else if( Path.GetExtension(file)==".py"||Path.GetExtension(file)==".java"|| Path.GetExtension(file) == ".pas"|| Path.GetExtension(file) == ".c"|| Path.GetExtension(file) == ".cpp" && BuildComplete==true)
             {
 
                 if (ConsoleUse == "PowerShell")
@@ -1533,10 +1641,6 @@ End;
                         Chay.StartInfo.FileName = "cmd";
                         //Chay.StartInfo.WorkingDirectory = @"Cmder\vendor\Python\Python38-32";
                         Chay.StartInfo.Arguments = "/c" + " python " + file;
-                        //Lấy thông tin nhưng phải để UseExeCutale là false :))
-                        //Chay.StartInfo.RedirectStandardError = true;
-                        //Chay.StartInfo.RedirectStandardOutput = true;
-
                         Chay.Start();
                         Chay.WaitForExit();
                         /*       
@@ -1560,6 +1664,14 @@ End;
                                        // if (ad.Contains("lines compiled")) break;
                                    }
                        */
+                    }
+                    if(Path.GetExtension(file)==".java")
+                    {
+                        Process Chay = new Process();
+                        Chay.StartInfo.FileName = "cmd";                        
+                        Chay.StartInfo.Arguments = "/c" + "java " + file;
+                        Chay.Start();
+                        Chay.WaitForExit();
                     }
 
                     //
@@ -1597,7 +1709,7 @@ End;
                     {
 
                         Process Chay = new Process();
-                        //Chay.StartInfo.Verb = "runas";
+                        
                         Chay.StartInfo.FileName = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\Kaliz" + @"\Cmder\vendor\conemu-maximus5\ConEmu.exe";
                         Chay.StartInfo.Arguments = " -run python " + file;
                         //Để ý dấu - phải sát với lệnh
@@ -1605,6 +1717,15 @@ End;
                         Chay.WaitForExit();
                         //Fixed!
 
+                    }
+                    if(Path.GetExtension(file)==".java")
+                    {
+                        Process Chay = new Process();
+
+                        Chay.StartInfo.FileName = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\Kaliz" + @"\Cmder\vendor\conemu-maximus5\ConEmu.exe";
+                        Chay.StartInfo.Arguments = "-dir "+ Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\Kaliz" + @"\Cmder\vendor\jdk-11.0.11\bin  " + " -run java " + file;
+                        Chay.Start();
+                       // Chay.WaitForExit();
                     }
                 }
             }
@@ -1872,14 +1993,14 @@ End;
 
             if (deBug == false)
             {
-                ShowAlert_Light("<html><color=Teal><b>Bạn đã Bật GDB Debug </b> ", "<html><i><span><color=Teal>Hãy biên dịch lại để khởi tạo</span></i>");
+                ShowAlert_Light("<html><color=Teal><b>You have enabled debugging mode</b> ", "<html><i><span><color=Teal>Please compile again to initialize</span></i>");
                 deBug = true;
                 DEnable.Text = "Disable Debug";
 
             }
             else
             {
-                ShowAlert_Light("<html><color = Crimson><b> Bạn đã Tắt GDB Debug </b> ", "<html><i><span><color=Teal>Trình biên dịch sẽ không khởi tạo thông tin Debug</span></i>");
+                ShowAlert_Light("<html><color=Crimson><b> You have disabled debugging mode </b> ", "<html><i><span><color=Teal>Compiler will not initialize debug information</span></i>");
                 deBug = false;
                 DEnable.Text = "Enable Debug";
 
@@ -1893,17 +2014,25 @@ End;
             try
             {
                 TabHienTai.Save();
-                
+
+
                 if (Path.GetExtension(TabHienTai.FileName) == ".py")
                     TabHienTai.StatusBarSettings.FileNamePanel.Panel.Text = "Python";
                 if (Path.GetExtension(TabHienTai.FileName) == ".pas")
                     TabHienTai.StatusBarSettings.FileNamePanel.Panel.Text = "Pascal";
                 if (Path.GetExtension(TabHienTai.FileName) == ".c" || Path.GetExtension(TabHienTai.FileName) == ".cpp")
                     TabHienTai.StatusBarSettings.FileNamePanel.Panel.Text = "C/C++";
-
+                if (Path.GetExtension(TabHienTai.FileName) == ".java")
+                    TabHienTai.StatusBarSettings.FileNamePanel.Panel.Text = "Java";
                 TabHienTai.StatusBarSettings.StatusPanel.Panel.Text = "Saved";
                 TabHienTai.StatusBarSettings.StatusPanel.Panel.BackColor = Color.DarkCyan;
                 TabHienTai.StatusBarSettings.StatusPanel.Panel.ForeColor = Color.White;
+
+               if(Path.GetFileName(TabHienTai.FileName)!=DockPar.DocumentManager.ActiveDocument.Text)
+                {
+                    DockPar.DocumentManager.ActiveDocument.Text = Path.GetFileName(TabHienTai.FileName);
+                }
+
             }
             catch { }
 
@@ -3044,6 +3173,64 @@ TabHienTai.InsertText(TabHienTai.CurrentLine, TabHienTai.CurrentColumn, radlistc
 
             //}
 
+        }
+
+        private void DeJDB_Click(object sender, EventArgs e)
+        {
+            if(deBug == true)
+            {
+                if (File.Exists(TabHienTai.FileName))
+                {
+                    if (Path.GetExtension(TabHienTai.FileName) == ".java")
+                    {
+                        if (ConsoleUse == "PowerShell")
+                        {
+                            Process JDB = new Process();
+                            JDB.StartInfo.FileName = "cmd";
+                            JDB.StartInfo.Arguments = "/c " + " jdb " + TabHienTai.FileName;
+                            JDB.Start();
+                            JDB.WaitForExit();
+
+                        }
+                        else
+                        {
+                            Process JDB = new Process();
+                            JDB.StartInfo.FileName = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\Kaliz" + @"\Cmder\vendor\conemu-maximus5\ConEmu.exe";
+                            JDB.StartInfo.Arguments = "-run " + " jdb " + TabHienTai.FileName;
+                            JDB.Start();
+                            JDB.WaitForExit();
+
+                        }
+                    }
+                }
+                else
+                    MessageBox.Show("Couldn't load this file", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            {
+                ShowAlert_Light("<html><color=Crimson><b>You have not enabled debug mode </b>", null);
+            }
+           
+          
+        }
+
+        private void wlcJava_Click(object sender, EventArgs e)
+        {
+            TaoMoi("Document " + chiso++, null);
+
+            string ConfigF = @"Lex\Java.xml";
+            TabHienTai.Configurator.Open(ConfigF);
+            TabHienTai.ApplyConfiguration("Java");
+            TabHienTai.StatusBarSettings.FileNamePanel.Panel.Text = "Java";
+            UpdateTheme();
+        }
+
+        private void SynJava_Click(object sender, EventArgs e)
+        {
+            string ConfigF = @"Lex\Java.xml";
+            TabHienTai.Configurator.Open(ConfigF);
+            TabHienTai.ApplyConfiguration("Java");
+            TabHienTai.StatusBarSettings.FileNamePanel.Panel.Text = "Java";
         }
     }
 }

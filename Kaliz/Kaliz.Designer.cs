@@ -98,6 +98,7 @@ namespace Kaliz
             this.MDebug = new Telerik.WinControls.UI.RadMenuItem();
             this.DEnable = new Telerik.WinControls.UI.RadMenuItem();
             this.DOpenGDB = new Telerik.WinControls.UI.RadMenuItem();
+            this.DeJDB = new Telerik.WinControls.UI.RadMenuItem();
             this.MOptions = new Telerik.WinControls.UI.RadMenuItem();
             this.OEnableContext = new Telerik.WinControls.UI.RadMenuItem();
             this.OLock = new Telerik.WinControls.UI.RadMenuItem();
@@ -187,6 +188,8 @@ namespace Kaliz
             this.radMenuItem16 = new Telerik.WinControls.UI.RadMenuItem();
             this.radMenuItem17 = new Telerik.WinControls.UI.RadMenuItem();
             this.radMenuItem18 = new Telerik.WinControls.UI.RadMenuItem();
+            this.wlcJava = new Telerik.WinControls.UI.RadButton();
+            this.SynJava = new Telerik.WinControls.UI.RadMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.DockPar)).BeginInit();
             this.DockPar.SuspendLayout();
             this.documentWindow1.SuspendLayout();
@@ -219,6 +222,7 @@ namespace Kaliz
             ((System.ComponentModel.ISupportInitialize)(this.listClosedFiles)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.toolTabStrip3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.MenuTop)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.wlcJava)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this)).BeginInit();
             this.SuspendLayout();
             // 
@@ -422,7 +426,8 @@ namespace Kaliz
             this.ESyntax.Items.AddRange(new Telerik.WinControls.RadItem[] {
             this.SPascal,
             this.SynC,
-            this.SynPython});
+            this.SynPython,
+            this.SynJava});
             this.ESyntax.Name = "ESyntax";
             this.ESyntax.Text = "Syntax";
             // 
@@ -686,7 +691,8 @@ namespace Kaliz
             // 
             this.MDebug.Items.AddRange(new Telerik.WinControls.RadItem[] {
             this.DEnable,
-            this.DOpenGDB});
+            this.DOpenGDB,
+            this.DeJDB});
             this.MDebug.Name = "MDebug";
             this.MDebug.Text = "Debug";
             this.MDebug.Click += new System.EventHandler(this.MDebug_Click);
@@ -700,8 +706,14 @@ namespace Kaliz
             // DOpenGDB
             // 
             this.DOpenGDB.Name = "DOpenGDB";
-            this.DOpenGDB.Text = "Open GDB Debug";
+            this.DOpenGDB.Text = "Open GDB Debug for C/C++, Pascal";
             this.DOpenGDB.Click += new System.EventHandler(this.DOpenGDB_Click);
+            // 
+            // DeJDB
+            // 
+            this.DeJDB.Name = "DeJDB";
+            this.DeJDB.Text = "Open JDB Debug for Java";
+            this.DeJDB.Click += new System.EventHandler(this.DeJDB_Click);
             // 
             // MOptions
             // 
@@ -955,6 +967,7 @@ namespace Kaliz
             // 
             // documentWindow1
             // 
+            this.documentWindow1.Controls.Add(this.wlcJava);
             this.documentWindow1.Controls.Add(this.recentList);
             this.documentWindow1.Controls.Add(this.radLabel3);
             this.documentWindow1.Controls.Add(this.pictureBox1);
@@ -1492,6 +1505,24 @@ namespace Kaliz
             this.radMenuItem18.Text = "Test";
             this.radMenuItem18.Click += new System.EventHandler(this.radMenuItem18_Click);
             // 
+            // wlcJava
+            // 
+            this.wlcJava.Location = new System.Drawing.Point(9, 348);
+            this.wlcJava.Name = "wlcJava";
+            this.wlcJava.Size = new System.Drawing.Size(320, 36);
+            this.wlcJava.TabIndex = 7;
+            this.wlcJava.Text = "<html><span style=\"font-size: 11pt; font-family: segoe ui\">Create new file with <" +
+    "span style=\"font-size: 11pt; color: #8000ff\"><strong>Java</strong></span> syntax" +
+    "</span></html>";
+            this.wlcJava.ThemeName = "MaterialTeal";
+            this.wlcJava.Click += new System.EventHandler(this.wlcJava_Click);
+            // 
+            // SynJava
+            // 
+            this.SynJava.Name = "SynJava";
+            this.SynJava.Text = "Java";
+            this.SynJava.Click += new System.EventHandler(this.SynJava_Click);
+            // 
             // Kaliz
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1545,6 +1576,7 @@ namespace Kaliz
             ((System.ComponentModel.ISupportInitialize)(this.listClosedFiles)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.toolTabStrip3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.MenuTop)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.wlcJava)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -1705,5 +1737,8 @@ namespace Kaliz
         private RadMenuItem radMenuItem16;
         private RadMenuItem radMenuItem17;
         private RadMenuItem radMenuItem18;
+        private RadMenuItem DeJDB;
+        private RadButton wlcJava;
+        private RadMenuItem SynJava;
     }
 }
