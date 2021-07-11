@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ArrayOfConfigLanguage>
+<ConfigLanguage name="Java" Known="Java" StartComment="/*" EndComment="*/">
+		<formats>
+			<format name="KeyWord" Font="Cascadia Code, 13pt" FontColor="#bd93f9" />
+			<format name="Comment" Font="Cascadia Code, 13pt" FontColor="#6272a4" />
+			<format name="String" Font="Cascadia Code SemiLight, 13pt" FontColor="#ff79c6"/>
+			<format name="Operator" Font="Cascadia Code, 13pt" FontColor="#8be9fd" />
+			<format name="Whitespace" Font="Cascadia Code, 13pt" FontColor="Black" />
+			<format name="Text" Font="Cascadia Code SemiLight, 13pt" FontColor="#f8f8f2" />
+			<format name="Number" Font="Cascadia Code, 13pt" FontColor="#8be9fd" />
+			<format name="PreprocessorKeyword" Font="Cascadia Code, 13pt" FontColor="Gray" />
+			<format name="SelectedText" Font="Cascadia Code, 13pt" BackColor="Highlight" FontColor="HighlightText" />
+			<format name="CommentXML" Font="Cascadia Code, 13pt" FontColor="Gray" />
+			<format name="CollapsedText" Font="Cascadia Code, 13pt" FontColor="Black" BorderColor="Gray"
+				BorderStyle="Solid" />
+		</formats>
+		<extensions>
+			<extension>java</extension>
+		</extensions>
+		<lexems>
+			<lexem BeginBlock="package" Type="KeyWord" />
+			<lexem BeginBlock="import" Type="KeyWord" />
+			<lexem BeginBlock="/*" EndBlock="*/" Type="Comment" OnlyLocalSublexems="true" IsComplex="true"
+				IsCollapsable="true" CollapseName="/*...*/">
+				<SubLexems>
+					<lexem BeginBlock="\n" IsBeginRegex="true" />
+				</SubLexems>
+			</lexem>
+			<lexem BeginBlock="//" EndBlock="\n" IsEndRegex="true" Type="Comment" IsComplex="true"
+				OnlyLocalSublexems="true" />
+			<lexem BeginBlock="abstract" Type="KeyWord" />
+			<lexem BeginBlock="final" Type="KeyWord" />
+			<lexem BeginBlock="private" Type="KeyWord" />
+			<lexem BeginBlock="protected" Type="KeyWord" />
+			<lexem BeginBlock="public" Type="KeyWord" />
+			<lexem BeginBlock="static" Type="KeyWord" />
+			<lexem BeginBlock="strictfp" Type="KeyWord" />
+			<lexem BeginBlock="throws" Type="KeyWord" />
+			<lexem BeginBlock="extends" Type="KeyWord" />
+			<lexem BeginBlock="implements" Type="KeyWord" />
+			<lexem BeginBlock="{" EndBlock="}" Type="KeyWord" IsComplex="true" IsCollapsable="true"
+				Indent="true" CollapseName="{...}" IndentationGuideline="true">
+				<SubLexems>
+					<lexem BeginBlock="\n" IsBeginRegex="true" />
+				</SubLexems>
+			</lexem>
+			<lexem BeginBlock="&quot;" EndBlock="(&quot;)|(@&quot;)" Type="String" IsEndRegex="true"
+				IsComplex="true" OnlyLocalSublexems="true" IndentationGuideline="true">
+				<SubLexems>
+					<lexem BeginBlock="\" EndBlock="&quot;" Type="String" />
+				</SubLexems>
+			</lexem>
+			<lexem BeginBlock="'" EndBlock="'" Type="String" IsComplex="true" OnlyLocalSublexems="true">
+				<SubLexems>
+					<lexem BeginBlock="\" EndBlock=".+" IsEndRegex="true" Priority="2" Type="String" />
+				</SubLexems>
+			</lexem>
+			<lexem BeginBlock="(" EndBlock=")" Type="Operator" IsComplex="true" IsCollapsable="false"
+				CollapseName="(...)">
+				<SubLexems>
+					<lexem BeginBlock="\n" IsBeginRegex="true" />
+				</SubLexems>
+			</lexem>
+			<lexem BeginBlock="[" EndBlock="]" Type="Operator" IsComplex="true" IsCollapsable="false"
+				CollapseName="[...]">
+				<SubLexems>
+					<lexem BeginBlock="\" EndBlock="&quot;" Type="String" />
+				</SubLexems>
+			</lexem>
+			<lexem BeginBlock="=" Type="Operator" />
+			<lexem BeginBlock="+" Type="Operator" />
+			<lexem BeginBlock="-" Type="Operator" />
+			<lexem BeginBlock="/" Type="Operator" />
+			<lexem BeginBlock="*" Type="Operator" />
+			<lexem BeginBlock="!" Type="Operator" />
+			<lexem BeginBlock=";" Type="Operator" />
+			<lexem BeginBlock=":" Type="Operator" />
+			<lexem BeginBlock="." Type="Operator" DropContextChoiceList="true" />
+			<lexem BeginBlock="," Type="Operator" />
+			<lexem BeginBlock="&amp;" Type="Operator" />
+			<lexem BeginBlock="^" Type="Operator" />
+			<lexem BeginBlock="|" Type="Operator" />
+			<lexem BeginBlock="~" Type="Operator" />
+			<lexem BeginBlock="%" Type="Operator" />
+			<lexem BeginBlock="?" Type="Operator" />
+			<lexem BeginBlock="#" Type="Operator" />
+			<lexem BeginBlock="@" Type="Operator" />
+			<lexem BeginBlock="break" Type="KeyWord" />
+			<lexem BeginBlock="catch" Type="KeyWord" />
+			<lexem BeginBlock="case" Type="KeyWord" />
+			<lexem BeginBlock="continue" Type="KeyWord" />
+			<lexem BeginBlock="default" Type="KeyWord" />
+			<lexem BeginBlock="do" Type="KeyWord" />
+			<lexem BeginBlock="else" Type="KeyWord" />
+			<lexem BeginBlock="false" Type="KeyWord" />
+			<lexem BeginBlock="for" Type="KeyWord" />
+			<lexem BeginBlock="finally" Type="KeyWord" />
+			<lexem BeginBlock="if" Type="KeyWord" />
+			<lexem BeginBlock="interface" Type="KeyWord" />
+			<lexem BeginBlock="instanceof" Type="KeyWord" />
+			<lexem BeginBlock="new" Type="KeyWord" />
+			<lexem BeginBlock="null" Type="KeyWord" />
+			<lexem BeginBlock="return" Type="KeyWord" />
+			<lexem BeginBlock="switch" Type="KeyWord" />
+			<lexem BeginBlock="super" Type="KeyWord" />
+			<lexem BeginBlock="try" Type="KeyWord" />
+			<lexem BeginBlock="true" Type="KeyWord" />
+			<lexem BeginBlock="this" Type="KeyWord" />
+			<lexem BeginBlock="throw" Type="KeyWord" />
+			<lexem BeginBlock="while" Type="KeyWord" />
+			<lexem BeginBlock='native' Type="KeyWord" />
+			<lexem BeginBlock='synchronized' Type="KeyWord" />
+			<lexem BeginBlock='threadsafe' Type="KeyWord" />
+			<lexem BeginBlock='volatile' Type="KeyWord" />
+			<lexem BeginBlock='transient' Type="KeyWord" />
+			<lexem BeginBlock='boolean' Type="KeyWord" />
+			<lexem BeginBlock='byte' Type="KeyWord" />
+			<lexem BeginBlock='char' Type="KeyWord" />
+			<lexem BeginBlock='double' Type="KeyWord" />
+			<lexem BeginBlock='float' Type="KeyWord" />
+			<lexem BeginBlock='int' Type="KeyWord" />
+			<lexem BeginBlock='long' Type="KeyWord" />
+			<lexem BeginBlock='short' Type="KeyWord" />
+			<lexem BeginBlock='void' Type="KeyWord" />
+			<lexem BeginBlock="\s" IsBeginRegex="true" Type="Whitespace" />
+			<lexem BeginBlock="[0-9]+" IsBeginRegex="true" Type="Number" IsComplex="true" OnlyLocalSublexems="true">
+				<SubLexems>
+					<lexem BeginBlock="x" EndBlock="[0-9a-fA-F]+" IsEndRegex="true" Type="Number" />
+					<lexem BeginBlock="." EndBlock="[0-9]+" IsEndRegex="true" Type="Number" />
+				</SubLexems>
+			</lexem>
+		</lexems>
+		<splits>
+			<split>/*</split>
+			<split>*/</split>
+			<split>//</split>
+		</splits>
+	</ConfigLanguage>
+</ArrayOfConfigLanguage>
