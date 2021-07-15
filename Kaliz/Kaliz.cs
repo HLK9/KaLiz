@@ -50,6 +50,7 @@ namespace Kaliz
 
         private int chiso { get; set; }
         private string Para = string.Empty;
+        private string PascalOption = string.Empty;
        
 
         public Kaliz()
@@ -3476,6 +3477,18 @@ TabHienTai.InsertText(TabHienTai.CurrentLine, TabHienTai.CurrentColumn, radlistc
                 }
             }
            // MessageBox.Show(Para);
+        }
+
+        private void BConfig_Click(object sender, EventArgs e)
+        {
+            using (BuildConfig bl = new BuildConfig())
+            {
+                if(bl.ShowDialog() == DialogResult.OK)
+                {
+                    PascalOption = bl.PascalOp;
+                }
+            }
+            MessageBox.Show(PascalOption);
         }
     }
 }
