@@ -131,11 +131,11 @@
     <Compile Include="About_Z.Designer.cs">
       <DependentUpon>About_Z.cs</DependentUpon>
     </Compile>
-    <Compile Include="BWai.cs">
+    <Compile Include="BuildConfig.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="BWai.Designer.cs">
-      <DependentUpon>BWai.cs</DependentUpon>
+    <Compile Include="BuildConfig.Designer.cs">
+      <DependentUpon>BuildConfig.cs</DependentUpon>
     </Compile>
     <Compile Include="DifferentMer.cs">
       <SubType>Form</SubType>
@@ -149,29 +149,29 @@
     <Compile Include="Kaliz.Designer.cs">
       <DependentUpon>Kaliz.cs</DependentUpon>
     </Compile>
+    <Compile Include="ParametDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ParametDialog.Designer.cs">
+      <DependentUpon>ParametDialog.cs</DependentUpon>
+    </Compile>
     <Compile Include="SendEmail.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="SendEmail.Designer.cs">
       <DependentUpon>SendEmail.cs</DependentUpon>
     </Compile>
-    <Compile Include="Splash.cs">
+    <Compile Include="ASCIIConvertDia.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Splash.Designer.cs">
-      <DependentUpon>Splash.cs</DependentUpon>
-    </Compile>
-    <Compile Include="TextDia.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="TextDia.Designer.cs">
-      <DependentUpon>TextDia.cs</DependentUpon>
+    <Compile Include="ASCIIConvertDia.Designer.cs">
+      <DependentUpon>ASCIIConvertDia.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="About_Z.resx">
       <DependentUpon>About_Z.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="BWai.resx">
-      <DependentUpon>BWai.cs</DependentUpon>
+    <EmbeddedResource Include="BuildConfig.resx">
+      <DependentUpon>BuildConfig.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="DifferentMer.resx">
       <DependentUpon>DifferentMer.cs</DependentUpon>
@@ -181,6 +181,9 @@
     </EmbeddedResource>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="ParametDialog.resx">
+      <DependentUpon>ParametDialog.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -195,11 +198,8 @@
     <EmbeddedResource Include="SendEmail.resx">
       <DependentUpon>SendEmail.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Splash.resx">
-      <DependentUpon>Splash.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="TextDia.resx">
-      <DependentUpon>TextDia.cs</DependentUpon>
+    <EmbeddedResource Include="ASCIIConvertDia.resx">
+      <DependentUpon>ASCIIConvertDia.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="app.manifest" />
     <None Include="packages.config" />

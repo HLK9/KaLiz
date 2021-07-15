@@ -17,9 +17,6 @@ using Syncfusion.Windows.Forms.Edit.Enums;
 
 using Syncfusion.Drawing;
 using DiffPlex.WindowsForms.Controls;
-
-using Syncfusion.Windows.Forms.Edit.Dialogs;
-
 using Syncfusion.Windows.Forms;
 
 using Syncfusion.Windows.Forms.Edit.Implementation;
@@ -31,7 +28,7 @@ using WK.Libraries.SharpClipboardNS;
 
 namespace Kaliz
 {
-
+   
     public partial class Kaliz : Telerik.WinControls.UI.RadForm
     {
         private bool deBug = false;
@@ -52,6 +49,7 @@ namespace Kaliz
         private bool BuildComplete = true;
 
         private int chiso { get; set; }
+        private string Para = string.Empty;
        
 
         public Kaliz()
@@ -181,6 +179,7 @@ namespace Kaliz
             DanhDau.LineNumbersFont = new Font("Consolas", 13);
             TaiLieu.Controls.Add(DanhDau);
             DanhDau.AllowDrop = true;
+            DanhDau.SetNewLineStyle(Syncfusion.IO.NewLineStyle.Unix);
             DanhDau.FileExtensions = new string[] { ".pas", ".c", ".cpp", ".cs", ".py",".java" };
             DockPar.AddDocument(TaiLieu);
             //Theme
@@ -189,21 +188,22 @@ namespace Kaliz
             
             DockPar.DockWindowClosing += DockPar_DockWindowClosing;
             DanhDau.ContextChoiceBorderColor = Color.FromArgb(64, 224, 208);
-
+            //DanhDau.WhiteSpaceIndicators.NewLineString = "\n";
             //DanhDau.contextchoice
 
 
             if (DuongDanTep != null)
             {
                 LuuHisto(DuongDanTep);
-                //if (Path.GetExtension(DuongDanTep) == ".java")
-                //    DanhDau.LoadFile(DuongDanTep, Encoding.ASCII);
-                //else if(Path.GetExtension(DuongDanTep) == ".py")
-                //    DanhDau.LoadFile(DuongDanTep, Encoding.UTF8);
+                
                 if (Path.GetExtension(DuongDanTep) == ".c" || Path.GetExtension(DuongDanTep) == ".cpp")
                 {
-                    DanhDau.LoadFile(DuongDanTep, Encoding.Default);
+                    DanhDau.WhiteSpaceIndicators.NewLineString = "\r\n";
+                    DanhDau.SetNewLineStyle(Syncfusion.IO.NewLineStyle.Unix);
+                    //Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
+                    DanhDau.LoadFile(DuongDanTep, Encoding.UTF8);
                     string ConfigF = @"Lex\CppF.xml";
+                    
                     DanhDau.Configurator.Open(ConfigF);
                     DanhDau.ApplyConfiguration("C++");
                     // DanhDau.ApplyConfiguration(KnownLanguages.C);
@@ -211,13 +211,22 @@ namespace Kaliz
                     DanhDau.ContextChoiceOpen += DanhDau_ContextChoiceOpen_C;
                     DanhDau.ContextPromptOpen += DanhDau_ContextPromptOpen_ForC;
                     DanhDau.ContextPromptUpdate += DanhDau_ContextPromptUpdate_ForC;
-                    // DanhDau.ContextPromptOpen += DanhDau_ContextPromptOpen;
+                    //DanhDau.ContextPromptOpen += DanhDau_ContextPromptOpen;
+                    //DanhDau.ShowWhitespaces = true;
+                    //DanhDau.ShowWhitespaces = true;
+                    //DanhDau.WhiteSpaceIndicators.ShowSpaces = false;
+                    //DanhDau.WhiteSpaceIndicators.ShowTabs = false;
+                    //
+                    //DanhDau.WhiteSpaceIndicators.ShowNewLines = true;
+                    //DanhDau.SetNewLineStyle(Syncfusion.IO.NewLineStyle.Control);
+                    //DanhDau.GetNewLineStyle();
+                   
 
 
                 }
                 if (Path.GetExtension(DuongDanTep) == ".pas")
                 {
-                    DanhDau.LoadFile(DuongDanTep, Encoding.ASCII);
+                    DanhDau.LoadFile(DuongDanTep, Encoding.UTF8);
                     string ConfigF = @"Lex\Pascal.xml";
                     DanhDau.Configurator.Open(ConfigF);
 
@@ -226,6 +235,7 @@ namespace Kaliz
                     DanhDau.ContextChoiceOpen += DanhDau_ContextChoiceOpen;
                     DanhDau.ContextPromptOpen += DanhDau_ContextPromptOpen_ForPascal;
                     DanhDau.ContextPromptUpdate += DanhDau_ContextPromptUpdate_ForPascal;
+                   // DanhDau.AddCodeSnippet("Block code", "begin\nend");
 
                 }
                 if (Path.GetExtension(DuongDanTep) == ".py")
@@ -241,12 +251,16 @@ namespace Kaliz
                 }
                 if(Path.GetExtension(DuongDanTep)==".java")
                 {
-                    DanhDau.LoadFile(DuongDanTep, Encoding.Default);
+                    
+                    DanhDau.LoadFile(DuongDanTep, Encoding.ASCII);
+
+                   // DanhDau.SetNewLineStyle(Syncfusion.IO.NewLineStyle.Unix);
                     DanhDau.StatusBarSettings.FileNamePanel.Panel.Text = "Java";
                     string ConfigF = @"Lex\Java.xml";
                     DanhDau.Configurator.Open(ConfigF);
                     DanhDau.ApplyConfiguration("Java");
                     DanhDau.StatusBarSettings.FileNamePanel.Panel.Text = "Java";
+                    
                 }
               
 
@@ -829,7 +843,7 @@ End;
             Menu.AddMenuItem("&Open Containing Folder", new EventHandler(MenuOpenContaining));
             Menu.AddMenuItem("&Open Terminal Here", new EventHandler(MenuOpenTerHere));
 
-            Menu.ContextMenuProvider.SetVisualStyle(VisualStyle.Office2016Colorful);
+            Menu.ContextMenuProvider.SetVisualStyle(VisualStyle.Office2016DarkGray);
 
 
 
@@ -1117,6 +1131,7 @@ End;
             controller.Items.Add("readln");
             controller.Items.Add("write");
             controller.Items.Add("readkey");
+            
         }
 
         private void DanhDau_TextChanged(object sender, EventArgs e)
@@ -1326,7 +1341,7 @@ End;
         {
             
 
-                TabHienTai.Save();
+               // TabHienTai.Save();
                 ListOutput.Items.Clear();
                 ListOutput.Items.Add("Processing");
                 if (Path.GetExtension(ten) == ".pas")
@@ -1403,13 +1418,20 @@ End;
                     BienDich.StartInfo.RedirectStandardOutput = true;
                     BienDich.StartInfo.RedirectStandardError = true;
                     BienDich.StartInfo.RedirectStandardInput = true;
-                    //BienDich.StartInfo.WorkingDirectory = @"Cmder\vendor\TDM-GCC-32\bin";
+                //BienDich.StartInfo.WorkingDirectory = @"Cmder\vendor\occ60451e\orangec\bin";
+               
                     if (enabledebug == false)
                         BienDich.StartInfo.Arguments = "/c " + "g++ " + ten + " -o " + Path.GetDirectoryName(ten) + "\\" + Path.GetFileNameWithoutExtension(ten) + ".exe";
                     else BienDich.StartInfo.Arguments = "/c " + "g++ " + " -g " + ten + " -o " + Path.GetDirectoryName(ten) + "\\" + Path.GetFileNameWithoutExtension(ten) + ".exe";
+                
+                //    else
+                //  { 
+                //if (enabledebug == false)
+                //    BienDich.StartInfo.Arguments = "/c " + "occ " + "/o" + Path.GetDirectoryName(ten) + "\\" + TepEXE(ten)+" " + ten;// + " -o " + Path.GetDirectoryName(ten) + "\\" + Path.GetFileNameWithoutExtension(ten) + ".exe";
+                //else BienDich.StartInfo.Arguments = "/c " + "occ " + " /g " + " /o" + Path.GetDirectoryName(ten) + "\\" + TepEXE(ten) + " " + ten;// + " -o " + Path.GetDirectoryName(ten) + "\\" + Path.GetFileNameWithoutExtension(ten) + ".exe";
+              //  }
 
-
-                    BienDich.StartInfo.CreateNoWindow = true;
+                BienDich.StartInfo.CreateNoWindow = true;
                     BienDich.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;
                     BienDich.Start();
 
@@ -1443,7 +1465,7 @@ End;
 
                     foreach (var item in ListOutput.Items)
                     {
-                        if (item.Text.Contains("error")) item.BackColor = Color.LightSalmon;
+                        if (item.Text.ToLower().Contains("error")) item.BackColor = Color.LightSalmon;
                         if (item.Text.Contains("Completed")) item.BackColor = Color.LightGreen;
                         if (item.Text.Contains("- Fail")) item.BackColor = Color.LightSalmon;
 
@@ -1698,7 +1720,7 @@ End;
                         // Chay.StartInfo.FileName = @"Cmder\Cmder.exe";
                         Chay.StartInfo.FileName = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\Kaliz" + @"\Cmder\vendor\conemu-maximus5\ConEmu.exe";
                         //Chay.StartInfo.WorkingDirectory = @"Cmder\vendor\TDM-GCC-32\bin";
-                        Chay.StartInfo.Arguments = "  -run " + DuongDanTepExe(file) + "  -static-libgcc -static-libstdc++";
+                        Chay.StartInfo.Arguments = "-run " + DuongDanTepExe(file);// + "  -static-libgcc -static-libstdc++";
                         //Fixed, Khi chạy từ process mới thì path không được set, phải sẽ manual :b               
                         Chay.Start();
 
@@ -1788,7 +1810,7 @@ End;
 
             try
             {
-                TabHienTai.Save();
+                
                 if (File.Exists(TabHienTai.FileName))
                     DockPar.DocumentManager.ActiveDocument.Text = Path.GetFileName(TabHienTai.FileName);
 
@@ -1809,18 +1831,8 @@ End;
            
 
         }
-        private static void ThreadStart()
-        {
-            try
-            {
-                BWai f = new BWai();
-                Application.Run(f); // <-- other form started on its own UI thread
-            }
-            catch { }
-           
-        }
-        // DataTable databm = new DataTable();
-
+       
+       
         private void BBookmark_Click(object sender, EventArgs e)
         {
             try
@@ -2011,10 +2023,28 @@ End;
 
         private void FSave_Click(object sender, EventArgs e)
         {
-            try
-            {
-                TabHienTai.Save();
 
+
+
+            //try
+            //{
+
+            //if (TabHienTai.GetNewLineStyle() != Syncfusion.IO.NewLineStyle.Windows||TabHienTai.GetEncoding() != Encoding.ASCII && Path.GetExtension(TabHienTai.FileName) == ".c" || Path.GetExtension(TabHienTai.FileName) == ".cpp")
+            //{
+            //    TabHienTai.SaveFile(TabHienTai.FileName,Encoding.ASCII, Syncfusion.IO.NewLineStyle.Unix);
+
+            //}
+            //else
+            try {if (TabHienTai.GetNewLineStyle() != Syncfusion.IO.NewLineStyle.Windows || TabHienTai.GetEncoding() != Encoding.ASCII && Path.GetExtension(TabHienTai.FileName) == ".java")
+                {
+                    TabHienTai.SaveFile(TabHienTai.FileName, Encoding.ASCII, Syncfusion.IO.NewLineStyle.Unix);
+                } }
+            catch { }
+                    
+
+                //TabHienTai.SetEncoding(Encoding.UTF8);
+
+                TabHienTai.Save();
 
                 if (Path.GetExtension(TabHienTai.FileName) == ".py")
                     TabHienTai.StatusBarSettings.FileNamePanel.Panel.Text = "Python";
@@ -2028,14 +2058,14 @@ End;
                 TabHienTai.StatusBarSettings.StatusPanel.Panel.BackColor = Color.DarkCyan;
                 TabHienTai.StatusBarSettings.StatusPanel.Panel.ForeColor = Color.White;
 
-               if(Path.GetFileName(TabHienTai.FileName)!=DockPar.DocumentManager.ActiveDocument.Text)
+                if (Path.GetFileName(TabHienTai.FileName) != DockPar.DocumentManager.ActiveDocument.Text)
                 {
                     DockPar.DocumentManager.ActiveDocument.Text = Path.GetFileName(TabHienTai.FileName);
                 }
 
-            }
-            catch { }
-
+            //}
+            //catch { MessageBox.Show("Có lỗi xảy ra!"); }
+            
         }
 
         private void DOpenGDB_Click(object sender, EventArgs e)
@@ -2270,12 +2300,13 @@ End;
 
 
             RadColorDialog Col = new RadColorDialog();
-
-
+           
+            
             try
             {
                 if (Col.ShowDialog() == DialogResult.OK)
                 {
+                    
                     TabHienTai.SelectionTextColor = Col.SelectedColor;
                 }
             }
@@ -2355,11 +2386,7 @@ End;
            // UpdateTheme();
         }
 
-        public void SplashScreen()
-        {
-            Splash sd = new Splash();
-            Application.Run(sd);
-        }
+      
 
         private void SynC_Click(object sender, EventArgs e)
         {
@@ -2500,10 +2527,11 @@ End;
 
         private void ListOutput_ItemMouseClick(object sender, ListViewItemEventArgs e)
         {
-            string Phantich = @"\(\d+\,\d+\)|\:\d+\:\d+\:";
+           
+            string Phantich = @"\(\d+\,\d+\)|\:\d+\:\d+\:|\:\d+\:|\(\d+\)";
             
             string chuoi = ListOutput.SelectedItem.Text;
-            string ret;
+            //string ret;
 
             MatchCollection df = Regex.Matches(chuoi, Phantich);
             
@@ -2521,7 +2549,7 @@ End;
 
         private void TEmail_Click(object sender, EventArgs e)
         {
-            Pathtosendemail = TabHienTai.FileName;
+           // Pathtosendemail = TabHienTai.FileName;
             SendEmail Sa = new SendEmail();
             Sa.ShowDialog();
             
@@ -3163,15 +3191,12 @@ TabHienTai.InsertText(TabHienTai.CurrentLine, TabHienTai.CurrentColumn, radlistc
 
         private void radMenuItem18_Click(object sender, EventArgs e)
         {
-            //UpdateTheme()
-          
-            ////xóa toàn bộ
-            //foreach (var item in DockPar.DocumentManager.DocumentArray)
-            //{
-            //    (item.Controls[0] as EditControl).Style = EditControlStyle.Office2016DarkGray;
+            //DockPar.DockWindow(DockPar.DocumentManager.ActiveDocument, DockPosition.Fill);
+           
+            //DockPar.DockControl(DockPar.DocumentManager.ActiveDocument, DockPosition.Fill, DockType.Document);
+            //DockPar.FloatWindow(DockPar.DocumentManager.ActiveDocument);
 
-
-            //}
+            
 
         }
 
@@ -3231,6 +3256,226 @@ TabHienTai.InsertText(TabHienTai.CurrentLine, TabHienTai.CurrentColumn, radlistc
             TabHienTai.Configurator.Open(ConfigF);
             TabHienTai.ApplyConfiguration("Java");
             TabHienTai.StatusBarSettings.FileNamePanel.Panel.Text = "Java";
+        }
+
+        private void EncodeUTF8_Click(object sender, EventArgs e)
+        {
+            if(File.Exists(TabHienTai.FileName))
+            {
+                TabHienTai.LoadFile(TabHienTai.FileName, Encoding.UTF8);
+
+            }
+            else
+            {
+                MessageBox.Show("File not found!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void EncodeUS_Click(object sender, EventArgs e)
+        {
+            if (File.Exists(TabHienTai.FileName))
+            {
+                TabHienTai.LoadFile(TabHienTai.FileName, Encoding.ASCII);
+
+            }
+            else
+            {
+                MessageBox.Show("File not found!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void Encode1252_Click(object sender, EventArgs e)
+        {
+            
+            if (File.Exists(TabHienTai.FileName))
+            {
+                TabHienTai.LoadFile(TabHienTai.FileName, Encoding.GetEncoding("windows-1252"));
+
+            }
+            else
+            {
+                MessageBox.Show("File not found!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void WFloat_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                DockPar.FloatWindow(DockPar.DocumentManager.ActiveDocument);
+            }
+            catch
+            {}
+          
+        }
+
+        private void WFloatAll_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                foreach (var item in DockPar.DocumentManager.DocumentArray)
+                {
+                    DockPar.FloatWindow(item);
+                }
+            }
+            catch { }
+           
+        }
+
+        private void WResetWindows_Click(object sender, EventArgs e)
+        {
+            //foreach (var item in DockPar.ActiveWindow)
+            //{
+            //    if(item.IsInFloatingMode)
+            //    DockPar.DockWindow(item, DockPosition.Fill);
+            //}
+        }
+
+        private void WCloseAll_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                foreach (var item in DockPar.DocumentManager.DocumentArray)
+                {
+                    item.Close();
+                }
+            }
+            catch
+            {
+
+            }
+            
+        }
+
+        private void WCloseCur_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                DockPar.DocumentManager.ActiveDocument.Close();
+            }
+            catch { }
+        }
+
+        private void DockLeft_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                DockPar.DockWindow(DockPar.DocumentManager.ActiveDocument, DockPosition.Left);
+            }
+            catch
+            { }
+        }
+
+        private void DockRight_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                DockPar.DockWindow(DockPar.DocumentManager.ActiveDocument, DockPosition.Right);
+            }
+            catch
+            { }
+        }
+
+        private void DockFill_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                DockPar.DockWindow(DockPar.ActiveWindow, DockPosition.Fill);
+            }
+            catch
+            { }
+        }
+
+        private void DockTop_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                DockPar.DockWindow(DockPar.DocumentManager.ActiveDocument, DockPosition.Top);
+            }
+            catch
+            { }
+        }
+
+        private void DockBottom_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                DockPar.DockWindow(DockPar.DocumentManager.ActiveDocument, DockPosition.Bottom);
+            }
+            catch
+            { }
+        }
+
+        private void radMenuItem3_Click_3(object sender, EventArgs e)
+        {
+            BuildConfig gf = new BuildConfig();
+            gf.ShowDialog();
+        }
+
+        private void radMenuItem16_Click_2(object sender, EventArgs e)
+        {
+            TabHienTai.SaveFile(TabHienTai.FileName, TabHienTai.GetEncoding(), Syncfusion.IO.NewLineStyle.Windows);
+        }
+
+        private void radMenuItem17_Click_1(object sender, EventArgs e)
+        {
+            //  TabHienTai.SetUnderline(new Point())
+            TabHienTai.ShowCodeSnippets();
+        }
+
+        private void DebugPython_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (File.Exists(TabHienTai.FileName))
+                {
+                    if (Path.GetExtension(TabHienTai.FileName) == ".py" && deBug == true)
+                    {
+                        Process PythonDebugger = new Process();
+                        if (ConsoleUse == "PowerShell")
+                        {
+                            PythonDebugger.StartInfo.FileName = "cmd";
+                            PythonDebugger.StartInfo.Arguments = "/c python -m pdb " + TabHienTai.FileName;
+                            PythonDebugger.Start();
+                            PythonDebugger.WaitForExit();
+                        }
+                        else
+                        {
+                            PythonDebugger.StartInfo.FileName = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\Kaliz" + @"\Cmder\vendor\conemu-maximus5\ConEmu.exe";
+                            PythonDebugger.StartInfo.Arguments = "/run python -m pdb " + TabHienTai.FileName;
+                            PythonDebugger.Start();
+                            PythonDebugger.WaitForExit();
+
+                        }
+                    }
+                    else
+                    {
+                        ShowAlert_Light("<html><color=Crimson><b>This Debugger Support for Python Only and Debug Mode Enable</b>", null);
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("File not Found!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            catch
+            {
+
+            }
+
+          
+        }
+
+        private void BPara_Click(object sender, EventArgs e)
+        {
+            using (ParametDialog fd = new ParametDialog())
+            {
+                if(fd.ShowDialog()== DialogResult.OK)
+                {
+                    Para = fd.ParametText;
+                }
+            }
+           // MessageBox.Show(Para);
         }
     }
 }
