@@ -1,9 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using Telerik.WinControls;
@@ -14,16 +10,12 @@ using System.IO;
 using System.Diagnostics;
 using Syncfusion.Windows.Forms.Edit.Interfaces;
 using Syncfusion.Windows.Forms.Edit.Enums;
-
 using Syncfusion.Drawing;
 using DiffPlex.WindowsForms.Controls;
 using Syncfusion.Windows.Forms;
-
 using Syncfusion.Windows.Forms.Edit.Implementation;
 using System.Collections;
-
 using System.Text.RegularExpressions;
-
 using WK.Libraries.SharpClipboardNS;
 
 namespace Kaliz
@@ -1353,8 +1345,8 @@ End;
                     //BienDich.StartInfo.WorkingDirectory = @"Cmder\vendor\FPC\bin\i386-win32";
                     BienDich.StartInfo.UseShellExecute = false;
                     if (enabledebug == false)
-                        BienDich.StartInfo.Arguments = "/c " + "fpc " + ten;
-                    else BienDich.StartInfo.Arguments = "/c " + "fpc " + ten + " -g";
+                        BienDich.StartInfo.Arguments = "/c " + "fpc " + ten + PascalOption;
+                    else BienDich.StartInfo.Arguments = "/c " + "fpc " + ten + " -g" + PascalOption;
 
                     //BienDich.StartInfo.RedirectStandardInput = true;
                     BienDich.StartInfo.RedirectStandardOutput = true;
@@ -3409,8 +3401,7 @@ TabHienTai.InsertText(TabHienTai.CurrentLine, TabHienTai.CurrentColumn, radlistc
 
         private void radMenuItem3_Click_3(object sender, EventArgs e)
         {
-            BuildConfig gf = new BuildConfig();
-            gf.ShowDialog();
+            
         }
 
         private void radMenuItem16_Click_2(object sender, EventArgs e)
