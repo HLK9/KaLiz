@@ -210,6 +210,7 @@ namespace Kaliz
             this.radMenuItem3 = new Telerik.WinControls.UI.RadMenuItem();
             this.radMenuItem16 = new Telerik.WinControls.UI.RadMenuItem();
             this.radMenuItem17 = new Telerik.WinControls.UI.RadMenuItem();
+            
             ((System.ComponentModel.ISupportInitialize)(this.DockPar)).BeginInit();
             this.DockPar.SuspendLayout();
             this.documentWindow1.SuspendLayout();
@@ -752,7 +753,7 @@ namespace Kaliz
             // BConfig
             // 
             this.BConfig.Name = "BConfig";
-            this.BConfig.Text = "Build Config";
+            this.BConfig.Text = "Build Configurator";
             this.BConfig.Click += new System.EventHandler(this.BConfig_Click);
             // 
             // MDebug
@@ -1920,5 +1921,6 @@ namespace Kaliz
         private RadMenuItem DebugPython;
         private RadMenuItem BPara;
         private RadMenuItem BConfig;
+        private Telerik.WinControls.Themes.MaterialBlueGreyTheme materialBlueGreyTheme1;
     }
 }
