@@ -54,12 +54,18 @@
             this.CheckFPCMode = new Telerik.WinControls.UI.RadCheckBox();
             this.CheckPascal = new Telerik.WinControls.UI.RadCheckBox();
             this.radPageViewPage2 = new Telerik.WinControls.UI.RadPageViewPage();
-            this.radPageViewPage3 = new Telerik.WinControls.UI.RadPageViewPage();
-            this.radPageViewPage4 = new Telerik.WinControls.UI.RadPageViewPage();
-            this.materialTealTheme1 = new Telerik.WinControls.Themes.MaterialTealTheme();
             this.radLabel1 = new Telerik.WinControls.UI.RadLabel();
+            this.radPageViewPage3 = new Telerik.WinControls.UI.RadPageViewPage();
             this.radLabel2 = new Telerik.WinControls.UI.RadLabel();
+            this.radPageViewPage4 = new Telerik.WinControls.UI.RadPageViewPage();
             this.radLabel3 = new Telerik.WinControls.UI.RadLabel();
+            this.materialTealTheme1 = new Telerik.WinControls.Themes.MaterialTealTheme();
+            this.radButton3 = new Telerik.WinControls.UI.RadButton();
+            this.radButton4 = new Telerik.WinControls.UI.RadButton();
+            this.radButton5 = new Telerik.WinControls.UI.RadButton();
+            this.radButton6 = new Telerik.WinControls.UI.RadButton();
+            this.radButton7 = new Telerik.WinControls.UI.RadButton();
+            this.radButton8 = new Telerik.WinControls.UI.RadButton();
             radPageView1 = new Telerik.WinControls.UI.RadPageView();
             ((System.ComponentModel.ISupportInitialize)(radPageView1)).BeginInit();
             radPageView1.SuspendLayout();
@@ -78,11 +84,17 @@
             ((System.ComponentModel.ISupportInitialize)(this.CheckFPCMode)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.CheckPascal)).BeginInit();
             this.radPageViewPage2.SuspendLayout();
-            this.radPageViewPage3.SuspendLayout();
-            this.radPageViewPage4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.radLabel1)).BeginInit();
+            this.radPageViewPage3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.radLabel2)).BeginInit();
+            this.radPageViewPage4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.radLabel3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.radButton3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.radButton4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.radButton5)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.radButton6)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.radButton7)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.radButton8)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this)).BeginInit();
             this.SuspendLayout();
             // 
@@ -99,6 +111,7 @@
             radPageView1.Size = new System.Drawing.Size(783, 373);
             radPageView1.TabIndex = 0;
             radPageView1.ThemeName = "MaterialTeal";
+            radPageView1.Click += new System.EventHandler(this.radButton1_Click);
             // 
             // radPageViewPage1
             // 
@@ -114,17 +127,18 @@
             // 
             // radButton2
             // 
-            this.radButton2.Location = new System.Drawing.Point(11, 272);
+            this.radButton2.Location = new System.Drawing.Point(6, 273);
             this.radButton2.Name = "radButton2";
             this.radButton2.Size = new System.Drawing.Size(120, 36);
             this.radButton2.TabIndex = 3;
             this.radButton2.Text = "Cancel";
             this.radButton2.ThemeName = "MaterialTeal";
+            this.radButton2.Click += new System.EventHandler(this.radButton2_Click);
             // 
             // radButton1
             // 
             this.radButton1.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.radButton1.Location = new System.Drawing.Point(644, 272);
+            this.radButton1.Location = new System.Drawing.Point(644, 273);
             this.radButton1.Name = "radButton1";
             this.radButton1.Size = new System.Drawing.Size(120, 36);
             this.radButton1.TabIndex = 2;
@@ -261,6 +275,8 @@
             // 
             // radPageViewPage2
             // 
+            this.radPageViewPage2.Controls.Add(this.radButton6);
+            this.radPageViewPage2.Controls.Add(this.radButton3);
             this.radPageViewPage2.Controls.Add(this.radLabel1);
             this.radPageViewPage2.ItemSize = new System.Drawing.SizeF(70F, 49F);
             this.radPageViewPage2.Location = new System.Drawing.Point(6, 55);
@@ -268,8 +284,19 @@
             this.radPageViewPage2.Size = new System.Drawing.Size(771, 312);
             this.radPageViewPage2.Text = "C/C++";
             // 
+            // radLabel1
+            // 
+            this.radLabel1.Location = new System.Drawing.Point(186, 127);
+            this.radLabel1.Name = "radLabel1";
+            this.radLabel1.Size = new System.Drawing.Size(391, 38);
+            this.radLabel1.TabIndex = 0;
+            this.radLabel1.Text = "<html><span style=\"font-size: 20pt; color: #808080\">We\'re developing, Coming soon" +
+    "!</span></html>";
+            // 
             // radPageViewPage3
             // 
+            this.radPageViewPage3.Controls.Add(this.radButton7);
+            this.radPageViewPage3.Controls.Add(this.radButton4);
             this.radPageViewPage3.Controls.Add(this.radLabel2);
             this.radPageViewPage3.ItemSize = new System.Drawing.SizeF(60F, 49F);
             this.radPageViewPage3.Location = new System.Drawing.Point(6, 55);
@@ -277,8 +304,19 @@
             this.radPageViewPage3.Size = new System.Drawing.Size(771, 312);
             this.radPageViewPage3.Text = "Java";
             // 
+            // radLabel2
+            // 
+            this.radLabel2.Location = new System.Drawing.Point(186, 127);
+            this.radLabel2.Name = "radLabel2";
+            this.radLabel2.Size = new System.Drawing.Size(391, 38);
+            this.radLabel2.TabIndex = 1;
+            this.radLabel2.Text = "<html><span style=\"font-size: 20pt; color: #808080\">We\'re developing, Coming soon" +
+    "!</span></html>";
+            // 
             // radPageViewPage4
             // 
+            this.radPageViewPage4.Controls.Add(this.radButton8);
+            this.radPageViewPage4.Controls.Add(this.radButton5);
             this.radPageViewPage4.Controls.Add(this.radLabel3);
             this.radPageViewPage4.ItemSize = new System.Drawing.SizeF(74F, 49F);
             this.radPageViewPage4.Location = new System.Drawing.Point(6, 55);
@@ -286,32 +324,76 @@
             this.radPageViewPage4.Size = new System.Drawing.Size(771, 312);
             this.radPageViewPage4.Text = "Python";
             // 
-            // radLabel1
-            // 
-            this.radLabel1.Location = new System.Drawing.Point(188, 111);
-            this.radLabel1.Name = "radLabel1";
-            this.radLabel1.Size = new System.Drawing.Size(391, 38);
-            this.radLabel1.TabIndex = 0;
-            this.radLabel1.Text = "<html><span style=\"font-size: 20pt; color: #808080\">We\'re developing, Coming soon" +
-    "!</span></html>";
-            // 
-            // radLabel2
-            // 
-            this.radLabel2.Location = new System.Drawing.Point(190, 127);
-            this.radLabel2.Name = "radLabel2";
-            this.radLabel2.Size = new System.Drawing.Size(391, 38);
-            this.radLabel2.TabIndex = 1;
-            this.radLabel2.Text = "<html><span style=\"font-size: 20pt; color: #808080\">We\'re developing, Coming soon" +
-    "!</span></html>";
-            // 
             // radLabel3
             // 
-            this.radLabel3.Location = new System.Drawing.Point(190, 126);
+            this.radLabel3.Location = new System.Drawing.Point(186, 127);
             this.radLabel3.Name = "radLabel3";
             this.radLabel3.Size = new System.Drawing.Size(391, 38);
             this.radLabel3.TabIndex = 1;
             this.radLabel3.Text = "<html><span style=\"font-size: 20pt; color: #808080\">We\'re developing, Coming soon" +
     "!</span></html>";
+            // 
+            // radButton3
+            // 
+            this.radButton3.DialogResult = System.Windows.Forms.DialogResult.OK;
+            this.radButton3.Location = new System.Drawing.Point(644, 273);
+            this.radButton3.Name = "radButton3";
+            this.radButton3.Size = new System.Drawing.Size(120, 36);
+            this.radButton3.TabIndex = 3;
+            this.radButton3.Text = "OK";
+            this.radButton3.ThemeName = "MaterialTeal";
+            this.radButton3.Click += new System.EventHandler(this.radButton1_Click);
+            // 
+            // radButton4
+            // 
+            this.radButton4.DialogResult = System.Windows.Forms.DialogResult.OK;
+            this.radButton4.Location = new System.Drawing.Point(644, 273);
+            this.radButton4.Name = "radButton4";
+            this.radButton4.Size = new System.Drawing.Size(120, 36);
+            this.radButton4.TabIndex = 3;
+            this.radButton4.Text = "OK";
+            this.radButton4.ThemeName = "MaterialTeal";
+            this.radButton4.Click += new System.EventHandler(this.radButton1_Click);
+            // 
+            // radButton5
+            // 
+            this.radButton5.DialogResult = System.Windows.Forms.DialogResult.OK;
+            this.radButton5.Location = new System.Drawing.Point(644, 273);
+            this.radButton5.Name = "radButton5";
+            this.radButton5.Size = new System.Drawing.Size(120, 36);
+            this.radButton5.TabIndex = 3;
+            this.radButton5.Text = "OK";
+            this.radButton5.ThemeName = "MaterialTeal";
+            // 
+            // radButton6
+            // 
+            this.radButton6.Location = new System.Drawing.Point(6, 273);
+            this.radButton6.Name = "radButton6";
+            this.radButton6.Size = new System.Drawing.Size(120, 36);
+            this.radButton6.TabIndex = 4;
+            this.radButton6.Text = "Cancel";
+            this.radButton6.ThemeName = "MaterialTeal";
+            this.radButton6.Click += new System.EventHandler(this.radButton2_Click);
+            // 
+            // radButton7
+            // 
+            this.radButton7.Location = new System.Drawing.Point(6, 273);
+            this.radButton7.Name = "radButton7";
+            this.radButton7.Size = new System.Drawing.Size(120, 36);
+            this.radButton7.TabIndex = 4;
+            this.radButton7.Text = "Cancel";
+            this.radButton7.ThemeName = "MaterialTeal";
+            this.radButton7.Click += new System.EventHandler(this.radButton2_Click);
+            // 
+            // radButton8
+            // 
+            this.radButton8.Location = new System.Drawing.Point(6, 273);
+            this.radButton8.Name = "radButton8";
+            this.radButton8.Size = new System.Drawing.Size(120, 36);
+            this.radButton8.TabIndex = 4;
+            this.radButton8.Text = "Cancel";
+            this.radButton8.ThemeName = "MaterialTeal";
+            this.radButton8.Click += new System.EventHandler(this.radButton2_Click);
             // 
             // BuildConfig
             // 
@@ -327,7 +409,7 @@
             // 
             this.RootElement.ApplyShapeToControl = true;
             this.ShowIcon = false;
-            this.Text = "BuildConfig";
+            this.Text = "Build Configurator";
             this.ThemeName = "MaterialTeal";
             ((System.ComponentModel.ISupportInitialize)(radPageView1)).EndInit();
             radPageView1.ResumeLayout(false);
@@ -348,13 +430,19 @@
             ((System.ComponentModel.ISupportInitialize)(this.CheckPascal)).EndInit();
             this.radPageViewPage2.ResumeLayout(false);
             this.radPageViewPage2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.radLabel1)).EndInit();
             this.radPageViewPage3.ResumeLayout(false);
             this.radPageViewPage3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.radLabel2)).EndInit();
             this.radPageViewPage4.ResumeLayout(false);
             this.radPageViewPage4.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.radLabel1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.radLabel2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.radLabel3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.radButton3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.radButton4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.radButton5)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.radButton6)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.radButton7)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.radButton8)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this)).EndInit();
             this.ResumeLayout(false);
 
@@ -381,5 +469,11 @@
         private Telerik.WinControls.UI.RadLabel radLabel1;
         private Telerik.WinControls.UI.RadLabel radLabel2;
         private Telerik.WinControls.UI.RadLabel radLabel3;
+        private Telerik.WinControls.UI.RadButton radButton6;
+        private Telerik.WinControls.UI.RadButton radButton3;
+        private Telerik.WinControls.UI.RadButton radButton7;
+        private Telerik.WinControls.UI.RadButton radButton4;
+        private Telerik.WinControls.UI.RadButton radButton8;
+        private Telerik.WinControls.UI.RadButton radButton5;
     }
 }
