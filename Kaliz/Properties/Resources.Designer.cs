@@ -63,9 +63,29 @@ namespace Kaliz.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap CMB_logos_white {
+            get {
+                object obj = ResourceManager.GetObject("CMB-logos_white", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap coding__1_ {
             get {
                 object obj = ResourceManager.GetObject("coding (1)", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Ps {
+            get {
+                object obj = ResourceManager.GetObject("Ps", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
