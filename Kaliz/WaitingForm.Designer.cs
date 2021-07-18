@@ -29,8 +29,9 @@
         private void InitializeComponent()
         {
             this.radWaitingBar1 = new Telerik.WinControls.UI.RadWaitingBar();
-            this.radLabel1 = new Telerik.WinControls.UI.RadLabel();
             this.dotsLineWaitingBarIndicatorElement1 = new Telerik.WinControls.UI.DotsLineWaitingBarIndicatorElement();
+            this.radLabel1 = new Telerik.WinControls.UI.RadLabel();
+            this.chamferedRectShape1 = new Telerik.WinControls.ChamferedRectShape();
             ((System.ComponentModel.ISupportInitialize)(this.radWaitingBar1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.radLabel1)).BeginInit();
             this.SuspendLayout();
@@ -46,6 +47,11 @@
             this.radWaitingBar1.WaitingSpeed = 80;
             this.radWaitingBar1.WaitingStyle = Telerik.WinControls.Enumerations.WaitingBarStyles.DotsLine;
             // 
+            // dotsLineWaitingBarIndicatorElement1
+            // 
+            this.dotsLineWaitingBarIndicatorElement1.ElementColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(177)))), ((int)(((byte)(157)))));
+            this.dotsLineWaitingBarIndicatorElement1.Name = "dotsLineWaitingBarIndicatorElement1";
+            // 
             // radLabel1
             // 
             this.radLabel1.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -54,11 +60,6 @@
             this.radLabel1.Size = new System.Drawing.Size(116, 33);
             this.radLabel1.TabIndex = 1;
             this.radLabel1.Text = "In Progress";
-            // 
-            // dotsLineWaitingBarIndicatorElement1
-            // 
-            this.dotsLineWaitingBarIndicatorElement1.ElementColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(177)))), ((int)(((byte)(157)))));
-            this.dotsLineWaitingBarIndicatorElement1.Name = "dotsLineWaitingBarIndicatorElement1";
             // 
             // WaitingForm
             // 
@@ -72,6 +73,9 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "WaitingForm";
+            this.Shape = this.chamferedRectShape1;
+            this.ShowIcon = false;
+            this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "WaitingForm";
             ((System.ComponentModel.ISupportInitialize)(this.radWaitingBar1)).EndInit();
@@ -86,5 +90,6 @@
         private Telerik.WinControls.UI.RadWaitingBar radWaitingBar1;
         private Telerik.WinControls.UI.DotsLineWaitingBarIndicatorElement dotsLineWaitingBarIndicatorElement1;
         private Telerik.WinControls.UI.RadLabel radLabel1;
+        private Telerik.WinControls.ChamferedRectShape chamferedRectShape1;
     }
 }
