@@ -55,11 +55,12 @@
             // radLabel1
             // 
             this.radLabel1.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radLabel1.Location = new System.Drawing.Point(80, 1);
+            this.radLabel1.Location = new System.Drawing.Point(81, 1);
             this.radLabel1.Name = "radLabel1";
-            this.radLabel1.Size = new System.Drawing.Size(116, 33);
+            this.radLabel1.Size = new System.Drawing.Size(112, 33);
             this.radLabel1.TabIndex = 1;
-            this.radLabel1.Text = "In Progress";
+            this.radLabel1.Text = "Processing";
+            this.radLabel1.TextAlignment = System.Drawing.ContentAlignment.TopLeft;
             // 
             // WaitingForm
             // 

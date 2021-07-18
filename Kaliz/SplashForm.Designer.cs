@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.chamferedRectShape1 = new Telerik.WinControls.ChamferedRectShape();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -50,6 +51,7 @@
             this.ClientSize = new System.Drawing.Size(960, 540);
             this.Controls.Add(this.pictureBox1);
             this.Name = "SplashForm";
+            this.Shape = this.chamferedRectShape1;
             this.Text = "SplashForm";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
@@ -59,5 +61,6 @@
         #endregion
 
         private System.Windows.Forms.PictureBox pictureBox1;
+        private Telerik.WinControls.ChamferedRectShape chamferedRectShape1;
     }
 }
