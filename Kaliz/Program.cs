@@ -17,7 +17,7 @@ namespace Kaliz
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             //
-            //show splash
+            //show splash đoạn này
             Thread splashThread = new Thread(new ThreadStart(
                 delegate
                 {
