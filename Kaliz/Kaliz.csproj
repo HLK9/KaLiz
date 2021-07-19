@@ -168,6 +168,18 @@
     <Compile Include="ASCIIConvertDia.Designer.cs">
       <DependentUpon>ASCIIConvertDia.cs</DependentUpon>
     </Compile>
+    <Compile Include="SplashForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SplashForm.Designer.cs">
+      <DependentUpon>SplashForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="WaitingForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WaitingForm.Designer.cs">
+      <DependentUpon>WaitingForm.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="About_Z.resx">
       <DependentUpon>About_Z.cs</DependentUpon>
     </EmbeddedResource>
@@ -202,6 +214,12 @@
     <EmbeddedResource Include="ASCIIConvertDia.resx">
       <DependentUpon>ASCIIConvertDia.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="SplashForm.resx">
+      <DependentUpon>SplashForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WaitingForm.resx">
+      <DependentUpon>WaitingForm.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="app.manifest" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -219,6 +237,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="coding.ico" />
+    <None Include="Resources\CMB-logos_white.png" />
+    <None Include="Resources\Ps1.png" />
     <None Include="Resources\coding %281%29.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
