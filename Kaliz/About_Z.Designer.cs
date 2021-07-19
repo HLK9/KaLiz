@@ -30,9 +30,11 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(About_Z));
             this.radPanel1 = new Telerik.WinControls.UI.RadPanel();
+            this.radLabel1 = new Telerik.WinControls.UI.RadLabel();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.radLabel6 = new Telerik.WinControls.UI.RadLabel();
             this.radLabel3 = new Telerik.WinControls.UI.RadLabel();
             this.radLabel2 = new Telerik.WinControls.UI.RadLabel();
-            this.radLabel1 = new Telerik.WinControls.UI.RadLabel();
             this.radPanel2 = new Telerik.WinControls.UI.RadPanel();
             this.radLabel4 = new Telerik.WinControls.UI.RadLabel();
             this.radLabel8 = new Telerik.WinControls.UI.RadLabel();
@@ -42,9 +44,11 @@
             this.materialTealTheme1 = new Telerik.WinControls.Themes.MaterialTealTheme();
             ((System.ComponentModel.ISupportInitialize)(this.radPanel1)).BeginInit();
             this.radPanel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.radLabel1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.radLabel6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.radLabel3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.radLabel2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.radLabel1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.radPanel2)).BeginInit();
             this.radPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.radLabel4)).BeginInit();
@@ -58,9 +62,11 @@
             // radPanel1
             // 
             this.radPanel1.BackColor = System.Drawing.Color.MediumAquamarine;
+            this.radPanel1.Controls.Add(this.radLabel1);
+            this.radPanel1.Controls.Add(this.pictureBox1);
+            this.radPanel1.Controls.Add(this.radLabel6);
             this.radPanel1.Controls.Add(this.radLabel3);
             this.radPanel1.Controls.Add(this.radLabel2);
-            this.radPanel1.Controls.Add(this.radLabel1);
             this.radPanel1.Dock = System.Windows.Forms.DockStyle.Left;
             this.radPanel1.Location = new System.Drawing.Point(0, 0);
             this.radPanel1.Name = "radPanel1";
@@ -68,15 +74,49 @@
             this.radPanel1.TabIndex = 0;
             this.radPanel1.ThemeName = "MaterialTeal";
             // 
+            // radLabel1
+            // 
+            this.radLabel1.Font = new System.Drawing.Font("OCR A Extended", 48F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radLabel1.ForeColor = System.Drawing.Color.White;
+            this.radLabel1.Location = new System.Drawing.Point(8, 101);
+            this.radLabel1.Name = "radLabel1";
+            this.radLabel1.Size = new System.Drawing.Size(223, 76);
+            this.radLabel1.TabIndex = 0;
+            this.radLabel1.Text = "Kaliz";
+            this.radLabel1.ThemeName = "MaterialTeal";
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBox1.Image = global::Kaliz.Properties.Resources.CMB_logos_white;
+            this.pictureBox1.Location = new System.Drawing.Point(48, -39);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(150, 150);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 4;
+            this.pictureBox1.TabStop = false;
+            // 
+            // radLabel6
+            // 
+            this.radLabel6.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radLabel6.ForeColor = System.Drawing.Color.White;
+            this.radLabel6.Location = new System.Drawing.Point(12, 317);
+            this.radLabel6.Name = "radLabel6";
+            this.radLabel6.Size = new System.Drawing.Size(195, 55);
+            this.radLabel6.TabIndex = 3;
+            this.radLabel6.Text = "Powered by Telerik, Syncfusion\r\nand other\r\nPermission has been obtained";
+            this.radLabel6.TextAlignment = System.Drawing.ContentAlignment.TopLeft;
+            this.radLabel6.ThemeName = "MaterialTeal";
+            // 
             // radLabel3
             // 
             this.radLabel3.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.radLabel3.ForeColor = System.Drawing.Color.White;
-            this.radLabel3.Location = new System.Drawing.Point(12, 375);
+            this.radLabel3.Location = new System.Drawing.Point(11, 375);
             this.radLabel3.Name = "radLabel3";
-            this.radLabel3.Size = new System.Drawing.Size(159, 21);
+            this.radLabel3.Size = new System.Drawing.Size(125, 21);
             this.radLabel3.TabIndex = 2;
-            this.radLabel3.Text = "© 2020-2021 CMB Studio";
+            this.radLabel3.Text = "© 2021 CMB Studio";
             this.radLabel3.TextAlignment = System.Drawing.ContentAlignment.TopLeft;
             this.radLabel3.ThemeName = "MaterialTeal";
             // 
@@ -84,7 +124,7 @@
             // 
             this.radLabel2.Font = new System.Drawing.Font("OCR A Extended", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.radLabel2.ForeColor = System.Drawing.Color.White;
-            this.radLabel2.Location = new System.Drawing.Point(12, 167);
+            this.radLabel2.Location = new System.Drawing.Point(12, 183);
             this.radLabel2.Name = "radLabel2";
             this.radLabel2.Size = new System.Drawing.Size(226, 46);
             this.radLabel2.TabIndex = 1;
@@ -93,17 +133,6 @@
     "r: #ff8000\">t</span>ware</p></html>";
             this.radLabel2.TextAlignment = System.Drawing.ContentAlignment.TopLeft;
             this.radLabel2.ThemeName = "MaterialTeal";
-            // 
-            // radLabel1
-            // 
-            this.radLabel1.Font = new System.Drawing.Font("OCR A Extended", 48F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radLabel1.ForeColor = System.Drawing.Color.White;
-            this.radLabel1.Location = new System.Drawing.Point(12, 70);
-            this.radLabel1.Name = "radLabel1";
-            this.radLabel1.Size = new System.Drawing.Size(223, 76);
-            this.radLabel1.TabIndex = 0;
-            this.radLabel1.Text = "Kaliz";
-            this.radLabel1.ThemeName = "MaterialTeal";
             // 
             // radPanel2
             // 
@@ -123,7 +152,7 @@
             // 
             this.radLabel4.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.radLabel4.ForeColor = System.Drawing.Color.Teal;
-            this.radLabel4.Location = new System.Drawing.Point(16, 102);
+            this.radLabel4.Location = new System.Drawing.Point(18, 102);
             this.radLabel4.Name = "radLabel4";
             this.radLabel4.Size = new System.Drawing.Size(208, 26);
             this.radLabel4.TabIndex = 3;
@@ -150,14 +179,15 @@
             this.radButton1.Name = "radButton1";
             this.radButton1.Size = new System.Drawing.Size(297, 36);
             this.radButton1.TabIndex = 4;
-            this.radButton1.Text = "Tới trang web của Kaliz";
+            this.radButton1.Text = "Kaliz Home Page";
             this.radButton1.ThemeName = "MaterialTeal";
+            this.radButton1.Click += new System.EventHandler(this.radButton1_Click);
             // 
             // radLabel7
             // 
             this.radLabel7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.radLabel7.ForeColor = System.Drawing.Color.Teal;
-            this.radLabel7.Location = new System.Drawing.Point(16, 153);
+            this.radLabel7.Location = new System.Drawing.Point(18, 153);
             this.radLabel7.Name = "radLabel7";
             this.radLabel7.Size = new System.Drawing.Size(217, 147);
             this.radLabel7.TabIndex = 3;
@@ -169,7 +199,7 @@
             // 
             this.radLabel5.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.radLabel5.ForeColor = System.Drawing.Color.Teal;
-            this.radLabel5.Location = new System.Drawing.Point(16, 70);
+            this.radLabel5.Location = new System.Drawing.Point(18, 70);
             this.radLabel5.Name = "radLabel5";
             this.radLabel5.Size = new System.Drawing.Size(190, 26);
             this.radLabel5.TabIndex = 2;
@@ -199,9 +229,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.radPanel1)).EndInit();
             this.radPanel1.ResumeLayout(false);
             this.radPanel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.radLabel1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.radLabel6)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.radLabel3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.radLabel2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.radLabel1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.radPanel2)).EndInit();
             this.radPanel2.ResumeLayout(false);
             this.radPanel2.PerformLayout();
@@ -228,5 +260,7 @@
         private Telerik.WinControls.UI.RadLabel radLabel8;
         private Telerik.WinControls.UI.RadLabel radLabel4;
         private Telerik.WinControls.Themes.MaterialTealTheme materialTealTheme1;
+        private Telerik.WinControls.UI.RadLabel radLabel6;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }
