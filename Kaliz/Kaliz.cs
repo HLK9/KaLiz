@@ -17,6 +17,7 @@ using Syncfusion.Windows.Forms.Edit.Implementation;
 using System.Collections;
 using System.Text.RegularExpressions;
 using WK.Libraries.SharpClipboardNS;
+using System.Threading;
 
 namespace Kaliz
 {
@@ -54,6 +55,7 @@ namespace Kaliz
             //thr.Abort();
            
             InitializeComponent();
+            Thread.Sleep(4000);
             DockPar.SelectedTabChanged += DockPar_SelectedTabChanged;
            // DockPar.SelectedTabChanging += DockPar_SelectedTabChanging;
             TaoPhimTat();
@@ -191,10 +193,10 @@ namespace Kaliz
                 
                 if (Path.GetExtension(DuongDanTep) == ".c" || Path.GetExtension(DuongDanTep) == ".cpp")
                 {
-                    DanhDau.WhiteSpaceIndicators.NewLineString = "\r\n";
+                    //DanhDau.WhiteSpaceIndicators.NewLineString = "\r\n";
                     DanhDau.SetNewLineStyle(Syncfusion.IO.NewLineStyle.Unix);
                     //Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
-                    DanhDau.LoadFile(DuongDanTep, Encoding.UTF8);
+                   DanhDau.LoadFile(DuongDanTep, Encoding.UTF8);
                     string ConfigF = @"Lex\CppF.xml";
                     
                     DanhDau.Configurator.Open(ConfigF);
@@ -204,16 +206,8 @@ namespace Kaliz
                     DanhDau.ContextChoiceOpen += DanhDau_ContextChoiceOpen_C;
                     DanhDau.ContextPromptOpen += DanhDau_ContextPromptOpen_ForC;
                     DanhDau.ContextPromptUpdate += DanhDau_ContextPromptUpdate_ForC;
-                    //DanhDau.ContextPromptOpen += DanhDau_ContextPromptOpen;
-                    //DanhDau.ShowWhitespaces = true;
-                    //DanhDau.ShowWhitespaces = true;
-                    //DanhDau.WhiteSpaceIndicators.ShowSpaces = false;
-                    //DanhDau.WhiteSpaceIndicators.ShowTabs = false;
-                    //
-                    //DanhDau.WhiteSpaceIndicators.ShowNewLines = true;
-                    //DanhDau.SetNewLineStyle(Syncfusion.IO.NewLineStyle.Control);
-                    //DanhDau.GetNewLineStyle();
-                   
+                    
+
 
 
                 }
@@ -1330,12 +1324,21 @@ End;
             return Path.GetFileNameWithoutExtension(ten) + ".exe";
         }
         //Build tep
+        void WatingLoad()
+        {
+            for(int i =0;i<500;i++)
+            Thread.Sleep(10);
+        }
         private void Build(string ten, bool enabledebug, ref RadListView outp)
         {
-            
+            using (WaitingForm wait = new WaitingForm(WatingLoad))
+            {
+                wait.ShowDialog(this);
+            }
 
-               // TabHienTai.Save();
-                ListOutput.Items.Clear();
+
+            // TabHienTai.Save();
+            ListOutput.Items.Clear();
                 ListOutput.Items.Add("Processing");
                 if (Path.GetExtension(ten) == ".pas")
                 {
@@ -1413,16 +1416,15 @@ End;
                     BienDich.StartInfo.RedirectStandardInput = true;
                 //BienDich.StartInfo.WorkingDirectory = @"Cmder\vendor\occ60451e\orangec\bin";
                
-                    if (enabledebug == false)
-                        BienDich.StartInfo.Arguments = "/c " + "g++ " + ten + " -o " + Path.GetDirectoryName(ten) + "\\" + Path.GetFileNameWithoutExtension(ten) + ".exe";
-                    else BienDich.StartInfo.Arguments = "/c " + "g++ " + " -g " + ten + " -o " + Path.GetDirectoryName(ten) + "\\" + Path.GetFileNameWithoutExtension(ten) + ".exe";
-                
-                //    else
-                //  { 
-                //if (enabledebug == false)
-                //    BienDich.StartInfo.Arguments = "/c " + "occ " + "/o" + Path.GetDirectoryName(ten) + "\\" + TepEXE(ten)+" " + ten;// + " -o " + Path.GetDirectoryName(ten) + "\\" + Path.GetFileNameWithoutExtension(ten) + ".exe";
-                //else BienDich.StartInfo.Arguments = "/c " + "occ " + " /g " + " /o" + Path.GetDirectoryName(ten) + "\\" + TepEXE(ten) + " " + ten;// + " -o " + Path.GetDirectoryName(ten) + "\\" + Path.GetFileNameWithoutExtension(ten) + ".exe";
-              //  }
+          //Dung g++          //if (enabledebug == false)
+                    //    BienDich.StartInfo.Arguments = "/c " + "g++ " + ten + " -o " + Path.GetDirectoryName(ten) + "\\" + Path.GetFileNameWithoutExtension(ten) + ".exe";
+                    //else BienDich.StartInfo.Arguments = "/c " + "g++ " + " -g " + ten + " -o " + Path.GetDirectoryName(ten) + "\\" + Path.GetFileNameWithoutExtension(ten) + ".exe";
+
+
+               // if (enabledebug == false)
+                    BienDich.StartInfo.Arguments = "/c " + "occ " + "/o" + Path.GetDirectoryName(ten) + "\\" + TepEXE(ten) + " " + ten;// + " -o " + Path.GetDirectoryName(ten) + "\\" + Path.GetFileNameWithoutExtension(ten) + ".exe";
+              //  else BienDich.StartInfo.Arguments = "/c " + "occ " + " /g " + " /o" + Path.GetDirectoryName(ten) + "\\" + TepEXE(ten) + " " + ten;// + " -o " + Path.GetDirectoryName(ten) + "\\" + Path.GetFileNameWithoutExtension(ten) + ".exe";
+
 
                 BienDich.StartInfo.CreateNoWindow = true;
                     BienDich.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;
@@ -1797,6 +1799,10 @@ End;
 
         private void BBuild_Click(object sender, EventArgs e)
         {
+            //Tạo waitting form
+            
+
+            //
            
            //fixed 20/6
             
@@ -2028,11 +2034,11 @@ End;
 
             //}
             //else
-            try {if (TabHienTai.GetNewLineStyle() != Syncfusion.IO.NewLineStyle.Windows || TabHienTai.GetEncoding() != Encoding.ASCII && Path.GetExtension(TabHienTai.FileName) == ".java")
-                {
-                    TabHienTai.SaveFile(TabHienTai.FileName, Encoding.ASCII, Syncfusion.IO.NewLineStyle.Unix);
-                } }
-            catch { }
+            //try {if (TabHienTai.GetNewLineStyle() != Syncfusion.IO.NewLineStyle.Windows || TabHienTai.GetEncoding() != Encoding.ASCII && Path.GetExtension(TabHienTai.FileName) == ".java")
+            //    {
+            //        TabHienTai.SaveFile(TabHienTai.FileName, Encoding.ASCII, Syncfusion.IO.NewLineStyle.Unix);
+            //    } }
+            //catch { }
                     
 
                 //TabHienTai.SetEncoding(Encoding.UTF8);
