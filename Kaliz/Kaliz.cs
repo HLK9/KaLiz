@@ -2025,8 +2025,8 @@ End;
 
 
 
-            //try
-            //{
+            try
+            {
 
             //if (TabHienTai.GetNewLineStyle() != Syncfusion.IO.NewLineStyle.Windows||TabHienTai.GetEncoding() != Encoding.ASCII && Path.GetExtension(TabHienTai.FileName) == ".c" || Path.GetExtension(TabHienTai.FileName) == ".cpp")
             //{
@@ -2062,8 +2062,8 @@ End;
                     DockPar.DocumentManager.ActiveDocument.Text = Path.GetFileName(TabHienTai.FileName);
                 }
 
-            //}
-            //catch { MessageBox.Show("Có lỗi xảy ra!"); }
+            }
+            catch { MessageBox.Show("Có lỗi xảy ra!"); }
             
         }
 
@@ -3486,6 +3486,21 @@ TabHienTai.InsertText(TabHienTai.CurrentLine, TabHienTai.CurrentColumn, radlistc
                 }
             }
             MessageBox.Show(PascalOption);
+        }
+
+       
+
+        private void EDupli_Click(object sender, EventArgs e)
+        {
+
+            try
+            {
+                TabHienTai.MoveToLineEnd();
+                int a = TabHienTai.CurrentColumn;
+                TabHienTai.InsertText(TabHienTai.CurrentLine, a, Environment.NewLine + TabHienTai.CurrentLineText);
+            }
+            catch
+            { }
         }
     }
 }
