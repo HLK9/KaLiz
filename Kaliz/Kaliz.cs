@@ -18,6 +18,10 @@ using System.Collections;
 using System.Text.RegularExpressions;
 using WK.Libraries.SharpClipboardNS;
 using System.Threading;
+using System.Runtime.Serialization.Formatters.Binary;
+using System.Net.Sockets;
+using System.Net;
+using System.Collections.Generic;
 
 namespace Kaliz
 {
@@ -1244,7 +1248,7 @@ End;
             }
         }
 
-        
+       
 
         private void ECopy_Click(object sender, EventArgs e)
         {
@@ -3502,6 +3506,222 @@ TabHienTai.InsertText(TabHienTai.CurrentLine, TabHienTai.CurrentColumn, radlistc
             catch
             { }
         }
+        private bool isServer = false;
+        private void SStartServer_Click(object sender, EventArgs e)
+        {
+            isServer = true;
+            SConnect.Enabled = false;
+            SPush.Text = "Push Code in Current Tab to Clients";
+            CheckForIllegalCrossThreadCalls = false;
+            Connect_Ser();
+        }
+        ///Server///////////////////////////////////////////////
+        IPEndPoint IPServer;
+        Socket server;
+        List<Socket> clientlist = new List<Socket>();
+        void Connect_Ser()
+        {
+            IPServer = new IPEndPoint(IPAddress.Any, 4444);
+            server = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.IP);
+            server.Bind(IPServer);
+            Thread Listen = new Thread(() =>
+            {
+                try
+                {
+                    while (true)
+                    {
+                        server.Listen(100);
+                        Socket client = server.Accept();
+                        clientlist.Add(client);
+
+                        Thread recevie = new Thread(Receive_Ser);
+                        recevie.IsBackground = true;
+                        recevie.Start(client);
+                    }
+                }
+                catch
+                {
+                    IPServer = new IPEndPoint(IPAddress.Any, 4444);
+                    server = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.IP);
+                }
+
+
+            });
+            Listen.IsBackground = true;
+            Listen.Start();
+
+
+        }
+        void Close_Ser()
+        {
+            
+            server.Close();
+            SConnect.Enabled = true;
+        }
+        void Send_Ser(Socket client)
+        {
+            if (TabHienTai.Text != string.Empty && TabHienTai != null)
+                client.Send(Serialize(TabHienTai.Text));
+        }
+        void Receive_Ser(object obj)
+        {
+            Socket client = obj as Socket;
+            try
+            {
+                while (true)
+                {
+                    byte[] data = new byte[1024 * 5000];
+                    client.Receive(data);
+
+                    string message = (string)Deserialize(data);
+                    AddMessage_Ser(message);
+                }
+            }
+            catch
+            {
+                clientlist.Remove(client);
+                client.Close();
+            }
+
+
+        }
+        void AddMessage_Ser(string s)
+        {
+            TabHienTai.Text = s;
+            //lsvMessage.Items.Add(new ListViewItem() { Text = s });
+
+        }
+        byte[] Serialize(object obj)
+        {
+            MemoryStream stream = new MemoryStream();
+            BinaryFormatter formatter = new BinaryFormatter();
+            formatter.Serialize(stream, obj);
+            return stream.ToArray();
+        }
+        object Deserialize(byte[] data)
+        {
+            MemoryStream stream = new MemoryStream(data);
+            BinaryFormatter formatter = new BinaryFormatter();
+            return formatter.Deserialize(stream);
+
+        }
+
+        private void SPush_Click(object sender, EventArgs e)
+        {
+            if (isServer)
+            {
+                foreach (Socket item in clientlist)
+                {
+                    Send_Ser(item);
+                }
+            }
+            else
+            {
+                Send();
+            }
+
+        }
+
+        private void SConnect_Click(object sender, EventArgs e)
+        {
+            isServer = false;
+            SStartServer.Enabled = false;
+            SPush.Text = "Push Code in Current Tab to Server";
+            CheckForIllegalCrossThreadCalls = false;
+            Connect();
+        }
+
+        ///Server///////////////////////////////////////////////
+        /// ----------------------------------------------------
+        ///Clients//////////////////////////////////////////////
+        IPEndPoint IP;
+        Socket client;
+        void Connect()
+        {
+            IP = new IPEndPoint(IPAddress.Parse("127.0.0.1"), 4444);
+            client = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.IP);
+            try
+            {
+                client.Connect(IP);
+            }
+            catch
+            {
+                MessageBox.Show("Error!"); return;
+            }
+
+            Thread listen = new Thread(Receive);
+            listen.IsBackground = true;
+            listen.Start();
+
+        }
+        void Close()
+        {
+            client.Close();
+            try
+            {
+                if (client.Connected)
+                {
+                    client.Shutdown(SocketShutdown.Both);
+                    client.Close(10);
+                }
+            }
+            catch (Exception)
+            {
+                //MessageBox.Show(ex.ToString());
+            }
+            SStartServer.Enabled = true;
+        }
+        void Send()
+        {
+            if (client.Connected)
+            {
+                if (TabHienTai.Text != string.Empty && TabHienTai != null)
+                    client.Send(Serialize(TabHienTai.Text));
+            }
+            else MessageBox.Show("Server not Found!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+           
+        }
+        void Receive()
+        {
+            try
+            {
+                while (true)
+                {
+                    byte[] data = new byte[1024 * 5000];
+                    client.Receive(data);
+
+                    string message = (string)Deserialize(data);
+                    AddMessage(message);
+                }
+            }
+            catch
+            {
+                Close();
+            }
+
+
+        }
+        void AddMessage(string s)
+        {
+            TabHienTai.Text = s;
+        }
+
+        private void SDisconnect_Click(object sender, EventArgs e)
+        {
+            if(isServer)
+            {
+                Close_Ser();
+                SConnect.Enabled = true;
+            }
+            else
+            {
+                Close();
+                
+                SStartServer.Enabled = true;
+            }
+        }
+
+        ///Clients////////////////////////////////////////////// 
     }
 }
 

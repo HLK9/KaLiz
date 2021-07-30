@@ -79,6 +79,7 @@ namespace Kaliz
             this.ESwitch = new Telerik.WinControls.UI.RadMenuItem();
             this.SwitchNext = new Telerik.WinControls.UI.RadMenuItem();
             this.SwitchPrevious = new Telerik.WinControls.UI.RadMenuItem();
+            this.EDupli = new Telerik.WinControls.UI.RadMenuItem();
             this.MTools = new Telerik.WinControls.UI.RadMenuItem();
             this.TFind = new Telerik.WinControls.UI.RadMenuItem();
             this.FindDia = new Telerik.WinControls.UI.RadMenuItem();
@@ -205,12 +206,12 @@ namespace Kaliz
             this.WCloseCur = new Telerik.WinControls.UI.RadMenuItem();
             this.WCloseAll = new Telerik.WinControls.UI.RadMenuItem();
             this.WResetWindows = new Telerik.WinControls.UI.RadMenuItem();
-            this.radMenuItem1 = new Telerik.WinControls.UI.RadMenuItem();
-            this.radMenuItem3 = new Telerik.WinControls.UI.RadMenuItem();
-            this.radMenuItem16 = new Telerik.WinControls.UI.RadMenuItem();
-            this.radMenuItem17 = new Telerik.WinControls.UI.RadMenuItem();
-            this.EDupli = new Telerik.WinControls.UI.RadMenuItem();
             this.MenuTop = new Telerik.WinControls.UI.RadMenu();
+            this.MShareAndConnect = new Telerik.WinControls.UI.RadMenuItem();
+            this.SStartServer = new Telerik.WinControls.UI.RadMenuItem();
+            this.SConnect = new Telerik.WinControls.UI.RadMenuItem();
+            this.SPush = new Telerik.WinControls.UI.RadMenuItem();
+            this.SDisconnect = new Telerik.WinControls.UI.RadMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.DockPar)).BeginInit();
             this.DockPar.SuspendLayout();
             this.documentWindow1.SuspendLayout();
@@ -243,8 +244,8 @@ namespace Kaliz
             this.DClosedFiles.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.listClosedFiles)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.toolTabStrip3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.MenuTop)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this)).BeginInit();
             this.SuspendLayout();
             // 
             // dockWindowPlaceholder1
@@ -586,6 +587,12 @@ namespace Kaliz
             this.SwitchPrevious.Name = "SwitchPrevious";
             this.SwitchPrevious.Text = "Previous File";
             this.SwitchPrevious.Click += new System.EventHandler(this.SwitchPrevious_Click);
+            // 
+            // EDupli
+            // 
+            this.EDupli.Name = "EDupli";
+            this.EDupli.Text = "Duplicate Line";
+            this.EDupli.Click += new System.EventHandler(this.EDupli_Click);
             // 
             // MTools
             // 
@@ -1637,45 +1644,6 @@ namespace Kaliz
             this.WResetWindows.Text = "Reset Windows";
             this.WResetWindows.Click += new System.EventHandler(this.WResetWindows_Click);
             // 
-            // radMenuItem1
-            // 
-            this.radMenuItem1.Items.AddRange(new Telerik.WinControls.RadItem[] {
-            this.radMenuItem3,
-            this.radMenuItem16,
-            this.radMenuItem17});
-            this.radMenuItem1.Name = "radMenuItem1";
-            this.radMenuItem1.Text = "Test";
-            // 
-            // radMenuItem3
-            // 
-            this.radMenuItem3.Name = "radMenuItem3";
-            this.radMenuItem3.Text = "radMenuItem3";
-            this.radMenuItem3.Click += new System.EventHandler(this.radMenuItem3_Click_3);
-            // 
-            // radMenuItem16
-            // 
-            this.radMenuItem16.Name = "radMenuItem16";
-            this.radMenuItem16.Text = "radMenuItem16";
-            this.radMenuItem16.Click += new System.EventHandler(this.radMenuItem16_Click_2);
-            // 
-            // radMenuItem17
-            // 
-            this.radMenuItem17.Name = "radMenuItem17";
-            this.radMenuItem17.Text = "radMenuItem17";
-            this.radMenuItem17.Click += new System.EventHandler(this.radMenuItem17_Click_1);
-            // 
-            // EDupli
-            // 
-            this.EDupli.Name = "EDupli";
-            this.EDupli.Text = "Duplicate Line";
-            this.EDupli.Click += new System.EventHandler(this.EDupli_Click);
-            // 
-            // Kaliz
-            // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1257, 735);
-            // 
             // MenuTop
             // 
             this.MenuTop.Items.AddRange(new Telerik.WinControls.RadItem[] {
@@ -1690,12 +1658,52 @@ namespace Kaliz
             this.MWindows,
             this.MPersonal,
             this.MHelp,
-            this.radMenuItem1});
+            this.MShareAndConnect});
             this.MenuTop.Location = new System.Drawing.Point(0, 0);
             this.MenuTop.Name = "MenuTop";
             this.MenuTop.Size = new System.Drawing.Size(1257, 37);
             this.MenuTop.TabIndex = 1;
             this.MenuTop.ThemeName = "MaterialTeal";
+            // 
+            // MShareAndConnect
+            // 
+            this.MShareAndConnect.Items.AddRange(new Telerik.WinControls.RadItem[] {
+            this.SStartServer,
+            this.SConnect,
+            this.SPush,
+            this.SDisconnect});
+            this.MShareAndConnect.Name = "MShareAndConnect";
+            this.MShareAndConnect.Text = "Share && Connect";
+            // 
+            // SStartServer
+            // 
+            this.SStartServer.Name = "SStartServer";
+            this.SStartServer.Text = "Start Server (LAN)";
+            this.SStartServer.Click += new System.EventHandler(this.SStartServer_Click);
+            // 
+            // SConnect
+            // 
+            this.SConnect.Name = "SConnect";
+            this.SConnect.Text = "Connect To Server";
+            this.SConnect.Click += new System.EventHandler(this.SConnect_Click);
+            // 
+            // SPush
+            // 
+            this.SPush.Name = "SPush";
+            this.SPush.Text = "Push Code in Current Tab";
+            this.SPush.Click += new System.EventHandler(this.SPush_Click);
+            // 
+            // SDisconnect
+            // 
+            this.SDisconnect.Name = "SDisconnect";
+            this.SDisconnect.Text = "Disconnect";
+            this.SDisconnect.Click += new System.EventHandler(this.SDisconnect_Click);
+            // 
+            // Kaliz
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.ClientSize = new System.Drawing.Size(1257, 735);
             this.Controls.Add(this.DockPar);
             this.Controls.Add(this.MenuTop);
             this.HelpButton = true;
@@ -1920,15 +1928,16 @@ namespace Kaliz
         private RadMenuSeparatorItem radMenuSeparatorItem5;
         private RadMenuItem DockTop;
         private RadMenuItem DockBottom;
-        private RadMenuItem radMenuItem1;
-        private RadMenuItem radMenuItem3;
-        private RadMenuItem radMenuItem16;
-        private RadMenuItem radMenuItem17;
         private RadMenuItem DebugPython;
         private RadMenuItem BPara;
         private RadMenuItem BConfig;
         private Telerik.WinControls.Themes.MaterialBlueGreyTheme materialBlueGreyTheme1;
         private RadMenuItem EDupli;
         private RadMenu MenuTop;
+        private RadMenuItem MShareAndConnect;
+        private RadMenuItem SStartServer;
+        private RadMenuItem SConnect;
+        private RadMenuItem SPush;
+        private RadMenuItem SDisconnect;
     }
 }
