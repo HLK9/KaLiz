@@ -1389,13 +1389,13 @@ End;
                     }
                     if (issuccess == false)
                 {
-                    ShowAlert_Light("<html><color=LightSalmon>Build Failed", "Check output to view more");
+                    ShowAlert_Light("<html><color=LightSalmon>Build Failed", "Check output to view more",false);
                     BuildComplete = false;
                 }
                        
                     else
                 
- ShowAlert_Light("<html><color=Teal>Build Completed", "Ready to run");
+ ShowAlert_Light("<html><color=Teal>Build Completed", "Ready to run", false);
                   
                 
                        
@@ -2008,14 +2008,14 @@ End;
 
             if (deBug == false)
             {
-                ShowAlert_Light("<html><color=Teal><b>You have enabled debugging mode</b> ", "<html><i><span><color=Teal>Please compile again to initialize</span></i>");
+                ShowAlert_Light("<html><color=Teal><b>You have enabled debugging mode</b> ", "<html><i><span><color=Teal>Please compile again to initialize</span></i>", false);
                 deBug = true;
                 DEnable.Text = "Disable Debug";
 
             }
             else
             {
-                ShowAlert_Light("<html><color=Crimson><b> You have disabled debugging mode </b> ", "<html><i><span><color=Teal>Compiler will not initialize debug information</span></i>");
+                ShowAlert_Light("<html><color=Crimson><b> You have disabled debugging mode </b> ", "<html><i><span><color=Teal>Compiler will not initialize debug information</span></i>", false);
                 deBug = false;
                 DEnable.Text = "Enable Debug";
 
@@ -2082,7 +2082,7 @@ End;
                 }
                 else
                 {
-                    ShowAlert_Light("<html><color=Blue>Bạn chưa bật GDB Debug", "<html><i>Nếu chưa biết sử dụng, hay tham khảo ở<span><color=Teal> Mục</span></i>");
+                    ShowAlert_Light("<html><color=Blue>Bạn chưa bật GDB Debug", "<html><i>Nếu chưa biết sử dụng, hay tham khảo ở<span><color=Teal> Mục</span></i>", false);
                 }
             }
             catch { }
@@ -2150,11 +2150,11 @@ End;
             {
                 enableContext = true;
                 OEnableContext.Text = "Disable Context Intellisense";
-                ShowAlert_Light("<html><color=Teal>Context Intellisense Enabled", null);
+                ShowAlert_Light("<html><color=Teal>Context Intellisense Enabled", null, false);
             }
             else
             {
-                ShowAlert_Light("<html><color=Crimson>Context Intellisense Disabled", null);
+                ShowAlert_Light("<html><color=Crimson>Context Intellisense Disabled", null, false);
                 enableContext = false;
                 OEnableContext.Text = "Enable Context Intellisense";
             }
@@ -2165,7 +2165,7 @@ End;
             try
             {
                 TabHienTai.ReadOnly = true;
-                ShowAlert_Light("<html><color=Crimson>Readonly Enabled", null);
+                ShowAlert_Light("<html><color=Crimson>Readonly Enabled", null, false);
             }
             catch { };
 
@@ -2176,7 +2176,7 @@ End;
             try
             {
                 TabHienTai.ReadOnly = false;
-                ShowAlert_Light("<html><color=Teal>Readonly Disabled", null);
+                ShowAlert_Light("<html><color=Teal>Readonly Disabled", null, false);
                 TabHienTai.StatusBarSettings.StatusPanel.Panel.Text = "Unsaved";
                 TabHienTai.StatusBarSettings.StatusPanel.Panel.BackColor = Color.DarkMagenta;
                 TabHienTai.StatusBarSettings.StatusPanel.Panel.ForeColor = Color.White;
