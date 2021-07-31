@@ -3521,17 +3521,22 @@ TabHienTai.InsertText(TabHienTai.CurrentLine, TabHienTai.CurrentColumn, radlistc
             //<html><span style="color: #ff8080"><strong>S</strong><strong>tatus: Not Connected</strong></span></html>
             
             CheckForIllegalCrossThreadCalls = false;
+            if(!isConnected)
             Connect_Ser();
         }
         ///Server///////////////////////////////////////////////
         IPEndPoint IPServer;
         Socket server;
+        private bool isConnected = false;
         List<Socket> clientlist = new List<Socket>();
         void Connect_Ser()
         {
             IPServer = new IPEndPoint(IPAddress.Parse(GetLocalIP()), 4444);
             server = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.IP);
+            if(!isConnected)
             server.Bind(IPServer);
+            isConnected = true;
+            SStartServer.Enabled = false;
             SStatus.Text = "Waitting for Connection";
             ShowAlert_Light("<html><color=Teal><b>Server has been initialized</b>", "<html>IP:<span><color=Teal>"+GetLocalIP()+"</span>",true);
             Thread Listen = new Thread(() =>
@@ -3567,7 +3572,9 @@ TabHienTai.InsertText(TabHienTai.CurrentLine, TabHienTai.CurrentColumn, radlistc
         {
             
             server.Close();
+            
             SConnect.Enabled = true;
+            SStatus.Text = "Not Connected";
         }
         void Send_Ser(Socket client)
         {
@@ -3641,14 +3648,16 @@ TabHienTai.InsertText(TabHienTai.CurrentLine, TabHienTai.CurrentColumn, radlistc
             }
 
         }
-
+        private bool isConnectedCli = false;
         private void SConnect_Click(object sender, EventArgs e)
         {
+            
             isServer = false;
             SStartServer.Enabled = false;
             SPush.Text = "Push Code in Current Tab to Server";
            
             CheckForIllegalCrossThreadCalls = false;
+            if(!isConnectedCli)
             Connect();
         }
 
@@ -3664,8 +3673,9 @@ TabHienTai.InsertText(TabHienTai.CurrentLine, TabHienTai.CurrentColumn, radlistc
             try
             {
                 client.Connect(IP);
+                isConnectedCli = true;
                 SStatus.Text = "Connected to " + GetLocalIP();
-                ShowAlert_Light("<html><color=Teal><b>You are connected to Server</b>", "<html>IP:<span><color=Teal>" + GetLocalIP() + "</span>", false);
+                ShowAlert_Light("<html><color=Teal><b>You are connected to Server</b>",null, false);
             }
             catch
             {
@@ -3686,13 +3696,17 @@ TabHienTai.InsertText(TabHienTai.CurrentLine, TabHienTai.CurrentColumn, radlistc
                 {
                     client.Shutdown(SocketShutdown.Both);
                     client.Close(10);
+                    ShowAlert_Light("<html><b>Disconnected to Server</b>",null,false);
+                    SStartServer.Enabled = true;
+                    SStatus.Text = "Not Connected";
+                    isServer = false;
                 }
             }
             catch (Exception)
             {
                 //MessageBox.Show(ex.ToString());
             }
-            SStartServer.Enabled = true;
+            
         }
         void Send()
         {
@@ -3701,7 +3715,12 @@ TabHienTai.InsertText(TabHienTai.CurrentLine, TabHienTai.CurrentColumn, radlistc
                 if (TabHienTai.Text != string.Empty && TabHienTai != null)
                     client.Send(Serialize(TabHienTai.Text));
             }
-            else MessageBox.Show("Server not Found!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            else
+            {
+                MessageBox.Show("Server not Found!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                SStatus.Text = "Not Connected";
+            }
+           
            
         }
         void Receive()
@@ -3726,7 +3745,8 @@ TabHienTai.InsertText(TabHienTai.CurrentLine, TabHienTai.CurrentColumn, radlistc
         }
         void AddMessage(string s)
         {
-            TabHienTai.Text = s;
+            dataReceived = s;
+            listDataReceived.Items.Add(s);
         }
 
         private void SDisconnect_Click(object sender, EventArgs e)
@@ -3734,12 +3754,15 @@ TabHienTai.InsertText(TabHienTai.CurrentLine, TabHienTai.CurrentColumn, radlistc
             if(isServer)
             {
                 Close_Ser();
+                isConnected = false;
                 SConnect.Enabled = true;
+                SStartServer.Enabled = true;
             }
             else
             {
                 Close();
-                
+                isConnectedCli = false;
+                SConnect.Enabled = true;
                 SStartServer.Enabled = true;
             }
         }
@@ -3800,6 +3823,27 @@ TabHienTai.InsertText(TabHienTai.CurrentLine, TabHienTai.CurrentColumn, radlistc
                 ShowAlert_Light("<html><color=Teal><b>Please Set Active Tab Document to Compare</b>", null, false);
             }
            
+        }
+
+        private void Kaliz_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            if (isServer)
+                Close_Ser();
+            else
+                Close();
+        }
+
+        private void DataAdd_Click(object sender, EventArgs e)
+        {
+            if (TabHienTai != null)
+            {
+                TabHienTai.MoveToLineEnd();
+                TabHienTai.Text.Insert(0, "\n" + dataReceived + "\n");
+
+            }
+            else
+                MessageBox.Show("Active Document not found!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                
         }
     }
 }
