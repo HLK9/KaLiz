@@ -1818,7 +1818,7 @@ End;
                     DockPar.DocumentManager.ActiveDocument.Text = Path.GetFileName(TabHienTai.FileName);
 
                 if (Path.GetExtension(TabHienTai.FileName) == ".py")
-                    ShowAlert_Light("<html><color=LightSalmon>Build Failed", "<html><color=Teal>Python can only be <b>RUN</b> directly");
+                    ShowAlert_Light("<html><color=LightSalmon>Build Failed", "<html><color=Teal>Python can only be <b>RUN</b> directly", false);
                 else
                 {
                    // var thread = new Thread(ThreadStart);
@@ -2191,13 +2191,13 @@ End;
             {
 
                 enableTooltip = true;
-                ShowAlert_Light("<html><color=Teal>Context Tooltip Enabled", null);
+                ShowAlert_Light("<html><color=Teal>Context Tooltip Enabled", null, false);
                 OCTooltip.Text = "Disable Context Tooltip";
             }
             else
             {
                 enableTooltip = false;
-                ShowAlert_Light("<html><color=Crimson>Context Tooltip Disabled", null);
+                ShowAlert_Light("<html><color=Crimson>Context Tooltip Disabled", null, false);
                 OCTooltip.Text = "Enable Context Tooltip";
 
             }
@@ -2208,14 +2208,14 @@ End;
             if (enableContextPrompt == false)
             {
                 enableContextPrompt = true;
-                ShowAlert_Light("<html><color=Teal>Context Prompt Enabled", null);
+                ShowAlert_Light("<html><color=Teal>Context Prompt Enabled", null, false);
                 OEnaPrompt.Text = "Disable Context Prompt";
 
             }
             else
             {
                 enableContextPrompt = false;
-                ShowAlert_Light("<html><color=Crimson>Context Prompt Disabled", null);
+                ShowAlert_Light("<html><color=Crimson>Context Prompt Disabled", null, false);
                 OEnaPrompt.Text = "Enable Context Prompt";
             }
         }
@@ -2329,14 +2329,14 @@ End;
                 {
                     TabHienTai.ShowLineNumbers = true;
                     showlinenum = true;
-                    ShowAlert_Light("<html>Show line number <color=Teal>ON", null);
+                    ShowAlert_Light("<html>Show line number <color=Teal>ON", null, false);
                 }
 
                 else
                 {
                     TabHienTai.ShowLineNumbers = false;
                     showlinenum = false;
-                    ShowAlert_Light("<html>Show line number <color=Crimson>OFF", null);
+                    ShowAlert_Light("<html>Show line number <color=Crimson>OFF", null, false);
                 }
             }
             catch { }
@@ -2641,13 +2641,13 @@ TabHienTai.InsertText(TabHienTai.CurrentLine, TabHienTai.CurrentColumn, radlistc
         private void ConC_Click(object sender, EventArgs e)
         {
             ConsoleUse = "PowerShell";
-            ShowAlert_Light("<html><color=Teal>Terminal Has Been Changed", "<html>Current: <span><color=Crimson>PowerShell</span>");
+            ShowAlert_Light("<html><color=Teal>Terminal Has Been Changed", "<html>Current: <span><color=Crimson>PowerShell</span>", false);
         }
 
         private void ConCmder_Click(object sender, EventArgs e)
         {
             ConsoleUse = "Cmder";
-            ShowAlert_Light("<html><color=Teal>Terminal Has Been Changed", "<html>Current: <span><color=Crimson>Cmder</span>");
+            ShowAlert_Light("<html><color=Teal>Terminal Has Been Changed", "<html>Current: <span><color=Crimson>Cmder</span>", false);
         }
 
         private void DGui_Click(object sender, EventArgs e)
@@ -2882,10 +2882,10 @@ TabHienTai.InsertText(TabHienTai.CurrentLine, TabHienTai.CurrentColumn, radlistc
             try
             {
                 DiffOldText = TabHienTai.Text;
-                ShowAlert_Light("<html><Color=Teal><b>Different has been set!</b>", "<html><Color=Crimson>You can Compare code after changes");
+                ShowAlert_Light("<html><Color=Teal><b>Different has been set!</b>", "<html><Color=Crimson>You can Compare code after changes", false);
             }
             catch {
-                ShowAlert_Light("<html><Color=Teal><b>Couldn't set Different</b>", "<html><Color=Crimson>Code not Found!");
+                ShowAlert_Light("<html><Color=Teal><b>Couldn't set Different</b>", "<html><Color=Crimson>Code not Found!", false);
             }
            
             //try
@@ -2925,7 +2925,7 @@ TabHienTai.InsertText(TabHienTai.CurrentLine, TabHienTai.CurrentColumn, radlistc
                 
             }
             else
-                ShowAlert_Light("<html><Color=Teal><b>Couldn't find code to compare</b>", "<html><Color=Crimson>You need set Different to Compare");
+                ShowAlert_Light("<html><Color=Teal><b>Couldn't find code to compare</b>", "<html><Color=Crimson>You need set Different to Compare", false);
 
          
         }
@@ -3240,7 +3240,7 @@ TabHienTai.InsertText(TabHienTai.CurrentLine, TabHienTai.CurrentColumn, radlistc
             }
             else
             {
-                ShowAlert_Light("<html><color=Crimson><b>You have not enabled debug mode </b>", null);
+                ShowAlert_Light("<html><color=Crimson><b>You have not enabled debug mode </b>", null, false);
             }
            
           
@@ -3456,7 +3456,7 @@ TabHienTai.InsertText(TabHienTai.CurrentLine, TabHienTai.CurrentColumn, radlistc
                     }
                     else
                     {
-                        ShowAlert_Light("<html><color=Crimson><b>This Debugger Support for Python Only and Debug Mode Enable</b>", null);
+                        ShowAlert_Light("<html><color=Crimson><b>This Debugger Support for Python Only and Debug Mode Enable</b>", null, false);
                     }
                 }
                 else
