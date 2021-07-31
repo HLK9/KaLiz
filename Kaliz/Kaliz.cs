@@ -1603,6 +1603,7 @@ End;
             {
                 RadTaskDialogPage Tas = new RadTaskDialogPage();
                 Tas.ShouldApplyTheme = true;
+                
                
                 Tas.Caption = "Warning!";
                 Tas.Heading = "File not Found!";
@@ -1620,6 +1621,7 @@ End;
                 BuCant.Click += new EventHandler(delegate (object sender, EventArgs e)
                 {
                     this.Close();
+                    return;
                 });
                 Tas.CommandAreaButtons.Add(BuCant);
                 RadTaskDialog.ShowDialog(Tas);
@@ -3516,6 +3518,8 @@ TabHienTai.InsertText(TabHienTai.CurrentLine, TabHienTai.CurrentColumn, radlistc
             isServer = true;
             SConnect.Enabled = false;
             SPush.Text = "Push Code in Current Tab to Clients";
+            //<html><span style="color: #ff8080"><strong>S</strong><strong>tatus: Not Connected</strong></span></html>
+            
             CheckForIllegalCrossThreadCalls = false;
             Connect_Ser();
         }
@@ -3528,6 +3532,7 @@ TabHienTai.InsertText(TabHienTai.CurrentLine, TabHienTai.CurrentColumn, radlistc
             IPServer = new IPEndPoint(IPAddress.Parse(GetLocalIP()), 4444);
             server = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.IP);
             server.Bind(IPServer);
+            SStatus.Text = "Waitting for Connection";
             ShowAlert_Light("<html><color=Teal><b>You have become a Server</b>","<html>IP:<span><color=Teal>"+GetLocalIP()+"</span>",true);
             Thread Listen = new Thread(() =>
             {
@@ -3632,6 +3637,7 @@ TabHienTai.InsertText(TabHienTai.CurrentLine, TabHienTai.CurrentColumn, radlistc
             isServer = false;
             SStartServer.Enabled = false;
             SPush.Text = "Push Code in Current Tab to Server";
+           
             CheckForIllegalCrossThreadCalls = false;
             Connect();
         }
@@ -3648,6 +3654,7 @@ TabHienTai.InsertText(TabHienTai.CurrentLine, TabHienTai.CurrentColumn, radlistc
             try
             {
                 client.Connect(IP);
+                SStatus.Text = "Connected to " + GetLocalIP();
                 ShowAlert_Light("<html><color=Teal><b>You are connected to Server</b>", "<html>IP:<span><color=Teal>" + GetLocalIP() + "</span>", false);
             }
             catch
@@ -3753,6 +3760,10 @@ TabHienTai.InsertText(TabHienTai.CurrentLine, TabHienTai.CurrentColumn, radlistc
             }
         }
 
+        private void radMenuItem1_Click_2(object sender, EventArgs e)
+        {
+            MessageBox.Show(@"<html><span style=""color: #ff8080""><strong>S</strong><strong>tatus: Not Connected</strong></span></html>");
+        }
     }
 }
 
