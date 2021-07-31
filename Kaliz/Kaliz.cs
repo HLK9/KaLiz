@@ -3638,7 +3638,7 @@ TabHienTai.InsertText(TabHienTai.CurrentLine, TabHienTai.CurrentColumn, radlistc
         Socket client;
         void Connect()
         {
-            IP = new IPEndPoint(IPAddress.Parse("127.0.0.1"), 4444);
+            IP = new IPEndPoint(IPAddress.Parse(GetLocalIP()), 4444);
             client = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.IP);
             try
             {
@@ -3720,8 +3720,33 @@ TabHienTai.InsertText(TabHienTai.CurrentLine, TabHienTai.CurrentColumn, radlistc
                 SStartServer.Enabled = true;
             }
         }
-
         ///Clients////////////////////////////////////////////// 
+        
+        public string GetLocalIP() ///Lấy địa chỉ IP Hiện tại
+        {
+            try
+            {
+                string HostName = Dns.GetHostName(); //ger the name of localhost
+                IPHostEntry IpEntry = Dns.GetHostEntry(HostName);
+                for (int i = 0; i < IpEntry.AddressList.Length; i++)
+                {
+                    //Filter out IPv4 type IP addresses from the IP address list
+                    //AddressFamily.InterNetwork represents IPv4,
+                    //AddressFamily.InterNetworkV6 represents IPv6
+                    if (IpEntry.AddressList[i].AddressFamily == AddressFamily.InterNetwork)
+                    {
+                        return IpEntry.AddressList[i].ToString();
+                    }
+                }
+                return "";
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error getting local IP:" + ex.Message);
+                return "";
+            }
+        }
+
     }
 }
 
