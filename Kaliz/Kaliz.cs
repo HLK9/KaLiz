@@ -3533,7 +3533,7 @@ TabHienTai.InsertText(TabHienTai.CurrentLine, TabHienTai.CurrentColumn, radlistc
             server = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.IP);
             server.Bind(IPServer);
             SStatus.Text = "Waitting for Connection";
-            ShowAlert_Light("<html><color=Teal><b>You have become a Server</b>","<html>IP:<span><color=Teal>"+GetLocalIP()+"</span>",true);
+            ShowAlert_Light("<html><color=Teal><b>Server has been initialized</b>", "<html>IP:<span><color=Teal>"+GetLocalIP()+"</span>",true);
             Thread Listen = new Thread(() =>
             {
                 try
@@ -3542,8 +3542,9 @@ TabHienTai.InsertText(TabHienTai.CurrentLine, TabHienTai.CurrentColumn, radlistc
                     {
                         server.Listen(100);
                         Socket client = server.Accept();
+                        ShowAlert_Light("<html><color=Teal><b>New Client Connected!</b>","Client: "+client.RemoteEndPoint,false);
                         clientlist.Add(client);
-                        
+                        SStatus.Text = "Connected: " + clientlist.Count;
                         Thread recevie = new Thread(Receive_Ser);
                         recevie.IsBackground = true;
                         recevie.Start(client);
@@ -3589,15 +3590,24 @@ TabHienTai.InsertText(TabHienTai.CurrentLine, TabHienTai.CurrentColumn, radlistc
             }
             catch
             {
+                ShowAlert_Light("<html><color=Crimson><b>Client Disconnect</b>", client.RemoteEndPoint+" Disconnected",false);
                 clientlist.Remove(client);
+                if (clientlist.Count != 0)
+                    SStatus.Text = "Connected: " + clientlist.Count;
+                else
+                    SStatus.Text = "Waitting for connection";
+
                 client.Close();
             }
 
 
         }
+        //Tạo 1 biến để lưu dữ liệu gửi về cuối cùng
+        string dataReceived = string.Empty;
         void AddMessage_Ser(string s)
         {
-            TabHienTai.Text = s;
+            dataReceived = s;
+            listDataReceived.Items.Add(s);
             //lsvMessage.Items.Add(new ListViewItem() { Text = s });
 
         }
@@ -3763,6 +3773,33 @@ TabHienTai.InsertText(TabHienTai.CurrentLine, TabHienTai.CurrentColumn, radlistc
         private void radMenuItem1_Click_2(object sender, EventArgs e)
         {
             MessageBox.Show(@"<html><span style=""color: #ff8080""><strong>S</strong><strong>tatus: Not Connected</strong></span></html>");
+        }
+
+        private void DataDiff_Click(object sender, EventArgs e)
+        {
+            if(TabHienTai!=null)
+            {
+                DiffNewText = TabHienTai.Text;
+                DiffViewer Diff = new DiffViewer();
+                Diff.OldText = TabHienTai.Text;
+                Diff.NewText = dataReceived;
+                Diff.FontFamilyNames = "Cascadia Code";
+                Diff.FontSize = 16;
+                Diff.ShowSideBySide();
+                Diff.NewTextHeader = "New";
+                Diff.OldTextHeader = "Old";
+                Diff.IgnoreWhiteSpace = true;
+
+                Diff.Dock = DockStyle.Fill;
+                DocumentWindow Do = new DocumentWindow("Different Merge");
+                Do.Controls.Add(Diff);
+                DockPar.AddDocument(Do);
+            }
+            else
+            {
+                ShowAlert_Light("<html><color=Teal><b>Please Set Active Tab Document to Compare</b>", null, false);
+            }
+           
         }
     }
 }
