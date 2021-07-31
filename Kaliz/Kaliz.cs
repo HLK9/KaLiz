@@ -3648,6 +3648,7 @@ TabHienTai.InsertText(TabHienTai.CurrentLine, TabHienTai.CurrentColumn, radlistc
             try
             {
                 client.Connect(IP);
+                ShowAlert_Light("<html><color=Teal><b>You are connected to Server</b>", "<html>IP:<span><color=Teal>" + GetLocalIP() + "</span>", false);
             }
             catch
             {
