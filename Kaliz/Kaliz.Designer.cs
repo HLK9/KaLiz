@@ -1657,8 +1657,8 @@ namespace Kaliz
             this.MBookmark,
             this.MWindows,
             this.MPersonal,
-            this.MHelp,
-            this.MShareAndConnect});
+            this.MShareAndConnect,
+            this.MHelp});
             this.MenuTop.Location = new System.Drawing.Point(0, 0);
             this.MenuTop.Name = "MenuTop";
             this.MenuTop.Size = new System.Drawing.Size(1257, 37);

@@ -2087,7 +2087,7 @@ End;
             }
             catch { }
         }
-        private void ShowAlert_Light(string cap, string content)
+        private void ShowAlert_Light(string cap, string content,bool pin)
         {
             RadDesktopAlert al = new RadDesktopAlert();
             
@@ -2096,7 +2096,11 @@ End;
             al.PopupAnimationDirection = RadDirection.Up;
             al.ScreenPosition = AlertScreenPosition.BottomRight;
             al.ContentText = content;
-            al.AutoCloseDelay = 5;
+            if (pin == false)
+                al.AutoCloseDelay = 5;
+            else
+                al.IsPinned = true;
+            
             al.AutoSize = true;
             al.ThemeName = "Windows8";
             al.Show();
@@ -3521,9 +3525,10 @@ TabHienTai.InsertText(TabHienTai.CurrentLine, TabHienTai.CurrentColumn, radlistc
         List<Socket> clientlist = new List<Socket>();
         void Connect_Ser()
         {
-            IPServer = new IPEndPoint(IPAddress.Any, 4444);
+            IPServer = new IPEndPoint(IPAddress.Parse(GetLocalIP()), 4444);
             server = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.IP);
             server.Bind(IPServer);
+            ShowAlert_Light("<html><color=Teal><b>You have become a Server</b>","<html>IP:<span><color=Teal>"+GetLocalIP()+"</span>",true);
             Thread Listen = new Thread(() =>
             {
                 try
@@ -3533,7 +3538,7 @@ TabHienTai.InsertText(TabHienTai.CurrentLine, TabHienTai.CurrentColumn, radlistc
                         server.Listen(100);
                         Socket client = server.Accept();
                         clientlist.Add(client);
-
+                        
                         Thread recevie = new Thread(Receive_Ser);
                         recevie.IsBackground = true;
                         recevie.Start(client);
