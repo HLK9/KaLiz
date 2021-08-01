@@ -138,6 +138,10 @@ namespace Kaliz
             this.HLookUp = new Telerik.WinControls.UI.RadMenuItem();
             this.HAbout = new Telerik.WinControls.UI.RadMenuItem();
             this.DockPar = new Telerik.WinControls.UI.Docking.RadDock();
+            this.toolWindow1 = new Telerik.WinControls.UI.Docking.ToolWindow();
+            this.listDataReceived = new Telerik.WinControls.UI.RadListView();
+            this.DContainer = new Telerik.WinControls.UI.Docking.DocumentContainer();
+            this.documentTabStrip1 = new Telerik.WinControls.UI.Docking.DocumentTabStrip();
             this.documentWindow1 = new Telerik.WinControls.UI.Docking.DocumentWindow();
             this.wlcJava = new Telerik.WinControls.UI.RadButton();
             this.recentList = new Telerik.WinControls.UI.RadListView();
@@ -154,8 +158,6 @@ namespace Kaliz
             this.radLabel1 = new Telerik.WinControls.UI.RadLabel();
             this.radLabel6 = new Telerik.WinControls.UI.RadLabel();
             this.radButton1 = new Telerik.WinControls.UI.RadButton();
-            this.DContainer = new Telerik.WinControls.UI.Docking.DocumentContainer();
-            this.documentTabStrip1 = new Telerik.WinControls.UI.Docking.DocumentTabStrip();
             this.toolTabStrip1 = new Telerik.WinControls.UI.Docking.ToolTabStrip();
             this.Doutput = new Telerik.WinControls.UI.Docking.ToolWindow();
             this.ListOutput = new Telerik.WinControls.UI.RadListView();
@@ -163,8 +165,6 @@ namespace Kaliz
             this.radlistclip = new Telerik.WinControls.UI.RadListView();
             this.DClosedFiles = new Telerik.WinControls.UI.Docking.ToolWindow();
             this.listClosedFiles = new Telerik.WinControls.UI.RadListView();
-            this.toolWindow1 = new Telerik.WinControls.UI.Docking.ToolWindow();
-            this.listDataReceived = new Telerik.WinControls.UI.RadListView();
             this.MBookmark = new Telerik.WinControls.UI.RadMenuItem();
             this.BBookmark = new Telerik.WinControls.UI.RadMenuItem();
             this.radMenuItem2 = new Telerik.WinControls.UI.RadMenuItem();
@@ -220,6 +220,12 @@ namespace Kaliz
             this.contextMenuData = new Telerik.WinControls.UI.RadContextMenu(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.DockPar)).BeginInit();
             this.DockPar.SuspendLayout();
+            this.toolWindow1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.listDataReceived)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DContainer)).BeginInit();
+            this.DContainer.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.documentTabStrip1)).BeginInit();
+            this.documentTabStrip1.SuspendLayout();
             this.documentWindow1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.wlcJava)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.recentList)).BeginInit();
@@ -237,10 +243,6 @@ namespace Kaliz
             this.radLabel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.radLabel6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.radButton1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.DContainer)).BeginInit();
-            this.DContainer.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.documentTabStrip1)).BeginInit();
-            this.documentTabStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.toolTabStrip1)).BeginInit();
             this.toolTabStrip1.SuspendLayout();
             this.Doutput.SuspendLayout();
@@ -249,8 +251,6 @@ namespace Kaliz
             ((System.ComponentModel.ISupportInitialize)(this.radlistclip)).BeginInit();
             this.DClosedFiles.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.listClosedFiles)).BeginInit();
-            this.toolWindow1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.listDataReceived)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.toolTabStrip3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.MenuTop)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this)).BeginInit();
@@ -1023,6 +1023,63 @@ namespace Kaliz
             this.DockPar.TabStop = false;
             this.DockPar.ThemeName = "MaterialTeal";
             // 
+            // toolWindow1
+            // 
+            this.toolWindow1.Caption = null;
+            this.toolWindow1.Controls.Add(this.listDataReceived);
+            this.toolWindow1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            this.toolWindow1.Location = new System.Drawing.Point(4, 52);
+            this.toolWindow1.Name = "toolWindow1";
+            this.toolWindow1.PreviousDockState = Telerik.WinControls.UI.Docking.DockState.Docked;
+            this.toolWindow1.Size = new System.Drawing.Size(1249, 103);
+            this.toolWindow1.Text = "Data Received";
+            this.toolWindow1.ToolCaptionButtons = Telerik.WinControls.UI.Docking.ToolStripCaptionButtons.AutoHide;
+            // 
+            // listDataReceived
+            // 
+            this.listDataReceived.AllowEdit = false;
+            this.listDataReceived.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.listDataReceived.GroupItemSize = new System.Drawing.Size(200, 36);
+            this.listDataReceived.ItemSize = new System.Drawing.Size(200, 36);
+            this.listDataReceived.Location = new System.Drawing.Point(0, 0);
+            this.listDataReceived.Name = "listDataReceived";
+            this.listDataReceived.Size = new System.Drawing.Size(1249, 103);
+            this.listDataReceived.TabIndex = 0;
+            this.listDataReceived.ThemeName = "MaterialTeal";
+            this.listDataReceived.MouseClick += new System.Windows.Forms.MouseEventHandler(this.listDataReceived_MouseClick);
+            // 
+            // DContainer
+            // 
+            this.DContainer.CausesValidation = false;
+            this.DContainer.Controls.Add(this.documentTabStrip1);
+            this.DContainer.Name = "DContainer";
+            // 
+            // 
+            // 
+            this.DContainer.RootElement.MinSize = new System.Drawing.Size(25, 25);
+            this.DContainer.SizeInfo.AbsoluteSize = new System.Drawing.Size(200, 511);
+            this.DContainer.SizeInfo.SizeMode = Telerik.WinControls.UI.Docking.SplitPanelSizeMode.Fill;
+            this.DContainer.SizeInfo.SplitterCorrection = new System.Drawing.Size(0, 15);
+            this.DContainer.SplitterWidth = 8;
+            this.DContainer.ThemeName = "MaterialTeal";
+            // 
+            // documentTabStrip1
+            // 
+            this.documentTabStrip1.CanUpdateChildIndex = true;
+            this.documentTabStrip1.CausesValidation = false;
+            this.documentTabStrip1.Controls.Add(this.documentWindow1);
+            this.documentTabStrip1.Location = new System.Drawing.Point(0, 0);
+            this.documentTabStrip1.Name = "documentTabStrip1";
+            // 
+            // 
+            // 
+            this.documentTabStrip1.RootElement.MinSize = new System.Drawing.Size(25, 25);
+            this.documentTabStrip1.SelectedIndex = 0;
+            this.documentTabStrip1.Size = new System.Drawing.Size(1257, 505);
+            this.documentTabStrip1.TabIndex = 0;
+            this.documentTabStrip1.TabStop = false;
+            this.documentTabStrip1.ThemeName = "MaterialTeal";
+            // 
             // documentWindow1
             // 
             this.documentWindow1.Controls.Add(this.wlcJava);
@@ -1223,38 +1280,6 @@ namespace Kaliz
             this.radButton1.Text = "See Document";
             this.radButton1.ThemeName = "MaterialTeal";
             // 
-            // DContainer
-            // 
-            this.DContainer.CausesValidation = false;
-            this.DContainer.Controls.Add(this.documentTabStrip1);
-            this.DContainer.Name = "DContainer";
-            // 
-            // 
-            // 
-            this.DContainer.RootElement.MinSize = new System.Drawing.Size(25, 25);
-            this.DContainer.SizeInfo.AbsoluteSize = new System.Drawing.Size(200, 511);
-            this.DContainer.SizeInfo.SizeMode = Telerik.WinControls.UI.Docking.SplitPanelSizeMode.Fill;
-            this.DContainer.SizeInfo.SplitterCorrection = new System.Drawing.Size(0, 15);
-            this.DContainer.SplitterWidth = 8;
-            this.DContainer.ThemeName = "MaterialTeal";
-            // 
-            // documentTabStrip1
-            // 
-            this.documentTabStrip1.CanUpdateChildIndex = true;
-            this.documentTabStrip1.CausesValidation = false;
-            this.documentTabStrip1.Controls.Add(this.documentWindow1);
-            this.documentTabStrip1.Location = new System.Drawing.Point(0, 0);
-            this.documentTabStrip1.Name = "documentTabStrip1";
-            // 
-            // 
-            // 
-            this.documentTabStrip1.RootElement.MinSize = new System.Drawing.Size(25, 25);
-            this.documentTabStrip1.SelectedIndex = 0;
-            this.documentTabStrip1.Size = new System.Drawing.Size(1257, 505);
-            this.documentTabStrip1.TabIndex = 0;
-            this.documentTabStrip1.TabStop = false;
-            this.documentTabStrip1.ThemeName = "MaterialTeal";
-            // 
             // toolTabStrip1
             // 
             this.toolTabStrip1.CanUpdateChildIndex = true;
@@ -1352,31 +1377,6 @@ namespace Kaliz
             this.listClosedFiles.TabIndex = 0;
             this.listClosedFiles.ThemeName = "MaterialTeal";
             this.listClosedFiles.ItemMouseDoubleClick += new Telerik.WinControls.UI.ListViewItemEventHandler(this.listClosedFiles_ItemMouseDoubleClick);
-            // 
-            // toolWindow1
-            // 
-            this.toolWindow1.Caption = null;
-            this.toolWindow1.Controls.Add(this.listDataReceived);
-            this.toolWindow1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.toolWindow1.Location = new System.Drawing.Point(4, 52);
-            this.toolWindow1.Name = "toolWindow1";
-            this.toolWindow1.PreviousDockState = Telerik.WinControls.UI.Docking.DockState.Docked;
-            this.toolWindow1.Size = new System.Drawing.Size(1249, 103);
-            this.toolWindow1.Text = "Data Received";
-            this.toolWindow1.ToolCaptionButtons = Telerik.WinControls.UI.Docking.ToolStripCaptionButtons.AutoHide;
-            // 
-            // listDataReceived
-            // 
-            this.listDataReceived.AllowEdit = false;
-            this.listDataReceived.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.listDataReceived.GroupItemSize = new System.Drawing.Size(200, 36);
-            this.listDataReceived.ItemSize = new System.Drawing.Size(200, 36);
-            this.listDataReceived.Location = new System.Drawing.Point(0, 0);
-            this.listDataReceived.Name = "listDataReceived";
-            this.listDataReceived.Size = new System.Drawing.Size(1249, 103);
-            this.listDataReceived.TabIndex = 0;
-            this.listDataReceived.ThemeName = "MaterialTeal";
-            this.listDataReceived.MouseClick += new System.Windows.Forms.MouseEventHandler(this.listDataReceived_MouseClick);
             // 
             // MBookmark
             // 
@@ -1759,6 +1759,12 @@ namespace Kaliz
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Kaliz_FormClosed);
             ((System.ComponentModel.ISupportInitialize)(this.DockPar)).EndInit();
             this.DockPar.ResumeLayout(false);
+            this.toolWindow1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.listDataReceived)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DContainer)).EndInit();
+            this.DContainer.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.documentTabStrip1)).EndInit();
+            this.documentTabStrip1.ResumeLayout(false);
             this.documentWindow1.ResumeLayout(false);
             this.documentWindow1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.wlcJava)).EndInit();
@@ -1778,10 +1784,6 @@ namespace Kaliz
             this.radLabel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.radLabel6)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.radButton1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.DContainer)).EndInit();
-            this.DContainer.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.documentTabStrip1)).EndInit();
-            this.documentTabStrip1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.toolTabStrip1)).EndInit();
             this.toolTabStrip1.ResumeLayout(false);
             this.Doutput.ResumeLayout(false);
@@ -1790,8 +1792,6 @@ namespace Kaliz
             ((System.ComponentModel.ISupportInitialize)(this.radlistclip)).EndInit();
             this.DClosedFiles.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.listClosedFiles)).EndInit();
-            this.toolWindow1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.listDataReceived)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.toolTabStrip3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.MenuTop)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this)).EndInit();

@@ -76,15 +76,34 @@ namespace Kaliz
             contextMenuData_Merge.Text = "Different Merge with Current Tab";
             contextMenuData_Merge.Click += ContextMenuData_Merge_Click;
             contextMenuData.Items.Add( contextMenuData_Merge);
+            var contextMenuData_Remove = new RadMenuItem();
+            contextMenuData_Remove.Click += ContextMenuData_Remove_Click;
+            contextMenuData_Remove.Text = "Remove";
+            contextMenuData.Items.Add(contextMenuData_Remove);
+            //Tooltip Mở Server
+            SStartServer.ToolTipText = "Start Server with IP: " + GetLocalIP() + " Port: 4444";
+            //listDataReceived.ShowItemToolTips = true;
+            listDataReceived.ToolTipTextNeeded += ListDataReceived_ToolTipTextNeeded;
+           
 
 
 
 
         }
 
+        private void ListDataReceived_ToolTipTextNeeded(object sender, ToolTipTextNeededEventArgs e)
+        {
+            e.ToolTipText = listDataReceived.SelectedItem.Text;
+        }
+
+        private void ContextMenuData_Remove_Click(object sender, EventArgs e)
+        {
+            listDataReceived.Items.Remove(listDataReceived.SelectedItem);
+        }
+
         private void ContextMenuData_Merge_Click(object sender, EventArgs e)
         {
-            if (listDataReceived.SelectedItem != null && TabHienTai != null)
+            if (TabHienTai != null)
             {
                 DiffNewText = TabHienTai.Text;
                 DiffViewer Diff = new DiffViewer();
@@ -93,8 +112,8 @@ namespace Kaliz
                 Diff.FontFamilyNames = "Cascadia Code";
                 Diff.FontSize = 16;
                 Diff.ShowSideBySide();
-                Diff.NewTextHeader = "Current Tab";
-                Diff.OldTextHeader = "Data Received";
+                Diff.NewTextHeader = "Data Received";
+                Diff.OldTextHeader = "Current Tab";
                 Diff.IgnoreWhiteSpace = true;
 
                 Diff.Dock = DockStyle.Fill;
@@ -106,11 +125,12 @@ namespace Kaliz
 
         private void Item_Click(object sender, EventArgs e)
         {
-          if(listDataReceived.SelectedItem!=null&&TabHienTai!=null)
+            if (TabHienTai != null) 
             {
-                TabHienTai.MoveToEnd();
-                TabHienTai.Text.Insert(0, "\n" + listDataReceived.SelectedItem.Text + "\n");
+                
+                TabHienTai.InsertText(TabHienTai.CurrentLine,TabHienTai.CurrentColumn, "\n" + listDataReceived.SelectedItem.Text + "\n");
             }
+           
         }
 
         private void DockPar_SelectedTabChanging(object sender, SelectedTabChangingEventArgs e)
@@ -2611,7 +2631,7 @@ End;
         {
             try
             {
-TabHienTai.InsertText(TabHienTai.CurrentLine, TabHienTai.CurrentColumn, radlistclip.SelectedItem.Text);
+        TabHienTai.InsertText(TabHienTai.CurrentLine, TabHienTai.CurrentColumn, radlistclip.SelectedItem.Text);
             }
             catch {  }
             
@@ -3900,7 +3920,7 @@ TabHienTai.InsertText(TabHienTai.CurrentLine, TabHienTai.CurrentColumn, radlistc
         private void listDataReceived_MouseClick(object sender, MouseEventArgs e)
         {
             var args = e as MouseEventArgs;
-            if(args.Button == MouseButtons.Right)
+            if(args.Button == MouseButtons.Right&&listDataReceived.SelectedItem!=null)
             {
                 contextMenuData.Show(listDataReceived, args.Location);
             }
