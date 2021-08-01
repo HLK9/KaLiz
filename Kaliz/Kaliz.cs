@@ -67,8 +67,50 @@ namespace Kaliz
             Dclipboard.AutoHide();
             DockPar.ShowDocumentCloseButton = true;
             ThemeResolutionService.ApplicationThemeName = "MaterialTeal";
+            //them context menu
+            var contextMenuData_Add = new RadMenuItem();
+            contextMenuData_Add.Text = "Add to Current Tab";
+            contextMenuData_Add.Click += Item_Click;
+            contextMenuData.Items.Add(contextMenuData_Add);
+            var contextMenuData_Merge = new RadMenuItem();
+            contextMenuData_Merge.Text = "Different Merge with Current Tab";
+            contextMenuData_Merge.Click += ContextMenuData_Merge_Click;
+            contextMenuData.Items.Add( contextMenuData_Merge);
 
 
+
+
+        }
+
+        private void ContextMenuData_Merge_Click(object sender, EventArgs e)
+        {
+            if (listDataReceived.SelectedItem != null && TabHienTai != null)
+            {
+                DiffNewText = TabHienTai.Text;
+                DiffViewer Diff = new DiffViewer();
+                Diff.OldText = TabHienTai.Text;
+                Diff.NewText = listDataReceived.SelectedItem.Text;
+                Diff.FontFamilyNames = "Cascadia Code";
+                Diff.FontSize = 16;
+                Diff.ShowSideBySide();
+                Diff.NewTextHeader = "Current Tab";
+                Diff.OldTextHeader = "Data Received";
+                Diff.IgnoreWhiteSpace = true;
+
+                Diff.Dock = DockStyle.Fill;
+                DocumentWindow Do = new DocumentWindow("Different Merge");
+                Do.Controls.Add(Diff);
+                DockPar.AddDocument(Do);
+            }
+        }
+
+        private void Item_Click(object sender, EventArgs e)
+        {
+          if(listDataReceived.SelectedItem!=null&&TabHienTai!=null)
+            {
+                TabHienTai.MoveToEnd();
+                TabHienTai.Text.Insert(0, "\n" + listDataReceived.SelectedItem.Text + "\n");
+            }
         }
 
         private void DockPar_SelectedTabChanging(object sender, SelectedTabChangingEventArgs e)
@@ -3689,23 +3731,27 @@ TabHienTai.InsertText(TabHienTai.CurrentLine, TabHienTai.CurrentColumn, radlistc
         }
         void Close()
         {
-            client.Close();
-            try
-            {
-                if (client.Connected)
+          
+               
+                try
                 {
-                    client.Shutdown(SocketShutdown.Both);
-                    client.Close(10);
-                    ShowAlert_Light("<html><b>Disconnected to Server</b>",null,false);
-                    SStartServer.Enabled = true;
-                    SStatus.Text = "Not Connected";
-                    isServer = false;
+                client.Close();
+                    if (client.Connected)
+                    {
+                        client.Shutdown(SocketShutdown.Both);
+                        client.Close(10);
+                        ShowAlert_Light("<html><b>Disconnected to Server</b>", null, false);
+                        SStartServer.Enabled = true;
+                        SStatus.Text = "Not Connected";
+                        isServer = false;
+                    }
                 }
-            }
-            catch (Exception)
-            {
-                //MessageBox.Show(ex.ToString());
-            }
+                catch (Exception)
+                {
+                    //MessageBox.Show(ex.ToString());
+                }
+            
+           
             
         }
         void Send()
@@ -3809,8 +3855,8 @@ TabHienTai.InsertText(TabHienTai.CurrentLine, TabHienTai.CurrentColumn, radlistc
                 Diff.FontFamilyNames = "Cascadia Code";
                 Diff.FontSize = 16;
                 Diff.ShowSideBySide();
-                Diff.NewTextHeader = "New";
-                Diff.OldTextHeader = "Old";
+                Diff.NewTextHeader = "Current Tab";
+                Diff.OldTextHeader = "Data Received";
                 Diff.IgnoreWhiteSpace = true;
 
                 Diff.Dock = DockStyle.Fill;
@@ -3844,6 +3890,20 @@ TabHienTai.InsertText(TabHienTai.CurrentLine, TabHienTai.CurrentColumn, radlistc
             else
                 MessageBox.Show("Active Document not found!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 
+        }
+
+        private void listDataReceived_ItemMouseClick(object sender, ListViewItemEventArgs e)
+        {
+
+        }
+
+        private void listDataReceived_MouseClick(object sender, MouseEventArgs e)
+        {
+            var args = e as MouseEventArgs;
+            if(args.Button == MouseButtons.Right)
+            {
+                contextMenuData.Show(listDataReceived, args.Location);
+            }
         }
     }
 }
