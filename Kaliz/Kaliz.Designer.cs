@@ -210,14 +210,14 @@ namespace Kaliz
             this.SStatus = new Telerik.WinControls.UI.RadMenuHeaderItem();
             this.SStartServer = new Telerik.WinControls.UI.RadMenuItem();
             this.SConnect = new Telerik.WinControls.UI.RadMenuItem();
-            this.SPush = new Telerik.WinControls.UI.RadMenuItem();
-            this.SDisconnect = new Telerik.WinControls.UI.RadMenuItem();
             this.SDataReceived = new Telerik.WinControls.UI.RadMenuItem();
             this.DataAdd = new Telerik.WinControls.UI.RadMenuItem();
             this.DataDiff = new Telerik.WinControls.UI.RadMenuItem();
+            this.SPush = new Telerik.WinControls.UI.RadMenuItem();
+            this.SDisconnect = new Telerik.WinControls.UI.RadMenuItem();
             this.radMenuItem1 = new Telerik.WinControls.UI.RadMenuItem();
             this.MenuTop = new Telerik.WinControls.UI.RadMenu();
-            this.contextMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.contextMenuData = new Telerik.WinControls.UI.RadContextMenu(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.DockPar)).BeginInit();
             this.DockPar.SuspendLayout();
             this.documentWindow1.SuspendLayout();
@@ -1002,7 +1002,7 @@ namespace Kaliz
             // 
             // DockPar
             // 
-            this.DockPar.ActiveWindow = this.documentWindow1;
+            this.DockPar.ActiveWindow = this.toolWindow1;
             this.DockPar.CausesValidation = false;
             this.DockPar.Controls.Add(this.DContainer);
             this.DockPar.Controls.Add(this.toolTabStrip1);
@@ -1368,7 +1368,6 @@ namespace Kaliz
             // listDataReceived
             // 
             this.listDataReceived.AllowEdit = false;
-            this.listDataReceived.ContextMenuStrip = this.contextMenu;
             this.listDataReceived.Dock = System.Windows.Forms.DockStyle.Fill;
             this.listDataReceived.GroupItemSize = new System.Drawing.Size(200, 36);
             this.listDataReceived.ItemSize = new System.Drawing.Size(200, 36);
@@ -1377,6 +1376,7 @@ namespace Kaliz
             this.listDataReceived.Size = new System.Drawing.Size(1249, 103);
             this.listDataReceived.TabIndex = 0;
             this.listDataReceived.ThemeName = "MaterialTeal";
+            this.listDataReceived.MouseClick += new System.Windows.Forms.MouseEventHandler(this.listDataReceived_MouseClick);
             // 
             // MBookmark
             // 
@@ -1673,18 +1673,6 @@ namespace Kaliz
             this.SConnect.Text = "Connect To Server";
             this.SConnect.Click += new System.EventHandler(this.SConnect_Click);
             // 
-            // SPush
-            // 
-            this.SPush.Name = "SPush";
-            this.SPush.Text = "Push Code in Current Tab";
-            this.SPush.Click += new System.EventHandler(this.SPush_Click);
-            // 
-            // SDisconnect
-            // 
-            this.SDisconnect.Name = "SDisconnect";
-            this.SDisconnect.Text = "Disconnect";
-            this.SDisconnect.Click += new System.EventHandler(this.SDisconnect_Click);
-            // 
             // SDataReceived
             // 
             this.SDataReceived.Items.AddRange(new Telerik.WinControls.RadItem[] {
@@ -1704,6 +1692,18 @@ namespace Kaliz
             this.DataDiff.Name = "DataDiff";
             this.DataDiff.Text = "Different Merge with Current Tab";
             this.DataDiff.Click += new System.EventHandler(this.DataDiff_Click);
+            // 
+            // SPush
+            // 
+            this.SPush.Name = "SPush";
+            this.SPush.Text = "Push Code in Current Tab";
+            this.SPush.Click += new System.EventHandler(this.SPush_Click);
+            // 
+            // SDisconnect
+            // 
+            this.SDisconnect.Name = "SDisconnect";
+            this.SDisconnect.Text = "Disconnect";
+            this.SDisconnect.Click += new System.EventHandler(this.SDisconnect_Click);
             // 
             // radMenuItem1
             // 
@@ -1733,10 +1733,9 @@ namespace Kaliz
             this.MenuTop.TabIndex = 1;
             this.MenuTop.ThemeName = "MaterialTeal";
             // 
-            // contextMenu
+            // contextMenuData
             // 
-            this.contextMenu.Name = "contextMenu";
-            this.contextMenu.Size = new System.Drawing.Size(153, 26);
+            this.contextMenuData.ThemeName = "MaterialTeal";
             // 
             // Kaliz
             // 
@@ -1986,6 +1985,6 @@ namespace Kaliz
         private RadMenuItem OClearDataReceived;
         private Telerik.WinControls.UI.Docking.ToolWindow toolWindow1;
         private RadListView listDataReceived;
-        private ContextMenuStrip contextMenu;
+        private RadContextMenu contextMenuData;
     }
 }
