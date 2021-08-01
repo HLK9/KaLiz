@@ -42,6 +42,7 @@ namespace Kaliz
         private bool highlight = true;
         private bool showClipboard = true;
         private bool showClosed = true;
+        private bool showDataReceived = true;
         private bool showOutput = true;
         private bool BuildComplete = true;
 
@@ -84,11 +85,18 @@ namespace Kaliz
             SStartServer.ToolTipText = "Start Server with IP: " + GetLocalIP() + " Port: 4444";
             //listDataReceived.ShowItemToolTips = true;
             listDataReceived.ToolTipTextNeeded += ListDataReceived_ToolTipTextNeeded;
-           
+            radlistclip.ToolTipTextNeeded += Radlistclip_ToolTipTextNeeded;
+          
+          
 
 
 
 
+        }
+
+        private void Radlistclip_ToolTipTextNeeded(object sender, ToolTipTextNeededEventArgs e)
+        {
+            e.ToolTipText = radlistclip.SelectedItem.Text;
         }
 
         private void ListDataReceived_ToolTipTextNeeded(object sender, ToolTipTextNeededEventArgs e)
@@ -3577,6 +3585,12 @@ End;
         private bool isServer = false;
         private void SStartServer_Click(object sender, EventArgs e)
         {
+            var args = e as MouseEventArgs;
+            if(args.Button == MouseButtons.Right)
+            {
+                PortChangerBox();
+                return;
+            }
             isServer = true;
             SConnect.Enabled = false;
             SPush.Text = "Push Code in Current Tab to Clients";
@@ -3586,6 +3600,35 @@ End;
             if(!isConnected)
             Connect_Ser();
         }
+
+        private void PortChangerBox()
+        {
+            RadTaskDialogPage Tas = new RadTaskDialogPage();
+            Tas.ShouldApplyTheme = true;
+
+
+            Tas.Caption = "Warning!";
+            Tas.Heading = "File not Found!";
+            Tas.Text = "This file has not been compiled. Do you want to compile it?";
+            Tas.Icon = RadTaskDialogIcon.Error;
+            RadTaskDialogButton BuBuild = new RadTaskDialogButton();
+            BuBuild.Text = "Build this file";
+            BuBuild.Click += new EventHandler(delegate (object sender, EventArgs e)
+            {
+                Build(TabHienTai.FileName, deBug, ref ListOutput);
+            });
+            Tas.CommandAreaButtons.Add(BuBuild);
+            RadTaskDialogButton BuCant = new RadTaskDialogButton();
+            BuCant.Text = "Cancel";
+            BuCant.Click += new EventHandler(delegate (object sender, EventArgs e)
+            {
+                this.Close();
+                return;
+            });
+            Tas.CommandAreaButtons.Add(BuCant);
+            RadTaskDialog.ShowDialog(Tas);
+        }
+
         ///Server///////////////////////////////////////////////
         IPEndPoint IPServer;
         Socket server;
@@ -3923,6 +3966,21 @@ End;
             if(args.Button == MouseButtons.Right&&listDataReceived.SelectedItem!=null)
             {
                 contextMenuData.Show(listDataReceived, args.Location);
+            }
+        }
+
+        private void VDataReceived_Click(object sender, EventArgs e)
+        {
+            if(showDataReceived == false)
+            {
+                DDataReceived.Show();
+                VDataReceived.Text = "Hide Data Received List";
+                showDataReceived = true;
+            }else
+            {
+                DDataReceived.Hide();
+                VDataReceived.Text = "Show Data Received List";
+                showDataReceived = false;
             }
         }
     }
