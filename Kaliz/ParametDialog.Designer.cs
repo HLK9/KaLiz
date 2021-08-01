@@ -140,10 +140,10 @@
 
         private Telerik.WinControls.Themes.MaterialTealTheme materialTealTheme1;
         private Telerik.WinControls.UI.RadTextBox radTextBox1;
-        private Telerik.WinControls.UI.RadLabel radLabel1;
-        private Telerik.WinControls.UI.RadLabel radLabel2;
         private Telerik.WinControls.UI.RadButton radButton1;
         private Telerik.WinControls.UI.RadButton radButton2;
-        private Telerik.WinControls.UI.RadButton radButton3;
+        public Telerik.WinControls.UI.RadLabel radLabel1;
+        public Telerik.WinControls.UI.RadLabel radLabel2;
+        public Telerik.WinControls.UI.RadButton radButton3;
     }
 }

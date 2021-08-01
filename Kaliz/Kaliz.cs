@@ -22,6 +22,7 @@ using System.Runtime.Serialization.Formatters.Binary;
 using System.Net.Sockets;
 using System.Net;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Kaliz
 {
@@ -82,7 +83,9 @@ namespace Kaliz
             contextMenuData_Remove.Text = "Remove";
             contextMenuData.Items.Add(contextMenuData_Remove);
             //Tooltip Mở Server
+            
             SStartServer.ToolTipText = "Start Server with IP: " + GetLocalIP() + " Port: 4444";
+            SConnect.ToolTipText = "Connect with IP: " + GetLocalIP() + " Port: 4444";
             //listDataReceived.ShowItemToolTips = true;
             listDataReceived.ToolTipTextNeeded += ListDataReceived_ToolTipTextNeeded;
             radlistclip.ToolTipTextNeeded += Radlistclip_ToolTipTextNeeded;
@@ -3548,8 +3551,10 @@ End;
         {
             using (ParametDialog fd = new ParametDialog())
             {
-                if(fd.ShowDialog()== DialogResult.OK)
+                
+                if (fd.ShowDialog()== DialogResult.OK)
                 {
+                    
                     Para = fd.ParametText;
                 }
             }
@@ -3588,7 +3593,23 @@ End;
             var args = e as MouseEventArgs;
             if(args.Button == MouseButtons.Right)
             {
-                PortChangerBox();
+                using (ParametDialog fd = new ParametDialog())
+                {
+                    fd.Text = "Connection Setting";
+                    fd.radLabel1.Text = "Change Port Address (Number)";
+                    fd.radLabel2.Text = "Note: You can't change IP Address. Can only change Port";
+                    fd.radButton3.Enabled = false;
+                    if (fd.ShowDialog() == DialogResult.OK)
+                    {
+
+                        txtPort = fd.ParametText;
+                    }
+                }
+                bool isIntString = txtPort.All(char.IsDigit);
+                if (!isIntString)
+                    SStartServer.ToolTipText = "Start Server with IP: " + GetLocalIP() + " Port: 4444";
+                else
+                    SStartServer.ToolTipText = "Start Server with IP: " + GetLocalIP() + " Port: " + txtPort;
                 return;
             }
             isServer = true;
@@ -3600,34 +3621,8 @@ End;
             if(!isConnected)
             Connect_Ser();
         }
-
-        private void PortChangerBox()
-        {
-            RadTaskDialogPage Tas = new RadTaskDialogPage();
-            Tas.ShouldApplyTheme = true;
-
-
-            Tas.Caption = "Warning!";
-            Tas.Heading = "File not Found!";
-            Tas.Text = "This file has not been compiled. Do you want to compile it?";
-            Tas.Icon = RadTaskDialogIcon.Error;
-            RadTaskDialogButton BuBuild = new RadTaskDialogButton();
-            BuBuild.Text = "Build this file";
-            BuBuild.Click += new EventHandler(delegate (object sender, EventArgs e)
-            {
-                Build(TabHienTai.FileName, deBug, ref ListOutput);
-            });
-            Tas.CommandAreaButtons.Add(BuBuild);
-            RadTaskDialogButton BuCant = new RadTaskDialogButton();
-            BuCant.Text = "Cancel";
-            BuCant.Click += new EventHandler(delegate (object sender, EventArgs e)
-            {
-                this.Close();
-                return;
-            });
-            Tas.CommandAreaButtons.Add(BuCant);
-            RadTaskDialog.ShowDialog(Tas);
-        }
+        private string txtPort= string.Empty;
+        
 
         ///Server///////////////////////////////////////////////
         IPEndPoint IPServer;
@@ -3636,7 +3631,11 @@ End;
         List<Socket> clientlist = new List<Socket>();
         void Connect_Ser()
         {
+            bool isIntString = txtPort.All(char.IsDigit);
+            if(!isIntString)
             IPServer = new IPEndPoint(IPAddress.Parse(GetLocalIP()), 4444);
+            else
+                IPServer = new IPEndPoint(IPAddress.Parse(GetLocalIP()), int.Parse(txtPort));
             server = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.IP);
             if(!isConnected)
             server.Bind(IPServer);
@@ -3662,7 +3661,10 @@ End;
                 }
                 catch
                 {
-                    IPServer = new IPEndPoint(IPAddress.Any, 4444);
+                    if (!isIntString)
+                        IPServer = new IPEndPoint(IPAddress.Parse(GetLocalIP()), 4444);
+                    else
+                        IPServer = new IPEndPoint(IPAddress.Parse(GetLocalIP()), int.Parse(txtPort));
                     server = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.IP);
                 }
 
@@ -3756,7 +3758,28 @@ End;
         private bool isConnectedCli = false;
         private void SConnect_Click(object sender, EventArgs e)
         {
-            
+            var args = e as MouseEventArgs;
+            if (args.Button == MouseButtons.Right)
+            {
+                using (ParametDialog fd = new ParametDialog())
+                {
+                    fd.Text = "Connection Setting";
+                    fd.radLabel1.Text = "Change Port Address (Number)";
+                    fd.radLabel2.Text = "Note: You can't change IP Address. Can only change Port";
+                    fd.radButton3.Enabled = false;
+                    if (fd.ShowDialog() == DialogResult.OK)
+                    {
+
+                        txtPort = fd.ParametText;
+                    }
+                }
+                bool isIntString = txtPort.All(char.IsDigit);
+                if (!isIntString)
+                    SConnect.ToolTipText = "Connect with IP: " + GetLocalIP() + " Port: 4444";
+                else
+                    SConnect.ToolTipText = "Connect with IP: " + GetLocalIP() + " Port: " + txtPort;
+                return;
+            }
             isServer = false;
             SStartServer.Enabled = false;
             SPush.Text = "Push Code in Current Tab to Server";
@@ -3773,7 +3796,11 @@ End;
         Socket client;
         void Connect()
         {
+            bool isIntString = txtPort.All(char.IsDigit);
+            if(!isIntString)
             IP = new IPEndPoint(IPAddress.Parse(GetLocalIP()), 4444);
+            else
+            IP = new IPEndPoint(IPAddress.Parse(GetLocalIP()), int.Parse(txtPort));
             client = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.IP);
             try
             {
@@ -3799,13 +3826,14 @@ End;
                 try
                 {
                 client.Close();
-                    if (client.Connected)
+                SStatus.Text = "Not Connected";
+                if (client.Connected)
                     {
                         client.Shutdown(SocketShutdown.Both);
                         client.Close(10);
                         ShowAlert_Light("<html><b>Disconnected to Server</b>", null, false);
                         SStartServer.Enabled = true;
-                        SStatus.Text = "Not Connected";
+                        
                         isServer = false;
                     }
                 }
