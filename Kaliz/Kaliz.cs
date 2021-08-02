@@ -84,8 +84,8 @@ namespace Kaliz
             contextMenuData.Items.Add(contextMenuData_Remove);
             //Tooltip Mở Server
             
-            SStartServer.ToolTipText = "Start Server with IP: " + GetLocalIP() + " Port: 4444";
-            SConnect.ToolTipText = "Connect with IP: " + GetLocalIP() + " Port: 4444";
+            SStartServer.ToolTipText = "Start Server with IP: " + GetLocalIP() + " Port: "+int.Parse(txtPort);
+            SConnect.ToolTipText = "Connect with IP: " + GetLocalIP() + " Port: " + int.Parse(txtPort);
             //listDataReceived.ShowItemToolTips = true;
             listDataReceived.ToolTipTextNeeded += ListDataReceived_ToolTipTextNeeded;
             radlistclip.ToolTipTextNeeded += Radlistclip_ToolTipTextNeeded;
@@ -3606,22 +3606,22 @@ End;
                     }
                 }
                 bool isIntString = txtPort.All(char.IsDigit);
-                if (!isIntString)
-                    SStartServer.ToolTipText = "Start Server with IP: " + GetLocalIP() + " Port: 4444";
+                if (!isIntString||txtPort=="")
+                {
+                    MessageBox.Show("Port invalid! Reset to 4444", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    txtPort = "4444";
+                    SStartServer.ToolTipText = "Start Server with IP: " + GetLocalIP() + " Port: "+txtPort;
+                }
+                    
                 else
                     SStartServer.ToolTipText = "Start Server with IP: " + GetLocalIP() + " Port: " + txtPort;
                 return;
             }
-            isServer = true;
-            SConnect.Enabled = false;
-            SPush.Text = "Push Code in Current Tab to Clients";
-            //<html><span style="color: #ff8080"><strong>S</strong><strong>tatus: Not Connected</strong></span></html>
-            
-            CheckForIllegalCrossThreadCalls = false;
+           
             if(!isConnected)
             Connect_Ser();
         }
-        private string txtPort= string.Empty;
+        private string txtPort= "4444";
         
 
         ///Server///////////////////////////////////////////////
@@ -3631,17 +3631,36 @@ End;
         List<Socket> clientlist = new List<Socket>();
         void Connect_Ser()
         {
-            bool isIntString = txtPort.All(char.IsDigit);
-            if(!isIntString)
-            IPServer = new IPEndPoint(IPAddress.Parse(GetLocalIP()), 4444);
-            else
+            //bool isIntString = txtPort.All(char.IsDigit);
+            //if(isIntString)
+            try
+            {
+                CheckForIllegalCrossThreadCalls = false;
                 IPServer = new IPEndPoint(IPAddress.Parse(GetLocalIP()), int.Parse(txtPort));
+                isServer = true;
+                SConnect.Enabled = false;
+                SPush.Text = "Push Code in Current Tab to Clients";
+                //<html><span style="color: #ff8080"><strong>S</strong><strong>tatus: Not Connected</strong></span></html>
+
+                
+            }
+            catch
+            {
+                MessageBox.Show("Port address ivalid!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+                 
+           // else
+           //IPServer = new IPEndPoint(IPAddress.Parse(GetLocalIP()), 4444);
             server = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.IP);
             if(!isConnected)
             server.Bind(IPServer);
             isConnected = true;
             SStartServer.Enabled = false;
-            SStatus.Text = "Waitting for Connection";
+            //if(isIntString)
+            SStatus.Text = "Server has been initialized with IP: "+ GetLocalIP()+" Port: "+txtPort;
+            //else
+            //    SStatus.Text = SStatus.Text = "Server has been initialized with IP: " + GetLocalIP() + " Port: 4444";
             ShowAlert_Light("<html><color=Teal><b>Server has been initialized</b>", "<html>IP:<span><color=Teal>"+GetLocalIP()+"</span>",true);
             Thread Listen = new Thread(() =>
             {
@@ -3661,9 +3680,9 @@ End;
                 }
                 catch
                 {
-                    if (!isIntString)
-                        IPServer = new IPEndPoint(IPAddress.Parse(GetLocalIP()), 4444);
-                    else
+                    //if (!isIntString)
+                    //    IPServer = new IPEndPoint(IPAddress.Parse(GetLocalIP()), 4444);
+                    //else
                         IPServer = new IPEndPoint(IPAddress.Parse(GetLocalIP()), int.Parse(txtPort));
                     server = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.IP);
                 }
@@ -3774,17 +3793,17 @@ End;
                     }
                 }
                 bool isIntString = txtPort.All(char.IsDigit);
-                if (!isIntString)
-                    SConnect.ToolTipText = "Connect with IP: " + GetLocalIP() + " Port: 4444";
+                if (!isIntString||txtPort=="")
+                {
+                    MessageBox.Show("Port invalid! Reset to 4444", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    txtPort = "4444";
+                    SConnect.ToolTipText = "Connect with IP: " + GetLocalIP() + " Port: "+txtPort;
+                }
                 else
                     SConnect.ToolTipText = "Connect with IP: " + GetLocalIP() + " Port: " + txtPort;
                 return;
             }
-            isServer = false;
-            SStartServer.Enabled = false;
-            SPush.Text = "Push Code in Current Tab to Server";
            
-            CheckForIllegalCrossThreadCalls = false;
             if(!isConnectedCli)
             Connect();
         }
@@ -3796,11 +3815,24 @@ End;
         Socket client;
         void Connect()
         {
-            bool isIntString = txtPort.All(char.IsDigit);
-            if(!isIntString)
-            IP = new IPEndPoint(IPAddress.Parse(GetLocalIP()), 4444);
-            else
+            //bool isIntString = txtPort.All(char.IsDigit);
+            //if(!isIntString)
+            //IP = new IPEndPoint(IPAddress.Parse(GetLocalIP()), 4444);
+            //else
+            try
+            {
             IP = new IPEndPoint(IPAddress.Parse(GetLocalIP()), int.Parse(txtPort));
+                isServer = false;
+                SStartServer.Enabled = false;
+                SPush.Text = "Push Code in Current Tab to Server";
+
+                CheckForIllegalCrossThreadCalls = false;
+            }
+            catch
+            {
+                MessageBox.Show("Port address invalid", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
             client = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.IP);
             try
             {
