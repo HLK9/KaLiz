@@ -3964,7 +3964,8 @@ End;
 
         private void radMenuItem1_Click_2(object sender, EventArgs e)
         {
-            MessageBox.Show(@"<html><span style=""color: #ff8080""><strong>S</strong><strong>tatus: Not Connected</strong></span></html>");
+            
+            //MessageBox.Show(@"<html><span style=""color: #ff8080""><strong>S</strong><strong>tatus: Not Connected</strong></span></html>");
         }
 
         private void DataDiff_Click(object sender, EventArgs e)
