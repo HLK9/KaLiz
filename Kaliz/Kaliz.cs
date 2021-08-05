@@ -444,6 +444,139 @@ namespace Kaliz
                                 case "continue":
                                     e.Text = lexem.Text + ": Continues to the next iteration of a loop";
                                     break;
+                                case "const":
+                                    e.Text = lexem.Text + ": Defines a constant. Not in use - use final instead";
+                                    break;
+                                case "default":
+                                    e.Text = lexem.Text + ": Specifies the default block of code in a switch statement";
+                                    break;
+                                case "do":
+                                    e.Text = lexem.Text + ": Used together with while to create a do-while loop";
+                                    break;
+                                case "double":
+                                    e.Text = lexem.Text + ": A data type that can store whole numbers from 1.7e−308 to 1.7e+308";
+                                    break;
+                                case "else":
+                                    e.Text = lexem.Text + ": Used in conditional statements";
+                                    break;
+                                case "enum":
+                                    e.Text = lexem.Text + ": Declares an enumerated (unchangeable) type";
+                                    break;
+                                case "exports":
+                                    e.Text = lexem.Text + ": Exports a package with a module. New in Java 9";
+                                    break;
+                                case "extends":
+                                    e.Text = lexem.Text + ": Extends a class (indicates that a class is inherited from another class)";
+                                    break;
+                                case "final":
+                                    e.Text = lexem.Text + ": A non-access modifier used for classes, attributes and methods, which makes them non-changeable (impossible to inherit or override)";
+                                    break;
+                                case "finally":
+                                    e.Text = lexem.Text + ": Used with exceptions, a block of code that will be executed no matter if there is an exception or not";
+                                    break;
+                                case "float":
+                                    e.Text = lexem.Text + ": A data type that can store whole numbers from 3.4e−038 to 3.4e+038";
+                                    break;
+                                case "for":
+                                    e.Text = lexem.Text + ": Create a for loop";
+                                    break;
+                                case "goto":
+                                    e.Text = lexem.Text + ": Not in use, and has no function";
+                                    break;
+                                case "if":
+                                    e.Text = lexem.Text + ": Makes a conditional statement";
+                                    break;
+                                case "implements":
+                                    e.Text = lexem.Text + ": Implements an interface";
+                                    break;
+                                case "import":
+                                    e.Text = lexem.Text + ": Used to import a package, class or interface";
+                                    break;
+                                case "instanceof":
+                                    e.Text = lexem.Text + ": Checks whether an object is an instance of a specific class or an interface";
+                                    break;
+                                case "int":
+                                    e.Text = lexem.Text + ": A data type that can store whole numbers from -2147483648 to 2147483647";
+                                    break;
+                                case "interface":
+                                    e.Text = lexem.Text + ": Used to declare a special type of class that only contains abstract methods";
+                                    break;
+                                case "long":
+                                    e.Text = lexem.Text + ": A data type that can store whole numbers from -9223372036854775808 to 9223372036854775808";
+                                    break;
+                                case "module":
+                                    e.Text = lexem.Text + ": Declares a module. New in Java 9";
+                                    break;
+                                case "native":
+                                    e.Text = lexem.Text + ": Specifies that a method is not implemented in the same Java source file (but in another language)";
+                                    break;
+                                case "new":
+                                    e.Text = lexem.Text + ": Create new objects";
+                                    break;
+                                case "package":
+                                    e.Text = lexem.Text + ": Declares a package";
+                                    break;
+                                case "private":
+                                    e.Text = lexem.Text + ": An access modifier used for attributes, methods and constructors, making them only accessible within the declared class";
+                                    break;
+                                case "protected":
+                                    e.Text = lexem.Text + ": An access modifier used for attributes, methods and constructors, making them accessible in the same package and subclasses";
+                                    break;
+                                case "public":
+                                    e.Text = lexem.Text + ": An access modifier used for classes, attributes, methods and constructors, making them accessible by any other class";
+                                    break;
+                                case "requires":
+                                    e.Text = lexem.Text + ": Specifies required libraries inside a module. New in Java 9";
+                                    break;
+                                case "return":
+                                    e.Text = lexem.Text + ": Finished the execution of a method, and can be used to return a value from a method";
+                                    break;
+                                case "short":
+                                    e.Text = lexem.Text + ": A data type that can store whole numbers from -32768 to 32767";
+                                    break;
+                                case "static":
+                                    e.Text = lexem.Text + ": A non-access modifier used for methods and attributes. Static methods/attributes can be accessed without creating an object of a class";
+                                    break;
+                                case "strictfp":
+                                    e.Text = lexem.Text + ": Restrict the precision and rounding of floating point calculations";
+                                    break;
+                                case "super":
+                                    e.Text = lexem.Text + ": Refers to superclass (parent) objects";
+                                    break;
+                                case "switch":
+                                    e.Text = lexem.Text + ": Selects one of many code blocks to be executed";
+                                    break;
+                                case "synchronized":
+                                    e.Text = lexem.Text + ": A non-access modifier, which specifies that methods can only be accessed by one thread at a time";
+                                    break;
+                                case "this":
+                                    e.Text = lexem.Text + ": Refers to the current object in a method or constructor";
+                                    break;
+                                case "throw":
+                                    e.Text = lexem.Text + ": Creates a custom error";
+                                    break;
+                                case "throws":
+                                    e.Text = lexem.Text + ": Indicates what exceptions may be thrown by a method";
+                                    break;
+                                case "transient":
+                                    e.Text = lexem.Text + ": A non-accesss modifier, which specifies that an attribute is not part of an object's persistent state";
+                                    break;
+                                case "try":
+                                    e.Text = lexem.Text + ": Creates a try...catch statement";
+                                    break;
+                                case "var":
+                                    e.Text = lexem.Text + ": Declares a variable. New in Java 10";
+                                    break;
+                                case "void":
+                                    e.Text = lexem.Text + ": Specifies that a method should not have a return value";
+                                    break;
+                                case "volatile":
+                                    e.Text = lexem.Text + ": Indicates that an attribute is not cached thread-locally, and is always read from the \"main memory\"";
+                                    break;
+                                case "while":
+                                    e.Text = lexem.Text + ": Creates a while loop";
+                                    break;
+                                
                                 default:
                                     break;
                             }
