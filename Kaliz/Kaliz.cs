@@ -283,6 +283,7 @@ namespace Kaliz
                     DanhDau.ContextChoiceOpen += DanhDau_ContextChoiceOpen_C;
                     DanhDau.ContextPromptOpen += DanhDau_ContextPromptOpen_ForC;
                     DanhDau.ContextPromptUpdate += DanhDau_ContextPromptUpdate_ForC;
+                    DanhDau.UpdateContextToolTip += DanhDau_UpdateContextToolTip_ForC;
                     
 
 
@@ -299,6 +300,7 @@ namespace Kaliz
                     DanhDau.ContextChoiceOpen += DanhDau_ContextChoiceOpen;
                     DanhDau.ContextPromptOpen += DanhDau_ContextPromptOpen_ForPascal;
                     DanhDau.ContextPromptUpdate += DanhDau_ContextPromptUpdate_ForPascal;
+                    DanhDau.UpdateContextToolTip += DanhDau_UpdateContextToolTip_ForPascal;
                    // DanhDau.AddCodeSnippet("Block code", "begin\nend");
 
                 }
@@ -311,6 +313,7 @@ namespace Kaliz
                     DanhDau.ApplyConfiguration("Python");
                     DanhDau.StatusBarSettings.FileNamePanel.Panel.Text = "Python";
                     DanhDau.ContextChoiceOpen += DanhDau_ContextChoiceOpen_ForPython;
+                    DanhDau.UpdateContextToolTip += DanhDau_UpdateContextToolTip_ForPython;
 
                 }
                 if(Path.GetExtension(DuongDanTep)==".java")
@@ -324,6 +327,7 @@ namespace Kaliz
                     DanhDau.Configurator.Open(ConfigF);
                     DanhDau.ApplyConfiguration("Java");
                     DanhDau.StatusBarSettings.FileNamePanel.Panel.Text = "Java";
+                    DanhDau.UpdateContextToolTip += DanhDau_UpdateContextToolTip_ForJava;
                     
                 }
               
@@ -364,7 +368,7 @@ namespace Kaliz
             DanhDau.StatusBarSettings.StatusPanel.Panel.ForeColor = Color.White;
             //Các sự kiện
             DanhDau.TextChanged += DanhDau_TextChanged;
-            DanhDau.UpdateContextToolTip += DanhDau_UpdateContextToolTip;
+           // DanhDau.UpdateContextToolTip += DanhDau_UpdateContextToolTip_ForPascal;
             DanhDau.MenuFill += DanhDau_MenuFill;
             
             DanhDau.ContextPromptBorderColor = Color.Pink;
@@ -383,7 +387,20 @@ namespace Kaliz
 
         }
 
-      
+        private void DanhDau_UpdateContextToolTip_ForJava(object sender, UpdateTooltipEventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
+        private void DanhDau_UpdateContextToolTip_ForC(object sender, UpdateTooltipEventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
+        private void DanhDau_UpdateContextToolTip_ForPython(object sender, UpdateTooltipEventArgs e)
+        {
+            throw new NotImplementedException();
+        }
 
         private void DanhDau_DragDrop(object sender, DragEventArgs e)
 
@@ -993,7 +1010,7 @@ End;
             TabHienTai.Copy();
         }
 
-        private void DanhDau_UpdateContextToolTip(object sender, UpdateTooltipEventArgs e)
+        private void DanhDau_UpdateContextToolTip_ForPascal(object sender, UpdateTooltipEventArgs e)
         {
             if (e.Text == string.Empty)
             {
@@ -1016,13 +1033,13 @@ End;
                             switch (lexem.Text.ToLower())
                             {
                                 case "program":
-                                    e.Text = lexem.Text + " |Từ khóa\n Xác định bắt đầu của một ứng dụng, thường là tùy chọn";
+                                    e.Text = lexem.Text + ": Defines start of an application. This keyword is usually optional.";
                                     break;
                                 case "var":
-                                    e.Text = lexem.Text + " |Từ khóa\n Sử dụng để khai báo biến";
+                                    e.Text = lexem.Text + ": Used to declare variables";
                                     break;
-                                case "byte":
-                                    e.Text = lexem.Text + " |Kiểu dữ liệu\n Kiểu nguyên, có phạm vi từ 0->255 ";
+                                case "and":
+                                    e.Text = lexem.Text + ": Boolean operator requiring both conditions are true for the result to be true";
                                     break;
                                 default:
                                     e.Text = "";
