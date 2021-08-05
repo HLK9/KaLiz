@@ -99,12 +99,28 @@ namespace Kaliz
 
         private void Radlistclip_ToolTipTextNeeded(object sender, ToolTipTextNeededEventArgs e)
         {
-            e.ToolTipText = radlistclip.SelectedItem.Text;
+            try
+            {
+                e.ToolTipText = radlistclip.SelectedItem.Text;
+            }
+            catch
+            {
+                return;
+            }
+           
         }
 
         private void ListDataReceived_ToolTipTextNeeded(object sender, ToolTipTextNeededEventArgs e)
         {
-            e.ToolTipText = listDataReceived.SelectedItem.Text;
+            try
+            {
+                e.ToolTipText = listDataReceived.SelectedItem.Text;
+            }
+            catch
+            {
+                return;
+            }
+            
         }
 
         private void ContextMenuData_Remove_Click(object sender, EventArgs e)
@@ -389,17 +405,168 @@ namespace Kaliz
 
         private void DanhDau_UpdateContextToolTip_ForJava(object sender, UpdateTooltipEventArgs e)
         {
-            throw new NotImplementedException();
+            //https://www.w3schools.com/java/java_ref_keywords.asp
+            if (e.Text == string.Empty)
+            {
+
+                Point pointVirtual = TabHienTai.PointToVirtualPosition(new Point(e.X, e.Y));
+
+                if (pointVirtual.Y > 0)
+                {
+                    // Get the current line
+                    ILexemLine line = TabHienTai.GetLine(pointVirtual.Y);
+
+                    if (line != null)
+                    {
+                        // Get tokens from the current line
+                        ILexem lexem = line.FindLexemByColumn(pointVirtual.X);
+
+                        if (lexem != null && enableTooltip == true)
+                        {
+                            // Set the desired information tooltip
+                            switch (lexem.Text.ToLower())
+                            {
+                                case "abstract":
+                                    e.Text = lexem.Text + ": A non-access modifier. Used for classes and methods: An abstract class cannot be used to create objects (to access it, it must be inherited from another class). An abstract method can only be used in an abstract class, and it does not have a body. The body is provided by the subclass (inherited from)";
+                                    break;
+                                case "byte":
+                                    e.Text = lexem.Text + ": A data type that can store whole numbers from -128 and 127";
+                                    break;
+                                case "assert":
+                                    e.Text = lexem.Text + ": For debugging";
+                                    break;
+                                case "break":
+                                    e.Text = lexem.Text + ": Breaks out of a loop or a switch block";
+                                    break;
+                                case "class":
+                                    e.Text = lexem.Text + ": Defines a class";
+                                    break;
+                                case "continue":
+                                    e.Text = lexem.Text + ": Continues to the next iteration of a loop";
+                                    break;
+                                default:
+                                    break;
+                            }
+                        }
+                        else return;
+                    }
+                }
+
+            }
         }
 
         private void DanhDau_UpdateContextToolTip_ForC(object sender, UpdateTooltipEventArgs e)
         {
-            throw new NotImplementedException();
+            //https://doc.bccnsoft.com/docs/cppreference_en/keywords/index.html
+            if (e.Text == string.Empty)
+            {
+
+                Point pointVirtual = TabHienTai.PointToVirtualPosition(new Point(e.X, e.Y));
+
+                if (pointVirtual.Y > 0)
+                {
+                    // Get the current line
+                    ILexemLine line = TabHienTai.GetLine(pointVirtual.Y);
+
+                    if (line != null)
+                    {
+                        // Get tokens from the current line
+                        ILexem lexem = line.FindLexemByColumn(pointVirtual.X);
+
+                        if (lexem != null && enableTooltip == true)
+                        {
+                            // Set the desired information tooltip
+                            switch (lexem.Text.ToLower())
+                            {
+                                case "asm":
+                                    e.Text = lexem.Text + ": insert an assembly instruction";
+                                    break;
+                                case "auto":
+                                    e.Text = lexem.Text + ": declare a local variable";
+                                    break;
+                                case "bool":
+                                    e.Text = lexem.Text + ": declare a boolean variable";
+                                    break;
+                                case "break":
+                                    e.Text = lexem.Text + ": break out of a loop";
+                                    break;
+                                case "case":
+                                    e.Text = lexem.Text + ": a block of code in a switch statement";
+                                    break;
+                                case "catch":
+                                    e.Text = lexem.Text + ": handles exceptions from throw";
+                                    break;
+                                default:
+                                    break;
+                            }
+                            //if (lexem.Text == "program")
+                            //e.Text = "Từ khóa :v:v :V " + lexem.Text;
+                            //if (lexem.Text == "var")
+                            //    e.Text = "Từ khóaádasd :v:v :V " + lexem.Text;
+                            //if (lexem.Text == "write")
+                            //    e.Text = "in" + lexem.Text;
+                            //if (lexem.Text == "readln")
+                            //    e.Text = "dừng " + lexem.Text;
+
+
+                        }
+                        else return;
+                    }
+                }
+
+            }
         }
 
         private void DanhDau_UpdateContextToolTip_ForPython(object sender, UpdateTooltipEventArgs e)
         {
-            throw new NotImplementedException();
+            //https://www.w3schools.com/python/python_ref_keywords.asp
+            if (e.Text == string.Empty)
+            {
+
+                Point pointVirtual = TabHienTai.PointToVirtualPosition(new Point(e.X, e.Y));
+
+                if (pointVirtual.Y > 0)
+                {
+                    // Get the current line
+                    ILexemLine line = TabHienTai.GetLine(pointVirtual.Y);
+
+                    if (line != null)
+                    {
+                        // Get tokens from the current line
+                        ILexem lexem = line.FindLexemByColumn(pointVirtual.X);
+
+                        if (lexem != null && enableTooltip == true)
+                        {
+                            // Set the desired information tooltip
+                            switch (lexem.Text.ToLower())
+                            {
+                                case "and":
+                                    e.Text = lexem.Text + ": A logical operator";
+                                    break;
+                                case "as":
+                                    e.Text = lexem.Text + ": To create an alias";
+                                    break;
+                                case "assert":
+                                    e.Text = lexem.Text + ": For debugging";
+                                    break;
+                                case "break":
+                                    e.Text = lexem.Text + ": To break out of a loop";
+                                    break;
+                                case "class":
+                                    e.Text = lexem.Text + ": To define a class";
+                                    break;
+                                case "continue":
+                                    e.Text = lexem.Text + ": To continue to the next iteration of a loop";
+                                    break;
+                                default:
+                                    break;
+                            }
+                         }
+                        else return;
+                    }
+                }
+
+            }
         }
 
         private void DanhDau_DragDrop(object sender, DragEventArgs e)
@@ -1041,8 +1208,16 @@ End;
                                 case "and":
                                     e.Text = lexem.Text + ": Boolean operator requiring both conditions are true for the result to be true";
                                     break;
-                                default:
-                                    e.Text = "";
+                                case "array":
+                                    e.Text = lexem.Text + ": multiple elements with the same name";
+                                    break;
+                                case "asm":
+                                    e.Text =lexem.Text+ ": start of code written in assembly language";
+                                    break;
+                                case "begin":
+                                    e.Text = lexem.Text + ": start of a block of code ";
+                                    break;
+                                default:                                   
                                     break;
                             }
                             //if (lexem.Text == "program")
@@ -1056,7 +1231,7 @@ End;
 
 
                         }
-                        else e.Text = "";
+                        else return;
                     }
                 }
 
