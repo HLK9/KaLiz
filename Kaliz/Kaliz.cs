@@ -558,6 +558,87 @@ namespace Kaliz
                                 case "continue":
                                     e.Text = lexem.Text + ": To continue to the next iteration of a loop";
                                     break;
+                                case "def":
+                                    e.Text= lexem.Text+": To define a function";
+                                    break;
+                                case "del":
+                                e.Text = lexem.Text+": To delete an object";
+                                break;
+                                case "elif":
+                                    e.Text = lexem.Text + ": Used in conditional statements, same as else if";
+                                    break;
+                                case "else":
+                                    e.Text = lexem.Text + ": 	Used in conditional statements";
+                                    break;
+                                case "except":
+                                    e.Text = lexem.Text + ": Used with exceptions, what to do when an exception occurs";
+                                    break;
+                                case "false":
+                                    e.Text = lexem.Text + ": Boolean value, result of comparison operations";
+                                    break;
+                                case "finally":
+                                    e.Text = lexem.Text + ": Used with exceptions, a block of code that will be executed no matter if there is an exception or not";
+                                    break;
+                                case "for":
+                                    e.Text = lexem.Text + ": To create a for loop";
+                                    break;
+                                case "from":
+                                    e.Text = lexem.Text + ": To import specific parts of a module";
+                                    break;
+                                case "global":
+                                    e.Text = lexem.Text + ": To declare a global variable";
+                                    break;
+                                case "if":
+                                    e.Text = lexem.Text + ": To make a conditional statement";
+                                    break;
+                                case "import":
+                                    e.Text = lexem.Text + ": To import a module";
+                                    break;
+                                case "in":
+                                    e.Text = lexem.Text + ": To check if a value is present in a list, tuple, etc.";
+                                    break;
+                                case "is":
+                                    e.Text = lexem.Text + ": To test if two variables are equal";
+                                    break;
+                                case "lambda":
+                                    e.Text = lexem.Text + ": To create an anonymous function";
+                                    break;
+                                case "None":
+                                    e.Text = lexem.Text + ": Represents a null value";
+                                    break;
+                                case "nonlocal":
+                                    e.Text = lexem.Text + ": To declare a non-local variable";
+                                    break;
+                                case "not":
+                                    e.Text = lexem.Text + ": A logical operator";
+                                    break;
+                                case "or":
+                                    e.Text = lexem.Text + ": A logical operator";
+                                    break;
+                                case "pass":
+                                    e.Text = lexem.Text + ": A null statement, a statement that will do nothing";
+                                    break;
+                                case "raise":
+                                    e.Text = lexem.Text + ": To raise an exception";
+                                    break;
+                                case "return":
+                                    e.Text = lexem.Text + ": To exit a function and return a value";
+                                    break;
+                                case "True":
+                                    e.Text = lexem.Text + ": Boolean value, result of comparison operations";
+                                    break;
+                                case "try":
+                                    e.Text = lexem.Text + ": To make a try...except statement";
+                                    break;
+                                case "while":
+                                    e.Text = lexem.Text + ": To create a while loop";
+                                    break;
+                                case "with":
+                                    e.Text = lexem.Text + ": Used to simplify exception handling";
+                                    break;
+                                case "yield":
+                                    e.Text = lexem.Text + ": To end a function, returns a generator";
+                                    break;
                                 default:
                                     break;
                             }
