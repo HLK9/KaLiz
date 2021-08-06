@@ -190,6 +190,7 @@ namespace Kaliz
             this.VOutput = new Telerik.WinControls.UI.RadMenuItem();
             this.VClosedList = new Telerik.WinControls.UI.RadMenuItem();
             this.VClipboardList = new Telerik.WinControls.UI.RadMenuItem();
+            this.VDataReceived = new Telerik.WinControls.UI.RadMenuItem();
             this.VSplitHorizon = new Telerik.WinControls.UI.RadMenuItem();
             this.VSplitVertical = new Telerik.WinControls.UI.RadMenuItem();
             this.MWindows = new Telerik.WinControls.UI.RadMenuItem();
@@ -218,7 +219,6 @@ namespace Kaliz
             this.radMenuItem1 = new Telerik.WinControls.UI.RadMenuItem();
             this.MenuTop = new Telerik.WinControls.UI.RadMenu();
             this.contextMenuData = new Telerik.WinControls.UI.RadContextMenu(this.components);
-            this.VDataReceived = new Telerik.WinControls.UI.RadMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.DockPar)).BeginInit();
             this.DockPar.SuspendLayout();
             this.DDataReceived.SuspendLayout();
@@ -1003,7 +1003,7 @@ namespace Kaliz
             // 
             // DockPar
             // 
-            this.DockPar.ActiveWindow = this.DDataReceived;
+            this.DockPar.ActiveWindow = this.Dclipboard;
             this.DockPar.CausesValidation = false;
             this.DockPar.Controls.Add(this.DContainer);
             this.DockPar.Controls.Add(this.toolTabStrip1);
@@ -1295,7 +1295,7 @@ namespace Kaliz
             // 
             // 
             this.toolTabStrip1.RootElement.MinSize = new System.Drawing.Size(25, 25);
-            this.toolTabStrip1.SelectedIndex = 3;
+            this.toolTabStrip1.SelectedIndex = 1;
             this.toolTabStrip1.ShowItemPinButton = true;
             this.toolTabStrip1.Size = new System.Drawing.Size(1257, 185);
             this.toolTabStrip1.SizeInfo.AbsoluteSize = new System.Drawing.Size(200, 185);
@@ -1537,6 +1537,12 @@ namespace Kaliz
             this.VClipboardList.Text = "Hide Clipboard List";
             this.VClipboardList.Click += new System.EventHandler(this.VClipboardList_Click);
             // 
+            // VDataReceived
+            // 
+            this.VDataReceived.Name = "VDataReceived";
+            this.VDataReceived.Text = "Hide Data Received List";
+            this.VDataReceived.Click += new System.EventHandler(this.VDataReceived_Click);
+            // 
             // VSplitHorizon
             // 
             this.VSplitHorizon.Name = "VSplitHorizon";
@@ -1738,12 +1744,6 @@ namespace Kaliz
             // contextMenuData
             // 
             this.contextMenuData.ThemeName = "MaterialTeal";
-            // 
-            // VDataReceived
-            // 
-            this.VDataReceived.Name = "VDataReceived";
-            this.VDataReceived.Text = "Hide Data Received List";
-            this.VDataReceived.Click += new System.EventHandler(this.VDataReceived_Click);
             // 
             // Kaliz
             // 

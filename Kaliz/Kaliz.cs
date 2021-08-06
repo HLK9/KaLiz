@@ -3976,7 +3976,7 @@ End;
                     PascalOption = bl.PascalOp;
                 }
             }
-            MessageBox.Show(PascalOption);
+            
         }
 
        
