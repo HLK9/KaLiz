@@ -23,6 +23,7 @@ using System.Net.Sockets;
 using System.Net;
 using System.Collections.Generic;
 using System.Linq;
+using Syncfusion.Windows.Forms.Edit.Dialogs;
 
 namespace Kaliz
 {
@@ -2754,7 +2755,7 @@ End;
             pd.FitToWidth = true;
             pd.ThemeName = "MaterialTeal";
             pd.Dock = DockStyle.Fill;
-            pd.LoadDocument(@"Lex\ASCII_Table.pdf");
+            pd.LoadDocument(@"Documents\ASCII_Table.pdf");
         }
 
         private void HAbout_Click(object sender, EventArgs e)
@@ -4370,8 +4371,8 @@ End;
 
         private void radMenuItem1_Click_2(object sender, EventArgs e)
         {
-            
-            //MessageBox.Show(@"<html><span style=""color: #ff8080""><strong>S</strong><strong>tatus: Not Connected</strong></span></html>");
+           
+
         }
 
         private void DataDiff_Click(object sender, EventArgs e)
