@@ -3247,7 +3247,7 @@ End;
 
         private void documentWindow1_Click(object sender, EventArgs e)
         {
-
+           
         }
 
         
@@ -4371,9 +4371,31 @@ End;
 
         private void radMenuItem1_Click_2(object sender, EventArgs e)
         {
-           
+            TabHienTai.KeyDown += TabHienTai_Down;
 
         }
+
+       
+
+        private void TabHienTai_Down(object sender, KeyEventArgs e)
+        {
+            //Bug
+            if (e.KeyCode == Keys.OemOpenBrackets)
+            {
+                TabHienTai.InsertText(TabHienTai.CurrentLine, TabHienTai.CurrentColumn, "]");
+                TabHienTai.MoveLeft();
+            }
+            else
+            if (e.KeyCode == Keys.Shift|| e.KeyCode == Keys.OemOpenBrackets) 
+            {
+
+                TabHienTai.InsertText(TabHienTai.CurrentLine, TabHienTai.CurrentColumn, "}");
+                TabHienTai.MoveLeft();
+            }
+            
+        }
+
+
 
         private void DataDiff_Click(object sender, EventArgs e)
         {
@@ -4450,6 +4472,30 @@ End;
                 VDataReceived.Text = "Show Data Received List";
                 showDataReceived = false;
             }
+        }
+
+        private void OVitrualSpace_Click(object sender, EventArgs e)
+        {
+            try
+
+            {
+                if (TabHienTai.VirtualSpaceMode == false)
+                {
+                    TabHienTai.VirtualSpaceMode = true;
+                    OVitrualSpace.Text = "Disable Vitrual Space Mode";
+                }
+                else
+                {
+                    TabHienTai.VirtualSpaceMode = true;
+                    OVitrualSpace.Text = "Enable Vitrual Space Mode";
+                }
+            }
+            catch
+            {
+                
+            }
+           
+               
         }
     }
 }
