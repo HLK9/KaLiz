@@ -4379,18 +4379,46 @@ End;
 
         private void TabHienTai_Down(object sender, KeyEventArgs e)
         {
-            //Bug
-            if (e.KeyCode == Keys.OemOpenBrackets)
+            
+            if (e.KeyCode == Keys.OemOpenBrackets && e.Modifiers == Keys.Shift)
+            {
+                TabHienTai.InsertText(TabHienTai.CurrentLine, TabHienTai.CurrentColumn, "}");
+                TabHienTai.MoveLeft();
+            }
+            else
+            if(e.KeyCode == Keys.OemOpenBrackets&& e.Modifiers == Keys.None)
             {
                 TabHienTai.InsertText(TabHienTai.CurrentLine, TabHienTai.CurrentColumn, "]");
                 TabHienTai.MoveLeft();
             }
+           
             else
-            if (e.KeyCode == Keys.Shift|| e.KeyCode == Keys.OemOpenBrackets) 
+                if(e.KeyCode == Keys.OemQuotes&&e.Modifiers==Keys.None)
             {
-
-                TabHienTai.InsertText(TabHienTai.CurrentLine, TabHienTai.CurrentColumn, "}");
+                TabHienTai.InsertText(TabHienTai.CurrentLine, TabHienTai.CurrentColumn, "'");
                 TabHienTai.MoveLeft();
+            }
+            else
+                if(e.KeyCode==Keys.OemQuotes&&e.Modifiers==Keys.Shift)
+            {
+                TabHienTai.InsertText(TabHienTai.CurrentLine, TabHienTai.CurrentColumn, "\"");
+                TabHienTai.MoveLeft();
+            }else
+                if(e.KeyCode == Keys.D9&&e.Modifiers==Keys.Shift)
+            {
+                TabHienTai.InsertText(TabHienTai.CurrentLine, TabHienTai.CurrentColumn, ")");
+                TabHienTai.MoveLeft();
+            }else
+            if(e.KeyCode==Keys.Back)
+            {
+                if(TabHienTai.GetCurrentCharacter().ToString()=="'")
+                {
+                    
+                    if (TabHienTai.GetCurrentCharacter().ToString() == "'")
+                        TabHienTai.DeleteWordLeft();
+                    //Bug
+                }
+                
             }
             
         }
