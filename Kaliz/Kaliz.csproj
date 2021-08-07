@@ -237,6 +237,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="coding.ico" />
+    <None Include="Resources\Kaliz-Beta.png" />
     <None Include="Resources\CMB-logos_white.png" />
     <None Include="Resources\Ps1.png" />
     <None Include="Resources\coding %281%29.png" />
