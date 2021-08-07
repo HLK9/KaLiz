@@ -2322,15 +2322,15 @@ End;
         {
             try
             {
-
-
-                //databm.Columns.Add("Line", typeof(int));
-                //databm.Columns.Add("File", typeof(string));
-                //databm.Rows.Add(TabHienTai.CurrentLine, TabHienTai.FileName);
-                //ListBm.DataSource = databm;
-
+                
                 BrushInfo brushInfo = new BrushInfo(Color.Turquoise);
                 TabHienTai.BookmarkAdd(TabHienTai.CurrentLine, brushInfo,Color.Transparent);
+                if(File.Exists(TabHienTai.FileName))
+                bookmarkList.Items.Add(TabHienTai.CurrentLine, Path.GetFileName(TabHienTai.FileName), TabHienTai.FileName);
+                else
+                    bookmarkList.Items.Add(TabHienTai.CurrentLine, DockPar.DocumentManager.ActiveDocument.TabStripItem.Text, "None");
+
+
             }
             catch
             { }
@@ -2365,6 +2365,23 @@ End;
             try
             {
                 TabHienTai.BookmarkRemove(TabHienTai.CurrentLine);
+                if(File.Exists(TabHienTai.FileName))
+                {
+                    foreach (var item in bookmarkList.Items)
+                    {
+                        if (item[0].ToString() == TabHienTai.CurrentLine.ToString() && Path.GetFileName(TabHienTai.FileName) == item[1].ToString())
+                            bookmarkList.Items.Remove(item);
+                    }
+                }
+                else
+                {
+                    foreach (var item in bookmarkList.Items)
+                    {
+                        if (item[0].ToString() == TabHienTai.CurrentLine.ToString() && DockPar.DocumentManager.ActiveDocument.TabStripItem.Text == item[1].ToString())
+                            bookmarkList.Items.Remove(item);
+                    }
+                }
+                
               
             }
             catch { }
@@ -2377,6 +2394,28 @@ End;
             try
             {
                 TabHienTai.BookmarkClear();
+                foreach (ListViewDataItem item in bookmarkList.Items)
+                {
+                    if (File.Exists(TabHienTai.FileName))
+                    {
+
+
+                        if (item[1].ToString().Contains(Path.GetFileName(TabHienTai.FileName)))
+                            bookmarkList.Items.Remove(item);
+
+
+                    }
+
+                    else
+                    {
+                        //foreach (ListViewDataItem item in bookmarkList.Items)
+                        //{
+                        if (item[1].ToString().Contains(DockPar.DocumentManager.ActiveDocument.TabStripItem.Text))
+                            bookmarkList.Items.Remove(item);
+                        //}
+                    }
+                }
+                   
             }
             catch { }
             
@@ -4411,14 +4450,8 @@ End;
             }else
             if(e.KeyCode==Keys.Back)
             {
-                if(TabHienTai.GetCurrentCharacter().ToString()=="'")
-                {
-                    
-                    if (TabHienTai.GetCurrentCharacter().ToString() == "'")
-                        TabHienTai.DeleteWordLeft();
-                    //Bug
-                }
-                
+
+               
             }
             
         }
@@ -4524,6 +4557,64 @@ End;
             }
            
                
+        }
+
+        private void bookmarkList_ItemMouseDoubleClick(object sender, ListViewItemEventArgs e)
+        {
+            foreach( var item in bookmarkList.Items)
+            {
+                if(item.Selected)
+                {
+                    try
+                    {
+                        if (item[2].ToString() == TabHienTai.FileName.ToString())
+                        {
+                            TabHienTai.GoTo(int.Parse(item[0].ToString()));
+                        }
+                        else 
+                        {
+                            foreach (var tabs in DockPar.DocumentManager.DocumentArray)
+                            {
+                                if (tabs.TabStripItem.Text == item[1].ToString())
+                                {
+                                    DockPar.ActivateWindow(tabs);
+                                    TabHienTai.GoTo(int.Parse(item[0].ToString()));
+                                }
+                            }
+
+                        }
+                        //else
+                        //{
+                        //    foreach (var bmlist in bookmarkList.Items)
+                        //    {
+                        //        foreach (var tabs in DockPar.DocumentManager.DocumentArray)
+                        //        {
+                        //            if (tabs.TabStripItem.Text == bmlist[1].ToString())
+                        //            {
+                        //                DockPar.ActivateWindow(tabs);
+                        //                TabHienTai.GoTo(int.Parse(bmlist[0].ToString()));
+                        //            }
+                        //        }
+                        //    }
+                        //}
+                        //TabHienTai.GoTo(int.Parse(item[0].ToString()));
+                    }
+
+                    //else
+                    catch
+                    {
+                        foreach (var tabs in DockPar.DocumentManager.DocumentArray)
+                        {
+                            if (tabs.TabStripItem.Text == item[1].ToString())
+                            {
+                                DockPar.ActivateWindow(tabs);
+                                TabHienTai.GoTo(int.Parse(item[0].ToString()));
+                            }
+                        }
+
+                    }
+                }
+            }
         }
     }
 }
