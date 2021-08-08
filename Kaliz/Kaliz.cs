@@ -45,6 +45,7 @@ namespace Kaliz
         private bool showClipboard = true;
         private bool showClosed = true;
         private bool showDataReceived = true;
+        private bool showBookmarkList = true;
         private bool showOutput = true;
         private bool BuildComplete = true;
 
@@ -268,7 +269,7 @@ namespace Kaliz
             DanhDau.LineNumbersFont = new Font("Consolas", 13);
             TaiLieu.Controls.Add(DanhDau);
             DanhDau.AllowDrop = true;
-            DanhDau.SetNewLineStyle(Syncfusion.IO.NewLineStyle.Unix);
+            
             DanhDau.FileExtensions = new string[] { ".pas", ".c", ".cpp", ".cs", ".py",".java" };
             DockPar.AddDocument(TaiLieu);
             //Theme
@@ -363,16 +364,13 @@ namespace Kaliz
             //DanhDau.MarkerAreaWidth = 20;
             DanhDau.ShowIndentationGuidelines = true;
             DanhDau.ShowOutliningCollapsers = true;
-            DanhDau.ShowColumnGuides = true;
-           
-        
-            
+            DanhDau.ShowColumnGuides = true;          
             DanhDau.UpdateBookmarkToolTip += DanhDau_UpdateBookmarkToolTip;
             DanhDau.AllowZoom = true;
-           // DanhDau.OnlyHighlightMatchingBraces = true;
-            DanhDau.EnableSmartInBlockIndent = true;
+            // DanhDau.OnlyHighlightMatchingBraces = true;
+            DanhDau.EnableSmartInBlockIndent = true ;
             DanhDau.IndentBlockHighlightingColor = Color.Orange;
-            DanhDau.AutoIndentMode = AutoIndentMode.Smart;
+            DanhDau.AutoIndentMode  = AutoIndentMode.Smart;
             // if (Path.GetExtension(F) == ".cpp") DanhDau.ApplyConfiguration(KnownLanguages.C);
             //hien khoag trang DanhDau.ShowWhitespaces = true;
             DanhDau.OnlyHighlightMatchingBraces = true;
@@ -400,8 +398,43 @@ namespace Kaliz
             //DanhDau.ShowContextTooltip = true; 
 
             //
+            //Auto
+            DanhDau.KeyDown += DanhDau_KeyDown;
 
+        }
 
+        private void DanhDau_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.OemOpenBrackets && e.Modifiers == Keys.Shift)
+            {
+                TabHienTai.InsertText(TabHienTai.CurrentLine, TabHienTai.CurrentColumn, "}");
+                TabHienTai.MoveLeft();
+            }
+            else
+             if (e.KeyCode == Keys.OemOpenBrackets && e.Modifiers == Keys.None)
+            {
+                TabHienTai.InsertText(TabHienTai.CurrentLine, TabHienTai.CurrentColumn, "]");
+                TabHienTai.MoveLeft();
+            }
+
+            else
+                 if (e.KeyCode == Keys.OemQuotes && e.Modifiers == Keys.None)
+            {
+                TabHienTai.InsertText(TabHienTai.CurrentLine, TabHienTai.CurrentColumn, "'");
+                TabHienTai.MoveLeft();
+            }
+            else
+                 if (e.KeyCode == Keys.OemQuotes && e.Modifiers == Keys.Shift)
+            {
+                TabHienTai.InsertText(TabHienTai.CurrentLine, TabHienTai.CurrentColumn, "\"");
+                TabHienTai.MoveLeft();
+            }
+            else
+                 if (e.KeyCode == Keys.D9 && e.Modifiers == Keys.Shift)
+            {
+                TabHienTai.InsertText(TabHienTai.CurrentLine, TabHienTai.CurrentColumn, ")");
+                TabHienTai.MoveLeft();
+            }
         }
 
         private void DanhDau_UpdateContextToolTip_ForJava(object sender, UpdateTooltipEventArgs e)
@@ -2402,8 +2435,7 @@ End;
 
                         if (item[1].ToString().Contains(Path.GetFileName(TabHienTai.FileName)))
                             bookmarkList.Items.Remove(item);
-
-
+                        
                     }
 
                     else
@@ -4447,12 +4479,8 @@ End;
             {
                 TabHienTai.InsertText(TabHienTai.CurrentLine, TabHienTai.CurrentColumn, ")");
                 TabHienTai.MoveLeft();
-            }else
-            if(e.KeyCode==Keys.Back)
-            {
-
-               
             }
+            
             
         }
 
@@ -4614,6 +4642,22 @@ End;
 
                     }
                 }
+            }
+        }
+
+        private void VBookmarkList_Click(object sender, EventArgs e)
+        {
+            if(showBookmarkList == true)
+            {                
+                DBookmarksList.Hide();
+                VBookmarkList.Text = "Show Bookmarks List";
+                showBookmarkList = false;
+            }
+            else
+            {
+                DBookmarksList.Show();
+                VBookmarkList.Text = "Hide Bookmarks List";
+                showBookmarkList = true;
             }
         }
     }
