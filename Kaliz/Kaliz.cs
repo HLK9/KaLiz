@@ -242,6 +242,7 @@ namespace Kaliz
             EOutdent.Shortcuts.Add(new RadShortcut(Keys.Control, Keys.OemOpenBrackets));
             SwitchNext.Shortcuts.Add(new RadShortcut(Keys.Control, Keys.PageUp));
             SwitchPrevious.Shortcuts.Add(new RadShortcut(Keys.Control, Keys.PageDown));
+            EDupli.Shortcuts.Add(new RadShortcut(Keys.Control | Keys.Shift, Keys.D));
             //Tools
             FFindSelected.Shortcuts.Add(new RadShortcut(Keys.Control, Keys.Enter));
             TTermi.Shortcuts.Add(new RadShortcut(Keys.Control | Keys.Alt, Keys.T));
@@ -1954,7 +1955,7 @@ End;
 
 
                     //Lấy thông tin Error chứ k phải Output :))
-                    while ((ad = BienDich.StandardError.ReadLine()) != null)
+                    while ((ad = BienDich.StandardOutput.ReadLine()) != null)
                     {
                         ListOutput.Items.Add(ad);
 
@@ -2825,8 +2826,12 @@ End;
             pd.ViewerMode = FixedDocumentViewerMode.TextSelection;
             pd.FitToWidth = true;
             pd.ThemeName = "MaterialTeal";
+            pd.ThumbnailListWidth = 0;
+            pd.ThumbnailsScaleFactor = 0;
+            pd.EnableThumbnails = false;
             pd.Dock = DockStyle.Fill;
             pd.LoadDocument(@"Documents\ASCII_Table.pdf");
+           
         }
 
         private void HAbout_Click(object sender, EventArgs e)
@@ -3884,10 +3889,10 @@ End;
 
         private void WResetWindows_Click(object sender, EventArgs e)
         {
-            //foreach (var item in DockPar.ActiveWindow)
+            //foreach (var item in DockPar.DocumentManager.DocumentArray)
             //{
-            //    if(item.IsInFloatingMode)
-            //    DockPar.DockWindow(item, DockPosition.Fill);
+               
+            //        DockPar.DockControl(item, DockPosition.Fill);
             //}
         }
 
