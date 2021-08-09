@@ -142,10 +142,6 @@ namespace Kaliz
             this.HLookUp = new Telerik.WinControls.UI.RadMenuItem();
             this.HAbout = new Telerik.WinControls.UI.RadMenuItem();
             this.DockPar = new Telerik.WinControls.UI.Docking.RadDock();
-            this.DBookmarksList = new Telerik.WinControls.UI.Docking.ToolWindow();
-            this.bookmarkList = new Telerik.WinControls.UI.RadListView();
-            this.DContainer = new Telerik.WinControls.UI.Docking.DocumentContainer();
-            this.documentTabStrip1 = new Telerik.WinControls.UI.Docking.DocumentTabStrip();
             this.DBookmarks = new Telerik.WinControls.UI.Docking.DocumentWindow();
             this.wlcJava = new Telerik.WinControls.UI.RadButton();
             this.recentList = new Telerik.WinControls.UI.RadListView();
@@ -162,11 +158,15 @@ namespace Kaliz
             this.radLabel1 = new Telerik.WinControls.UI.RadLabel();
             this.radLabel6 = new Telerik.WinControls.UI.RadLabel();
             this.radButton1 = new Telerik.WinControls.UI.RadButton();
+            this.DContainer = new Telerik.WinControls.UI.Docking.DocumentContainer();
+            this.documentTabStrip1 = new Telerik.WinControls.UI.Docking.DocumentTabStrip();
             this.toolTabStrip1 = new Telerik.WinControls.UI.Docking.ToolTabStrip();
             this.Doutput = new Telerik.WinControls.UI.Docking.ToolWindow();
             this.ListOutput = new Telerik.WinControls.UI.RadListView();
             this.Dclipboard = new Telerik.WinControls.UI.Docking.ToolWindow();
             this.radlistclip = new Telerik.WinControls.UI.RadListView();
+            this.DBookmarksList = new Telerik.WinControls.UI.Docking.ToolWindow();
+            this.bookmarkList = new Telerik.WinControls.UI.RadListView();
             this.DClosedFiles = new Telerik.WinControls.UI.Docking.ToolWindow();
             this.listClosedFiles = new Telerik.WinControls.UI.RadListView();
             this.DDataReceived = new Telerik.WinControls.UI.Docking.ToolWindow();
@@ -196,6 +196,7 @@ namespace Kaliz
             this.VOutput = new Telerik.WinControls.UI.RadMenuItem();
             this.VClosedList = new Telerik.WinControls.UI.RadMenuItem();
             this.VClipboardList = new Telerik.WinControls.UI.RadMenuItem();
+            this.VBookmarkList = new Telerik.WinControls.UI.RadMenuItem();
             this.VDataReceived = new Telerik.WinControls.UI.RadMenuItem();
             this.VSplitHorizon = new Telerik.WinControls.UI.RadMenuItem();
             this.VSplitVertical = new Telerik.WinControls.UI.RadMenuItem();
@@ -222,18 +223,10 @@ namespace Kaliz
             this.DataDiff = new Telerik.WinControls.UI.RadMenuItem();
             this.SPush = new Telerik.WinControls.UI.RadMenuItem();
             this.SDisconnect = new Telerik.WinControls.UI.RadMenuItem();
-            this.radMenuItem1 = new Telerik.WinControls.UI.RadMenuItem();
             this.MenuTop = new Telerik.WinControls.UI.RadMenu();
             this.contextMenuData = new Telerik.WinControls.UI.RadContextMenu(this.components);
-            this.VBookmarkList = new Telerik.WinControls.UI.RadMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.DockPar)).BeginInit();
             this.DockPar.SuspendLayout();
-            this.DBookmarksList.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.bookmarkList)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.DContainer)).BeginInit();
-            this.DContainer.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.documentTabStrip1)).BeginInit();
-            this.documentTabStrip1.SuspendLayout();
             this.DBookmarks.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.wlcJava)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.recentList)).BeginInit();
@@ -251,12 +244,18 @@ namespace Kaliz
             this.radLabel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.radLabel6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.radButton1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DContainer)).BeginInit();
+            this.DContainer.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.documentTabStrip1)).BeginInit();
+            this.documentTabStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.toolTabStrip1)).BeginInit();
             this.toolTabStrip1.SuspendLayout();
             this.Doutput.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ListOutput)).BeginInit();
             this.Dclipboard.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.radlistclip)).BeginInit();
+            this.DBookmarksList.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.bookmarkList)).BeginInit();
             this.DClosedFiles.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.listClosedFiles)).BeginInit();
             this.DDataReceived.SuspendLayout();
@@ -289,7 +288,6 @@ namespace Kaliz
             this.FNew.HintText = "Ctrl + N";
             this.FNew.Name = "FNew";
             this.FNew.Text = "New File";
-            this.FNew.ToolTipText = "Tệp Mới";
             this.FNew.Click += new System.EventHandler(this.FNew_Click);
             // 
             // FOpen
@@ -639,28 +637,24 @@ namespace Kaliz
             // 
             this.ATable.Name = "ATable";
             this.ATable.Text = "ASCII Table";
-            this.ATable.ToolTipText = "Bảng mã ASCII";
             this.ATable.Click += new System.EventHandler(this.ATable_Click);
             // 
             // AConvert
             // 
             this.AConvert.Name = "AConvert";
-            this.AConvert.Text = "Convert string to ASCII";
-            this.AConvert.ToolTipText = "Chuyển đổi ký tự hoặc xâu sang ASCII";
+            this.AConvert.Text = "Convert String to Binary-Decimal";
             this.AConvert.Click += new System.EventHandler(this.AConvert_Click);
             // 
             // TCalc
             // 
             this.TCalc.Name = "TCalc";
             this.TCalc.Text = "Calculator";
-            this.TCalc.ToolTipText = "Máy tính";
             this.TCalc.Click += new System.EventHandler(this.TCalc_Click);
             // 
             // Tcmd
             // 
             this.Tcmd.Name = "Tcmd";
             this.Tcmd.Text = "Command Prompt";
-            this.Tcmd.ToolTipText = "Dấu nhắc lệnh Command Prompt";
             this.Tcmd.Click += new System.EventHandler(this.Tcmd_Click);
             // 
             // TTermi
@@ -767,6 +761,7 @@ namespace Kaliz
             // 
             this.DOpenGDB.Name = "DOpenGDB";
             this.DOpenGDB.Text = "Open GDB Debug for C/C++, Pascal";
+            this.DOpenGDB.ToolTipText = "C/C++ is Pending...";
             this.DOpenGDB.Click += new System.EventHandler(this.DOpenGDB_Click);
             // 
             // DeJDB
@@ -853,7 +848,6 @@ namespace Kaliz
             // 
             this.OClearClip.Name = "OClearClip";
             this.OClearClip.Text = "Clear Clipboard History";
-            this.OClearClip.ToolTipText = "Xóa bảng Khay nhớ tạm";
             this.OClearClip.Click += new System.EventHandler(this.OClearClip_Click);
             // 
             // OTer
@@ -980,28 +974,24 @@ namespace Kaliz
             this.LPython});
             this.HLearn.Name = "HLearn";
             this.HLearn.Text = "Learn to programing";
-            this.HLearn.ToolTipText = "Tới các trang web dạy lập trình hay";
             this.HLearn.Click += new System.EventHandler(this.HLearn_Click);
             // 
             // LCpp
             // 
             this.LCpp.Name = "LCpp";
             this.LCpp.Text = "Learn C++ from W3 Schools";
-            this.LCpp.ToolTipText = "Học C++ từ W3 Schools";
             this.LCpp.Click += new System.EventHandler(this.radMenuItem3_Click);
             // 
             // LPascal
             // 
             this.LPascal.Name = "LPascal";
             this.LPascal.Text = "Learn Pascal from Tutorials Point";
-            this.LPascal.ToolTipText = "Học Pascal tại Tutorials Point";
             this.LPascal.Click += new System.EventHandler(this.LPascal_Click);
             // 
             // LPython
             // 
             this.LPython.Name = "LPython";
             this.LPython.Text = "Learn Python from W3 Schools";
-            this.LPython.ToolTipText = "Học Python tại W3 Schools";
             this.LPython.Click += new System.EventHandler(this.LPython_Click);
             // 
             // HLookUp
@@ -1019,7 +1009,7 @@ namespace Kaliz
             // 
             // DockPar
             // 
-            this.DockPar.ActiveWindow = this.Doutput;
+            this.DockPar.ActiveWindow = this.DBookmarks;
             this.DockPar.CausesValidation = false;
             this.DockPar.Controls.Add(this.DContainer);
             this.DockPar.Controls.Add(this.toolTabStrip1);
@@ -1039,78 +1029,6 @@ namespace Kaliz
             this.DockPar.TabIndex = 2;
             this.DockPar.TabStop = false;
             this.DockPar.ThemeName = "MaterialTeal";
-            // 
-            // DBookmarksList
-            // 
-            this.DBookmarksList.Caption = null;
-            this.DBookmarksList.Controls.Add(this.bookmarkList);
-            this.DBookmarksList.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.DBookmarksList.Location = new System.Drawing.Point(4, 52);
-            this.DBookmarksList.Name = "DBookmarksList";
-            this.DBookmarksList.PreviousDockState = Telerik.WinControls.UI.Docking.DockState.Docked;
-            this.DBookmarksList.Size = new System.Drawing.Size(1249, 114);
-            this.DBookmarksList.Text = "Bookmarks";
-            this.DBookmarksList.ToolCaptionButtons = Telerik.WinControls.UI.Docking.ToolStripCaptionButtons.AutoHide;
-            // 
-            // bookmarkList
-            // 
-            this.bookmarkList.AllowArbitraryItemHeight = true;
-            this.bookmarkList.AllowEdit = false;
-            this.bookmarkList.AutoSizeColumnsMode = Telerik.WinControls.UI.ListViewAutoSizeColumnsMode.Fill;
-            listViewDetailColumn1.HeaderText = "Line";
-            listViewDetailColumn1.Width = 259.2772F;
-            listViewDetailColumn2.HeaderText = "Name";
-            listViewDetailColumn2.Width = 496.9556F;
-            listViewDetailColumn3.HeaderText = "File";
-            listViewDetailColumn3.Width = 494.7672F;
-            this.bookmarkList.Columns.AddRange(new Telerik.WinControls.UI.ListViewDetailColumn[] {
-            listViewDetailColumn1,
-            listViewDetailColumn2,
-            listViewDetailColumn3});
-            this.bookmarkList.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.bookmarkList.EnableColumnSort = true;
-            this.bookmarkList.GroupItemSize = new System.Drawing.Size(200, 32);
-            this.bookmarkList.ItemSize = new System.Drawing.Size(200, 32);
-            this.bookmarkList.ItemSpacing = -1;
-            this.bookmarkList.Location = new System.Drawing.Point(0, 0);
-            this.bookmarkList.Name = "bookmarkList";
-            this.bookmarkList.Size = new System.Drawing.Size(1249, 114);
-            this.bookmarkList.TabIndex = 0;
-            this.bookmarkList.ThemeName = "MaterialTeal";
-            this.bookmarkList.ViewType = Telerik.WinControls.UI.ListViewType.DetailsView;
-            this.bookmarkList.ItemMouseDoubleClick += new Telerik.WinControls.UI.ListViewItemEventHandler(this.bookmarkList_ItemMouseDoubleClick);
-            // 
-            // DContainer
-            // 
-            this.DContainer.CausesValidation = false;
-            this.DContainer.Controls.Add(this.documentTabStrip1);
-            this.DContainer.Name = "DContainer";
-            // 
-            // 
-            // 
-            this.DContainer.RootElement.MinSize = new System.Drawing.Size(25, 25);
-            this.DContainer.SizeInfo.AbsoluteSize = new System.Drawing.Size(200, 494);
-            this.DContainer.SizeInfo.SizeMode = Telerik.WinControls.UI.Docking.SplitPanelSizeMode.Fill;
-            this.DContainer.SizeInfo.SplitterCorrection = new System.Drawing.Size(0, 4);
-            this.DContainer.SplitterWidth = 8;
-            this.DContainer.ThemeName = "MaterialTeal";
-            // 
-            // documentTabStrip1
-            // 
-            this.documentTabStrip1.CanUpdateChildIndex = true;
-            this.documentTabStrip1.CausesValidation = false;
-            this.documentTabStrip1.Controls.Add(this.DBookmarks);
-            this.documentTabStrip1.Location = new System.Drawing.Point(0, 0);
-            this.documentTabStrip1.Name = "documentTabStrip1";
-            // 
-            // 
-            // 
-            this.documentTabStrip1.RootElement.MinSize = new System.Drawing.Size(25, 25);
-            this.documentTabStrip1.SelectedIndex = 0;
-            this.documentTabStrip1.Size = new System.Drawing.Size(1257, 494);
-            this.documentTabStrip1.TabIndex = 0;
-            this.documentTabStrip1.TabStop = false;
-            this.documentTabStrip1.ThemeName = "MaterialTeal";
             // 
             // DBookmarks
             // 
@@ -1312,6 +1230,38 @@ namespace Kaliz
             this.radButton1.Text = "See Document";
             this.radButton1.ThemeName = "MaterialTeal";
             // 
+            // DContainer
+            // 
+            this.DContainer.CausesValidation = false;
+            this.DContainer.Controls.Add(this.documentTabStrip1);
+            this.DContainer.Name = "DContainer";
+            // 
+            // 
+            // 
+            this.DContainer.RootElement.MinSize = new System.Drawing.Size(25, 25);
+            this.DContainer.SizeInfo.AbsoluteSize = new System.Drawing.Size(200, 494);
+            this.DContainer.SizeInfo.SizeMode = Telerik.WinControls.UI.Docking.SplitPanelSizeMode.Fill;
+            this.DContainer.SizeInfo.SplitterCorrection = new System.Drawing.Size(0, 4);
+            this.DContainer.SplitterWidth = 8;
+            this.DContainer.ThemeName = "MaterialTeal";
+            // 
+            // documentTabStrip1
+            // 
+            this.documentTabStrip1.CanUpdateChildIndex = true;
+            this.documentTabStrip1.CausesValidation = false;
+            this.documentTabStrip1.Controls.Add(this.DBookmarks);
+            this.documentTabStrip1.Location = new System.Drawing.Point(0, 0);
+            this.documentTabStrip1.Name = "documentTabStrip1";
+            // 
+            // 
+            // 
+            this.documentTabStrip1.RootElement.MinSize = new System.Drawing.Size(25, 25);
+            this.documentTabStrip1.SelectedIndex = 0;
+            this.documentTabStrip1.Size = new System.Drawing.Size(1257, 494);
+            this.documentTabStrip1.TabIndex = 0;
+            this.documentTabStrip1.TabStop = false;
+            this.documentTabStrip1.ThemeName = "MaterialTeal";
+            // 
             // toolTabStrip1
             // 
             this.toolTabStrip1.CanUpdateChildIndex = true;
@@ -1386,6 +1336,46 @@ namespace Kaliz
             this.radlistclip.TabIndex = 0;
             this.radlistclip.ThemeName = "MaterialTeal";
             this.radlistclip.ItemMouseDoubleClick += new Telerik.WinControls.UI.ListViewItemEventHandler(this.radlistclip_ItemMouseDoubleClick);
+            // 
+            // DBookmarksList
+            // 
+            this.DBookmarksList.Caption = null;
+            this.DBookmarksList.Controls.Add(this.bookmarkList);
+            this.DBookmarksList.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            this.DBookmarksList.Location = new System.Drawing.Point(4, 52);
+            this.DBookmarksList.Name = "DBookmarksList";
+            this.DBookmarksList.PreviousDockState = Telerik.WinControls.UI.Docking.DockState.Docked;
+            this.DBookmarksList.Size = new System.Drawing.Size(1249, 114);
+            this.DBookmarksList.Text = "Bookmarks";
+            this.DBookmarksList.ToolCaptionButtons = Telerik.WinControls.UI.Docking.ToolStripCaptionButtons.AutoHide;
+            // 
+            // bookmarkList
+            // 
+            this.bookmarkList.AllowArbitraryItemHeight = true;
+            this.bookmarkList.AllowEdit = false;
+            this.bookmarkList.AutoSizeColumnsMode = Telerik.WinControls.UI.ListViewAutoSizeColumnsMode.Fill;
+            listViewDetailColumn1.HeaderText = "Line";
+            listViewDetailColumn1.Width = 259.2772F;
+            listViewDetailColumn2.HeaderText = "Name";
+            listViewDetailColumn2.Width = 496.9556F;
+            listViewDetailColumn3.HeaderText = "File";
+            listViewDetailColumn3.Width = 494.7672F;
+            this.bookmarkList.Columns.AddRange(new Telerik.WinControls.UI.ListViewDetailColumn[] {
+            listViewDetailColumn1,
+            listViewDetailColumn2,
+            listViewDetailColumn3});
+            this.bookmarkList.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.bookmarkList.EnableColumnSort = true;
+            this.bookmarkList.GroupItemSize = new System.Drawing.Size(200, 32);
+            this.bookmarkList.ItemSize = new System.Drawing.Size(200, 32);
+            this.bookmarkList.ItemSpacing = -1;
+            this.bookmarkList.Location = new System.Drawing.Point(0, 0);
+            this.bookmarkList.Name = "bookmarkList";
+            this.bookmarkList.Size = new System.Drawing.Size(1249, 114);
+            this.bookmarkList.TabIndex = 0;
+            this.bookmarkList.ThemeName = "MaterialTeal";
+            this.bookmarkList.ViewType = Telerik.WinControls.UI.ListViewType.DetailsView;
+            this.bookmarkList.ItemMouseDoubleClick += new Telerik.WinControls.UI.ListViewItemEventHandler(this.bookmarkList_ItemMouseDoubleClick);
             // 
             // DClosedFiles
             // 
@@ -1570,10 +1560,10 @@ namespace Kaliz
             this.VOutput,
             this.VClosedList,
             this.VClipboardList,
+            this.VBookmarkList,
             this.VDataReceived,
             this.VSplitHorizon,
-            this.VSplitVertical,
-            this.VBookmarkList});
+            this.VSplitVertical});
             this.MView.Name = "MView";
             this.MView.Text = "View";
             // 
@@ -1594,6 +1584,12 @@ namespace Kaliz
             this.VClipboardList.Name = "VClipboardList";
             this.VClipboardList.Text = "Hide Clipboard List";
             this.VClipboardList.Click += new System.EventHandler(this.VClipboardList_Click);
+            // 
+            // VBookmarkList
+            // 
+            this.VBookmarkList.Name = "VBookmarkList";
+            this.VBookmarkList.Text = "Hide Bookmarks List";
+            this.VBookmarkList.Click += new System.EventHandler(this.VBookmarkList_Click);
             // 
             // VDataReceived
             // 
@@ -1771,12 +1767,6 @@ namespace Kaliz
             this.SDisconnect.Text = "Disconnect";
             this.SDisconnect.Click += new System.EventHandler(this.SDisconnect_Click);
             // 
-            // radMenuItem1
-            // 
-            this.radMenuItem1.Name = "radMenuItem1";
-            this.radMenuItem1.Text = "Tes";
-            this.radMenuItem1.Click += new System.EventHandler(this.radMenuItem1_Click_2);
-            // 
             // MenuTop
             // 
             this.MenuTop.Items.AddRange(new Telerik.WinControls.RadItem[] {
@@ -1791,8 +1781,7 @@ namespace Kaliz
             this.MWindows,
             this.MPersonal,
             this.MShareAndConnect,
-            this.MHelp,
-            this.radMenuItem1});
+            this.MHelp});
             this.MenuTop.Location = new System.Drawing.Point(0, 0);
             this.MenuTop.Name = "MenuTop";
             this.MenuTop.Size = new System.Drawing.Size(1257, 37);
@@ -1802,12 +1791,6 @@ namespace Kaliz
             // contextMenuData
             // 
             this.contextMenuData.ThemeName = "MaterialTeal";
-            // 
-            // VBookmarkList
-            // 
-            this.VBookmarkList.Name = "VBookmarkList";
-            this.VBookmarkList.Text = "Hide Bookmarks List";
-            this.VBookmarkList.Click += new System.EventHandler(this.VBookmarkList_Click);
             // 
             // Kaliz
             // 
@@ -1831,12 +1814,6 @@ namespace Kaliz
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Kaliz_FormClosed);
             ((System.ComponentModel.ISupportInitialize)(this.DockPar)).EndInit();
             this.DockPar.ResumeLayout(false);
-            this.DBookmarksList.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.bookmarkList)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.DContainer)).EndInit();
-            this.DContainer.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.documentTabStrip1)).EndInit();
-            this.documentTabStrip1.ResumeLayout(false);
             this.DBookmarks.ResumeLayout(false);
             this.DBookmarks.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.wlcJava)).EndInit();
@@ -1856,12 +1833,18 @@ namespace Kaliz
             this.radLabel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.radLabel6)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.radButton1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DContainer)).EndInit();
+            this.DContainer.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.documentTabStrip1)).EndInit();
+            this.documentTabStrip1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.toolTabStrip1)).EndInit();
             this.toolTabStrip1.ResumeLayout(false);
             this.Doutput.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.ListOutput)).EndInit();
             this.Dclipboard.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.radlistclip)).EndInit();
+            this.DBookmarksList.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.bookmarkList)).EndInit();
             this.DClosedFiles.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.listClosedFiles)).EndInit();
             this.DDataReceived.ResumeLayout(false);
@@ -2055,7 +2038,6 @@ namespace Kaliz
         private RadMenuItem DataAdd;
         private RadMenuItem DataDiff;
         private RadMenu MenuTop;
-        private RadMenuItem radMenuItem1;
         private RadMenuItem OClearDataReceived;
         private Telerik.WinControls.UI.Docking.ToolWindow DDataReceived;
         private RadListView listDataReceived;
