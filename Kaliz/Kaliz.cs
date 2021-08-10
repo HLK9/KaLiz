@@ -2428,26 +2428,27 @@ End;
             try
             {
                 TabHienTai.BookmarkClear();
-                foreach (ListViewDataItem item in bookmarkList.Items)
-                {
+               
                     if (File.Exists(TabHienTai.FileName))
                     {
-
+                    foreach (ListViewDataItem item in bookmarkList.Items.ToList())
+                    {
 
                         if (item[1].ToString().Contains(Path.GetFileName(TabHienTai.FileName)))
                             bookmarkList.Items.Remove(item);
+                     }      
                         
                     }
 
                     else
                     {
-                        //foreach (ListViewDataItem item in bookmarkList.Items)
-                        //{
+                    foreach (ListViewDataItem item in bookmarkList.Items.ToList())
+                    {
                         if (item[1].ToString().Contains(DockPar.DocumentManager.ActiveDocument.TabStripItem.Text))
                             bookmarkList.Items.Remove(item);
-                        //}
                     }
                 }
+                
                    
             }
             catch { }
