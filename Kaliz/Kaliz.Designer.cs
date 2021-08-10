@@ -231,6 +231,7 @@ namespace Kaliz
             this.MenuTop = new Telerik.WinControls.UI.RadMenu();
             this.contextMenuData = new Telerik.WinControls.UI.RadContextMenu(this.components);
             this.contextMenuDirectory = new Telerik.WinControls.UI.RadContextMenu(this.components);
+            this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.DockPar)).BeginInit();
             this.DockPar.SuspendLayout();
             this.DWorkingDirectory.SuspendLayout();
@@ -1067,6 +1068,7 @@ namespace Kaliz
             // 
             this.treeDirectory.AllowEdit = true;
             this.treeDirectory.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.treeDirectory.ImageList = this.imageList1;
             this.treeDirectory.ItemHeight = 36;
             this.treeDirectory.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(209)))), ((int)(((byte)(209)))));
             this.treeDirectory.LineStyle = Telerik.WinControls.UI.TreeLineStyle.Solid;
@@ -1876,6 +1878,18 @@ namespace Kaliz
             // 
             this.contextMenuData.ThemeName = "MaterialTeal";
             // 
+            // imageList1
+            // 
+            this.imageList1.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList1.ImageStream")));
+            this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
+            this.imageList1.Images.SetKeyName(0, "C.png");
+            this.imageList1.Images.SetKeyName(1, "c-plus-plus-logo.png");
+            this.imageList1.Images.SetKeyName(2, "file.png");
+            this.imageList1.Images.SetKeyName(3, "folder.png");
+            this.imageList1.Images.SetKeyName(4, "java.png");
+            this.imageList1.Images.SetKeyName(5, "pascal.png");
+            this.imageList1.Images.SetKeyName(6, "python.png");
+            // 
             // Kaliz
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -2143,5 +2157,6 @@ namespace Kaliz
         private Telerik.WinControls.UI.Docking.ToolTabStrip toolTabStrip2;
         private RadMenuItem FDirectory;
         private RadContextMenu contextMenuDirectory;
+        private ImageList imageList1;
     }
 }
