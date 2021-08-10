@@ -86,23 +86,35 @@ namespace Kaliz
             contextMenuData_Remove.Text = "Remove";
             contextMenuData.Items.Add(contextMenuData_Remove);
             ////Directory
+            //open
             var contextDirectory_Open = new RadMenuItem();
             contextDirectory_Open.Text = "Open Directory";
             contextDirectory_Open.Click += ContextDirectory_Open_Click;
-            contextMenuDirectory.Items.Add(contextDirectory_Open);
+            //new file
             var contextDirectory_New = new RadMenuItem();
             contextDirectory_New.Text = "New File";
             contextDirectory_New.Click += ContextDirectory_New_Click;
+            //delete file
+            var contextDirectory_Del = new RadMenuItem();
+            contextDirectory_Del.Text = "Delete file";
+            contextDirectory_Del.Click += ContextDirectory_Del_Click;
+            //rename file
+            var contextDirectory_Rename = new RadMenuItem();
+            contextDirectory_Rename.Text = "Rename File";
+            contextDirectory_Rename.Click += ContextDirectory_Rename_Click;
+            //them vao menu context
             contextMenuDirectory.Items.Add(contextDirectory_New);
+            contextMenuDirectory.Items.Add(contextDirectory_Rename);
+            contextMenuDirectory.Items.Add(contextDirectory_Del);
+            contextMenuDirectory.Items.Add(contextDirectory_Open);
 
             //Tooltip Mở Server
-
             SStartServer.ToolTipText = "Start Server with IP: " + GetLocalIP() + " Port: "+int.Parse(txtPort);
             SConnect.ToolTipText = "Connect with IP: " + GetLocalIP() + " Port: " + int.Parse(txtPort);
             //listDataReceived.ShowItemToolTips = true;
             listDataReceived.ToolTipTextNeeded += ListDataReceived_ToolTipTextNeeded;
             radlistclip.ToolTipTextNeeded += Radlistclip_ToolTipTextNeeded;
-          
+            DWorkingDirectory.AllowedDockState = ~AllowedDockState.Floating;
           
 
 
@@ -110,13 +122,129 @@ namespace Kaliz
 
         }
 
+        private void ContextDirectory_Rename_Click(object sender, EventArgs e)
+        {
+            if (treeDirectory.SelectedNode.Selected == true && treeDirectory.SelectedNode.Parent.Text != null)
+            {
+                using (ParametDialog fd = new ParametDialog())
+                {
+                    fd.Text = "Input Dialog";
+                    fd.radLabel1.Text = "Type file name below";
+                    fd.radLabel2.Text = "Note: You can set file extention";
+                    fd.radButton3.Enabled = false;
+                    if (fd.ShowDialog() == DialogResult.OK)
+                    {
+
+                        filenameDir = fd.ParametText;
+                        if (filenameDir == string.Empty || filenameDir == "") return;
+                    }
+                }
+                try
+                {
+                    File.Move(PathDirectory + "\\" + Path.GetFileName(treeDirectory.SelectedNode.FullPath), PathDirectory + "\\" + filenameDir);
+                    File.Delete(PathDirectory + "\\" + Path.GetFileName(treeDirectory.SelectedNode.FullPath));
+                    treeDirectory.SelectedNode.Text = filenameDir;
+                    if (Path.GetExtension(treeDirectory.SelectedNode.Text) == ".cpp")
+                        treeDirectory.SelectedNode.ImageIndex = 1;
+                    else if (Path.GetExtension(treeDirectory.SelectedNode.Text) == ".c")
+                        treeDirectory.SelectedNode.ImageIndex = 0;
+                    else if (Path.GetExtension(treeDirectory.SelectedNode.Text) == ".pas")
+                        treeDirectory.SelectedNode.ImageIndex = 5;
+                    else if (Path.GetExtension(treeDirectory.SelectedNode.Text) == ".py")
+                        treeDirectory.SelectedNode.ImageIndex = 6;
+                    else if (Path.GetExtension(treeDirectory.SelectedNode.Text) == ".java")
+                        treeDirectory.SelectedNode.ImageIndex = 4;
+                    else if (Path.GetExtension(treeDirectory.SelectedNode.Text) == ".exe")
+                        treeDirectory.SelectedNode.ImageIndex = 7;
+                    else treeDirectory.SelectedNode.ImageIndex = 2;
+                  
+
+                }
+                catch
+                {
+                    MessageBox.Show("Can't rename this file");
+                }
+            }
+            else
+            { MessageBox.Show("Can't apply with this file"); }
+        }
+
+        private void ContextDirectory_Del_Click(object sender, EventArgs e)
+        {
+            if (treeDirectory.SelectedNode.Selected == true && treeDirectory.SelectedNode.Parent.Text != null)
+            {
+                //MessageBox.Show(treeDirectory.SelectedNode.FullPath);
+                try
+                {
+                    
+                    File.Delete(PathDirectory + "\\" + Path.GetFileName(treeDirectory.SelectedNode.FullPath));
+                    treeDirectory.SelectedNode.Remove();
+                }
+                catch { MessageBox.Show("Can't delete this file"); }
+               
+            }
+            else
+            { MessageBox.Show("Can't apply with this file"); }
+        }
+
+        string filenameDir;
         private void ContextDirectory_New_Click(object sender, EventArgs e)
         {
-           if(treeDirectory.SelectedNode.Selected==true&& treeDirectory.SelectedNode.Parent.Text!=null)
+           
+            if (treeDirectory.SelectedNode.Selected==true&& treeDirectory.SelectedNode.Parent.Text!=null)
             {
-                //MessageBox.Show(treeDirectory.SelectedNode.Parent.Text);
-                treeDirectory.SelectedNode.BeginEdit();
+               
+                using (ParametDialog fd = new ParametDialog())
+                {
+                    fd.Text = "Input Dialog";
+                    fd.radLabel1.Text = "Type file name below";
+                    fd.radLabel2.Text = "Note: You can set file extention";
+                    fd.radButton3.Enabled = false;
+                    if (fd.ShowDialog() == DialogResult.OK)
+                    {
+
+                        filenameDir = fd.ParametText;
+                        if (filenameDir == string.Empty || filenameDir == "") return;
+                    }
+                }
+               
+                MessageBox.Show(treeDirectory.SelectedNode.Parent.Text);
+                var nd = new RadTreeNode();
+                treeDirectory.SelectedNode.Parent.Nodes.Add(nd);
+                treeDirectory.SelectedNode = nd;
+                nd.Text = filenameDir;
+                if (Path.GetExtension(nd.Text) == ".cpp")
+                    nd.ImageIndex = 1;
+                else if (Path.GetExtension(nd.Text) == ".c")
+                    nd.ImageIndex = 0;
+                else if (Path.GetExtension(nd.Text) == ".pas")
+                    nd.ImageIndex = 5;
+                else if (Path.GetExtension(nd.Text) == ".py")
+                    nd.ImageIndex = 6;
+                else if (Path.GetExtension(nd.Text) == ".java")
+                    nd.ImageIndex = 4;
+                else if (Path.GetExtension(nd.Text) == ".exe")
+                    nd.ImageIndex = 7;
+                else nd.ImageIndex = 2;
+                nd.Tag = nd.Text;
+               
+                    try
+                    {
+                        File.Create(PathDirectory +"\\" + nd.Text);
+                        MessageBox.Show(PathDirectory + "\\" + treeDirectory.SelectedNode.Parent + "\\" + nd.Text);
+                    }
+                    catch
+                    {
+                        MessageBox.Show("Can't create file!");
+                        treeDirectory.SelectedNode.Remove();
+                    }
+                
+               
+               
+                
             }
+            else
+            { MessageBox.Show("Can't apply with this file"); }
         }
 
         private void ContextDirectory_Open_Click(object sender, EventArgs e)
@@ -1882,13 +2010,13 @@ End;
         }
         private void Build(string ten, bool enabledebug, ref RadListView outp)
         {
-            using (WaitingForm wait = new WaitingForm(WatingLoad))
-            {
-                wait.ShowDialog(this);
-            }
+            //using (WaitingForm wait = new WaitingForm(WatingLoad))
+            //{
+            //    wait.ShowDialog(this);
+            //}
 
-
-            // TabHienTai.Save();
+            
+            TabHienTai.Save();
             ListOutput.Items.Clear();
                 ListOutput.Items.Add("Processing");
                 if (Path.GetExtension(ten) == ".pas")
@@ -1942,7 +2070,7 @@ End;
                        
                     else
                 
- ShowAlert_Light("<html><color=Teal>Build Completed", "Ready to run", false);
+            ShowAlert_Light("<html><color=Teal>Build Completed", "Ready to run", false);
                   
                 
                        
@@ -2060,7 +2188,10 @@ End;
             }
             
             
-          
+          if(Directory.Exists(PathDirectory))
+            {
+                LoadDirectory(PathDirectory);
+            }
         }
 
 
@@ -4713,6 +4844,7 @@ End;
             tds.ImageIndex = 3;
             LoadFiles(Dir, tds);
             LoadSubDirectories(Dir, tds);
+            treeDirectory.ExpandAll();
         }
         private void LoadSubDirectories(string dir, RadTreeNode td)
         {
@@ -4753,6 +4885,8 @@ End;
                     tds.ImageIndex = 6;
                 else if (Path.GetExtension(fi.ToString()) == ".java")
                     tds.ImageIndex = 4;
+                else if (Path.GetExtension(fi.ToString()) == ".exe") 
+                tds.ImageIndex = 7;
                 else tds.ImageIndex = 2;
                 // UpdateProgress();
 
@@ -4774,9 +4908,20 @@ End;
 
         private void treeDirectory_NodeMouseDoubleClick(object sender, RadTreeViewEventArgs e)
         {
+            
             try
             {
                 string path = Path.GetDirectoryName(PathDirectory) + "\\" + e.Node.FullPath;
+                if (Path.GetExtension(path) == ".exe")
+                {
+                    Process Chay = new Process();
+                    Chay.StartInfo.FileName = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\Kaliz" + @"\Cmder\vendor\conemu-maximus5\ConEmu.exe";                  
+                    Chay.StartInfo.Arguments = "-run  " + DuongDanTepExe(path);
+                    Chay.StartInfo.WindowStyle = ProcessWindowStyle.Maximized;
+                    Chay.Start();
+                    return;
+                }
+                
                 if(Path.GetExtension(path)==".pas"|| Path.GetExtension(path) == ".c" || Path.GetExtension(path) == ".cpp" || Path.GetExtension(path) == ".py" || Path.GetExtension(path) == ".java"&&File.Exists(path))
                 TaoMoi(Path.GetFileName(path), path);
             }
