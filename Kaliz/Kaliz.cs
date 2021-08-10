@@ -4710,7 +4710,7 @@ End;
 
             RadTreeNode tds = treeDirectory.Nodes.Add(di.Name);
             tds.Tag = di.FullName;
-            //tds.StateImageIndex = 0;
+            tds.ImageIndex = 3;
             LoadFiles(Dir, tds);
             LoadSubDirectories(Dir, tds);
         }
@@ -4724,7 +4724,7 @@ End;
 
                 DirectoryInfo di = new DirectoryInfo(subdirectory);
                 RadTreeNode tds = td.Nodes.Add(di.Name);
-                //tds.StateImageIndex = 0;
+                tds.ImageIndex = 3;
                 tds.Tag = di.FullName;
                 LoadFiles(subdirectory, tds);
                 LoadSubDirectories(subdirectory, tds);
@@ -4743,7 +4743,17 @@ End;
 
                 RadTreeNode tds = td.Nodes.Add(fi.Name);
                 tds.Tag = fi.FullName;
-                //tds.StateImageIndex = 1;
+                if (Path.GetExtension(fi.ToString()) == ".cpp")
+                    tds.ImageIndex = 1;
+                else if (Path.GetExtension(fi.ToString()) == ".c")
+                    tds.ImageIndex = 0;
+                else if (Path.GetExtension(fi.ToString()) == ".pas")
+                    tds.ImageIndex = 5;
+                else if (Path.GetExtension(fi.ToString()) == ".py")
+                    tds.ImageIndex = 6;
+                else if (Path.GetExtension(fi.ToString()) == ".java")
+                    tds.ImageIndex = 4;
+                else tds.ImageIndex = 2;
                 // UpdateProgress();
 
             }
