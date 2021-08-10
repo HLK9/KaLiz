@@ -23,6 +23,7 @@ using System.Net.Sockets;
 using System.Net;
 using System.Collections.Generic;
 using System.Linq;
+using Microsoft.WindowsAPICodePack.Dialogs;
 using Syncfusion.Windows.Forms.Edit.Dialogs;
 
 namespace Kaliz
@@ -164,7 +165,7 @@ namespace Kaliz
 
         private void DockPar_SelectedTabChanging(object sender, SelectedTabChangingEventArgs e)
         {
-            UpdateTheme();
+            //UpdateTheme();
           
         }
 
@@ -908,7 +909,7 @@ namespace Kaliz
                                     (item.Controls[0] as EditControl).LineNumbersColor = Color.Teal;
                                     (item.Controls[0] as EditControl).ContextPromptBackgroundBrush = new BrushInfo(GradientStyle.None, new Color[] { Color.FromArgb(249, 249, 249) });
                                     (item.Controls[0] as EditControl).BackgroundColor = new BrushInfo(GradientStyle.None, new Color[] { Color.FromArgb(249, 249, 249) });
-                                    this.WindowState = FormWindowState.Normal;
+                                    
                                     if (Path.GetExtension((item.Controls[0] as EditControl).FileName) == ".pas")
                                     {
                                         string ConfigF = @"Lex\Pascal.xml";
@@ -989,7 +990,7 @@ namespace Kaliz
                                     (item.Controls[0] as EditControl).ContextPromptBackgroundBrush = new BrushInfo(GradientStyle.None, new Color[] { Color.FromArgb(40, 42, 54) });
                                     (item.Controls[0] as EditControl).BackgroundColor = new BrushInfo(GradientStyle.None, new Color[] { Color.FromArgb(40, 42, 54) });
                                     
-                                    this.WindowState = FormWindowState.Normal;
+                                    //this.WindowState = FormWindowState.Normal;
                                     if (Path.GetExtension((item.Controls[0] as EditControl).FileName) == ".pas")
                                     {
                                         string ConfigF = @"Lex\Pascal_D.xml";
@@ -1069,7 +1070,7 @@ namespace Kaliz
                                     (item.Controls[0] as EditControl).LineNumbersColor = Color.Teal;
                                     (item.Controls[0] as EditControl).ContextPromptBackgroundBrush = new BrushInfo(GradientStyle.None, new Color[] { Color.FromArgb(249, 249, 249) });
                                     (item.Controls[0] as EditControl).BackgroundColor = new BrushInfo(GradientStyle.None, new Color[] { Color.FromArgb(249, 249, 249) });
-                                    this.WindowState = FormWindowState.Normal;
+                                    //this.WindowState = FormWindowState.Normal;
                                     if (Path.GetExtension((item.Controls[0] as EditControl).FileName) == ".pas")
                                     {
                                         string ConfigF = @"Lex\Pascal.xml";
@@ -1107,7 +1108,8 @@ namespace Kaliz
                         catch { }
                         break;
                }
-               
+                this.WindowState = FormWindowState.Normal;
+                this.WindowState = FormWindowState.Maximized;
             }
               
                 
@@ -1684,7 +1686,7 @@ End;
                 {
                     try
                     {
- TaoMoi(Path.GetFileName(item), item);
+                        TaoMoi(Path.GetFileName(item), item);
                         UpdateTheme();
                        
                     }
@@ -4666,6 +4668,77 @@ End;
                 showBookmarkList = true;
             }
         }
+        //////////////Directory//////////////
+        public string PathDirectory;
+        public void LoadDirectory(string Dir)
+        {
+            DirectoryInfo di = new DirectoryInfo(Dir);
+            //Setting ProgressBar Maximum Value  
+
+            RadTreeNode tds = treeDirectory.Nodes.Add(di.Name);
+            tds.Tag = di.FullName;
+            //tds.StateImageIndex = 0;
+            LoadFiles(Dir, tds);
+            LoadSubDirectories(Dir, tds);
+        }
+        private void LoadSubDirectories(string dir, RadTreeNode td)
+        {
+            // Get all subdirectories  
+            string[] subdirectoryEntries = Directory.GetDirectories(dir);
+            // Loop through them to see if they have any other subdirectories  
+            foreach (string subdirectory in subdirectoryEntries)
+            {
+
+                DirectoryInfo di = new DirectoryInfo(subdirectory);
+                RadTreeNode tds = td.Nodes.Add(di.Name);
+                //tds.StateImageIndex = 0;
+                tds.Tag = di.FullName;
+                LoadFiles(subdirectory, tds);
+                LoadSubDirectories(subdirectory, tds);
+                //UpdateProgress();
+
+            }
+        }
+        private void LoadFiles(string dir, RadTreeNode td)
+        {
+            string[] Files = Directory.GetFiles(dir, "*.*");
+
+            // Loop through them to see files  
+            foreach (string file in Files)
+            {
+                FileInfo fi = new FileInfo(file);
+
+                RadTreeNode tds = td.Nodes.Add(fi.Name);
+                tds.Tag = fi.FullName;
+                //tds.StateImageIndex = 1;
+                // UpdateProgress();
+
+            }
+        }
+
+        private void FDirectory_Click(object sender, EventArgs e)
+        {
+            CommonOpenFileDialog dialog = new CommonOpenFileDialog();
+            
+            dialog.IsFolderPicker = true;
+            if (dialog.ShowDialog() == CommonFileDialogResult.Ok)
+            {
+                PathDirectory = dialog.FileName;
+                LoadDirectory(dialog.FileName);
+            }
+        }
+
+        private void treeDirectory_NodeMouseDoubleClick(object sender, RadTreeViewEventArgs e)
+        {
+            try
+            {
+                string path = Path.GetDirectoryName(PathDirectory) + "\\" + e.Node.FullPath;
+                if(Path.GetExtension(path)==".pas"|| Path.GetExtension(path) == ".c" || Path.GetExtension(path) == ".cpp" || Path.GetExtension(path) == ".py" || Path.GetExtension(path) == ".java"&&File.Exists(path))
+                TaoMoi(Path.GetFileName(path), path);
+            }
+            catch { }
+        }
+        //////////////End Directory///////////
     }
 }
 
