@@ -85,8 +85,18 @@ namespace Kaliz
             contextMenuData_Remove.Click += ContextMenuData_Remove_Click;
             contextMenuData_Remove.Text = "Remove";
             contextMenuData.Items.Add(contextMenuData_Remove);
+            ////Directory
+            var contextDirectory_Open = new RadMenuItem();
+            contextDirectory_Open.Text = "Open Directory";
+            contextDirectory_Open.Click += ContextDirectory_Open_Click;
+            contextMenuDirectory.Items.Add(contextDirectory_Open);
+            var contextDirectory_New = new RadMenuItem();
+            contextDirectory_New.Text = "New File";
+            contextDirectory_New.Click += ContextDirectory_New_Click;
+            contextMenuDirectory.Items.Add(contextDirectory_New);
+
             //Tooltip Mở Server
-            
+
             SStartServer.ToolTipText = "Start Server with IP: " + GetLocalIP() + " Port: "+int.Parse(txtPort);
             SConnect.ToolTipText = "Connect with IP: " + GetLocalIP() + " Port: " + int.Parse(txtPort);
             //listDataReceived.ShowItemToolTips = true;
@@ -98,6 +108,27 @@ namespace Kaliz
 
 
 
+        }
+
+        private void ContextDirectory_New_Click(object sender, EventArgs e)
+        {
+           if(treeDirectory.SelectedNode.Selected==true&& treeDirectory.SelectedNode.Parent.Text!=null)
+            {
+                //MessageBox.Show(treeDirectory.SelectedNode.Parent.Text);
+                treeDirectory.SelectedNode.BeginEdit();
+            }
+        }
+
+        private void ContextDirectory_Open_Click(object sender, EventArgs e)
+        {
+            CommonOpenFileDialog dialog = new CommonOpenFileDialog();
+
+            dialog.IsFolderPicker = true;
+            if (dialog.ShowDialog() == CommonFileDialogResult.Ok)
+            {
+                PathDirectory = dialog.FileName;
+                LoadDirectory(dialog.FileName);
+            }
         }
 
         private void Radlistclip_ToolTipTextNeeded(object sender, ToolTipTextNeededEventArgs e)
@@ -4672,6 +4703,8 @@ End;
         public string PathDirectory;
         public void LoadDirectory(string Dir)
         {
+            
+            treeDirectory.Nodes.Clear();
             DirectoryInfo di = new DirectoryInfo(Dir);
             //Setting ProgressBar Maximum Value  
 
@@ -4718,6 +4751,7 @@ End;
 
         private void FDirectory_Click(object sender, EventArgs e)
         {
+
             CommonOpenFileDialog dialog = new CommonOpenFileDialog();
             
             dialog.IsFolderPicker = true;
@@ -4737,6 +4771,15 @@ End;
                 TaoMoi(Path.GetFileName(path), path);
             }
             catch { }
+        }
+
+        private void treeDirectory_MouseClick(object sender, MouseEventArgs e)
+        {
+            var args = e as MouseEventArgs;
+            if (args.Button == MouseButtons.Right)
+            {
+                contextMenuDirectory.Show(treeDirectory, args.Location);
+            }
         }
         //////////////End Directory///////////
     }
