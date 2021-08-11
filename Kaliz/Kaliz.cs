@@ -2052,8 +2052,8 @@ End;
                     //BienDich.StartInfo.WorkingDirectory = @"Cmder\vendor\FPC\bin\i386-win32";
                     BienDich.StartInfo.UseShellExecute = false;
                     if (enabledebug == false)
-                        BienDich.StartInfo.Arguments = "/c " + "fpc " + ten + PascalOption;
-                    else BienDich.StartInfo.Arguments = "/c " + "fpc " + ten + " -g" + PascalOption;
+                        BienDich.StartInfo.Arguments = "/c " + "fpc " + ten + PascalOption +Para;
+                    else BienDich.StartInfo.Arguments = "/c " + "fpc " + ten + " -g" + PascalOption +Para;
 
                     //BienDich.StartInfo.RedirectStandardInput = true;
                     BienDich.StartInfo.RedirectStandardOutput = true;
@@ -2121,8 +2121,8 @@ End;
                 //BienDich.StartInfo.WorkingDirectory = @"Cmder\vendor\occ60451e\orangec\bin";
 
              if (enabledebug == false)
-                    BienDich.StartInfo.Arguments = "/c " + "g++ " + ten + " -o " + Path.GetDirectoryName(ten) + "\\" + Path.GetFileNameWithoutExtension(ten) + ".exe";
-                    else BienDich.StartInfo.Arguments = "/c " + "g++ " + " -g " + ten + " -o " + Path.GetDirectoryName(ten) + "\\" + Path.GetFileNameWithoutExtension(ten) + ".exe";
+                    BienDich.StartInfo.Arguments = "/c " + "g++ " +Para+" "+ ten + " -o " + Path.GetDirectoryName(ten) + "\\" + Path.GetFileNameWithoutExtension(ten) + ".exe";
+                    else BienDich.StartInfo.Arguments = "/c " + "g++ " + Para + " " + " -g " + ten + " -o " + Path.GetDirectoryName(ten) + "\\" + Path.GetFileNameWithoutExtension(ten) + ".exe";
 
 
                 // if (enabledebug == false)
@@ -2181,8 +2181,8 @@ End;
                 BienDich.StartInfo.RedirectStandardInput = true;
                // BienDich.StartInfo.WorkingDirectory = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\Kaliz" + @"\Cmder\vendor\jdk\bin";
                 if (enabledebug == false)
-                    BienDich.StartInfo.Arguments = " /c " + "javac " + ten;
-               else BienDich.StartInfo.Arguments = "/c " + "javac " + " -g " + ten;
+                    BienDich.StartInfo.Arguments = " /c " + "javac " + Para + " " + ten;
+               else BienDich.StartInfo.Arguments = "/c " + "javac " + Para + " " + " -g " + ten;
 
 
                 BienDich.StartInfo.CreateNoWindow = true;
@@ -4988,7 +4988,16 @@ End;
                 }
                 catch
                 {
-                    MessageBox.Show("Error, can't access to this file");
+                    List<string> ls = new List<string>();
+                    for (int i = 1; i <= TabHienTai.PhysicalLineCount; i++)
+                    {
+                        ls.Add(TabHienTai.GetLineText(i) + "\r\n");
+                    }
+                    TabHienTai.Text = "";
+                    foreach (var i in ls)
+                    {
+                        TabHienTai.Text += i.ToString() + "\r\n";
+                    }
 
                 }
 
