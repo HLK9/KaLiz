@@ -124,113 +124,130 @@ namespace Kaliz
 
         private void ContextDirectory_Rename_Click(object sender, EventArgs e)
         {
-            if (treeDirectory.SelectedNode.Selected == true && treeDirectory.SelectedNode.Parent.Text != null)
+            try
             {
-                using (ParametDialog fd = new ParametDialog())
+                if (treeDirectory.SelectedNode.Selected == true && treeDirectory.SelectedNode.Parent.Text != null)
                 {
-                    fd.Text = "Input Dialog";
-                    fd.radLabel1.Text = "Type file name below";
-                    fd.radLabel2.Text = "Note: You can set file extention";
-                    fd.radButton3.Enabled = false;
-                    if (fd.ShowDialog() == DialogResult.OK)
+                    using (ParametDialog fd = new ParametDialog())
                     {
+                        fd.Text = "Input Dialog";
+                        fd.radLabel1.Text = "Type file name below";
+                        fd.radLabel2.Text = "Note: You can set file extention";
+                        fd.radButton3.Enabled = false;
+                        if (fd.ShowDialog() == DialogResult.OK)
+                        {
 
-                        filenameDir = fd.ParametText;
-                        if (filenameDir == string.Empty || filenameDir == "") return;
+                            filenameDir = fd.ParametText;
+                            if (filenameDir == string.Empty || filenameDir == "") return;
+                        }
+                    }
+                    try
+                    {
+                        File.Move(PathDirectory + "\\" + Path.GetFileName(treeDirectory.SelectedNode.FullPath), PathDirectory + "\\" + filenameDir);
+                        File.Delete(PathDirectory + "\\" + Path.GetFileName(treeDirectory.SelectedNode.FullPath));
+                        treeDirectory.SelectedNode.Text = filenameDir;
+                        if (Path.GetExtension(treeDirectory.SelectedNode.Text) == ".cpp")
+                            treeDirectory.SelectedNode.ImageIndex = 1;
+                        else if (Path.GetExtension(treeDirectory.SelectedNode.Text) == ".c")
+                            treeDirectory.SelectedNode.ImageIndex = 0;
+                        else if (Path.GetExtension(treeDirectory.SelectedNode.Text) == ".pas")
+                            treeDirectory.SelectedNode.ImageIndex = 5;
+                        else if (Path.GetExtension(treeDirectory.SelectedNode.Text) == ".py")
+                            treeDirectory.SelectedNode.ImageIndex = 6;
+                        else if (Path.GetExtension(treeDirectory.SelectedNode.Text) == ".java")
+                            treeDirectory.SelectedNode.ImageIndex = 4;
+                        else if (Path.GetExtension(treeDirectory.SelectedNode.Text) == ".exe")
+                            treeDirectory.SelectedNode.ImageIndex = 7;
+                        else treeDirectory.SelectedNode.ImageIndex = 2;
+
+
+                    }
+                    catch
+                    {
+                        MessageBox.Show("Can't rename this file");
                     }
                 }
-                try
-                {
-                    File.Move(PathDirectory + "\\" + Path.GetFileName(treeDirectory.SelectedNode.FullPath), PathDirectory + "\\" + filenameDir);
-                    File.Delete(PathDirectory + "\\" + Path.GetFileName(treeDirectory.SelectedNode.FullPath));
-                    treeDirectory.SelectedNode.Text = filenameDir;
-                    if (Path.GetExtension(treeDirectory.SelectedNode.Text) == ".cpp")
-                        treeDirectory.SelectedNode.ImageIndex = 1;
-                    else if (Path.GetExtension(treeDirectory.SelectedNode.Text) == ".c")
-                        treeDirectory.SelectedNode.ImageIndex = 0;
-                    else if (Path.GetExtension(treeDirectory.SelectedNode.Text) == ".pas")
-                        treeDirectory.SelectedNode.ImageIndex = 5;
-                    else if (Path.GetExtension(treeDirectory.SelectedNode.Text) == ".py")
-                        treeDirectory.SelectedNode.ImageIndex = 6;
-                    else if (Path.GetExtension(treeDirectory.SelectedNode.Text) == ".java")
-                        treeDirectory.SelectedNode.ImageIndex = 4;
-                    else if (Path.GetExtension(treeDirectory.SelectedNode.Text) == ".exe")
-                        treeDirectory.SelectedNode.ImageIndex = 7;
-                    else treeDirectory.SelectedNode.ImageIndex = 2;
-                  
-
-                }
-                catch
-                {
-                    MessageBox.Show("Can't rename this file");
-                }
+                else
+                { MessageBox.Show("Can't apply with this file"); }
             }
-            else
-            { MessageBox.Show("Can't apply with this file"); }
+            catch
+            {
+                MessageBox.Show("This cannot be applied");
+            }
+           
         }
 
         private void ContextDirectory_Del_Click(object sender, EventArgs e)
         {
-            if (treeDirectory.SelectedNode.Selected == true && treeDirectory.SelectedNode.Parent.Text != null)
+            try
             {
-                //MessageBox.Show(treeDirectory.SelectedNode.FullPath);
-                try
+                if (treeDirectory.SelectedNode.Selected == true && treeDirectory.SelectedNode.Parent.Text != null)
                 {
-                    
-                    File.Delete(PathDirectory + "\\" + Path.GetFileName(treeDirectory.SelectedNode.FullPath));
-                    treeDirectory.SelectedNode.Remove();
+                    //MessageBox.Show(treeDirectory.SelectedNode.FullPath);
+                    try
+                    {
+
+                        File.Delete(PathDirectory + "\\" + Path.GetFileName(treeDirectory.SelectedNode.FullPath));
+                        treeDirectory.SelectedNode.Remove();
+                    }
+                    catch { MessageBox.Show("Can't delete this file"); }
+
                 }
-                catch { MessageBox.Show("Can't delete this file"); }
-               
+                else
+                { MessageBox.Show("Can't apply with this file"); }
             }
-            else
-            { MessageBox.Show("Can't apply with this file"); }
+            catch
+            {
+                MessageBox.Show("This cannot be applied");
+            }
+            
         }
 
         string filenameDir;
         private void ContextDirectory_New_Click(object sender, EventArgs e)
         {
-           
-            if (treeDirectory.SelectedNode.Selected==true&& treeDirectory.SelectedNode.Parent.Text!=null)
+            try
             {
-               
-                using (ParametDialog fd = new ParametDialog())
+                if (treeDirectory.SelectedNode == null && treeDirectory.SelectedNode.Parent.Text != null)
                 {
-                    fd.Text = "Input Dialog";
-                    fd.radLabel1.Text = "Type file name below";
-                    fd.radLabel2.Text = "Note: You can set file extention";
-                    fd.radButton3.Enabled = false;
-                    if (fd.ShowDialog() == DialogResult.OK)
-                    {
 
-                        filenameDir = fd.ParametText;
-                        if (filenameDir == string.Empty || filenameDir == "") return;
+                    using (ParametDialog fd = new ParametDialog())
+                    {
+                        fd.Text = "Input Dialog";
+                        fd.radLabel1.Text = "Type file name below";
+                        fd.radLabel2.Text = "Note: You can set file extention";
+                        fd.radButton3.Enabled = false;
+                        if (fd.ShowDialog() == DialogResult.OK)
+                        {
+
+                            filenameDir = fd.ParametText;
+                            if (filenameDir == string.Empty || filenameDir == "") return;
+                        }
                     }
-                }
-               
-                MessageBox.Show(treeDirectory.SelectedNode.Parent.Text);
-                var nd = new RadTreeNode();
-                treeDirectory.SelectedNode.Parent.Nodes.Add(nd);
-                treeDirectory.SelectedNode = nd;
-                nd.Text = filenameDir;
-                if (Path.GetExtension(nd.Text) == ".cpp")
-                    nd.ImageIndex = 1;
-                else if (Path.GetExtension(nd.Text) == ".c")
-                    nd.ImageIndex = 0;
-                else if (Path.GetExtension(nd.Text) == ".pas")
-                    nd.ImageIndex = 5;
-                else if (Path.GetExtension(nd.Text) == ".py")
-                    nd.ImageIndex = 6;
-                else if (Path.GetExtension(nd.Text) == ".java")
-                    nd.ImageIndex = 4;
-                else if (Path.GetExtension(nd.Text) == ".exe")
-                    nd.ImageIndex = 7;
-                else nd.ImageIndex = 2;
-                nd.Tag = nd.Text;
-               
+
+                    MessageBox.Show(treeDirectory.SelectedNode.Parent.Text);
+                    var nd = new RadTreeNode();
+                    treeDirectory.SelectedNode.Parent.Nodes.Add(nd);
+                    treeDirectory.SelectedNode = nd;
+                    nd.Text = filenameDir;
+                    if (Path.GetExtension(nd.Text) == ".cpp")
+                        nd.ImageIndex = 1;
+                    else if (Path.GetExtension(nd.Text) == ".c")
+                        nd.ImageIndex = 0;
+                    else if (Path.GetExtension(nd.Text) == ".pas")
+                        nd.ImageIndex = 5;
+                    else if (Path.GetExtension(nd.Text) == ".py")
+                        nd.ImageIndex = 6;
+                    else if (Path.GetExtension(nd.Text) == ".java")
+                        nd.ImageIndex = 4;
+                    else if (Path.GetExtension(nd.Text) == ".exe")
+                        nd.ImageIndex = 7;
+                    else nd.ImageIndex = 2;
+                    nd.Tag = nd.Text;
+
                     try
                     {
-                        File.Create(PathDirectory +"\\" + nd.Text);
+                        File.Create(PathDirectory + "\\" + nd.Text);
                         MessageBox.Show(PathDirectory + "\\" + treeDirectory.SelectedNode.Parent + "\\" + nd.Text);
                     }
                     catch
@@ -238,13 +255,20 @@ namespace Kaliz
                         MessageBox.Show("Can't create file!");
                         treeDirectory.SelectedNode.Remove();
                     }
-                
-               
-               
-                
+
+
+
+
+                }
+                else
+                { MessageBox.Show("Can't apply with this file"); }
             }
-            else
-            { MessageBox.Show("Can't apply with this file"); }
+            catch
+            {
+                MessageBox.Show("This cannot be applied");
+            }
+           
+           
         }
 
         private void ContextDirectory_Open_Click(object sender, EventArgs e)
@@ -2094,15 +2118,15 @@ End;
                     BienDich.StartInfo.RedirectStandardError = true;
                     BienDich.StartInfo.RedirectStandardInput = true;
                 //BienDich.StartInfo.WorkingDirectory = @"Cmder\vendor\occ60451e\orangec\bin";
-               
-          //Dung g++          //if (enabledebug == false)
-                    //    BienDich.StartInfo.Arguments = "/c " + "g++ " + ten + " -o " + Path.GetDirectoryName(ten) + "\\" + Path.GetFileNameWithoutExtension(ten) + ".exe";
-                    //else BienDich.StartInfo.Arguments = "/c " + "g++ " + " -g " + ten + " -o " + Path.GetDirectoryName(ten) + "\\" + Path.GetFileNameWithoutExtension(ten) + ".exe";
+
+             if (enabledebug == false)
+                    BienDich.StartInfo.Arguments = "/c " + "g++ " + ten + " -o " + Path.GetDirectoryName(ten) + "\\" + Path.GetFileNameWithoutExtension(ten) + ".exe";
+                    else BienDich.StartInfo.Arguments = "/c " + "g++ " + " -g " + ten + " -o " + Path.GetDirectoryName(ten) + "\\" + Path.GetFileNameWithoutExtension(ten) + ".exe";
 
 
-               // if (enabledebug == false)
-                    BienDich.StartInfo.Arguments = "/c " + "occ " + "/o" + Path.GetDirectoryName(ten) + "\\" + TepEXE(ten) + " " + ten;// + " -o " + Path.GetDirectoryName(ten) + "\\" + Path.GetFileNameWithoutExtension(ten) + ".exe";
-              //  else BienDich.StartInfo.Arguments = "/c " + "occ " + " /g " + " /o" + Path.GetDirectoryName(ten) + "\\" + TepEXE(ten) + " " + ten;// + " -o " + Path.GetDirectoryName(ten) + "\\" + Path.GetFileNameWithoutExtension(ten) + ".exe";
+                // if (enabledebug == false)
+                //BienDich.StartInfo.Arguments = "/c " + "occ " + "/o" + Path.GetDirectoryName(ten) + "\\" + TepEXE(ten) + " " + ten;// + " -o " + Path.GetDirectoryName(ten) + "\\" + Path.GetFileNameWithoutExtension(ten) + ".exe";
+                //  else BienDich.StartInfo.Arguments = "/c " + "occ " + " /g " + " /o" + Path.GetDirectoryName(ten) + "\\" + TepEXE(ten) + " " + ten;// + " -o " + Path.GetDirectoryName(ten) + "\\" + Path.GetFileNameWithoutExtension(ten) + ".exe";
 
 
                 BienDich.StartInfo.CreateNoWindow = true;
@@ -2116,7 +2140,7 @@ End;
 
 
                     //Lấy thông tin Error chứ k phải Output :))
-                    while ((ad = BienDich.StandardOutput.ReadLine()) != null)
+                    while ((ad = BienDich.StandardError.ReadLine()) != null)
                     {
                         ListOutput.Items.Add(ad);
 
@@ -4936,7 +4960,33 @@ End;
                 contextMenuDirectory.Show(treeDirectory, args.Location);
             }
         }
+
+
         //////////////End Directory///////////
+        private void FReopenLineBreak_Click(object sender, EventArgs e)
+        {
+            if(TabHienTai!=null&& File.Exists(TabHienTai.FileName))
+            {
+                try
+                {
+                    string[] a = File.ReadAllLines(TabHienTai.FileName);
+                    TabHienTai.Text = string.Empty;
+
+                    foreach (string line in a)
+                    {
+
+                        TabHienTai.Text += line + "\r\n";
+                    }
+                }
+                catch
+                {
+                    MessageBox.Show("Error, can't reopen this file");
+                }
+               
+               
+               
+            }
+        }
     }
 }
 
