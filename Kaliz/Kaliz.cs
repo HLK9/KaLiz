@@ -4986,6 +4986,23 @@ End;
                 }
                
             }
+            else if(TabHienTai != null && !File.Exists(TabHienTai.FileName))
+            {
+                try
+                {
+                    
+                    string b;
+                   for(int i=1;i<TabHienTai.PhysicalLineCount;i++)
+                    {
+                        
+                      // TabHienTai.GetLineText(i)+ "\r\n";
+                       
+                    }
+                }
+                catch
+                {
+                }
+            }
         }
 
         private void VHideDir_Click(object sender, EventArgs e)
