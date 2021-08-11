@@ -8,6 +8,9 @@ namespace Kaliz
     {
         public string PascalOp { get; set; }
         string Mode_Pascal = " -Mfpc";
+        public string COp { get; set; }
+        public string PythonOp { get; set; }
+        public string JavaOp { get; set; }
         public BuildConfig()
         {
             InitializeComponent();

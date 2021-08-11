@@ -42,6 +42,7 @@
             Telerik.WinControls.UI.ListViewDataItem listViewDataItem23 = new Telerik.WinControls.UI.ListViewDataItem("Level 3  Optimizations");
             Telerik.WinControls.UI.ListViewDataItem listViewDataItem24 = new Telerik.WinControls.UI.ListViewDataItem("Level 4  Optimizations");
             this.radPageViewPage1 = new Telerik.WinControls.UI.RadPageViewPage();
+            this.radLabel4 = new Telerik.WinControls.UI.RadLabel();
             this.radButton2 = new Telerik.WinControls.UI.RadButton();
             this.radButton1 = new Telerik.WinControls.UI.RadButton();
             this.radGroupBox2 = new Telerik.WinControls.UI.RadGroupBox();
@@ -54,26 +55,26 @@
             this.CheckFPCMode = new Telerik.WinControls.UI.RadCheckBox();
             this.CheckPascal = new Telerik.WinControls.UI.RadCheckBox();
             this.radPageViewPage2 = new Telerik.WinControls.UI.RadPageViewPage();
+            this.radLabel5 = new Telerik.WinControls.UI.RadLabel();
             this.radButton6 = new Telerik.WinControls.UI.RadButton();
             this.radButton3 = new Telerik.WinControls.UI.RadButton();
             this.radLabel1 = new Telerik.WinControls.UI.RadLabel();
             this.radPageViewPage3 = new Telerik.WinControls.UI.RadPageViewPage();
+            this.radLabel6 = new Telerik.WinControls.UI.RadLabel();
             this.radButton7 = new Telerik.WinControls.UI.RadButton();
             this.radButton4 = new Telerik.WinControls.UI.RadButton();
             this.radLabel2 = new Telerik.WinControls.UI.RadLabel();
             this.radPageViewPage4 = new Telerik.WinControls.UI.RadPageViewPage();
+            this.radLabel7 = new Telerik.WinControls.UI.RadLabel();
             this.radButton8 = new Telerik.WinControls.UI.RadButton();
             this.radButton5 = new Telerik.WinControls.UI.RadButton();
             this.radLabel3 = new Telerik.WinControls.UI.RadLabel();
             this.materialTealTheme1 = new Telerik.WinControls.Themes.MaterialTealTheme();
-            this.radLabel4 = new Telerik.WinControls.UI.RadLabel();
-            this.radLabel5 = new Telerik.WinControls.UI.RadLabel();
-            this.radLabel6 = new Telerik.WinControls.UI.RadLabel();
-            this.radLabel7 = new Telerik.WinControls.UI.RadLabel();
             radPageView1 = new Telerik.WinControls.UI.RadPageView();
             ((System.ComponentModel.ISupportInitialize)(radPageView1)).BeginInit();
             radPageView1.SuspendLayout();
             this.radPageViewPage1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.radLabel4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.radButton2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.radButton1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.radGroupBox2)).BeginInit();
@@ -88,21 +89,20 @@
             ((System.ComponentModel.ISupportInitialize)(this.CheckFPCMode)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.CheckPascal)).BeginInit();
             this.radPageViewPage2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.radLabel5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.radButton6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.radButton3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.radLabel1)).BeginInit();
             this.radPageViewPage3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.radLabel6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.radButton7)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.radButton4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.radLabel2)).BeginInit();
             this.radPageViewPage4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.radLabel7)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.radButton8)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.radButton5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.radLabel3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.radLabel4)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.radLabel5)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.radLabel6)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.radLabel7)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this)).BeginInit();
             this.SuspendLayout();
             // 
@@ -115,7 +115,7 @@
             radPageView1.Dock = System.Windows.Forms.DockStyle.Fill;
             radPageView1.Location = new System.Drawing.Point(0, 0);
             radPageView1.Name = "radPageView1";
-            radPageView1.SelectedPage = this.radPageViewPage3;
+            radPageView1.SelectedPage = this.radPageViewPage1;
             radPageView1.Size = new System.Drawing.Size(783, 373);
             radPageView1.TabIndex = 0;
             radPageView1.ThemeName = "MaterialTeal";
@@ -133,6 +133,15 @@
             this.radPageViewPage1.Name = "radPageViewPage1";
             this.radPageViewPage1.Size = new System.Drawing.Size(771, 312);
             this.radPageViewPage1.Text = "Pascal";
+            // 
+            // radLabel4
+            // 
+            this.radLabel4.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radLabel4.Location = new System.Drawing.Point(206, 276);
+            this.radLabel4.Name = "radLabel4";
+            this.radLabel4.Size = new System.Drawing.Size(334, 30);
+            this.radLabel4.TabIndex = 4;
+            this.radLabel4.Text = "Pascal Compiler: Free Pascal Compiler";
             // 
             // radButton2
             // 
@@ -294,6 +303,15 @@
             this.radPageViewPage2.Size = new System.Drawing.Size(771, 312);
             this.radPageViewPage2.Text = "C/C++";
             // 
+            // radLabel5
+            // 
+            this.radLabel5.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radLabel5.Location = new System.Drawing.Point(209, 276);
+            this.radLabel5.Name = "radLabel5";
+            this.radLabel5.Size = new System.Drawing.Size(332, 30);
+            this.radLabel5.TabIndex = 5;
+            this.radLabel5.Text = "C/C++ Compiler: TDM-GCC Compiler";
+            // 
             // radButton6
             // 
             this.radButton6.Location = new System.Drawing.Point(6, 273);
@@ -335,6 +353,15 @@
             this.radPageViewPage3.Name = "radPageViewPage3";
             this.radPageViewPage3.Size = new System.Drawing.Size(771, 312);
             this.radPageViewPage3.Text = "Java";
+            // 
+            // radLabel6
+            // 
+            this.radLabel6.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radLabel6.Location = new System.Drawing.Point(258, 279);
+            this.radLabel6.Name = "radLabel6";
+            this.radLabel6.Size = new System.Drawing.Size(250, 30);
+            this.radLabel6.TabIndex = 5;
+            this.radLabel6.Text = "Java Compiler: Open JDK 16";
             // 
             // radButton7
             // 
@@ -378,6 +405,15 @@
             this.radPageViewPage4.Size = new System.Drawing.Size(771, 312);
             this.radPageViewPage4.Text = "Python";
             // 
+            // radLabel7
+            // 
+            this.radLabel7.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radLabel7.Location = new System.Drawing.Point(200, 279);
+            this.radLabel7.Name = "radLabel7";
+            this.radLabel7.Size = new System.Drawing.Size(347, 30);
+            this.radLabel7.TabIndex = 6;
+            this.radLabel7.Text = "Python Compiler: Python version 3.8.10";
+            // 
             // radButton8
             // 
             this.radButton8.Location = new System.Drawing.Point(6, 273);
@@ -407,42 +443,6 @@
             this.radLabel3.Text = "<html><span style=\"font-size: 20pt; color: #808080\">We\'re developing, Coming soon" +
     "!</span></html>";
             // 
-            // radLabel4
-            // 
-            this.radLabel4.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radLabel4.Location = new System.Drawing.Point(206, 276);
-            this.radLabel4.Name = "radLabel4";
-            this.radLabel4.Size = new System.Drawing.Size(334, 30);
-            this.radLabel4.TabIndex = 4;
-            this.radLabel4.Text = "Pascal Compiler: Free Pascal Compiler";
-            // 
-            // radLabel5
-            // 
-            this.radLabel5.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radLabel5.Location = new System.Drawing.Point(209, 276);
-            this.radLabel5.Name = "radLabel5";
-            this.radLabel5.Size = new System.Drawing.Size(332, 30);
-            this.radLabel5.TabIndex = 5;
-            this.radLabel5.Text = "C/C++ Compiler: TDM-GCC Compiler";
-            // 
-            // radLabel6
-            // 
-            this.radLabel6.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radLabel6.Location = new System.Drawing.Point(258, 279);
-            this.radLabel6.Name = "radLabel6";
-            this.radLabel6.Size = new System.Drawing.Size(250, 30);
-            this.radLabel6.TabIndex = 5;
-            this.radLabel6.Text = "Java Compiler: Open JDK 16";
-            // 
-            // radLabel7
-            // 
-            this.radLabel7.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radLabel7.Location = new System.Drawing.Point(200, 279);
-            this.radLabel7.Name = "radLabel7";
-            this.radLabel7.Size = new System.Drawing.Size(347, 30);
-            this.radLabel7.TabIndex = 6;
-            this.radLabel7.Text = "Python Compiler: Python version 3.8.10";
-            // 
             // BuildConfig
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -463,6 +463,7 @@
             radPageView1.ResumeLayout(false);
             this.radPageViewPage1.ResumeLayout(false);
             this.radPageViewPage1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.radLabel4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.radButton2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.radButton1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.radGroupBox2)).EndInit();
@@ -479,23 +480,22 @@
             ((System.ComponentModel.ISupportInitialize)(this.CheckPascal)).EndInit();
             this.radPageViewPage2.ResumeLayout(false);
             this.radPageViewPage2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.radLabel5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.radButton6)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.radButton3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.radLabel1)).EndInit();
             this.radPageViewPage3.ResumeLayout(false);
             this.radPageViewPage3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.radLabel6)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.radButton7)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.radButton4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.radLabel2)).EndInit();
             this.radPageViewPage4.ResumeLayout(false);
             this.radPageViewPage4.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.radLabel7)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.radButton8)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.radButton5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.radLabel3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.radLabel4)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.radLabel5)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.radLabel6)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.radLabel7)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this)).EndInit();
             this.ResumeLayout(false);
 
