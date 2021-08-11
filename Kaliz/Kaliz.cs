@@ -209,7 +209,7 @@ namespace Kaliz
         {
             try
             {
-                if (treeDirectory.SelectedNode == null && treeDirectory.SelectedNode.Parent.Text != null)
+                if (treeDirectory.SelectedNode != null && treeDirectory.SelectedNode.Parent.Text != null)
                 {
 
                     using (ParametDialog fd = new ParametDialog())
@@ -3286,15 +3286,22 @@ End;
             string Phantich = @"\(\d+\,\d+\)|\:\d+\:\d+\:|\:\d+\:|\(\d+\)";
             
             string chuoi = ListOutput.SelectedItem.Text;
+            int a = ListOutput.SelectedIndex;
+            string sda = ListOutput.Items[a + 1].Text;
             //string ret;
-
             MatchCollection df = Regex.Matches(chuoi, Phantich);
             
                 foreach (Match sd in df)
             {
+
                 string phan2 = @"\d+";
                 MatchCollection df2 = Regex.Matches(sd.ToString(), phan2);
-             
+
+                if (Path.GetExtension(TabHienTai.FileName) == ".java")
+                {
+
+                    TabHienTai.FindText(sda, false);
+                }else                   
                TabHienTai.GoTo(int.Parse(df2[0].ToString()));
                
             }
@@ -4967,13 +4974,12 @@ End;
         //////////////End Directory///////////
         private void FReopenLineBreak_Click(object sender, EventArgs e)
         {
-            if(TabHienTai!=null&& File.Exists(TabHienTai.FileName))
+            if(TabHienTai!=null && File.Exists(TabHienTai.FileName))
             {
                 try
                 {
                     string[] a = File.ReadAllLines(TabHienTai.FileName);
                     TabHienTai.Text = string.Empty;
-
                     foreach (string line in a)
                     {
 
@@ -4982,25 +4988,23 @@ End;
                 }
                 catch
                 {
-                    MessageBox.Show("Error, can't reopen this file");
+                    MessageBox.Show("Error, can't access to this file");
+
                 }
-               
+
             }
-            else if(TabHienTai != null && !File.Exists(TabHienTai.FileName))
+            else if (TabHienTai != null && !File.Exists(TabHienTai.FileName))
             {
-                try
+               
+                List<string> ls = new List<string>();
+                for(int i=1;i<=TabHienTai.PhysicalLineCount;i++)
                 {
-                    
-                    string b;
-                   for(int i=1;i<TabHienTai.PhysicalLineCount;i++)
-                    {
-                        
-                      // TabHienTai.GetLineText(i)+ "\r\n";
-                       
-                    }
+                    ls.Add(TabHienTai.GetLineText(i)+"\r\n");
                 }
-                catch
+                TabHienTai.Text = "";
+                foreach(var i in ls)
                 {
+                    TabHienTai.Text += i.ToString()+"\r\n";
                 }
             }
         }

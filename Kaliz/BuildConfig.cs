@@ -7,7 +7,7 @@ namespace Kaliz
     public partial class BuildConfig : Telerik.WinControls.UI.RadForm
     {
         public string PascalOp { get; set; }
-        string Mode = " -Mfpc";
+        string Mode_Pascal = " -Mfpc";
         public BuildConfig()
         {
             InitializeComponent();
@@ -18,7 +18,7 @@ namespace Kaliz
 
         private void CheckPascal_Click(object sender, EventArgs e)
         {
-            Mode = " -Mfpc";
+            Mode_Pascal = " -Mfpc";
             //CheckPascal.CheckState = CheckState.Unchecked;
             CheckDelphi7.CheckState = CheckState.Unchecked;
             CheckFPCMode.CheckState = CheckState.Unchecked;
@@ -29,7 +29,7 @@ namespace Kaliz
 
         private void CheckFPCMode_Click(object sender, EventArgs e)
         {
-            Mode = " -Mobjfpc";
+            Mode_Pascal = " -Mobjfpc";
             CheckPascal.CheckState = CheckState.Unchecked;
             CheckDelphi7.CheckState = CheckState.Unchecked;
            // CheckFPCMode.CheckState = CheckState.Unchecked;
@@ -40,7 +40,7 @@ namespace Kaliz
 
         private void CheckDelphi7_ToggleStateChanged(object sender, Telerik.WinControls.UI.StateChangedEventArgs args)
         {
-            Mode = " -Mdelphi";
+            Mode_Pascal = " -Mdelphi";
             CheckPascal.CheckState = CheckState.Unchecked;
             //CheckDelphi7.CheckState = CheckState.Unchecked;
             CheckFPCMode.CheckState = CheckState.Unchecked;
@@ -51,7 +51,7 @@ namespace Kaliz
 
         private void CheckMac_ToggleStateChanged(object sender, Telerik.WinControls.UI.StateChangedEventArgs args)
         {
-            Mode = " -Mmacpas";
+            Mode_Pascal = " -Mmacpas";
             CheckPascal.CheckState = CheckState.Unchecked;
             CheckDelphi7.CheckState = CheckState.Unchecked;
             CheckFPCMode.CheckState = CheckState.Unchecked;
@@ -62,7 +62,7 @@ namespace Kaliz
 
         private void CheckISO7185_ToggleStateChanged(object sender, Telerik.WinControls.UI.StateChangedEventArgs args)
         {
-            Mode = " -Miso";
+            Mode_Pascal = " -Miso";
             CheckPascal.CheckState = CheckState.Unchecked;
             CheckDelphi7.CheckState = CheckState.Unchecked;
             CheckFPCMode.CheckState = CheckState.Unchecked;
@@ -73,7 +73,7 @@ namespace Kaliz
 
         private void CheckTPBP_ToggleStateChanged(object sender, Telerik.WinControls.UI.StateChangedEventArgs args)
         {
-            Mode = "- Mtp";
+            Mode_Pascal = "- Mtp";
             CheckPascal.CheckState = CheckState.Unchecked;
             CheckDelphi7.CheckState = CheckState.Unchecked;
             CheckFPCMode.CheckState = CheckState.Unchecked;
@@ -184,7 +184,7 @@ namespace Kaliz
                
             }
             //ra khoi switch
-            PascalOp += Mode;
+            PascalOp += Mode_Pascal;
         }
 
         private void radButton2_Click(object sender, EventArgs e)
