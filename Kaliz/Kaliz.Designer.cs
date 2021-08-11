@@ -235,6 +235,7 @@ namespace Kaliz
             this.contextMenuData = new Telerik.WinControls.UI.RadContextMenu(this.components);
             this.contextMenuDirectory = new Telerik.WinControls.UI.RadContextMenu(this.components);
             this.FReopenLineBreak = new Telerik.WinControls.UI.RadMenuItem();
+            this.VHideDir = new Telerik.WinControls.UI.RadMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.DockPar)).BeginInit();
             this.DockPar.SuspendLayout();
             this.Doutput.SuspendLayout();
@@ -1045,7 +1046,7 @@ namespace Kaliz
             // 
             // DockPar
             // 
-            this.DockPar.ActiveWindow = this.DWorkingDirectory;
+            this.DockPar.ActiveWindow = this.DBookmarks;
             this.DockPar.CausesValidation = false;
             this.DockPar.Controls.Add(this.toolTabStrip1);
             this.DockPar.Controls.Add(this.radSplitContainer1);
@@ -1274,9 +1275,9 @@ namespace Kaliz
             // 
             this.pictureBox1.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.pictureBox1.Image = global::Kaliz.Properties.Resources.coding__1_;
-            this.pictureBox1.Location = new System.Drawing.Point(270, 64);
+            this.pictureBox1.Location = new System.Drawing.Point(317, 64);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(512, 512);
+            this.pictureBox1.Size = new System.Drawing.Size(400, 400);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 8;
             this.pictureBox1.TabStop = false;
@@ -1380,7 +1381,7 @@ namespace Kaliz
             this.radLabel1.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.radLabel1.Controls.Add(this.radLabel6);
             this.radLabel1.ImageAlignment = System.Drawing.ContentAlignment.MiddleCenter;
-            this.radLabel1.Location = new System.Drawing.Point(340, 3);
+            this.radLabel1.Location = new System.Drawing.Point(332, 3);
             this.radLabel1.Name = "radLabel1";
             this.radLabel1.Size = new System.Drawing.Size(372, 81);
             this.radLabel1.TabIndex = 0;
@@ -1683,6 +1684,7 @@ namespace Kaliz
             this.VClipboardList,
             this.VBookmarkList,
             this.VDataReceived,
+            this.VHideDir,
             this.VSplitHorizon,
             this.VSplitVertical});
             this.MView.Name = "MView";
@@ -1918,6 +1920,12 @@ namespace Kaliz
             this.FReopenLineBreak.Name = "FReopenLineBreak";
             this.FReopenLineBreak.Text = "Reopen with CRLF Line break";
             this.FReopenLineBreak.Click += new System.EventHandler(this.FReopenLineBreak_Click);
+            // 
+            // VHideDir
+            // 
+            this.VHideDir.Name = "VHideDir";
+            this.VHideDir.Text = "Hide Working Directory";
+            this.VHideDir.Click += new System.EventHandler(this.VHideDir_Click);
             // 
             // Kaliz
             // 
@@ -2189,5 +2197,6 @@ namespace Kaliz
         private ImageList imageList1;
         private Telerik.WinControls.UI.Docking.DockWindowPlaceholder dockWindowPlaceholder1;
         private RadMenuItem FReopenLineBreak;
+        private RadMenuItem VHideDir;
     }
 }

@@ -48,6 +48,7 @@ namespace Kaliz
         private bool showDataReceived = true;
         private bool showBookmarkList = true;
         private bool showOutput = true;
+        private bool showDirectory = true;
         private bool BuildComplete = true;
 
         private int chiso { get; set; }
@@ -4078,11 +4079,12 @@ End;
 
         private void WResetWindows_Click(object sender, EventArgs e)
         {
-            //foreach (var item in DockPar.DocumentManager.DocumentArray)
-            //{
-               
-            //        DockPar.DockControl(item, DockPosition.Fill);
-            //}
+            foreach (var item in DockPar.ActiveFloatingWindows)
+            {
+                item.Activate();
+                DockPar.DockWindow(DockPar.ActiveWindow, DockPosition.Fill);
+
+           }
         }
 
         private void WCloseAll_Click(object sender, EventArgs e)
@@ -4983,8 +4985,23 @@ End;
                     MessageBox.Show("Error, can't reopen this file");
                 }
                
-               
-               
+            }
+        }
+
+        private void VHideDir_Click(object sender, EventArgs e)
+        {
+            if(showDirectory == false)
+            {
+                VHideDir.Text = "Hide Working Directory";
+                DWorkingDirectory.Show();
+                showDirectory = true;
+            }
+            else
+            {
+
+                VHideDir.Text = "Show Working Directory";
+                DWorkingDirectory.Hide();
+                showDirectory = false;
             }
         }
     }
