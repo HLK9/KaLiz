@@ -4022,41 +4022,59 @@ End;
 
         private void EncodeUTF8_Click(object sender, EventArgs e)
         {
-            if(File.Exists(TabHienTai.FileName))
+            try
             {
-                TabHienTai.LoadFile(TabHienTai.FileName, Encoding.UTF8);
+                if (File.Exists(TabHienTai.FileName))
+                {
+                    TabHienTai.LoadFile(TabHienTai.FileName, Encoding.UTF8);
 
+                }
+                else
+                {
+                    MessageBox.Show("File not found!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
-            else
-            {
-                MessageBox.Show("File not found!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+            catch
+            { }
         }
 
         private void EncodeUS_Click(object sender, EventArgs e)
         {
-            if (File.Exists(TabHienTai.FileName))
+            try
             {
-                TabHienTai.LoadFile(TabHienTai.FileName, Encoding.ASCII);
+                if (File.Exists(TabHienTai.FileName))
+                {
+                    TabHienTai.LoadFile(TabHienTai.FileName, Encoding.ASCII);
 
+                }
+                else
+                {
+                    MessageBox.Show("File not found!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
-            else
-            {
-                MessageBox.Show("File not found!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+            catch
+            { }
+           
         }
 
         private void Encode1252_Click(object sender, EventArgs e)
         {
             
-            if (File.Exists(TabHienTai.FileName))
+            try
             {
-                TabHienTai.LoadFile(TabHienTai.FileName, Encoding.GetEncoding("windows-1252"));
+                if (File.Exists(TabHienTai.FileName))
+                {
+                    TabHienTai.LoadFile(TabHienTai.FileName, Encoding.GetEncoding("windows-1252"));
 
+                }
+                else
+                {
+                    MessageBox.Show("File not found!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
-            else
+            catch
             {
-                MessageBox.Show("File not found!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
             }
         }
 
