@@ -236,6 +236,7 @@ namespace Kaliz
             this.MenuTop = new Telerik.WinControls.UI.RadMenu();
             this.contextMenuData = new Telerik.WinControls.UI.RadContextMenu(this.components);
             this.contextMenuDirectory = new Telerik.WinControls.UI.RadContextMenu(this.components);
+            this.LJava = new Telerik.WinControls.UI.RadMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.DockPar)).BeginInit();
             this.DockPar.SuspendLayout();
             this.Doutput.SuspendLayout();
@@ -1014,7 +1015,8 @@ namespace Kaliz
             this.HLearn.Items.AddRange(new Telerik.WinControls.RadItem[] {
             this.LCpp,
             this.LPascal,
-            this.LPython});
+            this.LPython,
+            this.LJava});
             this.HLearn.Name = "HLearn";
             this.HLearn.Text = "Learn to programing";
             this.HLearn.Click += new System.EventHandler(this.HLearn_Click);
@@ -1052,7 +1054,7 @@ namespace Kaliz
             // 
             // DockPar
             // 
-            this.DockPar.ActiveWindow = this.DWorkingDirectory;
+            this.DockPar.ActiveWindow = this.Dclipboard;
             this.DockPar.CausesValidation = false;
             this.DockPar.Controls.Add(this.toolTabStrip1);
             this.DockPar.Controls.Add(this.radSplitContainer1);
@@ -1431,7 +1433,7 @@ namespace Kaliz
             // 
             // 
             this.toolTabStrip2.RootElement.MinSize = new System.Drawing.Size(25, 25);
-            this.toolTabStrip2.SelectedIndex = 0;
+            this.toolTabStrip2.SelectedIndex = 1;
             this.toolTabStrip2.ShowItemPinButton = true;
             this.toolTabStrip2.Size = new System.Drawing.Size(1046, 196);
             this.toolTabStrip2.SizeInfo.AbsoluteSize = new System.Drawing.Size(200, 196);
@@ -1928,6 +1930,12 @@ namespace Kaliz
             // 
             this.contextMenuData.ThemeName = "MaterialTeal";
             // 
+            // LJava
+            // 
+            this.LJava.Name = "LJava";
+            this.LJava.Text = "Learn Java from W3 School";
+            this.LJava.Click += new System.EventHandler(this.LJava_Click);
+            // 
             // Kaliz
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -2199,5 +2207,6 @@ namespace Kaliz
         private Telerik.WinControls.UI.Docking.DockWindowPlaceholder dockWindowPlaceholder1;
         private RadMenuItem FReopenLineBreak;
         private RadMenuItem VHideDir;
+        private RadMenuItem LJava;
     }
 }

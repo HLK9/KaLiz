@@ -103,6 +103,11 @@ namespace Kaliz
             var contextDirectory_Rename = new RadMenuItem();
             contextDirectory_Rename.Text = "Rename File";
             contextDirectory_Rename.Click += ContextDirectory_Rename_Click;
+            //clear Directory
+            var contextDirectory_Clear = new RadMenuItem();
+            contextDirectory_Clear.Text = "Clear Directory";
+            contextDirectory_Clear.Click += ContextDirectory_Clear_Click;
+
             //them vao menu context
             contextMenuDirectory.Items.Add(contextDirectory_New);
             contextMenuDirectory.Items.Add(contextDirectory_Rename);
@@ -121,6 +126,17 @@ namespace Kaliz
 
 
 
+        }
+
+        private void ContextDirectory_Clear_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                treeDirectory.Nodes.Clear();
+                PathDirectory = string.Empty;
+            }
+            catch
+            { }
         }
 
         private void ContextDirectory_Rename_Click(object sender, EventArgs e)
@@ -5034,6 +5050,10 @@ End;
                     TabHienTai.Text += i.ToString()+"\r\n";
                 }
             }
+            else
+            {
+                MessageBox.Show("Error");
+            }
         }
 
         private void VHideDir_Click(object sender, EventArgs e)
@@ -5051,6 +5071,11 @@ End;
                 DWorkingDirectory.Hide();
                 showDirectory = false;
             }
+        }
+
+        private void LJava_Click(object sender, EventArgs e)
+        {
+            Process.Start(@"https://www.w3schools.com/java/");
         }
     }
 }
