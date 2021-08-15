@@ -34,11 +34,11 @@ namespace Kaliz
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            Telerik.WinControls.UI.Docking.AutoHideGroup autoHideGroup1 = new Telerik.WinControls.UI.Docking.AutoHideGroup();
+            Telerik.WinControls.UI.Docking.AutoHideGroup autoHideGroup2 = new Telerik.WinControls.UI.Docking.AutoHideGroup();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Kaliz));
-            Telerik.WinControls.UI.ListViewDetailColumn listViewDetailColumn1 = new Telerik.WinControls.UI.ListViewDetailColumn("Column 0", "Line");
-            Telerik.WinControls.UI.ListViewDetailColumn listViewDetailColumn2 = new Telerik.WinControls.UI.ListViewDetailColumn("Column 1", "Name");
-            Telerik.WinControls.UI.ListViewDetailColumn listViewDetailColumn3 = new Telerik.WinControls.UI.ListViewDetailColumn("Column 2", "File");
+            Telerik.WinControls.UI.ListViewDetailColumn listViewDetailColumn4 = new Telerik.WinControls.UI.ListViewDetailColumn("Column 0", "Line");
+            Telerik.WinControls.UI.ListViewDetailColumn listViewDetailColumn5 = new Telerik.WinControls.UI.ListViewDetailColumn("Column 1", "Name");
+            Telerik.WinControls.UI.ListViewDetailColumn listViewDetailColumn6 = new Telerik.WinControls.UI.ListViewDetailColumn("Column 2", "File");
             this.dockWindowPlaceholder1 = new Telerik.WinControls.UI.Docking.DockWindowPlaceholder();
             this.MFile = new Telerik.WinControls.UI.RadMenuItem();
             this.FNew = new Telerik.WinControls.UI.RadMenuItem();
@@ -121,7 +121,9 @@ namespace Kaliz
             this.OHightlight = new Telerik.WinControls.UI.RadMenuItem();
             this.OEnaPrompt = new Telerik.WinControls.UI.RadMenuItem();
             this.OLineNum = new Telerik.WinControls.UI.RadMenuItem();
+            this.OVitrualSpace = new Telerik.WinControls.UI.RadMenuItem();
             this.OClearClip = new Telerik.WinControls.UI.RadMenuItem();
+            this.OClearDataReceived = new Telerik.WinControls.UI.RadMenuItem();
             this.OTer = new Telerik.WinControls.UI.RadMenuItem();
             this.ConPow = new Telerik.WinControls.UI.RadMenuItem();
             this.ConCmder = new Telerik.WinControls.UI.RadMenuItem();
@@ -135,19 +137,18 @@ namespace Kaliz
             this.radMenuItem10 = new Telerik.WinControls.UI.RadMenuItem();
             this.radMenuItem11 = new Telerik.WinControls.UI.RadMenuItem();
             this.radMenuItem12 = new Telerik.WinControls.UI.RadMenuItem();
-            this.OClearDataReceived = new Telerik.WinControls.UI.RadMenuItem();
-            this.OVitrualSpace = new Telerik.WinControls.UI.RadMenuItem();
             this.MHelp = new Telerik.WinControls.UI.RadMenuItem();
             this.HHowto = new Telerik.WinControls.UI.RadMenuItem();
             this.HLearn = new Telerik.WinControls.UI.RadMenuItem();
             this.LCpp = new Telerik.WinControls.UI.RadMenuItem();
             this.LPascal = new Telerik.WinControls.UI.RadMenuItem();
             this.LPython = new Telerik.WinControls.UI.RadMenuItem();
+            this.LJava = new Telerik.WinControls.UI.RadMenuItem();
             this.HLookUp = new Telerik.WinControls.UI.RadMenuItem();
             this.HAbout = new Telerik.WinControls.UI.RadMenuItem();
             this.DockPar = new Telerik.WinControls.UI.Docking.RadDock();
-            this.Doutput = new Telerik.WinControls.UI.Docking.ToolWindow();
-            this.ListOutput = new Telerik.WinControls.UI.RadListView();
+            this.Dclipboard = new Telerik.WinControls.UI.Docking.ToolWindow();
+            this.radlistclip = new Telerik.WinControls.UI.RadListView();
             this.toolTabStrip1 = new Telerik.WinControls.UI.Docking.ToolTabStrip();
             this.DWorkingDirectory = new Telerik.WinControls.UI.Docking.ToolWindow();
             this.treeDirectory = new Telerik.WinControls.UI.RadTreeView();
@@ -172,8 +173,8 @@ namespace Kaliz
             this.radLabel6 = new Telerik.WinControls.UI.RadLabel();
             this.radButton1 = new Telerik.WinControls.UI.RadButton();
             this.toolTabStrip2 = new Telerik.WinControls.UI.Docking.ToolTabStrip();
-            this.Dclipboard = new Telerik.WinControls.UI.Docking.ToolWindow();
-            this.radlistclip = new Telerik.WinControls.UI.RadListView();
+            this.Doutput = new Telerik.WinControls.UI.Docking.ToolWindow();
+            this.ListOutput = new Telerik.WinControls.UI.RadListView();
             this.DBookmarksList = new Telerik.WinControls.UI.Docking.ToolWindow();
             this.bookmarkList = new Telerik.WinControls.UI.RadListView();
             this.DClosedFiles = new Telerik.WinControls.UI.Docking.ToolWindow();
@@ -236,11 +237,11 @@ namespace Kaliz
             this.MenuTop = new Telerik.WinControls.UI.RadMenu();
             this.contextMenuData = new Telerik.WinControls.UI.RadContextMenu(this.components);
             this.contextMenuDirectory = new Telerik.WinControls.UI.RadContextMenu(this.components);
-            this.LJava = new Telerik.WinControls.UI.RadMenuItem();
+            this.DSetBreak = new Telerik.WinControls.UI.RadMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.DockPar)).BeginInit();
             this.DockPar.SuspendLayout();
-            this.Doutput.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.ListOutput)).BeginInit();
+            this.Dclipboard.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.radlistclip)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.toolTabStrip1)).BeginInit();
             this.toolTabStrip1.SuspendLayout();
             this.DWorkingDirectory.SuspendLayout();
@@ -270,8 +271,8 @@ namespace Kaliz
             ((System.ComponentModel.ISupportInitialize)(this.radButton1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.toolTabStrip2)).BeginInit();
             this.toolTabStrip2.SuspendLayout();
-            this.Dclipboard.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.radlistclip)).BeginInit();
+            this.Doutput.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ListOutput)).BeginInit();
             this.DBookmarksList.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bookmarkList)).BeginInit();
             this.DClosedFiles.SuspendLayout();
@@ -790,7 +791,8 @@ namespace Kaliz
             this.DEnable,
             this.DOpenGDB,
             this.DeJDB,
-            this.DebugPython});
+            this.DebugPython,
+            this.DSetBreak});
             this.MDebug.Name = "MDebug";
             this.MDebug.Text = "Debug";
             this.MDebug.Click += new System.EventHandler(this.MDebug_Click);
@@ -888,11 +890,22 @@ namespace Kaliz
             this.OLineNum.Text = "Line Number";
             this.OLineNum.Click += new System.EventHandler(this.OLineNum_Click);
             // 
+            // OVitrualSpace
+            // 
+            this.OVitrualSpace.Name = "OVitrualSpace";
+            this.OVitrualSpace.Text = "Enable Vitrual Space Mode";
+            this.OVitrualSpace.Click += new System.EventHandler(this.OVitrualSpace_Click);
+            // 
             // OClearClip
             // 
             this.OClearClip.Name = "OClearClip";
             this.OClearClip.Text = "Clear Clipboard History";
             this.OClearClip.Click += new System.EventHandler(this.OClearClip_Click);
+            // 
+            // OClearDataReceived
+            // 
+            this.OClearDataReceived.Name = "OClearDataReceived";
+            this.OClearDataReceived.Text = "Clear Data Recevied";
             // 
             // OTer
             // 
@@ -982,17 +995,6 @@ namespace Kaliz
             this.radMenuItem12.Name = "radMenuItem12";
             this.radMenuItem12.Text = "";
             // 
-            // OClearDataReceived
-            // 
-            this.OClearDataReceived.Name = "OClearDataReceived";
-            this.OClearDataReceived.Text = "Clear Data Recevied";
-            // 
-            // OVitrualSpace
-            // 
-            this.OVitrualSpace.Name = "OVitrualSpace";
-            this.OVitrualSpace.Text = "Enable Vitrual Space Mode";
-            this.OVitrualSpace.Click += new System.EventHandler(this.OVitrualSpace_Click);
-            // 
             // MHelp
             // 
             this.MHelp.Items.AddRange(new Telerik.WinControls.RadItem[] {
@@ -1039,6 +1041,12 @@ namespace Kaliz
             this.LPython.Text = "Learn Python from W3 Schools";
             this.LPython.Click += new System.EventHandler(this.LPython_Click);
             // 
+            // LJava
+            // 
+            this.LJava.Name = "LJava";
+            this.LJava.Text = "Learn Java from W3 School";
+            this.LJava.Click += new System.EventHandler(this.LJava_Click);
+            // 
             // HLookUp
             // 
             this.HLookUp.Name = "HLookUp";
@@ -1054,7 +1062,7 @@ namespace Kaliz
             // 
             // DockPar
             // 
-            this.DockPar.ActiveWindow = this.Dclipboard;
+            this.DockPar.ActiveWindow = this.DBookmarks;
             this.DockPar.CausesValidation = false;
             this.DockPar.Controls.Add(this.toolTabStrip1);
             this.DockPar.Controls.Add(this.radSplitContainer1);
@@ -1068,39 +1076,39 @@ namespace Kaliz
             // 
             // 
             this.DockPar.RootElement.MinSize = new System.Drawing.Size(25, 25);
-            autoHideGroup1.Windows.Add(this.dockWindowPlaceholder1);
-            this.DockPar.SerializableAutoHideContainer.LeftAutoHideGroups.Add(autoHideGroup1);
+            autoHideGroup2.Windows.Add(this.dockWindowPlaceholder1);
+            this.DockPar.SerializableAutoHideContainer.LeftAutoHideGroups.Add(autoHideGroup2);
             this.DockPar.Size = new System.Drawing.Size(1257, 698);
             this.DockPar.SplitterWidth = 8;
             this.DockPar.TabIndex = 2;
             this.DockPar.TabStop = false;
             this.DockPar.ThemeName = "MaterialTeal";
             // 
-            // Doutput
+            // Dclipboard
             // 
-            this.Doutput.Caption = null;
-            this.Doutput.Controls.Add(this.ListOutput);
-            this.Doutput.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.Doutput.Location = new System.Drawing.Point(4, 52);
-            this.Doutput.Name = "Doutput";
-            this.Doutput.PreviousDockState = Telerik.WinControls.UI.Docking.DockState.Docked;
-            this.Doutput.Size = new System.Drawing.Size(1038, 114);
-            this.Doutput.Text = "Output";
-            this.Doutput.ToolCaptionButtons = Telerik.WinControls.UI.Docking.ToolStripCaptionButtons.AutoHide;
+            this.Dclipboard.Caption = null;
+            this.Dclipboard.Controls.Add(this.radlistclip);
+            this.Dclipboard.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            this.Dclipboard.Location = new System.Drawing.Point(4, 52);
+            this.Dclipboard.Name = "Dclipboard";
+            this.Dclipboard.PreviousDockState = Telerik.WinControls.UI.Docking.DockState.Docked;
+            this.Dclipboard.Size = new System.Drawing.Size(1038, 114);
+            this.Dclipboard.Text = "ClipBoard";
+            this.Dclipboard.ToolCaptionButtons = Telerik.WinControls.UI.Docking.ToolStripCaptionButtons.AutoHide;
             // 
-            // ListOutput
+            // radlistclip
             // 
-            this.ListOutput.AllowEdit = false;
-            this.ListOutput.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ListOutput.GroupItemSize = new System.Drawing.Size(200, 36);
-            this.ListOutput.ItemSize = new System.Drawing.Size(200, 36);
-            this.ListOutput.Location = new System.Drawing.Point(0, 0);
-            this.ListOutput.Name = "ListOutput";
-            this.ListOutput.Size = new System.Drawing.Size(1038, 114);
-            this.ListOutput.TabIndex = 0;
-            this.ListOutput.ThemeName = "MaterialTeal";
-            this.ListOutput.SelectedItemChanged += new System.EventHandler(this.ListOutput_SelectedItemChanged);
-            this.ListOutput.ItemMouseClick += new Telerik.WinControls.UI.ListViewItemEventHandler(this.ListOutput_ItemMouseClick);
+            this.radlistclip.AllowDragDrop = true;
+            this.radlistclip.AllowEdit = false;
+            this.radlistclip.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.radlistclip.GroupItemSize = new System.Drawing.Size(200, 36);
+            this.radlistclip.ItemSize = new System.Drawing.Size(200, 36);
+            this.radlistclip.Location = new System.Drawing.Point(0, 0);
+            this.radlistclip.Name = "radlistclip";
+            this.radlistclip.Size = new System.Drawing.Size(1038, 114);
+            this.radlistclip.TabIndex = 0;
+            this.radlistclip.ThemeName = "MaterialTeal";
+            this.radlistclip.ItemMouseDoubleClick += new Telerik.WinControls.UI.ListViewItemEventHandler(this.radlistclip_ItemMouseDoubleClick);
             // 
             // toolTabStrip1
             // 
@@ -1442,31 +1450,31 @@ namespace Kaliz
             this.toolTabStrip2.TabStop = false;
             this.toolTabStrip2.ThemeName = "MaterialTeal";
             // 
-            // Dclipboard
+            // Doutput
             // 
-            this.Dclipboard.Caption = null;
-            this.Dclipboard.Controls.Add(this.radlistclip);
-            this.Dclipboard.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.Dclipboard.Location = new System.Drawing.Point(4, 52);
-            this.Dclipboard.Name = "Dclipboard";
-            this.Dclipboard.PreviousDockState = Telerik.WinControls.UI.Docking.DockState.Docked;
-            this.Dclipboard.Size = new System.Drawing.Size(1038, 114);
-            this.Dclipboard.Text = "ClipBoard";
-            this.Dclipboard.ToolCaptionButtons = Telerik.WinControls.UI.Docking.ToolStripCaptionButtons.AutoHide;
+            this.Doutput.Caption = null;
+            this.Doutput.Controls.Add(this.ListOutput);
+            this.Doutput.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            this.Doutput.Location = new System.Drawing.Point(4, 52);
+            this.Doutput.Name = "Doutput";
+            this.Doutput.PreviousDockState = Telerik.WinControls.UI.Docking.DockState.Docked;
+            this.Doutput.Size = new System.Drawing.Size(1038, 114);
+            this.Doutput.Text = "Output";
+            this.Doutput.ToolCaptionButtons = Telerik.WinControls.UI.Docking.ToolStripCaptionButtons.AutoHide;
             // 
-            // radlistclip
+            // ListOutput
             // 
-            this.radlistclip.AllowDragDrop = true;
-            this.radlistclip.AllowEdit = false;
-            this.radlistclip.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.radlistclip.GroupItemSize = new System.Drawing.Size(200, 36);
-            this.radlistclip.ItemSize = new System.Drawing.Size(200, 36);
-            this.radlistclip.Location = new System.Drawing.Point(0, 0);
-            this.radlistclip.Name = "radlistclip";
-            this.radlistclip.Size = new System.Drawing.Size(1038, 114);
-            this.radlistclip.TabIndex = 0;
-            this.radlistclip.ThemeName = "MaterialTeal";
-            this.radlistclip.ItemMouseDoubleClick += new Telerik.WinControls.UI.ListViewItemEventHandler(this.radlistclip_ItemMouseDoubleClick);
+            this.ListOutput.AllowEdit = false;
+            this.ListOutput.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ListOutput.GroupItemSize = new System.Drawing.Size(200, 36);
+            this.ListOutput.ItemSize = new System.Drawing.Size(200, 36);
+            this.ListOutput.Location = new System.Drawing.Point(0, 0);
+            this.ListOutput.Name = "ListOutput";
+            this.ListOutput.Size = new System.Drawing.Size(1038, 114);
+            this.ListOutput.TabIndex = 0;
+            this.ListOutput.ThemeName = "MaterialTeal";
+            this.ListOutput.SelectedItemChanged += new System.EventHandler(this.ListOutput_SelectedItemChanged);
+            this.ListOutput.ItemMouseClick += new Telerik.WinControls.UI.ListViewItemEventHandler(this.ListOutput_ItemMouseClick);
             // 
             // DBookmarksList
             // 
@@ -1485,16 +1493,16 @@ namespace Kaliz
             this.bookmarkList.AllowArbitraryItemHeight = true;
             this.bookmarkList.AllowEdit = false;
             this.bookmarkList.AutoSizeColumnsMode = Telerik.WinControls.UI.ListViewAutoSizeColumnsMode.Fill;
-            listViewDetailColumn1.HeaderText = "Line";
-            listViewDetailColumn1.Width = 217.6724F;
-            listViewDetailColumn2.HeaderText = "Name";
-            listViewDetailColumn2.Width = 413.8829F;
-            listViewDetailColumn3.HeaderText = "File";
-            listViewDetailColumn3.Width = 408.4447F;
+            listViewDetailColumn4.HeaderText = "Line";
+            listViewDetailColumn4.Width = 217.6724F;
+            listViewDetailColumn5.HeaderText = "Name";
+            listViewDetailColumn5.Width = 413.8829F;
+            listViewDetailColumn6.HeaderText = "File";
+            listViewDetailColumn6.Width = 408.4447F;
             this.bookmarkList.Columns.AddRange(new Telerik.WinControls.UI.ListViewDetailColumn[] {
-            listViewDetailColumn1,
-            listViewDetailColumn2,
-            listViewDetailColumn3});
+            listViewDetailColumn4,
+            listViewDetailColumn5,
+            listViewDetailColumn6});
             this.bookmarkList.Dock = System.Windows.Forms.DockStyle.Fill;
             this.bookmarkList.EnableColumnSort = true;
             this.bookmarkList.GroupItemSize = new System.Drawing.Size(200, 32);
@@ -1930,11 +1938,11 @@ namespace Kaliz
             // 
             this.contextMenuData.ThemeName = "MaterialTeal";
             // 
-            // LJava
+            // DSetBreak
             // 
-            this.LJava.Name = "LJava";
-            this.LJava.Text = "Learn Java from W3 School";
-            this.LJava.Click += new System.EventHandler(this.LJava_Click);
+            this.DSetBreak.Name = "DSetBreak";
+            this.DSetBreak.Text = "Set Break Point";
+            this.DSetBreak.Click += new System.EventHandler(this.DSetBreak_Click);
             // 
             // Kaliz
             // 
@@ -1958,8 +1966,8 @@ namespace Kaliz
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Kaliz_FormClosed);
             ((System.ComponentModel.ISupportInitialize)(this.DockPar)).EndInit();
             this.DockPar.ResumeLayout(false);
-            this.Doutput.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.ListOutput)).EndInit();
+            this.Dclipboard.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.radlistclip)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.toolTabStrip1)).EndInit();
             this.toolTabStrip1.ResumeLayout(false);
             this.DWorkingDirectory.ResumeLayout(false);
@@ -1991,8 +1999,8 @@ namespace Kaliz
             ((System.ComponentModel.ISupportInitialize)(this.radButton1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.toolTabStrip2)).EndInit();
             this.toolTabStrip2.ResumeLayout(false);
-            this.Dclipboard.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.radlistclip)).EndInit();
+            this.Doutput.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.ListOutput)).EndInit();
             this.DBookmarksList.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.bookmarkList)).EndInit();
             this.DClosedFiles.ResumeLayout(false);
@@ -2208,5 +2216,6 @@ namespace Kaliz
         private RadMenuItem FReopenLineBreak;
         private RadMenuItem VHideDir;
         private RadMenuItem LJava;
+        private RadMenuItem DSetBreak;
     }
 }

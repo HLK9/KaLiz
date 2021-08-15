@@ -5077,6 +5077,13 @@ End;
         {
             Process.Start(@"https://www.w3schools.com/java/");
         }
+
+        private void DSetBreak_Click(object sender, EventArgs e)
+        {
+            BrushInfo brushInfo = new BrushInfo(Color.DarkRed);
+            TabHienTai.BookmarkAdd(TabHienTai.CurrentLine, brushInfo);
+            TabHienTai.BookmarkGet();
+        }
     }
 }
 
