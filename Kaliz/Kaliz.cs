@@ -43,12 +43,12 @@ namespace Kaliz
         private string DiffOldText;
         private string DiffNewText;
         private bool highlight = true;
-        private bool showClipboard = true;
-        private bool showClosed = true;
-        private bool showDataReceived = true;
-        private bool showBookmarkList = true;
-        private bool showOutput = true;
-        private bool showDirectory = true;
+        private bool showClipboard = false;
+        private bool showClosed = false;
+        private bool showDataReceived = false;
+        private bool showBookmarkList = false;
+        private bool showOutput = false;
+        private bool showDirectory = false;
         private bool BuildComplete = true;
 
         private int chiso { get; set; }
@@ -2719,7 +2719,7 @@ End;
         {
             try
             {
-                TabHienTai.ReplaceDialog();
+                TabHienTai.ShowReplaceDialog();
             }
             catch { }
 
@@ -2729,7 +2729,7 @@ End;
         {
             try
             {
-                TabHienTai.GoToDialog();
+                TabHienTai.ShowGoToDialog();
             }
             catch { }
 
@@ -3935,50 +3935,80 @@ End;
 
         private void VOutput_Click(object sender, EventArgs e)
         {
-            if (showOutput==true)
+            try
             {
-                showOutput = false;
-                Doutput.Hide();
-                VOutput.Text = "Show Output";
+                if (showOutput == true)
+                {
+                    VOutput.Text = "Show Output";
+                    showOutput = false;
+                    Doutput.AutoHide();
+
+                }
+                else
+                {
+                    Doutput.DockState = DockState.Docked;
+                    VOutput.Text = "Hide Output";
+                    showOutput = true;
+
+                }
             }
-            else
+            catch
             {
-                showOutput = true;
-                Doutput.Show();
-                VOutput.Text = "Hide Output";
+
             }
+
         }
 
         private void VClosedList_Click(object sender, EventArgs e)
         {
-            if(showClosed == true)
+            try
             {
-                DClosedFiles.Hide();
-                showClosed = false;
-                VClosedList.Text = "Show Closed List";
+                if (showClosed == true)
+                {
+                    VClosedList.Text = "Show Closed List";
+                    showClosed = false;
+                    DClosedFiles.AutoHide();
+
+                }
+                else
+                {
+                    DClosedFiles.DockState = DockState.Docked;
+                    VClosedList.Text = "Hide Closed List";
+                    showClosed = true;
+
+                }
             }
-            else
+            catch
             {
-                DClosedFiles.Show();
-                showClosed = true;
-                VClosedList.Text = "Hide Closed List";
+
             }
+
         }
 
         private void VClipboardList_Click(object sender, EventArgs e)
         {
-            if(showClipboard == true)
+            try
             {
-                Dclipboard.Hide();
-                showClipboard = false;
-                VClipboardList.Text = "Show Clipboard List";
+                if (showClipboard == true)
+                {
+                    VClipboardList.Text = "Show Clipboard List";
+                    showClipboard = false;
+                    Dclipboard.AutoHide();
+
+                }
+                else
+                {
+                    Dclipboard.DockState = DockState.Docked;
+                    VClipboardList.Text = "Hide Clipboard List";
+                    showClipboard = true;
+
+                }
             }
-            else
+            catch
             {
-                Dclipboard.Show();
-                showClipboard = true;
-                VClipboardList.Text = "Hide Clipboard";
+
             }
+
         }
 
         private void radMenuItem1_Click(object sender, EventArgs e)
@@ -4850,17 +4880,27 @@ End;
 
         private void VDataReceived_Click(object sender, EventArgs e)
         {
-            if(showDataReceived == false)
+            try
             {
-                DDataReceived.Show();
-                VDataReceived.Text = "Hide Data Received List";
-                showDataReceived = true;
-            }else
-            {
-                DDataReceived.Hide();
-                VDataReceived.Text = "Show Data Received List";
-                showDataReceived = false;
+                if (showDataReceived == true)
+                {
+                    VDataReceived.Text = "Show Data Recieved List";
+                    showDataReceived = false;
+                    DDataReceived.AutoHide();
+
+                }
+                else
+                {
+                    DDataReceived.DockState = DockState.Docked;
+                    VDataReceived.Text = "Hide Data Recieved List";
+                    showDataReceived = true;
+                }
             }
+            catch
+            {
+
+            }
+
         }
 
         private void OVitrualSpace_Click(object sender, EventArgs e)
@@ -4947,18 +4987,28 @@ End;
 
         private void VBookmarkList_Click(object sender, EventArgs e)
         {
-            if(showBookmarkList == true)
-            {                
-                DBookmarksList.Hide();
-                VBookmarkList.Text = "Show Bookmarks List";
-                showBookmarkList = false;
-            }
-            else
+            try
             {
-                DBookmarksList.Show();
-                VBookmarkList.Text = "Hide Bookmarks List";
-                showBookmarkList = true;
+                if (showBookmarkList == true)
+                {
+                    VBookmarkList.Text = "Show Bookmarks List";
+                    showBookmarkList = false;
+                    DBookmarksList.AutoHide();
+
+                }
+                else
+                {
+                    DBookmarksList.DockState = DockState.Docked;
+                    VBookmarkList.Text = "Hide Bookmarks List";
+                    showBookmarkList = true;
+
+                }
             }
+            catch
+            {
+
+            }
+
         }
         //////////////Directory//////////////
         public string PathDirectory;
@@ -5121,19 +5171,28 @@ End;
 
         private void VHideDir_Click(object sender, EventArgs e)
         {
-            if(showDirectory == false)
+            try
             {
-                VHideDir.Text = "Hide Working Directory";
-                DWorkingDirectory.Show();
-                showDirectory = true;
+                if (showDirectory == true)
+                {
+                    VHideDir.Text = "Show Working Directory List";
+                    showDirectory = false;
+                    DWorkingDirectory.AutoHide();
+
+                }
+                else
+                {
+                    DWorkingDirectory.DockState = DockState.Docked;
+                    VHideDir.Text = "Hide Working Directory List";
+                    showDirectory = true;
+
+                }
             }
-            else
+            catch
             {
 
-                VHideDir.Text = "Show Working Directory";
-                DWorkingDirectory.Hide();
-                showDirectory = false;
             }
+
         }
 
         private void LJava_Click(object sender, EventArgs e)
@@ -5154,21 +5213,27 @@ End;
 
         private void BreakPointSet_Click(object sender, EventArgs e)
         {
-            if (File.Exists(TabHienTai.FileName))
+            try
             {
-                BrushInfo sd = new BrushInfo(Color.DarkRed);
-                TabHienTai.BookmarkAdd(TabHienTai.CurrentLine, sd);
-                radListBreakpoint.Items.Add(TabHienTai.CurrentLine, TabHienTai.FileName);
+                if (File.Exists(TabHienTai.FileName))
+                {
+                    BrushInfo sd = new BrushInfo(Color.DarkRed);
+                    TabHienTai.BookmarkAdd(TabHienTai.CurrentLine, sd);
+                    radListBreakpoint.Items.Add(TabHienTai.CurrentLine, TabHienTai.FileName);
+                }
             }
+            catch { }
+           
         }
 
         private void BreakPointRemove_Click(object sender, EventArgs e)
         {
             try
             {
-                TabHienTai.BookmarkRemove(TabHienTai.CurrentLine);
+                
                 if (File.Exists(TabHienTai.FileName))
                 {
+                    TabHienTai.BookmarkRemove(TabHienTai.CurrentLine);
                     foreach (var item in radListBreakpoint.Items)
                     {
                         if (item[0].ToString() == TabHienTai.CurrentLine.ToString() && TabHienTai.FileName == item[1].ToString())
@@ -5177,6 +5242,42 @@ End;
                 }               
             }
             catch { }
+        }
+        private bool showBreakPointList = false;
+        private void VBreakPointList_Click(object sender, EventArgs e)
+        {
+            try
+            {
+               if(showBreakPointList==true)
+                {
+                    VBreakPointList.Text = "Show Break Point List";
+                    showBreakPointList = false;
+                    DBreakPointList.AutoHide();
+
+                }else
+                {
+                    DBreakPointList.DockState = DockState.Docked;
+                    VBreakPointList.Text = "Hide Break Point List";
+                    showBreakPointList = true;
+                    
+                }
+            }
+            catch
+            {
+
+            }
+          
+        }
+
+        private void radMenuItem1_Click_3(object sender, EventArgs e)
+        {
+            DBreakPointList.Hide();
+        }
+
+        private void radMenuItem3_Click_4(object sender, EventArgs e)
+        {
+            
+
         }
     }
 }

@@ -35,11 +35,11 @@ namespace Kaliz
         {
             this.components = new System.ComponentModel.Container();
             Telerik.WinControls.UI.Docking.AutoHideGroup autoHideGroup2 = new Telerik.WinControls.UI.Docking.AutoHideGroup();
+            Telerik.WinControls.UI.ListViewDetailColumn listViewDetailColumn6 = new Telerik.WinControls.UI.ListViewDetailColumn("Column 0", "Line");
+            Telerik.WinControls.UI.ListViewDetailColumn listViewDetailColumn7 = new Telerik.WinControls.UI.ListViewDetailColumn("Column 1", "File Name");
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Kaliz));
             Telerik.WinControls.UI.ListViewDetailColumn listViewDetailColumn1 = new Telerik.WinControls.UI.ListViewDetailColumn("Column 0", "Line");
-            Telerik.WinControls.UI.ListViewDetailColumn listViewDetailColumn2 = new Telerik.WinControls.UI.ListViewDetailColumn("Column 1", "File Name");
-            Telerik.WinControls.UI.ListViewDetailColumn listViewDetailColumn3 = new Telerik.WinControls.UI.ListViewDetailColumn("Column 0", "Line");
-            Telerik.WinControls.UI.ListViewDetailColumn listViewDetailColumn4 = new Telerik.WinControls.UI.ListViewDetailColumn("Column 1", "Name");
+            Telerik.WinControls.UI.ListViewDetailColumn listViewDetailColumn2 = new Telerik.WinControls.UI.ListViewDetailColumn("Column 1", "Name");
             Telerik.WinControls.UI.ListViewDetailColumn listViewDetailColumn8 = new Telerik.WinControls.UI.ListViewDetailColumn("Column 2", "File");
             this.dockWindowPlaceholder1 = new Telerik.WinControls.UI.Docking.DockWindowPlaceholder();
             this.MFile = new Telerik.WinControls.UI.RadMenuItem();
@@ -111,10 +111,12 @@ namespace Kaliz
             this.BConfig = new Telerik.WinControls.UI.RadMenuItem();
             this.MDebug = new Telerik.WinControls.UI.RadMenuItem();
             this.DEnable = new Telerik.WinControls.UI.RadMenuItem();
+            this.DBreak = new Telerik.WinControls.UI.RadMenuItem();
+            this.BreakPointSet = new Telerik.WinControls.UI.RadMenuItem();
+            this.BreakPointRemove = new Telerik.WinControls.UI.RadMenuItem();
             this.DOpenGDB = new Telerik.WinControls.UI.RadMenuItem();
             this.DeJDB = new Telerik.WinControls.UI.RadMenuItem();
             this.DebugPython = new Telerik.WinControls.UI.RadMenuItem();
-            this.DBreak = new Telerik.WinControls.UI.RadMenuItem();
             this.MOptions = new Telerik.WinControls.UI.RadMenuItem();
             this.OEnableContext = new Telerik.WinControls.UI.RadMenuItem();
             this.OLock = new Telerik.WinControls.UI.RadMenuItem();
@@ -150,8 +152,8 @@ namespace Kaliz
             this.HLookUp = new Telerik.WinControls.UI.RadMenuItem();
             this.HAbout = new Telerik.WinControls.UI.RadMenuItem();
             this.DockPar = new Telerik.WinControls.UI.Docking.RadDock();
-            this.DDataReceived = new Telerik.WinControls.UI.Docking.ToolWindow();
-            this.listDataReceived = new Telerik.WinControls.UI.RadListView();
+            this.DBreakPointList = new Telerik.WinControls.UI.Docking.ToolWindow();
+            this.radListBreakpoint = new Telerik.WinControls.UI.RadListView();
             this.toolTabStrip1 = new Telerik.WinControls.UI.Docking.ToolTabStrip();
             this.DWorkingDirectory = new Telerik.WinControls.UI.Docking.ToolWindow();
             this.treeDirectory = new Telerik.WinControls.UI.RadTreeView();
@@ -176,8 +178,6 @@ namespace Kaliz
             this.radLabel6 = new Telerik.WinControls.UI.RadLabel();
             this.radButton1 = new Telerik.WinControls.UI.RadButton();
             this.toolTabStrip2 = new Telerik.WinControls.UI.Docking.ToolTabStrip();
-            this.DBreakPointList = new Telerik.WinControls.UI.Docking.ToolWindow();
-            this.radListBreakpoint = new Telerik.WinControls.UI.RadListView();
             this.Doutput = new Telerik.WinControls.UI.Docking.ToolWindow();
             this.ListOutput = new Telerik.WinControls.UI.RadListView();
             this.Dclipboard = new Telerik.WinControls.UI.Docking.ToolWindow();
@@ -186,6 +186,8 @@ namespace Kaliz
             this.bookmarkList = new Telerik.WinControls.UI.RadListView();
             this.DClosedFiles = new Telerik.WinControls.UI.Docking.ToolWindow();
             this.listClosedFiles = new Telerik.WinControls.UI.RadListView();
+            this.DDataReceived = new Telerik.WinControls.UI.Docking.ToolWindow();
+            this.listDataReceived = new Telerik.WinControls.UI.RadListView();
             this.MBookmark = new Telerik.WinControls.UI.RadMenuItem();
             this.BBookmark = new Telerik.WinControls.UI.RadMenuItem();
             this.radMenuItem2 = new Telerik.WinControls.UI.RadMenuItem();
@@ -214,6 +216,7 @@ namespace Kaliz
             this.VBookmarkList = new Telerik.WinControls.UI.RadMenuItem();
             this.VDataReceived = new Telerik.WinControls.UI.RadMenuItem();
             this.VHideDir = new Telerik.WinControls.UI.RadMenuItem();
+            this.VBreakPointList = new Telerik.WinControls.UI.RadMenuItem();
             this.VSplitHorizon = new Telerik.WinControls.UI.RadMenuItem();
             this.VSplitVertical = new Telerik.WinControls.UI.RadMenuItem();
             this.MWindows = new Telerik.WinControls.UI.RadMenuItem();
@@ -239,15 +242,13 @@ namespace Kaliz
             this.DataDiff = new Telerik.WinControls.UI.RadMenuItem();
             this.SPush = new Telerik.WinControls.UI.RadMenuItem();
             this.SDisconnect = new Telerik.WinControls.UI.RadMenuItem();
-            this.MenuTop = new Telerik.WinControls.UI.RadMenu();
             this.contextMenuData = new Telerik.WinControls.UI.RadContextMenu(this.components);
             this.contextMenuDirectory = new Telerik.WinControls.UI.RadContextMenu(this.components);
-            this.BreakPointSet = new Telerik.WinControls.UI.RadMenuItem();
-            this.BreakPointRemove = new Telerik.WinControls.UI.RadMenuItem();
+            this.MenuTop = new Telerik.WinControls.UI.RadMenu();
             ((System.ComponentModel.ISupportInitialize)(this.DockPar)).BeginInit();
             this.DockPar.SuspendLayout();
-            this.DDataReceived.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.listDataReceived)).BeginInit();
+            this.DBreakPointList.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.radListBreakpoint)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.toolTabStrip1)).BeginInit();
             this.toolTabStrip1.SuspendLayout();
             this.DWorkingDirectory.SuspendLayout();
@@ -277,8 +278,6 @@ namespace Kaliz
             ((System.ComponentModel.ISupportInitialize)(this.radButton1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.toolTabStrip2)).BeginInit();
             this.toolTabStrip2.SuspendLayout();
-            this.DBreakPointList.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.radListBreakpoint)).BeginInit();
             this.Doutput.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ListOutput)).BeginInit();
             this.Dclipboard.SuspendLayout();
@@ -287,9 +286,11 @@ namespace Kaliz
             ((System.ComponentModel.ISupportInitialize)(this.bookmarkList)).BeginInit();
             this.DClosedFiles.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.listClosedFiles)).BeginInit();
+            this.DDataReceived.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.listDataReceived)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.toolTabStrip3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.MenuTop)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MenuTop)).BeginInit();
             this.SuspendLayout();
             // 
             // dockWindowPlaceholder1
@@ -811,6 +812,26 @@ namespace Kaliz
             this.DEnable.Text = "Enable Debug";
             this.DEnable.Click += new System.EventHandler(this.DEnable_Click);
             // 
+            // DBreak
+            // 
+            this.DBreak.Items.AddRange(new Telerik.WinControls.RadItem[] {
+            this.BreakPointSet,
+            this.BreakPointRemove});
+            this.DBreak.Name = "DBreak";
+            this.DBreak.Text = "Break Point";
+            // 
+            // BreakPointSet
+            // 
+            this.BreakPointSet.Name = "BreakPointSet";
+            this.BreakPointSet.Text = "Set Break Point";
+            this.BreakPointSet.Click += new System.EventHandler(this.BreakPointSet_Click);
+            // 
+            // BreakPointRemove
+            // 
+            this.BreakPointRemove.Name = "BreakPointRemove";
+            this.BreakPointRemove.Text = "Remove Break Point";
+            this.BreakPointRemove.Click += new System.EventHandler(this.BreakPointRemove_Click);
+            // 
             // DOpenGDB
             // 
             this.DOpenGDB.Name = "DOpenGDB";
@@ -829,14 +850,6 @@ namespace Kaliz
             this.DebugPython.Name = "DebugPython";
             this.DebugPython.Text = "Open PDB Debug For Pyhon";
             this.DebugPython.Click += new System.EventHandler(this.DebugPython_Click);
-            // 
-            // DBreak
-            // 
-            this.DBreak.Items.AddRange(new Telerik.WinControls.RadItem[] {
-            this.BreakPointSet,
-            this.BreakPointRemove});
-            this.DBreak.Name = "DBreak";
-            this.DBreak.Text = "Break Point";
             // 
             // MOptions
             // 
@@ -1078,7 +1091,7 @@ namespace Kaliz
             // 
             // DockPar
             // 
-            this.DockPar.ActiveWindow = this.DBookmarks;
+            this.DockPar.ActiveWindow = this.DBreakPointList;
             this.DockPar.CausesValidation = false;
             this.DockPar.Controls.Add(this.toolTabStrip1);
             this.DockPar.Controls.Add(this.radSplitContainer1);
@@ -1100,30 +1113,41 @@ namespace Kaliz
             this.DockPar.TabStop = false;
             this.DockPar.ThemeName = "MaterialTeal";
             // 
-            // DDataReceived
+            // DBreakPointList
             // 
-            this.DDataReceived.Caption = null;
-            this.DDataReceived.Controls.Add(this.listDataReceived);
-            this.DDataReceived.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.DDataReceived.Location = new System.Drawing.Point(4, 52);
-            this.DDataReceived.Name = "DDataReceived";
-            this.DDataReceived.PreviousDockState = Telerik.WinControls.UI.Docking.DockState.Docked;
-            this.DDataReceived.Size = new System.Drawing.Size(1038, 114);
-            this.DDataReceived.Text = "Data Received";
-            this.DDataReceived.ToolCaptionButtons = Telerik.WinControls.UI.Docking.ToolStripCaptionButtons.AutoHide;
+            this.DBreakPointList.Caption = null;
+            this.DBreakPointList.Controls.Add(this.radListBreakpoint);
+            this.DBreakPointList.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            this.DBreakPointList.Location = new System.Drawing.Point(4, 52);
+            this.DBreakPointList.Name = "DBreakPointList";
+            this.DBreakPointList.PreviousDockState = Telerik.WinControls.UI.Docking.DockState.Docked;
+            this.DBreakPointList.Size = new System.Drawing.Size(1038, 114);
+            this.DBreakPointList.Text = "Break Point List";
+            this.DBreakPointList.ToolCaptionButtons = Telerik.WinControls.UI.Docking.ToolStripCaptionButtons.AutoHide;
             // 
-            // listDataReceived
+            // radListBreakpoint
             // 
-            this.listDataReceived.AllowEdit = false;
-            this.listDataReceived.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.listDataReceived.GroupItemSize = new System.Drawing.Size(200, 36);
-            this.listDataReceived.ItemSize = new System.Drawing.Size(200, 36);
-            this.listDataReceived.Location = new System.Drawing.Point(0, 0);
-            this.listDataReceived.Name = "listDataReceived";
-            this.listDataReceived.Size = new System.Drawing.Size(1038, 114);
-            this.listDataReceived.TabIndex = 0;
-            this.listDataReceived.ThemeName = "MaterialTeal";
-            this.listDataReceived.MouseClick += new System.Windows.Forms.MouseEventHandler(this.listDataReceived_MouseClick);
+            this.radListBreakpoint.AllowArbitraryItemHeight = true;
+            this.radListBreakpoint.AllowRemove = false;
+            this.radListBreakpoint.AutoSizeColumnsMode = Telerik.WinControls.UI.ListViewAutoSizeColumnsMode.Fill;
+            listViewDetailColumn6.HeaderText = "Line";
+            listViewDetailColumn6.Width = 520.4995F;
+            listViewDetailColumn7.HeaderText = "File Name";
+            listViewDetailColumn7.Width = 518.5005F;
+            this.radListBreakpoint.Columns.AddRange(new Telerik.WinControls.UI.ListViewDetailColumn[] {
+            listViewDetailColumn6,
+            listViewDetailColumn7});
+            this.radListBreakpoint.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.radListBreakpoint.GroupItemSize = new System.Drawing.Size(200, 32);
+            this.radListBreakpoint.ItemSize = new System.Drawing.Size(200, 32);
+            this.radListBreakpoint.ItemSpacing = -1;
+            this.radListBreakpoint.Location = new System.Drawing.Point(0, 0);
+            this.radListBreakpoint.Name = "radListBreakpoint";
+            this.radListBreakpoint.Size = new System.Drawing.Size(1038, 114);
+            this.radListBreakpoint.TabIndex = 0;
+            this.radListBreakpoint.ThemeName = "MaterialTeal";
+            this.radListBreakpoint.ViewType = Telerik.WinControls.UI.ListViewType.DetailsView;
+            this.radListBreakpoint.MouseClick += new System.Windows.Forms.MouseEventHandler(this.radListBreakpoint_MouseClick);
             // 
             // toolTabStrip1
             // 
@@ -1445,19 +1469,19 @@ namespace Kaliz
             // 
             this.toolTabStrip2.CanUpdateChildIndex = true;
             this.toolTabStrip2.CausesValidation = false;
-            this.toolTabStrip2.Controls.Add(this.DBreakPointList);
             this.toolTabStrip2.Controls.Add(this.Doutput);
             this.toolTabStrip2.Controls.Add(this.Dclipboard);
             this.toolTabStrip2.Controls.Add(this.DBookmarksList);
             this.toolTabStrip2.Controls.Add(this.DClosedFiles);
             this.toolTabStrip2.Controls.Add(this.DDataReceived);
+            this.toolTabStrip2.Controls.Add(this.DBreakPointList);
             this.toolTabStrip2.Location = new System.Drawing.Point(0, 502);
             this.toolTabStrip2.Name = "toolTabStrip2";
             // 
             // 
             // 
             this.toolTabStrip2.RootElement.MinSize = new System.Drawing.Size(25, 25);
-            this.toolTabStrip2.SelectedIndex = 0;
+            this.toolTabStrip2.SelectedIndex = 5;
             this.toolTabStrip2.ShowItemPinButton = true;
             this.toolTabStrip2.Size = new System.Drawing.Size(1046, 196);
             this.toolTabStrip2.SizeInfo.AbsoluteSize = new System.Drawing.Size(200, 196);
@@ -1465,37 +1489,6 @@ namespace Kaliz
             this.toolTabStrip2.TabIndex = 1;
             this.toolTabStrip2.TabStop = false;
             this.toolTabStrip2.ThemeName = "MaterialTeal";
-            // 
-            // DBreakPointList
-            // 
-            this.DBreakPointList.Caption = null;
-            this.DBreakPointList.Controls.Add(this.radListBreakpoint);
-            this.DBreakPointList.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.DBreakPointList.Location = new System.Drawing.Point(4, 52);
-            this.DBreakPointList.Name = "DBreakPointList";
-            this.DBreakPointList.PreviousDockState = Telerik.WinControls.UI.Docking.DockState.Docked;
-            this.DBreakPointList.Size = new System.Drawing.Size(1038, 114);
-            this.DBreakPointList.Text = "Break Point List";
-            // 
-            // radListBreakpoint
-            // 
-            this.radListBreakpoint.AllowRemove = false;
-            listViewDetailColumn1.HeaderText = "Line";
-            listViewDetailColumn2.HeaderText = "File Name";
-            this.radListBreakpoint.Columns.AddRange(new Telerik.WinControls.UI.ListViewDetailColumn[] {
-            listViewDetailColumn1,
-            listViewDetailColumn2});
-            this.radListBreakpoint.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.radListBreakpoint.GroupItemSize = new System.Drawing.Size(200, 32);
-            this.radListBreakpoint.ItemSize = new System.Drawing.Size(200, 32);
-            this.radListBreakpoint.ItemSpacing = -1;
-            this.radListBreakpoint.Location = new System.Drawing.Point(0, 0);
-            this.radListBreakpoint.Name = "radListBreakpoint";
-            this.radListBreakpoint.Size = new System.Drawing.Size(1038, 114);
-            this.radListBreakpoint.TabIndex = 0;
-            this.radListBreakpoint.ThemeName = "MaterialTeal";
-            this.radListBreakpoint.ViewType = Telerik.WinControls.UI.ListViewType.DetailsView;
-            this.radListBreakpoint.MouseClick += new System.Windows.Forms.MouseEventHandler(this.radListBreakpoint_MouseClick);
             // 
             // Doutput
             // 
@@ -1557,7 +1550,7 @@ namespace Kaliz
             this.DBookmarksList.Location = new System.Drawing.Point(4, 52);
             this.DBookmarksList.Name = "DBookmarksList";
             this.DBookmarksList.PreviousDockState = Telerik.WinControls.UI.Docking.DockState.Docked;
-            this.DBookmarksList.Size = new System.Drawing.Size(1057, 114);
+            this.DBookmarksList.Size = new System.Drawing.Size(1038, 114);
             this.DBookmarksList.Text = "Bookmarks";
             this.DBookmarksList.ToolCaptionButtons = Telerik.WinControls.UI.Docking.ToolStripCaptionButtons.AutoHide;
             // 
@@ -1566,15 +1559,15 @@ namespace Kaliz
             this.bookmarkList.AllowArbitraryItemHeight = true;
             this.bookmarkList.AllowEdit = false;
             this.bookmarkList.AutoSizeColumnsMode = Telerik.WinControls.UI.ListViewAutoSizeColumnsMode.Fill;
-            listViewDetailColumn3.HeaderText = "Line";
-            listViewDetailColumn3.Width = 222.2305F;
-            listViewDetailColumn4.HeaderText = "Name";
-            listViewDetailColumn4.Width = 421.6483F;
+            listViewDetailColumn1.HeaderText = "Line";
+            listViewDetailColumn1.Width = 219.3925F;
+            listViewDetailColumn2.HeaderText = "Name";
+            listViewDetailColumn2.Width = 414.4867F;
             listViewDetailColumn8.HeaderText = "File";
-            listViewDetailColumn8.Width = 415.1212F;
+            listViewDetailColumn8.Width = 406.1208F;
             this.bookmarkList.Columns.AddRange(new Telerik.WinControls.UI.ListViewDetailColumn[] {
-            listViewDetailColumn3,
-            listViewDetailColumn4,
+            listViewDetailColumn1,
+            listViewDetailColumn2,
             listViewDetailColumn8});
             this.bookmarkList.Dock = System.Windows.Forms.DockStyle.Fill;
             this.bookmarkList.EnableColumnSort = true;
@@ -1583,7 +1576,7 @@ namespace Kaliz
             this.bookmarkList.ItemSpacing = -1;
             this.bookmarkList.Location = new System.Drawing.Point(0, 0);
             this.bookmarkList.Name = "bookmarkList";
-            this.bookmarkList.Size = new System.Drawing.Size(1057, 114);
+            this.bookmarkList.Size = new System.Drawing.Size(1038, 114);
             this.bookmarkList.TabIndex = 0;
             this.bookmarkList.ThemeName = "MaterialTeal";
             this.bookmarkList.ViewType = Telerik.WinControls.UI.ListViewType.DetailsView;
@@ -1612,6 +1605,31 @@ namespace Kaliz
             this.listClosedFiles.TabIndex = 0;
             this.listClosedFiles.ThemeName = "MaterialTeal";
             this.listClosedFiles.ItemMouseDoubleClick += new Telerik.WinControls.UI.ListViewItemEventHandler(this.listClosedFiles_ItemMouseDoubleClick);
+            // 
+            // DDataReceived
+            // 
+            this.DDataReceived.Caption = null;
+            this.DDataReceived.Controls.Add(this.listDataReceived);
+            this.DDataReceived.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            this.DDataReceived.Location = new System.Drawing.Point(4, 52);
+            this.DDataReceived.Name = "DDataReceived";
+            this.DDataReceived.PreviousDockState = Telerik.WinControls.UI.Docking.DockState.Docked;
+            this.DDataReceived.Size = new System.Drawing.Size(1057, 114);
+            this.DDataReceived.Text = "Data Received";
+            this.DDataReceived.ToolCaptionButtons = Telerik.WinControls.UI.Docking.ToolStripCaptionButtons.AutoHide;
+            // 
+            // listDataReceived
+            // 
+            this.listDataReceived.AllowEdit = false;
+            this.listDataReceived.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.listDataReceived.GroupItemSize = new System.Drawing.Size(200, 36);
+            this.listDataReceived.ItemSize = new System.Drawing.Size(200, 36);
+            this.listDataReceived.Location = new System.Drawing.Point(0, 0);
+            this.listDataReceived.Name = "listDataReceived";
+            this.listDataReceived.Size = new System.Drawing.Size(1057, 114);
+            this.listDataReceived.TabIndex = 0;
+            this.listDataReceived.ThemeName = "MaterialTeal";
+            this.listDataReceived.MouseClick += new System.Windows.Forms.MouseEventHandler(this.listDataReceived_MouseClick);
             // 
             // MBookmark
             // 
@@ -1750,6 +1768,7 @@ namespace Kaliz
             this.VBookmarkList,
             this.VDataReceived,
             this.VHideDir,
+            this.VBreakPointList,
             this.VSplitHorizon,
             this.VSplitVertical});
             this.MView.Name = "MView";
@@ -1758,38 +1777,44 @@ namespace Kaliz
             // VOutput
             // 
             this.VOutput.Name = "VOutput";
-            this.VOutput.Text = "Hide Output";
+            this.VOutput.Text = "Show Output";
             this.VOutput.Click += new System.EventHandler(this.VOutput_Click);
             // 
             // VClosedList
             // 
             this.VClosedList.Name = "VClosedList";
-            this.VClosedList.Text = "Hide Closed List";
+            this.VClosedList.Text = "Show Closed List";
             this.VClosedList.Click += new System.EventHandler(this.VClosedList_Click);
             // 
             // VClipboardList
             // 
             this.VClipboardList.Name = "VClipboardList";
-            this.VClipboardList.Text = "Hide Clipboard List";
+            this.VClipboardList.Text = "Show Clipboard List";
             this.VClipboardList.Click += new System.EventHandler(this.VClipboardList_Click);
             // 
             // VBookmarkList
             // 
             this.VBookmarkList.Name = "VBookmarkList";
-            this.VBookmarkList.Text = "Hide Bookmarks List";
+            this.VBookmarkList.Text = "Show Bookmarks List";
             this.VBookmarkList.Click += new System.EventHandler(this.VBookmarkList_Click);
             // 
             // VDataReceived
             // 
             this.VDataReceived.Name = "VDataReceived";
-            this.VDataReceived.Text = "Hide Data Received List";
+            this.VDataReceived.Text = "Show Data Received List";
             this.VDataReceived.Click += new System.EventHandler(this.VDataReceived_Click);
             // 
             // VHideDir
             // 
             this.VHideDir.Name = "VHideDir";
-            this.VHideDir.Text = "Hide Working Directory";
+            this.VHideDir.Text = "Show Working Directory";
             this.VHideDir.Click += new System.EventHandler(this.VHideDir_Click);
+            // 
+            // VBreakPointList
+            // 
+            this.VBreakPointList.Name = "VBreakPointList";
+            this.VBreakPointList.Text = "Show Break Point List";
+            this.VBreakPointList.Click += new System.EventHandler(this.VBreakPointList_Click);
             // 
             // VSplitHorizon
             // 
@@ -1961,6 +1986,16 @@ namespace Kaliz
             this.SDisconnect.Text = "Disconnect";
             this.SDisconnect.Click += new System.EventHandler(this.SDisconnect_Click);
             // 
+            // contextMenuData
+            // 
+            this.contextMenuData.ThemeName = "MaterialTeal";
+            // 
+            // Kaliz
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.ClientSize = new System.Drawing.Size(1257, 735);
+            // 
             // MenuTop
             // 
             this.MenuTop.Items.AddRange(new Telerik.WinControls.RadItem[] {
@@ -1981,28 +2016,6 @@ namespace Kaliz
             this.MenuTop.Size = new System.Drawing.Size(1257, 37);
             this.MenuTop.TabIndex = 1;
             this.MenuTop.ThemeName = "MaterialTeal";
-            // 
-            // contextMenuData
-            // 
-            this.contextMenuData.ThemeName = "MaterialTeal";
-            // 
-            // BreakPointSet
-            // 
-            this.BreakPointSet.Name = "BreakPointSet";
-            this.BreakPointSet.Text = "Set Break Point";
-            this.BreakPointSet.Click += new System.EventHandler(this.BreakPointSet_Click);
-            // 
-            // BreakPointRemove
-            // 
-            this.BreakPointRemove.Name = "BreakPointRemove";
-            this.BreakPointRemove.Text = "Remove Break Point";
-            this.BreakPointRemove.Click += new System.EventHandler(this.BreakPointRemove_Click);
-            // 
-            // Kaliz
-            // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1257, 735);
             this.Controls.Add(this.DockPar);
             this.Controls.Add(this.MenuTop);
             this.HelpButton = true;
@@ -2020,8 +2033,8 @@ namespace Kaliz
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Kaliz_FormClosed);
             ((System.ComponentModel.ISupportInitialize)(this.DockPar)).EndInit();
             this.DockPar.ResumeLayout(false);
-            this.DDataReceived.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.listDataReceived)).EndInit();
+            this.DBreakPointList.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.radListBreakpoint)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.toolTabStrip1)).EndInit();
             this.toolTabStrip1.ResumeLayout(false);
             this.DWorkingDirectory.ResumeLayout(false);
@@ -2053,8 +2066,6 @@ namespace Kaliz
             ((System.ComponentModel.ISupportInitialize)(this.radButton1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.toolTabStrip2)).EndInit();
             this.toolTabStrip2.ResumeLayout(false);
-            this.DBreakPointList.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.radListBreakpoint)).EndInit();
             this.Doutput.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.ListOutput)).EndInit();
             this.Dclipboard.ResumeLayout(false);
@@ -2063,6 +2074,8 @@ namespace Kaliz
             ((System.ComponentModel.ISupportInitialize)(this.bookmarkList)).EndInit();
             this.DClosedFiles.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.listClosedFiles)).EndInit();
+            this.DDataReceived.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.listDataReceived)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.toolTabStrip3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.MenuTop)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this)).EndInit();
@@ -2250,7 +2263,6 @@ namespace Kaliz
         private RadMenuItem SDataReceived;
         private RadMenuItem DataAdd;
         private RadMenuItem DataDiff;
-        private RadMenu MenuTop;
         private RadMenuItem OClearDataReceived;
         private Telerik.WinControls.UI.Docking.ToolWindow DDataReceived;
         private RadListView listDataReceived;
@@ -2274,8 +2286,10 @@ namespace Kaliz
         private RadMenuItem DBreak;
         private Telerik.WinControls.UI.Docking.ToolWindow DBreakPointList;
         private RadListView radListBreakpoint;
-        private Telerik.WinControls.UI.Docking.DockWindowPlaceholder dockWindowPlaceholder1;
         private RadMenuItem BreakPointSet;
         private RadMenuItem BreakPointRemove;
+        private RadMenuItem VBreakPointList;
+        private Telerik.WinControls.UI.Docking.DockWindowPlaceholder dockWindowPlaceholder1;
+        private RadMenu MenuTop;
     }
 }
