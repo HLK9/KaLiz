@@ -113,6 +113,8 @@ namespace Kaliz
             contextMenuDirectory.Items.Add(contextDirectory_Rename);
             contextMenuDirectory.Items.Add(contextDirectory_Del);
             contextMenuDirectory.Items.Add(contextDirectory_Open);
+            //breakpoit Context
+        
 
             //Tooltip Mở Server
             SStartServer.ToolTipText = "Start Server with IP: " + GetLocalIP() + " Port: "+int.Parse(txtPort);
@@ -122,6 +124,42 @@ namespace Kaliz
             radlistclip.ToolTipTextNeeded += Radlistclip_ToolTipTextNeeded;
             DWorkingDirectory.AllowedDockState = ~AllowedDockState.Floating;
           
+
+
+
+
+        }
+
+        private void ContextRemoveBreakpoint_Click(object sender, EventArgs e)
+        {
+          foreach(var poit in radListBreakpoint.Items)
+            {
+                if(poit.Selected)
+                {
+                    try
+                    {
+
+                        int a = (Int32)poit[0];
+                        MessageBox.Show(a.ToString());
+                        foreach (var item in DockPar.DocumentManager.DocumentEnumerator)
+                        {
+                            if (item.Text == Path.GetFileName(poit[1].ToString()))
+                            {
+                                DockPar.ActivateWindow(item);
+                                radListBreakpoint.Items.Remove(radListBreakpoint.SelectedItem);
+                                TabHienTai.BookmarkRemove(a);
+                            }
+                    }
+                      
+                    }
+                    catch
+                    {
+
+                    }
+                }
+               
+            }
+           
 
 
 
@@ -456,6 +494,10 @@ namespace Kaliz
             radMenuItem2.Shortcuts.Add(new RadShortcut(Keys.Control | Keys.Shift, Keys.M));
             BBookmarkPre.Shortcuts.Add(new RadShortcut(Keys.Control, Keys.Oemcomma));
             BBookmarkNext.Shortcuts.Add(new RadShortcut(Keys.Control, Keys.OemPeriod));
+            //Debug
+            BreakPointSet.Shortcuts.Add(new RadShortcut(Keys.Alt,Keys.B));
+            BreakPointRemove.Shortcuts.Add(new RadShortcut(Keys.Alt,Keys.V));
+
         }
         /// <summary>
         /// Tao mot tep moi
@@ -2252,7 +2294,7 @@ End;
                     //
                     BienDich.StartInfo.FileName = "cmd";
                    // BienDich.StartInfo.WorkingDirectory = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\Kaliz" + @"Cmder\vendor\conemu-maximus5\ConEmu.exe";
-                    BienDich.StartInfo.Arguments = " /c " + "gdb32 " + DuongDanTepExe(ten);
+                    BienDich.StartInfo.Arguments = " /c " + "gdb32 " +infoDebug+ DuongDanTepExe(ten);
                     BienDich.Start();
                     //BienDich.BeginOutputReadLine();
 
@@ -2285,7 +2327,7 @@ End;
                     //
                     BienDich.StartInfo.FileName = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\Kaliz" + @"\Cmder\vendor\conemu-maximus5\ConEmu.exe";
                   
-                    BienDich.StartInfo.Arguments = "  -run gdb32 " + DuongDanTepExe(ten);
+                    BienDich.StartInfo.Arguments = "  -run gdb32 "+infoDebug + DuongDanTepExe(ten);
                     BienDich.Start();
                     //BienDich.BeginOutputReadLine();
 
@@ -2833,10 +2875,21 @@ End;
 
         private void DOpenGDB_Click(object sender, EventArgs e)
         {
+            infoDebug = "";
             try
             {
                 if (deBug == true)
                 {
+                    foreach(var item in radListBreakpoint.Items)
+                    {
+                        if(item[1].ToString()==TabHienTai.FileName)
+                        {
+                            infoDebug += " -ex \"break " + item[0] + "\" ";                          
+                        }
+                        
+                    }
+                   // infoDebug+= " -ex \"run\" ";
+                   
                     GDB(TabHienTai.FileName);
 
                 }
@@ -4221,24 +4274,34 @@ End;
 
         private void DebugPython_Click(object sender, EventArgs e)
         {
+            infoDebug = "";
             try
             {
+                foreach (var item in radListBreakpoint.Items)
+                {
+                    if (item[1].ToString() == TabHienTai.FileName)
+                    {
+                        infoDebug += " -c \"b " + item[0] + "\" ";
+                    }
+
+                }
                 if (File.Exists(TabHienTai.FileName))
                 {
+                    
                     if (Path.GetExtension(TabHienTai.FileName) == ".py" && deBug == true)
                     {
                         Process PythonDebugger = new Process();
                         if (ConsoleUse == "PowerShell")
                         {
                             PythonDebugger.StartInfo.FileName = "cmd";
-                            PythonDebugger.StartInfo.Arguments = "/c python -m pdb " + TabHienTai.FileName;
+                            PythonDebugger.StartInfo.Arguments = "/c python -m pdb "+infoDebug + TabHienTai.FileName;
                             PythonDebugger.Start();
                             PythonDebugger.WaitForExit();
                         }
                         else
                         {
                             PythonDebugger.StartInfo.FileName = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\Kaliz" + @"\Cmder\vendor\conemu-maximus5\ConEmu.exe";
-                            PythonDebugger.StartInfo.Arguments = "/run python -m pdb " + TabHienTai.FileName;
+                            PythonDebugger.StartInfo.Arguments = "/run python -m pdb "+infoDebug + TabHienTai.FileName;
                             PythonDebugger.Start();
                             PythonDebugger.WaitForExit();
 
@@ -5077,12 +5140,43 @@ End;
         {
             Process.Start(@"https://www.w3schools.com/java/");
         }
-
+        private string infoDebug;
         private void DSetBreak_Click(object sender, EventArgs e)
         {
-            BrushInfo brushInfo = new BrushInfo(Color.DarkRed);
-            TabHienTai.BookmarkAdd(TabHienTai.CurrentLine, brushInfo);
-            TabHienTai.BookmarkGet();
+
+        }
+
+        private void radListBreakpoint_MouseClick(object sender, MouseEventArgs e)
+        {
+           
+
+        }
+
+        private void BreakPointSet_Click(object sender, EventArgs e)
+        {
+            if (File.Exists(TabHienTai.FileName))
+            {
+                BrushInfo sd = new BrushInfo(Color.DarkRed);
+                TabHienTai.BookmarkAdd(TabHienTai.CurrentLine, sd);
+                radListBreakpoint.Items.Add(TabHienTai.CurrentLine, TabHienTai.FileName);
+            }
+        }
+
+        private void BreakPointRemove_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                TabHienTai.BookmarkRemove(TabHienTai.CurrentLine);
+                if (File.Exists(TabHienTai.FileName))
+                {
+                    foreach (var item in radListBreakpoint.Items)
+                    {
+                        if (item[0].ToString() == TabHienTai.CurrentLine.ToString() && TabHienTai.FileName == item[1].ToString())
+                            radListBreakpoint.Items.Remove(item);
+                    }
+                }               
+            }
+            catch { }
         }
     }
 }
