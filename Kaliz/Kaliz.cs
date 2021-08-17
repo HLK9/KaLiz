@@ -605,7 +605,7 @@ namespace Kaliz
             DanhDau.ShowIndentationGuidelines = true;
             DanhDau.ShowOutliningCollapsers = true;
             DanhDau.ShowColumnGuides = true;          
-            DanhDau.UpdateBookmarkToolTip += DanhDau_UpdateBookmarkToolTip;
+            
             DanhDau.AllowZoom = true;
             // DanhDau.OnlyHighlightMatchingBraces = true;
             DanhDau.EnableSmartInBlockIndent = true ;
@@ -1894,19 +1894,7 @@ End;
 
         }
 
-        private void DanhDau_UpdateBookmarkToolTip(object sender, UpdateBookmarkTooltipEventArgs e)
-        {
-            try
-            {
-                e.Text = "BookMark";
-            }
-            catch
-            {
-
-            }
-
-
-        }
+       
 
         private void commandBarDropDownList1_Click(object sender, EventArgs e)
         {
@@ -5118,8 +5106,10 @@ End;
             {
                 if (File.Exists(TabHienTai.FileName))
                 {
-                    BrushInfo sd = new BrushInfo(Color.DarkRed);
+                    IBackgroundFormat format = TabHienTai.RegisterBackColorFormat(Color.LemonChiffon, Color.Beige, System.Drawing.Drawing2D.HatchStyle.Trellis, true);
+                    BrushInfo sd = new BrushInfo(Color.DarkRed);                   
                     TabHienTai.BookmarkAdd(TabHienTai.CurrentLine, sd);
+                   TabHienTai.SetLineBackColor(TabHienTai.CurrentLine, true, format);
                     radListBreakpoint.Items.Add(TabHienTai.CurrentLine, TabHienTai.FileName);
                 }
             }
@@ -5135,6 +5125,7 @@ End;
                 if (File.Exists(TabHienTai.FileName))
                 {
                     TabHienTai.BookmarkRemove(TabHienTai.CurrentLine);
+                    TabHienTai.RemoveLineBackColor(TabHienTai.CurrentLine);
                     foreach (var item in radListBreakpoint.Items)
                     {
                         if (item[0].ToString() == TabHienTai.CurrentLine.ToString() && TabHienTai.FileName == item[1].ToString())
