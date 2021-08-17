@@ -43,11 +43,7 @@ namespace Kaliz
         private string DiffOldText;
         private string DiffNewText;
         private bool highlight = true;
-        private bool showClipboard = false;
-        private bool showClosed = false;
-        private bool showDataReceived = false;
-        private bool showBookmarkList = false;
-        private bool showOutput = false;
+        private bool showSupplyTable = false;
         private bool showDirectory = false;
         private bool BuildComplete = true;
 
@@ -2381,7 +2377,7 @@ End;
                 BuCant.Text = "Cancel";
                 BuCant.Click += new EventHandler(delegate (object sender, EventArgs e)
                 {
-                    this.Close();
+                    this.Close_Cli();
                     return;
                 });
                 Tas.CommandAreaButtons.Add(BuCant);
@@ -3937,18 +3933,18 @@ End;
         {
             try
             {
-                if (showOutput == true)
+                if (showSupplyTable == true)
                 {
-                    VOutput.Text = "Show Output";
-                    showOutput = false;
+                    VSupply.Text = "Show Supplementary Table";
+                    showSupplyTable = false;
                     Doutput.AutoHide();
 
                 }
                 else
                 {
                     Doutput.DockState = DockState.Docked;
-                    VOutput.Text = "Hide Output";
-                    showOutput = true;
+                    VSupply.Text = "Hide Supplementary Table";
+                    showSupplyTable = true;
 
                 }
             }
@@ -3959,57 +3955,9 @@ End;
 
         }
 
-        private void VClosedList_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                if (showClosed == true)
-                {
-                    VClosedList.Text = "Show Closed List";
-                    showClosed = false;
-                    DClosedFiles.AutoHide();
+     
 
-                }
-                else
-                {
-                    DClosedFiles.DockState = DockState.Docked;
-                    VClosedList.Text = "Hide Closed List";
-                    showClosed = true;
-
-                }
-            }
-            catch
-            {
-
-            }
-
-        }
-
-        private void VClipboardList_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                if (showClipboard == true)
-                {
-                    VClipboardList.Text = "Show Clipboard List";
-                    showClipboard = false;
-                    Dclipboard.AutoHide();
-
-                }
-                else
-                {
-                    Dclipboard.DockState = DockState.Docked;
-                    VClipboardList.Text = "Hide Clipboard List";
-                    showClipboard = true;
-
-                }
-            }
-            catch
-            {
-
-            }
-
-        }
+       
 
         private void radMenuItem1_Click(object sender, EventArgs e)
         {
@@ -4659,7 +4607,7 @@ End;
             listen.Start();
 
         }
-        void Close()
+        void Close_Cli()
         {
           
                
@@ -4715,7 +4663,7 @@ End;
             }
             catch
             {
-                Close();
+                Close_Cli();
             }
 
 
@@ -4737,7 +4685,7 @@ End;
             }
             else
             {
-                Close();
+                Close_Cli();
                 isConnectedCli = false;
                 SConnect.Enabled = true;
                 SStartServer.Enabled = true;
@@ -4848,7 +4796,7 @@ End;
             if (isServer)
                 Close_Ser();
             else
-                Close();
+                Close_Cli();
         }
 
         private void DataAdd_Click(object sender, EventArgs e)
@@ -4878,30 +4826,7 @@ End;
             }
         }
 
-        private void VDataReceived_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                if (showDataReceived == true)
-                {
-                    VDataReceived.Text = "Show Data Recieved List";
-                    showDataReceived = false;
-                    DDataReceived.AutoHide();
-
-                }
-                else
-                {
-                    DDataReceived.DockState = DockState.Docked;
-                    VDataReceived.Text = "Hide Data Recieved List";
-                    showDataReceived = true;
-                }
-            }
-            catch
-            {
-
-            }
-
-        }
+       
 
         private void OVitrualSpace_Click(object sender, EventArgs e)
         {
@@ -4985,31 +4910,7 @@ End;
             }
         }
 
-        private void VBookmarkList_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                if (showBookmarkList == true)
-                {
-                    VBookmarkList.Text = "Show Bookmarks List";
-                    showBookmarkList = false;
-                    DBookmarksList.AutoHide();
-
-                }
-                else
-                {
-                    DBookmarksList.DockState = DockState.Docked;
-                    VBookmarkList.Text = "Hide Bookmarks List";
-                    showBookmarkList = true;
-
-                }
-            }
-            catch
-            {
-
-            }
-
-        }
+       
         //////////////Directory//////////////
         public string PathDirectory;
         public void LoadDirectory(string Dir)
@@ -5243,31 +5144,7 @@ End;
             }
             catch { }
         }
-        private bool showBreakPointList = false;
-        private void VBreakPointList_Click(object sender, EventArgs e)
-        {
-            try
-            {
-               if(showBreakPointList==true)
-                {
-                    VBreakPointList.Text = "Show Break Point List";
-                    showBreakPointList = false;
-                    DBreakPointList.AutoHide();
 
-                }else
-                {
-                    DBreakPointList.DockState = DockState.Docked;
-                    VBreakPointList.Text = "Hide Break Point List";
-                    showBreakPointList = true;
-                    
-                }
-            }
-            catch
-            {
-
-            }
-          
-        }
 
         private void radMenuItem1_Click_3(object sender, EventArgs e)
         {
