@@ -640,6 +640,7 @@ namespace Kaliz
             //
             //Auto
             DanhDau.KeyDown += DanhDau_KeyDown;
+            
 
         }
 
@@ -1881,6 +1882,7 @@ End;
 
         private void DanhDau_TextChanged(object sender, EventArgs e)
         {
+            
             if (enableContext == true)
             {
                 TabHienTai.ShowContextChoice();
@@ -1891,6 +1893,35 @@ End;
             TabHienTai.StatusBarSettings.StatusPanel.Panel.Text = "Unsaved";
             TabHienTai.StatusBarSettings.StatusPanel.Panel.BackColor = Color.DarkMagenta;
             TabHienTai.StatusBarSettings.StatusPanel.Panel.ForeColor = Color.White;
+            
+            //Parser();
+            
+
+
+        }
+        void Parser()
+        {
+            radListError.Items.Clear();
+            if (File.Exists(TabHienTai.FileName))
+            {
+                
+                string path = TabHienTai.FileName;
+                Process Par = new Process();
+                Par.StartInfo.FileName = @"D:\Documents\GitHub\KalizParser\ConAntle\bin\Release\ConAntle.exe";
+                Par.StartInfo.RedirectStandardError = true;
+                Par.StartInfo.RedirectStandardOutput = true;
+                Par.StartInfo.UseShellExecute = false;
+                Par.StartInfo.RedirectStandardInput = true;
+                Par.StartInfo.CreateNoWindow = true;
+                Par.Start();
+                Par.StandardInput.WriteLine(path);
+                Par.StandardInput.Flush();
+                Par.StandardInput.Close();
+                string a = Par.StandardError.ReadToEnd();
+                radListError.Items.Add(a);
+            }
+            else return;
+            
 
         }
 
@@ -2817,23 +2848,19 @@ End;
 
             try
             {
-
-            //if (TabHienTai.GetNewLineStyle() != Syncfusion.IO.NewLineStyle.Windows||TabHienTai.GetEncoding() != Encoding.ASCII && Path.GetExtension(TabHienTai.FileName) == ".c" || Path.GetExtension(TabHienTai.FileName) == ".cpp")
-            //{
-            //    TabHienTai.SaveFile(TabHienTai.FileName,Encoding.ASCII, Syncfusion.IO.NewLineStyle.Unix);
-
-            //}
-            //else
-            //try {if (TabHienTai.GetNewLineStyle() != Syncfusion.IO.NewLineStyle.Windows || TabHienTai.GetEncoding() != Encoding.ASCII && Path.GetExtension(TabHienTai.FileName) == ".java")
-            //    {
-            //        TabHienTai.SaveFile(TabHienTai.FileName, Encoding.ASCII, Syncfusion.IO.NewLineStyle.Unix);
-            //    } }
-            //catch { }
+                 TabHienTai.Save();
+                try
+                {
+                    ThreadStart Sd = new ThreadStart(Parser);
+                    CheckForIllegalCrossThreadCalls = false;
+                    Thread Pa = new Thread(Sd);
+                    Pa.IsBackground = true;
+                    Pa.Start();
                     
-
-                //TabHienTai.SetEncoding(Encoding.UTF8);
-
-                TabHienTai.Save();
+                    //Parser();
+                }
+                catch
+                { }
 
                 if (Path.GetExtension(TabHienTai.FileName) == ".py")
                     TabHienTai.StatusBarSettings.FileNamePanel.Panel.Text = "Python";
@@ -5146,6 +5173,10 @@ End;
         {
             
 
+        }
+
+        private void radMenuItem1_Click_4(object sender, EventArgs e)
+        {
         }
     }
 }
