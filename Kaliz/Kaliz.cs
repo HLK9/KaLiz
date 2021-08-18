@@ -35,6 +35,7 @@ namespace Kaliz
         private bool enableContext = false;
         private bool enableTooltip = false;
         private bool enableContextPrompt = false;
+        private bool enableParse = false;
         private bool showlinenum = true;
         private string TenTheme;
         private bool themechanged;
@@ -2849,18 +2850,22 @@ End;
             try
             {
                  TabHienTai.Save();
-                try
+                if(enableParse == true)
                 {
-                    ThreadStart Sd = new ThreadStart(Parser);
-                    CheckForIllegalCrossThreadCalls = false;
-                    Thread Pa = new Thread(Sd);
-                    Pa.IsBackground = true;
-                    Pa.Start();
-                    
-                    //Parser();
+                    try
+                    {
+                        ThreadStart Sd = new ThreadStart(Parser);
+                        CheckForIllegalCrossThreadCalls = false;
+                        Thread Pa = new Thread(Sd);
+                        Pa.IsBackground = true;
+                        Pa.Start();
+
+                        //Parser();
+                    }
+                    catch
+                    { }
                 }
-                catch
-                { }
+               
 
                 if (Path.GetExtension(TabHienTai.FileName) == ".py")
                     TabHienTai.StatusBarSettings.FileNamePanel.Panel.Text = "Python";
@@ -5177,6 +5182,21 @@ End;
 
         private void radMenuItem1_Click_4(object sender, EventArgs e)
         {
+        }
+
+        private void OParse_Click(object sender, EventArgs e)
+        {
+            if(enableParse == false)
+            {
+                enableParse = true;
+                OParse.Text = "Disable Parsing";
+            }
+            else
+            {
+                radListError.Items.Clear();
+                enableParse = false;
+                OParse.Text = "Enable Parsing";
+            }
         }
     }
 }
