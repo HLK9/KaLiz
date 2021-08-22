@@ -478,7 +478,9 @@ namespace Kaliz
             EOutdent.Shortcuts.Add(new RadShortcut(Keys.Control, Keys.OemOpenBrackets));
             SwitchNext.Shortcuts.Add(new RadShortcut(Keys.Control, Keys.PageUp));
             SwitchPrevious.Shortcuts.Add(new RadShortcut(Keys.Control, Keys.PageDown));
-            EDupli.Shortcuts.Add(new RadShortcut(Keys.Control | Keys.Shift, Keys.D));
+            LineDump.Shortcuts.Add(new RadShortcut(Keys.Control | Keys.Shift, Keys.D));
+            CutLine.Shortcuts.Add(new RadShortcut( Keys.Alt, Keys.X));
+            CopyLine.Shortcuts.Add(new RadShortcut( Keys.Alt, Keys.C));
             //Tools
             FFindSelected.Shortcuts.Add(new RadShortcut(Keys.Control, Keys.Enter));
             TTermi.Shortcuts.Add(new RadShortcut(Keys.Control | Keys.Alt, Keys.T));
@@ -1450,9 +1452,8 @@ namespace Kaliz
                 //ContextPromptItem item = null;
                 if (TabHienTai.GetCurrentWord().ToLower() == "for")
                 {
-                    e.AddPrompt("Vòng Lặp for", " for <Giá trị đầu> to <Giá trị cuối> do <Câu lệnh>");
-                    e.AddPrompt("Ví dụ về vòng lặp for", " for i:=1 to 10 do write('xin chao')");
-                    e.AddPrompt("Ví dụ về vòng lặp for đảo ngược", null).BoldedItems.Add(0, 31, " for i:=10 downto 1 do write('xin chao')");
+                    e.AddPrompt("For Loop", " for < variable-name > := < initial_value > to [down to] < final_value > do < Command >");
+                   
                     //item = e.AddPrompt("Vòng Lặp for", "<Giá trị đầu> to <Giá trị cuối> do <Câu lệnh>");
                     //item.BoldedItems.Add(0, 12, "Giá trị đầu");
                     //item.BoldedItems.
@@ -1463,7 +1464,7 @@ namespace Kaliz
                 else
             if (TabHienTai.GetCurrentWord().ToLower() == "while")
                 {
-                    e.AddPrompt("Vòng Lặp while", null).BoldedItems.Add(0, 14, "while <Điều kiện> do <Câu lệnh>");
+                    e.AddPrompt("While-do Loop", null).BoldedItems.Add(0, 14, "while (condition) do <Command>");
                     //item = e.AddPrompt("Vòng Lặp while", "<Điều kiện> do <Câu lệnh>");
                     //item.BoldedItems.Add(0, 14, "Điều kiện");
                     //item.BoldedItems.Add(0, 14, "Câu lệnh");
@@ -1472,15 +1473,15 @@ namespace Kaliz
             }
             if (TabHienTai.GetCurrentWord().ToLower() == "if")
             {
-                e.AddPrompt("Câu lệnh rẽ nhánh", "if <Các điều kiện > then <Các câu lệnh>");
+                e.AddPrompt("if then else statement", "if (conditions) then < Command >");
             }
             if (TabHienTai.GetCurrentWord().ToLower() == "case")
             {
-                e.AddPrompt("Lệnh Case-Of", "Case <Giá trị> Of" + @"
-    <Trường hợp 1> : <Công việc 1>;
-    <Trường hợp 2> : <Công việc 2>;
+                e.AddPrompt("Case Statement", "Case (expression) Of" + @"
+    <case 1> : <job 1>;
+    <case 2> : <job 2>;
     ...
-    <Trường hợp n> : <Công việc n>;
+    <case n> : <job n>;
 End;
 ");
             }
@@ -1531,16 +1532,16 @@ End;
                 ContextPromptItem item = null;
                 if (TabHienTai.GetCurrentWord().ToLower() == "for")
                 {
-                    item = e.AddPrompt("Vòng Lặp for", "<Khởi tạo biến> ; <Biểu thức điều kiện> ; <Cập nhật biến lặp>");
-                    item.BoldedItems.Add(0, 12, "Khởi tạo biến");
-                    item.BoldedItems.Add(0, 12, "Biểu thức điều kiện");
-                    item.BoldedItems.Add(0, 12, "Cập nhật biến lặp");
+                    item = e.AddPrompt("For Loop", "init ; condition ; increment");
+                    item.BoldedItems.Add(0, 8, "init");
+                    item.BoldedItems.Add(0, 8, "condition");
+                    item.BoldedItems.Add(0, 8, "increment");
 
                 }
                 if (TabHienTai.GetCurrentWord().ToLower() == "while")
                 {
-                    item = e.AddPrompt("Vòng Lặp while", "<Điều kiện>");
-                    item.BoldedItems.Add(0, 14, "Điều kiện");
+                    item = e.AddPrompt("Vòng Lặp while", "<condition>");
+                    item.BoldedItems.Add(0, 10, "condition");
 
                 }
                 if (TabHienTai.GetCurrentWord().ToLower() == "if")
@@ -4354,14 +4355,7 @@ End;
         private void EDupli_Click(object sender, EventArgs e)
         {
 
-            try
-            {
-                TabHienTai.MoveToLineEnd();
-                int a = TabHienTai.CurrentColumn;
-                TabHienTai.InsertText(TabHienTai.CurrentLine, a, Environment.NewLine + TabHienTai.CurrentLineText);
-            }
-            catch
-            { }
+           
         }
         private bool isServer = false;
         private void SStartServer_Click(object sender, EventArgs e)
@@ -4860,7 +4854,7 @@ End;
                 }
                 else
                 {
-                    TabHienTai.VirtualSpaceMode = true;
+                    TabHienTai.VirtualSpaceMode = false;
                     OVitrualSpace.Text = "Enable Vitrual Space Mode";
                 }
             }
@@ -5196,6 +5190,49 @@ End;
                 radListError.Items.Clear();
                 enableParse = false;
                 OParse.Text = "Enable Parsing";
+            }
+        }
+
+        private void radMenuItem1_Click_5(object sender, EventArgs e)
+        {
+            TabHienTai.SelectLine(TabHienTai.CurrentLine);
+        }
+
+        private void LineDump_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                TabHienTai.MoveToLineEnd();
+                int a = TabHienTai.CurrentColumn;
+                TabHienTai.InsertText(TabHienTai.CurrentLine, a, Environment.NewLine + TabHienTai.CurrentLineText);
+            }
+            catch
+            { }
+        }
+
+        private void CopyLine_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                TabHienTai.SelectLine(TabHienTai.CurrentLine);
+                TabHienTai.Copy();
+            }
+            catch
+            {
+
+            }
+        }
+
+        private void CutLine_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                TabHienTai.SelectLine(TabHienTai.CurrentLine);
+                TabHienTai.Cut();
+            }
+            catch
+            {
+
             }
         }
     }
