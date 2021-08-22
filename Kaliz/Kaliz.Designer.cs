@@ -85,7 +85,10 @@ namespace Kaliz
             this.ESwitch = new Telerik.WinControls.UI.RadMenuItem();
             this.SwitchNext = new Telerik.WinControls.UI.RadMenuItem();
             this.SwitchPrevious = new Telerik.WinControls.UI.RadMenuItem();
-            this.EDupli = new Telerik.WinControls.UI.RadMenuItem();
+            this.ELine = new Telerik.WinControls.UI.RadMenuItem();
+            this.LineDump = new Telerik.WinControls.UI.RadMenuItem();
+            this.CopyLine = new Telerik.WinControls.UI.RadMenuItem();
+            this.CutLine = new Telerik.WinControls.UI.RadMenuItem();
             this.MTools = new Telerik.WinControls.UI.RadMenuItem();
             this.TFind = new Telerik.WinControls.UI.RadMenuItem();
             this.FindDia = new Telerik.WinControls.UI.RadMenuItem();
@@ -129,6 +132,7 @@ namespace Kaliz
             this.OVitrualSpace = new Telerik.WinControls.UI.RadMenuItem();
             this.OClearClip = new Telerik.WinControls.UI.RadMenuItem();
             this.OClearDataReceived = new Telerik.WinControls.UI.RadMenuItem();
+            this.OParse = new Telerik.WinControls.UI.RadMenuItem();
             this.OTer = new Telerik.WinControls.UI.RadMenuItem();
             this.ConPow = new Telerik.WinControls.UI.RadMenuItem();
             this.ConCmder = new Telerik.WinControls.UI.RadMenuItem();
@@ -163,6 +167,7 @@ namespace Kaliz
             this.wlcJava = new Telerik.WinControls.UI.RadButton();
             this.recentList = new Telerik.WinControls.UI.RadListView();
             this.radLabel3 = new Telerik.WinControls.UI.RadLabel();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.wclOpen = new Telerik.WinControls.UI.RadButton();
             this.wclCc = new Telerik.WinControls.UI.RadButton();
             this.wclPython = new Telerik.WinControls.UI.RadButton();
@@ -240,8 +245,6 @@ namespace Kaliz
             this.SDisconnect = new Telerik.WinControls.UI.RadMenuItem();
             this.contextMenuData = new Telerik.WinControls.UI.RadContextMenu(this.components);
             this.contextMenuDirectory = new Telerik.WinControls.UI.RadContextMenu(this.components);
-            this.OParse = new Telerik.WinControls.UI.RadMenuItem();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.MenuTop = new Telerik.WinControls.UI.RadMenu();
             ((System.ComponentModel.ISupportInitialize)(this.DockPar)).BeginInit();
             this.DockPar.SuspendLayout();
@@ -259,6 +262,7 @@ namespace Kaliz
             ((System.ComponentModel.ISupportInitialize)(this.wlcJava)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.recentList)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.radLabel3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.wclOpen)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.wclCc)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.wclPython)).BeginInit();
@@ -288,9 +292,8 @@ namespace Kaliz
             this.DBreakPointList.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.radListBreakpoint)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.toolTabStrip3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.MenuTop)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this)).BeginInit();
             this.SuspendLayout();
             // 
             // dockWindowPlaceholder1
@@ -461,7 +464,7 @@ namespace Kaliz
             this.EOutdent,
             this.EFold,
             this.ESwitch,
-            this.EDupli});
+            this.ELine});
             this.MEdit.Name = "MEdit";
             this.MEdit.Text = "Edit";
             // 
@@ -622,11 +625,32 @@ namespace Kaliz
             this.SwitchPrevious.Text = "Previous File";
             this.SwitchPrevious.Click += new System.EventHandler(this.SwitchPrevious_Click);
             // 
-            // EDupli
+            // ELine
             // 
-            this.EDupli.Name = "EDupli";
-            this.EDupli.Text = "Duplicate Line";
-            this.EDupli.Click += new System.EventHandler(this.EDupli_Click);
+            this.ELine.Items.AddRange(new Telerik.WinControls.RadItem[] {
+            this.LineDump,
+            this.CopyLine,
+            this.CutLine});
+            this.ELine.Name = "ELine";
+            this.ELine.Text = "Line";
+            // 
+            // LineDump
+            // 
+            this.LineDump.Name = "LineDump";
+            this.LineDump.Text = "Dumplicate Line";
+            this.LineDump.Click += new System.EventHandler(this.LineDump_Click);
+            // 
+            // CopyLine
+            // 
+            this.CopyLine.Name = "CopyLine";
+            this.CopyLine.Text = "Copy Line";
+            this.CopyLine.Click += new System.EventHandler(this.CopyLine_Click);
+            // 
+            // CutLine
+            // 
+            this.CutLine.Name = "CutLine";
+            this.CutLine.Text = "Cut Line";
+            this.CutLine.Click += new System.EventHandler(this.CutLine_Click);
             // 
             // MTools
             // 
@@ -937,6 +961,12 @@ namespace Kaliz
             this.OClearDataReceived.Name = "OClearDataReceived";
             this.OClearDataReceived.Text = "Clear Data Recevied";
             // 
+            // OParse
+            // 
+            this.OParse.Name = "OParse";
+            this.OParse.Text = "Enable Parsing";
+            this.OParse.Click += new System.EventHandler(this.OParse_Click);
+            // 
             // OTer
             // 
             this.OTer.Items.AddRange(new Telerik.WinControls.RadItem[] {
@@ -1092,7 +1122,7 @@ namespace Kaliz
             // 
             // DockPar
             // 
-            this.DockPar.ActiveWindow = this.Doutput;
+            this.DockPar.ActiveWindow = this.DWorkingDirectory;
             this.DockPar.CausesValidation = false;
             this.DockPar.Controls.Add(this.toolTabStrip1);
             this.DockPar.Controls.Add(this.radSplitContainer1);
@@ -1291,6 +1321,18 @@ namespace Kaliz
             this.radLabel3.TabIndex = 2;
             this.radLabel3.Text = "Recent";
             this.radLabel3.ThemeName = "MaterialTeal";
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.pictureBox1.Image = global::Kaliz.Properties.Resources.coding__1_;
+            this.pictureBox1.Location = new System.Drawing.Point(317, 64);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(400, 400);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 8;
+            this.pictureBox1.TabStop = false;
+            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
             // wclOpen
             // 
@@ -1969,30 +2011,6 @@ namespace Kaliz
             // 
             this.contextMenuData.ThemeName = "MaterialTeal";
             // 
-            // OParse
-            // 
-            this.OParse.Name = "OParse";
-            this.OParse.Text = "Enable Parsing";
-            this.OParse.Click += new System.EventHandler(this.OParse_Click);
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.pictureBox1.Image = global::Kaliz.Properties.Resources.coding__1_;
-            this.pictureBox1.Location = new System.Drawing.Point(317, 64);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(400, 400);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 8;
-            this.pictureBox1.TabStop = false;
-            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
-            // 
-            // Kaliz
-            // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1257, 735);
-            // 
             // MenuTop
             // 
             this.MenuTop.Items.AddRange(new Telerik.WinControls.RadItem[] {
@@ -2013,6 +2031,12 @@ namespace Kaliz
             this.MenuTop.Size = new System.Drawing.Size(1257, 37);
             this.MenuTop.TabIndex = 1;
             this.MenuTop.ThemeName = "MaterialTeal";
+            // 
+            // Kaliz
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.ClientSize = new System.Drawing.Size(1257, 735);
             this.Controls.Add(this.DockPar);
             this.Controls.Add(this.MenuTop);
             this.HelpButton = true;
@@ -2045,6 +2069,7 @@ namespace Kaliz
             ((System.ComponentModel.ISupportInitialize)(this.wlcJava)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.recentList)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.radLabel3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.wclOpen)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.wclCc)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.wclPython)).EndInit();
@@ -2075,7 +2100,6 @@ namespace Kaliz
             this.DBreakPointList.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.radListBreakpoint)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.toolTabStrip3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.MenuTop)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this)).EndInit();
             this.ResumeLayout(false);
@@ -2250,7 +2274,6 @@ namespace Kaliz
         private RadMenuItem BPara;
         private RadMenuItem BConfig;
         private Telerik.WinControls.Themes.MaterialBlueGreyTheme materialBlueGreyTheme1;
-        private RadMenuItem EDupli;
         private RadMenuItem MShareAndConnect;
         private RadMenuItem SStartServer;
         private RadMenuItem SConnect;
@@ -2287,6 +2310,10 @@ namespace Kaliz
         private Telerik.WinControls.UI.Docking.DockWindowPlaceholder dockWindowPlaceholder1;
         private RadListView radListError;
         private RadMenuItem OParse;
+        private RadMenuItem ELine;
+        private RadMenuItem LineDump;
         private RadMenu MenuTop;
+        private RadMenuItem CopyLine;
+        private RadMenuItem CutLine;
     }
 }
