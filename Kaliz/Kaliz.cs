@@ -2716,7 +2716,9 @@ End;
                    
             }
             catch { }
-            
+         
+           
+
         }
 
         private void TFind_Click(object sender, EventArgs e)
@@ -5234,6 +5236,17 @@ End;
             {
 
             }
+        }
+
+        private void radMenuItem1_Click_6(object sender, EventArgs e)
+        {
+            foreach(var item in bookmarkList.Items)
+            {
+                if (item[1].ToString() == TabHienTai.FileName)
+                    Properties.Settings.Default.Bookmarks
+
+            }
+            var list = Properties.Settings.Default.Bookmarks.Cast<string>().ToList();
         }
     }
 }
