@@ -246,6 +246,7 @@ namespace Kaliz
             this.contextMenuData = new Telerik.WinControls.UI.RadContextMenu(this.components);
             this.contextMenuDirectory = new Telerik.WinControls.UI.RadContextMenu(this.components);
             this.MenuTop = new Telerik.WinControls.UI.RadMenu();
+            this.radMenuItem1 = new Telerik.WinControls.UI.RadMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.DockPar)).BeginInit();
             this.DockPar.SuspendLayout();
             this.DWorkingDirectory.SuspendLayout();
@@ -1303,9 +1304,9 @@ namespace Kaliz
             | System.Windows.Forms.AnchorStyles.Right)));
             this.recentList.GroupItemSize = new System.Drawing.Size(200, 36);
             this.recentList.ItemSize = new System.Drawing.Size(200, 36);
-            this.recentList.Location = new System.Drawing.Point(788, 133);
+            this.recentList.Location = new System.Drawing.Point(764, 133);
             this.recentList.Name = "recentList";
-            this.recentList.Size = new System.Drawing.Size(242, 258);
+            this.recentList.Size = new System.Drawing.Size(266, 258);
             this.recentList.TabIndex = 9;
             this.recentList.ThemeName = "MaterialTeal";
             this.recentList.ItemMouseDoubleClick += new Telerik.WinControls.UI.ListViewItemEventHandler(this.recentList_ItemMouseDoubleClick);
@@ -2025,12 +2026,19 @@ namespace Kaliz
             this.MWindows,
             this.MPersonal,
             this.MShareAndConnect,
-            this.MHelp});
+            this.MHelp,
+            this.radMenuItem1});
             this.MenuTop.Location = new System.Drawing.Point(0, 0);
             this.MenuTop.Name = "MenuTop";
             this.MenuTop.Size = new System.Drawing.Size(1257, 37);
             this.MenuTop.TabIndex = 1;
             this.MenuTop.ThemeName = "MaterialTeal";
+            // 
+            // radMenuItem1
+            // 
+            this.radMenuItem1.Name = "radMenuItem1";
+            this.radMenuItem1.Text = "Sa";
+            this.radMenuItem1.Click += new System.EventHandler(this.radMenuItem1_Click_6);
             // 
             // Kaliz
             // 
@@ -2315,5 +2323,6 @@ namespace Kaliz
         private RadMenu MenuTop;
         private RadMenuItem CopyLine;
         private RadMenuItem CutLine;
+        private RadMenuItem radMenuItem1;
     }
 }
