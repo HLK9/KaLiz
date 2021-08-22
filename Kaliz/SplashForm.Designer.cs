@@ -52,6 +52,9 @@
             this.Controls.Add(this.pictureBox1);
             this.Name = "SplashForm";
             this.Shape = this.chamferedRectShape1;
+            this.ShowIcon = false;
+            this.ShowInTaskbar = false;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "SplashForm";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
