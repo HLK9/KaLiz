@@ -34,17 +34,5 @@ namespace Kaliz.Properties {
                 this["Setting"] = value;
             }
         }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string Bookmarks {
-            get {
-                return ((string)(this["Bookmarks"]));
-            }
-            set {
-                this["Bookmarks"] = value;
-            }
-        }
     }
 }
