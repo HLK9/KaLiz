@@ -86,6 +86,9 @@
 			<lexem BeginBlock="procedure" Type="KeyWord" />
 			<lexem BeginBlock="safecall" Type="KeyWord" />
 			<lexem BeginBlock="wordbool" Type="KeyWord" />
+			<lexem BeginBlock="then" Type="KeyWord" />
+			<lexem BeginBlock="mod" Type="KeyWord" />
+			<lexem BeginBlock="div" Type="KeyWord" />
 			<lexem BeginBlock="interface" Type="KeyWord" />
 			<lexem BeginBlock="property" Type="KeyWord" />
 			<lexem BeginBlock="readonly" Type="KeyWord" />

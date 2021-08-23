@@ -57,6 +57,9 @@
 			<lexem BeginBlock="private" Type="KeyWord" />
 			<lexem BeginBlock="class" Type="KeyWord" />
 			<lexem BeginBlock="protected" Type="KeyWord" />
+			<lexem BeginBlock="then" Type="KeyWord" />
+			<lexem BeginBlock="mod" Type="KeyWord" />
+			<lexem BeginBlock="div" Type="KeyWord" />
 			<lexem BeginBlock="const" Type="KeyWord" />
 			<lexem BeginBlock="public" Type="KeyWord" />
 			<lexem BeginBlock="continue" Type="KeyWord" />
