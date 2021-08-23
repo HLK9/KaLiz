@@ -247,6 +247,7 @@ namespace Kaliz
             this.contextMenuDirectory = new Telerik.WinControls.UI.RadContextMenu(this.components);
             this.MenuTop = new Telerik.WinControls.UI.RadMenu();
             this.radMenuItem1 = new Telerik.WinControls.UI.RadMenuItem();
+            this.radMenuItem3 = new Telerik.WinControls.UI.RadMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.DockPar)).BeginInit();
             this.DockPar.SuspendLayout();
             this.DWorkingDirectory.SuspendLayout();
@@ -1123,7 +1124,7 @@ namespace Kaliz
             // 
             // DockPar
             // 
-            this.DockPar.ActiveWindow = this.DWorkingDirectory;
+            this.DockPar.ActiveWindow = this.DBookmarksList;
             this.DockPar.CausesValidation = false;
             this.DockPar.Controls.Add(this.toolTabStrip1);
             this.DockPar.Controls.Add(this.radSplitContainer1);
@@ -1478,7 +1479,7 @@ namespace Kaliz
             // 
             // 
             this.toolTabStrip2.RootElement.MinSize = new System.Drawing.Size(25, 25);
-            this.toolTabStrip2.SelectedIndex = 0;
+            this.toolTabStrip2.SelectedIndex = 3;
             this.toolTabStrip2.ShowItemPinButton = true;
             this.toolTabStrip2.Size = new System.Drawing.Size(1046, 196);
             this.toolTabStrip2.SizeInfo.AbsoluteSize = new System.Drawing.Size(200, 196);
@@ -1581,11 +1582,11 @@ namespace Kaliz
             this.bookmarkList.AllowEdit = false;
             this.bookmarkList.AutoSizeColumnsMode = Telerik.WinControls.UI.ListViewAutoSizeColumnsMode.Fill;
             listViewDetailColumn1.HeaderText = "Line";
-            listViewDetailColumn1.Width = 220.5372F;
+            listViewDetailColumn1.Width = 221.1131F;
             listViewDetailColumn2.HeaderText = "Name";
-            listViewDetailColumn2.Width = 414.8885F;
+            listViewDetailColumn2.Width = 415.0906F;
             listViewDetailColumn3.HeaderText = "File";
-            listViewDetailColumn3.Width = 404.5743F;
+            listViewDetailColumn3.Width = 403.7963F;
             this.bookmarkList.Columns.AddRange(new Telerik.WinControls.UI.ListViewDetailColumn[] {
             listViewDetailColumn1,
             listViewDetailColumn2,
@@ -2036,9 +2037,17 @@ namespace Kaliz
             // 
             // radMenuItem1
             // 
+            this.radMenuItem1.Items.AddRange(new Telerik.WinControls.RadItem[] {
+            this.radMenuItem3});
             this.radMenuItem1.Name = "radMenuItem1";
             this.radMenuItem1.Text = "Sa";
             this.radMenuItem1.Click += new System.EventHandler(this.radMenuItem1_Click_6);
+            // 
+            // radMenuItem3
+            // 
+            this.radMenuItem3.Name = "radMenuItem3";
+            this.radMenuItem3.Text = "radMenuItem3";
+            this.radMenuItem3.Click += new System.EventHandler(this.radMenuItem3_Click_5);
             // 
             // Kaliz
             // 
@@ -2324,5 +2333,6 @@ namespace Kaliz
         private RadMenuItem CopyLine;
         private RadMenuItem CutLine;
         private RadMenuItem radMenuItem1;
+        private RadMenuItem radMenuItem3;
     }
 }

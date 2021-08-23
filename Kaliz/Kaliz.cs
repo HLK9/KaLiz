@@ -643,7 +643,36 @@ namespace Kaliz
             //
             //Auto
             DanhDau.KeyDown += DanhDau_KeyDown;
-            
+            //bookmarks
+            DatBookmarks();
+
+
+        }
+        private void DatBookmarks()
+        {
+            string line;
+            string re=string.Empty;
+            System.IO.StreamReader file =   new StreamReader(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\Kaliz\\BookmarksList.txt");
+            while ((line = file.ReadLine()) != null)
+            {
+                if (line.Contains(TabHienTai.FileName))
+                {
+                    re = line;
+                    break;
+                }
+                
+            }
+            string[] tokens = re.Split(' ');
+            foreach(var item in tokens)
+            {
+                try
+                {
+                    BrushInfo brushInfo = new BrushInfo(Color.Turquoise);
+                    TabHienTai.BookmarkAdd(int.Parse(item),brushInfo);
+                    bookmarkList.Items.Add(int.Parse(item), Path.GetFileName(TabHienTai.FileName), TabHienTai.FileName);
+                }
+                catch { }
+            }
 
         }
 
@@ -1075,17 +1104,51 @@ namespace Kaliz
 
         private void DockPar_DockWindowClosing(object sender, DockWindowCancelEventArgs e)
         {
+          
             try
             {
                 if(Path.GetFileName(TabHienTai.FileName)==DockPar.DocumentManager.ActiveDocument.Text)
                 {
+                    string bookmarks=TabHienTai.FileName+"|";
                     foreach (var item in listClosedFiles.Items)
                     {
                         if (item.Text == TabHienTai.FileName) listClosedFiles.Items.Remove(item);
                     }
                     listClosedFiles.Items.Add(TabHienTai.FileName);
+                    foreach(var item in bookmarkList.Items)
+                    {
+                        if (item[2].ToString() == TabHienTai.FileName)
+                            bookmarks += " "+item[0].ToString(); 
+                    }
+                    try
+                    {
+                       
 
+                        if (File.Exists(TabHienTai.FileName))
+                        {
+                            foreach (ListViewDataItem item in bookmarkList.Items.ToList())
+                            {
+
+                                if (item[1].ToString().Contains(Path.GetFileName(TabHienTai.FileName)))
+                                    bookmarkList.Items.Remove(item);
+                            }
+
+                        }
+
+                        else
+                        {
+                            foreach (ListViewDataItem item in bookmarkList.Items.ToList())
+                            {
+                                if (item[1].ToString().Contains(DockPar.DocumentManager.ActiveDocument.TabStripItem.Text))
+                                    bookmarkList.Items.Remove(item);
+                            }
+                        }
+
+
+                    }
+                    catch { }
                     TabHienTai.Close();
+                    LuuBookmarks(bookmarks);
                 }else
                 {
                     DockPar.DocumentManager.ActiveDocument.Close();
@@ -1977,6 +2040,39 @@ End;
             }
             catch { }
            
+        }
+        private void LuuBookmarks(string duongdantep)
+        {
+            try
+            {
+                //string line = string.Empty;
+                //System.IO.StreamReader file = new StreamReader(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\Kaliz\\BookmarksList.txt");
+                //while ((line = file.ReadLine()) != null)
+                //{
+                //    if (line.Contains(TabHienTai.FileName))
+                //    {
+                       
+                //        break;
+                //    }
+
+                //}
+
+                //using (StreamWriter Viet = new StreamWriter(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\Kaliz\\Histo.txt"))
+                //{
+                //    Viet.WriteLine(duongdantep);
+                //}
+                //foreach (var item in File.ReadAllLines(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\Kaliz\\Histo.txt"))
+                //{
+                //    if (item.ToString() != duongdantep||item==null)
+                //        File.AppendAllText(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\Kaliz\\Histo.txt", duongdantep + Environment.NewLine);
+                //}
+                File.AppendAllText(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\Kaliz\\BookmarksList.txt", duongdantep + Environment.NewLine);
+
+
+
+            }
+            catch { }
+
         }
 
 
@@ -5240,13 +5336,14 @@ End;
 
         private void radMenuItem1_Click_6(object sender, EventArgs e)
         {
-            foreach(var item in bookmarkList.Items)
-            {
-                if (item[1].ToString() == TabHienTai.FileName)
-                    Properties.Settings.Default.Bookmarks
 
-            }
-            var list = Properties.Settings.Default.Bookmarks.Cast<string>().ToList();
+
+
+        }
+
+        private void radMenuItem3_Click_5(object sender, EventArgs e)
+        {
+         
         }
     }
 }
