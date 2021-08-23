@@ -1966,7 +1966,7 @@ End;
         }
         void Parser()
         {
-            radListError.Items.Clear();
+            //radListError.Text = "";
             if (File.Exists(TabHienTai.FileName))
             {
                 
@@ -1983,7 +1983,8 @@ End;
                 Par.StandardInput.Flush();
                 Par.StandardInput.Close();
                 string a = Par.StandardError.ReadToEnd();
-                radListError.Items.Add(a);
+
+                radListError.Text = a;
             }
             else return;
             
@@ -5285,7 +5286,7 @@ End;
             }
             else
             {
-                radListError.Items.Clear();
+                //radListError.Items.Clear();
                 enableParse = false;
                 OParse.Text = "Enable Parsing";
             }
