@@ -406,6 +406,7 @@ namespace Kaliz
 
         private void Kaliz_Load(object sender, EventArgs e)
         {
+           
             var appDataPath = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
             var path = Path.Combine(appDataPath, @"Kaliz\");
             if (!Directory.Exists(path))
@@ -648,20 +649,25 @@ namespace Kaliz
 
 
         }
+        private List<string> HisBookmark = new List<string>();
         private void DatBookmarks()
-        {
-            string line;
-            string re=string.Empty;
-            System.IO.StreamReader file =   new StreamReader(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\Kaliz\\BookmarksList.txt");
-            while ((line = file.ReadLine()) != null)
+        {           
+
+            string lines;
+            string re = string.Empty;
+            System.IO.StreamReader file = new StreamReader(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\Kaliz\\BookmarksList.txt");
+            while ((lines = file.ReadLine()) != null)
             {
-                if (line.Contains(TabHienTai.FileName))
+                HisBookmark.Add(lines);
+                if (lines.Contains(TabHienTai.FileName))
                 {
-                    re = line;
-                    break;
+                    re = lines; break;
                 }
-                
+
             }
+            //   string re = string.Empty;
+            //string[] lines = File.ReadAllLines(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\Kaliz\\BookmarksList.txt");
+           
             string[] tokens = re.Split(' ');
             foreach(var item in tokens)
             {
@@ -2044,35 +2050,27 @@ End;
         }
         private void LuuBookmarks(string duongdantep)
         {
+           
+          
             try
             {
-                //string line = string.Empty;
-                //System.IO.StreamReader file = new StreamReader(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\Kaliz\\BookmarksList.txt");
-                //while ((line = file.ReadLine()) != null)
-                //{
-                //    if (line.Contains(TabHienTai.FileName))
-                //    {
-                       
-                //        break;
-                //    }
-
-                //}
-
-                //using (StreamWriter Viet = new StreamWriter(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\Kaliz\\Histo.txt"))
-                //{
-                //    Viet.WriteLine(duongdantep);
-                //}
-                //foreach (var item in File.ReadAllLines(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\Kaliz\\Histo.txt"))
-                //{
-                //    if (item.ToString() != duongdantep||item==null)
-                //        File.AppendAllText(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\Kaliz\\Histo.txt", duongdantep + Environment.NewLine);
-                //}
-                File.AppendAllText(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\Kaliz\\BookmarksList.txt", duongdantep + Environment.NewLine);
-
+             
+               for (int i=0;i<HisBookmark.Count;i++)
+                {
+                    if(HisBookmark[i].Contains(TabHienTai.FileName))
+                    {                   
+                        HisBookmark[i] = "";
+                                      
+                    }
+                }
+                //File.AppendAllText(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\Kaliz\\BookmarksList.txt", duongdantep + Environment.NewLine);
+              
 
 
             }
             catch { }
+            HisBookmark.Add(duongdantep);
+            File.AppendAllLines(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\Kaliz\\BookmarksList.txt", HisBookmark);
 
         }
 
