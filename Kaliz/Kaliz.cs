@@ -942,17 +942,183 @@ namespace Kaliz
                                 case "catch":
                                     e.Text = lexem.Text + ": handles exceptions from throw";
                                     break;
+                                case "char":
+                                    e.Text = lexem.Text + ": declare a character variable";
+                                    break;
+                                case "class":
+                                    e.Text = lexem.Text + ": declare a class";
+                                    break;
+                                case "const":
+                                    e.Text = lexem.Text + ": declare immutable data or functions that do not change data";
+                                    break;
+                                case "const_cast":
+                                    e.Text = lexem.Text + ": cast from const variables";
+                                    break;
+                                case "continue":
+                                    e.Text = lexem.Text + ": bypass iterations of a loop";
+                                    break;
+                                case "default":
+                                    e.Text = lexem.Text + ": default handler in a case statement";
+                                    break;
+                                case "delete":
+                                    e.Text = lexem.Text + ": make memory available";
+                                    break;
+                                case "do":
+                                    e.Text = lexem.Text + ": looping construct";
+                                    break;
+                                case "double":
+                                    e.Text = lexem.Text + ": declare a double precision floating-point variable";
+                                    break;
+                                case "dynamic_cast":
+                                    e.Text = lexem.Text + ": perform runtime casts";
+                                    break;
+                                case "else":
+                                    e.Text = lexem.Text + ": alternate case for an if statement";
+                                    break;
+                                case "enum":
+                                    e.Text = lexem.Text + ": create enumeration types";
+                                    break;
+                                case "explicit":
+                                    e.Text = lexem.Text + ": only use constructors when they exactly match";
+                                    break;
+                                case "export":
+                                    e.Text = lexem.Text + ": allows template definitions to be separated from their declarations";
+                                    break;
+                                case "extern":
+                                    e.Text = lexem.Text + ": tell the compiler about variables defined elsewhere";
+                                    break;
+                                case "false":
+                                    e.Text = lexem.Text + ": the boolean value of false";
+                                    break;
+                                case "float":
+                                    e.Text = lexem.Text + ": declare a floating-point variable";
+                                    break;
+                                case "for":
+                                    e.Text = lexem.Text + ": looping construct";
+                                    break;
+                                case "friend":
+                                    e.Text = lexem.Text + ": grant non-member function access to private data";
+                                    break;
+                                case "goto":
+                                    e.Text = lexem.Text + ": jump to a different part of the program";
+                                    break;
+                                case "if":
+                                    e.Text = lexem.Text + ": execute code based off of the result of a test";
+                                    break;
+                                case "inline":
+                                    e.Text = lexem.Text + ": optimize calls to short functions";
+                                    break;
+                                case "int":
+                                    e.Text = lexem.Text + ": declare a integer variable";
+                                    break;
+                                case "long":
+                                    e.Text = lexem.Text + ": declare a long integer variable";
+                                    break;
+                                case "mutable":
+                                    e.Text = lexem.Text + ": override a const variable";
+                                    break;
+                                case "namespace":
+                                    e.Text = lexem.Text + ": partition the global namespace by defining a scope";
+                                    break;
+                                case "new":
+                                    e.Text = lexem.Text + ": allocate dynamic memory for a new variable";
+                                    break;
+                                case "operator":
+                                    e.Text = lexem.Text + ": create overloaded operator functions";
+                                    break;
+                                case "private":
+                                    e.Text = lexem.Text + ": declare private members of a class";
+                                    break;
+                                case "protected":
+                                    e.Text = lexem.Text + ": declare protected members of a class";
+                                    break;
+                                case "public":
+                                    e.Text = lexem.Text + ": declare public members of a class";
+                                    break;
+                                case "register":
+                                    e.Text = lexem.Text + ": request that a variable be optimized for speed";
+                                    break;
+                                case "reinterpret_cast":
+                                    e.Text = lexem.Text + ": change the type of a variable";
+                                    break;
+                                case "return":
+                                    e.Text = lexem.Text + ": return from a function";
+                                    break;
+                                case "short":
+                                    e.Text = lexem.Text + ": declare a short integer variable";
+                                    break;
+                                case "signed":
+                                    e.Text = lexem.Text + ": modify variable type declarations";
+                                    break;
+                                case "sizeof":
+                                    e.Text = lexem.Text + ": return the size of a variable or type";
+                                    break;
+                                case "static":
+                                    e.Text = lexem.Text + ": create permanent storage for a variable";
+                                    break;
+                                case "static_cast":
+                                    e.Text = lexem.Text + ": perform a nonpolymorphic cast";
+                                    break;
+                                case "struct":
+                                    e.Text = lexem.Text + ": define a new structure";
+                                    break;
+                                case "switch":
+                                    e.Text = lexem.Text + ": execute code based off of different possible values for a variable";
+                                    break;
+                                case "template":
+                                    e.Text = lexem.Text + ": create generic functions";
+                                    break;
+                                case "this":
+                                    e.Text = lexem.Text + ": a pointer to the current object";
+                                    break;
+                                case "throw":
+                                    e.Text = lexem.Text + ": throws an exception";
+                                    break;
+                                case "true":
+                                    e.Text = lexem.Text + ": the boolean value of true";
+                                    break;
+                                case "try":
+                                    e.Text = lexem.Text + ": execute code that can throw an exception";
+                                    break;
+                                case "typedef":
+                                    e.Text = lexem.Text + ": create a new type name from an existing type";
+                                    break;
+                                case "typeid":
+                                    e.Text = lexem.Text + ": describes an object";
+                                    break;
+                                case "typename":
+                                    e.Text = lexem.Text + ": declare a class or undefined type";
+                                    break;
+                                case "union":
+                                    e.Text = lexem.Text + ": a structure that assigns multiple variables to the same memory location";
+                                    break;
+                                case "unsigned":
+                                    e.Text = lexem.Text + ": declare an unsigned integer variable";
+                                    break;
+                                case "using":
+                                    e.Text = lexem.Text + ": import complete or partial namespaces into the current scope";
+                                    break;
+                                case "virtual":
+                                    e.Text = lexem.Text + ": create a function that can be overridden by a derived class";
+                                    break;
+                                case "void":
+                                    e.Text = lexem.Text + ": declare functions or data with no associated data type";
+                                    break;
+                                case "volatile":
+                                    e.Text = lexem.Text + ": warn the compiler about variables that can be modified unexpectedly";
+                                    break;
+                                case "wchar_t":
+                                    e.Text = lexem.Text + ": declare a wide-character variable";
+                                    break;
+                                case "while":
+                                    e.Text = lexem.Text + ": looping construct";
+                                    break;
+
+
                                 default:
                                     break;
                             }
-                            //if (lexem.Text == "program")
-                            //e.Text = "Từ khóa :v:v :V " + lexem.Text;
-                            //if (lexem.Text == "var")
-                            //    e.Text = "Từ khóaádasd :v:v :V " + lexem.Text;
-                            //if (lexem.Text == "write")
-                            //    e.Text = "in" + lexem.Text;
-                            //if (lexem.Text == "readln")
-                            //    e.Text = "dừng " + lexem.Text;
+                            
 
 
                         }
@@ -1518,14 +1684,13 @@ namespace Kaliz
         {
             if (enableContextPrompt == true)
             {
-                //ContextPromptItem item = null;
+                ContextPromptItem item = null;
                 if (TabHienTai.GetCurrentWord().ToLower() == "for")
                 {
                     e.AddPrompt("For Loop", " for < variable-name > := < initial_value > to [down to] < final_value > do < Command >");
-                   
+
                     //item = e.AddPrompt("Vòng Lặp for", "<Giá trị đầu> to <Giá trị cuối> do <Câu lệnh>");
-                    //item.BoldedItems.Add(0, 12, "Giá trị đầu");
-                    //item.BoldedItems.
+                    //item.BoldedItems.Add(0, 12, "Giá trị đầu");                   
                     //item.BoldedItems.Add(0, 12, "Giá trị cuối");
                     //item.BoldedItems.Add(0, 12, "Câu lệnh");
 
@@ -1609,19 +1774,19 @@ End;
                 }
                 if (TabHienTai.GetCurrentWord().ToLower() == "while")
                 {
-                    item = e.AddPrompt("Vòng Lặp while", "<condition>");
-                    item.BoldedItems.Add(0, 10, "condition");
+                    item = e.AddPrompt("while Loop", "<condition>");
+                    item.BoldedItems.Add(0, 9, "condition");
 
                 }
                 if (TabHienTai.GetCurrentWord().ToLower() == "if")
                 {
-                    item = e.AddPrompt("Câu lệnh rẽ nhánh", "<Điều kiện>");
-                    item.BoldedItems.Add(0, 1, "Điều kiện");
+                    item = e.AddPrompt("If Statements", "<condition>");
+                    item.BoldedItems.Add(0, 1, "condition");
                 }
                 if (TabHienTai.GetCurrentWord().ToLower() == "switch")
                 {
-                    item = e.AddPrompt("Switch-Case", "<Biểu thức điều kiện>");
-                    item.BoldedItems.Add(0, 11, "Điều kiện");
+                    item = e.AddPrompt("Switch-Case", "<expression>");
+                    item.BoldedItems.Add(0, 11, "constant");
                 }
             }
 
