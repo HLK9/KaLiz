@@ -508,6 +508,7 @@ namespace Kaliz
         {
             DocumentWindow TaiLieu = new DocumentWindow(ten);
             var DanhDau = new EditControl();
+            DanhDau.Text = "";
             DanhDau.Dock = DockStyle.Fill;
             DanhDau.Style = EditControlStyle.Office2016Colorful;
             DanhDau.LineNumbersFont = new Font("Consolas", 13);
@@ -4856,6 +4857,7 @@ End;
             IP = new IPEndPoint(IPAddress.Parse(GetLocalIP()), int.Parse(txtPort));
                 isServer = false;
                 SStartServer.Enabled = false;
+                SConnect.Enabled = false;
                 SPush.Text = "Push Code in Current Tab to Server";
 
                 CheckForIllegalCrossThreadCalls = false;
