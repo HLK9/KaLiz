@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            Telerik.WinControls.UI.RadListDataItem radListDataItem1 = new Telerik.WinControls.UI.RadListDataItem();
+            Telerik.WinControls.UI.RadListDataItem radListDataItem2 = new Telerik.WinControls.UI.RadListDataItem();
             this.materialTealTheme1 = new Telerik.WinControls.Themes.MaterialTealTheme();
             this.radLabel1 = new Telerik.WinControls.UI.RadLabel();
             this.radLabel2 = new Telerik.WinControls.UI.RadLabel();
@@ -187,8 +187,8 @@
             // 
             this.EmailSeever.BackColor = System.Drawing.Color.Honeydew;
             this.EmailSeever.EnableTheming = false;
-            radListDataItem1.Text = "smtp.gmail.com";
-            this.EmailSeever.Items.Add(radListDataItem1);
+            radListDataItem2.Text = "smtp.gmail.com";
+            this.EmailSeever.Items.Add(radListDataItem2);
             this.EmailSeever.Location = new System.Drawing.Point(482, 129);
             this.EmailSeever.Name = "EmailSeever";
             this.EmailSeever.Size = new System.Drawing.Size(295, 36);
@@ -252,7 +252,7 @@
             this.radButton2.Name = "radButton2";
             this.radButton2.Size = new System.Drawing.Size(205, 36);
             this.radButton2.TabIndex = 11;
-            this.radButton2.Text = "Have Trouble?";
+            this.radButton2.Text = "You have problem?";
             this.radButton2.ThemeName = "MaterialTeal";
             this.radButton2.Click += new System.EventHandler(this.radButton2_Click);
             // 
@@ -287,6 +287,7 @@
             // 
             this.RootElement.ApplyShapeToControl = true;
             this.ShowIcon = false;
+            this.ShowInTaskbar = false;
             this.Text = "Send Email";
             this.ThemeName = "MaterialTeal";
             this.Load += new System.EventHandler(this.SendEmail_Load);
