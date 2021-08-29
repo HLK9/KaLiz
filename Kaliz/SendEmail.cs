@@ -65,7 +65,7 @@ namespace Kaliz
                 Ma.To.Add(EmailTo.Text);
                 Ma.Subject = EmailSub.Text;
                 Ma.Body = EmailBody.Text;
-                
+                if(EmailAttach.Text!="")
                 Ma.Attachments.Add(new Attachment(EmailAttach.Text));
                 SmtpClient sm = new SmtpClient();
                 sm.Host = EmailSeever.SelectedItem.Text;
