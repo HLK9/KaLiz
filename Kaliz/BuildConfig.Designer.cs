@@ -29,18 +29,18 @@
         private void InitializeComponent()
         {
             Telerik.WinControls.UI.RadPageView radPageView1;
-            Telerik.WinControls.UI.ListViewDataItem listViewDataItem13 = new Telerik.WinControls.UI.ListViewDataItem("Show Error");
-            Telerik.WinControls.UI.ListViewDataItem listViewDataItem14 = new Telerik.WinControls.UI.ListViewDataItem("Show warnings");
-            Telerik.WinControls.UI.ListViewDataItem listViewDataItem15 = new Telerik.WinControls.UI.ListViewDataItem("Show notes");
-            Telerik.WinControls.UI.ListViewDataItem listViewDataItem16 = new Telerik.WinControls.UI.ListViewDataItem("Show hints");
-            Telerik.WinControls.UI.ListViewDataItem listViewDataItem17 = new Telerik.WinControls.UI.ListViewDataItem("Show general info");
-            Telerik.WinControls.UI.ListViewDataItem listViewDataItem18 = new Telerik.WinControls.UI.ListViewDataItem("Show linenumbers");
-            Telerik.WinControls.UI.ListViewDataItem listViewDataItem19 = new Telerik.WinControls.UI.ListViewDataItem("Show everything");
-            Telerik.WinControls.UI.ListViewDataItem listViewDataItem20 = new Telerik.WinControls.UI.ListViewDataItem("Show debug info");
-            Telerik.WinControls.UI.ListViewDataItem listViewDataItem21 = new Telerik.WinControls.UI.ListViewDataItem("Level 1  Optimizations");
-            Telerik.WinControls.UI.ListViewDataItem listViewDataItem22 = new Telerik.WinControls.UI.ListViewDataItem("Level 2  Optimizations");
-            Telerik.WinControls.UI.ListViewDataItem listViewDataItem23 = new Telerik.WinControls.UI.ListViewDataItem("Level 3  Optimizations");
-            Telerik.WinControls.UI.ListViewDataItem listViewDataItem24 = new Telerik.WinControls.UI.ListViewDataItem("Level 4  Optimizations");
+            Telerik.WinControls.UI.ListViewDataItem listViewDataItem1 = new Telerik.WinControls.UI.ListViewDataItem("Show Error");
+            Telerik.WinControls.UI.ListViewDataItem listViewDataItem2 = new Telerik.WinControls.UI.ListViewDataItem("Show warnings");
+            Telerik.WinControls.UI.ListViewDataItem listViewDataItem3 = new Telerik.WinControls.UI.ListViewDataItem("Show notes");
+            Telerik.WinControls.UI.ListViewDataItem listViewDataItem4 = new Telerik.WinControls.UI.ListViewDataItem("Show hints");
+            Telerik.WinControls.UI.ListViewDataItem listViewDataItem5 = new Telerik.WinControls.UI.ListViewDataItem("Show general info");
+            Telerik.WinControls.UI.ListViewDataItem listViewDataItem6 = new Telerik.WinControls.UI.ListViewDataItem("Show linenumbers");
+            Telerik.WinControls.UI.ListViewDataItem listViewDataItem7 = new Telerik.WinControls.UI.ListViewDataItem("Show everything");
+            Telerik.WinControls.UI.ListViewDataItem listViewDataItem8 = new Telerik.WinControls.UI.ListViewDataItem("Show debug info");
+            Telerik.WinControls.UI.ListViewDataItem listViewDataItem9 = new Telerik.WinControls.UI.ListViewDataItem("Level 1  Optimizations");
+            Telerik.WinControls.UI.ListViewDataItem listViewDataItem10 = new Telerik.WinControls.UI.ListViewDataItem("Level 2  Optimizations");
+            Telerik.WinControls.UI.ListViewDataItem listViewDataItem11 = new Telerik.WinControls.UI.ListViewDataItem("Level 3  Optimizations");
+            Telerik.WinControls.UI.ListViewDataItem listViewDataItem12 = new Telerik.WinControls.UI.ListViewDataItem("Level 4  Optimizations");
             this.radPageViewPage1 = new Telerik.WinControls.UI.RadPageViewPage();
             this.radLabel4 = new Telerik.WinControls.UI.RadLabel();
             this.radButton2 = new Telerik.WinControls.UI.RadButton();
@@ -179,31 +179,31 @@
             // checklis
             // 
             this.checklis.GroupItemSize = new System.Drawing.Size(200, 36);
-            listViewDataItem13.Text = "Show Error";
-            listViewDataItem14.Text = "Show warnings";
-            listViewDataItem15.Text = "Show notes";
-            listViewDataItem16.Text = "Show hints";
-            listViewDataItem17.Text = "Show general info";
-            listViewDataItem18.Text = "Show linenumbers";
-            listViewDataItem19.Text = "Show everything";
-            listViewDataItem20.Text = "Show debug info";
-            listViewDataItem21.Text = "Level 1  Optimizations";
-            listViewDataItem22.Text = "Level 2  Optimizations";
-            listViewDataItem23.Text = "Level 3  Optimizations";
-            listViewDataItem24.Text = "Level 4  Optimizations";
+            listViewDataItem1.Text = "Show Error";
+            listViewDataItem2.Text = "Show warnings";
+            listViewDataItem3.Text = "Show notes";
+            listViewDataItem4.Text = "Show hints";
+            listViewDataItem5.Text = "Show general info";
+            listViewDataItem6.Text = "Show linenumbers";
+            listViewDataItem7.Text = "Show everything";
+            listViewDataItem8.Text = "Show debug info";
+            listViewDataItem9.Text = "Level 1  Optimizations";
+            listViewDataItem10.Text = "Level 2  Optimizations";
+            listViewDataItem11.Text = "Level 3  Optimizations";
+            listViewDataItem12.Text = "Level 4  Optimizations";
             this.checklis.Items.AddRange(new Telerik.WinControls.UI.ListViewDataItem[] {
-            listViewDataItem13,
-            listViewDataItem14,
-            listViewDataItem15,
-            listViewDataItem16,
-            listViewDataItem17,
-            listViewDataItem18,
-            listViewDataItem19,
-            listViewDataItem20,
-            listViewDataItem21,
-            listViewDataItem22,
-            listViewDataItem23,
-            listViewDataItem24});
+            listViewDataItem1,
+            listViewDataItem2,
+            listViewDataItem3,
+            listViewDataItem4,
+            listViewDataItem5,
+            listViewDataItem6,
+            listViewDataItem7,
+            listViewDataItem8,
+            listViewDataItem9,
+            listViewDataItem10,
+            listViewDataItem11,
+            listViewDataItem12});
             this.checklis.ItemSize = new System.Drawing.Size(200, 36);
             this.checklis.Location = new System.Drawing.Point(0, 39);
             this.checklis.Name = "checklis";
@@ -449,6 +449,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(783, 373);
             this.Controls.Add(radPageView1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "BuildConfig";
