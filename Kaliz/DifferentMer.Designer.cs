@@ -53,6 +53,7 @@
             this.Miad.Name = "Miad";
             this.Miad.Size = new System.Drawing.Size(1092, 339);
             this.Miad.TabIndex = 0;
+            this.Miad.ThemeName = "MaterialTeal";
             this.Miad.Paint += new System.Windows.Forms.PaintEventHandler(this.Miad_Paint);
             // 
             // textbox1
