@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            Telerik.WinControls.UI.RadListDataItem radListDataItem2 = new Telerik.WinControls.UI.RadListDataItem();
+            Telerik.WinControls.UI.RadListDataItem radListDataItem1 = new Telerik.WinControls.UI.RadListDataItem();
             this.materialTealTheme1 = new Telerik.WinControls.Themes.MaterialTealTheme();
             this.radLabel1 = new Telerik.WinControls.UI.RadLabel();
             this.radLabel2 = new Telerik.WinControls.UI.RadLabel();
@@ -187,8 +187,8 @@
             // 
             this.EmailSeever.BackColor = System.Drawing.Color.Honeydew;
             this.EmailSeever.EnableTheming = false;
-            radListDataItem2.Text = "smtp.gmail.com";
-            this.EmailSeever.Items.Add(radListDataItem2);
+            radListDataItem1.Text = "smtp.gmail.com";
+            this.EmailSeever.Items.Add(radListDataItem1);
             this.EmailSeever.Location = new System.Drawing.Point(482, 129);
             this.EmailSeever.Name = "EmailSeever";
             this.EmailSeever.Size = new System.Drawing.Size(295, 36);
@@ -280,6 +280,7 @@
             this.Controls.Add(this.radLabel2);
             this.Controls.Add(this.radLabel1);
             this.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.MaximizeBox = false;
             this.Name = "SendEmail";
             // 
