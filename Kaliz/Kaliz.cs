@@ -5512,6 +5512,12 @@ End;
         {
          
         }
+
+        private void radMenuItem1_Click_7(object sender, EventArgs e)
+        {
+            SearchDocs As = new SearchDocs();
+            As.ShowDialog();
+        }
     }
 }
 
