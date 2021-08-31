@@ -4855,10 +4855,7 @@ End;
             try
             {
             IP = new IPEndPoint(IPAddress.Parse(GetLocalIP()), int.Parse(txtPort));
-                isServer = false;
-                SStartServer.Enabled = false;
-                SConnect.Enabled = false;
-                SPush.Text = "Push Code in Current Tab to Server";
+                
 
                 CheckForIllegalCrossThreadCalls = false;
             }
@@ -4873,11 +4870,16 @@ End;
                 client.Connect(IP);
                 isConnectedCli = true;
                 SStatus.Text = "Connected to " + GetLocalIP();
+                isServer = false;
+                SStartServer.Enabled = false;
+                SConnect.Enabled = false;
+                SPush.Text = "Push Code in Current Tab to Server";
                 ShowAlert_Light("<html><color=Teal><b>You are connected to Server</b>",null, false);
             }
             catch
             {
-                MessageBox.Show("Error!"); return;
+                MessageBox.Show("Error!");
+                return;
             }
 
             Thread listen = new Thread(Receive);
@@ -4898,8 +4900,7 @@ End;
                         client.Shutdown(SocketShutdown.Both);
                         client.Close(10);
                         ShowAlert_Light("<html><b>Disconnected to Server</b>", null, false);
-                        SStartServer.Enabled = true;
-                        
+                        SStartServer.Enabled = true;                        
                         isServer = false;
                     }
                 }
