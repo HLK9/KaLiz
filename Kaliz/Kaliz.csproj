@@ -167,6 +167,12 @@
     <Compile Include="ParametDialog.Designer.cs">
       <DependentUpon>ParametDialog.cs</DependentUpon>
     </Compile>
+    <Compile Include="SearchDocs.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SearchDocs.Designer.cs">
+      <DependentUpon>SearchDocs.cs</DependentUpon>
+    </Compile>
     <Compile Include="SendEmail.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -219,6 +225,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="SearchDocs.resx">
+      <DependentUpon>SearchDocs.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="SendEmail.resx">
       <DependentUpon>SendEmail.cs</DependentUpon>
     </EmbeddedResource>
