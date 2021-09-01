@@ -62,8 +62,7 @@ namespace Kaliz
             //thr.Abort();
            
             InitializeComponent();
-            Thread.Sleep(4000);
-            DockPar.SelectedTabChanged += DockPar_SelectedTabChanged;
+            Thread.Sleep(4000);           
            // DockPar.SelectedTabChanging += DockPar_SelectedTabChanging;
             TaoPhimTat();
             Doutput.AutoHide();
@@ -508,7 +507,7 @@ namespace Kaliz
         {
             DocumentWindow TaiLieu = new DocumentWindow(ten);
             var DanhDau = new EditControl();
-            DanhDau.Text = "";
+           
             DanhDau.Dock = DockStyle.Fill;
             DanhDau.Style = EditControlStyle.Office2016Colorful;
             DanhDau.LineNumbersFont = new Font("Consolas", 13);
@@ -3485,10 +3484,6 @@ End;
             
         }
 
-        private void DockPar_SelectedTabChanged(object sender, SelectedTabChangedEventArgs e)
-        {
-           // UpdateTheme();
-        }
 
       
 
@@ -5513,7 +5508,9 @@ End;
          
         }
 
-        private void radMenuItem1_Click_7(object sender, EventArgs e)
+      
+
+        private void HSearch_Click(object sender, EventArgs e)
         {
             SearchDocs As = new SearchDocs();
             As.ShowDialog();
