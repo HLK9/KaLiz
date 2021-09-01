@@ -83,9 +83,9 @@
             this.searchEng.Items.Add(radListDataItem3);
             this.searchEng.Location = new System.Drawing.Point(8, 80);
             this.searchEng.Name = "searchEng";
+            this.searchEng.NullText = "Select Engine";
             this.searchEng.Size = new System.Drawing.Size(178, 36);
             this.searchEng.TabIndex = 3;
-            this.searchEng.Text = "Search Engine";
             this.searchEng.ThemeName = "MaterialTeal";
             // 
             // radLabel2
