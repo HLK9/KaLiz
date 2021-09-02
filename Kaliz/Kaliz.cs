@@ -3562,15 +3562,12 @@ End;
             {
                 Process pw = new Process();
                 pw.StartInfo.FileName = "powershell.exe";
-
                 pw.Start();
             }
             else
             {
                 Process pw = new Process();
-
                 pw.StartInfo.FileName = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\Kaliz"+@"\Cmder\Cmder.exe";
-               // pw.StartInfo.Arguments = "/start " + Application.StartupPath;
                 pw.Start();
             }
            
