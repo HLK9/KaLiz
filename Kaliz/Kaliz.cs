@@ -24,7 +24,6 @@ using System.Net;
 using System.Collections.Generic;
 using System.Linq;
 using Microsoft.WindowsAPICodePack.Dialogs;
-using Syncfusion.Windows.Forms.Edit.Dialogs;
 
 namespace Kaliz
 {
