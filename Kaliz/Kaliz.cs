@@ -650,35 +650,39 @@ namespace Kaliz
         }
         private List<string> HisBookmark = new List<string>();
         private void DatBookmarks()
-        {           
-
-            string lines;
-            string re = string.Empty;
-            System.IO.StreamReader file = new StreamReader(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\Kaliz\\BookmarksList.txt");
-            while ((lines = file.ReadLine()) != null)
+        {  
+            try
             {
-                HisBookmark.Add(lines);
-                if (lines.Contains(TabHienTai.FileName))
+                string lines;
+                string re = string.Empty;
+                System.IO.StreamReader file = new StreamReader(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\Kaliz\\BookmarksList.txt");
+                while ((lines = file.ReadLine()) != null)
                 {
-                    re = lines; break;
+                    HisBookmark.Add(lines);
+                    if (lines.Contains(TabHienTai.FileName))
+                    {
+                        re = lines; break;
+                    }
+
+                }
+                //   string re = string.Empty;
+                //string[] lines = File.ReadAllLines(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\Kaliz\\BookmarksList.txt");
+
+                string[] tokens = re.Split(' ');
+                foreach (var item in tokens)
+                {
+                    try
+                    {
+                        BrushInfo brushInfo = new BrushInfo(Color.Turquoise);
+                        TabHienTai.BookmarkAdd(int.Parse(item), brushInfo);
+                        bookmarkList.Items.Add(int.Parse(item), Path.GetFileName(TabHienTai.FileName), TabHienTai.FileName);
+                    }
+                    catch { }
                 }
 
-            }
-            //   string re = string.Empty;
-            //string[] lines = File.ReadAllLines(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\Kaliz\\BookmarksList.txt");
            
-            string[] tokens = re.Split(' ');
-            foreach(var item in tokens)
-            {
-                try
-                {
-                    BrushInfo brushInfo = new BrushInfo(Color.Turquoise);
-                    TabHienTai.BookmarkAdd(int.Parse(item),brushInfo);
-                    bookmarkList.Items.Add(int.Parse(item), Path.GetFileName(TabHienTai.FileName), TabHienTai.FileName);
-                }
-                catch { }
             }
-
+            catch { }
         }
 
         private void DanhDau_KeyDown(object sender, KeyEventArgs e)
