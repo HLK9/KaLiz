@@ -1664,7 +1664,7 @@ namespace Kaliz
 
         private void DanhDau_ContextChoiceOpen_ForPython(IContextChoiceController controller)
         {
-            controller.Items.Add("and");
+            controller.Items.Add("and", "This is a logical operator it returns true if both the operands are true else return false");
             controller.Items.Add("as");
             controller.Items.Add("assert");
             controller.Items.Add("break");
@@ -1672,7 +1672,7 @@ namespace Kaliz
             controller.Items.Add("continue");
             controller.Items.Add("def");
             controller.Items.Add("del");
-            controller.Items.Add("elif");
+            controller.Items.Add("elif", "	Elif is a condition statement used with if statement the elif statement is executed if the previous conditions were not true");
             controller.Items.Add("else");
             controller.Items.Add("except");
             controller.Items.Add("False");
@@ -1680,15 +1680,15 @@ namespace Kaliz
             controller.Items.Add("for");
             controller.Items.Add("from");
             controller.Items.Add("global");
-            controller.Items.Add("if");
+            controller.Items.Add("if", "This is used to make a conditional statement.");
             controller.Items.Add("import");
             controller.Items.Add("in");
             controller.Items.Add("is");
             controller.Items.Add("lambda");
             controller.Items.Add("None");
             controller.Items.Add("nonlocal");
-            controller.Items.Add("not");
-            controller.Items.Add("or");
+            controller.Items.Add("not", "This is again a logical operator it returns True if the operand is false else return false.");
+            controller.Items.Add("or", "This is also a logical operator it returns true if anyone operand is true else return false.");
             controller.Items.Add("pass");
             controller.Items.Add("raise");
             controller.Items.Add("return");
