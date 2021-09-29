@@ -505,8 +505,8 @@ namespace Kaliz
         private void TaoMoi(string ten, string DuongDanTep)
         {
             DocumentWindow TaiLieu = new DocumentWindow(ten);
-            var DanhDau = new EditControl();
-           
+            var DanhDau = new EditControl();            
+            DanhDau.DeleteAll();
             DanhDau.Dock = DockStyle.Fill;
             DanhDau.Style = EditControlStyle.Office2016Colorful;
             DanhDau.LineNumbersFont = new Font("Consolas", 13);

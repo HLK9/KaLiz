@@ -92,6 +92,7 @@
 			<lexem BeginBlock="interface" Type="KeyWord" />
 			<lexem BeginBlock="property" Type="KeyWord" />
 			<lexem BeginBlock="readonly" Type="KeyWord" />
+			
 			<lexem BeginBlock="dispinterface" Type="KeyWord" />
 			<lexem BeginBlock="implementation" Type="KeyWord" />
 			<lexem BeginBlock="initialization" Type="KeyWord" />
