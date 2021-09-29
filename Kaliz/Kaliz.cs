@@ -30,7 +30,7 @@ namespace Kaliz
    
     public partial class Kaliz : Telerik.WinControls.UI.RadForm
     {
-        private bool deBug = false;
+        private bool deBug = true;
         private bool enableContext = false;
         private bool enableTooltip = false;
         private bool enableContextPrompt = false;
@@ -596,7 +596,7 @@ namespace Kaliz
 
             }
 
-
+            
 
             DanhDau.MarkChangedLines = true;
             DanhDau.ShowSelectionMargin = true;
@@ -3151,14 +3151,14 @@ End;
             {
                 ShowAlert_Light("<html><color=Teal><b>You have enabled debugging mode</b> ", "<html><i><span><color=Teal>Please compile again to initialize</span></i>", false);
                 deBug = true;
-                DEnable.Text = "Disable Debug";
+                DEnable.Text = "Mode: Debug";
 
             }
             else
             {
-                ShowAlert_Light("<html><color=Crimson><b> You have disabled debugging mode </b> ", "<html><i><span><color=Teal>Compiler will not initialize debug information</span></i>", false);
+                ShowAlert_Light("<html><color=Crimson><b> You have changed to normal mode </b> ", "<html><i><span><color=Teal>Compiler will not initialize debug information</span></i>", false);
                 deBug = false;
-                DEnable.Text = "Enable Debug";
+                DEnable.Text = "Mode: Normal";
 
             }
 
@@ -4930,7 +4930,7 @@ End;
             }
             catch
             {
-                MessageBox.Show("Error!");
+                MessageBox.Show("Server Not Available","Error",MessageBoxButtons.OK,MessageBoxIcon.Error);
                 return;
             }
 
@@ -5130,18 +5130,7 @@ End;
                 Close_Cli();
         }
 
-        private void DataAdd_Click(object sender, EventArgs e)
-        {
-            if (TabHienTai != null)
-            {
-                TabHienTai.MoveToLineEnd();
-                TabHienTai.Text.Insert(0, "\n" + dataReceived + "\n");
-
-            }
-            else
-                MessageBox.Show("Active Document not found!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                
-        }
+       
 
         private void listDataReceived_ItemMouseClick(object sender, ListViewItemEventArgs e)
         {
