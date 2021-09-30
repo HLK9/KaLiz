@@ -2183,35 +2183,43 @@ End;
             TabHienTai.StatusBarSettings.StatusPanel.Panel.Text = "Unsaved";
             TabHienTai.StatusBarSettings.StatusPanel.Panel.BackColor = Color.DarkMagenta;
             TabHienTai.StatusBarSettings.StatusPanel.Panel.ForeColor = Color.White;
-            
+
             //Parser();
+            //System.Timers.Timer thoiGianCho = new System.Timers.Timer();
+            //thoiGianCho.Interval = 3000;
+            //thoiGianCho.Start();
+            //if (thoiGianCho.Interval < 3000)
+            //    return;
+            //else
+            //    Parser();
             
 
 
         }
         void Parser()
-        {
-            //radListError.Text = "";
+        {            
             if (File.Exists(TabHienTai.FileName))
             {
-                
-                string path = TabHienTai.FileName;
-                Process Par = new Process();
-                Par.StartInfo.FileName = @"D:\Documents\GitHub\KalizParser\ConAntle\bin\Release\ConAntle.exe";
-                Par.StartInfo.RedirectStandardError = true;
-                Par.StartInfo.RedirectStandardOutput = true;
-                Par.StartInfo.UseShellExecute = false;
-                Par.StartInfo.RedirectStandardInput = true;
-                Par.StartInfo.CreateNoWindow = true;
-                Par.Start();
-                Par.StandardInput.WriteLine(path);
-                Par.StandardInput.Flush();
-                Par.StandardInput.Close();
-                string a = Par.StandardError.ReadToEnd();
-
-                radListError.Text = a;
+              
+                    string path = TabHienTai.FileName;
+                    Process Par = new Process();
+                    Par.StartInfo.FileName = @"C:\Users\FPT SHOP\Documents\SourceCode\KalizParser\ConAntle\bin\Debug\ConAntle.exe";
+                    Par.StartInfo.RedirectStandardError = true;
+                    Par.StartInfo.RedirectStandardOutput = true;
+                    Par.StartInfo.UseShellExecute = false;
+                    Par.StartInfo.RedirectStandardInput = true;
+                    Par.StartInfo.CreateNoWindow = true;
+                    Par.Start();
+                    Par.StandardInput.WriteLine(path);
+                    Par.StandardInput.Flush();
+                    Par.StandardInput.Close();
+                    string a = Par.StandardError.ReadToEnd();
+                    radListError.Text = a;
+              
+               
             }
-            else return;
+            else
+            return;
             
 
         }
@@ -3158,7 +3166,20 @@ End;
 
 
         }
+        private void UnderLineError()
+        {
+            TabHienTai.RemoveUnderline(new Point(1, 1), new Point(100, TabHienTai.PhysicalLineCount));
+            ISnippetFormat format = TabHienTai.RegisterUnderlineFormat(Color.IndianRed, UnderlineStyle.Wave, UnderlineWeight.Bold);
 
+            string regex = @"\d\:\d";
+            MatchCollection matchCollect = Regex.Matches(radListError.Text, regex);
+            foreach (Match item in  matchCollect)
+            {
+                string[] a = item.Value.ToString().Split(':');
+
+                TabHienTai.SetUnderline(new Point(int.Parse(a[1]), int.Parse(a[0])),new Point(int.Parse(a[1])+5,int.Parse(a[0])), format);
+            }
+        }
         private void FSave_Click(object sender, EventArgs e)
         {
 
@@ -3176,7 +3197,8 @@ End;
                         Thread Pa = new Thread(Sd);
                         Pa.IsBackground = true;
                         Pa.Start();
-
+                        Sd.Invoke();
+                        UnderLineError();
                         //Parser();
                     }
                     catch
@@ -5554,6 +5576,11 @@ End;
         {
             SearchDocs As = new SearchDocs();
             As.ShowDialog();
+        }
+
+        private void radMenuItem1_Click_7(object sender, EventArgs e)
+        {
+            UnderLineError();
         }
     }
 }
