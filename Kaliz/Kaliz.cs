@@ -506,7 +506,7 @@ namespace Kaliz
         {
             DocumentWindow TaiLieu = new DocumentWindow(ten);
             var DanhDau = new EditControl();            
-            DanhDau.DeleteAll();
+            
             DanhDau.Dock = DockStyle.Fill;
             DanhDau.Style = EditControlStyle.Office2016Colorful;
             DanhDau.LineNumbersFont = new Font("Consolas", 13);
@@ -595,8 +595,10 @@ namespace Kaliz
               
 
             }
+            else
+                DanhDau.DeleteAll();
 
-            
+
 
             DanhDau.MarkChangedLines = true;
             DanhDau.ShowSelectionMargin = true;
@@ -2006,15 +2008,7 @@ End;
                                 default:                                   
                                     break;
                             }
-                            //if (lexem.Text == "program")
-                            //e.Text = "Từ khóa :v:v :V " + lexem.Text;
-                            //if (lexem.Text == "var")
-                            //    e.Text = "Từ khóaádasd :v:v :V " + lexem.Text;
-                            //if (lexem.Text == "write")
-                            //    e.Text = "in" + lexem.Text;
-                            //if (lexem.Text == "readln")
-                            //    e.Text = "dừng " + lexem.Text;
-
+                           
 
                         }
                         else return;
