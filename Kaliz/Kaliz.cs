@@ -3171,13 +3171,13 @@ End;
             TabHienTai.RemoveUnderline(new Point(1, 1), new Point(100, TabHienTai.PhysicalLineCount));
             ISnippetFormat format = TabHienTai.RegisterUnderlineFormat(Color.IndianRed, UnderlineStyle.Wave, UnderlineWeight.Bold);
 
-            string regex = @"\d\:\d";
+            string regex = @"\d+\:\d+";
             MatchCollection matchCollect = Regex.Matches(radListError.Text, regex);
             foreach (Match item in  matchCollect)
             {
                 string[] a = item.Value.ToString().Split(':');
-
-                TabHienTai.SetUnderline(new Point(int.Parse(a[1]), int.Parse(a[0])),new Point(int.Parse(a[1])+5,int.Parse(a[0])), format);
+                
+              TabHienTai.SetUnderline(new Point(int.Parse(a[1]), int.Parse(a[0])),new Point(int.Parse(a[1])+5,int.Parse(a[0])), format);
             }
         }
         private void FSave_Click(object sender, EventArgs e)
