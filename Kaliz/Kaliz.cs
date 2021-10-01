@@ -3192,13 +3192,27 @@ End;
                 {
                     try
                     {
-                        ThreadStart Sd = new ThreadStart(Parser);
-                        CheckForIllegalCrossThreadCalls = false;
-                        Thread Pa = new Thread(Sd);
-                        Pa.IsBackground = true;
-                        Pa.Start();
-                        Sd.Invoke();
-                        UnderLineError();
+                        //ThreadStart Sd = new ThreadStart(Parser);
+                        //CheckForIllegalCrossThreadCalls = false;
+                        //Thread Pa = new Thread(Sd);
+                        //Pa.IsBackground = true;
+                        //Pa.Start();
+                        //thread phân tích
+                        Thread Par = new Thread(() =>
+                        {
+                            Invoke(new Action(() => { Parser(); }));
+                        });
+                        
+                        Par.Start();
+                        //thread gạch chân
+                        Thread t = new Thread(() =>
+                         {
+                             
+                             Invoke(new Action(() => { UnderLineError(); }));
+                            
+                         });
+                        t.IsBackground = true;
+                        t.Start();
                         //Parser();
                     }
                     catch
