@@ -4275,15 +4275,6 @@ End;
             }
         }
 
-        private void PCustom_Click(object sender, EventArgs e)
-        {
-            
-        }
-
-        private void MOptions_Click(object sender, EventArgs e)
-        {
-
-        }
 
         private void OutputShow_Click(object sender, EventArgs e)
         {
@@ -4348,32 +4339,7 @@ End;
             { }
         }
 
-        private void radMenuItem3_Click_2(object sender, EventArgs e)
-        {
-            TabHienTai.VScrollMode = ScrollMode.Immediate;
-            TabHienTai.LikeVisualStudioSearch = true;
-        }
-
-        private void radMenuItem16_Click_1(object sender, EventArgs e)
-        {
-            TabHienTai.VScrollMode = ScrollMode.Deferred;
-        }
-
-        private void radMenuItem17_Click(object sender, EventArgs e)
-        {
-            TabHienTai.VScrollMode = ScrollMode.Pixel;
-        }
-
-        private void radMenuItem18_Click(object sender, EventArgs e)
-        {
-            //DockPar.DockWindow(DockPar.DocumentManager.ActiveDocument, DockPosition.Fill);
-           
-            //DockPar.DockControl(DockPar.DocumentManager.ActiveDocument, DockPosition.Fill, DockType.Document);
-            //DockPar.FloatWindow(DockPar.DocumentManager.ActiveDocument);
-
-            
-
-        }
+       
 
         private void DeJDB_Click(object sender, EventArgs e)
         {
@@ -4600,11 +4566,6 @@ End;
             { }
         }
 
-        private void radMenuItem3_Click_3(object sender, EventArgs e)
-        {
-            
-        }
-
         private void radMenuItem16_Click_2(object sender, EventArgs e)
         {
             TabHienTai.SaveFile(TabHienTai.FileName, TabHienTai.GetEncoding(), Syncfusion.IO.NewLineStyle.Windows);
@@ -4696,12 +4657,6 @@ End;
         }
 
        
-
-        private void EDupli_Click(object sender, EventArgs e)
-        {
-
-           
-        }
         private bool isServer = false;
         private void SStartServer_Click(object sender, EventArgs e)
         {
@@ -5504,16 +5459,9 @@ End;
             DBreakPointList.Hide();
         }
 
-        private void radMenuItem3_Click_4(object sender, EventArgs e)
-        {
-            
+        
 
-        }
-
-        private void radMenuItem1_Click_4(object sender, EventArgs e)
-        {
-        }
-
+       
         private void OParse_Click(object sender, EventArgs e)
         {
             if(enableParse == false)
@@ -5572,20 +5520,6 @@ End;
             }
         }
 
-        private void radMenuItem1_Click_6(object sender, EventArgs e)
-        {
-
-
-
-        }
-
-        private void radMenuItem3_Click_5(object sender, EventArgs e)
-        {
-         
-        }
-
-      
-
         private void HSearch_Click(object sender, EventArgs e)
         {
             SearchDocs As = new SearchDocs();
@@ -5595,6 +5529,15 @@ End;
         private void radMenuItem1_Click_7(object sender, EventArgs e)
         {
             UnderLineError();
+        }
+
+      
+
+        private void EDumpSelected_Click(object sender, EventArgs e)
+        {
+            string a = Environment.NewLine + TabHienTai.SelectedText;
+            TabHienTai.MoveToLineEnd();
+            TabHienTai.InsertText(TabHienTai.CurrentLine, TabHienTai.CurrentColumn, a);
         }
     }
 }
