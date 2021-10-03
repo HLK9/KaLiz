@@ -36,11 +36,11 @@ namespace Kaliz
             this.components = new System.ComponentModel.Container();
             Telerik.WinControls.UI.Docking.AutoHideGroup autoHideGroup1 = new Telerik.WinControls.UI.Docking.AutoHideGroup();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Kaliz));
-            Telerik.WinControls.UI.ListViewDetailColumn listViewDetailColumn1 = new Telerik.WinControls.UI.ListViewDetailColumn("Column 0", "Line");
-            Telerik.WinControls.UI.ListViewDetailColumn listViewDetailColumn2 = new Telerik.WinControls.UI.ListViewDetailColumn("Column 1", "Name");
-            Telerik.WinControls.UI.ListViewDetailColumn listViewDetailColumn3 = new Telerik.WinControls.UI.ListViewDetailColumn("Column 2", "File");
-            Telerik.WinControls.UI.ListViewDetailColumn listViewDetailColumn4 = new Telerik.WinControls.UI.ListViewDetailColumn("Column 0", "Line");
-            Telerik.WinControls.UI.ListViewDetailColumn listViewDetailColumn5 = new Telerik.WinControls.UI.ListViewDetailColumn("Column 1", "File Name");
+            Telerik.WinControls.UI.ListViewDetailColumn listViewDetailColumn3 = new Telerik.WinControls.UI.ListViewDetailColumn("Column 0", "Line");
+            Telerik.WinControls.UI.ListViewDetailColumn listViewDetailColumn4 = new Telerik.WinControls.UI.ListViewDetailColumn("Column 1", "Name");
+            Telerik.WinControls.UI.ListViewDetailColumn listViewDetailColumn5 = new Telerik.WinControls.UI.ListViewDetailColumn("Column 2", "File");
+            Telerik.WinControls.UI.ListViewDetailColumn listViewDetailColumn6 = new Telerik.WinControls.UI.ListViewDetailColumn("Column 0", "Line");
+            Telerik.WinControls.UI.ListViewDetailColumn listViewDetailColumn7 = new Telerik.WinControls.UI.ListViewDetailColumn("Column 1", "File Name");
             this.dockWindowPlaceholder1 = new Telerik.WinControls.UI.Docking.DockWindowPlaceholder();
             this.MFile = new Telerik.WinControls.UI.RadMenuItem();
             this.FNew = new Telerik.WinControls.UI.RadMenuItem();
@@ -242,6 +242,7 @@ namespace Kaliz
             this.SDisconnect = new Telerik.WinControls.UI.RadMenuItem();
             this.contextMenuData = new Telerik.WinControls.UI.RadContextMenu(this.components);
             this.contextMenuDirectory = new Telerik.WinControls.UI.RadContextMenu(this.components);
+            this.EDumpSelected = new Telerik.WinControls.UI.RadMenuItem();
             this.MenuTop = new Telerik.WinControls.UI.RadMenu();
             ((System.ComponentModel.ISupportInitialize)(this.DockPar)).BeginInit();
             this.DockPar.SuspendLayout();
@@ -289,8 +290,8 @@ namespace Kaliz
             this.DClosedFiles.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.listClosedFiles)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.toolTabStrip3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.MenuTop)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MenuTop)).BeginInit();
             this.SuspendLayout();
             // 
             // dockWindowPlaceholder1
@@ -461,7 +462,8 @@ namespace Kaliz
             this.EOutdent,
             this.EFold,
             this.ESwitch,
-            this.ELine});
+            this.ELine,
+            this.EDumpSelected});
             this.MEdit.Name = "MEdit";
             this.MEdit.Text = "Edit";
             // 
@@ -889,7 +891,6 @@ namespace Kaliz
             this.OZoom});
             this.MOptions.Name = "MOptions";
             this.MOptions.Text = "Options";
-            this.MOptions.Click += new System.EventHandler(this.MOptions_Click);
             // 
             // OEnableContext
             // 
@@ -1580,16 +1581,16 @@ namespace Kaliz
             this.bookmarkList.AllowArbitraryItemHeight = true;
             this.bookmarkList.AllowEdit = false;
             this.bookmarkList.AutoSizeColumnsMode = Telerik.WinControls.UI.ListViewAutoSizeColumnsMode.Fill;
-            listViewDetailColumn1.HeaderText = "Line";
-            listViewDetailColumn1.Width = 222.8341F;
-            listViewDetailColumn2.HeaderText = "Name";
-            listViewDetailColumn2.Width = 415.6947F;
-            listViewDetailColumn3.HeaderText = "File";
-            listViewDetailColumn3.Width = 401.4712F;
+            listViewDetailColumn3.HeaderText = "Line";
+            listViewDetailColumn3.Width = 222.8341F;
+            listViewDetailColumn4.HeaderText = "Name";
+            listViewDetailColumn4.Width = 415.6947F;
+            listViewDetailColumn5.HeaderText = "File";
+            listViewDetailColumn5.Width = 401.4712F;
             this.bookmarkList.Columns.AddRange(new Telerik.WinControls.UI.ListViewDetailColumn[] {
-            listViewDetailColumn1,
-            listViewDetailColumn2,
-            listViewDetailColumn3});
+            listViewDetailColumn3,
+            listViewDetailColumn4,
+            listViewDetailColumn5});
             this.bookmarkList.Dock = System.Windows.Forms.DockStyle.Fill;
             this.bookmarkList.EnableColumnSort = true;
             this.bookmarkList.GroupItemSize = new System.Drawing.Size(200, 32);
@@ -1645,13 +1646,13 @@ namespace Kaliz
             this.radListBreakpoint.AllowArbitraryItemHeight = true;
             this.radListBreakpoint.AllowRemove = false;
             this.radListBreakpoint.AutoSizeColumnsMode = Telerik.WinControls.UI.ListViewAutoSizeColumnsMode.Fill;
-            listViewDetailColumn4.HeaderText = "Line";
-            listViewDetailColumn4.Width = 523.9738F;
-            listViewDetailColumn5.HeaderText = "File Name";
-            listViewDetailColumn5.Width = 515.0262F;
+            listViewDetailColumn6.HeaderText = "Line";
+            listViewDetailColumn6.Width = 523.9738F;
+            listViewDetailColumn7.HeaderText = "File Name";
+            listViewDetailColumn7.Width = 515.0262F;
             this.radListBreakpoint.Columns.AddRange(new Telerik.WinControls.UI.ListViewDetailColumn[] {
-            listViewDetailColumn4,
-            listViewDetailColumn5});
+            listViewDetailColumn6,
+            listViewDetailColumn7});
             this.radListBreakpoint.Dock = System.Windows.Forms.DockStyle.Fill;
             this.radListBreakpoint.GroupItemSize = new System.Drawing.Size(200, 32);
             this.radListBreakpoint.ItemSize = new System.Drawing.Size(200, 32);
@@ -1991,6 +1992,18 @@ namespace Kaliz
             // 
             this.contextMenuData.ThemeName = "MaterialTeal";
             // 
+            // EDumpSelected
+            // 
+            this.EDumpSelected.Name = "EDumpSelected";
+            this.EDumpSelected.Text = "Dumplicate Selected Text";
+            this.EDumpSelected.Click += new System.EventHandler(this.EDumpSelected_Click);
+            // 
+            // Kaliz
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.ClientSize = new System.Drawing.Size(1257, 735);
+            // 
             // MenuTop
             // 
             this.MenuTop.Items.AddRange(new Telerik.WinControls.RadItem[] {
@@ -2011,12 +2024,6 @@ namespace Kaliz
             this.MenuTop.Size = new System.Drawing.Size(1257, 37);
             this.MenuTop.TabIndex = 1;
             this.MenuTop.ThemeName = "MaterialTeal";
-            // 
-            // Kaliz
-            // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1257, 735);
             this.Controls.Add(this.DockPar);
             this.Controls.Add(this.MenuTop);
             this.HelpButton = true;
@@ -2291,6 +2298,7 @@ namespace Kaliz
         private RadMenuItem CutLine;
         private RadRichTextEditor radListError;
         private RadMenuItem HSearch;
+        private RadMenuItem EDumpSelected;
         private RadMenu MenuTop;
     }
 }
