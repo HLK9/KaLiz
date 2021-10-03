@@ -1760,20 +1760,20 @@ namespace Kaliz
                 else
             if (TabHienTai.GetCurrentWord().ToLower() == "while")
                 {
-                    e.AddPrompt("While-do Loop", null).BoldedItems.Add(0, 14, "while (condition) do <Command>");
-                    //item = e.AddPrompt("Vòng Lặp while", "<Điều kiện> do <Câu lệnh>");
-                    //item.BoldedItems.Add(0, 14, "Điều kiện");
-                    //item.BoldedItems.Add(0, 14, "Câu lệnh");
+                    e.AddPrompt("While-do Loop", null).BoldedItems.Add(0, 13, "while <condition> do <command>");
+                    item = e.AddPrompt("While Loop", "<Condition> do <Statements>");
+                    item.BoldedItems.Add(0, 10, "Condition");
+                    item.BoldedItems.Add(0, 10, "Statements");
 
                 }
             }
             if (TabHienTai.GetCurrentWord().ToLower() == "if")
             {
-                e.AddPrompt("if then else statement", "if (conditions) then < Command >");
+                e.AddPrompt("if then else statement", "if <conditions> then <command>");
             }
             if (TabHienTai.GetCurrentWord().ToLower() == "case")
             {
-                e.AddPrompt("Case Statement", "Case (expression) Of" + @"
+                e.AddPrompt("Case Statement", "Case <expression> Of" + @"
     <case 1> : <job 1>;
     <case 2> : <job 2>;
     ...
@@ -2184,15 +2184,17 @@ End;
             TabHienTai.StatusBarSettings.StatusPanel.Panel.BackColor = Color.DarkMagenta;
             TabHienTai.StatusBarSettings.StatusPanel.Panel.ForeColor = Color.White;
 
-            //Parser();
+
             //System.Timers.Timer thoiGianCho = new System.Timers.Timer();
             //thoiGianCho.Interval = 3000;
             //thoiGianCho.Start();
             //if (thoiGianCho.Interval < 3000)
             //    return;
             //else
+
             //    Parser();
-            
+            //UnderLineError();
+
 
 
         }
@@ -2200,8 +2202,10 @@ End;
         {            
             if (File.Exists(TabHienTai.FileName))
             {
-              
-                    string path = TabHienTai.FileName;
+
+                string path = TabHienTai.FileName;
+                //File.WriteAllText(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + @"\Kaliz\Intermediary.txt", TabHienTai.Text);
+                //string path = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + @"\Kaliz\Intermediary.txt";
                     Process Par = new Process();
                     Par.StartInfo.FileName = @"C:\Users\FPT SHOP\Documents\SourceCode\KalizParser\ConAntle\bin\Debug\ConAntle.exe";
                     Par.StartInfo.RedirectStandardError = true;
