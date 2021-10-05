@@ -88,27 +88,27 @@
 			<lexem BeginBlock="@" Type="Operator" />
 			<lexem BeginBlock="break" Type="KeyWord" />
 			<lexem BeginBlock="catch" Type="KeyWord" />
-			<lexem BeginBlock="case" Type="KeyWord" />
+			<lexem BeginBlock="case" Type="KeyWord" DropContextPrompt="true" IsComplex="true"/>
 			<lexem BeginBlock="continue" Type="KeyWord" />
 			<lexem BeginBlock="default" Type="KeyWord" />
 			<lexem BeginBlock="do" Type="KeyWord" />
 			<lexem BeginBlock="else" Type="KeyWord" />
 			<lexem BeginBlock="false" Type="KeyWord" />
-			<lexem BeginBlock="for" Type="KeyWord" />
+			<lexem BeginBlock="for" Type="KeyWord" DropContextPrompt="true" IsComplex="true"/>
 			<lexem BeginBlock="finally" Type="KeyWord" />
-			<lexem BeginBlock="if" Type="KeyWord" />
+			<lexem BeginBlock="if" Type="KeyWord" DropContextPrompt="true" IsComplex="true"/>
 			<lexem BeginBlock="interface" Type="KeyWord" />
 			<lexem BeginBlock="instanceof" Type="KeyWord" />
 			<lexem BeginBlock="new" Type="KeyWord" />
 			<lexem BeginBlock="null" Type="KeyWord" />
 			<lexem BeginBlock="return" Type="KeyWord" />
-			<lexem BeginBlock="switch" Type="KeyWord" />
+			<lexem BeginBlock="switch" Type="KeyWord" DropContextPrompt="true" IsComplex="true"/>
 			<lexem BeginBlock="super" Type="KeyWord" />
-			<lexem BeginBlock="try" Type="KeyWord" />
+			<lexem BeginBlock="try" Type="KeyWord" DropContextPrompt="true" IsComplex="true"/>
 			<lexem BeginBlock="true" Type="KeyWord" />
 			<lexem BeginBlock="this" Type="KeyWord" />
 			<lexem BeginBlock="throw" Type="KeyWord" />
-			<lexem BeginBlock="while" Type="KeyWord" />
+			<lexem BeginBlock="while" Type="KeyWord" DropContextPrompt="true" IsComplex="true"/>
 			<lexem BeginBlock='native' Type="KeyWord" />
 			<lexem BeginBlock='synchronized' Type="KeyWord" />
 			<lexem BeginBlock='threadsafe' Type="KeyWord" />
