@@ -593,6 +593,7 @@ namespace Kaliz
                     DanhDau.ApplyConfiguration("Java");
                     DanhDau.StatusBarSettings.FileNamePanel.Panel.Text = "Java";
                     DanhDau.ContextPromptOpen += DanhDau_ContextPromptOpen_ForJava;
+                    DanhDau.ContextPromptUpdate += DanhDau_ContextPromptUpdate_ForJava;
                     DanhDau.ContextChoiceOpen += DanhDau_ContextChoiceOpen_Java;
                     DanhDau.UpdateContextToolTip += DanhDau_UpdateContextToolTip_ForJava;
                     
@@ -636,8 +637,8 @@ namespace Kaliz
             DanhDau.TextChanged += DanhDau_TextChanged;
            // DanhDau.UpdateContextToolTip += DanhDau_UpdateContextToolTip_ForPascal;
             DanhDau.MenuFill += DanhDau_MenuFill;
-            
-            DanhDau.ContextPromptBorderColor = Color.Pink;
+
+            DanhDau.ContextPromptBorderColor = Color.Teal ;
             DanhDau.ContextPromptBackgroundBrush = new BrushInfo(GradientStyle.None, new Color[] { Color.FromArgb(249, 249, 249) });
             DanhDau.BackgroundColor = new BrushInfo(GradientStyle.None, new Color[] { Color.FromArgb(249, 249, 249) });
             // DanhDau.BackgroundColor  = new Syncfusion.Drawing.BrushInfo(Syncfusion.Drawing.GradientStyle.ForwardDiagonal, new System.Drawing.Color[] { System.Drawing.Color.LavenderBlush, System.Drawing.Color.AliceBlue, System.Drawing.Color.BlanchedAlmond });
@@ -646,56 +647,69 @@ namespace Kaliz
 
             //In
             DanhDau.PrintHeader += DanhDau_PrintHeader;
-            //DanhDau.ShowContextTooltip = true; 
-
-            //
-            //Auto
             DanhDau.KeyDown += DanhDau_KeyDown;
-            //bookmarks
             DatBookmarks();
 
 
         }
 
+        private void DanhDau_ContextPromptUpdate_ForJava(object sender, ContextPromptUpdateEventArgs e)
+        {
+            if (e.List.SelectedItem != null)
+            {
+
+                // Get list of the lexems that are inside the current stack.
+
+                IList list = TabHienTai.GetLexemsInsideCurrentStack(false);
+
+                if (list == null) return;
+
+
+
+                int iBoldedIndex = 0;
+
+                foreach (ILexem lexem in list)
+
+                {
+
+                    if (lexem.Text == ";")
+
+                        iBoldedIndex++;
+
+                }
+
+                if (iBoldedIndex >= e.List.SelectedItem.BoldedItems.Count)
+
+                    e.List.SelectedItem.BoldedItems.SelectedItem = null;
+
+                else
+
+                    // Gets or sets selected item.
+
+                    e.List.SelectedItem.BoldedItems.SelectedItem = e.List.SelectedItem.BoldedItems[iBoldedIndex];
+
+            }
+        }
+
         private void DanhDau_ContextPromptOpen_ForJava(object sender, ContextPromptUpdateEventArgs e)
         {
-//            if (enableContextPrompt == true)
-//            {
-//                ContextPromptItem item = null;
-//                if (TabHienTai.GetCurrentWord().ToLower() == "for")
-//                {
-//                    e.AddPrompt("For Loop", " for < variable-name > := < initial_value > to [down to] < final_value > do < Command >");
-
-//                    //item = e.AddPrompt("Vòng Lặp for", "<Giá trị đầu> to <Giá trị cuối> do <Câu lệnh>");
-//                    //item.BoldedItems.Add(0, 12, "Giá trị đầu");                   
-//                    //item.BoldedItems.Add(0, 12, "Giá trị cuối");
-//                    //item.BoldedItems.Add(0, 12, "Câu lệnh");
-
-//                }
-//                else
-//            if (TabHienTai.GetCurrentWord().ToLower() == "while")
-//                {
-//                    e.AddPrompt("While-do Loop", null).BoldedItems.Add(0, 13, "while <condition> do <command>");
-//                    item = e.AddPrompt("While Loop", "<Condition> do <Statements>");
-//                    item.BoldedItems.Add(0, 10, "Condition");
-//                    item.BoldedItems.Add(0, 10, "Statements");
-
-//                }
-//            }
-//            if (TabHienTai.GetCurrentWord().ToLower() == "if")
-//            {
-//                e.AddPrompt("if then else statement", "if <conditions> then <command>");
-//            }
-//            if (TabHienTai.GetCurrentWord().ToLower() == "case")
-//            {
-//                e.AddPrompt("Case Statement", "Case <expression> Of" + @"
-//    <case 1> : <job 1>;
-//    <case 2> : <job 2>;
-//    ...
-//    <case n> : <job n>;
-//End;
-//");
-//            }
+            if(enableContextPrompt == true)
+            {
+                if(TabHienTai.GetCurrentWord().ToLower() == "for")
+                {
+                    e.AddPrompt("For loop", null).BoldedItems.Add(0,8, "for <start value> ; <end value> ; <increment number>");
+                }
+                else
+                    if(TabHienTai.GetCurrentWord().ToLower()=="while")
+                {
+                    e.AddPrompt("While loop", null).BoldedItems.Add(0, 10, "while (condition) \n{\n   <statements>\n}");
+                }
+                else
+                    if(TabHienTai.GetCurrentWord().ToLower()=="do")
+                {
+                    e.AddPrompt("Do-While", null).BoldedItems.Add(0, 8, "do \n{\n   <statements>\n}\nwhile (conditions)");
+                }
+            }
         }
 
         private void DanhDau_ContextPromptUpdate_ForPython(object sender, ContextPromptUpdateEventArgs e)
@@ -743,7 +757,7 @@ namespace Kaliz
               
                 if (TabHienTai.GetCurrentWord().ToLower() == "for")
                 {
-                    e.AddPrompt("For Loop", " for <variable-name> in <range> | for <variable-name> in <Repeated String>");
+                    e.AddPrompt("For Loop",null).BoldedItems.Add(0,7, " for <variable-name> in <range> | for <variable-name> in <Repeated String>");
 
                   
 
@@ -758,7 +772,7 @@ namespace Kaliz
             }
             if (TabHienTai.GetCurrentWord().ToLower() == "if")
             {
-                e.AddPrompt("if-else statement", "if <conditions> : \n<Statements>");
+                e.AddPrompt("if-else statement",null).BoldedItems.Add(0,19, "if <conditions> : \n<Statements>");
             }
            
         }
