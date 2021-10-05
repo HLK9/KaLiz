@@ -573,8 +573,12 @@ namespace Kaliz
                     DanhDau.Configurator.Open(ConfigF);
                     DanhDau.ApplyConfiguration("Python");
                     DanhDau.StatusBarSettings.FileNamePanel.Panel.Text = "Python";
+                    //Context prompt bị lỗi
+                    DanhDau.ContextPromptOpen += DanhDau_ContextPromptOpen_ForPython;
+                    DanhDau.ContextPromptUpdate += DanhDau_ContextPromptUpdate_ForPython;
                     DanhDau.ContextChoiceOpen += DanhDau_ContextChoiceOpen_ForPython;
                     DanhDau.UpdateContextToolTip += DanhDau_UpdateContextToolTip_ForPython;
+                    
 
                 }
                 if(Path.GetExtension(DuongDanTep)==".java")
@@ -588,6 +592,7 @@ namespace Kaliz
                     DanhDau.Configurator.Open(ConfigF);
                     DanhDau.ApplyConfiguration("Java");
                     DanhDau.StatusBarSettings.FileNamePanel.Panel.Text = "Java";
+                    DanhDau.ContextPromptOpen += DanhDau_ContextPromptOpen_ForJava;
                     DanhDau.ContextChoiceOpen += DanhDau_ContextChoiceOpen_Java;
                     DanhDau.UpdateContextToolTip += DanhDau_UpdateContextToolTip_ForJava;
                     
@@ -650,6 +655,112 @@ namespace Kaliz
             DatBookmarks();
 
 
+        }
+
+        private void DanhDau_ContextPromptOpen_ForJava(object sender, ContextPromptUpdateEventArgs e)
+        {
+//            if (enableContextPrompt == true)
+//            {
+//                ContextPromptItem item = null;
+//                if (TabHienTai.GetCurrentWord().ToLower() == "for")
+//                {
+//                    e.AddPrompt("For Loop", " for < variable-name > := < initial_value > to [down to] < final_value > do < Command >");
+
+//                    //item = e.AddPrompt("Vòng Lặp for", "<Giá trị đầu> to <Giá trị cuối> do <Câu lệnh>");
+//                    //item.BoldedItems.Add(0, 12, "Giá trị đầu");                   
+//                    //item.BoldedItems.Add(0, 12, "Giá trị cuối");
+//                    //item.BoldedItems.Add(0, 12, "Câu lệnh");
+
+//                }
+//                else
+//            if (TabHienTai.GetCurrentWord().ToLower() == "while")
+//                {
+//                    e.AddPrompt("While-do Loop", null).BoldedItems.Add(0, 13, "while <condition> do <command>");
+//                    item = e.AddPrompt("While Loop", "<Condition> do <Statements>");
+//                    item.BoldedItems.Add(0, 10, "Condition");
+//                    item.BoldedItems.Add(0, 10, "Statements");
+
+//                }
+//            }
+//            if (TabHienTai.GetCurrentWord().ToLower() == "if")
+//            {
+//                e.AddPrompt("if then else statement", "if <conditions> then <command>");
+//            }
+//            if (TabHienTai.GetCurrentWord().ToLower() == "case")
+//            {
+//                e.AddPrompt("Case Statement", "Case <expression> Of" + @"
+//    <case 1> : <job 1>;
+//    <case 2> : <job 2>;
+//    ...
+//    <case n> : <job n>;
+//End;
+//");
+//            }
+        }
+
+        private void DanhDau_ContextPromptUpdate_ForPython(object sender, ContextPromptUpdateEventArgs e)
+        {
+            if (e.List.SelectedItem != null)
+            {
+
+                // Get list of the lexems that are inside the current stack.
+
+                IList list = TabHienTai.GetLexemsInsideCurrentStack(false);
+
+                if (list == null) return;
+
+
+
+                int iBoldedIndex = 0;
+
+                foreach (ILexem lexem in list)
+
+                {
+
+                    if (lexem.Text == "to" || lexem.Text == "in")
+
+                        iBoldedIndex++;
+
+                }
+
+                if (iBoldedIndex >= e.List.SelectedItem.BoldedItems.Count)
+
+                    e.List.SelectedItem.BoldedItems.SelectedItem = null;
+
+                else
+
+                    // Gets or sets selected item.
+
+                    e.List.SelectedItem.BoldedItems.SelectedItem = e.List.SelectedItem.BoldedItems[iBoldedIndex];
+
+            }
+        }
+
+        private void DanhDau_ContextPromptOpen_ForPython(object sender, ContextPromptUpdateEventArgs e)
+        {
+            if (enableContextPrompt == true)
+            {
+              
+                if (TabHienTai.GetCurrentWord().ToLower() == "for")
+                {
+                    e.AddPrompt("For Loop", " for <variable-name> in <range> | for <variable-name> in <Repeated String>");
+
+                  
+
+                }
+                else
+            if (TabHienTai.GetCurrentWord().ToLower() == "while")
+                {
+                    e.AddPrompt("While Loop", null).BoldedItems.Add(0, 9, "while <condition> : \n   <statements>");
+                   
+
+                }
+            }
+            if (TabHienTai.GetCurrentWord().ToLower() == "if")
+            {
+                e.AddPrompt("if-else statement", "if <conditions> : \n<Statements>");
+            }
+           
         }
 
         private void DanhDau_ContextChoiceOpen_Java(IContextChoiceController controller)
