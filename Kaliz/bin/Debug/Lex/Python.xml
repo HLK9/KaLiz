@@ -69,14 +69,14 @@ xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/X
       <lexem BeginBlock="return" Type="KeyWord" />
       <lexem BeginBlock="and" Type="KeyWord" />
       <lexem BeginBlock="continue" Type="KeyWord" />
-      <lexem BeginBlock="for" Type="KeyWord" />
+      <lexem BeginBlock="for" Type="KeyWord" DropContextPrompt="true" IsComplex="true"/>
       <lexem BeginBlock="lambda" Type="KeyWord" />
       <lexem BeginBlock="try" Type="KeyWord" />
       <lexem BeginBlock="as" Type="KeyWord" />
       <lexem BeginBlock="def" Type="KeyWord" />
       <lexem BeginBlock="from" Type="KeyWord" />
       <lexem BeginBlock="nonlocal" Type="KeyWord" />
-      <lexem BeginBlock="while" Type="KeyWord" />
+      <lexem BeginBlock="while" Type="KeyWord" DropContextPrompt="true" IsComplex="true"/>
       <lexem BeginBlock="assert" Type="KeyWord" />
       <lexem BeginBlock="del" Type="KeyWord" />
       <lexem BeginBlock="global" Type="KeyWord" />
@@ -84,7 +84,7 @@ xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/X
       <lexem BeginBlock="with" Type="KeyWord" />
       <lexem BeginBlock="async" Type="KeyWord" />
       <lexem BeginBlock="elif" Type="KeyWord" />
-      <lexem BeginBlock="if" Type="KeyWord" />
+      <lexem BeginBlock="if" Type="KeyWord" DropContextPrompt="true" IsComplex="true"/>
       <lexem BeginBlock="or" Type="KeyWord" />
       <lexem BeginBlock="yield" Type="KeyWord" />
       <lexem BeginBlock="print" Type="KeyWord" />
