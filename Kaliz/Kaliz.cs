@@ -709,6 +709,29 @@ namespace Kaliz
                 {
                     e.AddPrompt("Do-While", null).BoldedItems.Add(0, 8, "do \n{\n   <statements>\n}\nwhile (conditions)");
                 }
+                else
+                    if(TabHienTai.GetCurrentWord().ToLower() == "switch")
+                {
+                    e.AddPrompt("Switch-Case", null).BoldedItems.Add(0, 11, "switch (variable-to-test)\n" + @"
+{
+    case <value_1> :
+    <statements>
+    break;
+    ...
+    case <value_n> :
+    <statements>
+    break;
+    default :
+    <statements>
+}
+");
+                }
+                else
+                if(TabHienTai.GetCurrentWord().ToLower()=="if")
+                {
+                    e.AddPrompt("If-Else", null).BoldedItems.Add(0, 7, "if (condition)\n{\n    <statements>\n}\nelse\n{\n   <statement>\n}");
+                }
+              
             }
         }
 
@@ -772,7 +795,7 @@ namespace Kaliz
             }
             if (TabHienTai.GetCurrentWord().ToLower() == "if")
             {
-                e.AddPrompt("if-else statement",null).BoldedItems.Add(0,19, "if <conditions> : \n<Statements>");
+                e.AddPrompt("if-else statement",null).BoldedItems.Add(0,17, "if <conditions> : \n<Statements>");
             }
            
         }
