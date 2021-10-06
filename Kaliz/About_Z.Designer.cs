@@ -124,6 +124,7 @@
             // 
             // radPanel2
             // 
+            this.radPanel2.BackColor = System.Drawing.Color.WhiteSmoke;
             this.radPanel2.Controls.Add(this.radButton2);
             this.radPanel2.Controls.Add(this.radLabel4);
             this.radPanel2.Controls.Add(this.radLabel8);
@@ -209,7 +210,7 @@
             // 
             // About_Z
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(583, 408);
             this.Controls.Add(this.radPanel2);
