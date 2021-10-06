@@ -88,7 +88,7 @@
 			<lexem BeginBlock="@" Type="Operator" />
 			<lexem BeginBlock="break" Type="KeyWord" />
 			<lexem BeginBlock="catch" Type="KeyWord" />
-			<lexem BeginBlock="case" Type="KeyWord" DropContextPrompt="true" IsComplex="true"/>
+			<lexem BeginBlock="case" Type="KeyWord" />
 			<lexem BeginBlock="continue" Type="KeyWord" />
 			<lexem BeginBlock="default" Type="KeyWord" />
 			<lexem BeginBlock="do" Type="KeyWord" DropContextPrompt="true" IsComplex="true"/>
