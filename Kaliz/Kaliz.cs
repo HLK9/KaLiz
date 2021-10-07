@@ -729,7 +729,7 @@ namespace Kaliz
                 else
                 if(TabHienTai.GetCurrentWord().ToLower()=="if")
                 {
-                    e.AddPrompt("If-Else", null).BoldedItems.Add(0, 7, "if (condition)\n{\n    <statements>\n}\nelse\n{\n   <statement>\n}");
+                    e.AddPrompt("If-Else", null).BoldedItems.Add(0, 7, "if (condition)\n{\n    <statements>\n}\nelse\n{\n   <statements>\n}");
                 }
               
             }
@@ -795,7 +795,7 @@ namespace Kaliz
             }
             if (TabHienTai.GetCurrentWord().ToLower() == "if")
             {
-                e.AddPrompt("if-else statement",null).BoldedItems.Add(0,17, "if <conditions> : \n<Statements>");
+                e.AddPrompt("if-else statement",null).BoldedItems.Add(0,17, "if <conditions> : \n<statements>");
             }
            
         }
