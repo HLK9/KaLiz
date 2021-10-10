@@ -91,7 +91,7 @@
 			<lexem BeginBlock="case" Type="KeyWord" />
 			<lexem BeginBlock="continue" Type="KeyWord" />
 			<lexem BeginBlock="default" Type="KeyWord" />
-			<lexem BeginBlock="do" Type="KeyWord" DropContextPrompt="true" IsComplex="true"/>
+			<lexem BeginBlock="do" Type="KeyWord"/>
 			<lexem BeginBlock="else" Type="KeyWord" />
 			<lexem BeginBlock="false" Type="KeyWord" />
 			<lexem BeginBlock="for" Type="KeyWord" DropContextPrompt="true" IsComplex="true"/>
