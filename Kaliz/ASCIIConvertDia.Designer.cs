@@ -31,50 +31,28 @@
             Telerik.WinControls.UI.RadListDataItem radListDataItem1 = new Telerik.WinControls.UI.RadListDataItem();
             Telerik.WinControls.UI.RadListDataItem radListDataItem2 = new Telerik.WinControls.UI.RadListDataItem();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DialogASCII));
-            this.BtClose = new Telerik.WinControls.UI.RadButton();
-            this.BtOK = new Telerik.WinControls.UI.RadButton();
             this.radLabel1 = new Telerik.WinControls.UI.RadLabel();
             this.radLabel2 = new Telerik.WinControls.UI.RadLabel();
-            this.textResult = new Telerik.WinControls.UI.RadTextBox();
-            this.droptype = new Telerik.WinControls.UI.RadDropDownList();
             this.radLabel3 = new Telerik.WinControls.UI.RadLabel();
             this.radToggleSwitch1 = new Telerik.WinControls.UI.RadToggleSwitch();
             this.radLabel4 = new Telerik.WinControls.UI.RadLabel();
+            this.BtOK = new Telerik.WinControls.UI.RadButton();
+            this.BtClose = new Telerik.WinControls.UI.RadButton();
             this.textInput = new Telerik.WinControls.UI.RadTextBox();
-            ((System.ComponentModel.ISupportInitialize)(this.BtClose)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.BtOK)).BeginInit();
+            this.droptype = new Telerik.WinControls.UI.RadDropDownList();
+            this.textResult = new Telerik.WinControls.UI.RadTextBox();
             ((System.ComponentModel.ISupportInitialize)(this.radLabel1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.radLabel2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textResult)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.droptype)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.radLabel3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.radToggleSwitch1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.radLabel4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.BtOK)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.BtClose)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.textInput)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.droptype)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.textResult)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this)).BeginInit();
             this.SuspendLayout();
-            // 
-            // BtClose
-            // 
-            this.BtClose.BackColor = System.Drawing.Color.Thistle;
-            this.BtClose.Location = new System.Drawing.Point(12, 176);
-            this.BtClose.Name = "BtClose";
-            this.BtClose.Size = new System.Drawing.Size(110, 45);
-            this.BtClose.TabIndex = 1;
-            this.BtClose.Text = "Close";
-            this.BtClose.ThemeName = "MaterialTeal";
-            this.BtClose.Click += new System.EventHandler(this.BtClose_Click);
-            // 
-            // BtOK
-            // 
-            this.BtOK.BackColor = System.Drawing.Color.Thistle;
-            this.BtOK.Location = new System.Drawing.Point(343, 176);
-            this.BtOK.Name = "BtOK";
-            this.BtOK.Size = new System.Drawing.Size(110, 45);
-            this.BtOK.TabIndex = 2;
-            this.BtOK.Text = "Convert";
-            this.BtOK.ThemeName = "MaterialTeal";
-            this.BtOK.Click += new System.EventHandler(this.BtOK_Click);
             // 
             // radLabel1
             // 
@@ -95,30 +73,6 @@
             this.radLabel2.TabIndex = 5;
             this.radLabel2.Text = "Result:";
             this.radLabel2.ThemeName = "MaterialTeal";
-            // 
-            // textResult
-            // 
-            this.textResult.BackColor = System.Drawing.Color.White;
-            this.textResult.Location = new System.Drawing.Point(84, 116);
-            this.textResult.Name = "textResult";
-            this.textResult.ReadOnly = true;
-            this.textResult.Size = new System.Drawing.Size(369, 20);
-            this.textResult.TabIndex = 6;
-            this.textResult.ThemeName = "MaterialTeal";
-            // 
-            // droptype
-            // 
-            this.droptype.BackColor = System.Drawing.Color.White;
-            radListDataItem1.Text = "Binary";
-            radListDataItem2.Text = "Decimal";
-            this.droptype.Items.Add(radListDataItem1);
-            this.droptype.Items.Add(radListDataItem2);
-            this.droptype.Location = new System.Drawing.Point(84, 69);
-            this.droptype.Name = "droptype";
-            this.droptype.NullText = "Select Type";
-            this.droptype.Size = new System.Drawing.Size(189, 20);
-            this.droptype.TabIndex = 7;
-            this.droptype.ThemeName = "MaterialTeal";
             // 
             // radLabel3
             // 
@@ -148,31 +102,71 @@
             this.radLabel4.Text = "Separated by minus ";
             this.radLabel4.ThemeName = "MaterialTeal";
             // 
+            // BtOK
+            // 
+            this.BtOK.Location = new System.Drawing.Point(329, 176);
+            this.BtOK.Name = "BtOK";
+            this.BtOK.Size = new System.Drawing.Size(110, 45);
+            this.BtOK.TabIndex = 10;
+            this.BtOK.Text = "Convert";
+            this.BtOK.ThemeName = "MaterialTeal";
+            this.BtOK.Click += new System.EventHandler(this.BtOK_Click);
+            // 
+            // BtClose
+            // 
+            this.BtClose.Location = new System.Drawing.Point(32, 176);
+            this.BtClose.Name = "BtClose";
+            this.BtClose.Size = new System.Drawing.Size(110, 45);
+            this.BtClose.TabIndex = 11;
+            this.BtClose.Text = "Close";
+            this.BtClose.ThemeName = "MaterialTeal";
+            this.BtClose.Click += new System.EventHandler(this.BtClose_Click);
+            // 
             // textInput
             // 
-            this.textInput.Location = new System.Drawing.Point(84, 27);
+            this.textInput.Location = new System.Drawing.Point(84, 31);
             this.textInput.Name = "textInput";
             this.textInput.NullText = "Type here";
-            this.textInput.ShowNullText = true;
-            this.textInput.Size = new System.Drawing.Size(369, 20);
-            this.textInput.TabIndex = 9;
+            this.textInput.Size = new System.Drawing.Size(313, 36);
+            this.textInput.TabIndex = 12;
             this.textInput.ThemeName = "MaterialTeal";
+            // 
+            // droptype
+            // 
+            radListDataItem1.Text = "Binary";
+            radListDataItem2.Text = "Decimal";
+            this.droptype.Items.Add(radListDataItem1);
+            this.droptype.Items.Add(radListDataItem2);
+            this.droptype.Location = new System.Drawing.Point(84, 79);
+            this.droptype.Name = "droptype";
+            this.droptype.NullText = "Select Type";
+            this.droptype.Size = new System.Drawing.Size(189, 36);
+            this.droptype.TabIndex = 13;
+            this.droptype.ThemeName = "MaterialTeal";
+            // 
+            // textResult
+            // 
+            this.textResult.Location = new System.Drawing.Point(84, 125);
+            this.textResult.Name = "textResult";
+            this.textResult.Size = new System.Drawing.Size(313, 36);
+            this.textResult.TabIndex = 14;
+            this.textResult.ThemeName = "MaterialTeal";
             // 
             // DialogASCII
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(469, 247);
+            this.Controls.Add(this.textResult);
+            this.Controls.Add(this.droptype);
             this.Controls.Add(this.textInput);
+            this.Controls.Add(this.BtClose);
+            this.Controls.Add(this.BtOK);
             this.Controls.Add(this.radLabel4);
             this.Controls.Add(this.radToggleSwitch1);
             this.Controls.Add(this.radLabel3);
-            this.Controls.Add(this.droptype);
-            this.Controls.Add(this.textResult);
             this.Controls.Add(this.radLabel2);
             this.Controls.Add(this.radLabel1);
-            this.Controls.Add(this.BtOK);
-            this.Controls.Add(this.BtClose);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
@@ -186,16 +180,16 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ASCII Convert";
             this.ThemeName = "MaterialTeal";
-            ((System.ComponentModel.ISupportInitialize)(this.BtClose)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.BtOK)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.radLabel1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.radLabel2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textResult)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.droptype)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.radLabel3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.radToggleSwitch1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.radLabel4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.BtOK)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.BtClose)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.textInput)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.droptype)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.textResult)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -203,15 +197,15 @@
         }
 
         #endregion
-        private Telerik.WinControls.UI.RadButton BtClose;
-        private Telerik.WinControls.UI.RadButton BtOK;
         private Telerik.WinControls.UI.RadLabel radLabel1;
         private Telerik.WinControls.UI.RadLabel radLabel2;
-        private Telerik.WinControls.UI.RadTextBox textResult;
         private Telerik.WinControls.UI.RadLabel radLabel3;
-        private Telerik.WinControls.UI.RadDropDownList droptype;
         private Telerik.WinControls.UI.RadToggleSwitch radToggleSwitch1;
         private Telerik.WinControls.UI.RadLabel radLabel4;
+        private Telerik.WinControls.UI.RadButton BtOK;
+        private Telerik.WinControls.UI.RadButton BtClose;
         private Telerik.WinControls.UI.RadTextBox textInput;
+        private Telerik.WinControls.UI.RadDropDownList droptype;
+        private Telerik.WinControls.UI.RadTextBox textResult;
     }
 }
