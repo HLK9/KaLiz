@@ -2153,6 +2153,145 @@ End;
                                 case "begin":
                                     e.Text = lexem.Text + ": start of a block of code ";
                                     break;
+                                case "break":
+                                    e.Text = lexem.Text + ": exit a case statement";
+                                    break;
+                                case "case":
+                                    e.Text = lexem.Text + ": select a particular segement of code to execute based on a value";
+                                        break;
+                                case "const":
+                                    e.Text = lexem.Text + ": declare an identifier with a fixed value, or a variable with an initialized value";
+                                    break;
+                                case "constructor":
+                                    e.Text = lexem.Text + ": routine used to create an object";
+                                    break;
+                                case "continue":
+                                    e.Text = lexem.Text + ": skips an iteration in a for-loop and restart execution at the beginning of the loop";
+                                    break;
+                                case "destructor":
+                                    e.Text = lexem.Text + ": routine used to deallocate an object";
+                                    break;
+                                case "div":
+                                    e.Text = lexem.Text + ": integer divide operator";
+                                    break;
+                                case "do":
+                                    e.Text = lexem.Text + ": used to indicate start of a loop";
+                                    break;
+                                case "downto":
+                                    e.Text = lexem.Text + ": used in a for loop to indicate the index variable is decremented";
+                                    break;
+                                case "else":
+                                    e.Text = lexem.Text + ": used in if statement to provide an execution path when the if test fails";
+                                    break;                               
+                                case "end":
+                                    e.Text = lexem.Text + ": end of a block of code, a record or certain other constructs";
+                                    break;
+                                case "file":
+                                    e.Text = lexem.Text + ": external data structure, typically stored on disc";
+                                    break;
+                                case "for":
+                                    e.Text = lexem.Text + ": loop used to increment or decrement a control variable";
+                                    break;
+                                case "function":
+                                    e.Text = lexem.Text + ": define start of a routine that returns a result value";
+                                    break;
+                                case "goto":
+                                    e.Text = lexem.Text + ": used to exit a segment of code and jump to another point";
+                                    break;
+                                case "if":
+                                    e.Text = lexem.Text + ": test a condition and perform a set of instructions based on the result";
+                                    break;
+                                case "implementation":
+                                    e.Text = lexem.Text + ": define the internal routines in unit";
+                                    break;
+                                case "in":
+                                    e.Text = lexem.Text + ": identifies elements in a collection";
+                                    break;
+                                case "inline":
+                                    e.Text = lexem.Text + ": machine code inserted directly into a routine";
+                                    break;
+                                case "interface":
+                                    e.Text = lexem.Text + ": public declarations of routines in a unit";
+                                    break;
+                                case "label":
+                                    e.Text = lexem.Text + ": defines the target jump point for a goto";
+                                    break;
+                                case "mod":
+                                    e.Text = lexem.Text + ": operator used to return the remainder of an integer division";
+                                    break;
+                                case "nil":
+                                    e.Text = lexem.Text + ": pointer value indicating the pointer does not contain a value";
+                                    break;
+                                case "not":
+                                    e.Text = lexem.Text + ": boolean operator that negates the result of a test";
+                                    break;
+                                case "object":
+                                    e.Text = lexem.Text + ": defines an object construct";
+                                    break;
+                                case "of":
+                                    e.Text = lexem.Text + ": defines the characteristics of a variable";
+                                    break;
+                                case "on":
+                                    e.Text = lexem.Text + ": defines an exception handling statement in the Except part of a Try statement";
+                                    break;
+                                case "operator":
+                                    e.Text = lexem.Text + ": defines a routine used to implement an operator";
+                                    break;
+                                case "or":
+                                    e.Text = lexem.Text + ": boolean operator which allows either of two choices to be used";
+                                    break;
+                                case "packed":
+                                    e.Text = lexem.Text + ": indicates the elements of an array are to use less space (this keyword is primarily for compatibility with older programs as packing of array elements is generally automatic)";
+                                    break;
+                                case "procedure":
+                                    e.Text = lexem.Text + ": define start of a routine that does not return a result value";
+                                    break;
+                                case "record":
+                                    e.Text = lexem.Text + ": group a series of variables under a single name";
+                                    break;
+                                case "repeat":
+                                    e.Text = lexem.Text + ": loop through a section of code through an until statement as long as the result of the test is true";
+                                    break;
+                                case "set":
+                                    e.Text = lexem.Text + ": group a collection";
+                                    break;
+                                case "shl":
+                                    e.Text = lexem.Text + ": operator to shift a value to the left; equivalent to multiplying by a power of 2";
+                                    break;
+                                case "shr":
+                                    e.Text = lexem.Text + ": operator to shift a value to the right; equivalent to dividing by a power of 2";
+                                    break;
+                                case "string":
+                                    e.Text = lexem.Text + ": declares a variable that contains multiple characters";
+                                    break;
+                                case "then":
+                                    e.Text = lexem.Text + ": indicates start of code in an if test";
+                                    break;
+                                case "to":
+                                    e.Text = lexem.Text + ": indicates a for variable is to be incremented";
+                                    break;
+                                case "type":
+                                    e.Text = lexem.Text + ": declares kinds of records or new classes of variables";
+                                    break;
+                                case "unit":
+                                    e.Text = lexem.Text + ": separately compiled module";
+                                    break;
+                                case "until":
+                                    e.Text = lexem.Text + ": indicates end test of a repeat statement";
+                                    break;
+                                case "uses":
+                                    e.Text = lexem.Text + ": names units this program or unit refers to";
+                                    break;
+                  
+                                case "while":
+                                    e.Text = lexem.Text + ": test a value and if true, loop through a section of code";
+                                    break;
+                                case "with":
+                                    e.Text = lexem.Text + ": reference the internal variables within a record without having to refer to the record itself";
+                                    break;
+                                case "xor":
+                                    e.Text = lexem.Text + ": boolean operator used to invert and or test";
+                                    break;
                                 default:                                   
                                     break;
                             }
