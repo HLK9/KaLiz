@@ -12,11 +12,6 @@ namespace Kaliz
             InitializeComponent();
         }
 
-        private void radTextBox2_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
         private void radButton1_Click(object sender, EventArgs e)
         {
             OpenFileDialog Fd = new OpenFileDialog();

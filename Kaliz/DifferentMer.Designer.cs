@@ -30,15 +30,15 @@
         {
             this.materialTealTheme1 = new Telerik.WinControls.Themes.MaterialTealTheme();
             this.Miad = new Telerik.WinControls.UI.RadPanel();
-            this.textbox1 = new Telerik.WinControls.UI.RadTextBox();
             this.radButton1 = new Telerik.WinControls.UI.RadButton();
             this.radButton2 = new Telerik.WinControls.UI.RadButton();
+            this.textbox1 = new Telerik.WinControls.UI.RadTextBox();
             this.textbox2 = new Telerik.WinControls.UI.RadTextBox();
             this.radButton3 = new Telerik.WinControls.UI.RadButton();
             ((System.ComponentModel.ISupportInitialize)(this.Miad)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textbox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.radButton1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.radButton2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.textbox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.textbox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.radButton3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this)).BeginInit();
@@ -55,15 +55,6 @@
             this.Miad.TabIndex = 0;
             this.Miad.ThemeName = "MaterialTeal";
             this.Miad.Paint += new System.Windows.Forms.PaintEventHandler(this.Miad_Paint);
-            // 
-            // textbox1
-            // 
-            this.textbox1.BackColor = System.Drawing.Color.Honeydew;
-            this.textbox1.Location = new System.Drawing.Point(141, 30);
-            this.textbox1.Name = "textbox1";
-            this.textbox1.Size = new System.Drawing.Size(299, 36);
-            this.textbox1.TabIndex = 1;
-            this.textbox1.ThemeName = "MaterialTeal";
             // 
             // radButton1
             // 
@@ -86,25 +77,30 @@
             this.radButton2.ThemeName = "MaterialTeal";
             this.radButton2.Click += new System.EventHandler(this.radButton2_Click);
             // 
+            // textbox1
+            // 
+            this.textbox1.Location = new System.Drawing.Point(138, 29);
+            this.textbox1.Name = "textbox1";
+            this.textbox1.NullText = "File 1";
+            this.textbox1.Size = new System.Drawing.Size(300, 36);
+            this.textbox1.TabIndex = 6;
+            this.textbox1.ThemeName = "MaterialTeal";
+            // 
             // textbox2
             // 
-            this.textbox2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.textbox2.BackColor = System.Drawing.Color.Honeydew;
-            this.textbox2.Location = new System.Drawing.Point(618, 30);
+            this.textbox2.Location = new System.Drawing.Point(615, 30);
             this.textbox2.Name = "textbox2";
-            this.textbox2.Size = new System.Drawing.Size(299, 36);
-            this.textbox2.TabIndex = 3;
+            this.textbox2.NullText = "File 2";
+            this.textbox2.Size = new System.Drawing.Size(300, 36);
+            this.textbox2.TabIndex = 7;
             this.textbox2.ThemeName = "MaterialTeal";
-            this.textbox2.TextChanged += new System.EventHandler(this.radTextBox2_TextChanged);
             // 
             // radButton3
             // 
-            this.radButton3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.radButton3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(165)))), ((int)(((byte)(240)))), ((int)(((byte)(235)))));
-            this.radButton3.Location = new System.Drawing.Point(960, 30);
+            this.radButton3.Location = new System.Drawing.Point(970, 29);
             this.radButton3.Name = "radButton3";
-            this.radButton3.Size = new System.Drawing.Size(120, 36);
-            this.radButton3.TabIndex = 5;
+            this.radButton3.Size = new System.Drawing.Size(110, 36);
+            this.radButton3.TabIndex = 8;
             this.radButton3.Text = "Compare";
             this.radButton3.ThemeName = "MaterialTeal";
             this.radButton3.Click += new System.EventHandler(this.radButton3_Click);
@@ -115,10 +111,10 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1092, 411);
             this.Controls.Add(this.radButton3);
-            this.Controls.Add(this.radButton2);
-            this.Controls.Add(this.radButton1);
             this.Controls.Add(this.textbox2);
             this.Controls.Add(this.textbox1);
+            this.Controls.Add(this.radButton2);
+            this.Controls.Add(this.radButton1);
             this.Controls.Add(this.Miad);
             this.Name = "DifferentMer";
             // 
@@ -131,9 +127,9 @@
             this.ThemeName = "MaterialTeal";
             this.Load += new System.EventHandler(this.DifferentMer_Load);
             ((System.ComponentModel.ISupportInitialize)(this.Miad)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textbox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.radButton1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.radButton2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.textbox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.textbox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.radButton3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this)).EndInit();
@@ -146,9 +142,9 @@
 
         private Telerik.WinControls.Themes.MaterialTealTheme materialTealTheme1;
         private Telerik.WinControls.UI.RadPanel Miad;
-        private Telerik.WinControls.UI.RadTextBox textbox1;
         private Telerik.WinControls.UI.RadButton radButton1;
         private Telerik.WinControls.UI.RadButton radButton2;
+        private Telerik.WinControls.UI.RadTextBox textbox1;
         private Telerik.WinControls.UI.RadTextBox textbox2;
         private Telerik.WinControls.UI.RadButton radButton3;
     }
