@@ -1530,7 +1530,8 @@ namespace Kaliz
                     }
                     catch { }
                     TabHienTai.Close();
-                    LuuBookmarks(bookmarks);
+                    //Lưu Bookmarks đang bị lỗi
+                  //  LuuBookmarks(bookmarks);
                 }else
                 {
                     DockPar.DocumentManager.ActiveDocument.Close();
