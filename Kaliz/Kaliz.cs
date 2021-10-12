@@ -2741,8 +2741,8 @@ End;
                     //BienDich.StartInfo.WorkingDirectory = @"Cmder\vendor\FPC\bin\i386-win32";
                     BienDich.StartInfo.UseShellExecute = false;
                     if (enabledebug == false)
-                        BienDich.StartInfo.Arguments = "/c " + "fpc " + ten + PascalOption +Para;
-                    else BienDich.StartInfo.Arguments = "/c " + "fpc " + ten + " -g" + PascalOption +Para;
+                        BienDich.StartInfo.Arguments = "/c " + "fpc " + "\""+ten+"\"" + PascalOption +Para;
+                    else BienDich.StartInfo.Arguments = "/c " + "fpc "+"\"" + ten + "\""+ " -g" + PascalOption +Para;
 
                     //BienDich.StartInfo.RedirectStandardInput = true;
                     BienDich.StartInfo.RedirectStandardOutput = true;
@@ -2870,8 +2870,8 @@ End;
                 BienDich.StartInfo.RedirectStandardInput = true;
                // BienDich.StartInfo.WorkingDirectory = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\Kaliz" + @"\Cmder\vendor\jdk\bin";
                 if (enabledebug == false)
-                    BienDich.StartInfo.Arguments = " /c " + "javac " + Para + " " + ten;
-               else BienDich.StartInfo.Arguments = "/c " + "javac " + Para + " " + " -g " + ten;
+                    BienDich.StartInfo.Arguments = " /c " + "javac " + Para + " " + "\""+ten+"\"";
+               else BienDich.StartInfo.Arguments = "/c " + "javac " + Para + " " + " -g " + "\"" + ten + "\"";
 
 
                 BienDich.StartInfo.CreateNoWindow = true;
@@ -2890,6 +2890,7 @@ End;
                 }
                 if (ad==null)
                 {
+                    
                     ListOutput.Items.Add("Completed");
                 }
                 foreach (var item in ListOutput.Items)
@@ -5830,6 +5831,12 @@ End;
             string a = Environment.NewLine + TabHienTai.SelectedText;
             TabHienTai.MoveToLineEnd();
             TabHienTai.InsertText(TabHienTai.CurrentLine, TabHienTai.CurrentColumn, a);
+        }
+
+        private void DDebugGUI_Click(object sender, EventArgs e)
+        {
+            TerControl a = new TerControl();
+            a.Show();
         }
     }
 }
