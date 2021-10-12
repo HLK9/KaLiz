@@ -5833,11 +5833,7 @@ End;
             TabHienTai.InsertText(TabHienTai.CurrentLine, TabHienTai.CurrentColumn, a);
         }
 
-        private void DDebugGUI_Click(object sender, EventArgs e)
-        {
-            TerControl a = new TerControl();
-            a.Show();
-        }
+      
     }
 }
 
