@@ -3469,8 +3469,13 @@ End;
             foreach (Match item in  matchCollect)
             {
                 string[] a = item.Value.ToString().Split(':');
-                
-              TabHienTai.SetUnderline(new Point(int.Parse(a[1]), int.Parse(a[0])),new Point(int.Parse(a[1])+5,int.Parse(a[0])), format);
+                try
+                {
+                    TabHienTai.SetUnderline(new Point(int.Parse(a[1]), int.Parse(a[0])), new Point(int.Parse(a[1]) + 5, int.Parse(a[0])), format);
+                }
+                catch
+                { }
+              
             }
         }
         private void FSave_Click(object sender, EventArgs e)
@@ -5764,7 +5769,7 @@ End;
             }
             else
             {
-                //radListError.Items.Clear();
+               
                 enableParse = false;
                 OParse.Text = "Enable Parsing";
             }
