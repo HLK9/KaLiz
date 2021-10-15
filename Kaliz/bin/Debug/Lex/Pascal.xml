@@ -50,6 +50,14 @@
 			<lexem BeginBlock="object" Type="KeyWord" />
 			<lexem BeginBlock="byte" Type="KeyWord" />
 			<lexem BeginBlock="case" Type="KeyWord" DropContextPrompt="true" IsComplex="true"/>
+			<lexem BeginBlock="integer" Type="KeyWord"/>
+			<lexem BeginBlock="byte" Type="KeyWord"/>
+			<lexem BeginBlock="longint" Type="KeyWord"/>
+			<lexem BeginBlock="real" Type="KeyWord"/>
+			
+			<lexem BeginBlock="word" Type="KeyWord"/>
+			<lexem BeginBlock="int64" Type="KeyWord"/>
+			<lexem BeginBlock="longword" Type="KeyWord"/>
 			<lexem BeginBlock="out" Type="KeyWord" />
 			<lexem BeginBlock="override" Type="KeyWord" />
 			<lexem BeginBlock="char" Type="KeyWord" />
