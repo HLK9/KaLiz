@@ -32,7 +32,7 @@ namespace Kaliz
     {
         private bool deBug = true;
         private bool enableContext = false;
-        private bool enableTooltip = false;
+        private bool enableTooltip = true;
         private bool enableContextPrompt = false;
         private bool enableParse = false;
         private bool showlinenum = true;
@@ -2058,15 +2058,15 @@ End;
                 string dan = Path.GetDirectoryName(TabHienTai.FileName);
                 Process pw = new Process();
                 pw.StartInfo.FileName = "powershell.exe";
-                pw.StartInfo.WorkingDirectory = dan;
+                pw.StartInfo.WorkingDirectory = dan ;
                 pw.Start();
             }
             else
             {
                 string dan = Path.GetDirectoryName(TabHienTai.FileName);
                 Process pw = new Process();
-                pw.StartInfo.FileName = @"Cmder\Cmder.exe";
-                pw.StartInfo.Arguments ="/start "+ dan;
+                pw.StartInfo.FileName = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\Kaliz" + @"\Cmder\Cmder.exe";
+                pw.StartInfo.Arguments ="/start "+"\""+dan+"\"";
                 pw.Start();
             }
           
@@ -2293,6 +2293,7 @@ End;
                                 case "xor":
                                     e.Text = lexem.Text + ": boolean operator used to invert and or test";
                                     break;
+                             
                                 default:                                   
                                     break;
                             }

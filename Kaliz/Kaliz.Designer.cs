@@ -290,8 +290,8 @@ namespace Kaliz
             this.DClosedFiles.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.listClosedFiles)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.toolTabStrip3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.MenuTop)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this)).BeginInit();
             this.SuspendLayout();
             // 
             // dockWindowPlaceholder1
@@ -927,7 +927,7 @@ namespace Kaliz
             // OCTooltip
             // 
             this.OCTooltip.Name = "OCTooltip";
-            this.OCTooltip.Text = "Enable Context Tooltip";
+            this.OCTooltip.Text = "Disable Context Tooltip";
             this.OCTooltip.Click += new System.EventHandler(this.OCTooltip_Click);
             // 
             // OHightlight
@@ -1998,12 +1998,6 @@ namespace Kaliz
             // 
             this.contextMenuData.ThemeName = "MaterialTeal";
             // 
-            // Kaliz
-            // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1257, 735);
-            // 
             // MenuTop
             // 
             this.MenuTop.Items.AddRange(new Telerik.WinControls.RadItem[] {
@@ -2024,6 +2018,12 @@ namespace Kaliz
             this.MenuTop.Size = new System.Drawing.Size(1257, 37);
             this.MenuTop.TabIndex = 1;
             this.MenuTop.ThemeName = "MaterialTeal";
+            // 
+            // Kaliz
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.ClientSize = new System.Drawing.Size(1257, 735);
             this.Controls.Add(this.DockPar);
             this.Controls.Add(this.MenuTop);
             this.HelpButton = true;
