@@ -46,7 +46,6 @@ namespace Kaliz
         private bool showSupplyTable = false;
         private bool showDirectory = false;
         private bool BuildComplete = true;
-
         private int chiso { get; set; }
         private string Para = string.Empty;
         private string PascalOption = string.Empty;
@@ -1390,7 +1389,7 @@ namespace Kaliz
                                     e.Text = lexem.Text + ": Used in conditional statements, same as else if";
                                     break;
                                 case "else":
-                                    e.Text = lexem.Text + ": 	Used in conditional statements";
+                                    e.Text = lexem.Text + ": Used in conditional statements";
                                     break;
                                 case "except":
                                     e.Text = lexem.Text + ": Used with exceptions, what to do when an exception occurs";
