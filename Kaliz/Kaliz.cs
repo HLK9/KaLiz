@@ -615,8 +615,12 @@ namespace Kaliz
             //DanhDau.MarkerAreaWidth = 20;
             DanhDau.ShowIndentationGuidelines = true;
             DanhDau.ShowOutliningCollapsers = true;
-            DanhDau.ShowColumnGuides = true;          
-            
+            DanhDau.ShowColumnGuides = true;
+            DanhDau.ShowIndentationBlockBorders = true;
+            DanhDau.IndentationBlockBorderStyle = FrameBorderStyle.DashDot;
+            DanhDau.IndentationBlockBorderColor = Color.Gray;
+            DanhDau.IndentationBlockBackgroundBrush = new BrushInfo(Color.Transparent);
+           
             DanhDau.AllowZoom = true;
             // DanhDau.OnlyHighlightMatchingBraces = true;
             DanhDau.EnableSmartInBlockIndent = true ;
@@ -5838,7 +5842,24 @@ End;
             TabHienTai.InsertText(TabHienTai.CurrentLine, TabHienTai.CurrentColumn, a);
         }
 
-      
+        private void OBlockBoder_Click(object sender, EventArgs e)
+        {
+           try
+            {
+                if (TabHienTai.ShowIndentationBlockBorders == true)
+                {
+                    TabHienTai.ShowIndentationBlockBorders = false;
+                }
+                else
+                    TabHienTai.ShowIndentationBlockBorders = true;
+
+            }
+            catch
+            { }
+
+
+
+        }
     }
 }
 
