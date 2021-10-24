@@ -5860,6 +5860,18 @@ End;
 
 
         }
+      
+        private void EWrap_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (TabHienTai.WordWrap == true)
+                    TabHienTai.WordWrap = false;
+                else
+                    TabHienTai.WordWrap = true;
+            }
+            catch { }
+        }
     }
 }
 
