@@ -90,6 +90,7 @@ namespace Kaliz
             this.CopyLine = new Telerik.WinControls.UI.RadMenuItem();
             this.CutLine = new Telerik.WinControls.UI.RadMenuItem();
             this.EDumpSelected = new Telerik.WinControls.UI.RadMenuItem();
+            this.EWrap = new Telerik.WinControls.UI.RadMenuItem();
             this.MTools = new Telerik.WinControls.UI.RadMenuItem();
             this.TFind = new Telerik.WinControls.UI.RadMenuItem();
             this.FindDia = new Telerik.WinControls.UI.RadMenuItem();
@@ -119,7 +120,6 @@ namespace Kaliz
             this.BreakPointSet = new Telerik.WinControls.UI.RadMenuItem();
             this.BreakPointRemove = new Telerik.WinControls.UI.RadMenuItem();
             this.DOpenGDB = new Telerik.WinControls.UI.RadMenuItem();
-            this.DeJDB = new Telerik.WinControls.UI.RadMenuItem();
             this.DebugPython = new Telerik.WinControls.UI.RadMenuItem();
             this.MOptions = new Telerik.WinControls.UI.RadMenuItem();
             this.OEnableContext = new Telerik.WinControls.UI.RadMenuItem();
@@ -154,7 +154,6 @@ namespace Kaliz
             this.LCpp = new Telerik.WinControls.UI.RadMenuItem();
             this.LPascal = new Telerik.WinControls.UI.RadMenuItem();
             this.LPython = new Telerik.WinControls.UI.RadMenuItem();
-            this.LJava = new Telerik.WinControls.UI.RadMenuItem();
             this.HSearch = new Telerik.WinControls.UI.RadMenuItem();
             this.HAbout = new Telerik.WinControls.UI.RadMenuItem();
             this.DockPar = new Telerik.WinControls.UI.Docking.RadDock();
@@ -166,7 +165,6 @@ namespace Kaliz
             this.DContainer = new Telerik.WinControls.UI.Docking.DocumentContainer();
             this.documentTabStrip1 = new Telerik.WinControls.UI.Docking.DocumentTabStrip();
             this.DBookmarks = new Telerik.WinControls.UI.Docking.DocumentWindow();
-            this.wlcJava = new Telerik.WinControls.UI.RadButton();
             this.recentList = new Telerik.WinControls.UI.RadListView();
             this.radLabel3 = new Telerik.WinControls.UI.RadLabel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
@@ -244,7 +242,6 @@ namespace Kaliz
             this.SDisconnect = new Telerik.WinControls.UI.RadMenuItem();
             this.contextMenuData = new Telerik.WinControls.UI.RadContextMenu(this.components);
             this.contextMenuDirectory = new Telerik.WinControls.UI.RadContextMenu(this.components);
-            this.EWrap = new Telerik.WinControls.UI.RadMenuItem();
             this.MenuTop = new Telerik.WinControls.UI.RadMenu();
             ((System.ComponentModel.ISupportInitialize)(this.DockPar)).BeginInit();
             this.DockPar.SuspendLayout();
@@ -259,7 +256,6 @@ namespace Kaliz
             ((System.ComponentModel.ISupportInitialize)(this.documentTabStrip1)).BeginInit();
             this.documentTabStrip1.SuspendLayout();
             this.DBookmarks.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.wlcJava)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.recentList)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.radLabel3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -660,6 +656,12 @@ namespace Kaliz
             this.EDumpSelected.Text = "Dumplicate Selected Text";
             this.EDumpSelected.Click += new System.EventHandler(this.EDumpSelected_Click);
             // 
+            // EWrap
+            // 
+            this.EWrap.Name = "EWrap";
+            this.EWrap.Text = "Enable/Disable Word Wrap";
+            this.EWrap.Click += new System.EventHandler(this.EWrap_Click);
+            // 
             // MTools
             // 
             this.MTools.Items.AddRange(new Telerik.WinControls.RadItem[] {
@@ -832,7 +834,6 @@ namespace Kaliz
             this.DEnable,
             this.DBreak,
             this.DOpenGDB,
-            this.DeJDB,
             this.DebugPython});
             this.MDebug.Name = "MDebug";
             this.MDebug.Text = "Debug";
@@ -870,12 +871,6 @@ namespace Kaliz
             this.DOpenGDB.Text = "Open GDB Debug for C/C++, Pascal";
             this.DOpenGDB.ToolTipText = "C/C++ is Pending...";
             this.DOpenGDB.Click += new System.EventHandler(this.DOpenGDB_Click);
-            // 
-            // DeJDB
-            // 
-            this.DeJDB.Name = "DeJDB";
-            this.DeJDB.Text = "Open JDB Debug for Java";
-            this.DeJDB.Click += new System.EventHandler(this.DeJDB_Click);
             // 
             // DebugPython
             // 
@@ -1091,8 +1086,7 @@ namespace Kaliz
             this.HLearn.Items.AddRange(new Telerik.WinControls.RadItem[] {
             this.LCpp,
             this.LPascal,
-            this.LPython,
-            this.LJava});
+            this.LPython});
             this.HLearn.Name = "HLearn";
             this.HLearn.Text = "Learn to programing";
             this.HLearn.Click += new System.EventHandler(this.HLearn_Click);
@@ -1115,12 +1109,6 @@ namespace Kaliz
             this.LPython.Text = "Learn Python from W3 Schools";
             this.LPython.Click += new System.EventHandler(this.LPython_Click);
             // 
-            // LJava
-            // 
-            this.LJava.Name = "LJava";
-            this.LJava.Text = "Learn Java from W3 School";
-            this.LJava.Click += new System.EventHandler(this.LJava_Click);
-            // 
             // HSearch
             // 
             this.HSearch.Name = "HSearch";
@@ -1136,7 +1124,7 @@ namespace Kaliz
             // 
             // DockPar
             // 
-            this.DockPar.ActiveWindow = this.DWorkingDirectory;
+            this.DockPar.ActiveWindow = this.Doutput;
             this.DockPar.CausesValidation = false;
             this.DockPar.Controls.Add(this.toolTabStrip1);
             this.DockPar.Controls.Add(this.radSplitContainer1);
@@ -1225,7 +1213,6 @@ namespace Kaliz
             this.radSplitContainer1.CausesValidation = false;
             this.radSplitContainer1.Controls.Add(this.DContainer);
             this.radSplitContainer1.Controls.Add(this.toolTabStrip2);
-            this.radSplitContainer1.Cursor = System.Windows.Forms.Cursors.SizeNS;
             this.radSplitContainer1.IsCleanUpTarget = true;
             this.radSplitContainer1.Location = new System.Drawing.Point(211, 0);
             this.radSplitContainer1.Name = "radSplitContainer1";
@@ -1277,7 +1264,6 @@ namespace Kaliz
             // 
             // DBookmarks
             // 
-            this.DBookmarks.Controls.Add(this.wlcJava);
             this.DBookmarks.Controls.Add(this.recentList);
             this.DBookmarks.Controls.Add(this.radLabel3);
             this.DBookmarks.Controls.Add(this.pictureBox1);
@@ -1291,6 +1277,7 @@ namespace Kaliz
             this.DBookmarks.Controls.Add(this.radLabel8);
             this.DBookmarks.Controls.Add(this.radLabel1);
             this.DBookmarks.Controls.Add(this.radButton1);
+            this.DBookmarks.Cursor = System.Windows.Forms.Cursors.Default;
             this.DBookmarks.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.DBookmarks.Location = new System.Drawing.Point(4, 54);
             this.DBookmarks.Name = "DBookmarks";
@@ -1298,18 +1285,6 @@ namespace Kaliz
             this.DBookmarks.Size = new System.Drawing.Size(1038, 436);
             this.DBookmarks.Text = "Welcome";
             this.DBookmarks.Click += new System.EventHandler(this.documentWindow1_Click);
-            // 
-            // wlcJava
-            // 
-            this.wlcJava.Location = new System.Drawing.Point(9, 348);
-            this.wlcJava.Name = "wlcJava";
-            this.wlcJava.Size = new System.Drawing.Size(256, 36);
-            this.wlcJava.TabIndex = 7;
-            this.wlcJava.Text = "<html><span style=\"font-size: 11pt; font-family: segoe ui\">Create new file with <" +
-    "span style=\"font-size: 11pt; color: #8000ff\"><strong>Java</strong></span> syntax" +
-    "</span></html>";
-            this.wlcJava.ThemeName = "MaterialTeal";
-            this.wlcJava.Click += new System.EventHandler(this.wlcJava_Click);
             // 
             // recentList
             // 
@@ -1409,14 +1384,15 @@ namespace Kaliz
             // 
             this.radLabel10.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.radLabel10.ImageAlignment = System.Drawing.ContentAlignment.MiddleCenter;
-            this.radLabel10.Location = new System.Drawing.Point(731, 402);
+            this.radLabel10.Location = new System.Drawing.Point(732, 404);
             this.radLabel10.Name = "radLabel10";
-            this.radLabel10.Size = new System.Drawing.Size(118, 38);
+            this.radLabel10.Size = new System.Drawing.Size(117, 36);
             this.radLabel10.TabIndex = 3;
             this.radLabel10.Text = "<html><p><span style=\"font-size: 36pt; color: #008080\"><span style=\"font-size: 12" +
     "pt\"><strong>Other Product?</strong></span></span></p><p><strong></strong></p></h" +
     "tml>";
             this.radLabel10.TextAlignment = System.Drawing.ContentAlignment.TopLeft;
+            this.radLabel10.ThemeName = "MaterialTeal";
             // 
             // radLabel2
             // 
@@ -1433,14 +1409,15 @@ namespace Kaliz
             // 
             this.radLabel8.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.radLabel8.ImageAlignment = System.Drawing.ContentAlignment.MiddleCenter;
-            this.radLabel8.Location = new System.Drawing.Point(14, 397);
+            this.radLabel8.Location = new System.Drawing.Point(14, 399);
             this.radLabel8.Name = "radLabel8";
-            this.radLabel8.Size = new System.Drawing.Size(107, 38);
+            this.radLabel8.Size = new System.Drawing.Size(107, 36);
             this.radLabel8.TabIndex = 2;
             this.radLabel8.Text = "<html><p><span style=\"font-size: 36pt; color: #008080\"><span style=\"font-size: 12" +
     "pt\"><strong>New to Kaliz?</strong></span></span></p><p><strong></strong></p></ht" +
     "ml>";
             this.radLabel8.TextAlignment = System.Drawing.ContentAlignment.TopLeft;
+            this.radLabel8.ThemeName = "MaterialTeal";
             // 
             // radLabel1
             // 
@@ -1449,11 +1426,12 @@ namespace Kaliz
             this.radLabel1.ImageAlignment = System.Drawing.ContentAlignment.MiddleCenter;
             this.radLabel1.Location = new System.Drawing.Point(332, 3);
             this.radLabel1.Name = "radLabel1";
-            this.radLabel1.Size = new System.Drawing.Size(372, 81);
+            this.radLabel1.Size = new System.Drawing.Size(376, 73);
             this.radLabel1.TabIndex = 0;
             this.radLabel1.Text = "<html><p><span style=\"font-size: 36pt; color: #008080\">Welcome to Kaliz</span></p" +
     "><p><span style=\"font-size: 36pt\"></span></p></html>";
             this.radLabel1.TextAlignment = System.Drawing.ContentAlignment.TopLeft;
+            this.radLabel1.ThemeName = "MaterialTeal";
             // 
             // radLabel6
             // 
@@ -1464,6 +1442,7 @@ namespace Kaliz
             this.radLabel6.Size = new System.Drawing.Size(95, 41);
             this.radLabel6.TabIndex = 2;
             this.radLabel6.Text = "Recent";
+            this.radLabel6.ThemeName = "MaterialTeal";
             // 
             // radButton1
             // 
@@ -1599,11 +1578,11 @@ namespace Kaliz
             this.bookmarkList.AllowEdit = false;
             this.bookmarkList.AutoSizeColumnsMode = Telerik.WinControls.UI.ListViewAutoSizeColumnsMode.Fill;
             listViewDetailColumn6.HeaderText = "Line";
-            listViewDetailColumn6.Width = 222.8341F;
+            listViewDetailColumn6.Width = 223.4056F;
             listViewDetailColumn7.HeaderText = "Name";
-            listViewDetailColumn7.Width = 415.6947F;
+            listViewDetailColumn7.Width = 415.8953F;
             listViewDetailColumn8.HeaderText = "File";
-            listViewDetailColumn8.Width = 401.4712F;
+            listViewDetailColumn8.Width = 400.6991F;
             this.bookmarkList.Columns.AddRange(new Telerik.WinControls.UI.ListViewDetailColumn[] {
             listViewDetailColumn6,
             listViewDetailColumn7,
@@ -1664,9 +1643,9 @@ namespace Kaliz
             this.radListBreakpoint.AllowRemove = false;
             this.radListBreakpoint.AutoSizeColumnsMode = Telerik.WinControls.UI.ListViewAutoSizeColumnsMode.Fill;
             listViewDetailColumn1.HeaderText = "Line";
-            listViewDetailColumn1.Width = 523.9738F;
+            listViewDetailColumn1.Width = 524.4695F;
             listViewDetailColumn2.HeaderText = "File Name";
-            listViewDetailColumn2.Width = 515.0262F;
+            listViewDetailColumn2.Width = 514.5305F;
             this.radListBreakpoint.Columns.AddRange(new Telerik.WinControls.UI.ListViewDetailColumn[] {
             listViewDetailColumn1,
             listViewDetailColumn2});
@@ -2009,12 +1988,6 @@ namespace Kaliz
             // 
             this.contextMenuData.ThemeName = "MaterialTeal";
             // 
-            // EWrap
-            // 
-            this.EWrap.Name = "EWrap";
-            this.EWrap.Text = "Enable/Disable Word Wrap";
-            this.EWrap.Click += new System.EventHandler(this.EWrap_Click);
-            // 
             // Kaliz
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -2070,7 +2043,6 @@ namespace Kaliz
             this.documentTabStrip1.ResumeLayout(false);
             this.DBookmarks.ResumeLayout(false);
             this.DBookmarks.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.wlcJava)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.recentList)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.radLabel3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
@@ -2252,8 +2224,6 @@ namespace Kaliz
         private RadMenuItem VSupply;
         private RadMenuItem VSplitHorizon;
         private RadMenuItem VSplitVertical;
-        private RadMenuItem DeJDB;
-        private RadButton wlcJava;
         private RadMenuItem SynJava;
         private RadMenuItem FReopen;
         private RadMenuItem EncodeUTF8;
@@ -2300,7 +2270,6 @@ namespace Kaliz
         private ImageList imageList1;
         private RadMenuItem FReopenLineBreak;
         private RadMenuItem VHideDir;
-        private RadMenuItem LJava;
         private RadMenuItem DBreak;
         private Telerik.WinControls.UI.Docking.ToolWindow DBreakPointList;
         private RadListView radListBreakpoint;
