@@ -512,7 +512,7 @@ namespace Kaliz
             TaiLieu.Controls.Add(DanhDau);
             DanhDau.AllowDrop = true;
             
-            DanhDau.FileExtensions = new string[] { ".pas", ".c", ".cpp", ".cs", ".py",".java" };
+            DanhDau.FileExtensions = new string[] { ".pas", ".c", ".cpp", ".cs", ".py" };
             DockPar.AddDocument(TaiLieu);
             //Theme
             //TaiLieu.TabStrip.SelectedIndexChanged += TabStrip_SelectedIndexChanged;
@@ -580,30 +580,27 @@ namespace Kaliz
                     
 
                 }
-                if(Path.GetExtension(DuongDanTep)==".java")
-                {
+                //if(Path.GetExtension(DuongDanTep)==".java")
+                //{
                     
-                    DanhDau.LoadFile(DuongDanTep, Encoding.ASCII);
-
-                   // DanhDau.SetNewLineStyle(Syncfusion.IO.NewLineStyle.Unix);
-                    DanhDau.StatusBarSettings.FileNamePanel.Panel.Text = "Java";
-                    string ConfigF = @"Lex\Java.xml";
-                    DanhDau.Configurator.Open(ConfigF);
-                    DanhDau.ApplyConfiguration("Java");
-                    DanhDau.StatusBarSettings.FileNamePanel.Panel.Text = "Java";
-                    DanhDau.ContextPromptOpen += DanhDau_ContextPromptOpen_ForJava;
-                    DanhDau.ContextPromptUpdate += DanhDau_ContextPromptUpdate_ForJava;
-                    DanhDau.ContextChoiceOpen += DanhDau_ContextChoiceOpen_Java;
-                    DanhDau.UpdateContextToolTip += DanhDau_UpdateContextToolTip_ForJava;
+                //    DanhDau.LoadFile(DuongDanTep, Encoding.ASCII);                  
+                //    DanhDau.StatusBarSettings.FileNamePanel.Panel.Text = "Java";
+                //    string ConfigF = @"Lex\Java.xml";
+                //    DanhDau.Configurator.Open(ConfigF);
+                //    DanhDau.ApplyConfiguration("Java");
+                //    DanhDau.StatusBarSettings.FileNamePanel.Panel.Text = "Java";
+                //    DanhDau.ContextPromptOpen += DanhDau_ContextPromptOpen_ForJava;
+                //    DanhDau.ContextPromptUpdate += DanhDau_ContextPromptUpdate_ForJava;
+                //    DanhDau.ContextChoiceOpen += DanhDau_ContextChoiceOpen_Java;
+                //    DanhDau.UpdateContextToolTip += DanhDau_UpdateContextToolTip_ForJava;
                     
-                }
-              
+                //}            
 
             }
             else
                 DanhDau.DeleteAll();
 
-
+           
 
             DanhDau.MarkChangedLines = true;
             DanhDau.ShowSelectionMargin = true;
@@ -4639,48 +4636,9 @@ End;
             }
             catch
             { }
-        }
+        }         
 
-       
-
-        private void DeJDB_Click(object sender, EventArgs e)
-        {
-            if(deBug == true)
-            {
-                if (File.Exists(TabHienTai.FileName))
-                {
-                    if (Path.GetExtension(TabHienTai.FileName) == ".java")
-                    {
-                        if (ConsoleUse == "PowerShell")
-                        {
-                            Process JDB = new Process();
-                            JDB.StartInfo.FileName = "cmd";
-                            JDB.StartInfo.Arguments = "/c " + " jdb " + TabHienTai.FileName;
-                            JDB.Start();
-                            JDB.WaitForExit();
-
-                        }
-                        else
-                        {
-                            Process JDB = new Process();
-                            JDB.StartInfo.FileName = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\Kaliz" + @"\Cmder\vendor\conemu-maximus5\ConEmu.exe";
-                            JDB.StartInfo.Arguments = "-run " + " jdb " + TabHienTai.FileName;
-                            JDB.Start();
-                            JDB.WaitForExit();
-
-                        }
-                    }
-                }
-                else
-                    MessageBox.Show("Couldn't load this file", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            else
-            {
-                ShowAlert_Light("<html><color=Crimson><b>You have not enabled debug mode </b>", null, false);
-            }
-           
-          
-        }
+      
 
         private void wlcJava_Click(object sender, EventArgs e)
         {
