@@ -924,6 +924,15 @@ namespace Kaliz
                 TabHienTai.InsertText(TabHienTai.CurrentLine, TabHienTai.CurrentColumn, ")");
                 TabHienTai.MoveLeft();
             }
+            else
+                if (e.KeyCode == Keys.Enter)
+            {
+                try
+                {
+                    TabHienTai.InsertText(TabHienTai.CurrentLine, TabHienTai.CurrentColumn, "\r\n");
+                }
+                catch { }
+            }
         }
 
         private void DanhDau_UpdateContextToolTip_ForJava(object sender, UpdateTooltipEventArgs e)
@@ -5104,33 +5113,39 @@ End;
             }
 
         }
+        private string txtIP;
         private bool isConnectedCli = false;
         private void SConnect_Click(object sender, EventArgs e)
         {
             var args = e as MouseEventArgs;
             if (args.Button == MouseButtons.Right)
             {
-                using (ParametDialog fd = new ParametDialog())
+                using (ConnectSetting nect = new ConnectSetting())
                 {
-                    fd.Text = "Connection Setting";
-                    fd.radLabel1.Text = "Change Port Address (Number)";
-                    fd.radLabel2.Text = "Note: You can't change IP Address. Can only change Port";
-                    fd.radButton3.Enabled = false;
-                    if (fd.ShowDialog() == DialogResult.OK)
+                    if (nect.ShowDialog() == DialogResult.OK)
                     {
-
-                        txtPort = fd.ParametText;
+                        txtIP = nect.IPAddress;
+                        txtPort = nect.Port;
                     }
                 }
+
                 bool isIntString = txtPort.All(char.IsDigit);
-                if (!isIntString||txtPort=="")
+                if (!isIntString || txtPort == "")
                 {
                     MessageBox.Show("Port invalid! Reset to 4444", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     txtPort = "4444";
-                    SConnect.ToolTipText = "Connect with IP: " + GetLocalIP() + " Port: "+txtPort;
+                    SConnect.ToolTipText = "Connect to Server with IP: " + GetLocalIP() + " Port: " + txtPort;
                 }
                 else
-                    SConnect.ToolTipText = "Connect with IP: " + GetLocalIP() + " Port: " + txtPort;
+                    if (txtIP.All(char.IsDigit) == false && txtIP.Contains("\\.") == true || txtIP == "")
+                {
+                    MessageBox.Show("IP Address invalid! Reset to current IP", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    txtPort = "4444";
+                    SConnect.ToolTipText = "Connect to Server with IP: " + GetLocalIP() + " Port: " + txtPort;
+                }
+
+                else
+                    SConnect.ToolTipText = "Connect to Server with IP: " + txtIP + " Port: " + txtPort;
                 return;
             }
            
@@ -5151,8 +5166,9 @@ End;
             //else
             try
             {
-            IP = new IPEndPoint(IPAddress.Parse(GetLocalIP()), int.Parse(txtPort));
-                
+            //IP = new IPEndPoint(IPAddress.Parse(GetLocalIP()), int.Parse(txtPort));
+                IP = new IPEndPoint(IPAddress.Parse("192.168.0.110"), int.Parse(txtPort));
+
 
                 CheckForIllegalCrossThreadCalls = false;
             }
