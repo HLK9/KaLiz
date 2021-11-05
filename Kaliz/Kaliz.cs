@@ -411,6 +411,7 @@ namespace Kaliz
             var clipBoard = new SharpClipboard();
             clipBoard.MonitorClipboard = true;
             clipBoard.ClipboardChanged += ClipBoard_ClipboardChanged;
+            txtIP = GetLocalIP();
 
 
 
@@ -924,15 +925,15 @@ namespace Kaliz
                 TabHienTai.InsertText(TabHienTai.CurrentLine, TabHienTai.CurrentColumn, ")");
                 TabHienTai.MoveLeft();
             }
-            else
-                if (e.KeyCode == Keys.Enter)
-            {
-                try
-                {
-                    TabHienTai.InsertText(TabHienTai.CurrentLine, TabHienTai.CurrentColumn, "\r\n");
-                }
-                catch { }
-            }
+            //else
+            //    if (e.KeyCode == Keys.Enter)
+            //{
+            //    try
+            //    {
+            //        TabHienTai.InsertText(TabHienTai.CurrentLine, TabHienTai.CurrentColumn, "\r\n");
+            //    }
+            //    catch { }
+            //}
         }
 
         private void DanhDau_UpdateContextToolTip_ForJava(object sender, UpdateTooltipEventArgs e)
@@ -2505,7 +2506,7 @@ End;
                 //File.WriteAllText(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + @"\Kaliz\Intermediary.txt", TabHienTai.Text);
                 //string path = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + @"\Kaliz\Intermediary.txt";
                     Process Par = new Process();
-                    Par.StartInfo.FileName = @"C:\Users\FPT SHOP\Documents\SourceCode\KalizParser\ConAntle\bin\Debug\ConAntle.exe";
+                    Par.StartInfo.FileName = @"Parser\ConAntle.exe";
                     Par.StartInfo.RedirectStandardError = true;
                     Par.StartInfo.RedirectStandardOutput = true;
                     Par.StartInfo.UseShellExecute = false;
@@ -2516,8 +2517,7 @@ End;
                     Par.StandardInput.Flush();
                     Par.StandardInput.Close();
                     string a = Par.StandardError.ReadToEnd();
-                    radListError.Text = a;
-              
+                    radListError.Text = a;              
                
             }
             else
@@ -5167,7 +5167,7 @@ End;
             try
             {
             //IP = new IPEndPoint(IPAddress.Parse(GetLocalIP()), int.Parse(txtPort));
-                IP = new IPEndPoint(IPAddress.Parse("192.168.0.110"), int.Parse(txtPort));
+                IP = new IPEndPoint(IPAddress.Parse(txtIP), int.Parse(txtPort));
 
 
                 CheckForIllegalCrossThreadCalls = false;

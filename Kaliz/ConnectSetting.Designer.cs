@@ -113,6 +113,7 @@
             this.Controls.Add(this.radLabel1);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnApply);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.Name = "ConnectSetting";
             // 
             // 
@@ -120,7 +121,8 @@
             this.RootElement.ApplyShapeToControl = true;
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
-            this.Text = "ConnectSetting";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Connect Setting";
             this.ThemeName = "MaterialTeal";
             ((System.ComponentModel.ISupportInitialize)(this.btnApply)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnCancel)).EndInit();
