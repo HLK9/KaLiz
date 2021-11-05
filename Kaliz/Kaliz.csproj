@@ -151,6 +151,12 @@
     <Compile Include="BuildConfig.Designer.cs">
       <DependentUpon>BuildConfig.cs</DependentUpon>
     </Compile>
+    <Compile Include="ConnectSetting.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ConnectSetting.Designer.cs">
+      <DependentUpon>ConnectSetting.cs</DependentUpon>
+    </Compile>
     <Compile Include="DifferentMer.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -204,6 +210,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="BuildConfig.resx">
       <DependentUpon>BuildConfig.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ConnectSetting.resx">
+      <DependentUpon>ConnectSetting.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="DifferentMer.resx">
       <DependentUpon>DifferentMer.cs</DependentUpon>
