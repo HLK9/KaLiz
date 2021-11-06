@@ -17,8 +17,9 @@ xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/X
       <format name="PreprocessorKeyword" Font="Cascadia Code, 13pt" FontColor="Gray" />
       <format name="SelectedText" Font="Cascadia Code, 13pt" BackColor="Highlight" FontColor="HighlightText" />
       <format name="CommentXML" Font="Cascadia Code, 13pt" FontColor="Gray" />
-      <format name="CollapsedText" Font="Cascadia Code, 13pt" FontColor="Black" BorderColor="Gray"
-				BorderStyle="Solid" />
+      <format name="CollapsedText" Font="Cascadia Code, 13pt" FontColor="Black" BorderColor="Gray" BorderStyle="Solid" />
+        <format name="Function" Font="Cascadia Code, 13pt" FontColor="#0A88AE" />
+				
     </formats>
     <extensions>
       <extension>cpp</extension>
@@ -71,6 +72,32 @@ xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/X
       <lexem BeginBlock="private" Type="KeyWord" />
       <lexem BeginBlock="continue" Type="KeyWord" />
       <lexem BeginBlock="register" Type="KeyWord" />
+
+          <lexem BeginBlock="printf" Type="Function" />
+       <lexem BeginBlock="pow" Type="Function" />
+       <lexem BeginBlock="gamma" Type="Function" />
+       <lexem BeginBlock="log" Type="Function" />
+       <lexem BeginBlock="log10" Type="Function" />
+       <lexem BeginBlock="modf" Type="Function" />
+       <lexem BeginBlock="sqrt" Type="Function" />
+       <lexem BeginBlock="sin" Type="Function" />
+       <lexem BeginBlock="isalpha" Type="Function" />
+       <lexem BeginBlock="tan" Type="Function" />
+       <lexem BeginBlock="isdigit" Type="Function" />
+       <lexem BeginBlock="acos" Type="Function" />
+       <lexem BeginBlock="asin" Type="Function" />
+       <lexem BeginBlock="atan" Type="Function" />
+       <lexem BeginBlock="cos" Type="Function" />
+       <lexem BeginBlock="islower" Type="Function" />
+        <lexem BeginBlock="exp" Type="Function" />
+        <lexem BeginBlock="abs" Type="Function" />
+        <lexem BeginBlock="isalnum" Type="Function" />
+        <lexem BeginBlock="isupper" Type="Function" />
+        <lexem BeginBlock="toupper" Type="Function" />
+        <lexem BeginBlock="tolower" Type="Function" />
+        <lexem BeginBlock="scanf" Type="Function" />
+        <lexem BeginBlock="getch" Type="Function" />
+
       <lexem BeginBlock="reinterprett_cast" Type="KeyWord" />
       <lexem BeginBlock="decimal" Type="KeyWord" />
       <lexem BeginBlock="mutable" Type="KeyWord" />
@@ -157,6 +184,8 @@ xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/X
         </SubLexems>
       </lexem>
       <lexem BeginBlock="//" EndBlock="\n" IsEndRegex="true" Type="Comment" IsComplex="true"
+        OnlyLocalSublexems="true" />
+             <lexem BeginBlock="#" EndBlock="\n" IsEndRegex="true" Type="Function" IsComplex="true"
         OnlyLocalSublexems="true" />
       <lexem ID="1041" EndBlock="#endregion" Type="PreprocessorKeyword" IsComplex="true" >
         <SubLexems>
