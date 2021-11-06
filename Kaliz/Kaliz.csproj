@@ -199,12 +199,6 @@
     <Compile Include="SplashForm.Designer.cs">
       <DependentUpon>SplashForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="WaitingForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="WaitingForm.Designer.cs">
-      <DependentUpon>WaitingForm.cs</DependentUpon>
-    </Compile>
     <EmbeddedResource Include="About_Z.resx">
       <DependentUpon>About_Z.cs</DependentUpon>
     </EmbeddedResource>
@@ -247,9 +241,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="SplashForm.resx">
       <DependentUpon>SplashForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="WaitingForm.resx">
-      <DependentUpon>WaitingForm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="app.manifest" />
     <None Include="packages.config" />
