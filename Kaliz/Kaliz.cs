@@ -601,8 +601,8 @@ namespace Kaliz
             else
                 DanhDau.DeleteAll();
 
-           
 
+            TabHienTai.FilterAutoCompleteItems = true;
             DanhDau.MarkChangedLines = true;
             DanhDau.ShowSelectionMargin = true;
             DanhDau.HighlightCurrentLine = true;
@@ -635,7 +635,7 @@ namespace Kaliz
             DanhDau.StatusBarSettings.StatusPanel.Panel.BackColor = Color.Teal;
             DanhDau.StatusBarSettings.StatusPanel.Panel.ForeColor = Color.White;
             //Các sự kiện
-            DanhDau.TextChanged += DanhDau_TextChanged;
+          //  DanhDau.TextChanged += DanhDau_TextChanged;
            // DanhDau.UpdateContextToolTip += DanhDau_UpdateContextToolTip_ForPascal;
             DanhDau.MenuFill += DanhDau_MenuFill;
 
@@ -650,8 +650,23 @@ namespace Kaliz
             DanhDau.PrintHeader += DanhDau_PrintHeader;
             DanhDau.KeyDown += DanhDau_KeyDown;
             DatBookmarks();
+            TabHienTai.ContextChoiceSelectedTextInsert += TabHienTai_ContextChoiceSelectedTextInsert;
 
 
+        }
+
+        private void TabHienTai_ContextChoiceSelectedTextInsert(IContextChoiceController sender, ContextChoiceTextInsertEventArgs e)
+        {
+            //tự đặt sự kiện đóng khi bấm enter trong context choice
+            try
+            {
+                TabHienTai.InsertText(TabHienTai.CurrentLine, TabHienTai.CurrentColumn, sender.SelectedItem.Text);
+                TabHienTai.CloseContextChoice();
+               
+            }
+            catch
+            { }
+         
         }
 
         private void DanhDau_ContextPromptUpdate_ForJava(object sender, ContextPromptUpdateEventArgs e)
@@ -2472,12 +2487,12 @@ End;
         private void DanhDau_TextChanged(object sender, EventArgs e)
         {
             
-            if (enableContext == true)
-            {
+            //if (enableContext == true)
+            //{
+           
                 TabHienTai.ShowContextChoice();
-
-                TabHienTai.FilterAutoCompleteItems = true;
-            }
+            
+            //}
 
             TabHienTai.StatusBarSettings.StatusPanel.Panel.Text = "Unsaved";
             TabHienTai.StatusBarSettings.StatusPanel.Panel.BackColor = Color.DarkMagenta;
@@ -2497,6 +2512,7 @@ End;
 
 
         }
+
         void Parser()
         {            
             if (File.Exists(TabHienTai.FileName))
@@ -3641,12 +3657,14 @@ End;
                 enableContext = true;
                 OEnableContext.Text = "Disable Context Intellisense";
                 ShowAlert_Light("<html><color=Teal>Context Intellisense Enabled", null, false);
+                TabHienTai.TextChanged += DanhDau_TextChanged;
             }
             else
             {
                 ShowAlert_Light("<html><color=Crimson>Context Intellisense Disabled", null, false);
                 enableContext = false;
                 OEnableContext.Text = "Enable Context Intellisense";
+                TabHienTai.TextChanged -= DanhDau_TextChanged;
             }
         }
 
@@ -5612,7 +5630,7 @@ End;
                     foreach (string line in a)
                     {
 
-                        TabHienTai.Text += line + "\r\n";
+                        TabHienTai.Text += line + "\r";
                     }
                 }
                 catch
@@ -5620,12 +5638,12 @@ End;
                     List<string> ls = new List<string>();
                     for (int i = 1; i <= TabHienTai.PhysicalLineCount; i++)
                     {
-                        ls.Add(TabHienTai.GetLineText(i) + "\r\n");
+                        ls.Add(TabHienTai.GetLineText(i) + "\r");
                     }
                     TabHienTai.Text = "";
                     foreach (var i in ls)
                     {
-                        TabHienTai.Text += i.ToString() + "\r\n";
+                        TabHienTai.Text += i.ToString() + "\r";
                     }
 
                 }
@@ -5829,9 +5847,7 @@ End;
 
             }
             catch
-            { }
-
-
+            { }            
 
         }
       
@@ -5846,6 +5862,8 @@ End;
             }
             catch { }
         }
+
+      
     }
 }
 
