@@ -5863,7 +5863,15 @@ End;
             catch { }
         }
 
-      
+        private void HHowto_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void radButton2_Click(object sender, EventArgs e)
+        {
+            Process.Start("https://cmbst.wordpress.com/aboutgopas/");
+        }
     }
 }
 
