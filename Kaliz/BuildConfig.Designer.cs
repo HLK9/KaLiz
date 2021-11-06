@@ -104,7 +104,7 @@
             radPageView1.Dock = System.Windows.Forms.DockStyle.Fill;
             radPageView1.Location = new System.Drawing.Point(0, 0);
             radPageView1.Name = "radPageView1";
-            radPageView1.SelectedPage = this.radPageViewPage4;
+            radPageView1.SelectedPage = this.radPageViewPage1;
             radPageView1.Size = new System.Drawing.Size(783, 373);
             radPageView1.TabIndex = 0;
             radPageView1.ThemeName = "MaterialTeal";
