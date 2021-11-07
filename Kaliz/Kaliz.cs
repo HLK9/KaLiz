@@ -598,17 +598,20 @@ namespace Kaliz
 
             }
             else
+            {
                 DanhDau.DeleteAll();
-            if (TenTheme == "FluentDark")
-            {
-                DanhDau.Configurator.Open(@"Lex\New_D.xml");
-                DanhDau.ApplyConfiguration("Text");
+                if (TenTheme == "FluentDark")
+                {
+                    DanhDau.Configurator.Open(@"Lex\New_D.xml");
+                    DanhDau.ApplyConfiguration("Text");
+                }
+                else
+                {
+                    DanhDau.Configurator.Open(@"Lex\New.xml");
+                    DanhDau.ApplyConfiguration("Text");
+                }
             }
-            else
-            {
-                DanhDau.Configurator.Open(@"Lex\New.xml");
-                DanhDau.ApplyConfiguration("Text");
-            }
+              
 
             TabHienTai.FilterAutoCompleteItems = true;
             DanhDau.MarkChangedLines = true;
@@ -4520,8 +4523,12 @@ End;
         private void wclPascal_Click(object sender, EventArgs e)
         {
             TaoMoi("Document " + chiso++, null);
-
             string ConfigF = @"Lex\Pascal.xml";
+
+            if (TenTheme == "FluentDark")
+                ConfigF = @"Lex\Pascal_D.xml";
+
+
             TabHienTai.Configurator.Open(ConfigF);
             TabHienTai.ApplyConfiguration("Pascal");
             TabHienTai.StatusBarSettings.FileNamePanel.Panel.Text = "Pascal";
@@ -4542,6 +4549,8 @@ End;
 
             TabHienTai.StatusBarSettings.FileNamePanel.Panel.Text = "Python";
             string ConfigF = @"Lex\Python.xml";
+            if (TenTheme == "FluentDark")
+                ConfigF = @"Lex\Python_D.xml";
             TabHienTai.Configurator.Open(ConfigF);
             TabHienTai.ApplyConfiguration("Python");
             TabHienTai.StatusBarSettings.FileNamePanel.Panel.Text = "Python";
@@ -4559,6 +4568,8 @@ End;
             TaoMoi("Document " + chiso++, null);
 
             string ConfigF = @"Lex\CppF.xml";
+            if (TenTheme == "FluentDark")
+                ConfigF = @"Lex\CppF_D.xml";
             TabHienTai.Configurator.Open(ConfigF);
             TabHienTai.ApplyConfiguration("C++");
             TabHienTai.StatusBarSettings.FileNamePanel.Panel.Text = "C/C++";
