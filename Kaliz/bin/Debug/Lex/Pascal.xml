@@ -7,7 +7,7 @@
 			<format name="KeyWord" Font="Cascadia Code, 13pt" FontColor="Salmon" />
 			<format name="String" Font="Cascadia Code SemiLight, 13pt" FontColor="#823ff1" />
 			<format name="Number" Font="Cascadia Code, 13pt" FontColor="#ce33c0" />
-			<format name="Operator" Font="Cascadia Code, 13pt" FontColor="#23974a" />
+			<format name="Operator" Font="Cascadia Code, 13pt" FontColor="#0278FD" />
 			<format name="Comment" Font="Cascadia Code SemiLight, 13pt" FontColor="#a0a1a7"/>
 			<format name="Error" Font="Cascadia Code, 13pt" FontColor="Black" underline="Wave" LineColor="Red" />
 			<format name="PreprocessorKeyword" Font="Cascadia Code, 13pt" FontColor="Gray" />
@@ -15,6 +15,7 @@
 			<format name="CommentXML" Font="Cascadia Code, 13pt, style=Bold" FontColor="Gray" />
 			<format name="CollapsedText" Font="Cascadia Code, 13pt" FontColor="Black" BackColor="White"
 				BorderColor="Gray" BorderStyle="Solid" />
+				 <format name="Function" Font="Cascadia Code, 13pt" FontColor="#0AAE81" />
 		</formats>
 		<extensions>
 			<extension>pas</extension>
@@ -111,7 +112,35 @@
 			<lexem BeginBlock="is" Type="KeyWord" />
 			<lexem BeginBlock="while" Type="KeyWord" IsComplex="true" DropContextPrompt="true" />
 			<lexem BeginBlock="read" Type="KeyWord" />
-			<lexem BeginBlock="write" Type="KeyWord" />
+
+			<lexem BeginBlock="write" Type="Function" />
+			<lexem BeginBlock="writeln" Type="Function" />
+			<lexem BeginBlock="abs" Type="Function" />
+			<lexem BeginBlock="arctan" Type="Function" />
+			
+<lexem BeginBlock="exp" Type="Function" />
+			
+<lexem BeginBlock="cos" Type="Function" />
+			
+<lexem BeginBlock="sqrt" Type="Function" />
+			
+<lexem BeginBlock="sqr" Type="Function" />
+			
+<lexem BeginBlock="trunc" Type="Function" />
+			
+<lexem BeginBlock="sin" Type="Function" />
+			
+<lexem BeginBlock="round" Type="Function" />
+			<lexem BeginBlock="ln" Type="Function" />
+			<lexem BeginBlock="read" Type="Function" />
+			
+<lexem BeginBlock="readln" Type="Function" />
+			
+
+			
+
+
+
 			<lexem BeginBlock="type" Type="KeyWord" />
 			<lexem BeginBlock="get" Type="KeyWord" />
 			<lexem BeginBlock="set" Type="KeyWord" />
@@ -123,6 +152,7 @@
 					<lexem BeginBlock="\n" IsBeginRegex="true" />
 				</SubLexems>
 			</lexem>
+
 			<lexem BeginBlock="(*" EndBlock="*)" Type="Comment" OnlyLocalSublexems="true" IsComplex="true"
 				IsCollapsable="true" CollapseName="(*...*)">
 				<SubLexems>
@@ -155,6 +185,7 @@
 					<lexem BeginBlock="$" EndBlock="\w+" IsEndRegex="true" Type="PreprocessorKeyword" />
 				</SubLexems>
 			</lexem>
+		
 		</lexems>
 		<splits>
 			<split>@&quot;</split>
