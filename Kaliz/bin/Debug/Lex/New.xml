@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ArrayOfConfigLanguage>
+<ConfigLanguage name="Text" CaseInsensitive="true">
+		<formats>
+			<format name="Text" Font="Cascadia Code SemiLight, 13pt" FontColor="#383a42" />
+			
+			
+			<format name="Number" Font="Cascadia Code, 13pt" FontColor="#ce33c0" />
+			
+			<format name="SelectedText" Font="Cascadia Code, 13pt" BackColor="Highlight" FontColor="HighlightText" />
+		</formats>		
+		<lexems>	
+			
+			<lexem BeginBlock="[0-9]+" IsBeginRegex="true" Type="Number" />
+			<lexem BeginBlock="$" EndBlock="^[0-9a-fA-F]+$" IsEndRegex="true" Type="Number" />
+			
+		</lexems>
+		
+</ConfigLanguage>
+</ArrayOfConfigLanguage>
