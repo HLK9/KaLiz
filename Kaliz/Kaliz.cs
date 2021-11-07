@@ -593,14 +593,22 @@ namespace Kaliz
                 //    DanhDau.ContextPromptOpen += DanhDau_ContextPromptOpen_ForJava;
                 //    DanhDau.ContextPromptUpdate += DanhDau_ContextPromptUpdate_ForJava;
                 //    DanhDau.ContextChoiceOpen += DanhDau_ContextChoiceOpen_Java;
-                //    DanhDau.UpdateContextToolTip += DanhDau_UpdateContextToolTip_ForJava;
-                    
+                //    DanhDau.UpdateContextToolTip += DanhDau_UpdateContextToolTip_ForJava;                    
                 //}            
 
             }
             else
                 DanhDau.DeleteAll();
-
+            if (TenTheme == "FluentDark")
+            {
+                DanhDau.Configurator.Open(@"Lex\New_D.xml");
+                DanhDau.ApplyConfiguration("Text");
+            }
+            else
+            {
+                DanhDau.Configurator.Open(@"Lex\New.xml");
+                DanhDau.ApplyConfiguration("Text");
+            }
 
             TabHienTai.FilterAutoCompleteItems = true;
             DanhDau.MarkChangedLines = true;
