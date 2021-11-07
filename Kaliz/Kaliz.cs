@@ -653,7 +653,7 @@ namespace Kaliz
             DanhDau.ContextPromptBorderColor = Color.Teal ;
             DanhDau.ContextPromptBackgroundBrush = new BrushInfo(GradientStyle.None, new Color[] { Color.FromArgb(249, 249, 249) });
             DanhDau.BackgroundColor = new BrushInfo(GradientStyle.None, new Color[] { Color.FromArgb(249, 249, 249) });
-            // DanhDau.BackgroundColor  = new Syncfusion.Drawing.BrushInfo(Syncfusion.Drawing.GradientStyle.ForwardDiagonal, new System.Drawing.Color[] { System.Drawing.Color.LavenderBlush, System.Drawing.Color.AliceBlue, System.Drawing.Color.BlanchedAlmond });
+           // DanhDau.BackgroundColor  = new Syncfusion.Drawing.BrushInfo(Syncfusion.Drawing.GradientStyle.ForwardDiagonal, new System.Drawing.Color[] { System.Drawing.Color.Crimson, System.Drawing.Color.DarkCyan, System.Drawing.Color.LightPink });
             //DanhDau.TextChanging += DanhDau_TextChanging;
             // DanhDau.FilterAutoCompleteItems = true;
 
