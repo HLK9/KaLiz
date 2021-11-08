@@ -19,6 +19,7 @@ xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/X
       <format name="CommentXML" Font="Cascadia Code, 13pt" FontColor="Gray" />
       <format name="CollapsedText" Font="Cascadia Code, 13pt" FontColor="Black" BorderColor="Gray"
 				BorderStyle="Solid" />
+        <format name="Function" Font="Cascadia Code, 13pt" FontColor="#F61787"/>
     </formats>
     <extensions>
       <extension>py</extension>
@@ -49,7 +50,79 @@ xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/X
       <lexem BeginBlock="&gt;" Type="Operator" />
       <lexem BeginBlock=":" Type="Operator" />
       
-   
+       <lexem BeginBlock="abs" Type="Function" />
+       <lexem BeginBlock="aiter" Type="Function" />
+       <lexem BeginBlock="all" Type="Function" />
+       <lexem BeginBlock="any" Type="Function" />
+       <lexem BeginBlock="anext" Type="Function" />
+       <lexem BeginBlock="ascii" Type="Function" />
+       <lexem BeginBlock="bin" Type="Function" />
+       <lexem BeginBlock="bool" Type="Function" />
+       <lexem BeginBlock="breakpoint" Type="Function" />
+       <lexem BeginBlock="bytearray" Type="Function" />
+       <lexem BeginBlock="bytes" Type="Function" />
+       <lexem BeginBlock="callable" Type="Function" />
+       <lexem BeginBlock="chr" Type="Function" />
+       <lexem BeginBlock="classmethod" Type="Function" />
+       <lexem BeginBlock="compile" Type="Function" />
+       <lexem BeginBlock="complex" Type="Function" />
+       <lexem BeginBlock="delattr" Type="Function" />
+       <lexem BeginBlock="divmod" Type="Function" />
+       <lexem BeginBlock="dir" Type="Function" />
+       <lexem BeginBlock="dict" Type="Function" />
+       <lexem BeginBlock="enumerate" Type="Function" />
+       <lexem BeginBlock="eval" Type="Function" />
+       <lexem BeginBlock="exec" Type="Function" />
+       <lexem BeginBlock="filter" Type="Function" />
+       <lexem BeginBlock="float" Type="Function" />
+       <lexem BeginBlock="format" Type="Function" />
+       <lexem BeginBlock="frozenset" Type="Function" />
+       <lexem BeginBlock="getattr" Type="Function" />
+       <lexem BeginBlock="hasattr" Type="Function" />
+       <lexem BeginBlock="globals" Type="Function" />
+       <lexem BeginBlock="hash" Type="Function" />
+       <lexem BeginBlock="help" Type="Function" />
+       <lexem BeginBlock="hex" Type="Function" />
+       <lexem BeginBlock="id" Type="Function" />
+       <lexem BeginBlock="input" Type="Function" />
+       <lexem BeginBlock="int" Type="Function" />
+       <lexem BeginBlock="isinstance" Type="Function" />
+       <lexem BeginBlock="issubclass" Type="Function" />
+       <lexem BeginBlock="iter" Type="Function" />
+       <lexem BeginBlock="len" Type="Function" />
+       <lexem BeginBlock="list" Type="Function" />
+       <lexem BeginBlock="locals" Type="Function" />
+       <lexem BeginBlock="map" Type="Function" />
+       <lexem BeginBlock="max" Type="Function" />
+       <lexem BeginBlock="memoryview" Type="Function" />
+       <lexem BeginBlock="min" Type="Function" />
+       <lexem BeginBlock="next" Type="Function" />
+       <lexem BeginBlock="object" Type="Function" />
+       <lexem BeginBlock="ord" Type="Function" />
+       <lexem BeginBlock="open" Type="Function" />
+       <lexem BeginBlock="oct" Type="Function" />
+       <lexem BeginBlock="pow" Type="Function" />
+       <lexem BeginBlock="print" Type="Function" />
+       <lexem BeginBlock="property" Type="Function" />
+       <lexem BeginBlock="range" Type="Function" />
+       <lexem BeginBlock="repr" Type="Function" />
+       <lexem BeginBlock="reversed" Type="Function" />
+       <lexem BeginBlock="round" Type="Function" />
+       <lexem BeginBlock="set" Type="Function" />
+       <lexem BeginBlock="setattr" Type="Function" />
+       <lexem BeginBlock="slice" Type="Function" />
+       <lexem BeginBlock="sorted" Type="Function" />
+       <lexem BeginBlock="staticmethod" Type="Function" />
+       <lexem BeginBlock="str" Type="Function" />
+       <lexem BeginBlock="sum" Type="Function" />
+       <lexem BeginBlock="super" Type="Function" />
+       <lexem BeginBlock="tuple" Type="Function" />
+       <lexem BeginBlock="type" Type="Function" />
+       <lexem BeginBlock="vars" Type="Function" />
+       <lexem BeginBlock="zip" Type="Function" />
+       <lexem BeginBlock="__import__" Type="Function" />
+       
+       
 
       <lexem BeginBlock="," Type="Operator" />
       <lexem BeginBlock="False" Type="KeyWord" />
@@ -87,7 +160,7 @@ xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/X
       <lexem BeginBlock="if" Type="KeyWord" DropContextPrompt="true" IsComplex="true"/>
       <lexem BeginBlock="or" Type="KeyWord" />
       <lexem BeginBlock="yield" Type="KeyWord" />
-      <lexem BeginBlock="print" Type="KeyWord" />
+     
 
 <!--
 
