@@ -621,6 +621,7 @@ namespace Kaliz
             DanhDau.Closing += DanhDau_Closing;
             DanhDau.CurrentLineHighlightColor = Color.Teal;
             DanhDau.ShowIndicatorMargin = true;
+            
             //DanhDau.MarkerAreaWidth = 20;
             DanhDau.ShowIndentationGuidelines = true;
             DanhDau.ShowOutliningCollapsers = true;
