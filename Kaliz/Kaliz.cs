@@ -5244,9 +5244,10 @@ End;
                
                 try
                 {
+                if(isConnected==true)
                 client.Close();
                 SStatus.Text = "Not Connected";
-                if (client.Connected)
+                if (client!=null)
                     {
                         client.Shutdown(SocketShutdown.Both);
                         client.Close(10);
