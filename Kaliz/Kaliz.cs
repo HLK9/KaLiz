@@ -24,6 +24,8 @@ using System.Net;
 using System.Collections.Generic;
 using System.Linq;
 using Microsoft.WindowsAPICodePack.Dialogs;
+using RestSharp;
+using RestSharp.Authenticators;
 
 namespace Kaliz
 {
@@ -1853,7 +1855,7 @@ namespace Kaliz
         private void DanhDau_ContextChoiceOpen_ForPython(IContextChoiceController controller)
         {
             controller.Items.Add("and", "This is a logical operator it returns true if both the operands are true else return false");
-            controller.Items.Add("as", "	This is used to create an alternative.");
+            controller.Items.Add("as", "This is used to create an alternative.");
             controller.Items.Add("assert", "This function is used for debugging purposes. Usually used to check the correctness of code");
             controller.Items.Add("break", "This is used to terminate the loop.");
             controller.Items.Add("class", "It helps us to define a class.");
@@ -5893,6 +5895,8 @@ End;
         {
             Process.Start("https://cmbst.wordpress.com/aboutgopas/");
         }
+
+        
     }
 }
 
