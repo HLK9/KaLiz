@@ -5896,7 +5896,11 @@ End;
             Process.Start("https://cmbst.wordpress.com/aboutgopas/");
         }
 
-        
+        private void HFeedback_Click(object sender, EventArgs e)
+        {
+            Feedback a = new Feedback();
+            a.ShowDialog();
+        }
     }
 }
 
