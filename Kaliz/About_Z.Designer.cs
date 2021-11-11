@@ -35,7 +35,6 @@
             this.radLabel3 = new Telerik.WinControls.UI.RadLabel();
             this.radLabel2 = new Telerik.WinControls.UI.RadLabel();
             this.radPanel2 = new Telerik.WinControls.UI.RadPanel();
-            this.radButton2 = new Telerik.WinControls.UI.RadButton();
             this.radLabel4 = new Telerik.WinControls.UI.RadLabel();
             this.radLabel8 = new Telerik.WinControls.UI.RadLabel();
             this.radButton1 = new Telerik.WinControls.UI.RadButton();
@@ -50,7 +49,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.radLabel2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.radPanel2)).BeginInit();
             this.radPanel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.radButton2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.radLabel4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.radLabel8)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.radButton1)).BeginInit();
@@ -125,7 +123,6 @@
             // radPanel2
             // 
             this.radPanel2.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.radPanel2.Controls.Add(this.radButton2);
             this.radPanel2.Controls.Add(this.radLabel4);
             this.radPanel2.Controls.Add(this.radLabel8);
             this.radPanel2.Controls.Add(this.radButton1);
@@ -137,18 +134,6 @@
             this.radPanel2.Size = new System.Drawing.Size(330, 408);
             this.radPanel2.TabIndex = 1;
             this.radPanel2.ThemeName = "MaterialTeal";
-            // 
-            // radButton2
-            // 
-            this.radButton2.BackColor = System.Drawing.Color.MediumAquamarine;
-            this.radButton2.ForeColor = System.Drawing.Color.White;
-            this.radButton2.Location = new System.Drawing.Point(176, 360);
-            this.radButton2.Name = "radButton2";
-            this.radButton2.Size = new System.Drawing.Size(142, 36);
-            this.radButton2.TabIndex = 5;
-            this.radButton2.Text = "Feedback";
-            this.radButton2.ThemeName = "MaterialTeal";
-            this.radButton2.Click += new System.EventHandler(this.radButton2_Click);
             // 
             // radLabel4
             // 
@@ -179,7 +164,7 @@
             this.radButton1.ForeColor = System.Drawing.Color.White;
             this.radButton1.Location = new System.Drawing.Point(16, 360);
             this.radButton1.Name = "radButton1";
-            this.radButton1.Size = new System.Drawing.Size(154, 36);
+            this.radButton1.Size = new System.Drawing.Size(302, 36);
             this.radButton1.TabIndex = 4;
             this.radButton1.Text = "Kaliz Home Page";
             this.radButton1.ThemeName = "MaterialTeal";
@@ -239,7 +224,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.radPanel2)).EndInit();
             this.radPanel2.ResumeLayout(false);
             this.radPanel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.radButton2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.radLabel4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.radLabel8)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.radButton1)).EndInit();
@@ -264,6 +248,5 @@
         private Telerik.WinControls.UI.RadLabel radLabel4;
         private Telerik.WinControls.Themes.MaterialTealTheme materialTealTheme1;
         private Telerik.WinControls.UI.RadLabel radLabel6;
-        private Telerik.WinControls.UI.RadButton radButton2;
     }
 }
