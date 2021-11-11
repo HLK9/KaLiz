@@ -197,11 +197,11 @@
     <Compile Include="ASCIIConvertDia.Designer.cs">
       <DependentUpon>ASCIIConvertDia.cs</DependentUpon>
     </Compile>
-    <Compile Include="Share_Email.cs">
+    <Compile Include="Feedback.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Share_Email.Designer.cs">
-      <DependentUpon>Share_Email.cs</DependentUpon>
+    <Compile Include="Feedback.Designer.cs">
+      <DependentUpon>Feedback.cs</DependentUpon>
     </Compile>
     <Compile Include="SplashForm.cs">
       <SubType>Form</SubType>
@@ -249,8 +249,8 @@
     <EmbeddedResource Include="ASCIIConvertDia.resx">
       <DependentUpon>ASCIIConvertDia.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Share_Email.resx">
-      <DependentUpon>Share_Email.cs</DependentUpon>
+    <EmbeddedResource Include="Feedback.resx">
+      <DependentUpon>Feedback.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SplashForm.resx">
       <DependentUpon>SplashForm.cs</DependentUpon>
