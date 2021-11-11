@@ -71,7 +71,7 @@ namespace Kaliz
                 sm.Host = EmailSeever.SelectedItem.Text;
                 NetworkCredential net = new NetworkCredential();
                 net.UserName = UsrN;
-                net.Password = PasN; 
+                net.Password = PasN;
                 sm.Credentials = net;
                 sm.EnableSsl = true;
                 sm.Port = 587;
