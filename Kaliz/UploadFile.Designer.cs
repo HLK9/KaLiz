@@ -34,11 +34,13 @@
             this.txtLink = new Telerik.WinControls.UI.RadTextBox();
             this.btnUpload = new Telerik.WinControls.UI.RadButton();
             this.radLabel1 = new Telerik.WinControls.UI.RadLabel();
+            this.radLabel2 = new Telerik.WinControls.UI.RadLabel();
             ((System.ComponentModel.ISupportInitialize)(this.txtPath)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.radButton1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtLink)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnUpload)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.radLabel1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.radLabel2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this)).BeginInit();
             this.SuspendLayout();
             // 
@@ -83,23 +85,34 @@
             // 
             // radLabel1
             // 
-            this.radLabel1.Location = new System.Drawing.Point(12, 184);
+            this.radLabel1.Location = new System.Drawing.Point(12, 181);
             this.radLabel1.Name = "radLabel1";
             this.radLabel1.Size = new System.Drawing.Size(122, 21);
             this.radLabel1.TabIndex = 3;
             this.radLabel1.Text = "Powered by file.io";
             this.radLabel1.ThemeName = "MaterialTeal";
             // 
+            // radLabel2
+            // 
+            this.radLabel2.Location = new System.Drawing.Point(313, 181);
+            this.radLabel2.Name = "radLabel2";
+            this.radLabel2.Size = new System.Drawing.Size(122, 21);
+            this.radLabel2.TabIndex = 4;
+            this.radLabel2.Text = "Powered by file.io";
+            this.radLabel2.ThemeName = "MaterialTeal";
+            // 
             // UploadFile
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(502, 214);
+            this.Controls.Add(this.radLabel2);
             this.Controls.Add(this.radLabel1);
             this.Controls.Add(this.btnUpload);
             this.Controls.Add(this.txtLink);
             this.Controls.Add(this.radButton1);
             this.Controls.Add(this.txtPath);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.Name = "UploadFile";
             // 
             // 
@@ -107,13 +120,15 @@
             this.RootElement.ApplyShapeToControl = true;
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
-            this.Text = "Upload File";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Upload File To Internet";
             this.ThemeName = "MaterialTeal";
             ((System.ComponentModel.ISupportInitialize)(this.txtPath)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.radButton1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtLink)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnUpload)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.radLabel1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.radLabel2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -128,5 +143,6 @@
         private Telerik.WinControls.UI.RadTextBox txtLink;
         private Telerik.WinControls.UI.RadButton btnUpload;
         private Telerik.WinControls.UI.RadLabel radLabel1;
+        private Telerik.WinControls.UI.RadLabel radLabel2;
     }
 }
