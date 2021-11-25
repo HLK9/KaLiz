@@ -17,6 +17,7 @@ namespace Kaliz
         public UploadFile()
         {
             InitializeComponent();
+            radLabel2.Text = "";
         }
 
         private void radTextBox2_TextChanged(object sender, EventArgs e)
@@ -45,10 +46,20 @@ namespace Kaliz
                         var jObjResult = JObject.Parse(Encoding.UTF8.GetString(resStr));
                         var linkToFile = jObjResult["link"];
                         txtLink.Text = linkToFile.ToString();
+                        radLabel2.Text = "Link is ready to share";
+                        radLabel2.ForeColor = Color.Teal;
                     }
                 }
                 catch
-                { }
+                {
+                    radLabel2.Text = "Failed";
+                    radLabel2.ForeColor = Color.Crimson;
+                    return;
+                }
+            }
+            else
+            {
+                MessageBox.Show("File not found", "Error");
             }
            
         }
