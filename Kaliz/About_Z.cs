@@ -26,6 +26,9 @@ namespace Kaliz
             Process.Start("https://cmbst.wordpress.com/aboutkaliz/");
         }
 
-     
+        private void radButton2_Click(object sender, EventArgs e)
+        {
+            Process.Start("https://forms.gle/djqWwBN8GVPwMXfu6");
+        }
     }
 }
