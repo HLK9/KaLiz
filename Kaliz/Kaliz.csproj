@@ -65,6 +65,9 @@
       <HintPath>..\packages\Microsoft.WindowsAPICodePack-Shell.1.1.0.0\lib\Microsoft.WindowsAPICodePack.ShellExtensions.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.13.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="PresentationCore" />
     <Reference Include="RestSharp, Version=106.13.0.0, Culture=neutral, PublicKeyToken=598062e77f915f75, processorArchitecture=MSIL">
       <HintPath>..\packages\RestSharp.106.13.0\lib\net452\RestSharp.dll</HintPath>
@@ -224,6 +227,12 @@
     <Compile Include="SplashForm.Designer.cs">
       <DependentUpon>SplashForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="UploadFile.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UploadFile.Designer.cs">
+      <DependentUpon>UploadFile.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="About_Z.resx">
       <DependentUpon>About_Z.cs</DependentUpon>
     </EmbeddedResource>
@@ -269,6 +278,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="SplashForm.resx">
       <DependentUpon>SplashForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UploadFile.resx">
+      <DependentUpon>UploadFile.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="app.manifest" />
     <None Include="packages.config" />
