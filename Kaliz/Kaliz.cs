@@ -5958,6 +5958,12 @@ End;
             catch
             { }
         }
+
+        private void TUploadfile_Click(object sender, EventArgs e)
+        {
+            UploadFile upa = new UploadFile();
+            upa.ShowDialog();
+        }
     }
 }
 
