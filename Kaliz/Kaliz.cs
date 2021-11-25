@@ -24,8 +24,8 @@ using System.Net;
 using System.Collections.Generic;
 using System.Linq;
 using Microsoft.WindowsAPICodePack.Dialogs;
-using RestSharp;
-using RestSharp.Authenticators;
+using System.Web.Script.Serialization;
+using System.Net.Http;
 
 namespace Kaliz
 {
@@ -109,6 +109,13 @@ namespace Kaliz
             contextMenuDirectory.Items.Add(contextDirectory_Rename);
             contextMenuDirectory.Items.Add(contextDirectory_Del);
             contextMenuDirectory.Items.Add(contextDirectory_Open);
+
+            //them vao contextMenuOutput
+            var contextMenuOutput_Trans = new RadMenuItem();
+            contextMenuOutput_Trans.Click += ContextMenuOutput_Trans_Click;
+            contextMenuOutput_Trans.Text = "Translate to Vietnamese";
+            contextMenuOutput.Items.Add(contextMenuOutput_Trans);
+
             //breakpoit Context
         
 
@@ -124,6 +131,16 @@ namespace Kaliz
 
 
 
+        }
+
+        private void ContextMenuOutput_Trans_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                MessageBox.Show(TranslateText(ListOutput.SelectedItem.Text));
+            }
+            catch
+            { }
         }
 
         private void ContextRemoveBreakpoint_Click(object sender, EventArgs e)
@@ -5900,6 +5917,46 @@ End;
         {
             Feedback a = new Feedback();
             a.ShowDialog();
+        }
+
+        private void Doutput_MouseClick(object sender, MouseEventArgs e)
+        {
+           
+           
+        }
+        public string TranslateText(string input)
+        {
+            string url = String.Format
+            ("https://translate.googleapis.com/translate_a/single?client=gtx&sl={0}&tl={1}&dt=t&q={2}",
+             "en", "vi", Uri.EscapeUriString(input));
+            HttpClient httpClient = new HttpClient();
+            string result = httpClient.GetStringAsync(url).Result;
+            var jsonData = new JavaScriptSerializer().Deserialize<List<dynamic>>(result);
+            var translationItems = jsonData[0];
+            string translation = "";
+            foreach (object item in translationItems)
+            {
+                IEnumerable translationLineObject = item as IEnumerable;
+                IEnumerator translationLineString = translationLineObject.GetEnumerator();
+                translationLineString.MoveNext();
+                translation += string.Format(" {0}", Convert.ToString(translationLineString.Current));
+            }
+            if (translation.Length > 1) { translation = translation.Substring(1); };
+            return translation;
+        }
+
+        private void ListOutput_MouseClick(object sender, MouseEventArgs e)
+        {
+            var args = e as MouseEventArgs;
+            try
+            {
+                if (args.Button == MouseButtons.Right&&ListOutput.SelectedItem!=null)
+                {
+                    contextMenuOutput.Show(listDataReceived, args.Location);
+                }
+            }
+            catch
+            { }
         }
     }
 }
