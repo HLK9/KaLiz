@@ -5947,16 +5947,7 @@ End;
 
         private void ListOutput_MouseClick(object sender, MouseEventArgs e)
         {
-            var args = e as MouseEventArgs;
-            try
-            {
-                if (args.Button == MouseButtons.Right&&ListOutput.SelectedItem!=null)
-                {
-                    contextMenuOutput.Show(listDataReceived, args.Location);
-                }
-            }
-            catch
-            { }
+
         }
 
         private void TUploadfile_Click(object sender, EventArgs e)
