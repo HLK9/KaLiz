@@ -98,6 +98,9 @@
             // richtxtContent
             // 
             this.richtxtContent.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.richtxtContent.IsContextMenuEnabled = false;
+            this.richtxtContent.IsPasteOptionsPopupEnabled = false;
+            this.richtxtContent.IsSelectionMiniToolBarEnabled = false;
             this.richtxtContent.Location = new System.Drawing.Point(105, 96);
             this.richtxtContent.Name = "richtxtContent";
             this.richtxtContent.SelectionFill = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(203)))), ((int)(((byte)(196)))));
