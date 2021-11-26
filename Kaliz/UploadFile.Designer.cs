@@ -87,14 +87,14 @@
             // 
             this.radLabel1.Location = new System.Drawing.Point(12, 181);
             this.radLabel1.Name = "radLabel1";
-            this.radLabel1.Size = new System.Drawing.Size(122, 21);
+            this.radLabel1.Size = new System.Drawing.Size(178, 21);
             this.radLabel1.TabIndex = 3;
-            this.radLabel1.Text = "Powered by file.io";
+            this.radLabel1.Text = "Powered by anonfiles.com";
             this.radLabel1.ThemeName = "MaterialTeal";
             // 
             // radLabel2
             // 
-            this.radLabel2.Location = new System.Drawing.Point(210, 163);
+            this.radLabel2.Location = new System.Drawing.Point(216, 163);
             this.radLabel2.Name = "radLabel2";
             this.radLabel2.Size = new System.Drawing.Size(122, 21);
             this.radLabel2.TabIndex = 4;
