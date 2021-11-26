@@ -75,7 +75,7 @@ namespace Kaliz
 
                             txtLink.Text= ResponseBody.Split('"')[15];
                             // ReturnValue += "File name: " + ResponseBody.Split('"')[25] + "\r\n";
-                            radLabel2.Text = "Copied! Link is ready to share" +"\r\n" + ResponseBody.Split('"')[25];
+                            radLabel2.Text = "Copied! Link is ready to share" +"\r\n" +"File Name: "+ ResponseBody.Split('"')[25];
                             radLabel2.ForeColor = Color.Teal;
                             Clipboard.SetText(txtLink.Text);
 
@@ -85,6 +85,7 @@ namespace Kaliz
                 catch (Exception Exception)
                 {
                     ReturnValue += "Exception Message:\r\n" + Exception.Message + "\r\n";
+                    MessageBox.Show(ReturnValue);
                     radLabel2.Text = "Failed";
                     radLabel2.ForeColor = Color.Crimson;
                 }
