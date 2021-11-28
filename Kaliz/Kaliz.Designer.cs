@@ -34,13 +34,13 @@ namespace Kaliz
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            Telerik.WinControls.UI.Docking.AutoHideGroup autoHideGroup1 = new Telerik.WinControls.UI.Docking.AutoHideGroup();
+            Telerik.WinControls.UI.Docking.AutoHideGroup autoHideGroup2 = new Telerik.WinControls.UI.Docking.AutoHideGroup();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Kaliz));
+            Telerik.WinControls.UI.ListViewDetailColumn listViewDetailColumn6 = new Telerik.WinControls.UI.ListViewDetailColumn("Column 0", "Line");
+            Telerik.WinControls.UI.ListViewDetailColumn listViewDetailColumn7 = new Telerik.WinControls.UI.ListViewDetailColumn("Column 1", "Name");
+            Telerik.WinControls.UI.ListViewDetailColumn listViewDetailColumn8 = new Telerik.WinControls.UI.ListViewDetailColumn("Column 2", "File");
             Telerik.WinControls.UI.ListViewDetailColumn listViewDetailColumn1 = new Telerik.WinControls.UI.ListViewDetailColumn("Column 0", "Line");
-            Telerik.WinControls.UI.ListViewDetailColumn listViewDetailColumn2 = new Telerik.WinControls.UI.ListViewDetailColumn("Column 1", "Name");
-            Telerik.WinControls.UI.ListViewDetailColumn listViewDetailColumn3 = new Telerik.WinControls.UI.ListViewDetailColumn("Column 2", "File");
-            Telerik.WinControls.UI.ListViewDetailColumn listViewDetailColumn4 = new Telerik.WinControls.UI.ListViewDetailColumn("Column 0", "Line");
-            Telerik.WinControls.UI.ListViewDetailColumn listViewDetailColumn5 = new Telerik.WinControls.UI.ListViewDetailColumn("Column 1", "File Name");
+            Telerik.WinControls.UI.ListViewDetailColumn listViewDetailColumn2 = new Telerik.WinControls.UI.ListViewDetailColumn("Column 1", "File Name");
             this.dockWindowPlaceholder1 = new Telerik.WinControls.UI.Docking.DockWindowPlaceholder();
             this.MFile = new Telerik.WinControls.UI.RadMenuItem();
             this.FNew = new Telerik.WinControls.UI.RadMenuItem();
@@ -245,7 +245,6 @@ namespace Kaliz
             this.contextMenuDirectory = new Telerik.WinControls.UI.RadContextMenu(this.components);
             this.MenuTop = new Telerik.WinControls.UI.RadMenu();
             this.contextMenuOutput = new Telerik.WinControls.UI.RadContextMenu(this.components);
-            this.radContextMenu1 = new Telerik.WinControls.UI.RadContextMenu(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.DockPar)).BeginInit();
             this.DockPar.SuspendLayout();
             this.Doutput.SuspendLayout();
@@ -1149,8 +1148,8 @@ namespace Kaliz
             // 
             // 
             this.DockPar.RootElement.MinSize = new System.Drawing.Size(25, 25);
-            autoHideGroup1.Windows.Add(this.dockWindowPlaceholder1);
-            this.DockPar.SerializableAutoHideContainer.LeftAutoHideGroups.Add(autoHideGroup1);
+            autoHideGroup2.Windows.Add(this.dockWindowPlaceholder1);
+            this.DockPar.SerializableAutoHideContainer.LeftAutoHideGroups.Add(autoHideGroup2);
             this.DockPar.Size = new System.Drawing.Size(1257, 698);
             this.DockPar.SplitterWidth = 8;
             this.DockPar.TabIndex = 2;
@@ -1181,7 +1180,6 @@ namespace Kaliz
             this.ListOutput.Size = new System.Drawing.Size(1038, 114);
             this.ListOutput.TabIndex = 0;
             this.ListOutput.ThemeName = "MaterialTeal";
-            this.ListOutput.SelectedItemChanged += new System.EventHandler(this.ListOutput_SelectedItemChanged);
             this.ListOutput.ItemMouseClick += new Telerik.WinControls.UI.ListViewItemEventHandler(this.ListOutput_ItemMouseClick);
             // 
             // toolTabStrip1
@@ -1590,16 +1588,16 @@ namespace Kaliz
             this.bookmarkList.AllowArbitraryItemHeight = true;
             this.bookmarkList.AllowEdit = false;
             this.bookmarkList.AutoSizeColumnsMode = Telerik.WinControls.UI.ListViewAutoSizeColumnsMode.Fill;
-            listViewDetailColumn1.HeaderText = "Line";
-            listViewDetailColumn1.Width = 223.976F;
-            listViewDetailColumn2.HeaderText = "Name";
-            listViewDetailColumn2.Width = 416.0955F;
-            listViewDetailColumn3.HeaderText = "File";
-            listViewDetailColumn3.Width = 399.9285F;
+            listViewDetailColumn6.HeaderText = "Line";
+            listViewDetailColumn6.Width = 223.976F;
+            listViewDetailColumn7.HeaderText = "Name";
+            listViewDetailColumn7.Width = 416.0955F;
+            listViewDetailColumn8.HeaderText = "File";
+            listViewDetailColumn8.Width = 399.9285F;
             this.bookmarkList.Columns.AddRange(new Telerik.WinControls.UI.ListViewDetailColumn[] {
-            listViewDetailColumn1,
-            listViewDetailColumn2,
-            listViewDetailColumn3});
+            listViewDetailColumn6,
+            listViewDetailColumn7,
+            listViewDetailColumn8});
             this.bookmarkList.Dock = System.Windows.Forms.DockStyle.Fill;
             this.bookmarkList.EnableColumnSort = true;
             this.bookmarkList.GroupItemSize = new System.Drawing.Size(200, 32);
@@ -1655,13 +1653,13 @@ namespace Kaliz
             this.radListBreakpoint.AllowArbitraryItemHeight = true;
             this.radListBreakpoint.AllowRemove = false;
             this.radListBreakpoint.AutoSizeColumnsMode = Telerik.WinControls.UI.ListViewAutoSizeColumnsMode.Fill;
-            listViewDetailColumn4.HeaderText = "Line";
-            listViewDetailColumn4.Width = 525.4594F;
-            listViewDetailColumn5.HeaderText = "File Name";
-            listViewDetailColumn5.Width = 513.5405F;
+            listViewDetailColumn1.HeaderText = "Line";
+            listViewDetailColumn1.Width = 525.4594F;
+            listViewDetailColumn2.HeaderText = "File Name";
+            listViewDetailColumn2.Width = 513.5405F;
             this.radListBreakpoint.Columns.AddRange(new Telerik.WinControls.UI.ListViewDetailColumn[] {
-            listViewDetailColumn4,
-            listViewDetailColumn5});
+            listViewDetailColumn1,
+            listViewDetailColumn2});
             this.radListBreakpoint.Dock = System.Windows.Forms.DockStyle.Fill;
             this.radListBreakpoint.GroupItemSize = new System.Drawing.Size(200, 32);
             this.radListBreakpoint.ItemSize = new System.Drawing.Size(200, 32);
@@ -2302,7 +2300,6 @@ namespace Kaliz
         private RadMenu MenuTop;
         private RadMenuItem HFeedback;
         private RadContextMenu contextMenuOutput;
-        private RadContextMenu radContextMenu1;
         private RadMenuItem TUploadfile;
     }
 }
