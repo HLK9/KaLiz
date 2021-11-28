@@ -4061,38 +4061,39 @@ End;
             catch { }
         }
 
-        private void ListOutput_SelectedItemChanged(object sender, EventArgs e)
-        {
-           
-
-
-        }
-
         private void ListOutput_ItemMouseClick(object sender, ListViewItemEventArgs e)
         {
-           
-            string Phantich = @"\(\d+\,\d+\)|\:\d+\:\d+\:|\:\d+\:|\(\d+\)";
-            
-            string chuoi = ListOutput.SelectedItem.Text;
-            int a = ListOutput.SelectedIndex;
-            string sda = ListOutput.Items[a + 1].Text;
-            //string ret;
-            MatchCollection df = Regex.Matches(chuoi, Phantich);
-            
-                foreach (Match sd in df)
+            try
             {
+                string Phantich = @"\(\d+\,\d+\)|\:\d+\:\d+\:|\:\d+\:|\(\d+\)";
 
-                string phan2 = @"\d+";
-                MatchCollection df2 = Regex.Matches(sd.ToString(), phan2);
+                string chuoi = ListOutput.SelectedItem.Text;
+                int a = ListOutput.SelectedIndex;
+                string sda = ListOutput.Items[a + 1].Text;
+                //string ret;
+                MatchCollection df = Regex.Matches(chuoi, Phantich);
 
-                if (Path.GetExtension(TabHienTai.FileName) == ".java")
+                foreach (Match sd in df)
                 {
 
-                    TabHienTai.FindText(sda, false);
-                }else                   
-               TabHienTai.GoTo(int.Parse(df2[0].ToString()));
-               
+                    string phan2 = @"\d+";
+                    MatchCollection df2 = Regex.Matches(sd.ToString(), phan2);
+
+                    if (Path.GetExtension(TabHienTai.FileName) == ".java")
+                    {
+
+                        TabHienTai.FindText(sda, false);
+                    }
+                    else
+                        TabHienTai.GoTo(int.Parse(df2[0].ToString()));
+
+                }
             }
+            catch
+            {
+
+            }
+           
                
             
         }
@@ -5860,13 +5861,6 @@ End;
             As.ShowDialog();
         }
 
-        private void radMenuItem1_Click_7(object sender, EventArgs e)
-        {
-            UnderLineError();
-        }
-
-      
-
         private void EDumpSelected_Click(object sender, EventArgs e)
         {
             string a = Environment.NewLine + TabHienTai.SelectedText;
@@ -5944,12 +5938,6 @@ End;
             if (translation.Length > 1) { translation = translation.Substring(1); };
             return translation;
         }
-
-        private void ListOutput_MouseClick(object sender, MouseEventArgs e)
-        {
-
-        }
-
         private void TUploadfile_Click(object sender, EventArgs e)
         {
             UploadFile upa = new UploadFile();
