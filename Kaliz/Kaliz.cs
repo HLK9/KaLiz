@@ -553,7 +553,7 @@ namespace Kaliz
                     //DanhDau.WhiteSpaceIndicators.NewLineString = "\r\n";
                     DanhDau.SetNewLineStyle(Syncfusion.IO.NewLineStyle.Unix);
                     //Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
-                   DanhDau.LoadFile(DuongDanTep, Encoding.UTF8);
+                   DanhDau.LoadFile(DuongDanTep, Encoding.ASCII);
                     string ConfigF = @"Lex\CppF.xml";
                     
                     DanhDau.Configurator.Open(ConfigF);
