@@ -503,9 +503,9 @@ namespace Kaliz
             FFindSelected.Shortcuts.Add(new RadShortcut(Keys.Control, Keys.Enter));
             TTermi.Shortcuts.Add(new RadShortcut(Keys.Control | Keys.Alt, Keys.T));
             //Build
-            BBuild.Shortcuts.Add(new RadShortcut(Keys.Control | Keys.Shift, Keys.B));
-            BRun.Shortcuts.Add(new RadShortcut(Keys.Control, Keys.B));
-            BBuildaRun.Shortcuts.Add(new RadShortcut(Keys.Control|Keys.Alt,Keys.B));
+            BBuild.Shortcuts.Add(new RadShortcut(Keys.Control, Keys.F9));
+            BRun.Shortcuts.Add(new RadShortcut(Keys.Alt, Keys.F9));
+            BBuildaRun.Shortcuts.Add(new RadShortcut(Keys.Control|Keys.Shift,Keys.B));
             //Bookmark
             BBookmark.Shortcuts.Add(new RadShortcut(Keys.Control, Keys.M));
             radMenuItem2.Shortcuts.Add(new RadShortcut(Keys.Control | Keys.Shift, Keys.M));
@@ -2841,7 +2841,7 @@ End;
 
                 }
 
-                else if (Path.GetExtension(ten) == ".c" || Path.GetExtension(ten) == ".cpp")
+                else if (Path.GetExtension(ten) == ".cpp")
                 {
 
                     Process BienDich = new Process();
@@ -2903,7 +2903,7 @@ End;
                     }
 
                 }
-                else if(Path.GetExtension(ten)==".java")
+                else if(Path.GetExtension(ten) == ".c")
             {
                 Process BienDich = new Process();
                 BienDich.StartInfo.FileName = "cmd";
@@ -2911,34 +2911,38 @@ End;
                 BienDich.StartInfo.RedirectStandardOutput = true;
                 BienDich.StartInfo.RedirectStandardError = true;
                 BienDich.StartInfo.RedirectStandardInput = true;
-               // BienDich.StartInfo.WorkingDirectory = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\Kaliz" + @"\Cmder\vendor\jdk\bin";
+                // BienDich.StartInfo.WorkingDirectory = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\Kaliz" + @"\Cmder\vendor\jdk\bin";
                 if (enabledebug == false)
-                    BienDich.StartInfo.Arguments = " /c " + "javac " + Para + " " + "\""+ten+"\"";
-               else BienDich.StartInfo.Arguments = "/c " + "javac " + Para + " " + " -g " + "\"" + ten + "\"";
-
-
+                    BienDich.StartInfo.Arguments = "/c " + "tcc " + Para + " " + ten + " -o " + Path.GetDirectoryName(ten) + "\\" + Path.GetFileNameWithoutExtension(ten) + ".exe";
+                else BienDich.StartInfo.Arguments = "/c " + "tcc " + Para + " " + " -g " + ten + " -o " + Path.GetDirectoryName(ten) + "\\" + Path.GetFileNameWithoutExtension(ten)+".exe";
                 BienDich.StartInfo.CreateNoWindow = true;
                 BienDich.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;
                 BienDich.Start();
-
                 string ad;
-
                 ListOutput.AllowEdit = false;
                 ListOutput.AllowRemove = false;
+
+
+             
                 while ((ad = BienDich.StandardError.ReadLine()) != null)
                 {
                     ListOutput.Items.Add(ad);
 
                     // if (ad.Contains("lines compiled")) break;
                 }
-                if (ad==null)
+                if (ListOutput.Items.Count < 2)
+
+                    ListOutput.Items.Add("Compile: " + Path.GetFileName(ten) + " - Completed, Ready to run");
+
+                else
                 {
-                    
-                    ListOutput.Items.Add("Completed");
+                    ListOutput.Items.Add("Build: " + Path.GetFileName(ten) + " - Fail");
+                    BuildComplete = false;
                 }
+
                 foreach (var item in ListOutput.Items)
                 {
-                    if (item.Text.Contains("error")) item.BackColor = Color.LightSalmon;
+                    if (item.Text.ToLower().Contains("error")) item.BackColor = Color.LightSalmon;
                     if (item.Text.Contains("Completed")) item.BackColor = Color.LightGreen;
                     if (item.Text.Contains("- Fail")) item.BackColor = Color.LightSalmon;
 
