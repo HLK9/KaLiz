@@ -553,7 +553,7 @@ namespace Kaliz
                     //DanhDau.WhiteSpaceIndicators.NewLineString = "\r\n";
                     DanhDau.SetNewLineStyle(Syncfusion.IO.NewLineStyle.Unix);
                     //Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
-                   DanhDau.LoadFile(DuongDanTep, Encoding.ASCII);
+                   DanhDau.LoadFile(DuongDanTep, Encoding.UTF8);
                     string ConfigF = @"Lex\CppF.xml";
                     
                     DanhDau.Configurator.Open(ConfigF);
@@ -2841,7 +2841,7 @@ End;
 
                 }
 
-                else if (Path.GetExtension(ten) == ".cpp")
+                else if (Path.GetExtension(ten) == ".cpp"|| Path.GetExtension(ten) == ".c")
                 {
 
                     Process BienDich = new Process();
@@ -2852,13 +2852,13 @@ End;
                     BienDich.StartInfo.RedirectStandardInput = true;
                 //BienDich.StartInfo.WorkingDirectory = @"Cmder\vendor\occ60451e\orangec\bin";
 
-             if (enabledebug == false)
-                    BienDich.StartInfo.Arguments = "/c " + "g++ " +Para+" "+ ten + " -o " + Path.GetDirectoryName(ten) + "\\" + Path.GetFileNameWithoutExtension(ten) + ".exe";
-                    else BienDich.StartInfo.Arguments = "/c " + "g++ " + Para + " " + " -g " + ten + " -o " + Path.GetDirectoryName(ten) + "\\" + Path.GetFileNameWithoutExtension(ten) + ".exe";
+             //if (enabledebug == false)
+             //       BienDich.StartInfo.Arguments = "/c " + "g++ " +Para+" "+ ten + " -o " + Path.GetDirectoryName(ten) + "\\" + Path.GetFileNameWithoutExtension(ten) + ".exe";
+             //       else BienDich.StartInfo.Arguments = "/c " + "g++ " + Para + " " + " -g " + ten + " -o " + Path.GetDirectoryName(ten) + "\\" + Path.GetFileNameWithoutExtension(ten) + ".exe";
 
 
                 // if (enabledebug == false)
-                //BienDich.StartInfo.Arguments = "/c " + "occ " + "/o" + Path.GetDirectoryName(ten) + "\\" + TepEXE(ten) + " " + ten;// + " -o " + Path.GetDirectoryName(ten) + "\\" + Path.GetFileNameWithoutExtension(ten) + ".exe";
+                BienDich.StartInfo.Arguments = "/c " + "occ " + "/o" + Path.GetDirectoryName(ten) + "\\" + TepEXE(ten) + " " + ten;// + " -o " + Path.GetDirectoryName(ten) + "\\" + Path.GetFileNameWithoutExtension(ten) + ".exe";
                 //  else BienDich.StartInfo.Arguments = "/c " + "occ " + " /g " + " /o" + Path.GetDirectoryName(ten) + "\\" + TepEXE(ten) + " " + ten;// + " -o " + Path.GetDirectoryName(ten) + "\\" + Path.GetFileNameWithoutExtension(ten) + ".exe";
 
 
@@ -2873,24 +2873,24 @@ End;
 
 
                     //Lấy thông tin Error chứ k phải Output :))
-                    while ((ad = BienDich.StandardError.ReadLine()) != null)
+                    while ((ad = BienDich.StandardOutput.ReadLine()) != null)
                     {
                         ListOutput.Items.Add(ad);
 
-                        // if (ad.Contains("lines compiled")) break;
+                       // if (ad.Contains("Error")) break;
                     }
-                    if (ListOutput.Items.Count < 2)
+                    if (ListOutput.Items.Count <= 3)
                 
                     ListOutput.Items.Add("Compile: " + Path.GetFileName(ten) + " - Completed, Ready to run");
                     
 
                 
                    
-                    else
-                {
-                    ListOutput.Items.Add("Build: " + Path.GetFileName(ten) + " - Fail");
-                    BuildComplete = false;
-                }
+                //    else
+                //{
+                //    ListOutput.Items.Add("Build: " + Path.GetFileName(ten) + " - Fail");
+                //    BuildComplete = false;
+                //}
 
                   
 
@@ -2898,56 +2898,56 @@ End;
                     {
                         if (item.Text.ToLower().Contains("error")) item.BackColor = Color.LightSalmon;
                         if (item.Text.Contains("Completed")) item.BackColor = Color.LightGreen;
-                        if (item.Text.Contains("- Fail")) item.BackColor = Color.LightSalmon;
+                     
 
                     }
 
                 }
-                else if(Path.GetExtension(ten) == ".c")
-            {
-                Process BienDich = new Process();
-                BienDich.StartInfo.FileName = "cmd";
-                BienDich.StartInfo.UseShellExecute = false;
-                BienDich.StartInfo.RedirectStandardOutput = true;
-                BienDich.StartInfo.RedirectStandardError = true;
-                BienDich.StartInfo.RedirectStandardInput = true;
-                // BienDich.StartInfo.WorkingDirectory = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\Kaliz" + @"\Cmder\vendor\jdk\bin";
-                if (enabledebug == false)
-                    BienDich.StartInfo.Arguments = "/c " + "tcc " + Para + " " + ten + " -o " + Path.GetDirectoryName(ten) + "\\" + Path.GetFileNameWithoutExtension(ten) + ".exe";
-                else BienDich.StartInfo.Arguments = "/c " + "tcc " + Para + " " + " -g " + ten + " -o " + Path.GetDirectoryName(ten) + "\\" + Path.GetFileNameWithoutExtension(ten)+".exe";
-                BienDich.StartInfo.CreateNoWindow = true;
-                BienDich.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;
-                BienDich.Start();
-                string ad;
-                ListOutput.AllowEdit = false;
-                ListOutput.AllowRemove = false;
+            //    else if(Path.GetExtension(ten) == ".c")
+            //{
+            //    Process BienDich = new Process();
+            //    BienDich.StartInfo.FileName = "cmd";
+            //    BienDich.StartInfo.UseShellExecute = false;
+            //    BienDich.StartInfo.RedirectStandardOutput = true;
+            //    BienDich.StartInfo.RedirectStandardError = true;
+            //    BienDich.StartInfo.RedirectStandardInput = true;
+            //    // BienDich.StartInfo.WorkingDirectory = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\Kaliz" + @"\Cmder\vendor\jdk\bin";
+            //    if (enabledebug == false)
+            //        BienDich.StartInfo.Arguments = "/c " + "tcc " + Para + " " + ten + " -o " + Path.GetDirectoryName(ten) + "\\" + Path.GetFileNameWithoutExtension(ten) + ".exe";
+            //    else BienDich.StartInfo.Arguments = "/c " + "tcc " + Para + " " + " -g " + ten + " -o " + Path.GetDirectoryName(ten) + "\\" + Path.GetFileNameWithoutExtension(ten)+".exe";
+            //    BienDich.StartInfo.CreateNoWindow = true;
+            //    BienDich.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;
+            //    BienDich.Start();
+            //    string ad;
+            //    ListOutput.AllowEdit = false;
+            //    ListOutput.AllowRemove = false;
 
 
              
-                while ((ad = BienDich.StandardError.ReadLine()) != null)
-                {
-                    ListOutput.Items.Add(ad);
+            //    while ((ad = BienDich.StandardError.ReadLine()) != null)
+            //    {
+            //        ListOutput.Items.Add(ad);
 
-                    // if (ad.Contains("lines compiled")) break;
-                }
-                if (ListOutput.Items.Count < 2)
+            //        // if (ad.Contains("lines compiled")) break;
+            //    }
+            //    if (ListOutput.Items.Count < 2)
 
-                    ListOutput.Items.Add("Compile: " + Path.GetFileName(ten) + " - Completed, Ready to run");
+            //        ListOutput.Items.Add("Compile: " + Path.GetFileName(ten) + " - Completed, Ready to run");
 
-                else
-                {
-                    ListOutput.Items.Add("Build: " + Path.GetFileName(ten) + " - Fail");
-                    BuildComplete = false;
-                }
+            //    else
+            //    {
+            //        ListOutput.Items.Add("Build: " + Path.GetFileName(ten) + " - Fail");
+            //        BuildComplete = false;
+            //    }
 
-                foreach (var item in ListOutput.Items)
-                {
-                    if (item.Text.ToLower().Contains("error")) item.BackColor = Color.LightSalmon;
-                    if (item.Text.Contains("Completed")) item.BackColor = Color.LightGreen;
-                    if (item.Text.Contains("- Fail")) item.BackColor = Color.LightSalmon;
+            //    foreach (var item in ListOutput.Items)
+            //    {
+            //        if (item.Text.ToLower().Contains("error")) item.BackColor = Color.LightSalmon;
+            //        if (item.Text.Contains("Completed")) item.BackColor = Color.LightGreen;
+            //        if (item.Text.Contains("- Fail")) item.BackColor = Color.LightSalmon;
 
-                }
-            }
+            //    }
+            //}
             
             
           if(Directory.Exists(PathDirectory))
@@ -3532,6 +3532,7 @@ End;
 
             try
             {
+              
                  TabHienTai.Save();
                 if(enableParse == true)
                 {
