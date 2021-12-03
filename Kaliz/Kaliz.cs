@@ -2858,7 +2858,7 @@ End;
 
 
                 // if (enabledebug == false)
-                BienDich.StartInfo.Arguments = "/c " + "occ " + "/o" + Path.GetDirectoryName(ten) + "\\" + TepEXE(ten) + " " + ten;// + " -o " + Path.GetDirectoryName(ten) + "\\" + Path.GetFileNameWithoutExtension(ten) + ".exe";
+                BienDich.StartInfo.Arguments = "/c " + "occ " + "/o" +"\"" +Path.GetDirectoryName(ten) + "\\" + TepEXE(ten)+"\"" + " " + "\""+ten+"\"";// + " -o " + Path.GetDirectoryName(ten) + "\\" + Path.GetFileNameWithoutExtension(ten) + ".exe";
                 //  else BienDich.StartInfo.Arguments = "/c " + "occ " + " /g " + " /o" + Path.GetDirectoryName(ten) + "\\" + TepEXE(ten) + " " + ten;// + " -o " + Path.GetDirectoryName(ten) + "\\" + Path.GetFileNameWithoutExtension(ten) + ".exe";
 
 
@@ -3245,13 +3245,7 @@ End;
 
         private void BBuild_Click(object sender, EventArgs e)
         {
-            //Tạo waitting form
-            
-
-            //
            
-           //fixed 20/6
-            
 
             try
             {
@@ -3263,12 +3257,9 @@ End;
                     ShowAlert_Light("<html><color=LightSalmon>Build Failed", "<html><color=Teal>Python can only be <b>RUN</b> directly", false);
                 else
                 {
-                   // var thread = new Thread(ThreadStart);
-
-                    //thread.TrySetApartmentState(ApartmentState.STA);
-                    //thread.Start();
+                 
                     Build(TabHienTai.FileName, deBug);
-                    //thread.Abort();
+                    Doutput.DockState = DockState.Docked;
                 }
                 
             }
