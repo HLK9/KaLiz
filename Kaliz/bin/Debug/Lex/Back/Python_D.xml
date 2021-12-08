@@ -1,0 +1,293 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ArrayOfConfigLanguage>
+<!--
+xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:noNamespaceSchemaLocation="file://d:\Projects\EditControl\Syncfusion.Windows.Forms.Edit\config.xsd" -->
+  <ConfigLanguage name="Python">
+    <formats>
+      <format name="Text" Font="Cascadia Code SemiLight, 13pt"   FontColor="#f8f8f2" />
+      <format name="Whitespace" Font="Cascadia Code, 13pt" FontColor="Black" />
+      <format name="KeyWord" Font="Cascadia Code, 13pt" FontColor="#ffb86c" />
+      <format name="ImageProcessor" Font="Cascadia Code, 13pt" FontColor="Blue" UseCustomControl="true" />
+      <format name="String" Font="Cascadia Code SemiLight, 13pt" FontColor="#bd93f9" BorderColor="#50fa7b" />
+      <format name="Number" Font="Cascadia Code, 13pt" FontColor="#ff79c6" />
+      <format name="Error" Font="Cascadia Code, 13pt" FontColor="#f8f8f2" underline="Wave" LineColor="Red" />
+      <format name="Operator" Font="Cascadia Code, 13pt" FontColor="#ffb86c" />
+      <format name="Comment" Font="Cascadia Code SemiLight, 13pt" FontColor="#6272a4" />
+      <format name="PreprocessorKeyword" Font="Cascadia Code, 13pt" FontColor="Gray" />
+      <format name="SelectedText" Font="Cascadia Code, 13pt" BackColor="Highlight" FontColor="HighlightText" />
+      <format name="CommentXML" Font="Cascadia Code, 13pt" FontColor="Gray" />
+      <format name="CollapsedText" Font="Cascadia Code, 13pt" FontColor="Black" BorderColor="Gray"
+				BorderStyle="Solid" />
+        <format name="Function" Font="Cascadia Code, 13pt" FontColor="#21CD82"/>
+    </formats>
+    <extensions>
+      <extension>py</extension>
+      
+    </extensions>
+    <lexems>
+      <lexem BeginBlock="." Type="Operator"/>
+      <lexem BeginBlock="," Type="Operator" />
+      <lexem BeginBlock="=" Type="Operator" />
+      <lexem BeginBlock="+" Type="Operator" />
+      <lexem BeginBlock="-" Type="Operator" />
+      <lexem BeginBlock="/" Type="Operator" />
+      <lexem BeginBlock="*" Type="Operator" />
+      <lexem BeginBlock="!=" Type="Operator" />
+      <lexem BeginBlock="==" Type="Operator" />
+      <lexem BeginBlock="-=" Type="Operator" />
+      <lexem BeginBlock="+=" Type="Operator" />
+      <lexem BeginBlock="=-" Type="Operator" />
+      <lexem BeginBlock="=+" Type="Operator" />
+      <lexem BeginBlock="*=" Type="Operator" />
+      <lexem BeginBlock="/=" Type="Operator" />
+      <lexem BeginBlock="=*" Type="Operator" />
+      <lexem BeginBlock="=/" Type="Operator" />
+      <lexem BeginBlock="++" Type="Operator" />
+      <lexem BeginBlock="--" Type="Operator" />
+      <lexem BeginBlock=";" Type="Operator" />
+      <lexem BeginBlock="&lt;" Type="Operator" />
+      <lexem BeginBlock="&gt;" Type="Operator" />
+      <lexem BeginBlock=":" Type="Operator" />
+      
+        <lexem BeginBlock="abs" Type="Function" />
+       <lexem BeginBlock="aiter" Type="Function" />
+       <lexem BeginBlock="all" Type="Function" />
+       <lexem BeginBlock="any" Type="Function" />
+       <lexem BeginBlock="anext" Type="Function" />
+       <lexem BeginBlock="ascii" Type="Function" />
+       <lexem BeginBlock="bin" Type="Function" />
+       <lexem BeginBlock="bool" Type="Function" />
+       <lexem BeginBlock="breakpoint" Type="Function" />
+       <lexem BeginBlock="bytearray" Type="Function" />
+       <lexem BeginBlock="bytes" Type="Function" />
+       <lexem BeginBlock="callable" Type="Function" />
+       <lexem BeginBlock="chr" Type="Function" />
+       <lexem BeginBlock="classmethod" Type="Function" />
+       <lexem BeginBlock="compile" Type="Function" />
+       <lexem BeginBlock="complex" Type="Function" />
+       <lexem BeginBlock="delattr" Type="Function" />
+       <lexem BeginBlock="divmod" Type="Function" />
+       <lexem BeginBlock="dir" Type="Function" />
+       <lexem BeginBlock="dict" Type="Function" />
+       <lexem BeginBlock="enumerate" Type="Function" />
+       <lexem BeginBlock="eval" Type="Function" />
+       <lexem BeginBlock="exec" Type="Function" />
+       <lexem BeginBlock="filter" Type="Function" />
+       <lexem BeginBlock="float" Type="Function" />
+       <lexem BeginBlock="format" Type="Function" />
+       <lexem BeginBlock="frozenset" Type="Function" />
+       <lexem BeginBlock="getattr" Type="Function" />
+       <lexem BeginBlock="hasattr" Type="Function" />
+       <lexem BeginBlock="globals" Type="Function" />
+       <lexem BeginBlock="hash" Type="Function" />
+       <lexem BeginBlock="help" Type="Function" />
+       <lexem BeginBlock="hex" Type="Function" />
+       <lexem BeginBlock="id" Type="Function" />
+       <lexem BeginBlock="input" Type="Function" />
+       <lexem BeginBlock="int" Type="Function" />
+       <lexem BeginBlock="isinstance" Type="Function" />
+       <lexem BeginBlock="issubclass" Type="Function" />
+       <lexem BeginBlock="iter" Type="Function" />
+       <lexem BeginBlock="len" Type="Function" />
+       <lexem BeginBlock="list" Type="Function" />
+       <lexem BeginBlock="locals" Type="Function" />
+       <lexem BeginBlock="map" Type="Function" />
+       <lexem BeginBlock="max" Type="Function" />
+       <lexem BeginBlock="memoryview" Type="Function" />
+       <lexem BeginBlock="min" Type="Function" />
+       <lexem BeginBlock="next" Type="Function" />
+       <lexem BeginBlock="object" Type="Function" />
+       <lexem BeginBlock="ord" Type="Function" />
+       <lexem BeginBlock="open" Type="Function" />
+       <lexem BeginBlock="oct" Type="Function" />
+       <lexem BeginBlock="pow" Type="Function" />
+       <lexem BeginBlock="print" Type="Function" />
+       <lexem BeginBlock="property" Type="Function" />
+       <lexem BeginBlock="range" Type="Function" />
+       <lexem BeginBlock="repr" Type="Function" />
+       <lexem BeginBlock="reversed" Type="Function" />
+       <lexem BeginBlock="round" Type="Function" />
+       <lexem BeginBlock="set" Type="Function" />
+       <lexem BeginBlock="setattr" Type="Function" />
+       <lexem BeginBlock="slice" Type="Function" />
+       <lexem BeginBlock="sorted" Type="Function" />
+       <lexem BeginBlock="staticmethod" Type="Function" />
+       <lexem BeginBlock="str" Type="Function" />
+       <lexem BeginBlock="sum" Type="Function" />
+       <lexem BeginBlock="super" Type="Function" />
+       <lexem BeginBlock="tuple" Type="Function" />
+       <lexem BeginBlock="type" Type="Function" />
+       <lexem BeginBlock="vars" Type="Function" />
+       <lexem BeginBlock="zip" Type="Function" />
+       <lexem BeginBlock="__import__" Type="Function" />
+       
+
+      <lexem BeginBlock="," Type="Operator" />
+      <lexem BeginBlock="False" Type="KeyWord" />
+      <lexem BeginBlock="await" Type="KeyWord" />
+      <lexem BeginBlock="else" Type="KeyWord" />
+      <lexem BeginBlock="import" Type="KeyWord" />
+      <lexem BeginBlock="pass" Type="KeyWord" />
+      <lexem BeginBlock="None" Type="KeyWord" />
+      <lexem BeginBlock="break" Type="KeyWord" />
+      <lexem BeginBlock="except" Type="KeyWord" />
+      <lexem BeginBlock="in" Type="KeyWord" />
+      <lexem BeginBlock="raise" Type="KeyWord" />
+      <lexem BeginBlock="True" Type="KeyWord" />
+      <lexem BeginBlock="class" Type="KeyWord" />
+      <lexem BeginBlock="fially" Type="KeyWord" />
+      <lexem BeginBlock="is" Type="KeyWord" />
+      <lexem BeginBlock="return" Type="KeyWord" />
+      <lexem BeginBlock="and" Type="KeyWord" />
+      <lexem BeginBlock="continue" Type="KeyWord" />
+      <lexem BeginBlock="for" Type="KeyWord" DropContextPrompt="true" IsComplex="true"/>
+      <lexem BeginBlock="lambda" Type="KeyWord" />
+      <lexem BeginBlock="try" Type="KeyWord" />
+      <lexem BeginBlock="as" Type="KeyWord" />
+      <lexem BeginBlock="def" Type="KeyWord" />
+      <lexem BeginBlock="from" Type="KeyWord" />
+      <lexem BeginBlock="nonlocal" Type="KeyWord" />
+      <lexem BeginBlock="while" Type="KeyWord" DropContextPrompt="true" IsComplex="true"/>
+      <lexem BeginBlock="assert" Type="KeyWord" />
+      <lexem BeginBlock="del" Type="KeyWord" />
+      <lexem BeginBlock="global" Type="KeyWord" />
+      <lexem BeginBlock="not" Type="KeyWord" />
+      <lexem BeginBlock="with" Type="KeyWord" />
+      <lexem BeginBlock="async" Type="KeyWord" />
+      <lexem BeginBlock="elif" Type="KeyWord" />
+      <lexem BeginBlock="if" Type="KeyWord" DropContextPrompt="true" IsComplex="true"/>
+      <lexem BeginBlock="or" Type="KeyWord" />
+      <lexem BeginBlock="yield" Type="KeyWord" />
+  
+
+<!--
+
+      <lexem BeginBlock="static" Type="KeyWord" />
+      <lexem BeginBlock="explicit" Type="KeyWord" />
+      <lexem BeginBlock="export" Type="KeyWord" />
+      <lexem BeginBlock="extern" Type="KeyWord" />
+      <lexem BeginBlock="string" Type="KeyWord" />
+      <lexem BeginBlock="extern" Type="KeyWord" />
+      <lexem BeginBlock="struct" Type="KeyWord" />
+      <lexem BeginBlock="false" Type="KeyWord" />
+      <lexem BeginBlock="switch" Type="KeyWord" />
+      <lexem BeginBlock="finally" Type="KeyWord" />
+      <lexem BeginBlock="friend" Type="KeyWord" />
+      <lexem BeginBlock="true" Type="KeyWord" />
+      <lexem BeginBlock="for" Type="KeyWord" />
+      <lexem BeginBlock="try" Type="KeyWord" />
+      <lexem BeginBlock="typedef" Type="KeyWord" />
+      <lexem BeginBlock="typeid" Type="KeyWord" />
+      <lexem BeginBlock="typename" Type="KeyWord" />
+      <lexem BeginBlock="goto" Type="KeyWord" />
+      <lexem BeginBlock="if" Type="KeyWord" />
+      <lexem BeginBlock="union" Type="KeyWord" />
+      <lexem BeginBlock="unsignd" Type="KeyWord" />
+      <lexem BeginBlock="int" Type="KeyWord" />
+      <lexem BeginBlock="ushort" Type="KeyWord" />
+      <lexem BeginBlock="interface" Type="KeyWord" />
+      <lexem BeginBlock="internal" Type="KeyWord" />
+      <lexem BeginBlock="virtual" Type="KeyWord" />
+      <lexem BeginBlock="or" Type="KeyWord" />
+      <lexem BeginBlock="xor" Type="KeyWord" />
+      <lexem BeginBlock="xor_eq" Type="KeyWord" />
+      <lexem BeginBlock="or_eq" Type="KeyWord" />
+      <lexem BeginBlock="not_eq" Type="KeyWord" />
+      <lexem BeginBlock="not" Type="KeyWord" />
+      <lexem BeginBlock="inline" Type="KeyWord" />
+      <lexem BeginBlock="void" Type="KeyWord" />
+      <lexem BeginBlock="volatile" Type="KeyWord" />
+      <lexem BeginBlock="while" Type="KeyWord" />
+      <lexem BeginBlock="wchar_t" Type="KeyWord" />
+  -->
+      <lexem BeginBlock="/*" EndBlock="*/" Type="Comment" OnlyLocalSublexems="true" IsComplex="true"
+        IsCollapsable="true" CollapseName="/*...*/">
+        <SubLexems>
+          <lexem BeginBlock="\n" IsBeginRegex="true" />
+        </SubLexems>
+      </lexem>
+      <lexem BeginBlock="(" EndBlock=")" Type="Operator" IsComplex="true" IsCollapsable="false" DropContextPrompt="true"
+        CollapseName="(...)">
+        <SubLexems>
+          <lexem BeginBlock="\n" IsBeginRegex="true" />
+        </SubLexems>
+      </lexem>
+      <lexem BeginBlock="&quot;" EndBlock="(&quot;)|(@&quot;)" Type="String" IsEndRegex="true" IsComplex="true" OnlyLocalSublexems="true">
+        <SubLexems>
+          <lexem BeginBlock="\" EndBlock="&quot;" Type="String" />
+        </SubLexems>
+      </lexem>
+      <lexem BeginBlock="'" EndBlock="'" Type="String" IsComplex="true" OnlyLocalSublexems="true">
+        <SubLexems>
+          <lexem BeginBlock="\" EndBlock=".+" IsEndRegex="true" Priority="2" Type="String" />
+        </SubLexems>
+      </lexem>
+      <lexem BeginBlock="@&quot;" EndBlock="(&quot;)|(@&quot;)" Type="String" IsEndRegex="true" OnlyLocalSublexems="true" IsComplex="true">
+        <SubLexems>
+          <lexem BeginBlock="\n" IsBeginRegex="true" />
+          <lexem BeginBlock="&quot;" EndBlock="&quot;" Type="String"/>
+        </SubLexems>
+      </lexem>
+      <lexem BeginBlock="[" EndBlock="]" Type="Operator" IsComplex="true" IsCollapsable="false" DropContextPrompt="true"
+        CollapseName="[...]">
+        <SubLexems>
+          <lexem BeginBlock="\" EndBlock="&quot;" Type="String" />
+        </SubLexems>
+      </lexem>
+      <lexem BeginBlock="#" EndBlock="\n" IsEndRegex="true" Type="Comment" IsComplex="true"
+        OnlyLocalSublexems="true" />
+      <lexem ID="1041" EndBlock="#endregion" Type="PreprocessorKeyword" IsComplex="true" >
+        <SubLexems>
+          <lexem BeginBlock="\n" IsBeginRegex="true" />
+        </SubLexems>
+      </lexem>
+      <lexem BeginBlock="#region" EndBlock="\n" Type="PreprocessorKeyword" IsEndRegex="true" OnlyLocalSublexems="true"
+        IsComplex="true" IsCollapsable="true" AutoNameExpression="(#region)\s*(?text>.*).*(?!\n)\n" AutoNameTemplate="${text}"
+        IsCollapseAutoNamed="true" CollapseName="Unnamed Region" NextID="1041">
+        <SubLexems>
+          <lexem BeginBlock=".*(?!\n)" IsBeginRegex="true" Type="Text" />
+        </SubLexems>
+      </lexem>
+      <lexem BeginBlock="\s" IsBeginRegex="true" Type="Whitespace" />
+      <lexem BeginBlock="///" EndBlock="\n" IsEndRegex="true" Type="Comment" OnlyLocalSublexems="true"
+        IsComplex="true">
+        <SubLexems>
+          <lexem BeginBlock="" EndBlock=">" Type="Custom" FormatName="CommentXML" IsComplex="true"
+            OnlyLocalSublexems="true" />
+        </SubLexems>
+      </lexem>
+      <lexem BeginBlock="[0-9]+" IsBeginRegex="true" Type="Number" />
+      <lexem BeginBlock="[0-9]+" ContinueBlock="." EndBlock="[0-9]+" IsBeginRegex="true" IsEndRegex="true" Type="Number" />
+      <lexem BeginBlock="{" EndBlock="}" Type="KeyWord" IsComplex="true" IsCollapsable="true" Indent="true" DropContextPrompt="true" 
+        CollapseName="{...}">
+        <SubLexems>
+          <lexem BeginBlock="\n" IsBeginRegex="true" />
+        </SubLexems>
+      </lexem>
+    </lexems>
+    
+    <splits>
+      <split>@&quot;</split>
+      <split>+=</split>
+      <split>/=</split>
+      <split>=/</split>
+      <split>*=</split>
+      <split>=*</split>
+      <split>==</split>
+      <split>!=</split>
+      <split>=+</split>
+      <split>-=</split>
+      <split>++</split>
+      <split>-=</split>
+      <split>=-</split>
+      <split>--</split>
+      <split>/*</split>
+      <split>*/</split>
+      <split>//</split>
+      <split>#region</split>
+      <split>#endregion</split>
+      <split>///</split>
+    </splits>
+  </ConfigLanguage>
+  </ArrayOfConfigLanguage>
