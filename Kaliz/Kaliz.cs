@@ -524,8 +524,14 @@ namespace Kaliz
         private void TaoMoi(string ten, string DuongDanTep)
         {
             DocumentWindow TaiLieu = new DocumentWindow(ten);
-            var DanhDau = new EditControl();            
-            
+            var DanhDau = new EditControl();
+            //thu gom config
+            if(TenTheme=="Fluent"||TenTheme=="MaterialTeal")
+            DanhDau.Configurator.Open(@"Lex\Config.xml");
+            else
+                DanhDau.Configurator.Open(@"Lex\Config_D.xml");
+
+
             DanhDau.Dock = DockStyle.Fill;
             DanhDau.Style = EditControlStyle.Office2016Colorful;
             DanhDau.LineNumbersFont = new Font("Consolas", 13);
@@ -553,11 +559,11 @@ namespace Kaliz
                     //DanhDau.WhiteSpaceIndicators.NewLineString = "\r\n";
                     DanhDau.SetNewLineStyle(Syncfusion.IO.NewLineStyle.Unix);
                     //Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
-                   DanhDau.LoadFile(DuongDanTep, Encoding.UTF8);
-                    string ConfigF = @"Lex\CppF.xml";
-                    
-                    DanhDau.Configurator.Open(ConfigF);
-                    DanhDau.ApplyConfiguration("C++");
+                   DanhDau.LoadFile(DuongDanTep, Encoding.ASCII);
+                    // string ConfigF = @"Lex\CppF.xml";
+                   
+                    //DanhDau.Configurator.Open(ConfigF);
+                   // DanhDau.ApplyConfiguration("C++");
                     // DanhDau.ApplyConfiguration(KnownLanguages.C);
                     DanhDau.StatusBarSettings.FileNamePanel.Panel.Text = "C/C++";
                     DanhDau.ContextChoiceOpen += DanhDau_ContextChoiceOpen_C;
@@ -572,10 +578,10 @@ namespace Kaliz
                 if (Path.GetExtension(DuongDanTep) == ".pas")
                 {
                     DanhDau.LoadFile(DuongDanTep, Encoding.UTF8);
-                    string ConfigF = @"Lex\Pascal.xml";
-                    DanhDau.Configurator.Open(ConfigF);
+                    //string ConfigF = @"Lex\Pascal.xml";
+                    //DanhDau.Configurator.Open(ConfigF);
 
-                    DanhDau.ApplyConfiguration("Pascal");
+                   // DanhDau.ApplyConfiguration("Pascal");
                     DanhDau.StatusBarSettings.FileNamePanel.Panel.Text = "Pascal";
                     DanhDau.ContextChoiceOpen += DanhDau_ContextChoiceOpen;
                     DanhDau.ContextPromptOpen += DanhDau_ContextPromptOpen_ForPascal;
@@ -588,9 +594,9 @@ namespace Kaliz
                 {
                     DanhDau.LoadFile(DuongDanTep, Encoding.UTF8);
                     DanhDau.StatusBarSettings.FileNamePanel.Panel.Text = "Python";
-                    string ConfigF = @"Lex\Python.xml";
-                    DanhDau.Configurator.Open(ConfigF);
-                    DanhDau.ApplyConfiguration("Python");
+                    //string ConfigF = @"Lex\Python.xml";
+                    //DanhDau.Configurator.Open(ConfigF);
+                    //DanhDau.ApplyConfiguration("Python");
                     DanhDau.StatusBarSettings.FileNamePanel.Panel.Text = "Python";
                     //Context prompt bị lỗi
                     DanhDau.ContextPromptOpen += DanhDau_ContextPromptOpen_ForPython;
@@ -1640,7 +1646,7 @@ namespace Kaliz
                             //    TabHienTai.Configurator.Open(ConfigF);
                             //    TabHienTai.ApplyConfiguration("Python");
                             //}
-
+                            string ConfigF = @"Lex\Config.xml";
                             //thử cách 2  áp dùng hàng loạt các tab
                             foreach (var item in DockPar.DocumentManager.DocumentArray)
                             {
@@ -1656,29 +1662,29 @@ namespace Kaliz
                                     
                                     if (Path.GetExtension((item.Controls[0] as EditControl).FileName) == ".pas")
                                     {
-                                        string ConfigF = @"Lex\Pascal.xml";
+                                       
                                         (item.Controls[0] as EditControl).Configurator.Open(ConfigF);
                                         (item.Controls[0] as EditControl).ApplyConfiguration("Pascal");
                                     }
                                     else
                                         if (Path.GetExtension((item.Controls[0] as EditControl).FileName) == ".c" || Path.GetExtension((item.Controls[0] as EditControl).FileName) == ".cpp")
                                     {
-                                        string ConfigF = @"Lex\CppF.xml";
+                                        //string ConfigF = @"Lex\CppF.xml";
                                         (item.Controls[0] as EditControl).Configurator.Open(ConfigF);
                                         (item.Controls[0] as EditControl).ApplyConfiguration("C++");
                                     }
                                     else if (Path.GetExtension((item.Controls[0] as EditControl).FileName) == ".py")
                                     {
-                                        string ConfigF = @"Lex\Python.xml";
+                                        //string ConfigF = @"Lex\Python.xml";
                                         (item.Controls[0] as EditControl).Configurator.Open(ConfigF);
-                                        (item.Controls[0] as EditControl).ApplyConfiguration("Python");
+                                       (item.Controls[0] as EditControl).ApplyConfiguration("Python");
                                     }
-                                    else if (Path.GetExtension((item.Controls[0] as EditControl).FileName) == ".java")
-                                    {
-                                        string ConfigF = @"Lex\Java.xml";
-                                        (item.Controls[0] as EditControl).Configurator.Open(ConfigF);
-                                        (item.Controls[0] as EditControl).ApplyConfiguration("Java");
-                                    }
+                                    //else if (Path.GetExtension((item.Controls[0] as EditControl).FileName) == ".java")
+                                    //{
+                                    //   // string ConfigF = @"Lex\Java.xml";
+                                    //    (item.Controls[0] as EditControl).Configurator.Open(ConfigF);
+                                    //    (item.Controls[0] as EditControl).ApplyConfiguration("Java");
+                                    //}
                                 }
                                 catch
                                 {
@@ -1724,6 +1730,7 @@ namespace Kaliz
                             //    TabHienTai.ApplyConfiguration("Python");
                             //}
                             //thử cách 2 áp dùng hàng loạt các tab
+                            string ConfigF = @"Lex\Config_D.xml";
                             foreach (var item in DockPar.DocumentManager.DocumentArray)
                             {
                                 try
@@ -1737,29 +1744,29 @@ namespace Kaliz
                                     //this.WindowState = FormWindowState.Normal;
                                     if (Path.GetExtension((item.Controls[0] as EditControl).FileName) == ".pas")
                                     {
-                                        string ConfigF = @"Lex\Pascal_D.xml";
+                                        
                                         (item.Controls[0] as EditControl).Configurator.Open(ConfigF);
                                         (item.Controls[0] as EditControl).ApplyConfiguration("Pascal");
                                     }
                                     else
                                         if (Path.GetExtension((item.Controls[0] as EditControl).FileName) == ".c" || Path.GetExtension((item.Controls[0] as EditControl).FileName) == ".cpp")
                                     {
-                                        string ConfigF = @"Lex\CppF_D.xml";
+                                        //string ConfigF = @"Lex\CppF_D.xml";
                                         (item.Controls[0] as EditControl).Configurator.Open(ConfigF);
                                         (item.Controls[0] as EditControl).ApplyConfiguration("C++");
                                     }
                                     else if (Path.GetExtension((item.Controls[0] as EditControl).FileName) == ".py")
                                     {
-                                        string ConfigF = @"Lex\Python_D.xml";
+                                        //string ConfigF = @"Lex\Python_D.xml";
                                         (item.Controls[0] as EditControl).Configurator.Open(ConfigF);
-                                        (item.Controls[0] as EditControl).ApplyConfiguration("Python");
+                                       (item.Controls[0] as EditControl).ApplyConfiguration("Python");
                                     }
-                                    else if (Path.GetExtension((item.Controls[0] as EditControl).FileName) == ".java")
-                                    {
-                                        string ConfigF = @"Lex\Java_D.xml";
-                                        (item.Controls[0] as EditControl).Configurator.Open(ConfigF);
-                                        (item.Controls[0] as EditControl).ApplyConfiguration("Java");
-                                    }
+                                    //else if (Path.GetExtension((item.Controls[0] as EditControl).FileName) == ".java")
+                                    //{
+                                    //    //string ConfigF = @"Lex\Java_D.xml";
+                                    //    (item.Controls[0] as EditControl).Configurator.Open(ConfigF);
+                                    //    (item.Controls[0] as EditControl).ApplyConfiguration("Java");
+                                    //}
                                     
                                 }
                                 catch
@@ -1802,7 +1809,7 @@ namespace Kaliz
                             //    TabHienTai.Configurator.Open(ConfigF);
                             //    TabHienTai.ApplyConfiguration("Python");
                             //}
-
+                            string ConfigF = @"Lex\Config.xml";
                             //thử cách 2. áp dùng hàng loạt các tab
                             foreach (var item in DockPar.DocumentManager.DocumentArray)
                             {
@@ -1817,30 +1824,29 @@ namespace Kaliz
                                     //this.WindowState = FormWindowState.Normal;
                                     if (Path.GetExtension((item.Controls[0] as EditControl).FileName) == ".pas")
                                     {
-                                        string ConfigF = @"Lex\Pascal.xml";
+                                       // string ConfigF = @"Lex\Pascal.xml";
                                         (item.Controls[0] as EditControl).Configurator.Open(ConfigF);
                                         (item.Controls[0] as EditControl).ApplyConfiguration("Pascal");
                                     }
                                     else
                                         if (Path.GetExtension((item.Controls[0] as EditControl).FileName) == ".c" || Path.GetExtension((item.Controls[0] as EditControl).FileName) == ".cpp")
                                     {
-                                        string ConfigF = @"Lex\CppF.xml";
+                                       // string ConfigF = @"Lex\CppF.xml";
                                         (item.Controls[0] as EditControl).Configurator.Open(ConfigF);
                                         (item.Controls[0] as EditControl).ApplyConfiguration("C++");
                                     }
                                     else if (Path.GetExtension((item.Controls[0] as EditControl).FileName) == ".py")
                                     {
-                                        string ConfigF = @"Lex\Python.xml";
+                                        //string ConfigF = @"Lex\Python.xml";
                                         (item.Controls[0] as EditControl).Configurator.Open(ConfigF);
                                         (item.Controls[0] as EditControl).ApplyConfiguration("Python");
                                     }
-                                    else if (Path.GetExtension((item.Controls[0] as EditControl).FileName) == ".java")
-                                    {
-                                        string ConfigF = @"Lex\Java.xml";
-                                        (item.Controls[0] as EditControl).Configurator.Open(ConfigF);
-                                        (item.Controls[0] as EditControl).ApplyConfiguration("Java");
-                                    }
-
+                                    //else if (Path.GetExtension((item.Controls[0] as EditControl).FileName) == ".java")
+                                    //{
+                                    //    //string ConfigF = @"Lex\Java.xml";
+                                    //    (item.Controls[0] as EditControl).Configurator.Open(ConfigF);
+                                    //    (item.Controls[0] as EditControl).ApplyConfiguration("Java");
+                                    //}
                                 }
                                 catch
                                 {
@@ -2829,14 +2835,7 @@ End;
                 
             ShowAlert_Light("<html><color=Teal>Build Completed", "Ready to run", false);
                   
-                
-                       
-
-
-
-
-
-
+                    
                     //BienDich.WaitForExit();
 
                 }
