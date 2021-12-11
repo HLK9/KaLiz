@@ -431,6 +431,7 @@ namespace Kaliz
             clipBoard.MonitorClipboard = true;
             clipBoard.ClipboardChanged += ClipBoard_ClipboardChanged;
             txtIP = GetLocalIP();
+            TenTheme = "MaterialTeal";
 
 
 
