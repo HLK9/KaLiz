@@ -158,10 +158,12 @@ namespace Kaliz
             this.HFeedback = new Telerik.WinControls.UI.RadMenuItem();
             this.HAbout = new Telerik.WinControls.UI.RadMenuItem();
             this.DockPar = new Telerik.WinControls.UI.Docking.RadDock();
+            this.DErrorList = new Telerik.WinControls.UI.Docking.ToolWindow();
+            this.radListError = new Telerik.WinControls.UI.RadRichTextEditor();
+            this.toolTabStrip1 = new Telerik.WinControls.UI.Docking.ToolTabStrip();
             this.DWorkingDirectory = new Telerik.WinControls.UI.Docking.ToolWindow();
             this.treeDirectory = new Telerik.WinControls.UI.RadTreeView();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
-            this.toolTabStrip1 = new Telerik.WinControls.UI.Docking.ToolTabStrip();
             this.radSplitContainer1 = new Telerik.WinControls.UI.RadSplitContainer();
             this.DContainer = new Telerik.WinControls.UI.Docking.DocumentContainer();
             this.documentTabStrip1 = new Telerik.WinControls.UI.Docking.DocumentTabStrip();
@@ -183,8 +185,6 @@ namespace Kaliz
             this.toolTabStrip2 = new Telerik.WinControls.UI.Docking.ToolTabStrip();
             this.Doutput = new Telerik.WinControls.UI.Docking.ToolWindow();
             this.ListOutput = new Telerik.WinControls.UI.RadListView();
-            this.DErrorList = new Telerik.WinControls.UI.Docking.ToolWindow();
-            this.radListError = new Telerik.WinControls.UI.RadRichTextEditor();
             this.Dclipboard = new Telerik.WinControls.UI.Docking.ToolWindow();
             this.radlistclip = new Telerik.WinControls.UI.RadListView();
             this.DBookmarksList = new Telerik.WinControls.UI.Docking.ToolWindow();
@@ -247,10 +247,12 @@ namespace Kaliz
             this.contextMenuOutput = new Telerik.WinControls.UI.RadContextMenu(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.DockPar)).BeginInit();
             this.DockPar.SuspendLayout();
-            this.DWorkingDirectory.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.treeDirectory)).BeginInit();
+            this.DErrorList.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.radListError)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.toolTabStrip1)).BeginInit();
             this.toolTabStrip1.SuspendLayout();
+            this.DWorkingDirectory.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.treeDirectory)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.radSplitContainer1)).BeginInit();
             this.radSplitContainer1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DContainer)).BeginInit();
@@ -277,8 +279,6 @@ namespace Kaliz
             this.toolTabStrip2.SuspendLayout();
             this.Doutput.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ListOutput)).BeginInit();
-            this.DErrorList.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.radListError)).BeginInit();
             this.Dclipboard.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.radlistclip)).BeginInit();
             this.DBookmarksList.SuspendLayout();
@@ -800,14 +800,14 @@ namespace Kaliz
             // 
             // BRun
             // 
-            this.BRun.HintText = "Alt + F9";
+            this.BRun.HintText = "Ctrl + F9";
             this.BRun.Name = "BRun";
             this.BRun.Text = "Run";
             this.BRun.Click += new System.EventHandler(this.BRun_Click);
             // 
             // BBuild
             // 
-            this.BBuild.HintText = "Ctrl + F9";
+            this.BBuild.HintText = "Alt + F9";
             this.BBuild.Name = "BBuild";
             this.BBuild.Text = "Build This File";
             this.BBuild.Click += new System.EventHandler(this.BBuild_Click);
@@ -1134,7 +1134,7 @@ namespace Kaliz
             // 
             // DockPar
             // 
-            this.DockPar.ActiveWindow = this.DErrorList;
+            this.DockPar.ActiveWindow = this.DWorkingDirectory;
             this.DockPar.CausesValidation = false;
             this.DockPar.Controls.Add(this.toolTabStrip1);
             this.DockPar.Controls.Add(this.radSplitContainer1);
@@ -1155,6 +1155,52 @@ namespace Kaliz
             this.DockPar.TabIndex = 2;
             this.DockPar.TabStop = false;
             this.DockPar.ThemeName = "MaterialTeal";
+            // 
+            // DErrorList
+            // 
+            this.DErrorList.Caption = null;
+            this.DErrorList.Controls.Add(this.radListError);
+            this.DErrorList.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            this.DErrorList.Location = new System.Drawing.Point(4, 52);
+            this.DErrorList.Name = "DErrorList";
+            this.DErrorList.PreviousDockState = Telerik.WinControls.UI.Docking.DockState.Docked;
+            this.DErrorList.Size = new System.Drawing.Size(1038, 133);
+            this.DErrorList.Text = "Error List";
+            this.DErrorList.ToolCaptionButtons = Telerik.WinControls.UI.Docking.ToolStripCaptionButtons.AutoHide;
+            // 
+            // radListError
+            // 
+            this.radListError.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.radListError.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.radListError.IsContextMenuEnabled = false;
+            this.radListError.IsPasteOptionsPopupEnabled = false;
+            this.radListError.IsReadOnly = true;
+            this.radListError.IsSelectionMiniToolBarEnabled = false;
+            this.radListError.Location = new System.Drawing.Point(0, 0);
+            this.radListError.Name = "radListError";
+            this.radListError.SelectionFill = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(203)))), ((int)(((byte)(196)))));
+            this.radListError.SelectionStroke = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(203)))), ((int)(((byte)(196)))));
+            this.radListError.Size = new System.Drawing.Size(1038, 133);
+            this.radListError.TabIndex = 0;
+            this.radListError.ThemeName = "MaterialTeal";
+            // 
+            // toolTabStrip1
+            // 
+            this.toolTabStrip1.CanUpdateChildIndex = true;
+            this.toolTabStrip1.Controls.Add(this.DWorkingDirectory);
+            this.toolTabStrip1.Location = new System.Drawing.Point(0, 0);
+            this.toolTabStrip1.Name = "toolTabStrip1";
+            // 
+            // 
+            // 
+            this.toolTabStrip1.RootElement.MinSize = new System.Drawing.Size(25, 25);
+            this.toolTabStrip1.SelectedIndex = 0;
+            this.toolTabStrip1.Size = new System.Drawing.Size(203, 698);
+            this.toolTabStrip1.SizeInfo.AbsoluteSize = new System.Drawing.Size(203, 200);
+            this.toolTabStrip1.SizeInfo.SplitterCorrection = new System.Drawing.Size(3, 0);
+            this.toolTabStrip1.TabIndex = 1;
+            this.toolTabStrip1.TabStop = false;
+            this.toolTabStrip1.ThemeName = "MaterialTeal";
             // 
             // DWorkingDirectory
             // 
@@ -1199,24 +1245,6 @@ namespace Kaliz
             this.imageList1.Images.SetKeyName(5, "pascal.png");
             this.imageList1.Images.SetKeyName(6, "python_104451.png");
             this.imageList1.Images.SetKeyName(7, "file-exe-icon_34440.png");
-            // 
-            // toolTabStrip1
-            // 
-            this.toolTabStrip1.CanUpdateChildIndex = true;
-            this.toolTabStrip1.Controls.Add(this.DWorkingDirectory);
-            this.toolTabStrip1.Location = new System.Drawing.Point(0, 0);
-            this.toolTabStrip1.Name = "toolTabStrip1";
-            // 
-            // 
-            // 
-            this.toolTabStrip1.RootElement.MinSize = new System.Drawing.Size(25, 25);
-            this.toolTabStrip1.SelectedIndex = 0;
-            this.toolTabStrip1.Size = new System.Drawing.Size(203, 698);
-            this.toolTabStrip1.SizeInfo.AbsoluteSize = new System.Drawing.Size(203, 200);
-            this.toolTabStrip1.SizeInfo.SplitterCorrection = new System.Drawing.Size(3, 0);
-            this.toolTabStrip1.TabIndex = 1;
-            this.toolTabStrip1.TabStop = false;
-            this.toolTabStrip1.ThemeName = "MaterialTeal";
             // 
             // radSplitContainer1
             // 
@@ -1516,34 +1544,6 @@ namespace Kaliz
             this.ListOutput.TabIndex = 0;
             this.ListOutput.ThemeName = "MaterialTeal";
             this.ListOutput.ItemMouseClick += new Telerik.WinControls.UI.ListViewItemEventHandler(this.ListOutput_ItemMouseClick);
-            // 
-            // DErrorList
-            // 
-            this.DErrorList.Caption = null;
-            this.DErrorList.Controls.Add(this.radListError);
-            this.DErrorList.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.DErrorList.Location = new System.Drawing.Point(4, 52);
-            this.DErrorList.Name = "DErrorList";
-            this.DErrorList.PreviousDockState = Telerik.WinControls.UI.Docking.DockState.Docked;
-            this.DErrorList.Size = new System.Drawing.Size(1038, 133);
-            this.DErrorList.Text = "Error List";
-            this.DErrorList.ToolCaptionButtons = Telerik.WinControls.UI.Docking.ToolStripCaptionButtons.AutoHide;
-            // 
-            // radListError
-            // 
-            this.radListError.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.radListError.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.radListError.IsContextMenuEnabled = false;
-            this.radListError.IsPasteOptionsPopupEnabled = false;
-            this.radListError.IsReadOnly = true;
-            this.radListError.IsSelectionMiniToolBarEnabled = false;
-            this.radListError.Location = new System.Drawing.Point(0, 0);
-            this.radListError.Name = "radListError";
-            this.radListError.SelectionFill = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(203)))), ((int)(((byte)(196)))));
-            this.radListError.SelectionStroke = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(203)))), ((int)(((byte)(196)))));
-            this.radListError.Size = new System.Drawing.Size(1038, 133);
-            this.radListError.TabIndex = 0;
-            this.radListError.ThemeName = "MaterialTeal";
             // 
             // Dclipboard
             // 
@@ -2042,10 +2042,12 @@ namespace Kaliz
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Kaliz_FormClosed);
             ((System.ComponentModel.ISupportInitialize)(this.DockPar)).EndInit();
             this.DockPar.ResumeLayout(false);
-            this.DWorkingDirectory.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.treeDirectory)).EndInit();
+            this.DErrorList.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.radListError)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.toolTabStrip1)).EndInit();
             this.toolTabStrip1.ResumeLayout(false);
+            this.DWorkingDirectory.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.treeDirectory)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.radSplitContainer1)).EndInit();
             this.radSplitContainer1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.DContainer)).EndInit();
@@ -2074,8 +2076,6 @@ namespace Kaliz
             this.toolTabStrip2.ResumeLayout(false);
             this.Doutput.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.ListOutput)).EndInit();
-            this.DErrorList.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.radListError)).EndInit();
             this.Dclipboard.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.radlistclip)).EndInit();
             this.DBookmarksList.ResumeLayout(false);
