@@ -9,7 +9,7 @@ namespace Kaliz
         {
             //960, 540 Cỡ form 1/2 ảnh 1080
             InitializeComponent(); PictureBox spashPictureBox = new PictureBox();
-            spashPictureBox.Image = Resources.Ps;
+            spashPictureBox.Image = Resources.KalizNew;
             spashPictureBox.SizeMode = PictureBoxSizeMode.StretchImage;
             spashPictureBox.Dock = DockStyle.Fill;
             this.Controls.Add(spashPictureBox);
