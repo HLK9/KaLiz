@@ -3670,14 +3670,36 @@ End;
                 enableContext = true;
                 OEnableContext.Text = "Disable Context Intellisense";
                 ShowAlert_Light("<html><color=Teal>Context Intellisense Enabled", null, false);
-                TabHienTai.TextChanged += DanhDau_TextChanged;
+                try
+                {
+                    foreach(var item in DockPar.DocumentManager.DocumentArray)
+                    {
+                        (item.Controls[0] as EditControl).TextChanged += DanhDau_TextChanged;
+                    }
+                }
+                catch
+                {
+
+                }
+                //TabHienTai.TextChanged += DanhDau_TextChanged;
             }
             else
             {
                 ShowAlert_Light("<html><color=Crimson>Context Intellisense Disabled", null, false);
                 enableContext = false;
                 OEnableContext.Text = "Enable Context Intellisense";
-                TabHienTai.TextChanged -= DanhDau_TextChanged;
+                try
+                {
+                    foreach (var item in DockPar.DocumentManager.DocumentArray)
+                    {
+                        (item.Controls[0] as EditControl).TextChanged -= DanhDau_TextChanged;
+                    }
+                }
+                catch
+                {
+
+                }
+              //  TabHienTai.TextChanged -= DanhDau_TextChanged;
             }
         }
 
