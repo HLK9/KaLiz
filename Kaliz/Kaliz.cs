@@ -3039,7 +3039,7 @@ End;
 
         private void Run(string file)
         {
-            if (!File.Exists(DuongDanTepExe(TabHienTai.FileName)) && Path.GetExtension(file) != ".py" && Path.GetExtension(file) != ".java")
+            if (!File.Exists(DuongDanTepExe(TabHienTai.FileName)) && Path.GetExtension(file) != ".py")
             {
                 RadTaskDialogPage Tas = new RadTaskDialogPage();
                 Tas.ShouldApplyTheme = true;
