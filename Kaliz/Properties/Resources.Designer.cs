@@ -19,7 +19,7 @@ namespace Kaliz.Properties {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     internal class Resources {
@@ -83,16 +83,6 @@ namespace Kaliz.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Kaliz_Beta {
-            get {
-                object obj = ResourceManager.GetObject("Kaliz-Beta", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
         internal static System.Drawing.Bitmap Kaliz_Beta1 {
             get {
                 object obj = ResourceManager.GetObject("Kaliz-Beta1", resourceCulture);
@@ -103,9 +93,9 @@ namespace Kaliz.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Ps {
+        internal static System.Drawing.Bitmap KalizNew {
             get {
-                object obj = ResourceManager.GetObject("Ps", resourceCulture);
+                object obj = ResourceManager.GetObject("KalizNew", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
