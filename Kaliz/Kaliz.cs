@@ -530,7 +530,10 @@ namespace Kaliz
             if(TenTheme=="Fluent"||TenTheme=="MaterialTeal")
             DanhDau.Configurator.Open(@"Lex\Config.xml");
             else
+            {
                 DanhDau.Configurator.Open(@"Lex\Config_D.xml");
+            }    
+               
 
 
             DanhDau.Dock = DockStyle.Fill;
@@ -564,7 +567,7 @@ namespace Kaliz
                     // string ConfigF = @"Lex\CppF.xml";
                    
                     //DanhDau.Configurator.Open(ConfigF);
-                   // DanhDau.ApplyConfiguration("C++");
+                    DanhDau.ApplyConfiguration("C++");
                     // DanhDau.ApplyConfiguration(KnownLanguages.C);
                     DanhDau.StatusBarSettings.FileNamePanel.Panel.Text = "C/C++";
                     DanhDau.ContextChoiceOpen += DanhDau_ContextChoiceOpen_C;
@@ -582,7 +585,7 @@ namespace Kaliz
                     //string ConfigF = @"Lex\Pascal.xml";
                     //DanhDau.Configurator.Open(ConfigF);
 
-                   // DanhDau.ApplyConfiguration("Pascal");
+                   DanhDau.ApplyConfiguration("Pascal");
                     DanhDau.StatusBarSettings.FileNamePanel.Panel.Text = "Pascal";
                     DanhDau.ContextChoiceOpen += DanhDau_ContextChoiceOpen;
                     DanhDau.ContextPromptOpen += DanhDau_ContextPromptOpen_ForPascal;
@@ -597,7 +600,7 @@ namespace Kaliz
                     DanhDau.StatusBarSettings.FileNamePanel.Panel.Text = "Python";
                     //string ConfigF = @"Lex\Python.xml";
                     //DanhDau.Configurator.Open(ConfigF);
-                    //DanhDau.ApplyConfiguration("Python");
+                    DanhDau.ApplyConfiguration("Python");
                     DanhDau.StatusBarSettings.FileNamePanel.Panel.Text = "Python";
                     //Context prompt bị lỗi
                     DanhDau.ContextPromptOpen += DanhDau_ContextPromptOpen_ForPython;
@@ -626,16 +629,17 @@ namespace Kaliz
             else
             {
                 DanhDau.DeleteAll();
-                if (TenTheme == "FluentDark")
-                {
-                    DanhDau.Configurator.Open(@"Lex\New_D.xml");
+               // if (TenTheme == "FluentDark")
+                    //{
+                    //  //  DanhDau.Configurator.Open(@"Lex\New_D.xml");
+                    //    DanhDau.ApplyConfiguration("Text");
+                    //}
+                    //else
+                    //{
+                    //   // DanhDau.Configurator.Open(@"Lex\New.xml");
+                    //    DanhDau.ApplyConfiguration("Text");
+                    //}
                     DanhDau.ApplyConfiguration("Text");
-                }
-                else
-                {
-                    DanhDau.Configurator.Open(@"Lex\New.xml");
-                    DanhDau.ApplyConfiguration("Text");
-                }
             }
               
 
@@ -3928,20 +3932,11 @@ End;
             //}
         }
        
-        private void radMenuItem1_Click_1(object sender, EventArgs e)
-        {
-           
-          //  radPdfViewer1.LoadDocument(@"C:\Users\HLK9\Desktop\TraCuu.pdf");
-            
-        }
-
-
       
-
         private void SynC_Click(object sender, EventArgs e)
         {
-            string ConfigF = @"Lex\CppF.xml";
-            TabHienTai.Configurator.Open(ConfigF);
+            //string ConfigF = @"Lex\CppF.xml";
+            //TabHienTai.Configurator.Open(ConfigF);
             TabHienTai.ApplyConfiguration("C++");
             TabHienTai.StatusBarSettings.FileNamePanel.Panel.Text = "C/C++";
             TabHienTai.ContextChoiceOpen += DanhDau_ContextChoiceOpen_C;
@@ -3952,8 +3947,8 @@ End;
         private void SPascal_Click(object sender, EventArgs e)
         {
 
-            string ConfigF = @"Lex\Pascal.xml";
-            TabHienTai.Configurator.Open(ConfigF);
+            //string ConfigF = @"Lex\Pascal.xml";
+            //TabHienTai.Configurator.Open(ConfigF);
 
             TabHienTai.ApplyConfiguration("Pascal");
             TabHienTai.StatusBarSettings.FileNamePanel.Panel.Text = "Pascal";
@@ -3966,8 +3961,8 @@ End;
         private void SynPython_Click(object sender, EventArgs e)
         {
             TabHienTai.StatusBarSettings.FileNamePanel.Panel.Text = "Python";
-            string ConfigF = @"Lex\Python.xml";
-            TabHienTai.Configurator.Open(ConfigF);
+            //string ConfigF = @"Lex\Python.xml";
+            //TabHienTai.Configurator.Open(ConfigF);
             TabHienTai.ApplyConfiguration("Python");
             TabHienTai.StatusBarSettings.FileNamePanel.Panel.Text = "Python";
             TabHienTai.ContextChoiceOpen += DanhDau_ContextChoiceOpen_ForPython;
