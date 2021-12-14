@@ -528,10 +528,23 @@ namespace Kaliz
             var DanhDau = new EditControl();
             //thu gom config
             if(TenTheme=="Fluent"||TenTheme=="MaterialTeal")
-            DanhDau.Configurator.Open(@"Lex\Config.xml");
+            {
+                DanhDau.Configurator.Open(@"Lex\Config.xml");
+                DanhDau.Style = EditControlStyle.Office2016Colorful;
+                DanhDau.IndicatorMarginBackColor = Color.FromArgb(249, 249, 249);
+                DanhDau.LineNumbersColor = Color.Teal;
+                DanhDau.ContextPromptBackgroundBrush = new BrushInfo(GradientStyle.None, new Color[] { Color.FromArgb(249, 249, 249) });
+                DanhDau.BackgroundColor = new BrushInfo(GradientStyle.None, new Color[] { Color.FromArgb(249, 249, 249) });
+            }    
+          
             else
             {
                 DanhDau.Configurator.Open(@"Lex\Config_D.xml");
+                DanhDau.IndicatorMarginBackColor = Color.FromArgb(40, 42, 54);
+                DanhDau.LineNumbersColor = Color.FromArgb(98, 114, 164);
+                DanhDau.Style = EditControlStyle.Office2016DarkGray;
+                DanhDau.ContextPromptBackgroundBrush = new BrushInfo(GradientStyle.None, new Color[] { Color.FromArgb(40, 42, 54) });
+                DanhDau.BackgroundColor = new BrushInfo(GradientStyle.None, new Color[] { Color.FromArgb(40, 42, 54) });
             }    
                
 
@@ -1658,7 +1671,7 @@ namespace Kaliz
                                 try
                                 {
                                    
-                                    (item.Controls[0] as EditControl).Style = EditControlStyle.Office2016DarkGray;
+                                   // (item.Controls[0] as EditControl).Style = EditControlStyle.Office2016DarkGray;
                                     (item.Controls[0] as EditControl).Style = EditControlStyle.Office2016Colorful;
                                     (item.Controls[0] as EditControl).IndicatorMarginBackColor = Color.FromArgb(249, 249, 249);
                                     (item.Controls[0] as EditControl).LineNumbersColor = Color.Teal;
@@ -1684,6 +1697,11 @@ namespace Kaliz
                                         (item.Controls[0] as EditControl).Configurator.Open(ConfigF);
                                        (item.Controls[0] as EditControl).ApplyConfiguration("Python");
                                     }
+                                    else
+                                    {
+                                        (item.Controls[0] as EditControl).Configurator.Open(ConfigF);
+                                        (item.Controls[0] as EditControl).ApplyConfiguration("Text");
+                                    }    
                                     //else if (Path.GetExtension((item.Controls[0] as EditControl).FileName) == ".java")
                                     //{
                                     //   // string ConfigF = @"Lex\Java.xml";
@@ -1766,13 +1784,18 @@ namespace Kaliz
                                         (item.Controls[0] as EditControl).Configurator.Open(ConfigF);
                                        (item.Controls[0] as EditControl).ApplyConfiguration("Python");
                                     }
+                                    else
+                                    {
+                                        (item.Controls[0] as EditControl).Configurator.Open(ConfigF);
+                                        (item.Controls[0] as EditControl).ApplyConfiguration("Text");
+                                    }
                                     //else if (Path.GetExtension((item.Controls[0] as EditControl).FileName) == ".java")
                                     //{
                                     //    //string ConfigF = @"Lex\Java_D.xml";
                                     //    (item.Controls[0] as EditControl).Configurator.Open(ConfigF);
                                     //    (item.Controls[0] as EditControl).ApplyConfiguration("Java");
                                     //}
-                                    
+
                                 }
                                 catch
                                 {
@@ -1845,6 +1868,11 @@ namespace Kaliz
                                         //string ConfigF = @"Lex\Python.xml";
                                         (item.Controls[0] as EditControl).Configurator.Open(ConfigF);
                                         (item.Controls[0] as EditControl).ApplyConfiguration("Python");
+                                    }
+                                    else
+                                    {
+                                        (item.Controls[0] as EditControl).Configurator.Open(ConfigF);
+                                        (item.Controls[0] as EditControl).ApplyConfiguration("Text");
                                     }
                                     //else if (Path.GetExtension((item.Controls[0] as EditControl).FileName) == ".java")
                                     //{
@@ -2652,12 +2680,6 @@ End;
             HisBookmark.Add(duongdantep);
             File.AppendAllLines(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\Kaliz\\BookmarksList.txt", HisBookmark);
 
-        }
-
-
-        private void DcWelcome_Click(object sender, EventArgs e)
-        {
-            
         }
 
         private void FNew_Click(object sender, EventArgs e)
