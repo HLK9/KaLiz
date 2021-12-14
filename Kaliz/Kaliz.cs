@@ -504,8 +504,8 @@ namespace Kaliz
             FFindSelected.Shortcuts.Add(new RadShortcut(Keys.Control, Keys.Enter));
             TTermi.Shortcuts.Add(new RadShortcut(Keys.Control | Keys.Alt, Keys.T));
             //Build
-            BBuild.Shortcuts.Add(new RadShortcut(Keys.Control, Keys.F9));
-            BRun.Shortcuts.Add(new RadShortcut(Keys.Alt, Keys.F9));
+            BBuild.Shortcuts.Add(new RadShortcut(Keys.Alt, Keys.F9));
+            BRun.Shortcuts.Add(new RadShortcut(Keys.Control, Keys.F9));
             BBuildaRun.Shortcuts.Add(new RadShortcut(Keys.Control|Keys.Shift,Keys.B));
             //Bookmark
             BBookmark.Shortcuts.Add(new RadShortcut(Keys.Control, Keys.M));
