@@ -38,7 +38,7 @@ namespace Kaliz
         private bool enableContextPrompt = false;
         private bool enableParse = false;
         private bool showlinenum = true;
-        private string TenTheme;
+        private string TenTheme= "MaterialTeal";
         private bool themechanged;
         public string Pathtosendemail;
         private string ConsoleUse = "Cmder";
@@ -427,7 +427,7 @@ namespace Kaliz
             clipBoard.MonitorClipboard = true;
             clipBoard.ClipboardChanged += ClipBoard_ClipboardChanged;
             txtIP = GetLocalIP();
-            TenTheme = "MaterialTeal";
+            
 
 
 
@@ -523,30 +523,12 @@ namespace Kaliz
             DocumentWindow TaiLieu = new DocumentWindow(ten);
             var DanhDau = new EditControl();
             //thu gom config
-            if(TenTheme=="Fluent"||TenTheme=="MaterialTeal")
-            {
-                DanhDau.Configurator.Open(@"Lex\Config.xml");
-                DanhDau.Style = EditControlStyle.Office2016Colorful;
-                DanhDau.IndicatorMarginBackColor = Color.FromArgb(249, 249, 249);
-                DanhDau.LineNumbersColor = Color.Teal;
-                DanhDau.ContextPromptBackgroundBrush = new BrushInfo(GradientStyle.None, new Color[] { Color.FromArgb(249, 249, 249) });
-                DanhDau.BackgroundColor = new BrushInfo(GradientStyle.None, new Color[] { Color.FromArgb(249, 249, 249) });
-            }    
           
-            else
-            {
-                DanhDau.Configurator.Open(@"Lex\Config_D.xml");
-                DanhDau.IndicatorMarginBackColor = Color.FromArgb(40, 42, 54);
-                DanhDau.LineNumbersColor = Color.FromArgb(98, 114, 164);
-                DanhDau.Style = EditControlStyle.Office2016DarkGray;
-                DanhDau.ContextPromptBackgroundBrush = new BrushInfo(GradientStyle.None, new Color[] { Color.FromArgb(40, 42, 54) });
-                DanhDau.BackgroundColor = new BrushInfo(GradientStyle.None, new Color[] { Color.FromArgb(40, 42, 54) });
-            }    
                
 
 
             DanhDau.Dock = DockStyle.Fill;
-            DanhDau.Style = EditControlStyle.Office2016Colorful;
+           // DanhDau.Style = EditControlStyle.Office2016Colorful;
             DanhDau.LineNumbersFont = new Font("Consolas", 13);
             TaiLieu.Controls.Add(DanhDau);
             DanhDau.AllowDrop = true;
@@ -562,6 +544,29 @@ namespace Kaliz
             //DanhDau.WhiteSpaceIndicators.NewLineString = "\n";
             //DanhDau.contextchoice
 
+            //xu ly giao dien
+            if (TenTheme == "Fluent" || TenTheme == "MaterialTeal")
+            {
+                DanhDau.Configurator.Open(@"Lex\Config.xml");
+                DanhDau.Style = EditControlStyle.Office2016Colorful;
+                DanhDau.IndicatorMarginBackColor = Color.FromArgb(249, 249, 249);
+                DanhDau.LineNumbersColor = Color.Teal;
+                DanhDau.ContextPromptBackgroundBrush = new BrushInfo(GradientStyle.None, new Color[] { Color.FromArgb(249, 249, 249) });
+                DanhDau.BackgroundColor = new BrushInfo(GradientStyle.None, new Color[] { Color.FromArgb(249, 249, 249) });
+                DanhDau.StatusBarSettings.VisualStyle = Syncfusion.Windows.Forms.Tools.Controls.StatusBar.VisualStyle.Office2016Colorful;
+            }
+
+            else
+            {
+                DanhDau.Configurator.Open(@"Lex\Config_D.xml");
+               
+                DanhDau.IndicatorMarginBackColor = Color.FromArgb(40, 42, 54);
+                DanhDau.LineNumbersColor = Color.FromArgb(98, 114, 164);
+                DanhDau.StatusBarSettings.VisualStyle = Syncfusion.Windows.Forms.Tools.Controls.StatusBar.VisualStyle.Office2016DarkGray;
+                DanhDau.Style = EditControlStyle.Office2016DarkGray;
+                DanhDau.ContextPromptBackgroundBrush = new BrushInfo(GradientStyle.None, new Color[] { Color.FromArgb(40, 42, 54) });
+                DanhDau.BackgroundColor = new BrushInfo(GradientStyle.None, new Color[] { Color.FromArgb(40, 42, 54) });
+            }
 
             if (DuongDanTep != null)
             {
@@ -678,7 +683,7 @@ namespace Kaliz
             // if (Path.GetExtension(F) == ".cpp") DanhDau.ApplyConfiguration(KnownLanguages.C);
             //hien khoag trang DanhDau.ShowWhitespaces = true;
             DanhDau.OnlyHighlightMatchingBraces = true;
-            DanhDau.StatusBarSettings.VisualStyle = Syncfusion.Windows.Forms.Tools.Controls.StatusBar.VisualStyle.Office2016Colorful;
+          
             DanhDau.StatusBarSettings.Visible = true;
             DanhDau.StatusBarSettings.GripVisibility = Syncfusion.Windows.Forms.Edit.Enums.SizingGripVisibility.Hidden;
             DanhDau.StatusBarSettings.TextPanel.Panel.Text = DuongDanTep;
@@ -692,7 +697,7 @@ namespace Kaliz
 
             DanhDau.ContextPromptBorderColor = Color.Teal ;
             DanhDau.ContextPromptBackgroundBrush = new BrushInfo(GradientStyle.None, new Color[] { Color.FromArgb(249, 249, 249) });
-            DanhDau.BackgroundColor = new BrushInfo(GradientStyle.None, new Color[] { Color.FromArgb(249, 249, 249) });
+           // DanhDau.BackgroundColor = new BrushInfo(GradientStyle.None, new Color[] { Color.FromArgb(249, 249, 249) });
            // DanhDau.BackgroundColor  = new Syncfusion.Drawing.BrushInfo(Syncfusion.Drawing.GradientStyle.ForwardDiagonal, new System.Drawing.Color[] { System.Drawing.Color.Crimson, System.Drawing.Color.DarkCyan, System.Drawing.Color.LightPink });
             //DanhDau.TextChanging += DanhDau_TextChanging;
             // DanhDau.FilterAutoCompleteItems = true;
@@ -702,8 +707,7 @@ namespace Kaliz
             DanhDau.KeyDown += DanhDau_KeyDown;
             DatBookmarks();
             TabHienTai.ContextChoiceSelectedTextInsert += TabHienTai_ContextChoiceSelectedTextInsert;
-
-
+           
         }
 
         private void TabHienTai_ContextChoiceSelectedTextInsert(IContextChoiceController sender, ContextChoiceTextInsertEventArgs e)
@@ -1551,6 +1555,7 @@ namespace Kaliz
         private void DanhDau_DragDrop(object sender, DragEventArgs e)
 
         {
+            MessageBox.Show(e.Data.ToString());
             string dropfile = TabHienTai.FileName;
             TabHienTai.Close();
             DockPar.ActiveWindow.Close();
@@ -1562,14 +1567,20 @@ namespace Kaliz
 
         private void DockPar_DockWindowClosing(object sender, DockWindowCancelEventArgs e)
         {
-           
-            if (e.NewWindow.Text == DockPar.DocumentManager.ActiveDocument.Text)
+           try
             {
-                TabHienTai.Close();
-
+                if (e.NewWindow.Text == DockPar.DocumentManager.ActiveDocument.Text)
+                {
+                    TabHienTai.Close();
+                }
+                else
+                {
+                    return;
+                }
             }
-            else
-            { return; }
+            catch
+            { }
+         
 
             //try
             //{
@@ -2689,7 +2700,7 @@ End;
         {
 
             TaoMoi("Document " + chiso++, null);
-            UpdateTheme();
+           // UpdateTheme();
         }
         //TabStripItem StripHienTai
         //{
@@ -4568,20 +4579,20 @@ End;
         private void wclPascal_Click(object sender, EventArgs e)
         {
             TaoMoi("Document " + chiso++, null);
-            string ConfigF = @"Lex\Pascal.xml";
+            //string ConfigF = @"Lex\Pascal.xml";
 
-            if (TenTheme == "FluentDark")
-                ConfigF = @"Lex\Pascal_D.xml";
+            //if (TenTheme == "FluentDark")
+            //    ConfigF = @"Lex\Pascal_D.xml";
 
 
-            TabHienTai.Configurator.Open(ConfigF);
+            //TabHienTai.Configurator.Open(ConfigF);
             TabHienTai.ApplyConfiguration("Pascal");
             TabHienTai.StatusBarSettings.FileNamePanel.Panel.Text = "Pascal";
             TabHienTai.ContextChoiceOpen += DanhDau_ContextChoiceOpen;
             TabHienTai.ContextPromptOpen += DanhDau_ContextPromptOpen_ForPascal;
             TabHienTai.ContextPromptUpdate += DanhDau_ContextPromptUpdate_ForPascal;
 
-            UpdateTheme();
+           // UpdateTheme();
         
 
       
@@ -4592,16 +4603,16 @@ End;
             
             TaoMoi("Document " + chiso++, null);
 
-            TabHienTai.StatusBarSettings.FileNamePanel.Panel.Text = "Python";
-            string ConfigF = @"Lex\Python.xml";
-            if (TenTheme == "FluentDark")
-                ConfigF = @"Lex\Python_D.xml";
-            TabHienTai.Configurator.Open(ConfigF);
+           // TabHienTai.StatusBarSettings.FileNamePanel.Panel.Text = "Python";
+            //string ConfigF = @"Lex\Python.xml";
+            //if (TenTheme == "FluentDark")
+            //    ConfigF = @"Lex\Python_D.xml";
+            //TabHienTai.Configurator.Open(ConfigF);
             TabHienTai.ApplyConfiguration("Python");
             TabHienTai.StatusBarSettings.FileNamePanel.Panel.Text = "Python";
             TabHienTai.ContextChoiceOpen += DanhDau_ContextChoiceOpen_ForPython;
 
-            UpdateTheme();
+           // UpdateTheme();
         
 
      
@@ -4612,17 +4623,17 @@ End;
              
             TaoMoi("Document " + chiso++, null);
 
-            string ConfigF = @"Lex\CppF.xml";
-            if (TenTheme == "FluentDark")
-                ConfigF = @"Lex\CppF_D.xml";
-            TabHienTai.Configurator.Open(ConfigF);
+            //string ConfigF = @"Lex\CppF.xml";
+            //if (TenTheme == "FluentDark")
+            //    ConfigF = @"Lex\CppF_D.xml";
+            //TabHienTai.Configurator.Open(ConfigF);
             TabHienTai.ApplyConfiguration("C++");
             TabHienTai.StatusBarSettings.FileNamePanel.Panel.Text = "C/C++";
             TabHienTai.ContextChoiceOpen += DanhDau_ContextChoiceOpen_C;
             TabHienTai.ContextPromptOpen += DanhDau_ContextPromptOpen_ForC;
             TabHienTai.ContextPromptUpdate += DanhDau_ContextPromptUpdate_ForC;
 
-            UpdateTheme();
+         //   UpdateTheme();
         
     }
 
