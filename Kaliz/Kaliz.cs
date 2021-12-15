@@ -65,6 +65,7 @@ namespace Kaliz
             Thread.Sleep(4000);           
            // DockPar.SelectedTabChanging += DockPar_SelectedTabChanging;
             TaoPhimTat();
+           
             Doutput.AutoHide();
             Dclipboard.AutoHide();
             DockPar.ShowDocumentCloseButton = true;
@@ -422,7 +423,9 @@ namespace Kaliz
 
         private void Kaliz_Load(object sender, EventArgs e)
         {
-           
+            this.WindowState = FormWindowState.Minimized;
+            //this.Show();
+            this.WindowState = FormWindowState.Maximized;
             var appDataPath = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
             var path = Path.Combine(appDataPath, @"Kaliz\");
             if (!Directory.Exists(path))
