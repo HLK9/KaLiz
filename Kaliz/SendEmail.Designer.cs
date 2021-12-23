@@ -28,54 +28,33 @@
         /// </summary>
         private void InitializeComponent()
         {
-            Telerik.WinControls.UI.RadListDataItem radListDataItem1 = new Telerik.WinControls.UI.RadListDataItem();
             this.materialTealTheme1 = new Telerik.WinControls.Themes.MaterialTealTheme();
-            this.radLabel1 = new Telerik.WinControls.UI.RadLabel();
             this.radLabel2 = new Telerik.WinControls.UI.RadLabel();
             this.radLabel3 = new Telerik.WinControls.UI.RadLabel();
             this.radLabel4 = new Telerik.WinControls.UI.RadLabel();
-            this.radLabel5 = new Telerik.WinControls.UI.RadLabel();
-            this.radLabel6 = new Telerik.WinControls.UI.RadLabel();
             this.EmailTo = new Telerik.WinControls.UI.RadTextBox();
             this.EmailSub = new Telerik.WinControls.UI.RadTextBox();
             this.EmailAttach = new Telerik.WinControls.UI.RadTextBox();
-            this.EmailFrom = new Telerik.WinControls.UI.RadTextBox();
-            this.EmailPass = new Telerik.WinControls.UI.RadTextBox();
-            this.EmailSeever = new Telerik.WinControls.UI.RadDropDownList();
             this.EmailSend = new Telerik.WinControls.UI.RadButton();
             this.EmailClose = new Telerik.WinControls.UI.RadButton();
             this.EmailBody = new Telerik.WinControls.UI.RadTextBoxControl();
             this.radButton1 = new Telerik.WinControls.UI.RadButton();
             this.radButton2 = new Telerik.WinControls.UI.RadButton();
-            ((System.ComponentModel.ISupportInitialize)(this.radLabel1)).BeginInit();
+            this.radLabel1 = new Telerik.WinControls.UI.RadLabel();
             ((System.ComponentModel.ISupportInitialize)(this.radLabel2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.radLabel3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.radLabel4)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.radLabel5)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.radLabel6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.EmailTo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.EmailSub)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.EmailAttach)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.EmailFrom)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.EmailPass)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.EmailSeever)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.EmailSend)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.EmailClose)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.EmailBody)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.radButton1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.radButton2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.radLabel1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this)).BeginInit();
             this.SuspendLayout();
-            // 
-            // radLabel1
-            // 
-            this.radLabel1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radLabel1.Location = new System.Drawing.Point(406, 34);
-            this.radLabel1.Name = "radLabel1";
-            this.radLabel1.Size = new System.Drawing.Size(41, 21);
-            this.radLabel1.TabIndex = 0;
-            this.radLabel1.Text = "Email:";
-            this.radLabel1.ThemeName = "MaterialTeal";
             // 
             // radLabel2
             // 
@@ -107,26 +86,6 @@
             this.radLabel4.Text = "Body";
             this.radLabel4.ThemeName = "MaterialTeal";
             // 
-            // radLabel5
-            // 
-            this.radLabel5.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radLabel5.Location = new System.Drawing.Point(406, 91);
-            this.radLabel5.Name = "radLabel5";
-            this.radLabel5.Size = new System.Drawing.Size(65, 21);
-            this.radLabel5.TabIndex = 2;
-            this.radLabel5.Text = "Password:";
-            this.radLabel5.ThemeName = "MaterialTeal";
-            // 
-            // radLabel6
-            // 
-            this.radLabel6.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radLabel6.Location = new System.Drawing.Point(406, 144);
-            this.radLabel6.Name = "radLabel6";
-            this.radLabel6.Size = new System.Drawing.Size(47, 21);
-            this.radLabel6.TabIndex = 3;
-            this.radLabel6.Text = "Server:";
-            this.radLabel6.ThemeName = "MaterialTeal";
-            // 
             // EmailTo
             // 
             this.EmailTo.BackColor = System.Drawing.Color.Honeydew;
@@ -151,50 +110,12 @@
             // 
             this.EmailAttach.BackColor = System.Drawing.Color.Honeydew;
             this.EmailAttach.EnableTheming = false;
-            this.EmailAttach.Location = new System.Drawing.Point(482, 193);
+            this.EmailAttach.Location = new System.Drawing.Point(470, 24);
             this.EmailAttach.Name = "EmailAttach";
             this.EmailAttach.Size = new System.Drawing.Size(295, 36);
             this.EmailAttach.TabIndex = 6;
             this.EmailAttach.ThemeName = "MaterialTeal";
             this.EmailAttach.TextChanged += new System.EventHandler(this.EmailBody_TextChanged);
-            // 
-            // EmailFrom
-            // 
-            this.EmailFrom.BackColor = System.Drawing.Color.Honeydew;
-            this.EmailFrom.EnableTheming = false;
-            this.EmailFrom.Location = new System.Drawing.Point(482, 24);
-            this.EmailFrom.Name = "EmailFrom";
-            this.EmailFrom.ReadOnly = true;
-            this.EmailFrom.Size = new System.Drawing.Size(295, 36);
-            this.EmailFrom.TabIndex = 7;
-            this.EmailFrom.Text = "KyHXr0HfMu8APuN3/GhYSa8vCAxH4gde";
-            this.EmailFrom.ThemeName = "MaterialTeal";
-            // 
-            // EmailPass
-            // 
-            this.EmailPass.BackColor = System.Drawing.Color.Honeydew;
-            this.EmailPass.EnableTheming = false;
-            this.EmailPass.Location = new System.Drawing.Point(482, 76);
-            this.EmailPass.Name = "EmailPass";
-            this.EmailPass.PasswordChar = '●';
-            this.EmailPass.ReadOnly = true;
-            this.EmailPass.Size = new System.Drawing.Size(295, 36);
-            this.EmailPass.TabIndex = 8;
-            this.EmailPass.Text = "qrzlf1TaFvNUHIqCVMVSXA==";
-            this.EmailPass.ThemeName = "MaterialTeal";
-            // 
-            // EmailSeever
-            // 
-            this.EmailSeever.BackColor = System.Drawing.Color.Honeydew;
-            this.EmailSeever.EnableTheming = false;
-            radListDataItem1.Text = "smtp.gmail.com";
-            this.EmailSeever.Items.Add(radListDataItem1);
-            this.EmailSeever.Location = new System.Drawing.Point(482, 129);
-            this.EmailSeever.Name = "EmailSeever";
-            this.EmailSeever.Size = new System.Drawing.Size(295, 36);
-            this.EmailSeever.TabIndex = 9;
-            this.EmailSeever.Text = "Select Server";
-            this.EmailSeever.ThemeName = "MaterialTeal";
             // 
             // EmailSend
             // 
@@ -226,7 +147,7 @@
             this.EmailBody.EnableTheming = false;
             this.EmailBody.Location = new System.Drawing.Point(71, 129);
             this.EmailBody.Name = "EmailBody";
-            this.EmailBody.Size = new System.Drawing.Size(295, 110);
+            this.EmailBody.Size = new System.Drawing.Size(706, 110);
             this.EmailBody.TabIndex = 12;
             this.EmailBody.Text = "Sent From Kaliz";
             this.EmailBody.ThemeName = "MaterialTeal";
@@ -236,7 +157,7 @@
             // 
             this.radButton1.BackColor = System.Drawing.Color.Honeydew;
             this.radButton1.EnableTheming = false;
-            this.radButton1.Location = new System.Drawing.Point(390, 193);
+            this.radButton1.Location = new System.Drawing.Point(378, 24);
             this.radButton1.Name = "radButton1";
             this.radButton1.Size = new System.Drawing.Size(81, 36);
             this.radButton1.TabIndex = 12;
@@ -256,29 +177,34 @@
             this.radButton2.ThemeName = "MaterialTeal";
             this.radButton2.Click += new System.EventHandler(this.radButton2_Click);
             // 
+            // radLabel1
+            // 
+            this.radLabel1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radLabel1.Location = new System.Drawing.Point(580, 76);
+            this.radLabel1.Name = "radLabel1";
+            this.radLabel1.Size = new System.Drawing.Size(46, 21);
+            this.radLabel1.TabIndex = 4;
+            this.radLabel1.Text = "No file";
+            this.radLabel1.ThemeName = "MaterialTeal";
+            // 
             // SendEmail
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(789, 322);
+            this.Controls.Add(this.radLabel1);
             this.Controls.Add(this.radButton2);
             this.Controls.Add(this.radButton1);
             this.Controls.Add(this.EmailBody);
             this.Controls.Add(this.EmailClose);
             this.Controls.Add(this.EmailSend);
-            this.Controls.Add(this.EmailSeever);
-            this.Controls.Add(this.EmailPass);
-            this.Controls.Add(this.EmailFrom);
             this.Controls.Add(this.EmailAttach);
             this.Controls.Add(this.EmailSub);
             this.Controls.Add(this.EmailTo);
-            this.Controls.Add(this.radLabel6);
-            this.Controls.Add(this.radLabel5);
             this.Controls.Add(this.radLabel4);
             this.Controls.Add(this.radLabel3);
             this.Controls.Add(this.radLabel2);
-            this.Controls.Add(this.radLabel1);
             this.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.MaximizeBox = false;
@@ -289,26 +215,22 @@
             this.RootElement.ApplyShapeToControl = true;
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Send Email";
             this.ThemeName = "MaterialTeal";
             this.Load += new System.EventHandler(this.SendEmail_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.radLabel1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.radLabel2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.radLabel3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.radLabel4)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.radLabel5)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.radLabel6)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.EmailTo)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.EmailSub)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.EmailAttach)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.EmailFrom)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.EmailPass)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.EmailSeever)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.EmailSend)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.EmailClose)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.EmailBody)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.radButton1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.radButton2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.radLabel1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -318,22 +240,17 @@
         #endregion
 
         private Telerik.WinControls.Themes.MaterialTealTheme materialTealTheme1;
-        private Telerik.WinControls.UI.RadLabel radLabel1;
         private Telerik.WinControls.UI.RadLabel radLabel2;
         private Telerik.WinControls.UI.RadLabel radLabel3;
         private Telerik.WinControls.UI.RadLabel radLabel4;
-        private Telerik.WinControls.UI.RadLabel radLabel5;
-        private Telerik.WinControls.UI.RadLabel radLabel6;
         private Telerik.WinControls.UI.RadTextBox EmailTo;
         private Telerik.WinControls.UI.RadTextBox EmailSub;
-        private Telerik.WinControls.UI.RadTextBox EmailFrom;
-        private Telerik.WinControls.UI.RadTextBox EmailPass;
         private Telerik.WinControls.UI.RadButton EmailSend;
         private Telerik.WinControls.UI.RadButton EmailClose;
-        private Telerik.WinControls.UI.RadDropDownList EmailSeever;
         private Telerik.WinControls.UI.RadTextBoxControl EmailBody;
         private Telerik.WinControls.UI.RadButton radButton1;
         private Telerik.WinControls.UI.RadButton radButton2;
         internal Telerik.WinControls.UI.RadTextBox EmailAttach;
+        private Telerik.WinControls.UI.RadLabel radLabel1;
     }
 }
