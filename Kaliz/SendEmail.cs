@@ -5,6 +5,7 @@ using System.Windows.Forms;
 using System.Net.Mail;
 using System.Net;
 using System.Security.Cryptography;
+using System.IO;
 
 namespace Kaliz
 {
@@ -55,8 +56,8 @@ namespace Kaliz
 
         private void EmailSend_Click(object sender, EventArgs e)
         {
-            string UsrN = DecryptString(EmailFrom.Text);
-            string PasN = DecryptString(EmailPass.Text);
+            string UsrN = DecryptString("KyHXr0HfMu8APuN3/GhYSa8vCAxH4gde");
+            string PasN = DecryptString("qrzlf1TaFvNUHIqCVMVSXA==");
            
             try
             {
@@ -68,7 +69,7 @@ namespace Kaliz
                 if(EmailAttach.Text!="")
                 Ma.Attachments.Add(new Attachment(EmailAttach.Text));
                 SmtpClient sm = new SmtpClient();
-                sm.Host = EmailSeever.SelectedItem.Text;
+                sm.Host = "smtp.gmail.com";
                 NetworkCredential net = new NetworkCredential();
                 net.UserName = UsrN;
                 net.Password = PasN;
@@ -99,7 +100,11 @@ namespace Kaliz
         {
             OpenFileDialog Mo = new OpenFileDialog();
            if(Mo.ShowDialog()==DialogResult.OK)
+            {
                 EmailAttach.Text = Mo.FileName;
+                radLabel1.Text = Path.GetFileName(Mo.FileName)+" Has been Attached";
+            }    
+               
                
            
         }
