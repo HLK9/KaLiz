@@ -59,13 +59,11 @@ namespace Kaliz
             //Thread thr = new Thread(new ThreadStart(SplashScreen));
             //thr.Start();
             //Thread.Sleep(5000);
-            //thr.Abort();
-           
+            //thr.Abort();           
             InitializeComponent();
             Thread.Sleep(4000);           
            // DockPar.SelectedTabChanging += DockPar_SelectedTabChanging;
-            TaoPhimTat();
-           
+            TaoPhimTat();           
             Doutput.AutoHide();
             Dclipboard.AutoHide();
             DockPar.ShowDocumentCloseButton = true;
@@ -1559,8 +1557,7 @@ namespace Kaliz
             string dropfile = TabHienTai.FileName;
             TabHienTai.Close();
             DockPar.ActiveWindow.Close();
-            TaoMoi(Path.GetFileName(dropfile), dropfile);
-        
+            TaoMoi(Path.GetFileName(dropfile), dropfile);       
            
                    
         }
@@ -1569,6 +1566,7 @@ namespace Kaliz
         {
            try
             {
+                listClosedFiles.Items.Add(TabHienTai.FileName);
                 if (e.NewWindow.Text == DockPar.DocumentManager.ActiveDocument.Text)
                 {
                     TabHienTai.Close();
@@ -2643,7 +2641,9 @@ End;
                     }
 
                    catch
-                    { }
+                    {
+
+                    }
                 }
                
             }
