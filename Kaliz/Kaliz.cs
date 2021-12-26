@@ -1566,10 +1566,13 @@ namespace Kaliz
         {
            try
             {
-                listClosedFiles.Items.Add(TabHienTai.FileName);
+               
                 if (e.NewWindow.Text == DockPar.DocumentManager.ActiveDocument.Text)
                 {
+                    if (File.Exists(TabHienTai.FileName))
+                        listClosedFiles.Items.Add(TabHienTai.FileName);
                     TabHienTai.Close();
+                  
                 }
                 else
                 {
