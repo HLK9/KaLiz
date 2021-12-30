@@ -587,9 +587,6 @@ namespace Kaliz
                     DanhDau.ContextPromptUpdate += DanhDau_ContextPromptUpdate_ForC;
                     DanhDau.UpdateContextToolTip += DanhDau_UpdateContextToolTip_ForC;
                     
-
-
-
                 }
                 if (Path.GetExtension(DuongDanTep) == ".pas")
                 {
