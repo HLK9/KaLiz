@@ -521,9 +521,9 @@ namespace Kaliz
             DocumentWindow TaiLieu = new DocumentWindow(ten);
             var DanhDau = new EditControl();
             //thu gom config
-          
-               
 
+
+            DanhDau.SetEncoding(Encoding.UTF8);
 
             DanhDau.Dock = DockStyle.Fill;
            // DanhDau.Style = EditControlStyle.Office2016Colorful;
