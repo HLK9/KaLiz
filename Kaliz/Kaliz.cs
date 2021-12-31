@@ -522,7 +522,8 @@ namespace Kaliz
             var DanhDau = new EditControl();
             //thu gom config
 
-
+           // DanhDau.AutoIndentGuideline = true;
+            
             DanhDau.SetEncoding(Encoding.UTF8);
 
             DanhDau.Dock = DockStyle.Fill;
