@@ -26,6 +26,8 @@ using System.Linq;
 using Microsoft.WindowsAPICodePack.Dialogs;
 using System.Web.Script.Serialization;
 using System.Net.Http;
+using System.Data.OleDb;
+using System.Data;
 
 namespace Kaliz
 {
@@ -5978,6 +5980,114 @@ End;
         {
             UploadFile upa = new UploadFile();
             upa.ShowDialog();
+        }
+        //Ket noi Database Access
+        private string strConnectData = @"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=Data_Kaliz.accdb";
+        OleDbConnection oleConnect = null;
+        private void ConnectDataBase()
+        {
+            if (oleConnect == null)
+            {
+                oleConnect = new OleDbConnection(strConnectData);
+            }
+            if (oleConnect.State == ConnectionState.Closed)
+            {
+                oleConnect.Open();
+            }
+        }
+        private void DisconnectDataBase()
+        {
+            if (oleConnect.State == ConnectionState.Open && oleConnect != null)
+            {
+                oleConnect.Close();
+            }
+        }
+        //  private string ResultLine;
+               
+        private string GetLineDataBase(string condition)
+        {
+            ConnectDataBase();
+            string a = "";
+            OleDbCommand cmd = new OleDbCommand();
+            cmd.CommandType = CommandType.Text;
+            cmd.CommandText = "select Line from Bookmark where Path='" + condition + "'";
+            cmd.Connection = oleConnect;
+            OleDbDataReader reader = cmd.ExecuteReader();
+            while (reader.Read())
+            {
+                a = reader.GetString(0);
+            }
+            reader.Close();
+            DisconnectDataBase();
+            return a;
+          
+        }
+        private bool IsContainPathInDataBase(string condition)
+        {
+            ConnectDataBase();
+            OleDbCommand cmd = new OleDbCommand();
+            cmd.CommandType = CommandType.Text;
+            cmd.CommandText = "select Line from Bookmark where Path='" + condition + "'";
+            cmd.Connection = oleConnect;
+            OleDbDataReader reader = cmd.ExecuteReader();
+            if (reader.Read())
+            {
+                reader.Close();
+                DisconnectDataBase();
+                return true;
+            }
+
+            else
+            {
+                reader.Close();
+                DisconnectDataBase();
+                return false;
+            }
+            
+        }
+        private void InsertDataBase(string path, string line)
+        {
+           
+            if (IsContainPathInDataBase(path) == true)
+            {
+                ConnectDataBase();
+                UpdateLineInDataBase(path, line);
+                DisconnectDataBase();
+            }
+            else
+            {
+                ConnectDataBase();
+                OleDbCommand cmd = new OleDbCommand();
+                cmd.CommandType = CommandType.Text;
+                cmd.CommandText = "insert into Bookmark(Path,Line)Values('" + path + "','" + line + "')";
+                cmd.Connection = oleConnect;
+                cmd.ExecuteNonQuery();
+                DisconnectDataBase();
+
+            }
+        }
+
+        private void UpdateLineInDataBase(string path, string line)
+        {
+
+            ConnectDataBase();
+            OleDbCommand cmd = new OleDbCommand();
+            cmd.CommandType = CommandType.Text;
+            cmd.CommandText = "update Bookmark set Line='" + line + "' where Path='" + path + "'";
+            cmd.Connection = oleConnect;
+            cmd.ExecuteNonQuery();
+
+        }
+        private void RemoveDataBase()
+        {
+            ConnectDataBase();
+            OleDbCommand cmd = new OleDbCommand();
+            cmd.CommandType = CommandType.Text;
+            cmd.CommandText = "delete from Bookmark where Line LIKE '' OR Line IS NULL";
+            cmd.Connection = oleConnect;
+            cmd.ExecuteNonQuery();
+            DisconnectDataBase();
+
         }
     }
 }
