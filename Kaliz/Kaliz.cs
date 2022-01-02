@@ -572,7 +572,8 @@ namespace Kaliz
             if (DuongDanTep != null)
             {
                 LuuHisto(DuongDanTep);
-                
+              
+
                 if (Path.GetExtension(DuongDanTep) == ".c" || Path.GetExtension(DuongDanTep) == ".cpp")
                 {
                     //DanhDau.WhiteSpaceIndicators.NewLineString = "\r\n";
@@ -703,9 +704,14 @@ namespace Kaliz
             //In
             DanhDau.PrintHeader += DanhDau_PrintHeader;
             DanhDau.KeyDown += DanhDau_KeyDown;
-            DatBookmarks();
+          
             TabHienTai.ContextChoiceSelectedTextInsert += TabHienTai_ContextChoiceSelectedTextInsert;
-           
+            try
+            {
+                DatBookmarks(DuongDanTep);
+            }
+            catch { }
+          
         }
 
         private void TabHienTai_ContextChoiceSelectedTextInsert(IContextChoiceController sender, ContextChoiceTextInsertEventArgs e)
@@ -925,28 +931,44 @@ namespace Kaliz
         //}
 
         private List<string> HisBookmark = new List<string>();
-        private void DatBookmarks()
+        private void DatBookmarks( string path_file)
         {  
             try
             {
-                string lines;
-                string re = string.Empty;
-                System.IO.StreamReader file = new StreamReader(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\Kaliz\\BookmarksList.txt");
-                while ((lines = file.ReadLine()) != null)
+                try
                 {
-                    HisBookmark.Add(lines);
-                    if (lines.Contains(TabHienTai.FileName))
+
+
+                    if (File.Exists(path_file))
                     {
-                        re = lines; break;
+                        foreach (ListViewDataItem item in bookmarkList.Items.ToList())
+                        {
+
+                            if (item[1].ToString().Contains(Path.GetFileName(TabHienTai.FileName)))
+                                bookmarkList.Items.Remove(item);
+                        }
+
                     }
 
+                    else
+                    {
+                        foreach (ListViewDataItem item in bookmarkList.Items.ToList())
+                        {
+                            if (item[1].ToString().Contains(DockPar.DocumentManager.ActiveDocument.TabStripItem.Text))
+                                bookmarkList.Items.Remove(item);
+                        }
+                    }
+
+
                 }
-                //   string re = string.Empty;
-                //string[] lines = File.ReadAllLines(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\Kaliz\\BookmarksList.txt");
+                catch { }
+
+                string re = GetLineDataBase(path_file);
 
                 string[] tokens = re.Split(' ');
                 foreach (var item in tokens)
                 {
+                    MessageBox.Show(item);
                     try
                     {
                         BrushInfo brushInfo = new BrushInfo(Color.Turquoise);
@@ -1624,8 +1646,6 @@ namespace Kaliz
                     TabHienTai.SaveOnClose = true;
                     TabHienTai.Close();
                     DockPar.DocumentManager.ActiveDocument.Close();
-
-
                 }
 
             }
