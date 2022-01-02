@@ -1564,13 +1564,81 @@ namespace Kaliz
 
         private void DockPar_DockWindowClosing(object sender, DockWindowCancelEventArgs e)
         {
-           try
+            string path_into = "";
+            try
+            {
+                path_into = TabHienTai.FileName;
+            }
+            catch { }
+           
+            try
+            {
+                if (Path.GetFileName(path_into) == DockPar.DocumentManager.ActiveDocument.TabStripItem.Text)
+                {
+                    string bookmarks_line = "";
+
+                    foreach (var item in listClosedFiles.Items)
+                    {
+                        if (item.Text == TabHienTai.FileName)
+                            listClosedFiles.Items.Remove(item);
+                    }
+                    listClosedFiles.Items.Add(TabHienTai.FileName);
+                    foreach (var item in bookmarkList.Items)
+                    {
+                        if (item[2].ToString() == TabHienTai.FileName)
+                            bookmarks_line += " " + item[0].ToString();
+                    }
+                    try
+                    {
+
+
+                        if (File.Exists(path_into))
+                        {
+                            foreach (ListViewDataItem item in bookmarkList.Items.ToList())
+                            {
+
+                                if (item[1].ToString().Contains(Path.GetFileName(TabHienTai.FileName)))
+                                    bookmarkList.Items.Remove(item);
+                            }
+
+                        }
+
+                        else
+                        {
+                            foreach (ListViewDataItem item in bookmarkList.Items.ToList())
+                            {
+                                if (item[1].ToString().Contains(DockPar.DocumentManager.ActiveDocument.TabStripItem.Text))
+                                    bookmarkList.Items.Remove(item);
+                            }
+                        }
+
+
+                    }
+                    catch { }
+                   
+                    InsertDataBase(path_into, bookmarks_line);
+                    RemoveDataBase();
+                }
+                else
+                {
+                    TabHienTai.SaveOnClose = true;
+                    TabHienTai.Close();
+                    DockPar.DocumentManager.ActiveDocument.Close();
+
+
+                }
+
+            }
+            catch { }
+
+            try
             {
                
                 if (e.NewWindow.Text == DockPar.DocumentManager.ActiveDocument.Text)
                 {
                     if (File.Exists(TabHienTai.FileName))
                         listClosedFiles.Items.Add(TabHienTai.FileName);
+                   
                     TabHienTai.Close();
                   
                 }
@@ -1581,65 +1649,9 @@ namespace Kaliz
             }
             catch
             { }
+
+            
          
-
-            //try
-            //{
-            //    if(Path.GetFileName(TabHienTai.FileName)==DockPar.DocumentManager.ActiveDocument.Text)
-            //    {
-            //        string bookmarks=TabHienTai.FileName+"|";
-            //        foreach (var item in listClosedFiles.Items)
-            //        {
-            //            if (item.Text == TabHienTai.FileName) listClosedFiles.Items.Remove(item);
-            //        }
-            //        listClosedFiles.Items.Add(TabHienTai.FileName);
-            //        foreach(var item in bookmarkList.Items)
-            //        {
-            //            if (item[2].ToString() == TabHienTai.FileName)
-            //                bookmarks += " "+item[0].ToString(); 
-            //        }
-            //        try
-            //        {
-
-
-                //            if (File.Exists(TabHienTai.FileName))
-                //            {
-                //                foreach (ListViewDataItem item in bookmarkList.Items.ToList())
-                //                {
-
-                //                    if (item[1].ToString().Contains(Path.GetFileName(TabHienTai.FileName)))
-                //                        bookmarkList.Items.Remove(item);
-                //                }
-
-                //            }
-
-                //            else
-                //            {
-                //                foreach (ListViewDataItem item in bookmarkList.Items.ToList())
-                //                {
-                //                    if (item[1].ToString().Contains(DockPar.DocumentManager.ActiveDocument.TabStripItem.Text))
-                //                        bookmarkList.Items.Remove(item);
-                //                }
-                //            }
-
-
-                //        }
-                //        catch { }
-
-                //Lưu Bookmarks đang bị lỗi
-                //  //  LuuBookmarks(bookmarks);
-                //}else
-                //{
-                //    TabHienTai.SaveOnClose = true;
-                //    TabHienTai.Close();
-                //    DockPar.DocumentManager.ActiveDocument.Close();
-
-                //}
-
-
-
-                //}
-                //catch { }
 
 
 
@@ -6076,6 +6088,7 @@ End;
             cmd.CommandText = "update Bookmark set Line='" + line + "' where Path='" + path + "'";
             cmd.Connection = oleConnect;
             cmd.ExecuteNonQuery();
+            DisconnectDataBase();
 
         }
         private void RemoveDataBase()
@@ -6088,6 +6101,11 @@ End;
             cmd.ExecuteNonQuery();
             DisconnectDataBase();
 
+        }
+
+        private void radMenuItem1_Click_1(object sender, EventArgs e)
+        {
+            InsertDataBase(@"\sd\\qwd\sdq\we\f:helo", "3 4 5 2 3 4");
         }
     }
 }
