@@ -433,21 +433,22 @@ namespace Kaliz
 
             try
             {
+                ConnectDataBase();
 
-                using (StreamReader Doc = new StreamReader(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\Kaliz\\Histo.txt"))
-                {
-                    string dong;
-                    while ((dong = Doc.ReadLine()) != null)
+                using (OleDbCommand selectCommand = new OleDbCommand("SELECT all * FROM Recent", oleConnect))
+                {                 
+                    DataTable table = new DataTable();
+                    OleDbDataAdapter adapter = new OleDbDataAdapter();
+                    adapter.SelectCommand = selectCommand;
+                    adapter.Fill(table);
+
+                    foreach (DataRow row in table.Rows)
                     {
-
-                        recentList.Items.Add(dong);
-
-
-
+                        recentList.Items.Add ( row["Path"].ToString());                       
                     }
                 }
-                if (recentList.Items.Count >= 10)
-                    File.WriteAllText(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\Kaliz\\Histo.txt", string.Empty);
+                DisconnectDataBase();
+                DockPar.DockWindowClosing += DockPar_DockWindowClosing;
 
             }
             catch { }
@@ -540,7 +541,7 @@ namespace Kaliz
             //TaiLieu.TabStrip.SelectedIndexChanged += TabStrip_SelectedIndexChanged;
             DanhDau.DragDrop += DanhDau_DragDrop;
             
-            DockPar.DockWindowClosing += DockPar_DockWindowClosing;
+            
             DanhDau.ContextChoiceBorderColor = Color.FromArgb(64, 224, 208);
             //DanhDau.WhiteSpaceIndicators.NewLineString = "\n";
             //DanhDau.contextchoice
@@ -968,7 +969,7 @@ namespace Kaliz
                 string[] tokens = re.Split(' ');
                 foreach (var item in tokens)
                 {
-                    MessageBox.Show(item);
+                 
                     try
                     {
                         BrushInfo brushInfo = new BrushInfo(Color.Turquoise);
@@ -1575,7 +1576,7 @@ namespace Kaliz
         private void DanhDau_DragDrop(object sender, DragEventArgs e)
 
         {
-            MessageBox.Show(e.Data.ToString());
+           // MessageBox.Show(e.Data.ToString());
             string dropfile = TabHienTai.FileName;
             TabHienTai.Close();
             DockPar.ActiveWindow.Close();
@@ -1586,24 +1587,30 @@ namespace Kaliz
 
         private void DockPar_DockWindowClosing(object sender, DockWindowCancelEventArgs e)
         {
-            string path_into = "";
-            try
+          try
             {
-                path_into = TabHienTai.FileName;
+                SaveRecent(TabHienTai.FileName);
             }
             catch { }
-           
+
             try
             {
+                string path_into = TabHienTai.FileName;
                 if (Path.GetFileName(path_into) == DockPar.DocumentManager.ActiveDocument.TabStripItem.Text)
                 {
+                  
                     string bookmarks_line = "";
+                    try
 
-                    foreach (var item in listClosedFiles.Items)
                     {
-                        if (item.Text == TabHienTai.FileName)
-                            listClosedFiles.Items.Remove(item);
+                        foreach (var item in listClosedFiles.Items)
+                        {
+                            if (item.Text == TabHienTai.FileName)
+                                listClosedFiles.Items.Remove(item);
+                        }
                     }
+                    catch { }
+                   
                     listClosedFiles.Items.Add(TabHienTai.FileName);
                     foreach (var item in bookmarkList.Items)
                     {
@@ -1636,20 +1643,30 @@ namespace Kaliz
 
 
                     }
-                    catch { }
-                   
+                    catch
+                    {
+                     
+                    }
+                  
                     InsertDataBase(path_into, bookmarks_line);
                     RemoveDataBase();
                 }
                 else
                 {
+                   // MessageBox.Show("Khong du dieu kien");
+                   // MessageBox.Show(Path.GetFileName(path_into) + "<|>" + DockPar.DocumentManager.ActiveDocument.TabStripItem.Text);
                     TabHienTai.SaveOnClose = true;
                     TabHienTai.Close();
                     DockPar.DocumentManager.ActiveDocument.Close();
+
                 }
 
             }
-            catch { }
+            catch 
+            {
+              //  MessageBox.Show();
+               // MessageBox.Show("Loi ngoai cung");
+            }
 
             try
             {
@@ -1670,11 +1687,50 @@ namespace Kaliz
             catch
             { }
 
-            
-         
+
+        
 
 
+        }
+        private void SaveRecent(string path)
+        {
+            bool isContain = false;
+            try
+            {
+               
+                ConnectDataBase();
+                OleDbCommand cmd = new OleDbCommand();
+                cmd.CommandType = CommandType.Text;
+                cmd.CommandText = "select Path from Recent where Path='" + path + "'";
+                cmd.Connection = oleConnect;
+                OleDbDataReader reader = cmd.ExecuteReader();
+                if (reader.Read())
+                {
+                    reader.Close();
+                    //DisconnectDataBase();
+                    isContain = true;
+                }
 
+                else
+                {
+                    reader.Close();
+                    // DisconnectDataBase();
+                    isContain = false;
+                }
+                if (isContain == false)
+                {
+
+                    OleDbCommand insertcmd = new OleDbCommand();
+                    insertcmd.CommandType = CommandType.Text;
+                    insertcmd.CommandText = "insert into Recent(Path)Values('" + path + "')";
+                    insertcmd.Connection = oleConnect;
+                    insertcmd.ExecuteNonQuery();
+                }
+                DisconnectDataBase();
+            }
+            catch { }
+
+          
 
         }
 
@@ -1951,8 +2007,9 @@ namespace Kaliz
 
         private void DanhDau_Closing(object sender, StreamCloseEventArgs e)
         {
-            e.Action = SaveChangesAction.ShowDialog;
-            
+         
+          
+
         }
 
         private void DanhDau_ContextChoiceOpen_ForPython(IContextChoiceController controller)
