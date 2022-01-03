@@ -426,32 +426,12 @@ namespace Kaliz
             var clipBoard = new SharpClipboard();
             clipBoard.MonitorClipboard = true;
             clipBoard.ClipboardChanged += ClipBoard_ClipboardChanged;
-            txtIP = GetLocalIP();
-            
+            txtIP = GetLocalIP();                
+              
+             DockPar.DockWindowClosing += DockPar_DockWindowClosing;
 
 
-
-            try
-            {
-                ConnectDataBase();
-
-                using (OleDbCommand selectCommand = new OleDbCommand("SELECT all * FROM Recent", oleConnect))
-                {                 
-                    DataTable table = new DataTable();
-                    OleDbDataAdapter adapter = new OleDbDataAdapter();
-                    adapter.SelectCommand = selectCommand;
-                    adapter.Fill(table);
-
-                    foreach (DataRow row in table.Rows)
-                    {
-                        recentList.Items.Add ( row["Path"].ToString());                       
-                    }
-                }
-                DisconnectDataBase();
-                DockPar.DockWindowClosing += DockPar_DockWindowClosing;
-
-            }
-            catch { }
+            bgrLoadRecent.RunWorkerAsync();
 
 
 
@@ -6192,9 +6172,34 @@ End;
 
         }
 
-        private void radMenuItem1_Click_1(object sender, EventArgs e)
+        private void LoadRecentFromDataBase()
         {
-            InsertDataBase(@"\sd\\qwd\sdq\we\f:helo", "3 4 5 2 3 4");
+            try
+            {
+                ConnectDataBase();
+                using (OleDbCommand selectCommand = new OleDbCommand("SELECT all * FROM Recent", oleConnect))
+                {
+                    DataTable table = new DataTable();
+                    OleDbDataAdapter adapter = new OleDbDataAdapter();
+                    adapter.SelectCommand = selectCommand;
+                    adapter.Fill(table);
+
+                    foreach (DataRow row in table.Rows)
+                    {
+                        recentList.Items.Add(row["Path"].ToString());
+                    }
+                }
+                DisconnectDataBase();
+            }
+            catch
+            {
+
+            }
+          
+        }
+        private void bgrLoadRecent_DoWork(object sender, System.ComponentModel.DoWorkEventArgs e)
+        {
+            LoadRecentFromDataBase();
         }
     }
 }
