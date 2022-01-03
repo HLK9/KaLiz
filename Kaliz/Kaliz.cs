@@ -6083,8 +6083,7 @@ End;
                 oleConnect.Close();
             }
         }
-        //  private string ResultLine;
-               
+                    
         private string GetLineDataBase(string condition)
         {
             ConnectDataBase();
