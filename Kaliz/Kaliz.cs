@@ -6031,7 +6031,19 @@ End;
 
         private void radButton2_Click(object sender, EventArgs e)
         {
-            Process.Start("https://cmbst.wordpress.com/aboutgopas/");
+            try
+            {
+                ConnectDataBase();
+                OleDbCommand cmd = new OleDbCommand();
+                cmd.CommandType = CommandType.Text;
+                cmd.CommandText = "Delete * from Recent";
+                cmd.Connection = oleConnect;
+                cmd.ExecuteNonQuery();
+                DisconnectDataBase();
+                recentList.Items.Clear();
+            }
+            catch { }
+          
         }
 
         private void HFeedback_Click(object sender, EventArgs e)
