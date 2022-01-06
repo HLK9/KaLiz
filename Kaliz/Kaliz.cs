@@ -6063,7 +6063,7 @@ End;
             upa.ShowDialog();
         }
         //Ket noi Database Access
-        private string strConnectData = @"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=Data_Kaliz.accdb";
+        private string strConnectData = @"Provider=Microsoft.ACE.OLEDB.12.0;Data Source="+ Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData)+@"\Kaliz\Data_Kaliz.accdb";
         OleDbConnection oleConnect = null;
         private void ConnectDataBase()
         {
