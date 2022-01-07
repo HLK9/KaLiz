@@ -6200,6 +6200,95 @@ End;
         {
             LoadRecentFromDataBase();
         }
+        private string GetNoteFromDataBase( string condition)
+        {
+           
+                ConnectDataBase();
+                string a = "";
+                OleDbCommand cmd = new OleDbCommand();
+                cmd.CommandType = CommandType.Text;
+                cmd.CommandText = "select Content from Note where Path='" + condition + "'";
+                cmd.Connection = oleConnect;
+                OleDbDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    a = reader.GetString(0);
+                }
+                reader.Close();
+                DisconnectDataBase();
+                return a;
+
+            
+        }
+        private void UpdateNoteInDataBase(string path, string content)
+        {
+
+           // ConnectDataBase();
+            OleDbCommand cmd = new OleDbCommand(); 
+            cmd.CommandType = CommandType.Text;
+            cmd.CommandText = "update Note set Content='" + content + "' where Path='" + path + "'";
+            cmd.Connection = oleConnect;
+            cmd.ExecuteNonQuery();
+           // DisconnectDataBase();
+
+        }
+        private void RemoveNoteDataBase()
+        {
+            ConnectDataBase();
+            OleDbCommand cmd = new OleDbCommand();
+            cmd.CommandType = CommandType.Text;
+            cmd.CommandText = "delete from Note where Content LIKE '' OR Content IS NULL";
+            cmd.Connection = oleConnect;
+            cmd.ExecuteNonQuery();
+            DisconnectDataBase();
+
+        }
+        private void InsertNoteDataBase(string path, string content)
+        {
+            ConnectDataBase();
+
+            if (IsContainPathInNoteDataBase(path) == true)
+            {
+              
+                UpdateNoteInDataBase(path, content);
+             
+            }
+            else
+            {
+
+                OleDbCommand cmd = new OleDbCommand();
+                cmd.CommandType = CommandType.Text;
+                cmd.CommandText = "insert into Note(Path,Content)Values('" + path + "','" + content + "')";
+                cmd.Connection = oleConnect;
+                cmd.ExecuteNonQuery();
+               
+
+            }
+            DisconnectDataBase();
+        }
+        private bool IsContainPathInNoteDataBase(string condition)
+        {
+            ConnectDataBase();
+            OleDbCommand cmd = new OleDbCommand();
+            cmd.CommandType = CommandType.Text;
+            cmd.CommandText = "select Content from Note where Path='" + condition + "'";
+            cmd.Connection = oleConnect;
+            OleDbDataReader reader = cmd.ExecuteReader();
+            if (reader.Read())
+            {
+                reader.Close();
+                DisconnectDataBase();
+                return true;
+            }
+
+            else
+            {
+                reader.Close();
+                DisconnectDataBase();
+                return false;
+            }
+
+        }
     }
 }
 
