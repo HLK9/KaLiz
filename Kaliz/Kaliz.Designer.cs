@@ -41,6 +41,7 @@ namespace Kaliz
             Telerik.WinControls.UI.ListViewDetailColumn listViewDetailColumn3 = new Telerik.WinControls.UI.ListViewDetailColumn("Column 2", "File");
             Telerik.WinControls.UI.ListViewDetailColumn listViewDetailColumn4 = new Telerik.WinControls.UI.ListViewDetailColumn("Column 0", "Line");
             Telerik.WinControls.UI.ListViewDetailColumn listViewDetailColumn5 = new Telerik.WinControls.UI.ListViewDetailColumn("Column 1", "File Name");
+            this.dockWindowPlaceholder1 = new Telerik.WinControls.UI.Docking.DockWindowPlaceholder();
             this.MFile = new Telerik.WinControls.UI.RadMenuItem();
             this.FNew = new Telerik.WinControls.UI.RadMenuItem();
             this.FOpen = new Telerik.WinControls.UI.RadMenuItem();
@@ -193,6 +194,8 @@ namespace Kaliz
             this.radListBreakpoint = new Telerik.WinControls.UI.RadListView();
             this.DClosedFiles = new Telerik.WinControls.UI.Docking.ToolWindow();
             this.listClosedFiles = new Telerik.WinControls.UI.RadListView();
+            this.DNote = new Telerik.WinControls.UI.Docking.ToolWindow();
+            this.richNoteEdit = new Telerik.WinControls.UI.RadRichTextEditor();
             this.MBookmark = new Telerik.WinControls.UI.RadMenuItem();
             this.BBookmark = new Telerik.WinControls.UI.RadMenuItem();
             this.radMenuItem2 = new Telerik.WinControls.UI.RadMenuItem();
@@ -242,11 +245,10 @@ namespace Kaliz
             this.contextMenuData = new Telerik.WinControls.UI.RadContextMenu(this.components);
             this.contextMenuDirectory = new Telerik.WinControls.UI.RadContextMenu(this.components);
             this.MenuTop = new Telerik.WinControls.UI.RadMenu();
+            this.radMenuItem1 = new Telerik.WinControls.UI.RadMenuItem();
             this.contextMenuOutput = new Telerik.WinControls.UI.RadContextMenu(this.components);
             this.bgrLoadRecent = new System.ComponentModel.BackgroundWorker();
-            this.dockWindowPlaceholder1 = new Telerik.WinControls.UI.Docking.DockWindowPlaceholder();
-            this.DNote = new Telerik.WinControls.UI.Docking.ToolWindow();
-            this.richNoteEdit = new Telerik.WinControls.UI.RadRichTextEditor();
+            this.bgrLoadNote = new System.ComponentModel.BackgroundWorker();
             ((System.ComponentModel.ISupportInitialize)(this.DockPar)).BeginInit();
             this.DockPar.SuspendLayout();
             this.DWorkingDirectory.SuspendLayout();
@@ -290,12 +292,24 @@ namespace Kaliz
             ((System.ComponentModel.ISupportInitialize)(this.radListBreakpoint)).BeginInit();
             this.DClosedFiles.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.listClosedFiles)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.toolTabStrip3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.MenuTop)).BeginInit();
             this.DNote.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.richNoteEdit)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.toolTabStrip3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MenuTop)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this)).BeginInit();
             this.SuspendLayout();
+            // 
+            // dockWindowPlaceholder1
+            // 
+            this.dockWindowPlaceholder1.AutoHideSize = new System.Drawing.Size(200, 200);
+            this.dockWindowPlaceholder1.DockWindowName = "DWorkingDirectory";
+            this.dockWindowPlaceholder1.DockWindowText = "Working Directory";
+            this.dockWindowPlaceholder1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            this.dockWindowPlaceholder1.Location = new System.Drawing.Point(0, 0);
+            this.dockWindowPlaceholder1.Name = "dockWindowPlaceholder1";
+            this.dockWindowPlaceholder1.PreviousDockState = Telerik.WinControls.UI.Docking.DockState.Docked;
+            this.dockWindowPlaceholder1.Size = new System.Drawing.Size(200, 200);
+            this.dockWindowPlaceholder1.Text = "dockWindowPlaceholder1";
             // 
             // MFile
             // 
@@ -1125,7 +1139,7 @@ namespace Kaliz
             // 
             // DockPar
             // 
-            this.DockPar.ActiveWindow = this.DNote;
+            this.DockPar.ActiveWindow = this.DWorkingDirectory;
             this.DockPar.CausesValidation = false;
             this.DockPar.Controls.Add(this.toolTabStrip1);
             this.DockPar.Controls.Add(this.radSplitContainer1);
@@ -1673,6 +1687,33 @@ namespace Kaliz
             this.listClosedFiles.ThemeName = "MaterialTeal";
             this.listClosedFiles.ItemMouseDoubleClick += new Telerik.WinControls.UI.ListViewItemEventHandler(this.listClosedFiles_ItemMouseDoubleClick);
             // 
+            // DNote
+            // 
+            this.DNote.Caption = null;
+            this.DNote.Controls.Add(this.richNoteEdit);
+            this.DNote.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            this.DNote.Location = new System.Drawing.Point(4, 52);
+            this.DNote.Name = "DNote";
+            this.DNote.PreviousDockState = Telerik.WinControls.UI.Docking.DockState.Docked;
+            this.DNote.Size = new System.Drawing.Size(1038, 133);
+            this.DNote.Text = "Note";
+            this.DNote.ToolCaptionButtons = Telerik.WinControls.UI.Docking.ToolStripCaptionButtons.AutoHide;
+            // 
+            // richNoteEdit
+            // 
+            this.richNoteEdit.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.richNoteEdit.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.richNoteEdit.IsContextMenuEnabled = false;
+            this.richNoteEdit.IsPasteOptionsPopupEnabled = false;
+            this.richNoteEdit.IsSelectionMiniToolBarEnabled = false;
+            this.richNoteEdit.Location = new System.Drawing.Point(0, 0);
+            this.richNoteEdit.Name = "richNoteEdit";
+            this.richNoteEdit.SelectionFill = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(203)))), ((int)(((byte)(196)))));
+            this.richNoteEdit.SelectionStroke = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(203)))), ((int)(((byte)(196)))));
+            this.richNoteEdit.Size = new System.Drawing.Size(1038, 133);
+            this.richNoteEdit.TabIndex = 1;
+            this.richNoteEdit.ThemeName = "MaterialTeal";
+            // 
             // MBookmark
             // 
             this.MBookmark.Items.AddRange(new Telerik.WinControls.RadItem[] {
@@ -1990,55 +2031,27 @@ namespace Kaliz
             this.MWindows,
             this.MPersonal,
             this.MShareAndConnect,
-            this.MHelp});
+            this.MHelp,
+            this.radMenuItem1});
             this.MenuTop.Location = new System.Drawing.Point(0, 0);
             this.MenuTop.Name = "MenuTop";
             this.MenuTop.Size = new System.Drawing.Size(1257, 37);
             this.MenuTop.TabIndex = 1;
             this.MenuTop.ThemeName = "MaterialTeal";
             // 
+            // radMenuItem1
+            // 
+            this.radMenuItem1.Name = "radMenuItem1";
+            this.radMenuItem1.Text = "Test";
+            this.radMenuItem1.Click += new System.EventHandler(this.radMenuItem1_Click_1);
+            // 
             // bgrLoadRecent
             // 
             this.bgrLoadRecent.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bgrLoadRecent_DoWork);
             // 
-            // dockWindowPlaceholder1
+            // bgrLoadNote
             // 
-            this.dockWindowPlaceholder1.AutoHideSize = new System.Drawing.Size(200, 200);
-            this.dockWindowPlaceholder1.DockWindowName = "DWorkingDirectory";
-            this.dockWindowPlaceholder1.DockWindowText = "Working Directory";
-            this.dockWindowPlaceholder1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.dockWindowPlaceholder1.Location = new System.Drawing.Point(0, 0);
-            this.dockWindowPlaceholder1.Name = "dockWindowPlaceholder1";
-            this.dockWindowPlaceholder1.PreviousDockState = Telerik.WinControls.UI.Docking.DockState.Docked;
-            this.dockWindowPlaceholder1.Size = new System.Drawing.Size(200, 200);
-            this.dockWindowPlaceholder1.Text = "dockWindowPlaceholder1";
-            // 
-            // DNote
-            // 
-            this.DNote.Caption = null;
-            this.DNote.Controls.Add(this.richNoteEdit);
-            this.DNote.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.DNote.Location = new System.Drawing.Point(4, 52);
-            this.DNote.Name = "DNote";
-            this.DNote.PreviousDockState = Telerik.WinControls.UI.Docking.DockState.Docked;
-            this.DNote.Size = new System.Drawing.Size(1038, 133);
-            this.DNote.Text = "Note";
-            this.DNote.ToolCaptionButtons = Telerik.WinControls.UI.Docking.ToolStripCaptionButtons.AutoHide;
-            // 
-            // richNoteEdit
-            // 
-            this.richNoteEdit.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.richNoteEdit.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.richNoteEdit.IsContextMenuEnabled = false;
-            this.richNoteEdit.IsPasteOptionsPopupEnabled = false;
-            this.richNoteEdit.IsSelectionMiniToolBarEnabled = false;
-            this.richNoteEdit.Location = new System.Drawing.Point(0, 0);
-            this.richNoteEdit.Name = "richNoteEdit";
-            this.richNoteEdit.SelectionFill = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(203)))), ((int)(((byte)(196)))));
-            this.richNoteEdit.SelectionStroke = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(203)))), ((int)(((byte)(196)))));
-            this.richNoteEdit.Size = new System.Drawing.Size(1038, 133);
-            this.richNoteEdit.TabIndex = 1;
-            this.richNoteEdit.ThemeName = "MaterialTeal";
+            this.bgrLoadNote.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bgrLoadNote_DoWork);
             // 
             // Kaliz
             // 
@@ -2105,10 +2118,10 @@ namespace Kaliz
             ((System.ComponentModel.ISupportInitialize)(this.radListBreakpoint)).EndInit();
             this.DClosedFiles.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.listClosedFiles)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.toolTabStrip3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.MenuTop)).EndInit();
             this.DNote.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.richNoteEdit)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.toolTabStrip3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MenuTop)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -2324,5 +2337,7 @@ namespace Kaliz
         private Telerik.WinControls.UI.Docking.ToolWindow DNote;
         private Telerik.WinControls.UI.Docking.DockWindowPlaceholder dockWindowPlaceholder1;
         private RadRichTextEditor richNoteEdit;
+        private RadMenuItem radMenuItem1;
+        private System.ComponentModel.BackgroundWorker bgrLoadNote;
     }
 }
