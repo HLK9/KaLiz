@@ -31,7 +31,7 @@ using System.Data;
 
 namespace Kaliz
 {
-   
+
     public partial class Kaliz : Telerik.WinControls.UI.RadForm
     {
         private bool deBug = true;
@@ -40,7 +40,7 @@ namespace Kaliz
         private bool enableContextPrompt = false;
         private bool enableParse = false;
         private bool showlinenum = true;
-        private string TenTheme= "MaterialTeal";
+        private string TenTheme = "MaterialTeal";
         private bool themechanged;
         public string Pathtosendemail;
         private string ConsoleUse = "Cmder";
@@ -53,7 +53,7 @@ namespace Kaliz
         private int chiso { get; set; }
         private string Para = string.Empty;
         private string PascalOption = string.Empty;
-       
+
 
         public Kaliz()
         {
@@ -63,9 +63,9 @@ namespace Kaliz
             //Thread.Sleep(5000);
             //thr.Abort();           
             InitializeComponent();
-            Thread.Sleep(4000);           
-           // DockPar.SelectedTabChanging += DockPar_SelectedTabChanging;
-            TaoPhimTat();           
+            Thread.Sleep(4000);
+            // DockPar.SelectedTabChanging += DockPar_SelectedTabChanging;
+            TaoPhimTat();
             Doutput.AutoHide();
             Dclipboard.AutoHide();
             DockPar.ShowDocumentCloseButton = true;
@@ -78,7 +78,7 @@ namespace Kaliz
             var contextMenuData_Merge = new RadMenuItem();
             contextMenuData_Merge.Text = "Different Merge with Current Tab";
             contextMenuData_Merge.Click += ContextMenuData_Merge_Click;
-            contextMenuData.Items.Add( contextMenuData_Merge);
+            contextMenuData.Items.Add(contextMenuData_Merge);
             var contextMenuData_Remove = new RadMenuItem();
             contextMenuData_Remove.Click += ContextMenuData_Remove_Click;
             contextMenuData_Remove.Text = "Remove";
@@ -118,16 +118,16 @@ namespace Kaliz
             contextMenuOutput.Items.Add(contextMenuOutput_Trans);
 
             //breakpoit Context
-        
+
 
             //Tooltip Mở Server
-            SStartServer.ToolTipText = "Start Server with IP: " + GetLocalIP() + " Port: "+int.Parse(txtPort);
+            SStartServer.ToolTipText = "Start Server with IP: " + GetLocalIP() + " Port: " + int.Parse(txtPort);
             SConnect.ToolTipText = "Connect with IP: " + GetLocalIP() + " Port: " + int.Parse(txtPort);
             //listDataReceived.ShowItemToolTips = true;
             listDataReceived.ToolTipTextNeeded += ListDataReceived_ToolTipTextNeeded;
             radlistclip.ToolTipTextNeeded += Radlistclip_ToolTipTextNeeded;
             DWorkingDirectory.AllowedDockState = ~AllowedDockState.Floating;
-          
+
 
 
 
@@ -146,9 +146,9 @@ namespace Kaliz
 
         private void ContextRemoveBreakpoint_Click(object sender, EventArgs e)
         {
-          foreach(var poit in radListBreakpoint.Items)
+            foreach (var poit in radListBreakpoint.Items)
             {
-                if(poit.Selected)
+                if (poit.Selected)
                 {
                     try
                     {
@@ -163,17 +163,17 @@ namespace Kaliz
                                 radListBreakpoint.Items.Remove(radListBreakpoint.SelectedItem);
                                 TabHienTai.BookmarkRemove(a);
                             }
-                    }
-                      
+                        }
+
                     }
                     catch
                     {
 
                     }
                 }
-               
+
             }
-           
+
 
 
 
@@ -243,7 +243,7 @@ namespace Kaliz
             {
                 MessageBox.Show("This cannot be applied");
             }
-           
+
         }
 
         private void ContextDirectory_Del_Click(object sender, EventArgs e)
@@ -269,7 +269,7 @@ namespace Kaliz
             {
                 MessageBox.Show("This cannot be applied");
             }
-            
+
         }
 
         string filenameDir;
@@ -336,8 +336,8 @@ namespace Kaliz
             {
                 MessageBox.Show("This cannot be applied");
             }
-           
-           
+
+
         }
 
         private void ContextDirectory_Open_Click(object sender, EventArgs e)
@@ -362,7 +362,7 @@ namespace Kaliz
             {
                 return;
             }
-           
+
         }
 
         private void ListDataReceived_ToolTipTextNeeded(object sender, ToolTipTextNeededEventArgs e)
@@ -375,7 +375,7 @@ namespace Kaliz
             {
                 return;
             }
-            
+
         }
 
         private void ContextMenuData_Remove_Click(object sender, EventArgs e)
@@ -407,12 +407,12 @@ namespace Kaliz
 
         private void Item_Click(object sender, EventArgs e)
         {
-            if (TabHienTai != null) 
+            if (TabHienTai != null)
             {
-                
-                TabHienTai.InsertText(TabHienTai.CurrentLine,TabHienTai.CurrentColumn, "\n" + listDataReceived.SelectedItem.Text + "\n");
+
+                TabHienTai.InsertText(TabHienTai.CurrentLine, TabHienTai.CurrentColumn, "\n" + listDataReceived.SelectedItem.Text + "\n");
             }
-           
+
         }
         private void Kaliz_Load(object sender, EventArgs e)
         {
@@ -426,9 +426,9 @@ namespace Kaliz
             var clipBoard = new SharpClipboard();
             clipBoard.MonitorClipboard = true;
             clipBoard.ClipboardChanged += ClipBoard_ClipboardChanged;
-            txtIP = GetLocalIP();                
-              
-             DockPar.DockWindowClosing += DockPar_DockWindowClosing;
+            txtIP = GetLocalIP();
+
+            DockPar.DockWindowClosing += DockPar_DockWindowClosing;
 
 
             bgrLoadRecent.RunWorkerAsync();
@@ -442,26 +442,26 @@ namespace Kaliz
 
         private void MenuZoom_TextChanged(object sender, EventArgs e)
         {
-           
+
         }
 
         private void ClipBoard_ClipboardChanged(object sender, SharpClipboard.ClipboardChangedEventArgs e)
         {
             bool containd = false;
-            foreach(var item in radlistclip.Items)
+            foreach (var item in radlistclip.Items)
             {
                 if (item.Text == Clipboard.GetText())
                     containd = true;
-            } 
+            }
 
-           if(containd!= true)
-                    radlistclip.Items.Add(Clipboard.GetText());
-             
+            if (containd != true)
+                radlistclip.Items.Add(Clipboard.GetText());
+
         }
 
         private void TaoPhimTat()
         {
-           
+
             FNew.Shortcuts.Add(new RadShortcut(Keys.Control, Keys.N));
             FOpen.Shortcuts.Add(new RadShortcut(Keys.Control, Keys.O));
             FSave.Shortcuts.Add(new RadShortcut(Keys.Control, Keys.S));
@@ -470,28 +470,28 @@ namespace Kaliz
             ERedo.Shortcuts.Add(new RadShortcut(Keys.Control | Keys.Shift, Keys.Z));
             EStart.Shortcuts.Add(new RadShortcut(Keys.Control, Keys.Up));
             EEnd.Shortcuts.Add(new RadShortcut(Keys.Control, Keys.Down));
-            EIndent.Shortcuts.Add(new RadShortcut(Keys.Control,Keys.OemCloseBrackets));
+            EIndent.Shortcuts.Add(new RadShortcut(Keys.Control, Keys.OemCloseBrackets));
             EOutdent.Shortcuts.Add(new RadShortcut(Keys.Control, Keys.OemOpenBrackets));
             SwitchNext.Shortcuts.Add(new RadShortcut(Keys.Control, Keys.PageUp));
             SwitchPrevious.Shortcuts.Add(new RadShortcut(Keys.Control, Keys.PageDown));
             LineDump.Shortcuts.Add(new RadShortcut(Keys.Control | Keys.Shift, Keys.D));
-            CutLine.Shortcuts.Add(new RadShortcut( Keys.Alt, Keys.X));
-            CopyLine.Shortcuts.Add(new RadShortcut( Keys.Alt, Keys.C));
+            CutLine.Shortcuts.Add(new RadShortcut(Keys.Alt, Keys.X));
+            CopyLine.Shortcuts.Add(new RadShortcut(Keys.Alt, Keys.C));
             //Tools
             FFindSelected.Shortcuts.Add(new RadShortcut(Keys.Control, Keys.Enter));
             TTermi.Shortcuts.Add(new RadShortcut(Keys.Control | Keys.Alt, Keys.T));
             //Build
             BBuild.Shortcuts.Add(new RadShortcut(Keys.Alt, Keys.F9));
             BRun.Shortcuts.Add(new RadShortcut(Keys.Control, Keys.F9));
-            BBuildaRun.Shortcuts.Add(new RadShortcut(Keys.Control|Keys.Shift,Keys.B));
+            BBuildaRun.Shortcuts.Add(new RadShortcut(Keys.Control | Keys.Shift, Keys.B));
             //Bookmark
             BBookmark.Shortcuts.Add(new RadShortcut(Keys.Control, Keys.M));
             radMenuItem2.Shortcuts.Add(new RadShortcut(Keys.Control | Keys.Shift, Keys.M));
             BBookmarkPre.Shortcuts.Add(new RadShortcut(Keys.Control, Keys.Oemcomma));
             BBookmarkNext.Shortcuts.Add(new RadShortcut(Keys.Control, Keys.OemPeriod));
             //Debug
-            BreakPointSet.Shortcuts.Add(new RadShortcut(Keys.Alt,Keys.B));
-            BreakPointRemove.Shortcuts.Add(new RadShortcut(Keys.Alt,Keys.V));
+            BreakPointSet.Shortcuts.Add(new RadShortcut(Keys.Alt, Keys.B));
+            BreakPointRemove.Shortcuts.Add(new RadShortcut(Keys.Alt, Keys.V));
 
         }
         /// <summary>
@@ -505,23 +505,23 @@ namespace Kaliz
             var DanhDau = new EditControl();
             //thu gom config
 
-           // DanhDau.AutoIndentGuideline = true;
-            
+            // DanhDau.AutoIndentGuideline = true;
+
             DanhDau.SetEncoding(Encoding.UTF8);
 
             DanhDau.Dock = DockStyle.Fill;
-           // DanhDau.Style = EditControlStyle.Office2016Colorful;
+            // DanhDau.Style = EditControlStyle.Office2016Colorful;
             DanhDau.LineNumbersFont = new Font("Consolas", 13);
             TaiLieu.Controls.Add(DanhDau);
             DanhDau.AllowDrop = true;
-            
+
             DanhDau.FileExtensions = new string[] { ".pas", ".c", ".cpp", ".cs", ".py" };
             DockPar.AddDocument(TaiLieu);
             //Theme
-            //TaiLieu.TabStrip.SelectedIndexChanged += TabStrip_SelectedIndexChanged;
+            TaiLieu.TabStrip.SelectedIndexChanged += TabStrip_SelectedIndexChanged;
             DanhDau.DragDrop += DanhDau_DragDrop;
-            
-            
+
+
             DanhDau.ContextChoiceBorderColor = Color.FromArgb(64, 224, 208);
             //DanhDau.WhiteSpaceIndicators.NewLineString = "\n";
             //DanhDau.contextchoice
@@ -541,7 +541,7 @@ namespace Kaliz
             else
             {
                 DanhDau.Configurator.Open(@"Lex\Config_D.xml");
-               
+
                 DanhDau.IndicatorMarginBackColor = Color.FromArgb(40, 42, 54);
                 DanhDau.LineNumbersColor = Color.FromArgb(98, 114, 164);
                 DanhDau.StatusBarSettings.VisualStyle = Syncfusion.Windows.Forms.Tools.Controls.StatusBar.VisualStyle.Office2016DarkGray;
@@ -553,16 +553,16 @@ namespace Kaliz
             if (DuongDanTep != null)
             {
                 LuuHisto(DuongDanTep);
-              
+
 
                 if (Path.GetExtension(DuongDanTep) == ".c" || Path.GetExtension(DuongDanTep) == ".cpp")
                 {
                     //DanhDau.WhiteSpaceIndicators.NewLineString = "\r\n";
                     DanhDau.SetNewLineStyle(Syncfusion.IO.NewLineStyle.Unix);
                     //Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
-                   DanhDau.LoadFile(DuongDanTep, Encoding.ASCII);
+                    DanhDau.LoadFile(DuongDanTep, Encoding.ASCII);
                     // string ConfigF = @"Lex\CppF.xml";
-                   
+
                     //DanhDau.Configurator.Open(ConfigF);
                     DanhDau.ApplyConfiguration("C++");
                     // DanhDau.ApplyConfiguration(KnownLanguages.C);
@@ -571,7 +571,7 @@ namespace Kaliz
                     DanhDau.ContextPromptOpen += DanhDau_ContextPromptOpen_ForC;
                     DanhDau.ContextPromptUpdate += DanhDau_ContextPromptUpdate_ForC;
                     DanhDau.UpdateContextToolTip += DanhDau_UpdateContextToolTip_ForC;
-                    
+
                 }
                 if (Path.GetExtension(DuongDanTep) == ".pas")
                 {
@@ -579,13 +579,13 @@ namespace Kaliz
                     //string ConfigF = @"Lex\Pascal.xml";
                     //DanhDau.Configurator.Open(ConfigF);
 
-                   DanhDau.ApplyConfiguration("Pascal");
+                    DanhDau.ApplyConfiguration("Pascal");
                     DanhDau.StatusBarSettings.FileNamePanel.Panel.Text = "Pascal";
                     DanhDau.ContextChoiceOpen += DanhDau_ContextChoiceOpen;
                     DanhDau.ContextPromptOpen += DanhDau_ContextPromptOpen_ForPascal;
                     DanhDau.ContextPromptUpdate += DanhDau_ContextPromptUpdate_ForPascal;
                     DanhDau.UpdateContextToolTip += DanhDau_UpdateContextToolTip_ForPascal;
-                   // DanhDau.AddCodeSnippet("Block code", "begin\nend");
+                    // DanhDau.AddCodeSnippet("Block code", "begin\nend");
 
                 }
                 if (Path.GetExtension(DuongDanTep) == ".py")
@@ -601,12 +601,12 @@ namespace Kaliz
                     DanhDau.ContextPromptUpdate += DanhDau_ContextPromptUpdate_ForPython;
                     DanhDau.ContextChoiceOpen += DanhDau_ContextChoiceOpen_ForPython;
                     DanhDau.UpdateContextToolTip += DanhDau_UpdateContextToolTip_ForPython;
-                    
+
 
                 }
                 //if(Path.GetExtension(DuongDanTep)==".java")
                 //{
-                    
+
                 //    DanhDau.LoadFile(DuongDanTep, Encoding.ASCII);                  
                 //    DanhDau.StatusBarSettings.FileNamePanel.Panel.Text = "Java";
                 //    string ConfigF = @"Lex\Java.xml";
@@ -623,19 +623,19 @@ namespace Kaliz
             else
             {
                 DanhDau.DeleteAll();
-               // if (TenTheme == "FluentDark")
-                    //{
-                    //  //  DanhDau.Configurator.Open(@"Lex\New_D.xml");
-                    //    DanhDau.ApplyConfiguration("Text");
-                    //}
-                    //else
-                    //{
-                    //   // DanhDau.Configurator.Open(@"Lex\New.xml");
-                    //    DanhDau.ApplyConfiguration("Text");
-                    //}
-                    DanhDau.ApplyConfiguration("Text");
+                // if (TenTheme == "FluentDark")
+                //{
+                //  //  DanhDau.Configurator.Open(@"Lex\New_D.xml");
+                //    DanhDau.ApplyConfiguration("Text");
+                //}
+                //else
+                //{
+                //   // DanhDau.Configurator.Open(@"Lex\New.xml");
+                //    DanhDau.ApplyConfiguration("Text");
+                //}
+                DanhDau.ApplyConfiguration("Text");
             }
-              
+
 
             TabHienTai.FilterAutoCompleteItems = true;
             DanhDau.MarkChangedLines = true;
@@ -645,7 +645,7 @@ namespace Kaliz
             DanhDau.Closing += DanhDau_Closing;
             DanhDau.CurrentLineHighlightColor = Color.Teal;
             DanhDau.ShowIndicatorMargin = true;
-            
+
             //DanhDau.MarkerAreaWidth = 20;
             DanhDau.ShowIndentationGuidelines = true;
             DanhDau.ShowOutliningCollapsers = true;
@@ -654,16 +654,16 @@ namespace Kaliz
             DanhDau.IndentationBlockBorderStyle = FrameBorderStyle.DashDot;
             DanhDau.IndentationBlockBorderColor = Color.Gray;
             DanhDau.IndentationBlockBackgroundBrush = new BrushInfo(Color.Transparent);
-           
+
             DanhDau.AllowZoom = true;
             // DanhDau.OnlyHighlightMatchingBraces = true;
-            DanhDau.EnableSmartInBlockIndent = true ;
+            DanhDau.EnableSmartInBlockIndent = true;
             DanhDau.IndentBlockHighlightingColor = Color.Orange;
-            DanhDau.AutoIndentMode  = AutoIndentMode.Smart;
+            DanhDau.AutoIndentMode = AutoIndentMode.Smart;
             // if (Path.GetExtension(F) == ".cpp") DanhDau.ApplyConfiguration(KnownLanguages.C);
             //hien khoag trang DanhDau.ShowWhitespaces = true;
             DanhDau.OnlyHighlightMatchingBraces = true;
-          
+
             DanhDau.StatusBarSettings.Visible = true;
             DanhDau.StatusBarSettings.GripVisibility = Syncfusion.Windows.Forms.Edit.Enums.SizingGripVisibility.Hidden;
             DanhDau.StatusBarSettings.TextPanel.Panel.Text = DuongDanTep;
@@ -671,28 +671,40 @@ namespace Kaliz
             DanhDau.StatusBarSettings.StatusPanel.Panel.BackColor = Color.Teal;
             DanhDau.StatusBarSettings.StatusPanel.Panel.ForeColor = Color.White;
             //Các sự kiện
-          //  DanhDau.TextChanged += DanhDau_TextChanged;
-           // DanhDau.UpdateContextToolTip += DanhDau_UpdateContextToolTip_ForPascal;
+            //  DanhDau.TextChanged += DanhDau_TextChanged;
+            // DanhDau.UpdateContextToolTip += DanhDau_UpdateContextToolTip_ForPascal;
             DanhDau.MenuFill += DanhDau_MenuFill;
 
-            DanhDau.ContextPromptBorderColor = Color.Teal ;
+            DanhDau.ContextPromptBorderColor = Color.Teal;
             DanhDau.ContextPromptBackgroundBrush = new BrushInfo(GradientStyle.None, new Color[] { Color.FromArgb(249, 249, 249) });
-           // DanhDau.BackgroundColor = new BrushInfo(GradientStyle.None, new Color[] { Color.FromArgb(249, 249, 249) });
-           // DanhDau.BackgroundColor  = new Syncfusion.Drawing.BrushInfo(Syncfusion.Drawing.GradientStyle.ForwardDiagonal, new System.Drawing.Color[] { System.Drawing.Color.Crimson, System.Drawing.Color.DarkCyan, System.Drawing.Color.LightPink });
+            // DanhDau.BackgroundColor = new BrushInfo(GradientStyle.None, new Color[] { Color.FromArgb(249, 249, 249) });
+            // DanhDau.BackgroundColor  = new Syncfusion.Drawing.BrushInfo(Syncfusion.Drawing.GradientStyle.ForwardDiagonal, new System.Drawing.Color[] { System.Drawing.Color.Crimson, System.Drawing.Color.DarkCyan, System.Drawing.Color.LightPink });
             //DanhDau.TextChanging += DanhDau_TextChanging;
             // DanhDau.FilterAutoCompleteItems = true;
 
             //In
             DanhDau.PrintHeader += DanhDau_PrintHeader;
             DanhDau.KeyDown += DanhDau_KeyDown;
-          
+
             TabHienTai.ContextChoiceSelectedTextInsert += TabHienTai_ContextChoiceSelectedTextInsert;
             try
             {
                 DatBookmarks(DuongDanTep);
             }
             catch { }
-          
+
+        }
+
+        private void TabStrip_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                GetNoteFromDataBase(TabHienTai.FileName);
+            }
+            catch
+            { }
+       
+            
         }
 
         private void TabHienTai_ContextChoiceSelectedTextInsert(IContextChoiceController sender, ContextChoiceTextInsertEventArgs e)
@@ -702,11 +714,11 @@ namespace Kaliz
             {
                 TabHienTai.InsertText(TabHienTai.CurrentLine, TabHienTai.CurrentColumn, sender.SelectedItem.Text);
                 TabHienTai.CloseContextChoice();
-               
+
             }
             catch
             { }
-         
+
         }
 
         private void DanhDau_ContextPromptUpdate_ForJava(object sender, ContextPromptUpdateEventArgs e)
@@ -749,24 +761,24 @@ namespace Kaliz
 
         private void DanhDau_ContextPromptOpen_ForJava(object sender, ContextPromptUpdateEventArgs e)
         {
-            if(enableContextPrompt == true)
+            if (enableContextPrompt == true)
             {
-                if(TabHienTai.GetCurrentWord().ToLower() == "for")
+                if (TabHienTai.GetCurrentWord().ToLower() == "for")
                 {
-                    e.AddPrompt("For loop", null).BoldedItems.Add(0,8, "for <start value> ; <end value> ; <increment number>");
+                    e.AddPrompt("For loop", null).BoldedItems.Add(0, 8, "for <start value> ; <end value> ; <increment number>");
                 }
                 else
-                    if(TabHienTai.GetCurrentWord().ToLower()=="while")
+                    if (TabHienTai.GetCurrentWord().ToLower() == "while")
                 {
                     e.AddPrompt("While loop", null).BoldedItems.Add(0, 10, "while (condition) \n{\n   <statements>\n}");
                 }
                 else
-                    if(TabHienTai.GetCurrentWord().ToLower()=="do")
+                    if (TabHienTai.GetCurrentWord().ToLower() == "do")
                 {
                     e.AddPrompt("Do-While", null).BoldedItems.Add(0, 8, "do \n{\n   <statements>\n}\nwhile (conditions)");
                 }
                 else
-                    if(TabHienTai.GetCurrentWord().ToLower() == "switch")
+                    if (TabHienTai.GetCurrentWord().ToLower() == "switch")
                 {
                     e.AddPrompt("Switch-Case", null).BoldedItems.Add(0, 11, "switch (variable-to-test)\n" + @"
 {
@@ -783,11 +795,11 @@ namespace Kaliz
 ");
                 }
                 else
-                if(TabHienTai.GetCurrentWord().ToLower()=="if")
+                if (TabHienTai.GetCurrentWord().ToLower() == "if")
                 {
                     e.AddPrompt("If-Else", null).BoldedItems.Add(0, 7, "if (condition)\n{\n    <statements>\n}\nelse\n{\n   <statements>\n}");
                 }
-              
+
             }
         }
 
@@ -833,27 +845,27 @@ namespace Kaliz
         {
             if (enableContextPrompt == true)
             {
-              
+
                 if (TabHienTai.GetCurrentWord().ToLower() == "for")
                 {
-                    e.AddPrompt("For Loop",null).BoldedItems.Add(0,7, " for <variable-name> in <range> | for <variable-name> in <Repeated String>");
+                    e.AddPrompt("For Loop", null).BoldedItems.Add(0, 7, " for <variable-name> in <range> | for <variable-name> in <Repeated String>");
 
-                  
+
 
                 }
                 else
             if (TabHienTai.GetCurrentWord().ToLower() == "while")
                 {
                     e.AddPrompt("While Loop", null).BoldedItems.Add(0, 9, "while <condition> : \n   <statements>");
-                   
+
 
                 }
             }
             if (TabHienTai.GetCurrentWord().ToLower() == "if")
             {
-                e.AddPrompt("if-else statement",null).BoldedItems.Add(0,17, "if <conditions> : \n<statements>");
+                e.AddPrompt("if-else statement", null).BoldedItems.Add(0, 17, "if <conditions> : \n<statements>");
             }
-           
+
         }
 
         //private void DanhDau_ContextChoiceOpen_Java(IContextChoiceController controller)
@@ -912,8 +924,8 @@ namespace Kaliz
         //}
 
         private List<string> HisBookmark = new List<string>();
-        private void DatBookmarks( string path_file)
-        {  
+        private void DatBookmarks(string path_file)
+        {
             try
             {
                 try
@@ -949,7 +961,7 @@ namespace Kaliz
                 string[] tokens = re.Split(' ');
                 foreach (var item in tokens)
                 {
-                 
+
                     try
                     {
                         BrushInfo brushInfo = new BrushInfo(Color.Turquoise);
@@ -959,7 +971,7 @@ namespace Kaliz
                     catch { }
                 }
 
-           
+
             }
             catch { }
         }
@@ -1180,7 +1192,7 @@ namespace Kaliz
                                 case "while":
                                     e.Text = lexem.Text + ": Creates a while loop";
                                     break;
-                                
+
                                 default:
                                     break;
                             }
@@ -1409,7 +1421,7 @@ namespace Kaliz
                                 default:
                                     break;
                             }
-                            
+
 
 
                         }
@@ -1462,11 +1474,11 @@ namespace Kaliz
                                     e.Text = lexem.Text + ": To continue to the next iteration of a loop";
                                     break;
                                 case "def":
-                                    e.Text= lexem.Text+": To define a function";
+                                    e.Text = lexem.Text + ": To define a function";
                                     break;
                                 case "del":
-                                e.Text = lexem.Text+": To delete an object";
-                                break;
+                                    e.Text = lexem.Text + ": To delete an object";
+                                    break;
                                 case "elif":
                                     e.Text = lexem.Text + ": Used in conditional statements, same as else if";
                                     break;
@@ -1545,7 +1557,7 @@ namespace Kaliz
                                 default:
                                     break;
                             }
-                         }
+                        }
                         else return;
                     }
                 }
@@ -1556,18 +1568,28 @@ namespace Kaliz
         private void DanhDau_DragDrop(object sender, DragEventArgs e)
 
         {
-           // MessageBox.Show(e.Data.ToString());
+            // MessageBox.Show(e.Data.ToString());
             string dropfile = TabHienTai.FileName;
             TabHienTai.Close();
             DockPar.ActiveWindow.Close();
-            TaoMoi(Path.GetFileName(dropfile), dropfile);       
-           
-                   
+            TaoMoi(Path.GetFileName(dropfile), dropfile);
+
+
         }
 
         private void DockPar_DockWindowClosing(object sender, DockWindowCancelEventArgs e)
         {
-          try
+            if (richNoteEdit.Text != "" || richNoteEdit.Text != null)
+            {
+                try
+                {
+                    InsertNoteDataBase(TabHienTai.FileName, richNoteEdit.Text);
+                    richNoteEdit.Text = "";
+                }
+                catch {  }
+              
+            }
+            try
             {
                 SaveRecent(TabHienTai.FileName);
             }
@@ -1578,7 +1600,7 @@ namespace Kaliz
                 string path_into = TabHienTai.FileName;
                 if (Path.GetFileName(path_into) == DockPar.DocumentManager.ActiveDocument.TabStripItem.Text)
                 {
-                  
+
                     string bookmarks_line = "";
                     try
 
@@ -1590,7 +1612,7 @@ namespace Kaliz
                         }
                     }
                     catch { }
-                   
+
                     listClosedFiles.Items.Add(TabHienTai.FileName);
                     foreach (var item in bookmarkList.Items)
                     {
@@ -1625,16 +1647,16 @@ namespace Kaliz
                     }
                     catch
                     {
-                     
+
                     }
-                  
+
                     InsertDataBase(path_into, bookmarks_line);
                     RemoveDataBase();
                 }
                 else
                 {
-                   // MessageBox.Show("Khong du dieu kien");
-                   // MessageBox.Show(Path.GetFileName(path_into) + "<|>" + DockPar.DocumentManager.ActiveDocument.TabStripItem.Text);
+                    // MessageBox.Show("Khong du dieu kien");
+                    // MessageBox.Show(Path.GetFileName(path_into) + "<|>" + DockPar.DocumentManager.ActiveDocument.TabStripItem.Text);
                     TabHienTai.SaveOnClose = true;
                     TabHienTai.Close();
                     DockPar.DocumentManager.ActiveDocument.Close();
@@ -1642,22 +1664,22 @@ namespace Kaliz
                 }
 
             }
-            catch 
+            catch
             {
-              //  MessageBox.Show();
-               // MessageBox.Show("Loi ngoai cung");
+                //  MessageBox.Show();
+                // MessageBox.Show("Loi ngoai cung");
             }
 
             try
             {
-               
+
                 if (e.NewWindow.Text == DockPar.DocumentManager.ActiveDocument.Text)
                 {
                     if (File.Exists(TabHienTai.FileName))
                         listClosedFiles.Items.Add(TabHienTai.FileName);
-                   
+
                     TabHienTai.Close();
-                  
+
                 }
                 else
                 {
@@ -1668,7 +1690,7 @@ namespace Kaliz
             { }
 
 
-        
+
 
 
         }
@@ -1677,7 +1699,7 @@ namespace Kaliz
             bool isContain = false;
             try
             {
-               
+
                 ConnectDataBase();
                 OleDbCommand cmd = new OleDbCommand();
                 cmd.CommandType = CommandType.Text;
@@ -1710,13 +1732,13 @@ namespace Kaliz
             }
             catch { }
 
-          
+
 
         }
 
         private void UpdateTheme()
         {
-           if (themechanged == true)
+            if (themechanged == true)
             {
 
                 switch (TenTheme)
@@ -1757,17 +1779,17 @@ namespace Kaliz
                             {
                                 try
                                 {
-                                   
-                                   // (item.Controls[0] as EditControl).Style = EditControlStyle.Office2016DarkGray;
+
+                                    // (item.Controls[0] as EditControl).Style = EditControlStyle.Office2016DarkGray;
                                     (item.Controls[0] as EditControl).Style = EditControlStyle.Office2016Colorful;
                                     (item.Controls[0] as EditControl).IndicatorMarginBackColor = Color.FromArgb(249, 249, 249);
                                     (item.Controls[0] as EditControl).LineNumbersColor = Color.Teal;
                                     (item.Controls[0] as EditControl).ContextPromptBackgroundBrush = new BrushInfo(GradientStyle.None, new Color[] { Color.FromArgb(249, 249, 249) });
                                     (item.Controls[0] as EditControl).BackgroundColor = new BrushInfo(GradientStyle.None, new Color[] { Color.FromArgb(249, 249, 249) });
-                                    
+
                                     if (Path.GetExtension((item.Controls[0] as EditControl).FileName) == ".pas")
                                     {
-                                       
+
                                         (item.Controls[0] as EditControl).Configurator.Open(ConfigF);
                                         (item.Controls[0] as EditControl).ApplyConfiguration("Pascal");
                                     }
@@ -1782,13 +1804,13 @@ namespace Kaliz
                                     {
                                         //string ConfigF = @"Lex\Python.xml";
                                         (item.Controls[0] as EditControl).Configurator.Open(ConfigF);
-                                       (item.Controls[0] as EditControl).ApplyConfiguration("Python");
+                                        (item.Controls[0] as EditControl).ApplyConfiguration("Python");
                                     }
                                     else
                                     {
                                         (item.Controls[0] as EditControl).Configurator.Open(ConfigF);
                                         (item.Controls[0] as EditControl).ApplyConfiguration("Text");
-                                    }    
+                                    }
                                     //else if (Path.GetExtension((item.Controls[0] as EditControl).FileName) == ".java")
                                     //{
                                     //   // string ConfigF = @"Lex\Java.xml";
@@ -1800,7 +1822,7 @@ namespace Kaliz
                                 {
 
                                 }
-                                
+
 
                             }
 
@@ -1850,11 +1872,11 @@ namespace Kaliz
                                     (item.Controls[0] as EditControl).Style = EditControlStyle.Office2016DarkGray;
                                     (item.Controls[0] as EditControl).ContextPromptBackgroundBrush = new BrushInfo(GradientStyle.None, new Color[] { Color.FromArgb(40, 42, 54) });
                                     (item.Controls[0] as EditControl).BackgroundColor = new BrushInfo(GradientStyle.None, new Color[] { Color.FromArgb(40, 42, 54) });
-                                    
+
                                     //this.WindowState = FormWindowState.Normal;
                                     if (Path.GetExtension((item.Controls[0] as EditControl).FileName) == ".pas")
                                     {
-                                        
+
                                         (item.Controls[0] as EditControl).Configurator.Open(ConfigF);
                                         (item.Controls[0] as EditControl).ApplyConfiguration("Pascal");
                                     }
@@ -1869,7 +1891,7 @@ namespace Kaliz
                                     {
                                         //string ConfigF = @"Lex\Python_D.xml";
                                         (item.Controls[0] as EditControl).Configurator.Open(ConfigF);
-                                       (item.Controls[0] as EditControl).ApplyConfiguration("Python");
+                                        (item.Controls[0] as EditControl).ApplyConfiguration("Python");
                                     }
                                     else
                                     {
@@ -1888,7 +1910,7 @@ namespace Kaliz
                                 {
 
                                 }
-                               
+
                             }
                         }
                         catch { }
@@ -1930,7 +1952,7 @@ namespace Kaliz
                             {
                                 try
                                 {
-                                   
+
                                     (item.Controls[0] as EditControl).Style = EditControlStyle.Office2016Colorful;
                                     (item.Controls[0] as EditControl).IndicatorMarginBackColor = Color.FromArgb(249, 249, 249);
                                     (item.Controls[0] as EditControl).LineNumbersColor = Color.Teal;
@@ -1939,14 +1961,14 @@ namespace Kaliz
                                     //this.WindowState = FormWindowState.Normal;
                                     if (Path.GetExtension((item.Controls[0] as EditControl).FileName) == ".pas")
                                     {
-                                       // string ConfigF = @"Lex\Pascal.xml";
+                                        // string ConfigF = @"Lex\Pascal.xml";
                                         (item.Controls[0] as EditControl).Configurator.Open(ConfigF);
                                         (item.Controls[0] as EditControl).ApplyConfiguration("Pascal");
                                     }
                                     else
                                         if (Path.GetExtension((item.Controls[0] as EditControl).FileName) == ".c" || Path.GetExtension((item.Controls[0] as EditControl).FileName) == ".cpp")
                                     {
-                                       // string ConfigF = @"Lex\CppF.xml";
+                                        // string ConfigF = @"Lex\CppF.xml";
                                         (item.Controls[0] as EditControl).Configurator.Open(ConfigF);
                                         (item.Controls[0] as EditControl).ApplyConfiguration("C++");
                                     }
@@ -1972,23 +1994,22 @@ namespace Kaliz
                                 {
 
                                 }
-                               
+
                             }
                         }
                         catch { }
                         break;
-               }
+                }
                 this.WindowState = FormWindowState.Normal;
                 this.WindowState = FormWindowState.Maximized;
             }
-              
-                
+
+
         }
 
         private void DanhDau_Closing(object sender, StreamCloseEventArgs e)
         {
-         
-          
+
 
         }
 
@@ -2187,10 +2208,10 @@ End;
         private void DanhDau_MenuFill(object sender, EventArgs e)
         {
             ContextMenuManager Menu = (ContextMenuManager)sender;
-           
-            
+
+
             Menu.ClearMenu();
-            
+
             Menu.AddMenuItem("&Copy                   Ctrl+C", new EventHandler(MenuCopy));
             Menu.AddMenuItem("&Cut                      Ctrl+X", new EventHandler(MenuCut));
             Menu.AddMenuItem("&Paste                   Ctrl+V", new EventHandler(MenuPaste));
@@ -2232,12 +2253,12 @@ End;
 
         private void MenuOpenTerHere(object sender, EventArgs e)
         {
-            if (ConsoleUse=="PowerShell")
+            if (ConsoleUse == "PowerShell")
             {
                 string dan = Path.GetDirectoryName(TabHienTai.FileName);
                 Process pw = new Process();
                 pw.StartInfo.FileName = "powershell.exe";
-                pw.StartInfo.WorkingDirectory = dan ;
+                pw.StartInfo.WorkingDirectory = dan;
                 pw.Start();
             }
             else
@@ -2245,10 +2266,10 @@ End;
                 string dan = Path.GetDirectoryName(TabHienTai.FileName);
                 Process pw = new Process();
                 pw.StartInfo.FileName = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\Kaliz" + @"\Cmder\Cmder.exe";
-                pw.StartInfo.Arguments ="/start "+"\""+dan+"\"";
+                pw.StartInfo.Arguments = "/start " + "\"" + dan + "\"";
                 pw.Start();
             }
-          
+
         }
 
         private void MenuSave(object sender, EventArgs e)
@@ -2328,7 +2349,7 @@ End;
                                     e.Text = lexem.Text + ": multiple elements with the same name";
                                     break;
                                 case "asm":
-                                    e.Text =lexem.Text+ ": start of code written in assembly language";
+                                    e.Text = lexem.Text + ": start of code written in assembly language";
                                     break;
                                 case "begin":
                                     e.Text = lexem.Text + ": start of a block of code ";
@@ -2338,7 +2359,7 @@ End;
                                     break;
                                 case "case":
                                     e.Text = lexem.Text + ": select a particular segement of code to execute based on a value";
-                                        break;
+                                    break;
                                 case "const":
                                     e.Text = lexem.Text + ": declare an identifier with a fixed value, or a variable with an initialized value";
                                     break;
@@ -2362,7 +2383,7 @@ End;
                                     break;
                                 case "else":
                                     e.Text = lexem.Text + ": used in if statement to provide an execution path when the if test fails";
-                                    break;                               
+                                    break;
                                 case "end":
                                     e.Text = lexem.Text + ": end of a block of code, a record or certain other constructs";
                                     break;
@@ -2462,7 +2483,7 @@ End;
                                 case "uses":
                                     e.Text = lexem.Text + ": names units this program or unit refers to";
                                     break;
-                  
+
                                 case "while":
                                     e.Text = lexem.Text + ": test a value and if true, loop through a section of code";
                                     break;
@@ -2472,11 +2493,11 @@ End;
                                 case "xor":
                                     e.Text = lexem.Text + ": boolean operator used to invert and or test";
                                     break;
-                             
-                                default:                                   
+
+                                default:
                                     break;
                             }
-                           
+
 
                         }
                         else return;
@@ -2505,69 +2526,69 @@ End;
             controller.Items.Add("else", "Alternate case for an 'if' statement");
             controller.Items.Add("enum", "Create enumeration types");
             controller.Items.Add("register", "Request that a variable be optimized for speed");
-            controller.Items.Add("typedef","Create a new type name from an existing type");
-            controller.Items.Add("char","Declare a character variable");
-            controller.Items.Add("extern","Tell the compiler about variables defined elsewhere");
+            controller.Items.Add("typedef", "Create a new type name from an existing type");
+            controller.Items.Add("char", "Declare a character variable");
+            controller.Items.Add("extern", "Tell the compiler about variables defined elsewhere");
             controller.Items.Add("return", "Return from a function");
-            controller.Items.Add("union","A structure that assigns multiple variables to the same memory location");
-            controller.Items.Add("const","Declare immutable data or functions that do not change data");
-            controller.Items.Add("float","Declare a floating-point variable");
-            controller.Items.Add("short","Declare a short integer variable");
-            controller.Items.Add("unsigned","Declare an unsigned integer variable");
-            controller.Items.Add("continue","Bypass iterations of a loop");
-            controller.Items.Add("for","Looping construct");
-            controller.Items.Add("signed","Modify variable type declarations");
-            controller.Items.Add("void","Declare functions or data with no associated data type");
-            controller.Items.Add("default","Default handler in a case statement");
-            controller.Items.Add("goto","Jump to a different part of the program");
-            controller.Items.Add("sizeof","Return the size of a variable or type");
-            controller.Items.Add("volatile","Warn the compiler about variables that can be modified unexpectedly");
-            controller.Items.Add("do","Looping construct");
-            controller.Items.Add("if","Execute code based off of the result of a test");
-            controller.Items.Add("static","Create permanent storage for a variable");
-            controller.Items.Add("while","Looping construct");
-            controller.Items.Add("true","The boolean value of true");
-            controller.Items.Add("false","The boolean value of true");
-            controller.Items.Add("private","Declare private members of a class");
-            controller.Items.Add("protected","Declare protected members of a class");
-            controller.Items.Add("public","Declare public members of a class");
-            controller.Items.Add("try","Execute code that can throw an exception");
-            controller.Items.Add("catch","Handles exceptions from throw");
-            controller.Items.Add("dyamic_cash","Perform runtime casts");
-            controller.Items.Add("reinterpret_cast","Change the type of a variable");
-            controller.Items.Add("static_cast","Perform a nonpolymorphic cast");
-            controller.Items.Add("const_cast","Cast from const variables");
-            controller.Items.Add("throw","Throws an exception");
-            controller.Items.Add("explicit","Only use constructors when they exactly match");
-            controller.Items.Add("new","Allocate dynamic memory for a new variable");
-            controller.Items.Add("this","A pointer to the current object");
-            controller.Items.Add("asm","Insert an assembly instruction");
-            controller.Items.Add("operator","Create overloaded operator functions");
-            controller.Items.Add("namespace","Partition the global namespace by defining a scope");
-            controller.Items.Add("typeid","Describes an object");
-            controller.Items.Add("typename","Declare a class or undefined type");
-            controller.Items.Add("class","Declare a class");
-            controller.Items.Add("friend","Grant non-member function access to private data");
-            controller.Items.Add("template","Create generic functions");
-            controller.Items.Add("using","Import complete or partial namespaces into the current scope");
-            controller.Items.Add("virtual","Create a function that can be overridden by a derived class");
-            controller.Items.Add("delete","Make memory available");
-            controller.Items.Add("inline","Optimize calls to short functions");
-            controller.Items.Add("mutable","Override a const variable");
-            controller.Items.Add("wchar_t","Declare a wide-character variable");
-            controller.Items.Add("bool","Declare a boolean variable");
-            controller.Items.Add("and","As an alternative for &&");
-            controller.Items.Add("bitor","As an alternative for |");
-            controller.Items.Add("not_eq","As an alternative for !=");
-            controller.Items.Add("xor","As an alternative for ^");
-            controller.Items.Add("and_eq","As an alternative for &=");
-            controller.Items.Add("compl","As an alternative for ~");
-            controller.Items.Add("or","As an alternative for ||");
-            controller.Items.Add("not","As an alternative for !");
-            controller.Items.Add("xor_eq","As an alternative for ^=");
-            controller.Items.Add("bitand","As an alternative for &");
-            controller.Items.Add("or_eq","As an alternative for |=");
-            controller.Items.Add("export","Used to mark a template definition exported, which allows the same template to be declared, but not defined, in other translation units. ");
+            controller.Items.Add("union", "A structure that assigns multiple variables to the same memory location");
+            controller.Items.Add("const", "Declare immutable data or functions that do not change data");
+            controller.Items.Add("float", "Declare a floating-point variable");
+            controller.Items.Add("short", "Declare a short integer variable");
+            controller.Items.Add("unsigned", "Declare an unsigned integer variable");
+            controller.Items.Add("continue", "Bypass iterations of a loop");
+            controller.Items.Add("for", "Looping construct");
+            controller.Items.Add("signed", "Modify variable type declarations");
+            controller.Items.Add("void", "Declare functions or data with no associated data type");
+            controller.Items.Add("default", "Default handler in a case statement");
+            controller.Items.Add("goto", "Jump to a different part of the program");
+            controller.Items.Add("sizeof", "Return the size of a variable or type");
+            controller.Items.Add("volatile", "Warn the compiler about variables that can be modified unexpectedly");
+            controller.Items.Add("do", "Looping construct");
+            controller.Items.Add("if", "Execute code based off of the result of a test");
+            controller.Items.Add("static", "Create permanent storage for a variable");
+            controller.Items.Add("while", "Looping construct");
+            controller.Items.Add("true", "The boolean value of true");
+            controller.Items.Add("false", "The boolean value of true");
+            controller.Items.Add("private", "Declare private members of a class");
+            controller.Items.Add("protected", "Declare protected members of a class");
+            controller.Items.Add("public", "Declare public members of a class");
+            controller.Items.Add("try", "Execute code that can throw an exception");
+            controller.Items.Add("catch", "Handles exceptions from throw");
+            controller.Items.Add("dyamic_cash", "Perform runtime casts");
+            controller.Items.Add("reinterpret_cast", "Change the type of a variable");
+            controller.Items.Add("static_cast", "Perform a nonpolymorphic cast");
+            controller.Items.Add("const_cast", "Cast from const variables");
+            controller.Items.Add("throw", "Throws an exception");
+            controller.Items.Add("explicit", "Only use constructors when they exactly match");
+            controller.Items.Add("new", "Allocate dynamic memory for a new variable");
+            controller.Items.Add("this", "A pointer to the current object");
+            controller.Items.Add("asm", "Insert an assembly instruction");
+            controller.Items.Add("operator", "Create overloaded operator functions");
+            controller.Items.Add("namespace", "Partition the global namespace by defining a scope");
+            controller.Items.Add("typeid", "Describes an object");
+            controller.Items.Add("typename", "Declare a class or undefined type");
+            controller.Items.Add("class", "Declare a class");
+            controller.Items.Add("friend", "Grant non-member function access to private data");
+            controller.Items.Add("template", "Create generic functions");
+            controller.Items.Add("using", "Import complete or partial namespaces into the current scope");
+            controller.Items.Add("virtual", "Create a function that can be overridden by a derived class");
+            controller.Items.Add("delete", "Make memory available");
+            controller.Items.Add("inline", "Optimize calls to short functions");
+            controller.Items.Add("mutable", "Override a const variable");
+            controller.Items.Add("wchar_t", "Declare a wide-character variable");
+            controller.Items.Add("bool", "Declare a boolean variable");
+            controller.Items.Add("and", "As an alternative for &&");
+            controller.Items.Add("bitor", "As an alternative for |");
+            controller.Items.Add("not_eq", "As an alternative for !=");
+            controller.Items.Add("xor", "As an alternative for ^");
+            controller.Items.Add("and_eq", "As an alternative for &=");
+            controller.Items.Add("compl", "As an alternative for ~");
+            controller.Items.Add("or", "As an alternative for ||");
+            controller.Items.Add("not", "As an alternative for !");
+            controller.Items.Add("xor_eq", "As an alternative for ^=");
+            controller.Items.Add("bitand", "As an alternative for &");
+            controller.Items.Add("or_eq", "As an alternative for |=");
+            controller.Items.Add("export", "Used to mark a template definition exported, which allows the same template to be declared, but not defined, in other translation units. ");
             controller.Items.Add("explicit");
 
 
@@ -2635,17 +2656,17 @@ End;
             controller.Items.Add("readln");
             controller.Items.Add("write");
             controller.Items.Add("readkey");
-            
+
         }
 
         private void DanhDau_TextChanged(object sender, EventArgs e)
         {
-            
+
             //if (enableContext == true)
             //{
-           
-                TabHienTai.ShowContextChoice();
-            
+
+            TabHienTai.ShowContextChoice();
+
             //}
 
             TabHienTai.StatusBarSettings.StatusPanel.Panel.Text = "Unsaved";
@@ -2668,31 +2689,31 @@ End;
         }
 
         void Parser()
-        {            
+        {
             if (File.Exists(TabHienTai.FileName))
             {
 
                 string path = TabHienTai.FileName;
                 //File.WriteAllText(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + @"\Kaliz\Intermediary.txt", TabHienTai.Text);
                 //string path = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + @"\Kaliz\Intermediary.txt";
-                    Process Par = new Process();
-                    Par.StartInfo.FileName = @"Parser\ConAntle.exe";
-                    Par.StartInfo.RedirectStandardError = true;
-                    Par.StartInfo.RedirectStandardOutput = true;
-                    Par.StartInfo.UseShellExecute = false;
-                    Par.StartInfo.RedirectStandardInput = true;
-                    Par.StartInfo.CreateNoWindow = true;
-                    Par.Start();
-                    Par.StandardInput.WriteLine(path);
-                    Par.StandardInput.Flush();
-                    Par.StandardInput.Close();
-                    string a = Par.StandardError.ReadToEnd();
-                    radListError.Text = a;              
-               
+                Process Par = new Process();
+                Par.StartInfo.FileName = @"Parser\ConAntle.exe";
+                Par.StartInfo.RedirectStandardError = true;
+                Par.StartInfo.RedirectStandardOutput = true;
+                Par.StartInfo.UseShellExecute = false;
+                Par.StartInfo.RedirectStandardInput = true;
+                Par.StartInfo.CreateNoWindow = true;
+                Par.Start();
+                Par.StandardInput.WriteLine(path);
+                Par.StandardInput.Flush();
+                Par.StandardInput.Close();
+                string a = Par.StandardError.ReadToEnd();
+                radListError.Text = a;
+
             }
             else
-            return;
-            
+                return;
+
 
         }
 
@@ -2703,25 +2724,25 @@ End;
 
             if (Mo.ShowDialog() == DialogResult.OK)
             {
-                foreach(var item in Mo.FileNames)
+                foreach (var item in Mo.FileNames)
                 {
                     try
                     {
                         TaoMoi(Path.GetFileName(item), item);
                         UpdateTheme();
-                       
+
                     }
 
-                   catch
+                    catch
                     {
 
                     }
                 }
-               
+
             }
 
         }
-        private void LuuHisto(string duongdantep )
+        private void LuuHisto(string duongdantep)
         {
             try
             {
@@ -2740,25 +2761,25 @@ End;
 
             }
             catch { }
-           
+
         }
         private void LuuBookmarks(string duongdantep)
         {
-           
-          
+
+
             try
             {
-             
-               for (int i=0;i<HisBookmark.Count;i++)
+
+                for (int i = 0; i < HisBookmark.Count; i++)
                 {
-                    if(HisBookmark[i].Contains(TabHienTai.FileName))
-                    {                   
+                    if (HisBookmark[i].Contains(TabHienTai.FileName))
+                    {
                         HisBookmark[i] = "";
-                                      
+
                     }
                 }
                 //File.AppendAllText(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\Kaliz\\BookmarksList.txt", duongdantep + Environment.NewLine);
-              
+
 
 
             }
@@ -2772,7 +2793,7 @@ End;
         {
 
             TaoMoi("Document " + chiso++, null);
-           // UpdateTheme();
+            // UpdateTheme();
         }
         //TabStripItem StripHienTai
         //{
@@ -2790,16 +2811,16 @@ End;
 
 
             }
-            set
-            {
-                //TabHienTai = value;
-                DockPar.DocumentManager.ActiveDocument.ActiveControl = (value.Parent as EditControl);
-                value.Focus();
+            //set
+            //{
+            //    //TabHienTai = value;
+            //    DockPar.DocumentManager.ActiveDocument.ActiveControl = (value.Parent as EditControl);
+            //    value.Focus();
 
-            }
+            //}
         }
 
-       
+
 
         private void ECopy_Click(object sender, EventArgs e)
         {
@@ -2840,7 +2861,7 @@ End;
 
         private void FPrint_Click(object sender, EventArgs e)
         {
-          
+
 
         }
 
@@ -2881,8 +2902,8 @@ End;
         //Build tep
         void WatingLoad()
         {
-            for(int i =0;i<500;i++)
-            Thread.Sleep(10);
+            for (int i = 0; i < 500; i++)
+                Thread.Sleep(10);
         }
         private void Build(string ten, bool enabledebug)
         {
@@ -2891,130 +2912,130 @@ End;
             //    wait.ShowDialog(this);
             //}
 
-            
+
             TabHienTai.Save();
             ListOutput.Items.Clear();
-                ListOutput.Items.Add("Processing");
-                if (Path.GetExtension(ten) == ".pas")
+            ListOutput.Items.Add("Processing");
+            if (Path.GetExtension(ten) == ".pas")
+            {
+
+                Process BienDich = new Process();
+                BienDich.StartInfo.FileName = "cmd";
+                //BienDich.StartInfo.WorkingDirectory = @"Cmder\vendor\FPC\bin\i386-win32";
+                BienDich.StartInfo.UseShellExecute = false;
+                if (enabledebug == false)
+                    BienDich.StartInfo.Arguments = "/c " + "fpc " + "\"" + ten + "\"" + PascalOption + Para;
+                else BienDich.StartInfo.Arguments = "/c " + "fpc " + "\"" + ten + "\"" + " -g" + PascalOption + Para;
+
+                //BienDich.StartInfo.RedirectStandardInput = true;
+                BienDich.StartInfo.RedirectStandardOutput = true;
+                BienDich.StartInfo.StandardOutputEncoding = Encoding.UTF8;
+                BienDich.StartInfo.CreateNoWindow = true;
+                BienDich.StartInfo.WindowStyle = ProcessWindowStyle.Normal;
+                BienDich.Start();
+                ListOutput.AllowEdit = false;
+                ListOutput.AllowRemove = false;
+                bool issuccess = true;
+                string ad;
+                while ((ad = BienDich.StandardOutput.ReadLine()) != null)
                 {
+                    ListOutput.Items.Add(ad);
 
-                    Process BienDich = new Process();
-                    BienDich.StartInfo.FileName = "cmd";
-                    //BienDich.StartInfo.WorkingDirectory = @"Cmder\vendor\FPC\bin\i386-win32";
-                    BienDich.StartInfo.UseShellExecute = false;
-                    if (enabledebug == false)
-                        BienDich.StartInfo.Arguments = "/c " + "fpc " + "\""+ten+"\"" + PascalOption +Para;
-                    else BienDich.StartInfo.Arguments = "/c " + "fpc "+"\"" + ten + "\""+ " -g" + PascalOption +Para;
-
-                    //BienDich.StartInfo.RedirectStandardInput = true;
-                    BienDich.StartInfo.RedirectStandardOutput = true;
-                    BienDich.StartInfo.StandardOutputEncoding = Encoding.UTF8;
-                    BienDich.StartInfo.CreateNoWindow = true;
-                    BienDich.StartInfo.WindowStyle = ProcessWindowStyle.Normal;
-                    BienDich.Start();
-                    ListOutput.AllowEdit = false;
-                    ListOutput.AllowRemove = false;
-                    bool issuccess = true;
-                    string ad;
-                    while ((ad = BienDich.StandardOutput.ReadLine()) != null)
-                    {
-                        ListOutput.Items.Add(ad);
-
-                        if (ad.Contains("lines compiled"))
+                    if (ad.Contains("lines compiled"))
                     {
                         break;
-                        
+
 
                     }
-                      
-                    }
-                    foreach (var item in ListOutput.Items)
-                    {
-                        if (item.Text.Contains("Fatal"))
-                        {
-                            item.BackColor = Color.LightSalmon;
-                            issuccess = false;
-                        }
 
-                        if (item.Text.Contains("lines compiled")) item.BackColor = Color.LightGreen;
-                    }
-                    if (issuccess == false)
+                }
+                foreach (var item in ListOutput.Items)
                 {
-                    ShowAlert_Light("<html><color=LightSalmon>Build Failed", "Check output to view more",false);
+                    if (item.Text.Contains("Fatal"))
+                    {
+                        item.BackColor = Color.LightSalmon;
+                        issuccess = false;
+                    }
+
+                    if (item.Text.Contains("lines compiled")) item.BackColor = Color.LightGreen;
+                }
+                if (issuccess == false)
+                {
+                    ShowAlert_Light("<html><color=LightSalmon>Build Failed", "Check output to view more", false);
                     BuildComplete = false;
                 }
-                       
-                    else
-                
-            ShowAlert_Light("<html><color=Teal>Build Completed", "Ready to run", false);
-                  
-                    
-                    //BienDich.WaitForExit();
 
-                }
+                else
 
-                else if (Path.GetExtension(ten) == ".cpp"|| Path.GetExtension(ten) == ".c")
-                {
+                    ShowAlert_Light("<html><color=Teal>Build Completed", "Ready to run", false);
 
-                    Process BienDich = new Process();
-                    BienDich.StartInfo.FileName = "cmd";
-                    BienDich.StartInfo.UseShellExecute = false;
-                    BienDich.StartInfo.RedirectStandardOutput = true;
-                    BienDich.StartInfo.RedirectStandardError = true;
-                    BienDich.StartInfo.RedirectStandardInput = true;
+
+                //BienDich.WaitForExit();
+
+            }
+
+            else if (Path.GetExtension(ten) == ".cpp" || Path.GetExtension(ten) == ".c")
+            {
+
+                Process BienDich = new Process();
+                BienDich.StartInfo.FileName = "cmd";
+                BienDich.StartInfo.UseShellExecute = false;
+                BienDich.StartInfo.RedirectStandardOutput = true;
+                BienDich.StartInfo.RedirectStandardError = true;
+                BienDich.StartInfo.RedirectStandardInput = true;
                 //BienDich.StartInfo.WorkingDirectory = @"Cmder\vendor\occ60451e\orangec\bin";
 
-             //if (enabledebug == false)
-             //       BienDich.StartInfo.Arguments = "/c " + "g++ " +Para+" "+ ten + " -o " + Path.GetDirectoryName(ten) + "\\" + Path.GetFileNameWithoutExtension(ten) + ".exe";
-             //       else BienDich.StartInfo.Arguments = "/c " + "g++ " + Para + " " + " -g " + ten + " -o " + Path.GetDirectoryName(ten) + "\\" + Path.GetFileNameWithoutExtension(ten) + ".exe";
+                //if (enabledebug == false)
+                //       BienDich.StartInfo.Arguments = "/c " + "g++ " +Para+" "+ ten + " -o " + Path.GetDirectoryName(ten) + "\\" + Path.GetFileNameWithoutExtension(ten) + ".exe";
+                //       else BienDich.StartInfo.Arguments = "/c " + "g++ " + Para + " " + " -g " + ten + " -o " + Path.GetDirectoryName(ten) + "\\" + Path.GetFileNameWithoutExtension(ten) + ".exe";
 
 
                 // if (enabledebug == false)
-                BienDich.StartInfo.Arguments = "/c " + "occ " + "/o" +"\"" +Path.GetDirectoryName(ten) + "\\" + TepEXE(ten)+"\"" + " " + "\""+ten+"\"";// + " -o " + Path.GetDirectoryName(ten) + "\\" + Path.GetFileNameWithoutExtension(ten) + ".exe";
+                BienDich.StartInfo.Arguments = "/c " + "occ " + "/o" + "\"" + Path.GetDirectoryName(ten) + "\\" + TepEXE(ten) + "\"" + " " + "\"" + ten + "\"";// + " -o " + Path.GetDirectoryName(ten) + "\\" + Path.GetFileNameWithoutExtension(ten) + ".exe";
                 //  else BienDich.StartInfo.Arguments = "/c " + "occ " + " /g " + " /o" + Path.GetDirectoryName(ten) + "\\" + TepEXE(ten) + " " + ten;// + " -o " + Path.GetDirectoryName(ten) + "\\" + Path.GetFileNameWithoutExtension(ten) + ".exe";
 
 
                 BienDich.StartInfo.CreateNoWindow = true;
-                    BienDich.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;
-                    BienDich.Start();
+                BienDich.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;
+                BienDich.Start();
 
-                    string ad;
+                string ad;
 
-                    ListOutput.AllowEdit = false;
-                    ListOutput.AllowRemove = false;
+                ListOutput.AllowEdit = false;
+                ListOutput.AllowRemove = false;
 
 
-                    //Lấy thông tin Error chứ k phải Output :))
-                    while ((ad = BienDich.StandardOutput.ReadLine()) != null)
-                    {
-                        ListOutput.Items.Add(ad);
+                //Lấy thông tin Error chứ k phải Output :))
+                while ((ad = BienDich.StandardOutput.ReadLine()) != null)
+                {
+                    ListOutput.Items.Add(ad);
 
-                       // if (ad.Contains("Error")) break;
-                    }
-                    if (ListOutput.Items.Count <= 3)
-                
+                    // if (ad.Contains("Error")) break;
+                }
+                if (ListOutput.Items.Count <= 3)
+
                     ListOutput.Items.Add("Compile: " + Path.GetFileName(ten) + " - Completed, Ready to run");
-                    
 
-                
-                   
+
+
+
                 //    else
                 //{
                 //    ListOutput.Items.Add("Build: " + Path.GetFileName(ten) + " - Fail");
                 //    BuildComplete = false;
                 //}
 
-                  
 
-                    foreach (var item in ListOutput.Items)
-                    {
-                        if (item.Text.ToLower().Contains("error")) item.BackColor = Color.LightSalmon;
-                        if (item.Text.Contains("Completed")) item.BackColor = Color.LightGreen;
-                     
 
-                    }
+                foreach (var item in ListOutput.Items)
+                {
+                    if (item.Text.ToLower().Contains("error")) item.BackColor = Color.LightSalmon;
+                    if (item.Text.Contains("Completed")) item.BackColor = Color.LightGreen;
+
 
                 }
+
+            }
             //    else if(Path.GetExtension(ten) == ".c")
             //{
             //    Process BienDich = new Process();
@@ -3035,7 +3056,7 @@ End;
             //    ListOutput.AllowRemove = false;
 
 
-             
+
             //    while ((ad = BienDich.StandardError.ReadLine()) != null)
             //    {
             //        ListOutput.Items.Add(ad);
@@ -3060,9 +3081,9 @@ End;
 
             //    }
             //}
-            
-            
-          if(Directory.Exists(PathDirectory))
+
+
+            if (Directory.Exists(PathDirectory))
             {
                 LoadDirectory(PathDirectory);
             }
@@ -3074,7 +3095,7 @@ End;
 
         private void GDB(string ten)
         {
-            if(ConsoleUse == "PowerShell")
+            if (ConsoleUse == "PowerShell")
             {
                 if (Path.GetExtension(ten) == ".pas")
                 {
@@ -3084,12 +3105,12 @@ End;
 
                     //
                     BienDich.StartInfo.FileName = "cmd";
-                   // BienDich.StartInfo.WorkingDirectory = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\Kaliz" + @"Cmder\vendor\conemu-maximus5\ConEmu.exe";
-                    BienDich.StartInfo.Arguments = " /c " + "gdb32 " +infoDebug+ DuongDanTepExe(ten);
+                    // BienDich.StartInfo.WorkingDirectory = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\Kaliz" + @"Cmder\vendor\conemu-maximus5\ConEmu.exe";
+                    BienDich.StartInfo.Arguments = " /c " + "gdb32 " + infoDebug + DuongDanTepExe(ten);
                     BienDich.Start();
                     //BienDich.BeginOutputReadLine();
 
-                   
+
                     //  string output;
 
                     //while ((output = BienDich.StandardOutput.ReadLine()) != null)
@@ -3103,7 +3124,7 @@ End;
                     //BienDich.StartInfo.WorkingDirectory = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\Kaliz" + @"Cmder\vendor\conemu-maximus5\ConEmu.exe";
                     BienDich.StartInfo.Arguments = "/c " + "gdb32 " + DuongDanTepExe(ten);
                     BienDich.Start();
-                   
+
                 }
 
             }
@@ -3114,15 +3135,15 @@ End;
                     Process BienDich = new Process();
                     //Cho ListGDB
 
-                  //  BienDich.StartInfo.Verb = "runas";
+                    //  BienDich.StartInfo.Verb = "runas";
                     //
                     BienDich.StartInfo.FileName = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\Kaliz" + @"\Cmder\vendor\conemu-maximus5\ConEmu.exe";
-                  
-                    BienDich.StartInfo.Arguments = "  -run gdb32 "+infoDebug + DuongDanTepExe(ten);
+
+                    BienDich.StartInfo.Arguments = "  -run gdb32 " + infoDebug + DuongDanTepExe(ten);
                     BienDich.Start();
                     //BienDich.BeginOutputReadLine();
 
-                   
+
                     //  string output;
 
                     //while ((output = BienDich.StandardOutput.ReadLine()) != null)
@@ -3131,14 +3152,14 @@ End;
                 }
                 if (Path.GetExtension(ten) == ".c" || Path.GetExtension(ten) == ".cpp")
                 {
-                    
+
                     Process BienDich = new Process();
-                   // BienDich.StartInfo.Verb = "runas";
+                    // BienDich.StartInfo.Verb = "runas";
                     BienDich.StartInfo.FileName = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\Kaliz" + @"\Cmder\vendor\conemu-maximus5\ConEmu.exe";
                     BienDich.StartInfo.Arguments = "  -run gdb32 " + DuongDanTepExe(ten);
                     BienDich.Start();
-                              
-                    
+
+
                 }
 
             }
@@ -3155,8 +3176,8 @@ End;
             {
                 RadTaskDialogPage Tas = new RadTaskDialogPage();
                 Tas.ShouldApplyTheme = true;
-                
-               
+
+
                 Tas.Caption = "Warning!";
                 Tas.Heading = "File not Found!";
                 Tas.Text = "This file has not been compiled. Do you want to compile it?";
@@ -3178,7 +3199,7 @@ End;
                 Tas.CommandAreaButtons.Add(BuCant);
                 RadTaskDialog.ShowDialog(Tas);
             }
-            else if( Path.GetExtension(file)==".py"||Path.GetExtension(file)==".java"|| Path.GetExtension(file) == ".pas"|| Path.GetExtension(file) == ".c"|| Path.GetExtension(file) == ".cpp" && BuildComplete==true)
+            else if (Path.GetExtension(file) == ".py" || Path.GetExtension(file) == ".java" || Path.GetExtension(file) == ".pas" || Path.GetExtension(file) == ".c" || Path.GetExtension(file) == ".cpp" && BuildComplete == true)
             {
 
                 if (ConsoleUse == "PowerShell")
@@ -3240,10 +3261,10 @@ End;
                                    }
                        */
                     }
-                    if(Path.GetExtension(file)==".java")
+                    if (Path.GetExtension(file) == ".java")
                     {
                         Process Chay = new Process();
-                        Chay.StartInfo.FileName = "cmd";                        
+                        Chay.StartInfo.FileName = "cmd";
                         Chay.StartInfo.Arguments = "/c" + "java " + file;
                         Chay.Start();
                         Chay.WaitForExit();
@@ -3284,7 +3305,7 @@ End;
                     {
 
                         Process Chay = new Process();
-                        
+
                         Chay.StartInfo.FileName = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\Kaliz" + @"\Cmder\vendor\conemu-maximus5\ConEmu.exe";
                         Chay.StartInfo.Arguments = " -run python " + file;
                         //Để ý dấu - phải sát với lệnh
@@ -3293,20 +3314,20 @@ End;
                         //Fixed!
 
                     }
-                    if(Path.GetExtension(file)==".java")
+                    if (Path.GetExtension(file) == ".java")
                     {
                         Process Chay = new Process();
 
                         Chay.StartInfo.FileName = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\Kaliz" + @"\Cmder\vendor\conemu-maximus5\ConEmu.exe";
-                        Chay.StartInfo.Arguments = "-dir "+ Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\Kaliz" + @"\Cmder\vendor\jdk-11.0.11\bin  " + " -run java " + file;
+                        Chay.StartInfo.Arguments = "-dir " + Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\Kaliz" + @"\Cmder\vendor\jdk-11.0.11\bin  " + " -run java " + file;
                         Chay.Start();
-                       // Chay.WaitForExit();
+                        // Chay.WaitForExit();
                     }
                 }
             }
-          
 
-           
+
+
 
 
         }
@@ -3357,11 +3378,11 @@ End;
 
         private void BBuild_Click(object sender, EventArgs e)
         {
-           
+
 
             try
             {
-                
+
                 if (File.Exists(TabHienTai.FileName))
                     DockPar.DocumentManager.ActiveDocument.Text = Path.GetFileName(TabHienTai.FileName);
 
@@ -3369,27 +3390,27 @@ End;
                     ShowAlert_Light("<html><color=LightSalmon>Build Failed", "<html><color=Teal>Python can only be <b>RUN</b> directly", false);
                 else
                 {
-                 
+
                     Build(TabHienTai.FileName, deBug);
                     Doutput.DockState = DockState.Docked;
                 }
-                
+
             }
             catch { }
-           
+
 
         }
-       
-       
+
+
         private void BBookmark_Click(object sender, EventArgs e)
         {
             try
             {
-                
+
                 BrushInfo brushInfo = new BrushInfo(Color.Turquoise);
-                TabHienTai.BookmarkAdd(TabHienTai.CurrentLine, brushInfo,Color.Transparent);
-                if(File.Exists(TabHienTai.FileName))
-                bookmarkList.Items.Add(TabHienTai.CurrentLine, Path.GetFileName(TabHienTai.FileName), TabHienTai.FileName);
+                TabHienTai.BookmarkAdd(TabHienTai.CurrentLine, brushInfo, Color.Transparent);
+                if (File.Exists(TabHienTai.FileName))
+                    bookmarkList.Items.Add(TabHienTai.CurrentLine, Path.GetFileName(TabHienTai.FileName), TabHienTai.FileName);
                 else
                     bookmarkList.Items.Add(TabHienTai.CurrentLine, DockPar.DocumentManager.ActiveDocument.TabStripItem.Text, "None");
 
@@ -3428,7 +3449,7 @@ End;
             try
             {
                 TabHienTai.BookmarkRemove(TabHienTai.CurrentLine);
-                if(File.Exists(TabHienTai.FileName))
+                if (File.Exists(TabHienTai.FileName))
                 {
                     foreach (var item in bookmarkList.Items)
                     {
@@ -3444,8 +3465,8 @@ End;
                             bookmarkList.Items.Remove(item);
                     }
                 }
-                
-              
+
+
             }
             catch { }
 
@@ -3457,32 +3478,32 @@ End;
             try
             {
                 TabHienTai.BookmarkClear();
-               
-                    if (File.Exists(TabHienTai.FileName))
-                    {
+
+                if (File.Exists(TabHienTai.FileName))
+                {
                     foreach (ListViewDataItem item in bookmarkList.Items.ToList())
                     {
 
                         if (item[1].ToString().Contains(Path.GetFileName(TabHienTai.FileName)))
                             bookmarkList.Items.Remove(item);
-                     }      
-                        
                     }
 
-                    else
-                    {
+                }
+
+                else
+                {
                     foreach (ListViewDataItem item in bookmarkList.Items.ToList())
                     {
                         if (item[1].ToString().Contains(DockPar.DocumentManager.ActiveDocument.TabStripItem.Text))
                             bookmarkList.Items.Remove(item);
                     }
                 }
-                
-                   
+
+
             }
             catch { }
-         
-           
+
+
 
         }
 
@@ -3491,7 +3512,7 @@ End;
             try
             {
                 TabHienTai.ShowFindDialog();
-                
+
             }
             catch
             {
@@ -3576,7 +3597,7 @@ End;
         {
             try
             {
-               
+
                 Run(TabHienTai.FileName);
 
             }
@@ -3616,7 +3637,7 @@ End;
 
             string regex = @"\d+\:\d+";
             MatchCollection matchCollect = Regex.Matches(radListError.Text, regex);
-            foreach (Match item in  matchCollect)
+            foreach (Match item in matchCollect)
             {
                 string[] a = item.Value.ToString().Split(':');
                 try
@@ -3625,7 +3646,7 @@ End;
                 }
                 catch
                 { }
-              
+
             }
         }
         private void FSave_Click(object sender, EventArgs e)
@@ -3635,9 +3656,9 @@ End;
 
             try
             {
-              
-                 TabHienTai.Save();
-                if(enableParse == true)
+
+                TabHienTai.Save();
+                if (enableParse == true)
                 {
                     try
                     {
@@ -3651,14 +3672,14 @@ End;
                         {
                             Invoke(new Action(() => { Parser(); }));
                         });
-                        
+
                         Par.Start();
                         //thread gạch chân
                         Thread t = new Thread(() =>
                          {
-                             
+
                              Invoke(new Action(() => { UnderLineError(); }));
-                            
+
                          });
                         t.IsBackground = true;
                         t.Start();
@@ -3667,7 +3688,7 @@ End;
                     catch
                     { }
                 }
-               
+
 
                 if (Path.GetExtension(TabHienTai.FileName) == ".py")
                     TabHienTai.StatusBarSettings.FileNamePanel.Panel.Text = "Python";
@@ -3688,7 +3709,7 @@ End;
 
             }
             catch { MessageBox.Show("Có lỗi xảy ra!"); }
-            
+
         }
 
         private void DOpenGDB_Click(object sender, EventArgs e)
@@ -3698,16 +3719,16 @@ End;
             {
                 if (deBug == true)
                 {
-                    foreach(var item in radListBreakpoint.Items)
+                    foreach (var item in radListBreakpoint.Items)
                     {
-                        if(item[1].ToString()==TabHienTai.FileName)
+                        if (item[1].ToString() == TabHienTai.FileName)
                         {
-                            infoDebug += " -ex \"break " + item[0] + "\" ";                          
+                            infoDebug += " -ex \"break " + item[0] + "\" ";
                         }
-                        
+
                     }
-                   // infoDebug+= " -ex \"run\" ";
-                   
+                    // infoDebug+= " -ex \"run\" ";
+
                     GDB(TabHienTai.FileName);
 
                 }
@@ -3718,10 +3739,10 @@ End;
             }
             catch { }
         }
-        private void ShowAlert_Light(string cap, string content,bool pin)
+        private void ShowAlert_Light(string cap, string content, bool pin)
         {
             RadDesktopAlert al = new RadDesktopAlert();
-            
+
             al.CaptionText = cap;
             al.Opacity = 0.8f;
             al.PopupAnimationDirection = RadDirection.Up;
@@ -3731,7 +3752,7 @@ End;
                 al.AutoCloseDelay = 5;
             else
                 al.IsPinned = true;
-            
+
             al.AutoSize = true;
             al.ThemeName = "Windows8";
             al.Show();
@@ -3784,7 +3805,7 @@ End;
                 ShowAlert_Light("<html><color=Teal>Context Intellisense Enabled", null, false);
                 try
                 {
-                    foreach(var item in DockPar.DocumentManager.DocumentArray)
+                    foreach (var item in DockPar.DocumentManager.DocumentArray)
                     {
                         (item.Controls[0] as EditControl).TextChanged += DanhDau_TextChanged;
                     }
@@ -3811,7 +3832,7 @@ End;
                 {
 
                 }
-              //  TabHienTai.TextChanged -= DanhDau_TextChanged;
+                //  TabHienTai.TextChanged -= DanhDau_TextChanged;
             }
         }
 
@@ -3932,7 +3953,7 @@ End;
             pd.EnableThumbnails = false;
             pd.Dock = DockStyle.Fill;
             pd.LoadDocument(@"Documents\ASCII_Table.pdf");
-           
+
         }
 
         private void HAbout_Click(object sender, EventArgs e)
@@ -3943,15 +3964,15 @@ End;
 
         private void MPcurrentline_Click(object sender, EventArgs e)
         {
-            RadColorDialog Col = new RadColorDialog( );
+            RadColorDialog Col = new RadColorDialog();
             Col.Icon = null;
-            
+
 
             try
             {
                 if (Col.ShowDialog() == DialogResult.OK)
                 {
-                    
+
                     TabHienTai.CurrentLineHighlightColor = Col.SelectedColor;
                 }
             }
@@ -3966,13 +3987,13 @@ End;
 
 
             RadColorDialog Col = new RadColorDialog();
-           
-            
+
+
             try
             {
                 if (Col.ShowDialog() == DialogResult.OK)
                 {
-                    
+
                     TabHienTai.SelectionTextColor = Col.SelectedColor;
                 }
             }
@@ -4009,7 +4030,7 @@ End;
                 themechanged = true;
                 UpdateTheme();
             }
-            
+
             else themechanged = false;
 
             //ThemeResolutionService.ApplicationThemeName = "Fluent";
@@ -4039,8 +4060,8 @@ End;
             //    TabHienTai.ApplyConfiguration("Python");
             //}
         }
-       
-      
+
+
         private void SynC_Click(object sender, EventArgs e)
         {
             //string ConfigF = @"Lex\CppF.xml";
@@ -4074,7 +4095,7 @@ End;
             TabHienTai.ApplyConfiguration("Python");
             TabHienTai.StatusBarSettings.FileNamePanel.Panel.Text = "Python";
             TabHienTai.ContextChoiceOpen += DanhDau_ContextChoiceOpen_ForPython;
-            
+
         }
 
         private void EStart_Click(object sender, EventArgs e)
@@ -4085,13 +4106,13 @@ End;
         private void EEnd_Click(object sender, EventArgs e)
         {
             TabHienTai.JumpToIndentBlockEnd();
-            
+
         }
 
         private void EIndent_Click(object sender, EventArgs e)
         {
             TabHienTai.IndentSelection();
-            
+
         }
 
         private void FFindSelected_Click(object sender, EventArgs e)
@@ -4099,7 +4120,7 @@ End;
             try
             {
                 TabHienTai.FindText(TabHienTai.SelectedText);
-                
+
             }
             catch { }
         }
@@ -4112,7 +4133,7 @@ End;
         private void TPowerShell_Click(object sender, EventArgs e)
         {
 
-            if(ConsoleUse =="PowerShell")
+            if (ConsoleUse == "PowerShell")
             {
                 Process pw = new Process();
                 pw.StartInfo.FileName = "powershell.exe";
@@ -4121,10 +4142,10 @@ End;
             else
             {
                 Process pw = new Process();
-                pw.StartInfo.FileName = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\Kaliz"+@"\Cmder\Cmder.exe";
+                pw.StartInfo.FileName = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\Kaliz" + @"\Cmder\Cmder.exe";
                 pw.Start();
             }
-           
+
         }
 
         private void ERedo_Click(object sender, EventArgs e)
@@ -4132,7 +4153,7 @@ End;
             try
             {
                 TabHienTai.Redo();
-                
+
             }
             catch { }
         }
@@ -4153,7 +4174,7 @@ End;
                 TabHienTai.Expand();
             }
             catch { }
-           
+
         }
 
         private void FFoldAll_Click(object sender, EventArgs e)
@@ -4200,46 +4221,46 @@ End;
             {
 
             }
-           
-               
-            
+
+
+
         }
 
         private void TEmail_Click(object sender, EventArgs e)
         {
-           // Pathtosendemail = TabHienTai.FileName;
+            // Pathtosendemail = TabHienTai.FileName;
             SendEmail Sa = new SendEmail();
             Sa.ShowDialog();
-            
+
         }
-       
-       
+
+
         private void radlistclip_ItemMouseDoubleClick(object sender, ListViewItemEventArgs e)
         {
             try
             {
-        TabHienTai.InsertText(TabHienTai.CurrentLine, TabHienTai.CurrentColumn, radlistclip.SelectedItem.Text);
+                TabHienTai.InsertText(TabHienTai.CurrentLine, TabHienTai.CurrentColumn, radlistclip.SelectedItem.Text);
             }
-            catch {  }
-            
+            catch { }
+
         }
 
         private void OClearClip_Click(object sender, EventArgs e)
         {
             radlistclip.Items.Clear();
-           
+
         }
 
         private void radMenuItem3_Click_1(object sender, EventArgs e)
         {
             DockPar.DocumentManager.ActivateNextDocument();
             DockPar.ShowDocumentCloseButton = true;
-                   
-                
+
+
         }
         private void Uo()
         {
-          
+
         }
 
         private void EMatiral_Click(object sender, EventArgs e)
@@ -4251,10 +4272,10 @@ End;
                 UpdateTheme();
             }
             else themechanged = false;
-           
-            
-            
-          
+
+
+
+
 
             //ThemeResolutionService.ApplicationThemeName = "MaterialTeal";
             //TabHienTai.Style = EditControlStyle.Office2016Colorful;
@@ -4411,15 +4432,15 @@ End;
                 Run(TabHienTai.FileName);
             }
             catch { }
-           
+
         }
 
         private void documentWindow1_Click(object sender, EventArgs e)
         {
-           
+
         }
 
-        
+
 
         private void ScreatPas_Click(object sender, EventArgs e)
         {
@@ -4475,7 +4496,7 @@ End;
         //    {
         //        MessageBox.Show("Error", "This file not exist", MessageBoxButtons.OK,MessageBoxIcon.Error);
         //    }
-            
+
         //}
 
         private void radRichTextEditor1_Click(object sender, EventArgs e)
@@ -4494,11 +4515,11 @@ End;
             Lok.ThumbnailListWidth = 0;
             Lok.ThumbnailsScaleFactor = 0;
             Lok.EnableThumbnails = false;
-            
-            
+
+
         }
 
-      
+
 
         private void radMenuItem13_Click(object sender, EventArgs e)
         {
@@ -4535,13 +4556,14 @@ End;
                 DiffOldText = TabHienTai.Text;
                 ShowAlert_Light("<html><Color=Teal><b>Different has been set!</b>", "<html><Color=Crimson>You can Compare code after changes", false);
             }
-            catch {
+            catch
+            {
                 ShowAlert_Light("<html><Color=Teal><b>Couldn't set Different</b>", "<html><Color=Crimson>Code not Found!", false);
             }
-           
+
             //try
             //{
-               
+
             //    if (!File.Exists(TabHienTai.FileName))
             //    {
             //        DiffOldText = TabHienTai.Text;
@@ -4551,7 +4573,7 @@ End;
 
             //}
             //catch { }
-            
+
         }
 
         private void DOpenDiff_Click(object sender, EventArgs e)
@@ -4573,12 +4595,12 @@ End;
                 DocumentWindow Do = new DocumentWindow("Different Merge");
                 Do.Controls.Add(Diff);
                 DockPar.AddDocument(Do);
-                
+
             }
             else
                 ShowAlert_Light("<html><Color=Teal><b>Couldn't find code to compare</b>", "<html><Color=Crimson>You need set Different to Compare", false);
 
-         
+
         }
 
         private void DDiffDialog_Click(object sender, EventArgs e)
@@ -4589,7 +4611,7 @@ End;
 
         private void radLabel11_Click(object sender, EventArgs e)
         {
-           
+
         }
 
         private void radMenuItem16_Click(object sender, EventArgs e)
@@ -4605,7 +4627,7 @@ End;
             }
             catch
             {
-                
+
             }
         }
 
@@ -4664,18 +4686,18 @@ End;
             TabHienTai.ContextPromptOpen += DanhDau_ContextPromptOpen_ForPascal;
             TabHienTai.ContextPromptUpdate += DanhDau_ContextPromptUpdate_ForPascal;
 
-           // UpdateTheme();
-        
+            // UpdateTheme();
 
-      
-    }
+
+
+        }
 
         private void wclPython_Click(object sender, EventArgs e)
         {
-            
+
             TaoMoi("Document " + chiso++, null);
 
-           // TabHienTai.StatusBarSettings.FileNamePanel.Panel.Text = "Python";
+            // TabHienTai.StatusBarSettings.FileNamePanel.Panel.Text = "Python";
             //string ConfigF = @"Lex\Python.xml";
             //if (TenTheme == "FluentDark")
             //    ConfigF = @"Lex\Python_D.xml";
@@ -4684,15 +4706,15 @@ End;
             TabHienTai.StatusBarSettings.FileNamePanel.Panel.Text = "Python";
             TabHienTai.ContextChoiceOpen += DanhDau_ContextChoiceOpen_ForPython;
 
-           // UpdateTheme();
-        
+            // UpdateTheme();
 
-     
-    }
+
+
+        }
 
         private void wclCc_Click(object sender, EventArgs e)
         {
-             
+
             TaoMoi("Document " + chiso++, null);
 
             //string ConfigF = @"Lex\CppF.xml";
@@ -4705,9 +4727,9 @@ End;
             TabHienTai.ContextPromptOpen += DanhDau_ContextPromptOpen_ForC;
             TabHienTai.ContextPromptUpdate += DanhDau_ContextPromptUpdate_ForC;
 
-         //   UpdateTheme();
-        
-    }
+            //   UpdateTheme();
+
+        }
 
         private void wclOpen_Click(object sender, EventArgs e)
         {
@@ -4744,7 +4766,7 @@ End;
             }
             catch
             {
-                MessageBox.Show("Can't load this file", "Error!",MessageBoxButtons.OK,MessageBoxIcon.Error);
+                MessageBox.Show("Can't load this file", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -4785,9 +4807,9 @@ End;
 
         }
 
-     
 
-       
+
+
 
         private void radMenuItem1_Click(object sender, EventArgs e)
         {
@@ -4799,7 +4821,7 @@ End;
             {
 
             }
-            
+
         }
 
         private void VSplitVertical_Click(object sender, EventArgs e)
@@ -4810,9 +4832,9 @@ End;
             }
             catch
             { }
-        }         
+        }
 
-      
+
 
         private void wlcJava_Click(object sender, EventArgs e)
         {
@@ -4867,12 +4889,12 @@ End;
             }
             catch
             { }
-           
+
         }
 
         private void Encode1252_Click(object sender, EventArgs e)
         {
-            
+
             try
             {
                 if (File.Exists(TabHienTai.FileName))
@@ -4898,8 +4920,8 @@ End;
                 DockPar.FloatWindow(DockPar.DocumentManager.ActiveDocument);
             }
             catch
-            {}
-          
+            { }
+
         }
 
         private void WFloatAll_Click(object sender, EventArgs e)
@@ -4912,7 +4934,7 @@ End;
                 }
             }
             catch { }
-           
+
         }
 
         private void WResetWindows_Click(object sender, EventArgs e)
@@ -4922,7 +4944,7 @@ End;
                 item.Activate();
                 DockPar.DockWindow(DockPar.ActiveWindow, DockPosition.Fill);
 
-           }
+            }
         }
 
         private void WCloseAll_Click(object sender, EventArgs e)
@@ -4938,7 +4960,7 @@ End;
             {
 
             }
-            
+
         }
 
         private void WCloseCur_Click(object sender, EventArgs e)
@@ -5026,21 +5048,21 @@ End;
                 }
                 if (File.Exists(TabHienTai.FileName))
                 {
-                    
+
                     if (Path.GetExtension(TabHienTai.FileName) == ".py" && deBug == true)
                     {
                         Process PythonDebugger = new Process();
                         if (ConsoleUse == "PowerShell")
                         {
                             PythonDebugger.StartInfo.FileName = "cmd";
-                            PythonDebugger.StartInfo.Arguments = "/c python -m pdb "+infoDebug + TabHienTai.FileName;
+                            PythonDebugger.StartInfo.Arguments = "/c python -m pdb " + infoDebug + TabHienTai.FileName;
                             PythonDebugger.Start();
                             PythonDebugger.WaitForExit();
                         }
                         else
                         {
                             PythonDebugger.StartInfo.FileName = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\Kaliz" + @"\Cmder\vendor\conemu-maximus5\ConEmu.exe";
-                            PythonDebugger.StartInfo.Arguments = "/run python -m pdb "+infoDebug + TabHienTai.FileName;
+                            PythonDebugger.StartInfo.Arguments = "/run python -m pdb " + infoDebug + TabHienTai.FileName;
                             PythonDebugger.Start();
                             PythonDebugger.WaitForExit();
 
@@ -5061,41 +5083,41 @@ End;
 
             }
 
-          
+
         }
 
         private void BPara_Click(object sender, EventArgs e)
         {
             using (ParametDialog fd = new ParametDialog())
             {
-                
-                if (fd.ShowDialog()== DialogResult.OK)
+
+                if (fd.ShowDialog() == DialogResult.OK)
                 {
-                    
+
                     Para = fd.ParametText;
                 }
             }
-           // MessageBox.Show(Para);
+            // MessageBox.Show(Para);
         }
 
         private void BConfig_Click(object sender, EventArgs e)
         {
             using (BuildConfig bl = new BuildConfig())
             {
-                if(bl.ShowDialog() == DialogResult.OK)
+                if (bl.ShowDialog() == DialogResult.OK)
                 {
                     PascalOption = bl.PascalOp;
                 }
             }
-            
+
         }
 
-       
+
         private bool isServer = false;
         private void SStartServer_Click(object sender, EventArgs e)
         {
             var args = e as MouseEventArgs;
-            if(args.Button == MouseButtons.Right)
+            if (args.Button == MouseButtons.Right)
             {
                 using (ParametDialog fd = new ParametDialog())
                 {
@@ -5110,23 +5132,23 @@ End;
                     }
                 }
                 bool isIntString = txtPort.All(char.IsDigit);
-                if (!isIntString||txtPort=="")
+                if (!isIntString || txtPort == "")
                 {
                     MessageBox.Show("Port invalid! Reset to 4444", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     txtPort = "4444";
-                    SStartServer.ToolTipText = "Start Server with IP: " + GetLocalIP() + " Port: "+txtPort;
+                    SStartServer.ToolTipText = "Start Server with IP: " + GetLocalIP() + " Port: " + txtPort;
                 }
-                    
+
                 else
                     SStartServer.ToolTipText = "Start Server with IP: " + GetLocalIP() + " Port: " + txtPort;
                 return;
             }
-           
-            if(!isConnected)
-            Connect_Ser();
+
+            if (!isConnected)
+                Connect_Ser();
         }
-        private string txtPort= "4444";
-        
+        private string txtPort = "4444";
+
 
         ///Server///////////////////////////////////////////////
         IPEndPoint IPServer;
@@ -5146,26 +5168,26 @@ End;
                 SPush.Text = "Push Code in Current Tab to Clients";
                 //<html><span style="color: #ff8080"><strong>S</strong><strong>tatus: Not Connected</strong></span></html>
 
-                
+
             }
             catch
             {
                 MessageBox.Show("Port address ivalid!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-                 
-           // else
-           //IPServer = new IPEndPoint(IPAddress.Parse(GetLocalIP()), 4444);
+
+            // else
+            //IPServer = new IPEndPoint(IPAddress.Parse(GetLocalIP()), 4444);
             server = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.IP);
-            if(!isConnected)
-            server.Bind(IPServer);
+            if (!isConnected)
+                server.Bind(IPServer);
             isConnected = true;
             SStartServer.Enabled = false;
             //if(isIntString)
-            SStatus.Text = "Server has been initialized with IP: "+ GetLocalIP()+" Port: "+txtPort;
+            SStatus.Text = "Server has been initialized with IP: " + GetLocalIP() + " Port: " + txtPort;
             //else
             //    SStatus.Text = SStatus.Text = "Server has been initialized with IP: " + GetLocalIP() + " Port: 4444";
-            ShowAlert_Light("<html><color=Teal><b>Server has been initialized</b>", "<html>IP:<span><color=Teal>"+GetLocalIP()+"</span>",true);
+            ShowAlert_Light("<html><color=Teal><b>Server has been initialized</b>", "<html>IP:<span><color=Teal>" + GetLocalIP() + "</span>", true);
             Thread Listen = new Thread(() =>
             {
                 try
@@ -5174,7 +5196,7 @@ End;
                     {
                         server.Listen(100);
                         Socket client = server.Accept();
-                        ShowAlert_Light("<html><color=Teal><b>New Client Connected!</b>","Client: "+client.RemoteEndPoint,false);
+                        ShowAlert_Light("<html><color=Teal><b>New Client Connected!</b>", "Client: " + client.RemoteEndPoint, false);
                         clientlist.Add(client);
                         SStatus.Text = "Connected: " + clientlist.Count;
                         Thread recevie = new Thread(Receive_Ser);
@@ -5187,7 +5209,7 @@ End;
                     //if (!isIntString)
                     //    IPServer = new IPEndPoint(IPAddress.Parse(GetLocalIP()), 4444);
                     //else
-                        IPServer = new IPEndPoint(IPAddress.Parse(GetLocalIP()), int.Parse(txtPort));
+                    IPServer = new IPEndPoint(IPAddress.Parse(GetLocalIP()), int.Parse(txtPort));
                     server = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.IP);
                 }
 
@@ -5200,9 +5222,9 @@ End;
         }
         void Close_Ser()
         {
-            
+
             server.Close();
-            
+
             SConnect.Enabled = true;
             SStatus.Text = "Not Connected";
         }
@@ -5227,7 +5249,7 @@ End;
             }
             catch
             {
-                ShowAlert_Light("<html><color=Crimson><b>Client Disconnect</b>", client.RemoteEndPoint+" Disconnected",false);
+                ShowAlert_Light("<html><color=Crimson><b>Client Disconnect</b>", client.RemoteEndPoint + " Disconnected", false);
                 clientlist.Remove(client);
                 if (clientlist.Count != 0)
                     SStatus.Text = "Connected: " + clientlist.Count;
@@ -5313,9 +5335,9 @@ End;
                     SConnect.ToolTipText = "Connect to Server with IP: " + txtIP + " Port: " + txtPort;
                 return;
             }
-           
-            if(!isConnectedCli)
-            Connect();
+
+            if (!isConnectedCli)
+                Connect();
         }
 
         ///Server///////////////////////////////////////////////
@@ -5331,7 +5353,7 @@ End;
             //else
             try
             {
-            //IP = new IPEndPoint(IPAddress.Parse(GetLocalIP()), int.Parse(txtPort));
+                //IP = new IPEndPoint(IPAddress.Parse(GetLocalIP()), int.Parse(txtPort));
                 IP = new IPEndPoint(IPAddress.Parse(txtIP), int.Parse(txtPort));
 
 
@@ -5352,11 +5374,11 @@ End;
                 SStartServer.Enabled = false;
                 SConnect.Enabled = false;
                 SPush.Text = "Push Code in Current Tab to Server";
-                ShowAlert_Light("<html><color=Teal><b>You are connected to Server</b>",null, false);
+                ShowAlert_Light("<html><color=Teal><b>You are connected to Server</b>", null, false);
             }
             catch
             {
-                MessageBox.Show("Server Not Available","Error",MessageBoxButtons.OK,MessageBoxIcon.Error);
+                MessageBox.Show("Server Not Available", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
@@ -5367,29 +5389,29 @@ End;
         }
         void Close_Cli()
         {
-          
-               
-                try
-                {
-                if(isConnected==true)
-                client.Close();
+
+
+            try
+            {
+                if (isConnected == true)
+                    client.Close();
                 SStatus.Text = "Not Connected";
-                if (client!=null)
-                    {
-                        client.Shutdown(SocketShutdown.Both);
-                        client.Close(10);
-                        ShowAlert_Light("<html><b>Disconnected to Server</b>", null, false);
-                        SStartServer.Enabled = true;                        
-                        isServer = false;
-                    }
-                }
-                catch (Exception)
+                if (client != null)
                 {
-                    //MessageBox.Show(ex.ToString());
+                    client.Shutdown(SocketShutdown.Both);
+                    client.Close(10);
+                    ShowAlert_Light("<html><b>Disconnected to Server</b>", null, false);
+                    SStartServer.Enabled = true;
+                    isServer = false;
                 }
-            
-           
-            
+            }
+            catch (Exception)
+            {
+                //MessageBox.Show(ex.ToString());
+            }
+
+
+
         }
         void Send()
         {
@@ -5403,8 +5425,8 @@ End;
                 MessageBox.Show("Server not Found!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 SStatus.Text = "Not Connected";
             }
-           
-           
+
+
         }
         void Receive()
         {
@@ -5434,7 +5456,7 @@ End;
 
         private void SDisconnect_Click(object sender, EventArgs e)
         {
-            if(isServer)
+            if (isServer)
             {
                 Close_Ser();
                 isConnected = false;
@@ -5450,7 +5472,7 @@ End;
             }
         }
         ///Clients////////////////////////////////////////////// 
-        
+
         public string GetLocalIP() ///Lấy địa chỉ IP Hiện tại
         {
             try
@@ -5482,49 +5504,50 @@ End;
 
         }
 
-       
+
 
         private void TabHienTai_Down(object sender, KeyEventArgs e)
         {
-            
+
             if (e.KeyCode == Keys.OemOpenBrackets && e.Modifiers == Keys.Shift)
             {
                 TabHienTai.InsertText(TabHienTai.CurrentLine, TabHienTai.CurrentColumn, "}");
                 TabHienTai.MoveLeft();
             }
             else
-            if(e.KeyCode == Keys.OemOpenBrackets&& e.Modifiers == Keys.None)
+            if (e.KeyCode == Keys.OemOpenBrackets && e.Modifiers == Keys.None)
             {
                 TabHienTai.InsertText(TabHienTai.CurrentLine, TabHienTai.CurrentColumn, "]");
                 TabHienTai.MoveLeft();
             }
-           
+
             else
-                if(e.KeyCode == Keys.OemQuotes&&e.Modifiers==Keys.None)
+                if (e.KeyCode == Keys.OemQuotes && e.Modifiers == Keys.None)
             {
                 TabHienTai.InsertText(TabHienTai.CurrentLine, TabHienTai.CurrentColumn, "'");
                 TabHienTai.MoveLeft();
             }
             else
-                if(e.KeyCode==Keys.OemQuotes&&e.Modifiers==Keys.Shift)
+                if (e.KeyCode == Keys.OemQuotes && e.Modifiers == Keys.Shift)
             {
                 TabHienTai.InsertText(TabHienTai.CurrentLine, TabHienTai.CurrentColumn, "\"");
                 TabHienTai.MoveLeft();
-            }else
-                if(e.KeyCode == Keys.D9&&e.Modifiers==Keys.Shift)
+            }
+            else
+                if (e.KeyCode == Keys.D9 && e.Modifiers == Keys.Shift)
             {
                 TabHienTai.InsertText(TabHienTai.CurrentLine, TabHienTai.CurrentColumn, ")");
                 TabHienTai.MoveLeft();
             }
-            
-            
+
+
         }
 
 
 
         private void DataDiff_Click(object sender, EventArgs e)
         {
-            if(TabHienTai!=null)
+            if (TabHienTai != null)
             {
                 DiffNewText = TabHienTai.Text;
                 DiffViewer Diff = new DiffViewer();
@@ -5546,7 +5569,7 @@ End;
             {
                 ShowAlert_Light("<html><color=Teal><b>Please Set Active Tab Document to Compare</b>", null, false);
             }
-           
+
         }
 
         private void Kaliz_FormClosed(object sender, FormClosedEventArgs e)
@@ -5557,7 +5580,7 @@ End;
                 Close_Cli();
         }
 
-       
+
 
         private void listDataReceived_ItemMouseClick(object sender, ListViewItemEventArgs e)
         {
@@ -5567,13 +5590,13 @@ End;
         private void listDataReceived_MouseClick(object sender, MouseEventArgs e)
         {
             var args = e as MouseEventArgs;
-            if(args.Button == MouseButtons.Right&&listDataReceived.SelectedItem!=null)
+            if (args.Button == MouseButtons.Right && listDataReceived.SelectedItem != null)
             {
                 contextMenuData.Show(listDataReceived, args.Location);
             }
         }
 
-       
+
 
         private void OVitrualSpace_Click(object sender, EventArgs e)
         {
@@ -5593,17 +5616,17 @@ End;
             }
             catch
             {
-                
+
             }
-           
-               
+
+
         }
 
         private void bookmarkList_ItemMouseDoubleClick(object sender, ListViewItemEventArgs e)
         {
-            foreach( var item in bookmarkList.Items)
+            foreach (var item in bookmarkList.Items)
             {
-                if(item.Selected)
+                if (item.Selected)
                 {
                     try
                     {
@@ -5611,7 +5634,7 @@ End;
                         {
                             TabHienTai.GoTo(int.Parse(item[0].ToString()));
                         }
-                        else 
+                        else
                         {
                             foreach (var tabs in DockPar.DocumentManager.DocumentArray)
                             {
@@ -5657,12 +5680,12 @@ End;
             }
         }
 
-       
+
         //////////////Directory//////////////
         public string PathDirectory;
         public void LoadDirectory(string Dir)
         {
-            
+
             treeDirectory.Nodes.Clear();
             DirectoryInfo di = new DirectoryInfo(Dir);
             //Setting ProgressBar Maximum Value  
@@ -5713,8 +5736,8 @@ End;
                     tds.ImageIndex = 6;
                 else if (Path.GetExtension(fi.ToString()) == ".java")
                     tds.ImageIndex = 4;
-                else if (Path.GetExtension(fi.ToString()) == ".exe") 
-                tds.ImageIndex = 7;
+                else if (Path.GetExtension(fi.ToString()) == ".exe")
+                    tds.ImageIndex = 7;
                 else tds.ImageIndex = 2;
                 // UpdateProgress();
 
@@ -5725,7 +5748,7 @@ End;
         {
 
             CommonOpenFileDialog dialog = new CommonOpenFileDialog();
-            
+
             dialog.IsFolderPicker = true;
             if (dialog.ShowDialog() == CommonFileDialogResult.Ok)
             {
@@ -5736,22 +5759,22 @@ End;
 
         private void treeDirectory_NodeMouseDoubleClick(object sender, RadTreeViewEventArgs e)
         {
-            
+
             try
             {
                 string path = Path.GetDirectoryName(PathDirectory) + "\\" + e.Node.FullPath;
                 if (Path.GetExtension(path) == ".exe")
                 {
                     Process Chay = new Process();
-                    Chay.StartInfo.FileName = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\Kaliz" + @"\Cmder\vendor\conemu-maximus5\ConEmu.exe";                  
+                    Chay.StartInfo.FileName = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\Kaliz" + @"\Cmder\vendor\conemu-maximus5\ConEmu.exe";
                     Chay.StartInfo.Arguments = "-run  " + DuongDanTepExe(path);
                     Chay.StartInfo.WindowStyle = ProcessWindowStyle.Maximized;
                     Chay.Start();
                     return;
                 }
-                
-                if(Path.GetExtension(path)==".pas"|| Path.GetExtension(path) == ".c" || Path.GetExtension(path) == ".cpp" || Path.GetExtension(path) == ".py" || Path.GetExtension(path) == ".java"&&File.Exists(path))
-                TaoMoi(Path.GetFileName(path), path);
+
+                if (Path.GetExtension(path) == ".pas" || Path.GetExtension(path) == ".c" || Path.GetExtension(path) == ".cpp" || Path.GetExtension(path) == ".py" || Path.GetExtension(path) == ".java" && File.Exists(path))
+                    TaoMoi(Path.GetFileName(path), path);
             }
             catch { }
         }
@@ -5769,7 +5792,7 @@ End;
         //////////////End Directory///////////
         private void FReopenLineBreak_Click(object sender, EventArgs e)
         {
-            if(TabHienTai!=null && File.Exists(TabHienTai.FileName))
+            if (TabHienTai != null && File.Exists(TabHienTai.FileName))
             {
                 try
                 {
@@ -5799,16 +5822,16 @@ End;
             }
             else if (TabHienTai != null && !File.Exists(TabHienTai.FileName))
             {
-               
+
                 List<string> ls = new List<string>();
-                for(int i=1;i<=TabHienTai.PhysicalLineCount;i++)
+                for (int i = 1; i <= TabHienTai.PhysicalLineCount; i++)
                 {
-                    ls.Add(TabHienTai.GetLineText(i)+"\r\n");
+                    ls.Add(TabHienTai.GetLineText(i) + "\r\n");
                 }
                 TabHienTai.Text = "";
-                foreach(var i in ls)
+                foreach (var i in ls)
                 {
-                    TabHienTai.Text += i.ToString()+"\r\n";
+                    TabHienTai.Text += i.ToString() + "\r\n";
                 }
             }
             else
@@ -5855,7 +5878,7 @@ End;
 
         private void radListBreakpoint_MouseClick(object sender, MouseEventArgs e)
         {
-           
+
 
         }
 
@@ -5866,21 +5889,21 @@ End;
                 if (File.Exists(TabHienTai.FileName))
                 {
                     IBackgroundFormat format = TabHienTai.RegisterBackColorFormat(Color.LemonChiffon, Color.Beige, System.Drawing.Drawing2D.HatchStyle.Trellis, true);
-                    BrushInfo sd = new BrushInfo(Color.DarkRed);                   
+                    BrushInfo sd = new BrushInfo(Color.DarkRed);
                     TabHienTai.BookmarkAdd(TabHienTai.CurrentLine, sd);
-                   TabHienTai.SetLineBackColor(TabHienTai.CurrentLine, true, format);
+                    TabHienTai.SetLineBackColor(TabHienTai.CurrentLine, true, format);
                     radListBreakpoint.Items.Add(TabHienTai.CurrentLine, TabHienTai.FileName);
                 }
             }
             catch { }
-           
+
         }
 
         private void BreakPointRemove_Click(object sender, EventArgs e)
         {
             try
             {
-                
+
                 if (File.Exists(TabHienTai.FileName))
                 {
                     TabHienTai.BookmarkRemove(TabHienTai.CurrentLine);
@@ -5890,7 +5913,7 @@ End;
                         if (item[0].ToString() == TabHienTai.CurrentLine.ToString() && TabHienTai.FileName == item[1].ToString())
                             radListBreakpoint.Items.Remove(item);
                     }
-                }               
+                }
             }
             catch { }
         }
@@ -5901,19 +5924,19 @@ End;
             DBreakPointList.Hide();
         }
 
-        
 
-       
+
+
         private void OParse_Click(object sender, EventArgs e)
         {
-            if(enableParse == false)
+            if (enableParse == false)
             {
                 enableParse = true;
                 OParse.Text = "Disable Parsing";
             }
             else
             {
-               
+
                 enableParse = false;
                 OParse.Text = "Enable Parsing";
             }
@@ -5977,7 +6000,7 @@ End;
 
         private void OBlockBoder_Click(object sender, EventArgs e)
         {
-           try
+            try
             {
                 if (TabHienTai.ShowIndentationBlockBorders == true)
                 {
@@ -5988,10 +6011,10 @@ End;
 
             }
             catch
-            { }            
+            { }
 
         }
-      
+
         private void EWrap_Click(object sender, EventArgs e)
         {
             try
@@ -6023,7 +6046,7 @@ End;
                 recentList.Items.Clear();
             }
             catch { }
-          
+
         }
 
         private void HFeedback_Click(object sender, EventArgs e)
@@ -6034,8 +6057,8 @@ End;
 
         private void Doutput_MouseClick(object sender, MouseEventArgs e)
         {
-           
-           
+
+
         }
         public string TranslateText(string input)
         {
@@ -6063,7 +6086,7 @@ End;
             upa.ShowDialog();
         }
         //Ket noi Database Access
-        private string strConnectData = @"Provider=Microsoft.ACE.OLEDB.12.0;Data Source="+ Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData)+@"\Kaliz\Data_Kaliz.accdb";
+        private string strConnectData = @"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" + Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + @"\Kaliz\Data_Kaliz.accdb";
         OleDbConnection oleConnect = null;
         private void ConnectDataBase()
         {
@@ -6083,7 +6106,7 @@ End;
                 oleConnect.Close();
             }
         }
-                    
+
         private string GetLineDataBase(string condition)
         {
             ConnectDataBase();
@@ -6100,7 +6123,7 @@ End;
             reader.Close();
             DisconnectDataBase();
             return a;
-          
+
         }
         private bool IsContainPathInDataBase(string condition)
         {
@@ -6123,11 +6146,11 @@ End;
                 DisconnectDataBase();
                 return false;
             }
-            
+
         }
         private void InsertDataBase(string path, string line)
         {
-           
+
             if (IsContainPathInDataBase(path) == true)
             {
                 ConnectDataBase();
@@ -6150,13 +6173,13 @@ End;
         private void UpdateLineInDataBase(string path, string line)
         {
 
-            ConnectDataBase();
+         
             OleDbCommand cmd = new OleDbCommand();
             cmd.CommandType = CommandType.Text;
             cmd.CommandText = "update Bookmark set Line='" + line + "' where Path='" + path + "'";
             cmd.Connection = oleConnect;
             cmd.ExecuteNonQuery();
-            DisconnectDataBase();
+        
 
         }
         private void RemoveDataBase()
@@ -6170,7 +6193,18 @@ End;
             DisconnectDataBase();
 
         }
+        private void RemoveRecentDataBase()
+        {
+            ConnectDataBase();
+            OleDbCommand cmd = new OleDbCommand();
+            cmd.CommandType = CommandType.Text;
+            cmd.CommandText = "delete from Recent where Path LIKE '' OR Path IS NULL";
+            cmd.Connection = oleConnect;
+            cmd.ExecuteNonQuery();
+            DisconnectDataBase();
 
+
+        }
         private void LoadRecentFromDataBase()
         {
             try
@@ -6194,42 +6228,45 @@ End;
             {
 
             }
-          
+
         }
         private void bgrLoadRecent_DoWork(object sender, System.ComponentModel.DoWorkEventArgs e)
         {
+            RemoveRecentDataBase();
+            RemoveNoteDataBase();
             LoadRecentFromDataBase();
         }
-        private string GetNoteFromDataBase( string condition)
+        private void GetNoteFromDataBase(string condition)
         {
-           
-                ConnectDataBase();
-                string a = "";
-                OleDbCommand cmd = new OleDbCommand();
-                cmd.CommandType = CommandType.Text;
-                cmd.CommandText = "select Content from Note where Path='" + condition + "'";
-                cmd.Connection = oleConnect;
-                OleDbDataReader reader = cmd.ExecuteReader();
-                while (reader.Read())
-                {
-                    a = reader.GetString(0);
-                }
-                reader.Close();
-                DisconnectDataBase();
-                return a;
 
-            
+            ConnectDataBase();
+
+            OleDbCommand cmd = new OleDbCommand();
+            cmd.CommandType = CommandType.Text;
+            cmd.CommandText = "select ContentPath from NoteKa where Path='" + condition + "'";
+            cmd.Connection = oleConnect;
+            OleDbDataReader reader = cmd.ExecuteReader();
+            if (reader.Read())
+            {
+                richNoteEdit.Text = reader.GetString(0);
+            } 
+            else
+            { richNoteEdit.Text = ""; }    
+            reader.Close();
+            DisconnectDataBase();
+
+
         }
         private void UpdateNoteInDataBase(string path, string content)
         {
 
-           // ConnectDataBase();
-            OleDbCommand cmd = new OleDbCommand(); 
+            // ConnectDataBase();
+            OleDbCommand cmd = new OleDbCommand();
             cmd.CommandType = CommandType.Text;
-            cmd.CommandText = "update Note set Content='" + content + "' where Path='" + path + "'";
+            cmd.CommandText = "update NoteKa set ContentPath='" + content + "' where Path='" + path + "'";
             cmd.Connection = oleConnect;
             cmd.ExecuteNonQuery();
-           // DisconnectDataBase();
+            // DisconnectDataBase();
 
         }
         private void RemoveNoteDataBase()
@@ -6237,7 +6274,7 @@ End;
             ConnectDataBase();
             OleDbCommand cmd = new OleDbCommand();
             cmd.CommandType = CommandType.Text;
-            cmd.CommandText = "delete from Note where Content LIKE '' OR Content IS NULL";
+            cmd.CommandText = "delete from NoteKa where ContentPath LIKE '' OR ContentPath IS NULL";
             cmd.Connection = oleConnect;
             cmd.ExecuteNonQuery();
             DisconnectDataBase();
@@ -6245,33 +6282,33 @@ End;
         }
         private void InsertNoteDataBase(string path, string content)
         {
-            ConnectDataBase();
+           
 
             if (IsContainPathInNoteDataBase(path) == true)
             {
-              
+                ConnectDataBase();
                 UpdateNoteInDataBase(path, content);
-             
+                DisconnectDataBase();
             }
             else
             {
-
+                ConnectDataBase();
                 OleDbCommand cmd = new OleDbCommand();
-                cmd.CommandType = CommandType.Text;
-                cmd.CommandText = "insert into Note(Path,Content)Values('" + path + "','" + content + "')";
-                cmd.Connection = oleConnect;
-                cmd.ExecuteNonQuery();
-               
+            cmd.CommandType = CommandType.Text;
+            cmd.CommandText = "Insert into NoteKa(Path,ContentPath)Values('" + path + "','" + content + "')";
+            cmd.Connection = oleConnect;
+            cmd.ExecuteNonQuery();
+                DisconnectDataBase();
 
             }
-            DisconnectDataBase();
+           
         }
         private bool IsContainPathInNoteDataBase(string condition)
         {
             ConnectDataBase();
             OleDbCommand cmd = new OleDbCommand();
             cmd.CommandType = CommandType.Text;
-            cmd.CommandText = "select Content from Note where Path='" + condition + "'";
+            cmd.CommandText = "select ContentPath from NoteKa where Path='" + condition + "'";
             cmd.Connection = oleConnect;
             OleDbDataReader reader = cmd.ExecuteReader();
             if (reader.Read())
@@ -6287,6 +6324,43 @@ End;
                 DisconnectDataBase();
                 return false;
             }
+
+        }
+
+        private void radMenuItem1_Click_1(object sender, EventArgs e)
+        {
+            ConnectDataBase();
+          
+            OleDbCommand cmd = new OleDbCommand();
+            cmd.CommandType = CommandType.Text;
+            cmd.CommandText = "select ContentPath from NoteKa where Path='" + TabHienTai.FileName + "'";
+            cmd.Connection = oleConnect;
+            OleDbDataReader reader = cmd.ExecuteReader();
+            while (reader.Read())
+            {
+                richNoteEdit.Text = reader.GetString(0);
+            }
+            reader.Close();
+            DisconnectDataBase();
+
+        }
+       
+        private void bgrLoadNote_DoWork(object sender, System.ComponentModel.DoWorkEventArgs e)
+        {
+            //  GetNoteFromDataBase(TabHienTai.FileName);
+            ConnectDataBase();
+
+            OleDbCommand cmd = new OleDbCommand();
+            cmd.CommandType = CommandType.Text;
+            cmd.CommandText = "select ContentPath from NoteKa where Path='" + TabHienTai.FileName + "'";
+            cmd.Connection = oleConnect;
+            OleDbDataReader reader = cmd.ExecuteReader();
+            while (reader.Read())
+            {
+                richNoteEdit.Text = reader.GetString(0);
+            }
+            reader.Close();
+            DisconnectDataBase();
 
         }
     }
