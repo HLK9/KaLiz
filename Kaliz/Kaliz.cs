@@ -6363,6 +6363,19 @@ End;
             DisconnectDataBase();
 
         }
+
+        private void Kaliz_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            foreach (var item in DockPar.DocumentManager.DocumentArray)
+            {
+                try
+                {
+                    SaveRecent((item.Controls[0] as EditControl).FileName);
+                }
+                catch { }
+ 
+            }
+        }
     }
 }
 
