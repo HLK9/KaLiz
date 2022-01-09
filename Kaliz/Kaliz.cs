@@ -2913,7 +2913,7 @@ End;
             ListOutput.Items.Add("Processing");
             if (Path.GetExtension(ten) == ".pas")
             {
-
+                
                 Process BienDich = new Process();
                 BienDich.StartInfo.FileName = "cmd";
                 //BienDich.StartInfo.WorkingDirectory = @"Cmder\vendor\FPC\bin\i386-win32";
@@ -2934,12 +2934,12 @@ End;
                 string ad;
                 while ((ad = BienDich.StandardOutput.ReadLine()) != null)
                 {
+                   
                     ListOutput.Items.Add(ad);
 
                     if (ad.Contains("lines compiled"))
                     {
                         break;
-
 
                     }
 
@@ -3385,7 +3385,7 @@ End;
                     ShowAlert_Light("<html><color=LightSalmon>Build Failed", "<html><color=Teal>Python can only be <b>RUN</b> directly", false);
                 else
                 {
-
+                   
                     Build(TabHienTai.FileName, deBug);
                     Doutput.DockState = DockState.Docked;
                 }
@@ -3703,7 +3703,10 @@ End;
                 }
 
             }
-            catch { MessageBox.Show("Có lỗi xảy ra!"); }
+            catch
+            { 
+                MessageBox.Show("Có lỗi xảy ra!");
+            }
 
         }
 
