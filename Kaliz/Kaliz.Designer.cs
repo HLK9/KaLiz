@@ -2072,6 +2072,7 @@ namespace Kaliz
             this.Text = "Kaliz - CMB";
             this.ThemeName = "MaterialTeal";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Kaliz_FormClosing);
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Kaliz_FormClosed);
             ((System.ComponentModel.ISupportInitialize)(this.DockPar)).EndInit();
             this.DockPar.ResumeLayout(false);
