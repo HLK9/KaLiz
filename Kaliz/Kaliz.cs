@@ -440,11 +440,6 @@ namespace Kaliz
 
         }
 
-        private void MenuZoom_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
         private void ClipBoard_ClipboardChanged(object sender, SharpClipboard.ClipboardChangedEventArgs e)
         {
             bool containd = false;
@@ -6373,7 +6368,74 @@ End;
                     SaveRecent((item.Controls[0] as EditControl).FileName);
                 }
                 catch { }
- 
+
+                try
+                {
+                    string path_into = (item.Controls[0] as EditControl).FileName;
+                    //if (Path.GetFileName(path_into) == DockPar.DocumentManager.ActiveDocument.TabStripItem.Text)
+                    //{
+
+                        string bookmarks_line = "";
+                        try
+
+                        {
+                            foreach (var item_CloseFile in listClosedFiles.Items)
+                            {
+                                if (item_CloseFile.Text == (item.Controls[0] as EditControl).FileName)
+                                    listClosedFiles.Items.Remove(item_CloseFile);
+                            }
+                        }
+                        catch { }
+                       
+                        foreach (var item_Bookmark in bookmarkList.Items)
+                        {
+                            if (item_Bookmark[2].ToString() == (item.Controls[0] as EditControl).FileName)
+                                bookmarks_line += " " + item_Bookmark[0].ToString();
+                        }
+                    try
+                    {
+
+
+                        if (File.Exists((item.Controls[0] as EditControl).FileName))
+                        {
+                            foreach (ListViewDataItem path_item in bookmarkList.Items.ToList())
+                            {
+
+                                if (path_item[1].ToString().Contains(Path.GetFileName((item.Controls[0] as EditControl).FileName)))
+                                    bookmarkList.Items.Remove(path_item);
+                            }
+
+                        }
+
+                        else
+                        {
+                            foreach (ListViewDataItem path_item in bookmarkList.Items.ToList())
+                            {
+                                if (path_item[1].ToString().Contains((item.Controls[0] as EditControl).FileName))
+                                    bookmarkList.Items.Remove(path_item);
+                            }
+                        }
+
+                    }
+
+                    catch
+                    {
+
+                    }
+
+                        InsertDataBase(path_into, bookmarks_line);
+                        RemoveDataBase();
+                    }
+                  
+
+                
+                catch
+                {
+                    //  MessageBox.Show();
+                    // MessageBox.Show("Loi ngoai cung");
+                }
+
+
             }
         }
     }
