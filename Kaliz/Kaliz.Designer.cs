@@ -245,7 +245,6 @@ namespace Kaliz
             this.contextMenuData = new Telerik.WinControls.UI.RadContextMenu(this.components);
             this.contextMenuDirectory = new Telerik.WinControls.UI.RadContextMenu(this.components);
             this.MenuTop = new Telerik.WinControls.UI.RadMenu();
-            this.radMenuItem1 = new Telerik.WinControls.UI.RadMenuItem();
             this.contextMenuOutput = new Telerik.WinControls.UI.RadContextMenu(this.components);
             this.bgrLoadRecent = new System.ComponentModel.BackgroundWorker();
             this.bgrLoadNote = new System.ComponentModel.BackgroundWorker();
@@ -2031,19 +2030,12 @@ namespace Kaliz
             this.MWindows,
             this.MPersonal,
             this.MShareAndConnect,
-            this.MHelp,
-            this.radMenuItem1});
+            this.MHelp});
             this.MenuTop.Location = new System.Drawing.Point(0, 0);
             this.MenuTop.Name = "MenuTop";
             this.MenuTop.Size = new System.Drawing.Size(1257, 37);
             this.MenuTop.TabIndex = 1;
             this.MenuTop.ThemeName = "MaterialTeal";
-            // 
-            // radMenuItem1
-            // 
-            this.radMenuItem1.Name = "radMenuItem1";
-            this.radMenuItem1.Text = "Test";
-            this.radMenuItem1.Click += new System.EventHandler(this.radMenuItem1_Click_1);
             // 
             // bgrLoadRecent
             // 
@@ -2338,7 +2330,6 @@ namespace Kaliz
         private Telerik.WinControls.UI.Docking.ToolWindow DNote;
         private Telerik.WinControls.UI.Docking.DockWindowPlaceholder dockWindowPlaceholder1;
         private RadRichTextEditor richNoteEdit;
-        private RadMenuItem radMenuItem1;
         private System.ComponentModel.BackgroundWorker bgrLoadNote;
     }
 }
