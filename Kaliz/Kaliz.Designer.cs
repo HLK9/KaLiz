@@ -244,10 +244,10 @@ namespace Kaliz
             this.SDisconnect = new Telerik.WinControls.UI.RadMenuItem();
             this.contextMenuData = new Telerik.WinControls.UI.RadContextMenu(this.components);
             this.contextMenuDirectory = new Telerik.WinControls.UI.RadContextMenu(this.components);
-            this.MenuTop = new Telerik.WinControls.UI.RadMenu();
             this.contextMenuOutput = new Telerik.WinControls.UI.RadContextMenu(this.components);
             this.bgrLoadRecent = new System.ComponentModel.BackgroundWorker();
             this.bgrLoadNote = new System.ComponentModel.BackgroundWorker();
+            this.MenuTop = new Telerik.WinControls.UI.RadMenu();
             ((System.ComponentModel.ISupportInitialize)(this.DockPar)).BeginInit();
             this.DockPar.SuspendLayout();
             this.DWorkingDirectory.SuspendLayout();
@@ -294,8 +294,8 @@ namespace Kaliz
             this.DNote.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.richNoteEdit)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.toolTabStrip3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.MenuTop)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MenuTop)).BeginInit();
             this.SuspendLayout();
             // 
             // dockWindowPlaceholder1
@@ -2016,6 +2016,20 @@ namespace Kaliz
             // 
             this.contextMenuData.ThemeName = "MaterialTeal";
             // 
+            // bgrLoadRecent
+            // 
+            this.bgrLoadRecent.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bgrLoadRecent_DoWork);
+            // 
+            // bgrLoadNote
+            // 
+            this.bgrLoadNote.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bgrLoadNote_DoWork);
+            // 
+            // Kaliz
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.ClientSize = new System.Drawing.Size(1257, 735);
+            // 
             // MenuTop
             // 
             this.MenuTop.Items.AddRange(new Telerik.WinControls.RadItem[] {
@@ -2036,20 +2050,6 @@ namespace Kaliz
             this.MenuTop.Size = new System.Drawing.Size(1257, 37);
             this.MenuTop.TabIndex = 1;
             this.MenuTop.ThemeName = "MaterialTeal";
-            // 
-            // bgrLoadRecent
-            // 
-            this.bgrLoadRecent.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bgrLoadRecent_DoWork);
-            // 
-            // bgrLoadNote
-            // 
-            this.bgrLoadNote.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bgrLoadNote_DoWork);
-            // 
-            // Kaliz
-            // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1257, 735);
             this.Controls.Add(this.DockPar);
             this.Controls.Add(this.MenuTop);
             this.HelpButton = true;
@@ -2322,7 +2322,6 @@ namespace Kaliz
         private RadMenuItem EDumpSelected;
         private RadMenuItem OBlockBoder;
         private RadMenuItem EWrap;
-        private RadMenu MenuTop;
         private RadMenuItem HFeedback;
         private RadContextMenu contextMenuOutput;
         private RadMenuItem TUploadfile;
@@ -2331,5 +2330,6 @@ namespace Kaliz
         private Telerik.WinControls.UI.Docking.DockWindowPlaceholder dockWindowPlaceholder1;
         private RadRichTextEditor richNoteEdit;
         private System.ComponentModel.BackgroundWorker bgrLoadNote;
+        private RadMenu MenuTop;
     }
 }
