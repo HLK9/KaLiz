@@ -5019,18 +5019,6 @@ End;
             catch
             { }
         }
-
-        private void radMenuItem16_Click_2(object sender, EventArgs e)
-        {
-            TabHienTai.SaveFile(TabHienTai.FileName, TabHienTai.GetEncoding(), Syncfusion.IO.NewLineStyle.Windows);
-        }
-
-        private void radMenuItem17_Click_1(object sender, EventArgs e)
-        {
-            //  TabHienTai.SetUnderline(new Point())
-            TabHienTai.ShowCodeSnippets();
-        }
-
         private void DebugPython_Click(object sender, EventArgs e)
         {
             infoDebug = "";
