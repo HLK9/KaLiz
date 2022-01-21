@@ -952,7 +952,6 @@ namespace Kaliz
                 catch { }
 
                 string re = GetLineDataBase(path_file);
-
                 string[] tokens = re.Split(' ');
                 foreach (var item in tokens)
                 {
@@ -2802,7 +2801,7 @@ End;
                 if (DockPar.ActiveWindow == null) return null;
                 return (DockPar.DocumentManager.ActiveDocument.Controls[0] as EditControl);
 
-                //Fixed... :v            .Controls[0]
+                //Fixed...          .Controls[0]
 
 
             }
